@@ -14,10 +14,12 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var lipImageView: UIImageView!
     @IBOutlet weak var lipShortDetail: UILabel!
     
+    
     func setLipstick(lipstick : Lipstick) {
         lipImageView.image = lipstick.lipstickImage
         lipNameLabel.text = lipstick.lipstickName
         lipShortDetail.text = lipstick.lipShortDetail
     }
     
+ 
 }

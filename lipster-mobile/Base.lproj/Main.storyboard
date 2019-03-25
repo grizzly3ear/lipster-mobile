@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LipstickListTableViewCell" rowHeight="200" id="94c-Ar-euE" customClass="LipstickListTableViewCell" customModule="lipster" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" tag="200" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LipstickListTableViewCell" rowHeight="200" id="94c-Ar-euE" customClass="LipstickListTableViewCell" customModule="lipster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="94c-Ar-euE" id="Xfd-mn-bGa">
@@ -52,8 +52,8 @@
                                                 <constraint firstAttribute="width" constant="150" id="vrC-s1-f8v"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HD-sl-BLf">
-                                            <rect key="frame" x="174" y="41" width="185" height="121"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HD-sl-BLf">
+                                            <rect key="frame" x="174" y="41" width="185" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -66,6 +66,14 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OcZ-co-hrc">
+                                            <rect key="frame" x="242" y="117" width="51" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="favButton_off"/>
+                                            <connections>
+                                                <action selector="favButtonTapped:" destination="94c-Ar-euE" eventType="touchUpInside" id="UaW-kt-sUM"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BoD-Qj-KHK" firstAttribute="top" secondItem="Xfd-mn-bGa" secondAttribute="top" constant="12" id="SaJ-Yz-b2b"/>
@@ -77,6 +85,7 @@
                                 <connections>
                                     <outlet property="LipImageView" destination="BoD-Qj-KHK" id="HSk-5L-fB1"/>
                                     <outlet property="LipShortDetail" destination="4HD-sl-BLf" id="nI7-Fl-p4y"/>
+                                    <outlet property="favButton" destination="OcZ-co-hrc" id="Vn9-d4-Uii"/>
                                     <outlet property="lipNameLabel" destination="B6m-c7-8xX" id="gxx-cC-Fwp"/>
                                     <segue destination="Du1-5Y-0Q7" kind="show" identifier="showDetails" id="zzI-qI-HKS"/>
                                 </connections>
@@ -96,12 +105,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="89"/>
+            <point key="canvasLocation" x="1088.8" y="88.605697151424295"/>
         </scene>
         <!--Lipstick Detail View Controller-->
         <scene sceneID="eYq-DS-THp">
             <objects>
-                <viewController storyboardIdentifier="LipstickDetailViewController" id="Du1-5Y-0Q7" customClass="LipstickDetailViewController" customModule="lipster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LipstickDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Du1-5Y-0Q7" customClass="LipstickDetailViewController" customModule="lipster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BSC-Ny-D0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,12 +122,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K0M-ic-z36">
-                                <rect key="frame" x="67" y="100" width="240" height="220"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K0M-ic-z36">
+                                <rect key="frame" x="77.5" y="99" width="220" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="K0M-ic-z36" secondAttribute="height" multiplier="1:1" id="3lT-wH-jvQ"/>
+                                    <constraint firstAttribute="width" constant="220" id="j0S-0C-JPX"/>
+                                    <constraint firstAttribute="height" constant="220" id="k3j-hb-iga"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyI-Ad-VUT">
-                                <rect key="frame" x="49" y="365" width="185" height="121"/>
+                                <rect key="frame" x="49" y="365" width="258" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,6 +146,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K0M-ic-z36" firstAttribute="top" secondItem="i8z-Bz-7qx" secondAttribute="top" constant="35" id="9Iu-sH-nwh"/>
+                            <constraint firstItem="K0M-ic-z36" firstAttribute="centerX" secondItem="BSC-Ny-D0g" secondAttribute="centerX" id="PuI-J4-pQP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="i8z-Bz-7qx"/>
                     </view>
                     <connections>
@@ -143,7 +160,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5F-rh-z2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="108"/>
+            <point key="canvasLocation" x="1885.5999999999999" y="107.49625187406298"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favButton_off" width="480" height="480"/>
+    </resources>
 </document>

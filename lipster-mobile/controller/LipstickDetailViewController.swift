@@ -17,15 +17,18 @@ class LipstickDetailViewController: UIViewController {
     @IBOutlet weak var lipstickReviews: UILabel!
     
     
-    //    var imageOfDetail = UIImage()
-    //    var nameOfDetail = ""
+        var imageOfDetail = UIImage()
+        var lipNameOfDetail = String()
+        var lipAllDetail = String()
+    
     var lipstick : Lipstick?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
-        //        lipstickName.text = "\(nameOfDetail)"
-        //        lipstickImage.image = imageOfDetail
+        
+        lipstickImage.image = imageOfDetail
+        lipstickName.text = lipNameOfDetail
+        lipstickShortDetail.text = lipAllDetail
         
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
@@ -39,12 +42,4 @@ class LipstickDetailViewController: UIViewController {
     
     
 }
-//extension ViewController{
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = storyboard?.instantiateViewController(withIdentifier : "LipstickDetailViewController") as? LipstickDetailViewController
-//        vc?.image = UIImage(named : name[indexPath.row])
-//        vc?.name = name[indexPath.row]
-//        self.navigationController?.pushViewController(vc!, animated: true)
-//    }
-//
-//}
+

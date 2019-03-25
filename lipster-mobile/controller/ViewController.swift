@@ -10,32 +10,17 @@ import UIKit
 
 class ViewController: UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
-    
-    
-    var lipList: [Lipstick] = []
-    func createArray() -> [Lipstick] {
-        
-        let img1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
-        let img2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
-        let img3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickName: "OR241", lipShortDetail: "Detail of the lipstick is  ....    eieiei")
-        let img4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
-        let img5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
-        
-        return [img1, img2, img3, img4, img5]
-    }
     // change variable name
     @IBOutlet var lipListTableView: UITableView!
     @IBOutlet var searchBar : UISearchBar!
-    
+  
+    //@IBOutlet weak var favBut: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lipList = self.createArray()
         // self.lipListTableView.delegate = self
         //     self.lipListTableView.dataSource = self
-        
-        // searchBar.delegate = self
-        //searchBar.returnKeyType = UIReturnKeyType.done
         
         addNavBarImage()
         
@@ -45,6 +30,7 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .never
+        
         //        if #available(iOS 11.0, *) {
         //            let sc = UISearchController(searchResultsController: nil)
         //            if let navigationbar = self.navigationController?.navigationBar {
@@ -82,6 +68,20 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
+    
+    
+    var lipList: [Lipstick] = []
+    func createArray() -> [Lipstick] {
+        
+        let img1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
+        let img2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
+        let img3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickName: "OR241", lipShortDetail: "Detail of the lipstick is  ....    eieiei")
+        let img4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
+        let img5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
+        
+        return [img1, img2, img3, img4, img5]
+    }
+    
     //          logo in nav bar
     func addNavBarImage(){
         let navController = navigationController!
@@ -98,8 +98,7 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView  = imageView
     }
-    
-    
+
     
 }
 
@@ -116,20 +115,21 @@ extension ViewController {
         //    let image = lipList[indexPath.row]
         
         cell.setLipstick(lipstick: lipList[indexPath.row])
-        
+     
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails" , sender: self)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LipstickDetailViewController{
-            // destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
-            destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
-        }
+      // performSegue(withIdentifier: "showDetails" , sender: self)
+        let StoryBoard = UIStoryboard(name: "Main", bundle: nil )
+        let DetailVC = StoryBoard.instantiateViewController(withIdentifier: "LipstickDetailViewController") as! LipstickDetailViewController
         
+        DetailVC.imageOfDetail = lipList[indexPath.row] as! UIImage
+        DetailVC.lipNameOfDetail = lipList[indexPath.row] as! String
+        self.navigationController?.pushViewController(DetailVC, animated: true)
     }
+
     
 }
 
