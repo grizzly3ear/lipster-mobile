@@ -17,27 +17,25 @@ class LipstickDetailViewController: UIViewController {
     @IBOutlet weak var lipstickReviews: UILabel!
     
     
-        var imageOfDetail = UIImage()
-        var lipNameOfDetail = String()
-        var lipAllDetail = String()
+    var imageOfDetail = UIImage()
+    var lipNameOfDetail = String()
+    var lipAllDetail = String()
     
     var lipstick : Lipstick?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        lipstickImage.image = imageOfDetail
-        lipstickName.text = lipNameOfDetail
-        lipstickShortDetail.text = lipAllDetail
-        
+        navigationItem.largeTitleDisplayMode = .never
+        self.title = "LIPSTICK Detail"
+
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickShortDetail.text = lipstick.lipShortDetail
             //   self.lipstickReviews.text = lipstick.
         }
-        navigationItem.largeTitleDisplayMode = .never
-        self.title = "LIPSTICK Detail"
+      
+  
     }
     
     

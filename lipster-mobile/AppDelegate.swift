@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //--------nav Bar
         //.isTranslucent ให้โปร่งเเสงมั้ย
         UINavigationBar.appearance().isTranslucent = false
-        
-        
+
         return true
     }
     

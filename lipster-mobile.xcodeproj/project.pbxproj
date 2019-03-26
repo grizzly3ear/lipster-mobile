@@ -15,7 +15,6 @@
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
 		D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */; };
-		D8D45F9622448E6600405AE7 /* favouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F9522448E6600405AE7 /* favouriteButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
 		D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewController.swift; sourceTree = "<group>"; };
-		D8D45F9522448E6600405AE7 /* favouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favouriteButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 			children = (
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */,
-				D8D45F9522448E6600405AE7 /* favouriteButton.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -166,7 +163,6 @@
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* ViewController.swift in Sources */,
 				D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */,
-				D8D45F9622448E6600405AE7 /* favouriteButton.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 			);

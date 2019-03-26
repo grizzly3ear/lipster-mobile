@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
+class ViewController:  UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
     // change variable name
     @IBOutlet var lipListTableView: UITableView!
@@ -19,17 +19,17 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lipList = self.createArray()
-        // self.lipListTableView.delegate = self
-        //     self.lipListTableView.dataSource = self
+        
+        self.lipListTableView.delegate = self
+        self.lipListTableView.dataSource = self
         
         addNavBarImage()
         
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
-        navigationItem.largeTitleDisplayMode = .never
+        //navigationItem.largeTitleDisplayMode = .never
         
         //        if #available(iOS 11.0, *) {
         //            let sc = UISearchController(searchResultsController: nil)
@@ -70,7 +70,7 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
     }
     
     
-    var lipList: [Lipstick] = []
+    var lipList:[Lipstick] = [Lipstick] ()
     func createArray() -> [Lipstick] {
         
         let img1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
@@ -78,7 +78,7 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
         let img3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickName: "OR241", lipShortDetail: "Detail of the lipstick is  ....    eieiei")
         let img4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
         let img5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
-        
+
         return [img1, img2, img3, img4, img5]
     }
     
@@ -102,7 +102,8 @@ class ViewController: UITableViewController , UISearchControllerDelegate , UISea
     
 }
 
-extension ViewController {
+
+extension ViewController   {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lipList.count
@@ -112,25 +113,36 @@ extension ViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
-        //    let image = lipList[indexPath.row]
+     //   cell.setLipstick(lipstick: lipList[indexPath.row])
+
+        cell.lipImageView.image = lipList[indexPath.row].lipstickImage
+        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
+        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
         
-        cell.setLipstick(lipstick: lipList[indexPath.row])
-     
         return cell
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      // performSegue(withIdentifier: "showDetails" , sender: self)
-        let StoryBoard = UIStoryboard(name: "Main", bundle: nil )
-        let DetailVC = StoryBoard.instantiateViewController(withIdentifier: "LipstickDetailViewController") as! LipstickDetailViewController
-        
-        DetailVC.imageOfDetail = lipList[indexPath.row] as! UIImage
-        DetailVC.lipNameOfDetail = lipList[indexPath.row] as! String
-        self.navigationController?.pushViewController(DetailVC, animated: true)
+       performSegue(withIdentifier: "showDetails" , sender: self)
+//        let StoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let DetailVC = StoryBoard.instantiateViewController(withIdentifier: "LipstickDetailViewController") as! LipstickDetailViewController
+//
+//        DetailVC.imageOfDetail = lipList[indexPath.row].lipstickImage
+//        DetailVC.lipNameOfDetail = lipList[indexPath.row].lipstickName
+//        DetailVC.lipAllDetail = lipList[indexPath.row].lipShortDetail
+//
+//
+//        self.navigationController?.pushViewController(DetailVC, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LipstickDetailViewController {
+            destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
+        }
     }
 
-    
+
 }
 
 
