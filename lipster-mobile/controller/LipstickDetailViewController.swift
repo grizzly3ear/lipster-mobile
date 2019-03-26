@@ -11,14 +11,18 @@ import UIKit
 class LipstickDetailViewController: UIViewController {
     
     @IBOutlet weak var lipstickImage: UIImageView!
+    @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
+    @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     
     @IBOutlet weak var lipstickReviews: UILabel!
     
     
     var imageOfDetail = UIImage()
+    var lipBrandofDetail = String()
     var lipNameOfDetail = String()
+    var lipColorNameOfDetail = String()
     var lipAllDetail = String()
     
     var lipstick : Lipstick?
@@ -30,8 +34,11 @@ class LipstickDetailViewController: UIViewController {
 
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
+            self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
+            self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipShortDetail
+            
             //   self.lipstickReviews.text = lipstick.
         }
       

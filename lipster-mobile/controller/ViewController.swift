@@ -18,13 +18,14 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lipList = self.createArray()
         
+        self.lipList = self.createArray()
         self.lipListTableView.delegate = self
         self.lipListTableView.dataSource = self
         
         addNavBarImage()
         
+       // tableView.register(LipstickListTableViewCell.self, forCellReuseIdentifier: "LipstickListTableViewCell" )
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -73,13 +74,14 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
     var lipList:[Lipstick] = [Lipstick] ()
     func createArray() -> [Lipstick] {
         
-        let img1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
-        let img2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
-        let img3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickName: "OR241", lipShortDetail: "Detail of the lipstick is  ....    eieiei")
-        let img4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
-        let img5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
+        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
+        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
+        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....    eieiei")
+        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
+        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
 
-        return [img1, img2, img3, img4, img5]
+    
+        return [lip1, lip2, lip3, lip4, lip5]
     }
     
     //          logo in nav bar
@@ -113,12 +115,12 @@ extension ViewController   {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
-     //   cell.setLipstick(lipstick: lipList[indexPath.row])
+        cell.setLipstick(lipstick: lipList[indexPath.row])
 
-        cell.lipImageView.image = lipList[indexPath.row].lipstickImage
-        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
-        
+//        cell.lipImageView.image = lipList[indexPath.row].lipstickImage
+//        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
+//        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
+//
         return cell
     }
     

@@ -10,16 +10,28 @@ import UIKit
 
 class LipstickListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var lipNameLabel: UILabel!
     @IBOutlet weak var lipImageView: UIImageView!
-    @IBOutlet weak var lipShortDetail: UILabel!
-    
+    @IBOutlet weak var lipBrandLabel: UILabel!
+    @IBOutlet weak var lipNameLabel: UILabel!
+    @IBOutlet weak var lipColorNameLabel: UILabel!
+    @IBOutlet weak var lipDetailLabel: UILabel!
     
     func setLipstick(lipstick : Lipstick) {
         lipImageView.image = lipstick.lipstickImage
+        lipBrandLabel.text = lipstick.lipstickBrand
         lipNameLabel.text = lipstick.lipstickName
-        lipShortDetail.text = lipstick.lipShortDetail
+        lipColorNameLabel.text = lipstick.lipstickColorName
+        lipDetailLabel.text = lipstick.lipShortDetail
+        
     }
     
- 
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style , reuseIdentifier: reuseIdentifier)
+//        backgroundColor = .red
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
 }
