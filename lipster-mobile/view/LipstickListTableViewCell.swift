@@ -16,6 +16,8 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var lipColorNameLabel: UILabel!
     @IBOutlet weak var lipDetailLabel: UILabel!
     
+    @IBOutlet weak var favButton: UIButton!
+    
     func setLipstick(lipstick : Lipstick) {
         lipImageView.image = lipstick.lipstickImage
         lipBrandLabel.text = lipstick.lipstickBrand
@@ -24,14 +26,15 @@ class LipstickListTableViewCell: UITableViewCell {
         lipDetailLabel.text = lipstick.lipShortDetail
         
     }
+ 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
     
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style , reuseIdentifier: reuseIdentifier)
-//        backgroundColor = .red
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
 }
