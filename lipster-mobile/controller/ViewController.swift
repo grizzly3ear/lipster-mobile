@@ -12,19 +12,17 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
     
     // change variable name
     @IBOutlet var lipListTableView: UITableView!
-    @IBOutlet var searchBar : UISearchBar!
   
-   // @IBOutlet weak var favButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.lipList = self.createArray()
         self.lipListTableView.delegate = self
         self.lipListTableView.dataSource = self
-       
+        
         addNavBarImage()
-      
+        
+      // -------------------------- SearchBar -------------------------
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -68,30 +66,7 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
-    
-    
-    @IBAction func favClicked(_ sender: UIButton) {
-        if sender.currentImage == #imageLiteral(resourceName: "favButton_off") {
-            sender.setImage(#imageLiteral(resourceName: "favButton_on"), for: .normal)
-        }else{
-            sender.setImage(#imageLiteral(resourceName: "favButton_off"), for: .normal)
-        }
-    }
-    
-    var lipList:[Lipstick] = [Lipstick] ()
-    func createArray() -> [Lipstick] {
-        
-        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
-        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
-        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ")
-        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
-        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
-
-    
-        return [lip1, lip2, lip3, lip4, lip5]
-    }
-    
-    //          logo in nav bar
+    //  ------------------------- logo in nav bar-------------------------------
     func addNavBarImage(){
         let navController = navigationController!
         let image = UIImage(named: "logo-3")
@@ -107,15 +82,43 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView  = imageView
     }
-}
+    // ---------------------------lipList Array ------------------------------
+    var lipList:[Lipstick] = [Lipstick] ()
+    func createArray() -> [Lipstick] {
+        
+        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
+        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....")
+        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ")
+        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
+        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
 
+    
+        return [lip1, lip2, lip3, lip4, lip5]
+    }
+    
+    // ----------------------Favourite Button on/off-------------------------
+    var isFav = UserDefaults.standard.bool(forKey: "isFav")
+    
+    @IBAction func favButtonClicked(_ sender: UIButton) {
+        print("clicked!!!")
+        if isFav == true {
+            let image = UIImage(named: "favButton_off")
+            sender.setImage(image, for: UIControl.State.normal)
+        } else {
+            let image = UIImage(named: "favButton_on")
+            sender.setImage(image, for: UIControl.State.normal)
+        }
+        
+        isFav = !isFav
+        UserDefaults.standard.set(isFav, forKey: "isFav")
+        UserDefaults.standard.synchronize()
+    }
 
-extension ViewController   {
+    //--------------------------------------------------------------
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lipList.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -125,25 +128,9 @@ extension ViewController   {
 //        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
 //        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
         
-        cell.selectionStyle = .none
-        cell.favButton.addTarget(self, action: #selector(favClicked(sender:)), for: .touchUpInside)
         return cell
     }
-    
-    @objc func favClicked (sender : UIButton){
-         print("cilcked")
-        if sender.isSelected {
-            //unlike the butoon
-            sender.isSelected = false
 
-        } else {
-            // like it
-            sender.isSelected = true
-
-        }
-    }
-
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        performSegue(withIdentifier: "showDetails" , sender: self)
     }
@@ -154,8 +141,8 @@ extension ViewController   {
         }
     }
 
-
 }
+
 
 
 

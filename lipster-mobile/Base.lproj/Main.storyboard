@@ -84,8 +84,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="favButton_off"/>
                                             <connections>
-                                                <action selector="buttonPressed:" destination="94c-Ar-euE" eventType="touchUpInside" id="TJs-zE-any"/>
-                                                <action selector="favClicked:" destination="2my-jU-SWf" eventType="touchUpInside" id="ETy-FD-ykg"/>
+                                                <action selector="favButtonClicked:" destination="2my-jU-SWf" eventType="touchUpInside" id="ans-qn-aVY"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlC-Ot-U3h">
@@ -110,7 +109,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="favButton" destination="wqj-uE-gqh" id="3bG-dv-x1I"/>
+                                    <outlet property="favButton" destination="wqj-uE-gqh" id="6PM-wF-N42"/>
                                     <outlet property="lipBrandLabel" destination="Zm3-Ba-VT7" id="8Jd-Ph-Fdx"/>
                                     <outlet property="lipColorNameLabel" destination="b1W-0y-6Mu" id="wwV-3G-OT8"/>
                                     <outlet property="lipDetailLabel" destination="mlC-Ot-U3h" id="cMh-5D-BE1"/>
