@@ -30,7 +30,9 @@ class LipstickDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        self.title = "LIPSTICK Detail"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        self.title = "LIPSTICK DETAIL"
 
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage

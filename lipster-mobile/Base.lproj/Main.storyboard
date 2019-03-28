@@ -247,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="-407" y="815"/>
         </scene>
-        <!--Lipstick Detail View Controller-->
+        <!--LIPSTICK DETAIL-->
         <scene sceneID="N7a-ZG-kmP">
             <objects>
                 <viewController storyboardIdentifier="LipstickDetailViewController" id="5tR-eD-cGV" customClass="LipstickDetailViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -317,7 +317,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wiX-s3-MzO"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZpT-2b-7kz"/>
+                    <navigationItem key="navigationItem" title="LIPSTICK DETAIL" id="ZpT-2b-7kz">
+                        <barButtonItem key="backBarButtonItem" title="m" id="0fa-u6-Kxm"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="lipstickBrand" destination="Apx-l8-Glf" id="XDg-Do-ZlZ"/>
                         <outlet property="lipstickColorName" destination="kK0-lj-9Hd" id="g3w-1g-MK2"/>

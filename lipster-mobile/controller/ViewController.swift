@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController:  UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
-    // change variable name
     @IBOutlet var lipListTableView: UITableView!
   
     override func viewDidLoad() {
@@ -23,6 +22,8 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
         addNavBarImage()
         
       // -------------------------- SearchBar -------------------------
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -42,7 +43,7 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
             let search = UISearchController(searchResultsController: nil)
             search.delegate = self
             let searchBackground = search.searchBar
-            searchBackground.tintColor = UIColor.white
+           // searchBackground.tintColor = UIColor.white
             searchBackground.placeholder = "Brand, Color, ..."
             // searchBackground.barTintColor = UIColor.white
             
