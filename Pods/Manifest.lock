@@ -1,0 +1,16 @@
+PODS:
+  - ImagePicker (3.1.0)
+
+DEPENDENCIES:
+  - ImagePicker
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ImagePicker
+
+SPEC CHECKSUMS:
+  ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
+
+PODFILE CHECKSUM: 25109e54140eb81aed5e4fa1f9d3e8d6de0a6df2
+
+COCOAPODS: 1.6.1
