@@ -9,21 +9,25 @@
 import UIKit
 
 class ViewController:  UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
-    
-    @IBOutlet var lipListTableView: UITableView!
   
+  
+    @IBOutlet var searchBar: UISearchBar!
+
+    @IBOutlet var lipListTableView: UITableView!
+    
+    var searchController : UISearchController!
+    var resultController = UITableViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.lipList = self.createArray()
         self.lipListTableView.delegate = self
         self.lipListTableView.dataSource = self
-        
+     
+ 
         addNavBarImage()
-        
       // -------------------------- SearchBar -------------------------
-        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+        
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -84,7 +88,9 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
         navigationItem.titleView  = imageView
     }
     // ---------------------------lipList Array ------------------------------
-    var lipList:[Lipstick] = [Lipstick] ()
+    var lipList = [Lipstick] ()
+    var filtered = [Lipstick] ()
+    
     func createArray() -> [Lipstick] {
         
         let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour." )
@@ -93,7 +99,6 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
         let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....")
         let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....")
 
-    
         return [lip1, lip2, lip3, lip4, lip5]
     }
     
@@ -114,13 +119,15 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
         UserDefaults.standard.set(isFav, forKey: "isFav")
         UserDefaults.standard.synchronize()
     }
-
+    
     //--------------------------------------------------------------
-    
+  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lipList.count
+     
+            return lipList.count
+        
     }
-    
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
@@ -128,10 +135,15 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
 //        cell.lipImageView.image = lipList[indexPath.row].lipstickImage
 //        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
 //        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
-        
+    
+      
+       // cell.textLabel!.text = liplist.lipstickBrand
+       // cell.textLabel!.text = liplist.lipstickName
+ 
         return cell
     }
-
+ 
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        performSegue(withIdentifier: "showDetails" , sender: self)
     }
@@ -141,6 +153,8 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
             destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
         }
     }
+    
+
 
 }
 
