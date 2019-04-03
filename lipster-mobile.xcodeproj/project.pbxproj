@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3051E9D922523F5500D68980 /* FaceColorDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051E9D822523F5500D68980 /* FaceColorDetection.swift */; };
 		30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E84221A6DDC001FD8EF /* AppDelegate.swift */; };
 		30B36E87221A6DDC001FD8EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E86221A6DDC001FD8EF /* ViewController.swift */; };
 		30B36E8A221A6DDC001FD8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B36E88221A6DDC001FD8EF /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		3051E9D822523F5500D68980 /* FaceColorDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FaceColorDetection.swift; path = "lipster-mobile/Controller/FaceColorDetection.swift"; sourceTree = SOURCE_ROOT; };
 		30B36E81221A6DDC001FD8EF /* lipster-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lipster-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B36E84221A6DDC001FD8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B36E86221A6DDC001FD8EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				30B966EF224E06DE00258CA6 /* ImageUploadController.swift */,
 				D82675B02253C047001D8CB5 /* ReviewViewController.swift */,
 				D82675B22253CEA6001D8CB5 /* TestViewController.swift */,
+				3051E9D822523F5500D68980 /* FaceColorDetection.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* ViewController.swift in Sources */,
 				D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */,
+				3051E9D922523F5500D68980 /* FaceColorDetection.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
 				D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */,
