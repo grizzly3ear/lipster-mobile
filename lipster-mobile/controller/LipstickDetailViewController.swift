@@ -55,11 +55,26 @@ class LipstickDetailViewController: UIViewController {
 
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!! \(sender.tag)")
-
+        if sender.tag == 0{
         let imageClicked  = sender.image(for: .normal)
-         lipImageColor.image = #imageLiteral(resourceName: "BE116")
+         lipImageColor.image = #imageLiteral(resourceName: "PK037")
         
-        
+        }
+        if sender.tag == 1{
+            let imageClicked  = sender.image(for: .normal)
+            lipImageColor.image = #imageLiteral(resourceName: "BE115")
+            
+        }
+        if sender.tag == 2{
+            let imageClicked  = sender.image(for: .normal)
+            lipImageColor.image = #imageLiteral(resourceName: "BE116")
+            
+        }
+        if sender.tag == 3{
+            let imageClicked  = sender.image(for: .normal)
+            lipImageColor.image = #imageLiteral(resourceName: "PK037")
+            
+        }
         
     }
 }
