@@ -13,20 +13,16 @@ class ImageUploadController: UIViewController {
         
         toggleCamera = true
         self.present(pickerController, animated: true, completion: nil)
-        print("viewDidLoad")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if toggleCamera {
             self.present(pickerController, animated: true, completion: nil)
         }
-        
-        print("viewDidAppear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         toggleCamera = true
-        print("viewDidDesappear")
     }
     
 }
@@ -43,7 +39,6 @@ extension ImageUploadController: ImagePickerDelegate {
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        print("cancel")
         toggleCamera = false
         pickerController.dismiss(animated: true, completion: nil)
     }
