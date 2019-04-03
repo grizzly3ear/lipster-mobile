@@ -1,1 +1,5 @@
-import Foundation
+import UIKit
+
+class FaceColorDetection {
+    
+}
