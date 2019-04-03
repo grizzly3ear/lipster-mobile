@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LipstickDetailViewController: UIViewController {
+class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
     
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
@@ -16,7 +16,11 @@ class LipstickDetailViewController: UIViewController {
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     
+    @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var lipSelectColor: UIButton!
+    
+    @IBOutlet weak var typeReview: UITextField!
+    
     @IBOutlet weak var lipstickReviews: UILabel!
     
     
@@ -43,14 +47,44 @@ class LipstickDetailViewController: UIViewController {
             
             //   self.lipstickReviews.text = lipstick.
         }
-      
+         self.userList = self.createUserArray()
   
+    }
+    //-----------------------User Array------------------------
+    var userList  = [UserReview] ()
+    
+    func createUserArray() -> [UserReview] {
+        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut" )
+        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara" )
+        
+        return [user1,user2]
+    }
+    
+    var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
+                                 "love this color , should try!",
+                                 "nice one."]
+    
+    //-----------------------------Clicked Post to Review---------------------------------
+    func insertNewReview() {
+        
+    }
+    @IBAction func ClickedPostReviewButton(_ sender: Any) {
+        if typeReview.text!.isEmpty {
+            print("Type Review, Text Field is empty")
+        }
+        //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
+        userReviews.append(typeReview.text!)
+        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
+        
+        reviewTableView.beginUpdates()
+        reviewTableView.insertRows(at: [indexPath], with: .automatic)
+        reviewTableView.endUpdates()
+        
+        typeReview.text = ""
+        view.endEditing(true)
     }
     
     // ----------------------select LipColor and LipImage will change-------------------------
-    var selectColor = UserDefaults.standard.bool(forKey: "selectColor")
-    
-
     @IBOutlet weak var lipImageColor: UIImageView!
 
     @IBAction func clickedColor(_ sender: UIButton) {
@@ -77,5 +111,28 @@ class LipstickDetailViewController: UIViewController {
         }
         
     }
+}
+extension LipstickDetailViewController : UITableViewDelegate , UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return userReviews.count
+
+    }
+
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // อาเรย์ userReview ที่เเสดงเป็น tableList
+        let review = userReviews[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
+        cell.userReviewLabel.text = review
+        
+        
+        return cell
+    }
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
 }
 

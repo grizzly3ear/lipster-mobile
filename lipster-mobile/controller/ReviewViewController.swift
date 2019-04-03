@@ -30,18 +30,18 @@ class ReviewViewController:  UITableViewController {
 
 
 
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-    return userList.count
-    
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-        cell.setUserReview(user: userList[indexPath.row])
-    
-    return cell
-    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    
+//    return userList.count
+//    
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    
+//    let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
+//        cell.setUserReview(user: userList[indexPath.row])
+//    
+//    return cell
+//    }
 }

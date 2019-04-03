@@ -136,10 +136,7 @@ class ViewController:  UITableViewController , UISearchControllerDelegate , UISe
 //        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
 //        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
     
-      
-       // cell.textLabel!.text = liplist.lipstickBrand
-       // cell.textLabel!.text = liplist.lipstickName
- 
+
         return cell
     }
  
