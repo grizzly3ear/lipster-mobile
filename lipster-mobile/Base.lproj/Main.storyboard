@@ -391,7 +391,7 @@
                                                     <action selector="clickedColor:" destination="d7E-Af-jrk" eventType="touchUpInside" id="uvX-06-wza"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mx-7X-U57">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mx-7X-U57">
                                                 <rect key="frame" x="98" y="252" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="02"/>
@@ -399,7 +399,7 @@
                                                     <action selector="clickedColor:" destination="d7E-Af-jrk" eventType="touchUpInside" id="sep-hH-b3P"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG9-ii-1WL">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG9-ii-1WL">
                                                 <rect key="frame" x="146" y="252" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="03"/>
@@ -407,7 +407,7 @@
                                                     <action selector="clickedColor:" destination="d7E-Af-jrk" eventType="touchUpInside" id="TPG-IA-b3F"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3r-Sp-02x">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3r-Sp-02x">
                                                 <rect key="frame" x="194" y="252" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="04"/>
@@ -519,13 +519,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="01" width="516" height="514"/>
-        <image name="02" width="516" height="516"/>
-        <image name="03" width="516" height="516"/>
-        <image name="04" width="516" height="514"/>
-        <image name="backgroundLipDetail" width="824" height="532"/>
-        <image name="backgroundLiplist" width="572" height="782"/>
-        <image name="favButton_off" width="256" height="256"/>
+        <image name="01" width="258" height="257"/>
+        <image name="02" width="258" height="258"/>
+        <image name="03" width="258" height="258"/>
+        <image name="04" width="258" height="257"/>
+        <image name="backgroundLipDetail" width="412" height="266"/>
+        <image name="backgroundLiplist" width="286" height="391"/>
+        <image name="favButton_off" width="192" height="192"/>
         <image name="imageView:2tp-4S-eHf:image" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI
@@ -18136,7 +18136,7 @@ bQAQHHAAEBx9ABAcggAQHIoAEByNABAckgAQHJoAEBydABAcrwAQHLIAEBy3AAAAAAAABAEAAAAAAAAA
 WQAAAAAAAAAAAAAAAAAQHLk
 </mutableData>
         </image>
-        <image name="line" width="512" height="512"/>
-        <image name="try me" width="1078" height="652"/>
+        <image name="line" width="384" height="384"/>
+        <image name="try me" width="539" height="326"/>
     </resources>
 </document>

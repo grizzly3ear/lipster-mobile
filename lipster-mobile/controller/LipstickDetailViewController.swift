@@ -54,10 +54,12 @@ class LipstickDetailViewController: UIViewController {
     @IBOutlet weak var lipImageColor: UIImageView!
 
     @IBAction func clickedColor(_ sender: UIButton) {
-        print("clicked!!!")
+        print("clicked!!! \(sender.tag)")
 
         let imageClicked  = sender.image(for: .normal)
          lipImageColor.image = #imageLiteral(resourceName: "BE116")
+        
+        
         
     }
 }
