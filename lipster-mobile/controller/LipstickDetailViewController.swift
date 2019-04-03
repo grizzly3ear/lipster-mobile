@@ -47,6 +47,30 @@ class LipstickDetailViewController: UIViewController {
   
     }
     
+    // ----------------------select LipColor and LipImage will change-------------------------
+    var selectColor = UserDefaults.standard.bool(forKey: "selectColor")
     
+
+    @IBOutlet weak var lipImageColor: UIImageView!
+
+    @IBAction func clickedColor(_ sender: UIButton) {
+        print("clicked!!!")
+        if selectColor == (UIImage(named: "01") != nil){
+            let selectColor = lipImageColor
+            sender.setImage(selectColor, for: UIControl.State.disabled)
+        }
+//        if selectColor == true {
+//                let image = UIImage(named: "01")
+//                sender.setImage(image, for: UIControl.State.normal)
+//        }else{
+//            let image = UIImage(named: "BE115")
+//            sender.setImage(image, for: UIControl.State.normal)
+//        }
+//        
+        selectColor = !selectColor
+        UserDefaults.standard.set(selectColor, forKey: "selectColor")
+        UserDefaults.standard.synchronize()
+        
+    }
 }
 

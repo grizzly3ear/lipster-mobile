@@ -15,6 +15,10 @@
 		30B966F0224E06DE00258CA6 /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966EF224E06DE00258CA6 /* ImageUploadController.swift */; };
 		30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966F1224E06F700258CA6 /* FaceDetection.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
+		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
+		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
+		D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B02253C047001D8CB5 /* ReviewViewController.swift */; };
+		D82675B32253CEA6001D8CB5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B22253CEA6001D8CB5 /* TestViewController.swift */; };
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
@@ -46,6 +50,10 @@
 		30B966EF224E06DE00258CA6 /* ImageUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageUploadController.swift; path = "lipster-mobile/Controller/ImageUploadController.swift"; sourceTree = SOURCE_ROOT; };
 		30B966F1224E06F700258CA6 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
+		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D82675B02253C047001D8CB5 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		D82675B22253CEA6001D8CB5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,7 +128,6 @@
 				E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */,
 				1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,6 +138,8 @@
 				30B36E86221A6DDC001FD8EF /* ViewController.swift */,
 				D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */,
 				30B966EF224E06DE00258CA6 /* ImageUploadController.swift */,
+				D82675B02253C047001D8CB5 /* ReviewViewController.swift */,
+				D82675B22253CEA6001D8CB5 /* TestViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -140,6 +149,8 @@
 			children = (
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */,
+				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
+				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -265,13 +276,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
+				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* ViewController.swift in Sources */,
 				D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
+				D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
+				D82675B32253CEA6001D8CB5 /* TestViewController.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* ImageUploadController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
