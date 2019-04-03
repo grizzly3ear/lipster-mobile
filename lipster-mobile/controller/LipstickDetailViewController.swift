@@ -16,6 +16,7 @@ class LipstickDetailViewController: UIViewController {
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     
+    @IBOutlet weak var lipSelectColor: UIButton!
     @IBOutlet weak var lipstickReviews: UILabel!
     
     
@@ -24,6 +25,7 @@ class LipstickDetailViewController: UIViewController {
     var lipNameOfDetail = String()
     var lipColorNameOfDetail = String()
     var lipAllDetail = String()
+    var lipClickedColor = UIImage()
     
     var lipstick : Lipstick?
     
@@ -31,8 +33,6 @@ class LipstickDetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
-        self.title = "LIPSTICK DETAIL"
 
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
@@ -55,21 +55,9 @@ class LipstickDetailViewController: UIViewController {
 
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!!")
-        if selectColor == (UIImage(named: "01") != nil){
-            let selectColor = lipImageColor
-            sender.setImage(selectColor, for: UIControl.State.disabled)
-        }
-//        if selectColor == true {
-//                let image = UIImage(named: "01")
-//                sender.setImage(image, for: UIControl.State.normal)
-//        }else{
-//            let image = UIImage(named: "BE115")
-//            sender.setImage(image, for: UIControl.State.normal)
-//        }
-//        
-        selectColor = !selectColor
-        UserDefaults.standard.set(selectColor, forKey: "selectColor")
-        UserDefaults.standard.synchronize()
+
+        let imageClicked  = sender.image(for: .normal)
+         lipImageColor.image = #imageLiteral(resourceName: "BE116")
         
     }
 }

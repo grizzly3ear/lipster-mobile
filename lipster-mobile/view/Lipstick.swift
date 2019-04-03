@@ -16,12 +16,14 @@ class Lipstick {
     var lipstickName: String
     var lipstickColorName: String
     var lipShortDetail: String
+    var lipSelectedColor : UIImage
     
-    init(lipstickImage: UIImage,lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ) {
+    init(lipstickImage: UIImage,lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ,lipSelectedColor : UIImage ) {
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
         self.lipstickName =  lipstickName
         self.lipstickColorName = lipstickColorName
         self.lipShortDetail = lipShortDetail
+        self.lipSelectedColor = lipSelectedColor
     }
 }

@@ -451,6 +451,7 @@
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
                         <outlet property="lipImageColor" destination="zJB-Jo-eNq" id="1Iu-do-FsU"/>
+                        <outlet property="lipSelectColor" destination="5H0-eV-zoP" id="7Gn-sE-wwc"/>
                         <outlet property="lipstickBrand" destination="P3K-jq-Jcc" id="d0s-nK-EOM"/>
                         <outlet property="lipstickColorName" destination="zTF-hx-A5r" id="uiH-56-RkZ"/>
                         <outlet property="lipstickImage" destination="zJB-Jo-eNq" id="T09-iF-f2X"/>
