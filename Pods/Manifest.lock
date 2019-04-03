@@ -1,16 +1,20 @@
 PODS:
   - ImagePicker (3.1.0)
+  - SwiftSpinner (1.6.2)
 
 DEPENDENCIES:
   - ImagePicker
+  - SwiftSpinner
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ImagePicker
+    - SwiftSpinner
 
 SPEC CHECKSUMS:
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
+  SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
 
-PODFILE CHECKSUM: 25109e54140eb81aed5e4fa1f9d3e8d6de0a6df2
+PODFILE CHECKSUM: 9fa481d653ab4bb918b6a1d04a2e3f3605f203ce
 
 COCOAPODS: 1.6.1
