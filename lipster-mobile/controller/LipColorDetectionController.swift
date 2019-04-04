@@ -61,13 +61,18 @@ extension LipColorDetectionController {
     }
     
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
-        let touchPoint = sender.location(in: imagePreview)
-        let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
-        print("touch point: \(touchPoint)")
-        draggableSelectColorView.backgroundColor = color
-        
-        moveDetectColorPreview(at: sender.location(in: self.view))
-        
+        if sender.state == .began || sender.state == .changed {
+            let touchPoint = sender.location(in: imagePreview)
+            let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+            
+            draggableSelectColorView.isHidden = false
+            draggableSelectColorView.backgroundColor = color
+            
+            moveDetectColorPreview(at: sender.location(in: self.view))
+        }
+        if sender.state == .cancelled || sender.state == .ended {
+            draggableSelectColorView.isHidden = true
+        }
     }
 
 }
@@ -120,6 +125,7 @@ extension LipColorDetectionController {
     func initDetectColorPreview() {
         draggableSelectColorView.layer.borderWidth = 5
         draggableSelectColorView.layer.borderColor = UIColor.white.cgColor
+        draggableSelectColorView.isHidden = true
     }
     
     func moveDetectColorPreview(at point: CGPoint) {
