@@ -28,6 +28,5 @@ class LipstickListTableViewCell: UITableViewCell {
         colorUIView.backgroundColor = lipstick.lipColorCode
         
     }
-    
  
 }

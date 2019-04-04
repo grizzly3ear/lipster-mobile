@@ -24,9 +24,10 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
         self.lipList = self.createArray()
         self.lipListTableView.delegate = self
         self.lipListTableView.dataSource = self
-     
  
         addNavBarImage()
+     
+        
       // -------------------------- SearchBar -------------------------
         
         //navigationController?.navigationBar.prefersLargeTitles = true
@@ -94,11 +95,12 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
     
     func createArray() -> [Lipstick] {
         
-        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.")
-        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "04") )
-        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipSelectedColor: #imageLiteral(resourceName: "03") )
-        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "05") )
-        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor:#imageLiteral(resourceName: "06") )
+        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipSelectedColor: #imageLiteral(resourceName: "01") ,lipColorCode : UIColor.init(rgb: 0x91171E) )
+        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "04") ,lipColorCode : UIColor.init(rgb: 0xB74447) )
+        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipSelectedColor: #imageLiteral(resourceName: "03") ,lipColorCode : UIColor.init(rgb: 0xFA4855) )
+        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "05") ,lipColorCode : UIColor.init(rgb: 0xFE486B) )
+        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor:#imageLiteral(resourceName: "06") ,lipColorCode : UIColor.init(rgb: 0xFF9A94) )
+        
 
         return [lip1, lip2, lip3, lip4, lip5]
     }
@@ -137,7 +139,6 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
 //        cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
 //        cell.lipShortDetail.text = lipList[indexPath.row].lipShortDetail
     
-
         return cell
     }
  
@@ -151,9 +152,53 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
             destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
         }
     }
+
+}
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
     
-
-
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}
+extension UIView {
+    
+    @IBInspectable
+    var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable
+    var borderColor: UIColor? {
+        get {
+            if let color = layer.borderColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                layer.borderColor = color.cgColor
+            } else {
+                layer.borderColor = nil
+            }
+        }
+    }
 }
 
 
