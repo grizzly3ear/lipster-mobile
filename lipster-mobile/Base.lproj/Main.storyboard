@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -101,6 +101,11 @@
                                                 <action selector="favButtonClicked:" destination="2my-jU-SWf" eventType="touchUpInside" id="ans-qn-aVY"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1o4-C2-t9Y">
+                                            <rect key="frame" x="174" y="134" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="b1W-0y-6Mu" secondAttribute="trailing" id="3FQ-YY-ceh"/>
@@ -118,6 +123,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="colorUIView" destination="1o4-C2-t9Y" id="xxd-5H-cxh"/>
                                     <outlet property="favButton" destination="wqj-uE-gqh" id="6PM-wF-N42"/>
                                     <outlet property="lipBrandLabel" destination="Zm3-Ba-VT7" id="8Jd-Ph-Fdx"/>
                                     <outlet property="lipColorNameLabel" destination="b1W-0y-6Mu" id="wwV-3G-OT8"/>
