@@ -210,7 +210,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <connections>
-                        <outlet property="dragableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
+                        <outlet property="draggableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
                         <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="cKQ-3p-mHT"/>
                     </connections>

@@ -5,7 +5,7 @@ import SwiftSpinner
 class LipColorDetectionController: UIViewController {
     
     @IBOutlet weak var imagePreview: UIImageView!
-    @IBOutlet weak var dragableSelectColorView: UIView!
+    @IBOutlet weak var draggableSelectColorView: UIView!
     
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
@@ -56,7 +56,7 @@ extension LipColorDetectionController {
     @objc func onTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: imagePreview)
         let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
-        dragableSelectColorView.backgroundColor = color
+        draggableSelectColorView.backgroundColor = color
         moveDetectColorPreview(at: touchPoint)
     }
     
@@ -64,7 +64,7 @@ extension LipColorDetectionController {
         let touchPoint = sender.location(in: imagePreview)
         let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
         print("touch point: \(touchPoint)")
-        dragableSelectColorView.backgroundColor = color
+        draggableSelectColorView.backgroundColor = color
         
         moveDetectColorPreview(at: sender.location(in: self.view))
         
@@ -118,13 +118,13 @@ extension LipColorDetectionController {
 // detectColorPreview dragable
 extension LipColorDetectionController {
     func initDetectColorPreview() {
-        dragableSelectColorView.layer.borderWidth = 5
-        dragableSelectColorView.layer.borderColor = UIColor.white.cgColor
+        draggableSelectColorView.layer.borderWidth = 5
+        draggableSelectColorView.layer.borderColor = UIColor.white.cgColor
     }
     
     func moveDetectColorPreview(at point: CGPoint) {
         var displayPoint = point
         displayPoint.x = point.x + 45
-        dragableSelectColorView.center = displayPoint
+        draggableSelectColorView.center = displayPoint
     }
 }
