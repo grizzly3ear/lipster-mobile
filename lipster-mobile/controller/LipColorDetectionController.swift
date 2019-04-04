@@ -2,7 +2,7 @@ import UIKit
 import ImagePicker
 import SwiftSpinner
 
-class LipColorDetection: UIViewController {
+class LipColorDetectionController: UIViewController {
     
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var detectColorPreview: UIView!
@@ -33,7 +33,7 @@ class LipColorDetection: UIViewController {
 }
 
 // set up gesture on imagePreview
-extension LipColorDetection {
+extension LipColorDetectionController {
     func setUpGesture() {
         imagePreview.isUserInteractionEnabled = true
         setUpTapGesture()
@@ -73,7 +73,7 @@ extension LipColorDetection {
 }
 
 // image picker delegate
-extension LipColorDetection: ImagePickerDelegate {
+extension LipColorDetectionController: ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
     }
@@ -104,7 +104,7 @@ extension LipColorDetection: ImagePickerDelegate {
 }
 
 // image picker config
-extension LipColorDetection {
+extension LipColorDetectionController {
     func setConfiguration() {
         let config = Configuration()
         config.allowMultiplePhotoSelection = true
@@ -116,7 +116,7 @@ extension LipColorDetection {
 }
 
 // detectColorPreview dragable
-extension LipColorDetection {
+extension LipColorDetectionController {
     func initDetectColorPreview() {
         detectColorPreview.layer.borderWidth = 5
         detectColorPreview.layer.borderColor = UIColor.white.cgColor
