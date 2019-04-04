@@ -213,13 +213,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9z-9m-PrQ">
+                                <rect key="frame" x="0.0" y="536" width="375" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Ubv-uh-RWB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <connections>
-                        <outlet property="detectColorPreview" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
+                        <outlet property="draggableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
                         <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="cKQ-3p-mHT"/>
                     </connections>

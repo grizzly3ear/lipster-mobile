@@ -5,7 +5,7 @@ import SwiftSpinner
 class LipColorDetectionController: UIViewController {
     
     @IBOutlet weak var imagePreview: UIImageView!
-    @IBOutlet weak var detectColorPreview: UIView!
+    @IBOutlet weak var draggableSelectColorView: UIView!
     
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
@@ -56,18 +56,23 @@ extension LipColorDetectionController {
     @objc func onTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: imagePreview)
         let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
-        detectColorPreview.backgroundColor = color
+        draggableSelectColorView.backgroundColor = color
         moveDetectColorPreview(at: touchPoint)
     }
     
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
-        let touchPoint = sender.location(in: imagePreview)
-        let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
-        print("touch point: \(touchPoint)")
-        detectColorPreview.backgroundColor = color
-        
-        moveDetectColorPreview(at: sender.location(in: self.view))
-        
+        if sender.state == .began || sender.state == .changed {
+            let touchPoint = sender.location(in: imagePreview)
+            let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+            
+            draggableSelectColorView.isHidden = false
+            draggableSelectColorView.backgroundColor = color
+            
+            moveDetectColorPreview(at: sender.location(in: self.view))
+        }
+        if sender.state == .cancelled || sender.state == .ended {
+            draggableSelectColorView.isHidden = true
+        }
     }
 
 }
@@ -118,13 +123,14 @@ extension LipColorDetectionController {
 // detectColorPreview dragable
 extension LipColorDetectionController {
     func initDetectColorPreview() {
-        detectColorPreview.layer.borderWidth = 5
-        detectColorPreview.layer.borderColor = UIColor.white.cgColor
+        draggableSelectColorView.layer.borderWidth = 5
+        draggableSelectColorView.layer.borderColor = UIColor.white.cgColor
+        draggableSelectColorView.isHidden = true
     }
     
     func moveDetectColorPreview(at point: CGPoint) {
         var displayPoint = point
         displayPoint.x = point.x + 45
-        detectColorPreview.center = displayPoint
+        draggableSelectColorView.center = displayPoint
     }
 }
