@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Alamofire
 
-class ViewController:  UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
+class LipstickListViewController:  UITableViewController , UISearchControllerDelegate , UISearchBarDelegate {
   
   
     @IBOutlet var searchBar: UISearchBar!

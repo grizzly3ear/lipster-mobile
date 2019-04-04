@@ -1,20 +1,24 @@
 PODS:
+  - Alamofire (4.8.0)
   - ImagePicker (3.1.0)
   - SwiftSpinner (1.6.2)
 
 DEPENDENCIES:
+  - Alamofire
   - ImagePicker
   - SwiftSpinner
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - ImagePicker
     - SwiftSpinner
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
 
-PODFILE CHECKSUM: 9fa481d653ab4bb918b6a1d04a2e3f3605f203ce
+PODFILE CHECKSUM: c469a0812c5aeafee4e5ba4f21b8bed2842f02fe
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.6.0

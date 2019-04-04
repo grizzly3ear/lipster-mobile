@@ -4,5 +4,6 @@ target 'lipster-mobile' do
   use_frameworks!
 pod 'ImagePicker'
 pod 'SwiftSpinner'
+pod 'Alamofire'
 
 end
