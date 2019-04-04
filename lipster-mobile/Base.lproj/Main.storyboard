@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -195,6 +195,7 @@
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <connections>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
+                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="cKQ-3p-mHT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9X-ID-7a4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1187"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="1280"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFP-1g-8nm">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
@@ -541,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgo-g9-PwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="815"/>
+            <point key="canvasLocation" x="2623" y="907"/>
         </scene>
     </scenes>
     <resources>
@@ -555,4 +556,7 @@
         <image name="line" width="512" height="512"/>
         <image name="try me" width="1078" height="652"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cKQ-3p-mHT"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -19,7 +19,6 @@
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B02253C047001D8CB5 /* ReviewViewController.swift */; };
-		D82675B32253CEA6001D8CB5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B22253CEA6001D8CB5 /* TestViewController.swift */; };
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D82675B02253C047001D8CB5 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
-		D82675B22253CEA6001D8CB5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */,
 				30B966EF224E06DE00258CA6 /* ImageUploadController.swift */,
 				D82675B02253C047001D8CB5 /* ReviewViewController.swift */,
-				D82675B22253CEA6001D8CB5 /* TestViewController.swift */,
 				3051E9D822523F5500D68980 /* FaceColorDetection.swift */,
 			);
 			path = controller;
@@ -294,7 +291,6 @@
 				D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
-				D82675B32253CEA6001D8CB5 /* TestViewController.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* ImageUploadController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
