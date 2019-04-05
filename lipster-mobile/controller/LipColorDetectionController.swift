@@ -34,13 +34,28 @@ class LipColorDetectionController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        toggleCamera = true
+        let viewControllers = self.navigationController?.viewControllers
+        let count = viewControllers?.count
+        if count! > 1 {
+            if (viewControllers?[count! - 2] as? LipstickListViewController) != nil{
+                toggleCamera = false
+            }
+        } else {
+            toggleCamera = true
+        }
+        
         print("view did disappear")
     }
     
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
         performSegue(withIdentifier: "showLipstickList", sender: self)
     }
+    
+    @IBAction func onRetakeTap(_ sender: UIButton) {
+        setConfiguration()
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
 }
 
 // set up gesture on imagePreview
@@ -107,7 +122,8 @@ extension LipColorDetectionController: ImagePickerDelegate {
         print("image set")
         pickerController.dismiss(animated: true, completion: nil)
         print("after dismiss")
-
+        
+        self.colorDetectPreview.backgroundColor = .black
         FaceDetection.getLipsLandmarks(for: imagePreview) { (color) in
             DispatchQueue.main.async {
                 self.colorDetectPreview.backgroundColor = color
