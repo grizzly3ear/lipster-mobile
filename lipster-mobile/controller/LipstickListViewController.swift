@@ -16,11 +16,15 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
 
     @IBOutlet var lipListTableView: UITableView!
     
+    var lipColor: UIColor?
+    
     var searchController : UISearchController!
     var resultController = UITableViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("\(lipColor)")
+        navigationController?.isNavigationBarHidden = false
         self.lipList = self.createArray()
         self.lipListTableView.delegate = self
         self.lipListTableView.dataSource = self
@@ -95,13 +99,12 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
     
     func createArray() -> [Lipstick] {
         
-        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipSelectedColor: #imageLiteral(resourceName: "01") ,lipColorCode : UIColor.init(rgb: 0x91171E) )
-        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "04") ,lipColorCode : UIColor.init(rgb: 0xB74447) )
-        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipSelectedColor: #imageLiteral(resourceName: "03") ,lipColorCode : UIColor.init(rgb: 0xFA4855) )
-        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "05") ,lipColorCode : UIColor.init(rgb: 0xFE486B) )
-        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor:#imageLiteral(resourceName: "06") ,lipColorCode : UIColor.init(rgb: 0xFF9A94) )
+        let lip1 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE115"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipSelectedColor: #imageLiteral(resourceName: "01") ,lipColorCode : UIColor(rgb: 0x91171E) )
+        let lip2 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "BE116"), lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "04") ,lipColorCode : UIColor(rgb: 0xB74447) )
+        let lip3 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "OR214"), lipstickBrand: "ETUDE", lipstickName: "OR241", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipSelectedColor: #imageLiteral(resourceName: "03") ,lipColorCode : UIColor(rgb: 0xFA4855) )
+        let lip4 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK037"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor: #imageLiteral(resourceName: "05") ,lipColorCode : UIColor(rgb: 0xFE486B) )
+        let lip5 : Lipstick = Lipstick(lipstickImage: #imageLiteral(resourceName: "PK035"), lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipSelectedColor:#imageLiteral(resourceName: "06") ,lipColorCode : UIColor(rgb: 0xFF9A94) )
         
-
         return [lip1, lip2, lip3, lip4, lip5]
     }
     
@@ -127,7 +130,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-            return lipList.count
+        return lipList.count
         
     }
   
@@ -144,7 +147,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
  
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       performSegue(withIdentifier: "showDetails" , sender: self)
+        performSegue(withIdentifier: "showDetails" , sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -6,30 +6,41 @@ class LipColorDetectionController: UIViewController {
     
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var draggableSelectColorView: UIView!
+    @IBOutlet weak var colorDetectPreview: UIView!
+    @IBOutlet weak var findLipstickListButton: UIButton!
     
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
     
     override func viewDidLoad() {
+        navigationController?.isNavigationBarHidden = true
+        
         setConfiguration()
         initDetectColorPreview()
         toggleCamera = true
         setUpGesture()
         
         self.present(pickerController, animated: true, completion: nil)
+        print("view did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
         if toggleCamera {
             setConfiguration()
             self.present(pickerController, animated: true, completion: nil)
         }
+        print("view did appear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         toggleCamera = true
+        print("view did disappear")
     }
     
+    @IBAction func onFindLipstickListTap(_ sender: UIButton) {
+        performSegue(withIdentifier: "showLipstickList", sender: self)
+    }
 }
 
 // set up gesture on imagePreview
@@ -56,14 +67,21 @@ extension LipColorDetectionController {
     @objc func onTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: imagePreview)
         let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+        colorDetectPreview.backgroundColor = color
+        
+        draggableSelectColorView.isHidden = false
         draggableSelectColorView.backgroundColor = color
-        moveDetectColorPreview(at: touchPoint)
+        
+        moveDetectColorPreview(at: sender.location(in: self.view))
+        
+        draggableSelectColorView.isHidden = true
     }
     
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
         if sender.state == .began || sender.state == .changed {
             let touchPoint = sender.location(in: imagePreview)
             let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+            colorDetectPreview.backgroundColor = color
             
             draggableSelectColorView.isHidden = false
             draggableSelectColorView.backgroundColor = color
@@ -80,7 +98,6 @@ extension LipColorDetectionController {
 // image picker delegate
 extension LipColorDetectionController: ImagePickerDelegate {
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
@@ -90,11 +107,10 @@ extension LipColorDetectionController: ImagePickerDelegate {
         print("image set")
         pickerController.dismiss(animated: true, completion: nil)
         print("after dismiss")
-        
 
         FaceDetection.getLipsLandmarks(for: imagePreview) { (color) in
             DispatchQueue.main.async {
-//                self.detectColorPreview.backgroundColor = color
+                self.colorDetectPreview.backgroundColor = color
                 print(color)
             }
         }
@@ -132,5 +148,16 @@ extension LipColorDetectionController {
         var displayPoint = point
         displayPoint.x = point.x + 45
         draggableSelectColorView.center = displayPoint
+    }
+}
+
+// pass data to LipstickListViewController
+extension LipColorDetectionController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLipstickList" {
+            if let destination = segue.destination as? LipstickListViewController {
+                destination.lipColor = colorDetectPreview.backgroundColor
+            }
+        }
     }
 }

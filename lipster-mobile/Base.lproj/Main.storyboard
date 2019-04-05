@@ -21,7 +21,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2my-jU-SWf" kind="relationship" relationship="rootViewController" id="Y6g-5N-vc1"/>
+                        <segue destination="buQ-p9-YmV" kind="relationship" relationship="rootViewController" id="ExN-7g-Ey3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-6C-hWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZt-qo-Jak">
-                                <rect key="frame" x="0.0" y="99" width="375" height="336"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="472"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uOK-92-Swi">
@@ -216,6 +216,32 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9z-9m-PrQ">
                                 <rect key="frame" x="0.0" y="536" width="375" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqL-UN-Kfn">
+                                        <rect key="frame" x="25" y="12" width="59" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbo-u8-xij">
+                                        <rect key="frame" x="191" y="26" width="147" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Find the lipstick &gt;">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFindLipstickListTap:" destination="8fU-aG-tpW" eventType="touchUpInside" id="GeI-I8-x9W"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -224,7 +250,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <connections>
+                        <outlet property="colorDetectPreview" destination="nqL-UN-Kfn" id="M67-I6-eIq"/>
                         <outlet property="draggableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
+                        <outlet property="findLipstickListButton" destination="Wbo-u8-xij" id="fLw-Mp-jcA"/>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
                         <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="cKQ-3p-mHT"/>
                     </connections>
@@ -298,7 +326,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9X-ID-7a4">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1280"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1187"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFP-1g-8nm">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
@@ -525,17 +553,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="01" width="516" height="514"/>
-        <image name="02" width="516" height="516"/>
-        <image name="03" width="516" height="516"/>
-        <image name="04" width="516" height="514"/>
-        <image name="backgroundLipDetail" width="824" height="532"/>
-        <image name="backgroundLiplist" width="572" height="782"/>
-        <image name="favButton_off" width="256" height="256"/>
-        <image name="line" width="512" height="512"/>
-        <image name="try me" width="1078" height="652"/>
+        <image name="01" width="258" height="257"/>
+        <image name="02" width="258" height="258"/>
+        <image name="03" width="258" height="258"/>
+        <image name="04" width="258" height="257"/>
+        <image name="backgroundLipDetail" width="412" height="266"/>
+        <image name="backgroundLiplist" width="286" height="391"/>
+        <image name="favButton_off" width="192" height="192"/>
+        <image name="line" width="384" height="384"/>
+        <image name="try me" width="539" height="326"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cKQ-3p-mHT"/>
-    </inferredMetricsTieBreakers>
 </document>
