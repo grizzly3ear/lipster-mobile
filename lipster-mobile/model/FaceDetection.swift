@@ -18,7 +18,7 @@ class FaceDetection {
                         let innerLip = landmarks.innerLips
                         var outerLip = landmarks.outerLips
                         
-                        let colorMapPoints = outerLip?.normalizedPoints.map({ (point) -> UIColor in
+                        let colorMapPoints = innerLip?.normalizedPoints.map({ (point) -> UIColor in
                             
                             let landmarkPoint: CGPoint = CGPoint(x: boundingRect.origin.x * source.image!.size.width + point.x * rectWidth,
                                                    y: boundingRect.origin.y * source.image!.size.height + point.y * rectHeight)
@@ -26,7 +26,7 @@ class FaceDetection {
                             
                             return source.image!.getPixelColor(pos: landmarkPoint)
                         })
-                        print("\(colorMapPoints?.count)")
+                        print("\(String(describing: colorMapPoints?.count))")
                         complete((colorMapPoints?[4])!)
                     }
                 }
