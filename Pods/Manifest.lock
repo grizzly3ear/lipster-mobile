@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (4.8.0)
+  - ExpandableLabel (0.5.1)
   - ImagePicker (3.1.0)
   - SwiftSpinner (1.6.2)
 
 DEPENDENCIES:
   - Alamofire
+  - ExpandableLabel
   - ImagePicker
   - SwiftSpinner
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - ExpandableLabel
     - ImagePicker
     - SwiftSpinner
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  ExpandableLabel: 80783721b4d849bc62c19b44bbb88aa8bb518423
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
 
-PODFILE CHECKSUM: c469a0812c5aeafee4e5ba4f21b8bed2842f02fe
+PODFILE CHECKSUM: 4ebda709ac764bcf3c512cc46df6fdcd164b5005
 
 COCOAPODS: 1.6.0

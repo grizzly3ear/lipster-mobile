@@ -5,5 +5,7 @@ target 'lipster-mobile' do
 pod 'ImagePicker'
 pod 'SwiftSpinner'
 pod 'Alamofire'
+pod 'ExpandableLabel'
+
 
 end

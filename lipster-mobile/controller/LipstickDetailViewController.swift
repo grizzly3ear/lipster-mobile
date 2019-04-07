@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import ExpandableLabel
 
-class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
+class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
     
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
-    
+    @IBOutlet weak var seemore: ExpandableLabel!
+
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var lipSelectColor: UIButton!
     
-    @IBOutlet weak var typeReview: UITextField!
+    @IBOutlet weak var typeReviewTextView: UITextView!
     
     @IBOutlet weak var lipstickReviews: UILabel!
     
@@ -30,14 +32,19 @@ class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
     var lipColorNameOfDetail = String()
     var lipAllDetail = String()
     var lipClickedColor = UIImage()
-    
+    var typeReview = UITextView()
     var lipstick : Lipstick?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        
+        typeReviewTextView.text = "Review this lipstick here."
+        typeReviewTextView.textColor = UIColor.lightGray
+        typeReviewTextView.delegate = self
+        typeReviewTextView.returnKeyType = .done
+        
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -48,7 +55,14 @@ class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
             //   self.lipstickReviews.text = lipstick.
         }
          self.userList = self.createUserArray()
-  
+        //----------------Read more / Read less--------------
+        seemore.numberOfLines = 15
+        seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
+        seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
+        seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
+        seemore.ellipsis = NSAttributedString(string: "...")
+        seemore.collapsed = true
+
     }
     //-----------------------User Array------------------------
     var userList  = [UserReview] ()
@@ -69,18 +83,18 @@ class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
         
     }
     @IBAction func ClickedPostReviewButton(_ sender: Any) {
-        if typeReview.text!.isEmpty {
+        if typeReviewTextView.text!.isEmpty {
             print("Type Review, Text Field is empty")
         }
         //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-        userReviews.append(typeReview.text!)
+        userReviews.append(typeReviewTextView.text!)
         let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
         
         reviewTableView.beginUpdates()
         reviewTableView.insertRows(at: [indexPath], with: .automatic)
         reviewTableView.endUpdates()
         
-        typeReview.text = ""
+        typeReviewTextView.text = ""
         view.endEditing(true)
     }
     
@@ -111,6 +125,26 @@ class LipstickDetailViewController: UIViewController  ,  UITextFieldDelegate {
         }
         
     }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Review this lipstick here." {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Review this lipstick here."
+            textView.textColor = UIColor.lightGray
+        }
+    }
 }
 extension LipstickDetailViewController : UITableViewDelegate , UITableViewDataSource {
 
@@ -133,6 +167,7 @@ extension LipstickDetailViewController : UITableViewDelegate , UITableViewDataSo
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+   
     
 }
 
