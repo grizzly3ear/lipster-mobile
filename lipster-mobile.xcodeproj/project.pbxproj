@@ -22,7 +22,7 @@
 		D82481BD225B83710009710F /* DetailSegmentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82481BB225B83710009710F /* DetailSegmentVC.xib */; };
 		D82481C0225B83870009710F /* ReviewSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481BE225B83870009710F /* ReviewSegmentVC.swift */; };
 		D82481C1225B83870009710F /* ReviewSegmentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82481BF225B83870009710F /* ReviewSegmentVC.xib */; };
-		D82481C3225B84F60009710F /* lipDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481C2225B84F60009710F /* lipDetailViewController.swift */; };
+		D82481C3225B84F60009710F /* LipDetailVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481C2225B84F60009710F /* LipDetailVController.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B02253C047001D8CB5 /* ReviewViewController.swift */; };
@@ -64,7 +64,7 @@
 		D82481BB225B83710009710F /* DetailSegmentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSegmentVC.xib; sourceTree = "<group>"; };
 		D82481BE225B83870009710F /* ReviewSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSegmentVC.swift; sourceTree = "<group>"; };
 		D82481BF225B83870009710F /* ReviewSegmentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewSegmentVC.xib; sourceTree = "<group>"; };
-		D82481C2225B84F60009710F /* lipDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lipDetailViewController.swift; sourceTree = "<group>"; };
+		D82481C2225B84F60009710F /* LipDetailVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipDetailVController.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D82675B02253C047001D8CB5 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				D82481BB225B83710009710F /* DetailSegmentVC.xib */,
 				D82481BE225B83870009710F /* ReviewSegmentVC.swift */,
 				D82481BF225B83870009710F /* ReviewSegmentVC.xib */,
-				D82481C2225B84F60009710F /* lipDetailViewController.swift */,
+				D82481C2225B84F60009710F /* LipDetailVController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
-				D82481C3225B84F60009710F /* lipDetailViewController.swift in Sources */,
+				D82481C3225B84F60009710F /* LipDetailVController.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
 				D82481C0225B83870009710F /* ReviewSegmentVC.swift in Sources */,

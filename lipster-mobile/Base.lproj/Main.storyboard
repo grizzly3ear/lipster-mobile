@@ -570,7 +570,7 @@
         <!--LIPSTICK DETAIL-->
         <scene sceneID="P1j-Wg-876">
             <objects>
-                <viewController id="Jaw-cP-4SH" customClass="lipDetailViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jaw-cP-4SH" customClass="LipDetailVController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iB5-99-Xkf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
