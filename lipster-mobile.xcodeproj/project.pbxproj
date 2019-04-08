@@ -18,6 +18,11 @@
 		30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */; };
 		30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966F1224E06F700258CA6 /* FaceDetection.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
+		D82481BC225B83710009710F /* DetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481BA225B83710009710F /* DetailSegmentVC.swift */; };
+		D82481BD225B83710009710F /* DetailSegmentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82481BB225B83710009710F /* DetailSegmentVC.xib */; };
+		D82481C0225B83870009710F /* ReviewSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481BE225B83870009710F /* ReviewSegmentVC.swift */; };
+		D82481C1225B83870009710F /* ReviewSegmentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82481BF225B83870009710F /* ReviewSegmentVC.xib */; };
+		D82481C3225B84F60009710F /* lipDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82481C2225B84F60009710F /* lipDetailViewController.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675B02253C047001D8CB5 /* ReviewViewController.swift */; };
@@ -55,6 +60,11 @@
 		30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LipColorDetectionController.swift; path = "lipster-mobile/Controller/LipColorDetectionController.swift"; sourceTree = SOURCE_ROOT; };
 		30B966F1224E06F700258CA6 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D82481BA225B83710009710F /* DetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSegmentVC.swift; sourceTree = "<group>"; };
+		D82481BB225B83710009710F /* DetailSegmentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailSegmentVC.xib; sourceTree = "<group>"; };
+		D82481BE225B83870009710F /* ReviewSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSegmentVC.swift; sourceTree = "<group>"; };
+		D82481BF225B83870009710F /* ReviewSegmentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewSegmentVC.xib; sourceTree = "<group>"; };
+		D82481C2225B84F60009710F /* lipDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lipDetailViewController.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D82675B02253C047001D8CB5 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +164,11 @@
 				D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */,
 				30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */,
 				D82675B02253C047001D8CB5 /* ReviewViewController.swift */,
+				D82481BA225B83710009710F /* DetailSegmentVC.swift */,
+				D82481BB225B83710009710F /* DetailSegmentVC.xib */,
+				D82481BE225B83870009710F /* ReviewSegmentVC.swift */,
+				D82481BF225B83870009710F /* ReviewSegmentVC.xib */,
+				D82481C2225B84F60009710F /* lipDetailViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -232,7 +247,9 @@
 			files = (
 				30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */,
 				30B36E8C221A6DDD001FD8EF /* Assets.xcassets in Resources */,
+				D82481C1225B83870009710F /* ReviewSegmentVC.xib in Resources */,
 				30B36E8A221A6DDC001FD8EF /* Main.storyboard in Resources */,
+				D82481BD225B83710009710F /* DetailSegmentVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,11 +321,14 @@
 				D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
+				D82481BC225B83710009710F /* DetailSegmentVC.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				D82675B12253C047001D8CB5 /* ReviewViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
+				D82481C3225B84F60009710F /* lipDetailViewController.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
+				D82481C0225B83870009710F /* ReviewSegmentVC.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,8 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
     
     @IBOutlet weak var lipstickReviews: UILabel!
     
+    @IBOutlet weak var detailViewContainer: UIView!
+    
     
     var imageOfDetail = UIImage()
     var lipBrandofDetail = String()
@@ -35,6 +37,8 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
     var typeReview = UITextView()
     var lipstick : Lipstick?
     
+    var detailView : UIView!
+    var reviewView : UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
@@ -44,6 +48,11 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
         typeReviewTextView.textColor = UIColor.lightGray
         typeReviewTextView.delegate = self
         typeReviewTextView.returnKeyType = .done
+        
+        detailView = DetailSegmentVC().view
+        reviewView = ReviewSegmentVC().view
+        detailViewContainer.addSubview(detailView)
+        detailViewContainer.addSubview(reviewView)
         
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
@@ -123,8 +132,20 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
             lipImageColor.image = #imageLiteral(resourceName: "PK037")
             
         }
+        if sender.tag == 4{
+            let imageClicked  = sender.image(for: .normal)
+            lipImageColor.image = #imageLiteral(resourceName: "BE115")
+            
+        }
         
     }
+    //-----------------Segment control -------------
+    @IBAction func switchViewAction(_ sender: UISegmentedControl) {
+        
+    }
+    
+    
+    //----------------------------
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Review this lipstick here." {
             textView.text = ""
