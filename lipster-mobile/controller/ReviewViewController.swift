@@ -11,7 +11,7 @@ import UIKit
 class ReviewViewController:  UITableViewController {
 
     
-    @IBOutlet var userListTableView: UITableView!
+   // @IBOutlet var userListTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

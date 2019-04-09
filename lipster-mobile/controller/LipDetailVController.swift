@@ -13,7 +13,6 @@ class LipDetailVController: UIViewController {
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipSelectColor: UIButton!
 
-    
     var imageOfDetail = UIImage()
     var lipClickedColor = UIImage()
     var detailView : UIView!

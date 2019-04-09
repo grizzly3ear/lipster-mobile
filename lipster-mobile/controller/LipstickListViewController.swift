@@ -151,7 +151,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LipDetailVController {
+        if let destination = segue.destination as? LipDetailSegmentVC {
             destination.lipstick = lipList[(lipListTableView.indexPathForSelectedRow?.row)!]
         }
     }
