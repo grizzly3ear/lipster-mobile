@@ -33,14 +33,15 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     var lipAllDetail = String()
     var lipClickedColor = UIImage()
     var typeReview = UITextView()
-    
+    var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
     
     var lipstick : Lipstick?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        reviewTblView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+       // reviewTblView.addBackground(imageName: "backgroundLipList")
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -64,6 +65,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
         seemore.collapsed = true
 
     }
+    
     //-----------------------User Array------------------------
     var userList  = [UserReview] ()
     
@@ -162,7 +164,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
                 textView.textColor = UIColor.lightGray
             }
         }
-    }
+}
 extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
             
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -177,11 +179,25 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
             let review = userReviews[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
                 cell.userReviewLabel.text = review
-            
+
                 return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100
         }
 }
+//extension UIView {
+//    func addBackground(imageName:String) {
+//
+//        let width = UIScreen.main.bounds.size.width
+//        let height = UIScreen.main.bounds.size.height
+//
+//        let imageViewBackground = UIImageView(frame:CGRect(x: 0, y: 0, width : width, height: height))
+//        imageViewBackground.image = UIImage(named: "01" )
+//        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
+//
+//        self.addSubview(imageViewBackground)
+//        self.sendSubviewToBack(imageViewBackground)
+//    }
+//}
 
