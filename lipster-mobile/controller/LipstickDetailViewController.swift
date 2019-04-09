@@ -49,11 +49,6 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
         typeReviewTextView.delegate = self
         typeReviewTextView.returnKeyType = .done
         
-        detailView = DetailSegmentVC().view
-        reviewView = ReviewSegmentVC().view
-        detailViewContainer.addSubview(detailView)
-        detailViewContainer.addSubview(reviewView)
-        
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickBrand.text = lipstick.lipstickBrand
