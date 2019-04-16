@@ -966,6 +966,21 @@
                                             <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="cWP-nG-pfL"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-6b-3f5">
+                                        <rect key="frame" x="228" y="285" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="imageColorButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="fRr-TL-goe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ei9-aP-oSZ" firstAttribute="top" secondItem="4T3-CY-Eih" secondAttribute="bottom" constant="8" symbolic="YES" id="0Kb-gl-Dxs"/>
@@ -1004,6 +1019,7 @@
                     <navigationItem key="navigationItem" title="LIPSTICK STICK" id="yNn-xB-ceY"/>
                     <size key="freeformSize" width="750" height="800"/>
                     <connections>
+                        <outlet property="imageColorButton" destination="YsH-6b-3f5" id="ZOh-Fo-wqm"/>
                         <outlet property="lipImageColor" destination="PLt-Zv-RHb" id="0fd-CX-mb1"/>
                         <outlet property="lipSelectColor" destination="cqu-Vs-Fcq" id="NJ0-tt-Bun"/>
                         <outlet property="lipstickBrand" destination="RxD-Xm-JhL" id="UMU-A7-XoT"/>

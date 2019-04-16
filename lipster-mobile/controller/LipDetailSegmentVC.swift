@@ -37,9 +37,11 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     var detailView : UIView!
     var reviewView : UIView!
     
+    var reviewTbl = UITableView()
     var lipstick : Lipstick?
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewTbl.addBackground(imageName: "backgroundLiplist")
         reviewTblView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
        // reviewTblView.addBackground(imageName: "backgroundLipList")
         if let lipstick = self.lipstick{
@@ -57,15 +59,16 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
         
         self.userList = self.createUserArray()
         //----------------Read more / Read less--------------
+        seemore.delegate = self as? ExpandableLabelDelegate
         seemore.numberOfLines = 15
         seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
         seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
         seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
         seemore.ellipsis = NSAttributedString(string: "...")
-        seemore.collapsed = true
+        seemore.collapsed = false
 
     }
-    
+   
     //-----------------------User Array------------------------
     var userList  = [UserReview] ()
     
@@ -101,32 +104,52 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     // ----------------------select LipColor and LipImage will change-------------------------
     @IBOutlet weak var lipImageColor: UIImageView!
     
+    @IBOutlet weak var imageColorButton: UIButton!
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!! \(sender.tag)")
+        
         if sender.tag == 0{
             let imageClicked  = sender.image(for: .normal)
             lipImageColor.image = #imageLiteral(resourceName: "PK037")
+            lipstickBrand.text = "ETUDE"
+            lipstickName.text =  "Dear My Lip Talk "
+            lipstickColorName.text = "BE115"
+            lipstickShortDetail.text = "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour."
             
         }
+
         if sender.tag == 1{
             let imageClicked  = sender.image(for: .normal)
             lipImageColor.image = #imageLiteral(resourceName: "BE115")
-            
+            lipstickBrand.text = "ETUDE"
+            lipstickName.text =  "Dear My Lip Talk "
+            lipstickColorName.text = "BE116"
+            lipstickShortDetail.text = "Detail of the lipstick is  ...."
         }
         if sender.tag == 2{
             let imageClicked  = sender.image(for: .normal)
             lipImageColor.image = #imageLiteral(resourceName: "BE116")
+            lipstickBrand.text = "ETUDE"
+            lipstickName.text =  "Dear My Lip Talk "
+            lipstickColorName.text = "OR241"
+            lipstickShortDetail.text = "Detail of the lipstick is  ....OR241"
             
         }
         if sender.tag == 3{
             let imageClicked  = sender.image(for: .normal)
             lipImageColor.image = #imageLiteral(resourceName: "PK037")
-            
+            lipstickBrand.text = "ETUDE"
+            lipstickName.text =  "Dear My Lip Talk "
+            lipstickColorName.text = "PK035"
+            lipstickShortDetail.text = "Detail of the lipstick is  ....PK035"
         }
         if sender.tag == 4{
             let imageClicked  = sender.image(for: .normal)
             lipImageColor.image = #imageLiteral(resourceName: "BE115")
-            
+            lipstickBrand.text = "ETUDE"
+            lipstickName.text =  "Dear My Lip Talk "
+            lipstickColorName.text = "PK037"
+            lipstickShortDetail.text = "Detail of the lipstick is  ....PK037"
         }
         
     }
@@ -178,7 +201,8 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
             // อาเรย์ userReview ที่เเสดงเป็น tableList
             let review = userReviews[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-                cell.userReviewLabel.text = review
+            cell.userReviewLabel.text = review
+            cell.backgroundColor = UIColor.clear
 
                 return cell
         }
@@ -187,7 +211,7 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
         }
 }
 //extension UIView {
-//    func addBackground(imageName:String) {
+//    func addBackground(imageName : String) {
 //
 //        let width = UIScreen.main.bounds.size.width
 //        let height = UIScreen.main.bounds.size.height
