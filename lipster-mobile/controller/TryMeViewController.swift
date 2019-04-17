@@ -11,6 +11,9 @@ import UIKit
 class TryMeViewController: UIViewController , UICollectionViewDataSource ,UICollectionViewDelegate {
  
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func clickedLipColorBtn(_ sender: Any) {
+    }
     let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
     
     override func viewDidLoad() {
@@ -31,6 +34,6 @@ class TryMeViewController: UIViewController , UICollectionViewDataSource ,UIColl
         return cell
     }
     
-
+   
 
 }

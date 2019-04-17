@@ -17,6 +17,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
     @IBOutlet weak var lipstickShortDetail: UILabel!
     @IBOutlet weak var detailViewContainer: UIView!
 
+    @IBOutlet weak var tryMeButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var seemore: ExpandableLabel!
     
@@ -187,11 +188,9 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
             }
         }
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-            if let destination = segue.destination as? TryMeViewController{
-            destination
-            }
+        @IBAction func clickedTryMe(_ sender: Any) {
+            print("clicked TRY ME")
+            self.performSegue(withIdentifier: "showTryMe", sender: self)
         }
    
     }
