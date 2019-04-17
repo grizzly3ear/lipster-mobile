@@ -8,7 +8,7 @@
 
 import UIKit
 import ExpandableLabel
-class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
+class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
     
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
@@ -22,7 +22,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var lipSelectColor: UIButton!
-
+    
     @IBOutlet weak var typeReviewTextView: UITextView!
     
     
@@ -37,13 +37,11 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     var detailView : UIView!
     var reviewView : UIView!
     
-    var reviewTbl = UITableView()
     var lipstick : Lipstick?
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviewTbl.addBackground(imageName: "backgroundLiplist")
-        reviewTblView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
-       // reviewTblView.addBackground(imageName: "backgroundLipList")
+    
+        
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -65,7 +63,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
         seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
         seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
         seemore.ellipsis = NSAttributedString(string: "...")
-        seemore.collapsed = false
+        seemore.collapsed = true
 
     }
    
@@ -105,6 +103,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
     @IBOutlet weak var lipImageColor: UIImageView!
     
     @IBOutlet weak var imageColorButton: UIButton!
+    
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!! \(sender.tag)")
         
@@ -187,11 +186,20 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate {
                 textView.textColor = UIColor.lightGray
             }
         }
-}
+    
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+            if let destination = segue.destination as? TryMeViewController{
+            destination
+            }
+        }
+   
+    }
+
 extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
             
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                
+        
             return userReviews.count
                 
         }
@@ -202,8 +210,6 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
             let review = userReviews[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
             cell.userReviewLabel.text = review
-            cell.backgroundColor = UIColor.clear
-
                 return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

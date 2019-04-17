@@ -25,6 +25,8 @@
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
 		D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */; };
+		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
+		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +64,8 @@
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
 		D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewController.swift; sourceTree = "<group>"; };
+		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
 		E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.debug.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +158,7 @@
 				D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */,
 				30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */,
 				D8224AC8225C881600B7E403 /* LipDetailSegmentVC.swift */,
+				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 		D863452C2242155000AC0EA6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */,
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
@@ -297,8 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */,
+				D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */,
 				3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
+				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */,

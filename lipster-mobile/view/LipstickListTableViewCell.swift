@@ -26,6 +26,7 @@ class LipstickListTableViewCell: UITableViewCell {
         lipColorNameLabel.text = lipstick.lipstickColorName
         lipDetailLabel.text = lipstick.lipShortDetail
         colorUIView.backgroundColor = lipstick.lipColorCode
+    
         
     }
  
