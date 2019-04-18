@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-6C-hWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="99"/>
+            <point key="canvasLocation" x="-407" y="99"/>
         </scene>
         <!--LIPSTICK LIST-->
         <scene sceneID="IUN-Am-QK3">
@@ -151,7 +151,6 @@
                             <outlet property="delegate" destination="2my-jU-SWf" id="Ag8-BE-NFk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="WFh-wF-Tfh"/>
                     <navigationItem key="navigationItem" title="LIPSTICK LIST" id="CLJ-sW-SFp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -270,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464.80000000000001" y="1758.1709145427287"/>
+            <point key="canvasLocation" x="343" y="88"/>
         </scene>
         <!--HOME-->
         <scene sceneID="DEA-kR-wGF">
@@ -929,6 +928,10 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLt-Zv-RHb">
                                         <rect key="frame" x="87" y="37" width="200" height="200"/>
                                     </imageView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-Tf-If1">
+                                        <rect key="frame" x="87" y="37" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0R-hO-t17">
                                         <rect key="frame" x="274" y="270" width="101" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -984,6 +987,12 @@
                                             <action selector="imageColorButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="fRr-TL-goe"/>
                                         </connections>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-4A-Jwd">
+                                        <rect key="frame" x="87" y="235" width="200" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </pageControl>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ei9-aP-oSZ" firstAttribute="top" secondItem="4T3-CY-Eih" secondAttribute="bottom" constant="8" symbolic="YES" id="0Kb-gl-Dxs"/>
@@ -1030,7 +1039,9 @@
                         <outlet property="lipstickImage" destination="PLt-Zv-RHb" id="8lc-8l-c6k"/>
                         <outlet property="lipstickName" destination="lLW-pt-hrz" id="dOB-8U-QJ7"/>
                         <outlet property="lipstickShortDetail" destination="BSi-Mt-E5P" id="g8X-yq-Fn8"/>
+                        <outlet property="pageControl" destination="dKY-4A-Jwd" id="UdF-Sg-baN"/>
                         <outlet property="reviewTableView" destination="1En-6D-OmD" id="tIn-aU-qqP"/>
+                        <outlet property="scrollLipImg" destination="dMD-Tf-If1" id="W7A-Nc-gcj"/>
                         <outlet property="scrollView" destination="Ei9-aP-oSZ" id="ZdV-2y-GYl"/>
                         <outlet property="seemore" destination="BSi-Mt-E5P" id="q9w-8Z-g4S"/>
                         <outlet property="tryMeButton" destination="D0R-hO-t17" id="vex-aP-jw8"/>
@@ -1129,13 +1140,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="MjW-ox-6lU" kind="relationship" relationship="rootViewController" id="vas-Wg-A7x"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnp-Fc-xET" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3265" y="815"/>
+            <point key="canvasLocation" x="2719" y="1068"/>
         </scene>
     </scenes>
     <resources>
@@ -1150,7 +1158,4 @@
         <image name="line" width="512" height="512"/>
         <image name="try me" width="1078" height="652"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gO6-xR-FiA"/>
-    </inferredMetricsTieBreakers>
 </document>

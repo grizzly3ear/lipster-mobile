@@ -8,8 +8,11 @@
 
 import UIKit
 import ExpandableLabel
-class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
+class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollLipImg: UIScrollView!
+
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
@@ -37,12 +40,28 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
     var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
-    
+
     var lipstick : Lipstick?
+    
+    //---------------------- page control----------------------
+    var imgPageControl : [String] = ["BE115","BE115_pic2"]
+    var frame = CGRect(x:0,y:0,width:0 , height:0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
+        // -------Page Control with scrollView--------------------
+        pageControl.numberOfPages = imgPageControl.count
+        for index in 0..<imgPageControl.count{
+            frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
+            frame.size = scrollLipImg.frame.size
+            
+            let imgView = UIImageView(frame: frame)
+            imgView.image = UIImage(named: imgPageControl[index])
+            self.scrollLipImg.addSubview(imgView)
+        }
+        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(imgPageControl.count)) , height : scrollLipImg.frame.size.height)
+        scrollLipImg.delegate = self
+        //---------------------------------------------------------
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -166,7 +185,12 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate  {
         }
         
     }
-        //----------------------------
+    //-------------------------- scrollView of lipImg method -------------------------
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
+    }
+    //----------------------------
         func textViewDidBeginEditing(_ textView: UITextView) {
             if textView.text == "Review this lipstick here." {
                 textView.text = ""

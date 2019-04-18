@@ -18,8 +18,8 @@ class Lipstick {
     var lipShortDetail: String
     var lipSelectedColor : UIImage
     var lipColorCode : UIColor 
-    
-    init(lipstickImage: UIImage,lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ,lipSelectedColor : UIImage , lipColorCode : UIColor) {
+
+    init(lipstickImage: UIImage,lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ,lipSelectedColor : UIImage , lipColorCode : UIColor ) {
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
         self.lipstickName =  lipstickName
