@@ -28,6 +28,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     @IBOutlet weak var lipSelectColor: UIButton!
     
     @IBOutlet weak var typeReviewTextView: UITextView!
+    @IBOutlet weak var clickedPostButton: UIButton!
     
     
     var imageOfDetail = UIImage()
@@ -40,7 +41,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
-
+    var clickedPostBtn = UIButton()
     var lipstick : Lipstick?
     
     //---------------------- page control----------------------
@@ -49,6 +50,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clickedPostBtn.isEnabled = false
         // -------Page Control with scrollView--------------------
         pageControl.numberOfPages = imgPageControl.count
         for index in 0..<imgPageControl.count{
@@ -63,13 +65,14 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         scrollLipImg.delegate = self
         //---------------------------------------------------------
         if let lipstick = self.lipstick{
-            self.lipstickImage.image =  lipstick.lipstickImage
+            self.lipstickImage.image =  lipstick.lipstickImage[0]
+            self.lipstickImage.image =  lipstick.lipstickImage[1]
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipShortDetail
-            
         }
+        //-------------------- type Review -------------------------
         typeReviewTextView.text = "Review this lipstick here."
         typeReviewTextView.textColor = UIColor.lightGray
         typeReviewTextView.delegate = self
@@ -104,8 +107,10 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     //-----------------------------Clicked Post to Review---------------------------------
   
     @IBAction func ClickedPostReviewButton(_ sender: Any) {
-        if typeReviewTextView.text!.isEmpty {
+        print("clicked post button ")
+        if typeReviewTextView.text! == nil {
             print("Type Review, Text Field is empty")
+            clickedPostBtn.isEnabled = false
         }
         //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
         userReviews.append(typeReviewTextView.text!)
@@ -174,6 +179,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     }
 
     @IBAction func segments(_ sender: UISegmentedControl) {
+        print ("Clicked segment")
         switch sender.selectedSegmentIndex{
         case 0 :
             scrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
@@ -190,9 +196,10 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
         pageControl.currentPage = Int(pageNumber)
     }
-    //----------------------------
+    //---------------------------- type review-----------------------
         func textViewDidBeginEditing(_ textView: UITextView) {
             if textView.text == "Review this lipstick here." {
+                print("typing review")
                 textView.text = ""
                 textView.textColor = UIColor.black
             }
@@ -211,7 +218,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
                 textView.textColor = UIColor.lightGray
             }
         }
-    
+    //-----------------------------------------
         @IBAction func clickedTryMe(_ sender: Any) {
             print("clicked TRY ME")
             self.performSegue(withIdentifier: "showTryMe", sender: self)

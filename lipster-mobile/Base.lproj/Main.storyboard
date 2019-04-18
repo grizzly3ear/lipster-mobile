@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-6C-hWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-407" y="99"/>
+            <point key="canvasLocation" x="-983" y="88"/>
         </scene>
         <!--LIPSTICK LIST-->
         <scene sceneID="IUN-Am-QK3">
@@ -161,7 +161,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="88.605697151424295"/>
+            <point key="canvasLocation" x="2220" y="87.706146926536732"/>
         </scene>
         <!--NEARBY-->
         <scene sceneID="b5c-No-tHW">
@@ -195,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="2130" y="1600"/>
         </scene>
-        <!--CAMERA-->
+        <!--Lip Color Detection Controller-->
         <scene sceneID="hq4-fw-bEo">
             <objects>
                 <viewController id="8fU-aG-tpW" customClass="LipColorDetectionController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,18 +258,18 @@
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Ubv-uh-RWB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
+                    <navigationItem key="navigationItem" id="CTp-Tr-01J"/>
                     <connections>
                         <outlet property="colorDetectPreview" destination="nqL-UN-Kfn" id="M67-I6-eIq"/>
                         <outlet property="draggableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
                         <outlet property="findLipstickListButton" destination="Wbo-u8-xij" id="fLw-Mp-jcA"/>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
-                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="cKQ-3p-mHT"/>
+                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="nXF-J0-F0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="343" y="88"/>
+            <point key="canvasLocation" x="1280.8" y="87.706146926536732"/>
         </scene>
         <!--HOME-->
         <scene sceneID="DEA-kR-wGF">
@@ -318,14 +318,14 @@
                     <connections>
                         <segue destination="Hxb-pv-PE7" kind="relationship" relationship="viewControllers" id="2mx-KW-zgC"/>
                         <segue destination="jAg-pR-acB" kind="relationship" relationship="viewControllers" id="67E-VV-TIz"/>
-                        <segue destination="8fU-aG-tpW" kind="relationship" relationship="viewControllers" id="LQ4-Jh-dtV"/>
+                        <segue destination="LdA-hd-DGY" kind="relationship" relationship="viewControllers" id="LQ4-Jh-dtV"/>
                         <segue destination="4Xu-JZ-HJ6" kind="relationship" relationship="viewControllers" id="bVp-zE-kjI"/>
                         <segue destination="w3z-xo-nlj" kind="relationship" relationship="viewControllers" id="LeS-Fa-Nqx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7b-Tt-MSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-407" y="815"/>
+            <point key="canvasLocation" x="-983" y="834"/>
         </scene>
         <!--LIPSTICK DETAIL-->
         <scene sceneID="faa-LK-RFa">
@@ -1031,6 +1031,7 @@
                     <navigationItem key="navigationItem" title="LIPSTICK STICK" id="yNn-xB-ceY"/>
                     <size key="freeformSize" width="750" height="800"/>
                     <connections>
+                        <outlet property="clickedPostButton" destination="206-je-nJc" id="BlH-zp-7bu"/>
                         <outlet property="imageColorButton" destination="YsH-6b-3f5" id="ZOh-Fo-wqm"/>
                         <outlet property="lipImageColor" destination="PLt-Zv-RHb" id="0fd-CX-mb1"/>
                         <outlet property="lipSelectColor" destination="cqu-Vs-Fcq" id="NJ0-tt-Bun"/>
@@ -1051,7 +1052,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDU-Xd-SiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2289.5999999999999" y="147.52623688155924"/>
+            <point key="canvasLocation" x="3491.1999999999998" y="97.151424287856074"/>
         </scene>
         <!--Try Me View Controller-->
         <scene sceneID="WPO-7S-zRf">
@@ -1128,22 +1129,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFl-9q-5KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="99"/>
+            <point key="canvasLocation" x="4644" y="88"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="tlt-Wo-jcu">
+        <!--CAMERA-->
+        <scene sceneID="5PU-kw-6gr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Im-UI-9Ec" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LdA-hd-DGY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RXn-gZ-4xR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vrl-Nj-Qsi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8fU-aG-tpW" kind="relationship" relationship="rootViewController" id="SA9-1d-OUL"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xnp-Fc-xET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rZh-wX-6zW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="1068"/>
+            <point key="canvasLocation" x="341.60000000000002" y="87.706146926536732"/>
         </scene>
     </scenes>
     <resources>

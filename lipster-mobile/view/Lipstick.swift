@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class Lipstick {
-    
-    var lipstickImage: UIImage
+
+    var lipstickImage: [UIImage]
     var lipstickBrand: String
     var lipstickName: String
     var lipstickColorName: String
@@ -19,7 +19,7 @@ class Lipstick {
     var lipSelectedColor : UIImage
     var lipColorCode : UIColor 
 
-    init(lipstickImage: UIImage,lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ,lipSelectedColor : UIImage , lipColorCode : UIColor ) {
+    init(lipstickImage: [UIImage],lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String ,lipSelectedColor : UIImage , lipColorCode : UIColor ) {
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
         self.lipstickName =  lipstickName
@@ -28,5 +28,6 @@ class Lipstick {
         self.lipSelectedColor = lipSelectedColor
         self.lipColorCode = lipColorCode
     }
+   
     
 }

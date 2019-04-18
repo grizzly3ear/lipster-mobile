@@ -50,7 +50,7 @@ class LipstickDetailViewController: UIViewController  ,  UITextViewDelegate  {
         typeReviewTextView.returnKeyType = .done
         
         if let lipstick = self.lipstick{
-            self.lipstickImage.image =  lipstick.lipstickImage
+            self.lipstickImage.image =  lipstick.lipstickImage[0]
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
