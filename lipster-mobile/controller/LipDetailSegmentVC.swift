@@ -51,6 +51,8 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         clickedPostBtn.isEnabled = false
+        reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+
         // -------Page Control with scrollView--------------------
         pageControl.numberOfPages = imgPageControl.count
         for index in 0..<imgPageControl.count{
@@ -81,7 +83,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         self.userList = self.createUserArray()
         //----------------Read more / Read less--------------
         seemore.delegate = self as? ExpandableLabelDelegate
-        seemore.numberOfLines = 15
+        seemore.numberOfLines = 10
         seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
         seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
         seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
