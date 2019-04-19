@@ -27,6 +27,7 @@
 		D8D45F8E2242790500405AE7 /* LipstickDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */; };
 		D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA969A226986A80060B78A /* HomeViewController.swift */; };
 		D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */; };
+		D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */; };
 		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
 		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		D8D45F8D2242790500405AE7 /* LipstickDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewController.swift; sourceTree = "<group>"; };
 		D8EA969A226986A80060B78A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
 		E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.debug.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
 				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
+				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
+				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
