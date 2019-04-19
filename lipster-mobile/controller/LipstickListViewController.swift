@@ -30,10 +30,10 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
         self.lipListTableView.dataSource = self
  
         addNavBarImage()
-     
-        
-      // -------------------------- SearchBar -------------------------
-        
+        searchBarLip()
+    }
+    
+    func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -53,7 +53,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
             let search = UISearchController(searchResultsController: nil)
             search.delegate = self
             let searchBackground = search.searchBar
-           // searchBackground.tintColor = UIColor.white
+            // searchBackground.tintColor = UIColor.white
             searchBackground.placeholder = "Brand, Color, ..."
             // searchBackground.barTintColor = UIColor.white
             
@@ -77,6 +77,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
+    
     //  ------------------------- logo in nav bar-------------------------------
     func addNavBarImage(){
         let navController = navigationController!

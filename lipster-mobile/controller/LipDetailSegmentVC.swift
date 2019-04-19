@@ -8,6 +8,8 @@
 
 import UIKit
 import ExpandableLabel
+
+
 class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
@@ -53,6 +55,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         clickedPostBtn.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
 
+        
         // -------Page Control with scrollView--------------------
         pageControl.numberOfPages = imgPageControl.count
         for index in 0..<imgPageControl.count{
@@ -81,15 +84,16 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         typeReviewTextView.returnKeyType = .done
         
         self.userList = self.createUserArray()
+     
         //----------------Read more / Read less--------------
         seemore.delegate = self as? ExpandableLabelDelegate
-        seemore.numberOfLines = 10
+        seemore.numberOfLines = 3
+        seemore.collapsed = true
         seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
         seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
-        seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
+        //seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
         seemore.ellipsis = NSAttributedString(string: "...")
-        seemore.collapsed = true
-
+        
     }
    
     //-----------------------User Array------------------------
@@ -228,38 +232,27 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
    
     }
 
-extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource{
+extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
+  
             
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-            return userReviews.count
+        return userReviews.count
                 
-        }
+    }
             
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
-            // อาเรย์ userReview ที่เเสดงเป็น tableList
-            let review = userReviews[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-            cell.userReviewLabel.text = review
-                return cell
-        }
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // อาเรย์ userReview ที่เเสดงเป็น tableList
+        let review = userReviews[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
+        cell.userReviewLabel.text = review
+        
+            return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100
-        }
+    }
 }
-//extension UIView {
-//    func addBackground(imageName : String) {
-//
-//        let width = UIScreen.main.bounds.size.width
-//        let height = UIScreen.main.bounds.size.height
-//
-//        let imageViewBackground = UIImageView(frame:CGRect(x: 0, y: 0, width : width, height: height))
-//        imageViewBackground.image = UIImage(named: "01" )
-//        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-//
-//        self.addSubview(imageViewBackground)
-//        self.sendSubviewToBack(imageViewBackground)
-//    }
-//}
+
 

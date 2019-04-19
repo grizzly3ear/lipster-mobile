@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double SegmentioVersionNumber;
-FOUNDATION_EXPORT const unsigned char SegmentioVersionString[];
+FOUNDATION_EXPORT double ReadMoreTextViewVersionNumber;
+FOUNDATION_EXPORT const unsigned char ReadMoreTextViewVersionString[];
 
