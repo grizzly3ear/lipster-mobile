@@ -20,6 +20,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
     
     var searchController : UISearchController!
     var resultController = UITableViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,8 +33,8 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
         addNavBarImage()
         searchBarLip()
     }
-    
-    func searchBarLip() {
+
+     func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
