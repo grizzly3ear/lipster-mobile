@@ -15,6 +15,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         arrayOfTreandImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ]
+        arrayOfRecImage = [#imageLiteral(resourceName: "PK035") , #imageLiteral(resourceName: "BE115") , #imageLiteral(resourceName: "PK037") , #imageLiteral(resourceName: "OR214")]
+        arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
+        arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
     //LipstickListViewController().addNavBarImage()
       //  LipstickListViewController().searchBarLip()
        searchBarLip()
@@ -23,6 +26,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
     var arrayOfTreandImg = [UIImage]()
+    var arrayOfRecImage  = [UIImage]()
+    var arrayOfRecBrand = [String]()
+    var arrayOfRecName = [String]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  3
