@@ -11,6 +11,6 @@ import UIKit
 class RecHomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var recImageView: UIImageView!
-    @IBOutlet weak var recBrandLabel: UILabel!
-    @IBOutlet weak var recNameLabel: UILabel!
+ //   @IBOutlet weak var recBrandLabel: UILabel!
+ //   @IBOutlet weak var recNameLabel: UILabel!
 }

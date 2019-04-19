@@ -10,6 +10,10 @@ import UIKit
 
 class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate , UICollectionViewDataSource , UICollectionViewDelegate {
     
+    
+    @IBOutlet weak var trendsCollectionView: UICollectionView!
+    @IBOutlet weak var RecCollectionView: UICollectionView!
+    
     var searchController : UISearchController!
     
     override func viewDidLoad() {
@@ -35,10 +39,20 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        imageView.image = arrayOfTreandImg[indexPath.row]
+        if collectionView == trendsCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.image = arrayOfTreandImg[indexPath.row]
+
         return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
+            let imageView = cell.viewWithTag(2) as! UIImageView
+            imageView.image = arrayOfRecImage[indexPath.row]
+            
+            return cell
+        }
     }
     
     func searchBarLip() {

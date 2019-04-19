@@ -173,13 +173,13 @@
 		D863452C2242155000AC0EA6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
 				D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */,
 				D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */,
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
 				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
-				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
