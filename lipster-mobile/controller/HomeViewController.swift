@@ -8,18 +8,33 @@
 
 import UIKit
 
-class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
-
+class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate , UICollectionViewDataSource , UICollectionViewDelegate {
+    
     var searchController : UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        arrayOfTreandImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ]
     //LipstickListViewController().addNavBarImage()
       //  LipstickListViewController().searchBarLip()
        searchBarLip()
        addNavBarImage()
        
     }
+    
+    var arrayOfTreandImg = [UIImage]()
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.image = arrayOfTreandImg[indexPath.row]
+        return cell
+    }
+    
     func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
