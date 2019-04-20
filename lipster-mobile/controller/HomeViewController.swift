@@ -13,6 +13,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var RecCollectionView: UICollectionView!
+    @IBOutlet weak var RecentCollectionView: UICollectionView!
     
     var searchController : UISearchController!
     
@@ -22,6 +23,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         arrayOfRecImage = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")! ]
         arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
         arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
+        
     //LipstickListViewController().addNavBarImage()
       //  LipstickListViewController().searchBarLip()
        searchBarLip()
@@ -45,6 +47,13 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             imageView.image = arrayOfTrendImg[indexPath.row]
        
         return cell
+        }
+        else if (collectionView == RecentCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
+            cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
+            cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
+            cell.RecentNameLabel.text! = arrayOfRecName[indexPath.row]
+            return cell
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
