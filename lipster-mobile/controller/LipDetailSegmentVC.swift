@@ -237,14 +237,6 @@ extension LipDetailSegmentVC: UITextViewDelegate {
             clickedPostButton.isEnabled = true
         }
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView.text.trim() == "" {
-//            textView.text = "Review this lipstick here."
-//            textView.textColor = UIColor.lightGray
-//            clickedPostButton.isEnabled = false
-//        }
-    }
 }
 
 // Post Button Config
