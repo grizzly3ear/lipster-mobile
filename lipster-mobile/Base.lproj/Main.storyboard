@@ -802,7 +802,7 @@
         <!--LIPSTICK DETAIL-->
         <scene sceneID="faa-LK-RFa">
             <objects>
-                <viewController storyboardIdentifier="LipstickDetailViewController" id="d7E-Af-jrk" customClass="LipstickDetailViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LipstickDetailViewController" id="d7E-Af-jrk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BcJ-ff-pmg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1113"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -972,7 +972,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="ClickedPostReviewButton:" destination="d7E-Af-jrk" eventType="touchUpInside" id="P2Z-ac-QSJ"/>
+                                                    <action selector="clickedPostReviewButton:" destination="d7E-Af-jrk" eventType="touchUpInside" id="9MN-eh-HPC"/>
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="C0M-Pv-Dyy">
