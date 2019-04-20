@@ -18,7 +18,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ]
+        arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ,UIImage(named: "user1")! ,UIImage(named: "user1")! ]
         arrayOfRecImage = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")! ]
         arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
         arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
@@ -35,7 +35,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     var arrayOfRecName = [String]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  3
+        return  arrayOfTrendImg.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,9 +43,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
             let imageView = cell.viewWithTag(1) as! UIImageView
             imageView.image = arrayOfTrendImg[indexPath.row]
-            
-        //    cell.trendImageView.image = UIImage(named: arrayOfTrendImg[indexPath.row])
-            
+       
         return cell
         }
         else{
