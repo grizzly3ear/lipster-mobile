@@ -8,12 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate , UICollectionViewDataSource , UICollectionViewDelegate {
+class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recCollectionView: UICollectionView!
     @IBOutlet weak var recentCollectionView: UICollectionView!
+    
+    var arrayOfTrendImg = [UIImage]()
+    var arrayOfRecImage  = [UIImage]()
+    var arrayOfRecBrand = [String]()
+    var arrayOfRecName = [String]()
     
     var searchController : UISearchController!
     
@@ -26,62 +31,27 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         
     //LipstickListViewController().addNavBarImage()
       //  LipstickListViewController().searchBarLip()
-       searchBarLip()
-       addNavBarImage()
+        searchBarLip()
+        addNavBarImage()
        
-    }
-    
-    var arrayOfTrendImg = [UIImage]()
-    var arrayOfRecImage  = [UIImage]()
-    var arrayOfRecBrand = [String]()
-    var arrayOfRecName = [String]()
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  arrayOfTrendImg.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == trendsCollectionView{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
-            let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image = arrayOfTrendImg[indexPath.row]
-       
-        return cell
-        }
-        else if (collectionView == recentCollectionView){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
-            cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
-            cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
-            cell.RecentNameLabel.text! = arrayOfRecName[indexPath.row]
-            return cell
-        }
-        else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
-//            let imageView = cell.viewWithTag(2) as! UIImageView
-//            imageView.image = arrayOfRecImage[indexPath.row]
-            cell.recImageView.image = arrayOfRecImage[indexPath.row]
-            cell.recBrandLabel.text! = arrayOfRecBrand[indexPath.row]
-            cell.recNameLabel.text! = arrayOfRecName[indexPath.row]
-            return cell
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
+            print("showRecommendList")
 //            var destination = segue.destination as? LipstickListViewController {
 //                // we gonna set the array of lipstick here
 //            }
             
         } else if segueIdentifier == "showRecentList" {
+            print("showRecentList")
 //            var destination = segue.destination as? LipstickListViewController {
 //                // we gonna set the array of lipstick here
 //            }
             
         } else if segueIdentifier == "showTrendList" {
+            print("showTrendList")
 //            var destination = segue.destination as? LipstickListViewController {
 //                // we gonna set the array of trend here
 //            }
@@ -142,7 +112,40 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView  = imageView
     }
-    
-  
+}
 
+extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  arrayOfTrendImg.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == trendsCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.image = arrayOfTrendImg[indexPath.row]
+            
+            return cell
+        }
+        else if (collectionView == recentCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
+            cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
+            cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
+            cell.RecentNameLabel.text! = arrayOfRecName[indexPath.row]
+            return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
+            //            let imageView = cell.viewWithTag(2) as! UIImageView
+            //            imageView.image = arrayOfRecImage[indexPath.row]
+            cell.recImageView.image = arrayOfRecImage[indexPath.row]
+            cell.recBrandLabel.text! = arrayOfRecBrand[indexPath.row]
+            cell.recNameLabel.text! = arrayOfRecName[indexPath.row]
+            return cell
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
