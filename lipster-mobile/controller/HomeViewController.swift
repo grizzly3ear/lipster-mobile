@@ -69,6 +69,26 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showRecommendList" {
+//            var destination = segue.destination as? LipstickListViewController {
+//                // we gonna set the array of lipstick here
+//            }
+            
+        } else if segueIdentifier == "showRecentList" {
+//            var destination = segue.destination as? LipstickListViewController {
+//                // we gonna set the array of lipstick here
+//            }
+            
+        } else if segueIdentifier == "showTrendList" {
+//            var destination = segue.destination as? LipstickListViewController {
+//                // we gonna set the array of trend here
+//            }
+            
+        }
+    }
+    
     
     
     func searchBarLip() {

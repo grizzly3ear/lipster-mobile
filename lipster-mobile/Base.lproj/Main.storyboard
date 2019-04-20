@@ -347,7 +347,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="SEE MORE"/>
                                                         <connections>
-                                                            <segue destination="G6P-ot-OD5" kind="show" id="tir-yq-OWU"/>
+                                                            <segue destination="G6P-ot-OD5" kind="show" identifier="showTrendList" id="tir-yq-OWU"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -416,7 +416,7 @@
                                                                     <outlet property="recBrandLabel" destination="jcA-SE-1Mz" id="S00-7r-KPe"/>
                                                                     <outlet property="recImageView" destination="K66-ei-d1x" id="cnt-tX-Mgv"/>
                                                                     <outlet property="recNameLabel" destination="kOc-2p-aFQ" id="qrF-S7-YUB"/>
-                                                                    <segue destination="2my-jU-SWf" kind="show" id="hWz-Da-3JD"/>
+                                                                    <segue destination="2my-jU-SWf" kind="show" identifier="showRecommendList" id="hWz-Da-3JD"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -514,7 +514,7 @@
                                                                     <outlet property="RecentBrandLabel" destination="aYr-fL-sUw" id="dua-uw-Uef"/>
                                                                     <outlet property="RecentImageView" destination="ViO-tp-yTP" id="B14-ge-J1J"/>
                                                                     <outlet property="RecentNameLabel" destination="8Pa-c9-HR3" id="eok-EL-Mub"/>
-                                                                    <segue destination="2my-jU-SWf" kind="show" id="WMu-Ze-rVT"/>
+                                                                    <segue destination="2my-jU-SWf" kind="show" identifier="showRecentList" id="WMu-Ze-rVT"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
