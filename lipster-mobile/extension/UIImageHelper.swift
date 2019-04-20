@@ -28,7 +28,7 @@ extension UIImage {
                                      green: CGFloat(pixel[1])/255.0,
                                      blue: CGFloat(pixel[2])/255.0,
                                      alpha: 1)
-        pixel.deallocate(capacity: 4)
+        pixel.deallocate()
         return color
     }
      func imageWithColor(color : UIColor, size :  CGSize) -> UIImage {
