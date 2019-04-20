@@ -12,8 +12,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
-    @IBOutlet weak var RecCollectionView: UICollectionView!
-    @IBOutlet weak var RecentCollectionView: UICollectionView!
+    @IBOutlet weak var recCollectionView: UICollectionView!
+    @IBOutlet weak var recentCollectionView: UICollectionView!
     
     var searchController : UISearchController!
     
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
        
         return cell
         }
-        else if (collectionView == RecentCollectionView){
+        else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
             cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
             cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
