@@ -400,6 +400,10 @@
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="Hxb-pv-PE7" id="IMj-f0-0SE"/>
+                                                            <outlet property="delegate" destination="Hxb-pv-PE7" id="VNi-3C-tTe"/>
+                                                        </connections>
                                                     </collectionView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RECOMMENDED FOR YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzW-bP-Maa">
                                                         <rect key="frame" x="19" y="8" width="226" height="22"/>

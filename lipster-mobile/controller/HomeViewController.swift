@@ -18,8 +18,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayOfTreandImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ]
-        arrayOfRecImage = [#imageLiteral(resourceName: "PK035") , #imageLiteral(resourceName: "BE115") , #imageLiteral(resourceName: "PK037") , #imageLiteral(resourceName: "OR214")]
+        arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ]
+        arrayOfRecImage = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")! ]
         arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
         arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
     //LipstickListViewController().addNavBarImage()
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
        
     }
     
-    var arrayOfTreandImg = [UIImage]()
+    var arrayOfTrendImg = [UIImage]()
     var arrayOfRecImage  = [UIImage]()
     var arrayOfRecBrand = [String]()
     var arrayOfRecName = [String]()
@@ -42,15 +42,19 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         if collectionView == trendsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
             let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image = arrayOfTreandImg[indexPath.row]
-
+            imageView.image = arrayOfTrendImg[indexPath.row]
+            
+        //    cell.trendImageView.image = UIImage(named: arrayOfTrendImg[indexPath.row])
+            
         return cell
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
-            let imageView = cell.viewWithTag(2) as! UIImageView
-            imageView.image = arrayOfRecImage[indexPath.row]
-            
+//            let imageView = cell.viewWithTag(2) as! UIImageView
+//            imageView.image = arrayOfRecImage[indexPath.row]
+            cell.recImageView.image = arrayOfRecImage[indexPath.row]
+            cell.recBrandLabel.text! = arrayOfRecBrand[indexPath.row]
+            cell.recNameLabel.text! = arrayOfRecName[indexPath.row]
             return cell
         }
     }
