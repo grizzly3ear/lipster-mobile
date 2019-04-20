@@ -14,24 +14,22 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollLipImg: UIScrollView!
-
     @IBOutlet weak var lipstickImage: UIImageView!
+    @IBOutlet weak var lipSelectColor: UIButton!
+    @IBOutlet weak var tryMeButton: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     @IBOutlet weak var detailViewContainer: UIView!
-
-    @IBOutlet weak var tryMeButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var seemore: ExpandableLabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var lipSelectColor: UIButton!
-    
     @IBOutlet weak var typeReviewTextView: UITextView!
     @IBOutlet weak var clickedPostButton: UIButton!
-    
     
     var imageOfDetail = UIImage()
     var lipBrandofDetail = String()
@@ -112,7 +110,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     
     //-----------------------------Clicked Post to Review---------------------------------
   
-    @IBAction func ClickedPostReviewButton(_ sender: Any) {
+    @IBAction func clickedPostReviewButton(_ sender: Any) {
         print("clicked post button ")
         if typeReviewTextView.text! == nil {
             print("Type Review, Text Field is empty")
@@ -234,7 +232,6 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
 
 extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
   
-            
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return userReviews.count

@@ -1232,8 +1232,7 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Post"/>
                                                 <connections>
-                                                    <action selector="ClickedPostReviewButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="Ah7-FX-mS9"/>
-                                                    <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="nBR-Kw-Ykp"/>
+                                                    <action selector="clickedPostReviewButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="5OL-5Y-ufL"/>
                                                 </connections>
                                             </button>
                                         </subviews>
