@@ -169,7 +169,7 @@ extension LipColorDetectionController {
 // pass data to LipstickListViewController
 extension LipColorDetectionController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showLipstickList" {
+        if segue.identifier == "showLipstickFromColorList" {
             if let destination = segue.destination as? LipstickListViewController {
                 destination.lipColor = colorDetectPreview.backgroundColor
             }

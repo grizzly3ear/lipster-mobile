@@ -264,7 +264,7 @@
                         <outlet property="draggableSelectColorView" destination="uOK-92-Swi" id="U8q-Xk-smD"/>
                         <outlet property="findLipstickListButton" destination="Wbo-u8-xij" id="fLw-Mp-jcA"/>
                         <outlet property="imagePreview" destination="xZt-qo-Jak" id="B5t-QO-uOT"/>
-                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="nXF-J0-F0d"/>
+                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickFromColorList" id="nXF-J0-F0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1186,7 +1186,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>
@@ -1657,6 +1657,6 @@
         <image name="try me" width="1078" height="652"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WMu-Ze-rVT"/>
+        <segue reference="nXF-J0-F0d"/>
     </inferredMetricsTieBreakers>
 </document>
