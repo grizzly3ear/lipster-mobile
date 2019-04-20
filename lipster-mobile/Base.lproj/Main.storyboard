@@ -1056,7 +1056,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>

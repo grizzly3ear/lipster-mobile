@@ -10,7 +10,7 @@ import UIKit
 import ExpandableLabel
 
 
-class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDelegate {
+class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollLipImg: UIScrollView!
@@ -41,7 +41,6 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
-    var clickedPostBtn = UIButton()
     var lipstick : Lipstick?
     
     //---------------------- page control----------------------
@@ -50,7 +49,8 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        clickedPostBtn.isEnabled = false
+        clickedPostButton.isEnabled = false
+        
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
 
         
@@ -110,23 +110,6 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
     
     //-----------------------------Clicked Post to Review---------------------------------
   
-    @IBAction func clickedPostReviewButton(_ sender: Any) {
-        print("clicked post button ")
-        if typeReviewTextView.text! == nil {
-            print("Type Review, Text Field is empty")
-            clickedPostBtn.isEnabled = false
-        }
-        //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-        userReviews.append(typeReviewTextView.text!)
-        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
-        
-        reviewTableView.beginUpdates()
-        reviewTableView.insertRows(at: [indexPath], with: .automatic)
-        reviewTableView.endUpdates()
-        
-        typeReviewTextView.text = ""
-        view.endEditing(true)
-    }
     
     // ----------------------select LipColor and LipImage will change-------------------------
     @IBOutlet weak var lipImageColor: UIImageView!
@@ -200,28 +183,7 @@ class LipDetailSegmentVC: UIViewController , UITextViewDelegate , UIScrollViewDe
         var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
         pageControl.currentPage = Int(pageNumber)
     }
-    //---------------------------- type review-----------------------
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.text == "Review this lipstick here." {
-                print("typing review")
-                textView.text = ""
-                textView.textColor = UIColor.black
-            }
-        }
-            
-        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if text == "\n" {
-                textView.resignFirstResponder()
-            }
-            return true
-        }
-            
-        func textViewDidEndEditing(_ textView: UITextView) {
-            if textView.text == "" {
-                textView.text = "Review this lipstick here."
-                textView.textColor = UIColor.lightGray
-            }
-        }
+    
     //-----------------------------------------
         @IBAction func clickedTryMe(_ sender: Any) {
             print("clicked TRY ME")
@@ -239,7 +201,6 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
     }
             
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
         // อาเรย์ userReview ที่เเสดงเป็น tableList
         let review = userReviews[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
@@ -249,6 +210,58 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100
+    }
+}
+
+extension LipDetailSegmentVC: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Review this lipstick here." {
+            print("typing review")
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.trim() == "" {
+            clickedPostButton.isEnabled = false
+        } else {
+            clickedPostButton.isEnabled = true
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+//        if textView.text.trim() == "" {
+//            textView.text = "Review this lipstick here."
+//            textView.textColor = UIColor.lightGray
+//            clickedPostButton.isEnabled = false
+//        }
+    }
+}
+
+// Post Button Config
+extension LipDetailSegmentVC {
+    @IBAction func clickedPostReviewButton(_ sender: Any) {
+        
+        //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
+        userReviews.append(typeReviewTextView.text!)
+        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
+        
+        reviewTableView.beginUpdates()
+        reviewTableView.insertRows(at: [indexPath], with: .automatic)
+        reviewTableView.endUpdates()
+        
+        typeReviewTextView.text = ""
+        clickedPostButton.isEnabled = false
+        view.endEditing(true)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13122573B560056EE74 /* UIColorHelper.swift */; };
 		3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13322573BFE0056EE74 /* UIViewHelper.swift */; };
 		30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A532C62255AAF800205429 /* UIImageHelper.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071C13122573B560056EE74 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				30A532C62255AAF800205429 /* UIImageHelper.swift */,
 				3071C13122573B560056EE74 /* UIColorHelper.swift */,
 				3071C13322573BFE0056EE74 /* UIViewHelper.swift */,
+				30694E3F226B4BE20091C698 /* StringHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				D8EA96AD226AF2B20060B78A /* TrendsCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
 				D8224AC9225C881600B7E403 /* LipDetailSegmentVC.swift in Sources */,
+				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				D8EA96AB226AEE9F0060B78A /* TrendsViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
