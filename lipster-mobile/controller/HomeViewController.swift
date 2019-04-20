@@ -65,6 +65,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             return cell
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let homeStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let destination = homeStoryBoard.instantiateViewController(withIdentifier: "TrendsViewController") as! TrendsViewController
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
     
     func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true

@@ -10,4 +10,5 @@ import UIKit
 
 class TrendsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var trendsImageView: UIImageView!
 }
