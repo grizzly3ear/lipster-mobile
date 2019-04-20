@@ -116,20 +116,19 @@ extension LipColorDetectionController: ImagePickerDelegate {
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        SwiftSpinner.show("Processing Image...")
-        imagePreview.image = images.first
-        toggleCamera = false
-        print("image set")
-        pickerController.dismiss(animated: true, completion: nil)
-        print("after dismiss")
         
-        self.colorDetectPreview.backgroundColor = .black
-        FaceDetection.getLipsLandmarks(for: imagePreview) { (color) in
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            FaceDetection.getLipsLandmarks(for: self.imagePreview) { (color) in
                 self.colorDetectPreview.backgroundColor = color
                 print(color)
             }
         }
+        
+        pickerController.dismiss(animated: true, completion: nil)
+        imagePreview.image = images.first
+        toggleCamera = false
+        self.colorDetectPreview.backgroundColor = .black
+        SwiftSpinner.show("Processing Image...")
         SwiftSpinner.hide()
         
     }
