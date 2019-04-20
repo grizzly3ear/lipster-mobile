@@ -149,7 +149,7 @@ class LipstickListViewController:  UITableViewController , UISearchControllerDel
  
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails" , sender: self)
+        performSegue(withIdentifier: "showLipstickDetail" , sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -156,7 +156,7 @@
                     <connections>
                         <outlet property="lipListTableView" destination="wwH-Np-wde" id="fsS-G9-IsC"/>
                         <outlet property="tableView" destination="wwH-Np-wde" id="Vbf-RH-PyH"/>
-                        <segue destination="teV-rM-HJk" kind="show" identifier="showDetails" id="LDE-6c-fcW"/>
+                        <segue destination="teV-rM-HJk" kind="show" identifier="showLipstickDetail" id="LDE-6c-fcW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
