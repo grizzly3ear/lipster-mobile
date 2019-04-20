@@ -48,7 +48,7 @@ class LipColorDetectionController: UIViewController {
     }
     
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
-        performSegue(withIdentifier: "showLipstickList", sender: self)
+        performSegue(withIdentifier: "showLipstickFromColorList", sender: self)
     }
     
     @IBAction func onRetakeTap(_ sender: UIButton) {
