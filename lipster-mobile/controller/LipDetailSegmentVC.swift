@@ -10,7 +10,7 @@ import UIKit
 import ExpandableLabel
 
 
-class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
+class LipDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollLipImg: UIScrollView!
@@ -37,7 +37,7 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
     var lipColorNameOfDetail = String()
     var lipAllDetail = String()
     var lipClickedColor = UIImage()
-    var typeReview = UITextView()
+   
     var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
@@ -49,24 +49,12 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        typeReview()
+        pageController()
+        self.userList = self.createUserArray()
         clickedPostButton.isEnabled = false
-        
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
 
-        
-        // -------Page Control with scrollView--------------------
-        pageControl.numberOfPages = imgPageControl.count
-        for index in 0..<imgPageControl.count{
-            frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
-            frame.size = scrollLipImg.frame.size
-            
-            let imgView = UIImageView(frame: frame)
-            imgView.image = UIImage(named: imgPageControl[index])
-            self.scrollLipImg.addSubview(imgView)
-        }
-        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(imgPageControl.count)) , height : scrollLipImg.frame.size.height)
-        scrollLipImg.delegate = self
-        //---------------------------------------------------------
         if let lipstick = self.lipstick{
             self.lipstickImage.image =  lipstick.lipstickImage[0]
             self.lipstickImage.image =  lipstick.lipstickImage[1]
@@ -75,14 +63,7 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
             self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipShortDetail
         }
-        //-------------------- type Review -------------------------
-        typeReviewTextView.text = "Review this lipstick here."
-        typeReviewTextView.textColor = UIColor.lightGray
-        typeReviewTextView.delegate = self
-        typeReviewTextView.returnKeyType = .done
         
-        self.userList = self.createUserArray()
-     
         //----------------Read more / Read less--------------
         seemore.delegate = self as? ExpandableLabelDelegate
         seemore.numberOfLines = 3
@@ -93,10 +74,13 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
         seemore.ellipsis = NSAttributedString(string: "...")
         
     }
-   
+  
     //-----------------------User Array------------------------
-    var userList  = [UserReview] ()
+    var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
+                                  "love this color , should try!",
+                                  "nice one."]
     
+    var userList  = [UserReview] ()
     func createUserArray() -> [UserReview] {
         let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut" )
         let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara" )
@@ -104,18 +88,9 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
         return [user1,user2]
     }
     
-    var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
-                                  "love this color , should try!",
-                                  "nice one."]
-    
-    //-----------------------------Clicked Post to Review---------------------------------
-  
-    
     // ----------------------select LipColor and LipImage will change-------------------------
     @IBOutlet weak var lipImageColor: UIImageView!
-    
     @IBOutlet weak var imageColorButton: UIButton!
-    
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!! \(sender.tag)")
         
@@ -162,7 +137,6 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
             lipstickColorName.text = "PK037"
             lipstickShortDetail.text = "Detail of the lipstick is  ....PK037"
         }
-        
     }
 
     @IBAction func segments(_ sender: UISegmentedControl) {
@@ -178,19 +152,12 @@ class LipDetailSegmentVC: UIViewController, UIScrollViewDelegate {
         }
         
     }
-    //-------------------------- scrollView of lipImg method -------------------------
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
-        pageControl.currentPage = Int(pageNumber)
+    @IBAction func clickedTryMe(_ sender: Any) {
+        print("clicked TRY ME")
+        self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
-    
-    //-----------------------------------------
-        @IBAction func clickedTryMe(_ sender: Any) {
-            print("clicked TRY ME")
-            self.performSegue(withIdentifier: "showTryMe", sender: self)
-        }
    
-    }
+}
 
 extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
   
@@ -257,4 +224,35 @@ extension LipDetailSegmentVC {
     }
 }
 
-
+//scrollView of lipImg method
+extension LipDetailSegmentVC {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
+    }
+}
+// type reivew in review segment
+extension LipDetailSegmentVC {
+    func typeReview() {
+        typeReviewTextView.text = "Review this lipstick here."
+        typeReviewTextView.textColor = UIColor.lightGray
+        typeReviewTextView.delegate = self
+        typeReviewTextView.returnKeyType = .done
+    }
+}
+// page controll to show multi Lipstick image 
+extension LipDetailSegmentVC : UIScrollViewDelegate {
+    func pageController(){
+        pageControl.numberOfPages = imgPageControl.count
+        for index in 0..<imgPageControl.count{
+            frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
+            frame.size = scrollLipImg.frame.size
+    
+            let imgView = UIImageView(frame: frame)
+            imgView.image = UIImage(named: imgPageControl[index])
+            self.scrollLipImg.addSubview(imgView)
+        }
+        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(imgPageControl.count)) , height : scrollLipImg.frame.size.height)
+        scrollLipImg.delegate = self
+    }
+}
