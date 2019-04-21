@@ -11,18 +11,21 @@ import UIKit
 class TrendDetailViewController: UIViewController {
 
     @IBOutlet weak var trendBigImageView: UIImageView!
-   // @IBOutlet weak var trendLipColorView: UIView!
-  //  @IBOutlet weak var trendSkinColorView: UIView!
+    @IBOutlet weak var trendLipColorView: UIView!
+    @IBOutlet weak var trendSkinColorView: UIView!
+    @IBOutlet weak var trendNameLabel: UILabel!
     
     var trendBigImage = UIImage()
-  //  var trendLipColor = UIColor()
-   // var trendSkinColor = UIColor()
+    var trendName = UILabel()
+    var trendLipColor = UIColor()
+    var trendSkinColor = UIColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("trend detail will appear")
         trendBigImageView.image = trendBigImage
-      //  trendLipColorView.backgroundColor = trendLipColor
-       // trendSkinColorView.backgroundColor = trendSkinColor
+       
+        trendLipColorView.backgroundColor = trendLipColor
+        trendSkinColorView.backgroundColor = trendSkinColor
     }
 }
