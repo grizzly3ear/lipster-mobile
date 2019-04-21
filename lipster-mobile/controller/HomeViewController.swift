@@ -29,13 +29,12 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
         arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
         
-    //LipstickListViewController().addNavBarImage()
+        // LipstickListViewController().addNavBarImage()
       //  LipstickListViewController().searchBarLip()
         searchBarLip()
         addNavBarImage()
        
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
@@ -55,18 +54,18 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 //            var destination = segue.destination as? LipstickListViewController {
 //                // we gonna set the array of trend here
 //            }
-            
         }
     }
+   
     
-    
-    
+}
+extension HomeViewController{
     func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
-      
+        
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController: nil)
             search.delegate = self
@@ -95,8 +94,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
-    
-    //  ------------------------- logo in nav bar-------------------------------
+}
+extension HomeViewController {
     func addNavBarImage(){
         let navController = navigationController!
         let image = UIImage(named: "logo-3")
@@ -113,7 +112,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         navigationItem.titleView  = imageView
     }
 }
-
 extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
