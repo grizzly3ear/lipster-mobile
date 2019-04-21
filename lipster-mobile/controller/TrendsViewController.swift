@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrendsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate  {
+class TrendsViewController: UIViewController   {
 
     @IBOutlet weak var trendImgView: UIImageView!
     
@@ -22,6 +22,9 @@ class TrendsViewController: UIViewController , UICollectionViewDataSource , UICo
         arrayOfTrendLipColor = [ UIColor(rgb: 0xF4D3C0), UIColor(rgb: 0xE3C19C) , UIColor(rgb: 0xF6C5A4), UIColor(rgb: 0xF6C5A4)]
         
     }
+  
+}
+extension TrendsViewController :  UICollectionViewDataSource , UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  arrayOfTrendImg.count
     }
@@ -37,8 +40,8 @@ class TrendsViewController: UIViewController , UICollectionViewDataSource , UICo
         let mainTrendStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVc = mainTrendStoryboard.instantiateViewController(withIdentifier: "TrendDetailViewController") as! TrendDetailViewController
         desVc.trendBigImage = arrayOfTrendImg[indexPath.row]
-      //  desVc.trendLipColor = arrayOfTrendLipColor[indexPath.row]
-       // desVc.trendSkinColor = arrayOfTrendSkinColor[indexPath.row]
+        //  desVc.trendLipColor = arrayOfTrendLipColor[indexPath.row]
+        // desVc.trendSkinColor = arrayOfTrendSkinColor[indexPath.row]
         self.navigationController?.pushViewController(desVc, animated: true)
     }
 }
