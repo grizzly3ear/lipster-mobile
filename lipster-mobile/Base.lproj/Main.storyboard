@@ -148,6 +148,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
+                            <outlet property="dataSource" destination="2my-jU-SWf" id="BSR-cB-tPB"/>
                             <outlet property="delegate" destination="2my-jU-SWf" id="Ag8-BE-NFk"/>
                         </connections>
                     </tableView>

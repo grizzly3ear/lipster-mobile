@@ -23,8 +23,6 @@ class LipstickListViewController:  UITableViewController  {
         print("\(lipColor)")
         navigationController?.isNavigationBarHidden = false
         self.lipList = self.createArray()
-        self.lipListTableView.delegate = self
-        self.lipListTableView.dataSource = self
  
         addNavBarImage()
         searchBarLip()
