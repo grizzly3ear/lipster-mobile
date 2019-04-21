@@ -8,23 +8,26 @@
 
 import UIKit
 
-class TryMeViewController: UIViewController , UICollectionViewDataSource ,UICollectionViewDelegate {
+class TryMeViewController: UIViewController  {
  
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBAction func clickedLipColorBtn(_ sender: Any) {
+        print("clicked color button")
     }
+    
     let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
+}
+
+extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return  colorCode.count
-     
+        return  colorCode.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -34,6 +37,4 @@ class TryMeViewController: UIViewController , UICollectionViewDataSource ,UIColl
         return cell
     }
     
-   
-
 }
