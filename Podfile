@@ -6,7 +6,7 @@ pod 'ImagePicker'
 pod 'SwiftSpinner'
 pod 'Alamofire'
 pod 'ExpandableLabel'
-
+pod 'FlexiblePageControl'
 
 
 end
