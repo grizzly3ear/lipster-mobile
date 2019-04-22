@@ -11,13 +11,11 @@ import UIKit
 class Trend {
     
     var trendImage : UIImage
-    var trendName : String
     var trendLipstickColor : UIColor
     var trendSkinColor : UIColor
     
-    init(trendImage : UIImage ,  trendName : String , trendLipstickColor : UIColor, trendSkinColor : UIColor) {
+    init(trendImage : UIImage,  trendLipstickColor : UIColor, trendSkinColor : UIColor) {
         self.trendImage = trendImage
-        self.trendName = trendName
         self.trendLipstickColor = trendLipstickColor
         self.trendSkinColor = trendSkinColor
         

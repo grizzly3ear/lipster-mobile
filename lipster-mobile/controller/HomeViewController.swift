@@ -22,17 +22,12 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var searchController : UISearchController!
     
-    var trends  = [Trend] ()
-    func createTrendsArray() -> [Trend] {
-        let trend1 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend2 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend3 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend4 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        
-        return [trend1 , trend2 ,trend3 , trend4]
-    }
+    var trendGroup = TrendGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load")
+        createTrendsArray()
         arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ,UIImage(named: "user1")! ,UIImage(named: "user1")! ]
         arrayOfRecImage = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")! ]
         arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
@@ -45,10 +40,22 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
        
     }
     
-    @IBAction func clickedTrendImage(_ sender: Any) {
-        print("clicked trend image")
-      //  self.performSegue(withIdentifier: "showTrendDetailFromHome", sender: self)
+    func createTrendsArray() {
+        trendGroup.trendName = "Trend of the month | January 2019"
+        trendGroup.trendList = [Trend]()
+        let trend1 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend2 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend3 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend4 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        trendGroup.trendList?.append(trend1)
+        trendGroup.trendList?.append(trend2)
+        trendGroup.trendList?.append(trend3)
+        trendGroup.trendList?.append(trend4)
+        
+        print("finish create trend array")
+        print(trendGroup.trendName)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
@@ -65,7 +72,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             
         } else if segueIdentifier == "showTrendList" {
             print("showTrendList")
-            if segue.destination is TrendsViewController {
+            if segue.destination is TrendListViewController {
 //                // we gonna set the array of trend here
     
             }
@@ -130,16 +137,18 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  6
+        return  3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("create collection cell")
         if collectionView == trendsCollectionView{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendImageCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
-           // cell.setTrend(trends: trends[indexPath.row])
-          //  cell.trendImageView.image = trends[indexPath.row].trendImage
-            let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image =  arrayOfTrendImg[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
+//            let imageView = cell.viewWithTag(1) as! UIImageView
+//            imageView.image =  arrayOfTrendImg[indexPath.row]
+            print("\(indexPath.row)")
+            print("\(indexPath.item)")
+            cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
          
             return cell
         }

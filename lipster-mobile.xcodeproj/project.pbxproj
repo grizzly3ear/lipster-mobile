@@ -27,7 +27,7 @@
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
 		D8E48D89226CC2C300A192EB /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D88226CC2C300A192EB /* Trend.swift */; };
-		D8E48D8B226D8C8400A192EB /* TrendRowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */; };
+		D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D8E226DCE9300A192EB /* TrendGroup.swift */; };
 		D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA969A226986A80060B78A /* HomeViewController.swift */; };
 		D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */; };
 		D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */; };
@@ -74,7 +74,7 @@
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
 		D8E48D88226CC2C300A192EB /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
-		D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRowCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8E48D8E226DCE9300A192EB /* TrendGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroup.swift; sourceTree = "<group>"; };
 		D8EA969A226986A80060B78A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecHomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
 				30B966F1224E06F700258CA6 /* FaceDetection.swift */,
 				D8E48D88226CC2C300A192EB /* Trend.swift */,
+				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -188,7 +189,6 @@
 		D863452C2242155000AC0EA6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */,
 				D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */,
 				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
 				D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */,
@@ -328,12 +328,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */,
-				D8E48D8B226D8C8400A192EB /* TrendRowCollectionViewCell.swift in Sources */,
 				D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */,
 				3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */,
 				D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
+				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
