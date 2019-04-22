@@ -15,17 +15,40 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
     
-    var trendBigImage = UIImage()
-    var trendName = UILabel()
-    var trendLipColor = UIColor()
-    var trendSkinColor = UIColor()
+    @IBOutlet weak var scrollTrendImage: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
+    var trend: [Trend]!
+    var frame = CGRect(x:0,y:0,width:0 , height:0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("trend detail will appear")
-        trendBigImageView.image = trendBigImage
-       
-        trendLipColorView.backgroundColor = trendLipColor
-        trendSkinColorView.backgroundColor = trendSkinColor
+        pageController()
+    }
+}
+
+//scrollView of lipImg method
+extension TrendDetailViewController {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var pageNumber = scrollTrendImage.contentOffset.x / scrollTrendImage.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
+    }
+}
+
+// page controll to show multi Trend image
+extension TrendDetailViewController: UIScrollViewDelegate {
+    func pageController() {
+        pageControl.numberOfPages = (self.trend?.count)!
+        for index in 0..<pageControl.numberOfPages {
+            frame.origin.x = scrollTrendImage.frame.size.width * CGFloat(index)
+            frame.size = scrollTrendImage.frame.size
+            
+            let imgView = UIImageView(frame: frame)
+            imgView.image = self.trend[index].trendImage
+            self.scrollTrendImage.addSubview(imgView)
+        }
+        scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
+        scrollTrendImage.delegate = self
     }
 }

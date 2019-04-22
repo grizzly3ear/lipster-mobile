@@ -16,7 +16,7 @@ class TrendHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trendSkinColorView: UIView!
     
     
-    func setTrend(trends :Trends) {
+    func setTrend(trends :Trend) {
         trendHomeImageView.image = trends.trendImage
         trendNameLabel.text = trends.trendName
         trendLipstickColorView.backgroundColor = trends.trendLipstickColor

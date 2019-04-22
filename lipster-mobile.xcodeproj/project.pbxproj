@@ -26,12 +26,13 @@
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
+		D8E48D89226CC2C300A192EB /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D88226CC2C300A192EB /* Trend.swift */; };
+		D8E48D8B226D8C8400A192EB /* TrendRowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */; };
 		D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA969A226986A80060B78A /* HomeViewController.swift */; };
 		D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */; };
 		D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */; };
 		D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */; };
-		D8EA96AB226AEE9F0060B78A /* TrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96AA226AEE9F0060B78A /* TrendsViewController.swift */; };
-		D8EA96AD226AF2B20060B78A /* TrendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96AC226AF2B20060B78A /* TrendsCollectionViewCell.swift */; };
+		D8EA96AB226AEE9F0060B78A /* TrendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96AA226AEE9F0060B78A /* TrendListViewController.swift */; };
 		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
 		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -72,12 +73,13 @@
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
+		D8E48D88226CC2C300A192EB /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRowCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA969A226986A80060B78A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewHomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		D8EA96AA226AEE9F0060B78A /* TrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewController.swift; sourceTree = "<group>"; };
-		D8EA96AC226AF2B20060B78A /* TrendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8EA96AA226AEE9F0060B78A /* TrendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendListViewController.swift; sourceTree = "<group>"; };
 		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
 		E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.debug.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
 				30B966F1224E06F700258CA6 /* FaceDetection.swift */,
+				D8E48D88226CC2C300A192EB /* Trend.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -176,7 +179,7 @@
 				D8224AC8225C881600B7E403 /* LipDetailSegmentVC.swift */,
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 				D8EA969A226986A80060B78A /* HomeViewController.swift */,
-				D8EA96AA226AEE9F0060B78A /* TrendsViewController.swift */,
+				D8EA96AA226AEE9F0060B78A /* TrendListViewController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
 			);
 			path = controller;
@@ -185,7 +188,7 @@
 		D863452C2242155000AC0EA6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				D8EA96AC226AF2B20060B78A /* TrendsCollectionViewCell.swift */,
+				D8E48D8A226D8C8400A192EB /* TrendRowCollectionViewCell.swift */,
 				D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */,
 				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
 				D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */,
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */,
+				D8E48D8B226D8C8400A192EB /* TrendRowCollectionViewCell.swift in Sources */,
 				D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */,
 				3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */,
 				D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */,
@@ -336,12 +340,12 @@
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
 				D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */,
-				D8EA96AD226AF2B20060B78A /* TrendsCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
 				D8224AC9225C881600B7E403 /* LipDetailSegmentVC.swift in Sources */,
+				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
-				D8EA96AB226AEE9F0060B78A /* TrendsViewController.swift in Sources */,
+				D8EA96AB226AEE9F0060B78A /* TrendListViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,

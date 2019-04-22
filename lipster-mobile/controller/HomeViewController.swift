@@ -22,12 +22,12 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var searchController : UISearchController!
     
-    var trends  = [Trends] ()
-    func createTrendsArray() -> [Trends] {
-        let trend1 : Trends = Trends(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend2 : Trends = Trends(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend3 : Trends = Trends(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend4 : Trends = Trends(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+    var trends  = [Trend] ()
+    func createTrendsArray() -> [Trend] {
+        let trend1 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend2 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend3 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user2"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend4 : Trend = Trend(trendImage: #imageLiteral(resourceName: "user1"), trendName: "Trend of the month | January 2019", trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
         
         return [trend1 , trend2 ,trend3 , trend4]
     }
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     @IBAction func clickedTrendImage(_ sender: Any) {
         print("clicked trend image")
-     //   self.performSegue(withIdentifier: "showTrendDetail", sender: self)
+      //  self.performSegue(withIdentifier: "showTrendDetailFromHome", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
@@ -160,12 +160,12 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             return cell
         }
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mainTrendStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desVc = mainTrendStoryboard.instantiateViewController(withIdentifier: "TrendDetailViewController") as! TrendDetailViewController
-        desVc.trendBigImage = trends[indexPath.row].trendImage
-        desVc.trendLipColor = trends[indexPath.row].trendLipstickColor
-        desVc.trendSkinColor = trends[indexPath.row].trendSkinColor
-        self.navigationController?.pushViewController(desVc, animated: true)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let mainTrendStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let desVc = mainTrendStoryboard.instantiateViewController(withIdentifier: "TrendsViewController") as! TrendsViewController
+//      //  desVc.trendBigImage = arrayOfTrendImg[indexPath.row]
+//     //   desVc.trendLipColor = trends[indexPath.row].trendLipstickColor
+//     //   desVc.trendSkinColor = trends[indexPath.row].trendSkinColor
+//        self.navigationController?.pushViewController(desVc, animated: true)
+//    }
 }
