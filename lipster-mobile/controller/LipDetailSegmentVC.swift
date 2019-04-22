@@ -45,6 +45,7 @@ class LipDetailSegmentVC: UIViewController {
     
     //---------------------- page control----------------------
     var imgPageControl : [String] = ["BE115","BE115_pic2"]
+//    var imgPageControl : [String]
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
     override func viewDidLoad() {
@@ -231,6 +232,7 @@ extension LipDetailSegmentVC {
         pageControl.currentPage = Int(pageNumber)
     }
 }
+
 // type reivew in review segment
 extension LipDetailSegmentVC {
     func typeReview() {
@@ -240,19 +242,20 @@ extension LipDetailSegmentVC {
         typeReviewTextView.returnKeyType = .done
     }
 }
+
 // page controll to show multi Lipstick image 
 extension LipDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
-        pageControl.numberOfPages = imgPageControl.count
-        for index in 0..<imgPageControl.count{
+        pageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
+        for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
             frame.size = scrollLipImg.frame.size
     
             let imgView = UIImageView(frame: frame)
-            imgView.image = UIImage(named: imgPageControl[index])
+            imgView.image = self.lipstick!.lipstickImage[index]
             self.scrollLipImg.addSubview(imgView)
         }
-        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(imgPageControl.count)) , height : scrollLipImg.frame.size.height)
+        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipImg.frame.size.height)
         scrollLipImg.delegate = self
     }
 }
