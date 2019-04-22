@@ -21,6 +21,18 @@ class TrendDetailViewController: UIViewController {
         initPageControl()
         initUserInterface()
     }
+    
+    @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
+        let colorSelect = trendLipColorView.backgroundColor!
+        performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let color = sender as? UIColor
+        if let destination = segue.destination as? LipstickListViewController {
+            destination.lipColor = color
+        }
+    }
 }
 
 extension TrendDetailViewController {

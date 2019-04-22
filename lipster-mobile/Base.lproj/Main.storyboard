@@ -751,7 +751,7 @@
                                         <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
                                         <state key="normal" title="Show Lipstick list"/>
                                         <connections>
-                                            <segue destination="2my-jU-SWf" kind="show" id="E0c-gq-V4h"/>
+                                            <action selector="onShowLipstickButtonPress:" destination="yRT-0L-hOz" eventType="touchUpInside" id="2UN-pe-wF4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -796,6 +796,7 @@
                         <outlet property="trendLipColorView" destination="gZC-ew-wGe" id="f7T-XC-d05"/>
                         <outlet property="trendNameLabel" destination="5ed-Ff-9GO" id="FWX-Hq-CUb"/>
                         <outlet property="trendSkinColorView" destination="w51-r5-Lbf" id="nVv-rf-QgS"/>
+                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickListFromColor" id="TWS-gk-k14"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9h-NQ-45O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1567,6 +1568,6 @@
         <image name="try me" width="1078" height="652"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E0c-gq-V4h"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
