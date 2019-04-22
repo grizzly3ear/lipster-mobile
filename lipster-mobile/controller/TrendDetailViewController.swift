@@ -13,12 +13,26 @@ class TrendDetailViewController: UIViewController {
     
     var trendGroup: TrendGroup!
     var frame = CGRect(x:0,y:0,width:0 , height:0)
-    let scrollSize: CGFloat = 270
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initScrollView()
         initPageControl()
+        initUserInterface()
+    }
+}
+
+extension TrendDetailViewController {
+    
+    func initUserInterface() {
+        self.trendNameLabel.text = trendGroup.trendName
+        setUserInterface(trendGroup.trendList!.first!)
+    }
+    
+    func setUserInterface(_ trend: Trend) {
+        self.trendLipColorView.backgroundColor = trend.trendLipstickColor
+        self.trendSkinColorView.backgroundColor = trend.trendSkinColor
     }
 }
 
@@ -27,6 +41,9 @@ extension TrendDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
+        
+        setUserInterface(trendGroup.trendList![pageControl.currentPage])
+        print("scroll end \(scrollView.contentOffset.x)")
     }
     
     func initScrollView() {

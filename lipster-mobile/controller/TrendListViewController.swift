@@ -18,10 +18,14 @@ class TrendListViewController: UITableViewController   {
             let trendGroup = TrendGroup()
             trendGroup.trendName = "Trend of the year 2010"
             trendGroup.trendList = [Trend]()
-            for j in 1...2 {
-                let trend = Trend(trendImage: UIImage(named: "user\(j)")!,trendLipstickColor: UIColor(rgb: 0xFA4855), trendSkinColor: UIColor(rgb: 0xFA4855))
-                trendGroup.trendList?.append(trend)
-            }
+            
+            let trend1 = Trend(trendImage: UIImage(named: "user\(1)")!,trendLipstickColor: UIColor(rgb: 0xFA4855), trendSkinColor: UIColor(rgb: 0xFA4855))
+            let trend2 = Trend(trendImage: UIImage(named: "user\(2)")!,trendLipstickColor: UIColor(rgb: 0xFA4825), trendSkinColor: UIColor(rgb: 0xE0E0E0))
+            let trend3 = Trend(trendImage: UIImage(named: "user\(1)")!,trendLipstickColor: UIColor(rgb: 0xFA4805), trendSkinColor: UIColor(rgb: 0xFFEE00))
+            
+            trendGroup.trendList?.append(trend1)
+            trendGroup.trendList?.append(trend2)
+            trendGroup.trendList?.append(trend3)
             
             trendGroupList.append(trendGroup)
             
