@@ -311,6 +311,11 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
+                                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLX-dA-wd8">
+                                                                            <rect key="frame" x="30" y="30" width="40" height="36"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </view>
                                                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVb-AP-XTe">
                                                                             <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -328,6 +333,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="trendHomeImageView" destination="DVb-AP-XTe" id="vdr-mg-PKh"/>
+                                                                    <segue destination="G5r-9g-puV" kind="show" identifier="showTrendGroupList" id="FHp-u1-bz8"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -565,7 +571,6 @@
                         <outlet property="RecCollectionView" destination="G5J-Ep-gXf" id="RZu-Vz-Zgg"/>
                         <outlet property="RecentCollectionView" destination="dlZ-hY-uV9" id="kLN-RG-2Q0"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
-                        <segue destination="G5r-9g-puV" kind="show" identifier="showTrendList" id="kSB-hC-4oc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -581,24 +586,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendGroupTableViewCell" rowHeight="176" id="R1K-Ok-yqe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendGroupTableViewCell" rowHeight="176" id="R1K-Ok-yqe" customClass="TrendGroupTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="176"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R1K-Ok-yqe" id="ql6-Ea-JMa">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TrendName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwW-3X-f0N">
-                                            <rect key="frame" x="31" y="11" width="89" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrendName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwW-3X-f0N">
+                                            <rect key="frame" x="31" y="11" width="328" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZEq-q1-fmh">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZEq-q1-fmh">
                                             <rect key="frame" x="15" y="47" width="345" height="108"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="108" id="XSy-5a-0mW"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x8P-jf-VLv">
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -627,7 +633,20 @@
                                             </cells>
                                         </collectionView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ZEq-q1-fmh" firstAttribute="centerX" secondItem="ql6-Ea-JMa" secondAttribute="centerX" id="Gy7-nz-mxA"/>
+                                        <constraint firstItem="QwW-3X-f0N" firstAttribute="leading" secondItem="ql6-Ea-JMa" secondAttribute="leadingMargin" constant="15" id="Hy3-Vd-URB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ZEq-q1-fmh" secondAttribute="bottom" constant="10" id="LDh-sK-NxI"/>
+                                        <constraint firstItem="QwW-3X-f0N" firstAttribute="top" secondItem="ql6-Ea-JMa" secondAttribute="topMargin" id="OrL-hl-qbN"/>
+                                        <constraint firstItem="ZEq-q1-fmh" firstAttribute="leading" secondItem="ql6-Ea-JMa" secondAttribute="leadingMargin" constant="-1" id="Qjd-dV-laq"/>
+                                        <constraint firstItem="QwW-3X-f0N" firstAttribute="trailing" secondItem="ql6-Ea-JMa" secondAttribute="trailingMargin" id="Y3G-8W-5Jw"/>
+                                        <constraint firstItem="ZEq-q1-fmh" firstAttribute="top" secondItem="QwW-3X-f0N" secondAttribute="bottom" constant="15" id="fHi-Ca-M7h"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="trendImageCollectionView" destination="ZEq-q1-fmh" id="kQn-mE-FSG"/>
+                                    <outlet property="trendName" destination="QwW-3X-f0N" id="tet-xj-vQr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

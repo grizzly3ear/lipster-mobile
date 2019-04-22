@@ -56,6 +56,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         print(trendGroup.trendName)
     }
     
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
@@ -70,8 +71,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 //                // we gonna set the array of lipstick here
 //            }
             
-        } else if segueIdentifier == "showTrendList" {
-            print("showTrendList")
+        } else if segueIdentifier == "showTrendGroupList" {
+            print("showTrendGroupList")
             if segue.destination is TrendListViewController {
 //                // we gonna set the array of trend here
     
