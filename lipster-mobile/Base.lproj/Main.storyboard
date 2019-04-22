@@ -776,22 +776,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="GOt-Jd-SYn">
-                                <rect key="frame" x="52" y="347" width="270" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.091328337740000001" green="0.74616194459999996" blue="0.78087478089999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="pageIndicatorTintColor" red="0.91997808218002319" green="0.59198039770126343" blue="0.70985203981399536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IvM-mB-DlO">
                                 <rect key="frame" x="52" y="74" width="270" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-69-BET" customClass="FlexiblePageControl" customModule="FlexiblePageControl">
+                                <rect key="frame" x="123" y="352" width="139" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HRP-33-jTt"/>
                     </view>
                     <connections>
-                        <outlet property="pageControl" destination="GOt-Jd-SYn" id="0d7-HW-Mwe"/>
+                        <outlet property="pageControl" destination="fAH-69-BET" id="gK1-nc-oMJ"/>
                         <outlet property="scrollTrendImage" destination="IvM-mB-DlO" id="Nlu-qn-Kel"/>
                         <outlet property="trendBigImageView" destination="tnD-qn-IWz" id="yt8-QR-s1j"/>
                         <outlet property="trendLipColorView" destination="gZC-ew-wGe" id="f7T-XC-d05"/>
@@ -1100,7 +1099,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>
@@ -1568,6 +1567,6 @@
         <image name="try me" width="1078" height="652"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nXF-J0-F0d"/>
+        <segue reference="E0c-gq-V4h"/>
     </inferredMetricsTieBreakers>
 </document>
