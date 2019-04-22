@@ -18,12 +18,11 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var scrollTrendImage: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    var trend: [Trend]!
+    var trendGroup: TrendGroup!
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("trend detail will appear")
         pageController()
     }
 }
@@ -31,7 +30,7 @@ class TrendDetailViewController: UIViewController {
 //scrollView of lipImg method
 extension TrendDetailViewController {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var pageNumber = scrollTrendImage.contentOffset.x / scrollTrendImage.frame.size.width
+        let pageNumber = scrollTrendImage.contentOffset.x / scrollTrendImage.frame.size.width
         pageControl.currentPage = Int(pageNumber)
     }
 }
@@ -39,13 +38,13 @@ extension TrendDetailViewController {
 // page controll to show multi Trend image
 extension TrendDetailViewController: UIScrollViewDelegate {
     func pageController() {
-        pageControl.numberOfPages = (self.trend?.count)!
+        pageControl.numberOfPages = (self.trendGroup?.trendList!.count)!
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollTrendImage.frame.size.width * CGFloat(index)
             frame.size = scrollTrendImage.frame.size
             
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.trend[index].trendImage
+            imgView.image = self.trendGroup.trendList![index].trendImage
             self.scrollTrendImage.addSubview(imgView)
         }
         scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)

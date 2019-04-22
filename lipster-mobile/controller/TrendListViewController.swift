@@ -15,7 +15,8 @@ class TrendListViewController: UITableViewController   {
     override func viewDidLoad() {
         super.viewDidLoad()
         for _ in 0...3 {
-            var trendGroup = TrendGroup()
+            let trendGroup = TrendGroup()
+            trendGroup.trendName = "Trend of the year 2010"
             trendGroup.trendList = [Trend]()
             for j in 1...2 {
                 let trend = Trend(trendImage: UIImage(named: "user\(j)")!,trendLipstickColor: UIColor(rgb: 0xFA4855), trendSkinColor: UIColor(rgb: 0xFA4855))
@@ -39,7 +40,7 @@ class TrendListViewController: UITableViewController   {
 extension TrendListViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("table view will display cell")
+        
         guard let tableViewCell = cell as? TrendGroupTableViewCell else {return}
         
         tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self as UICollectionViewDataSource & UICollectionViewDelegate, forRow: indexPath.row)
@@ -51,32 +52,43 @@ extension TrendListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("table view cell for row at")
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendGroupTableViewCell", for: indexPath) as! TrendGroupTableViewCell
+        print("name is \(trendGroupList[indexPath.item])")
         cell.trendName.text = trendGroupList[indexPath.item].trendName
+        
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TrendDetailViewController {
+            let indexItemSelect = sender as! Int
+            destination.trendGroup = trendGroupList[indexItemSelect]
+        }
     }
     
 }
 
 // UICollectionView
 extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(collectionView.tag)
+        
         print(trendGroupList[collectionView.tag])
         return trendGroupList[collectionView.tag].trendList!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("collection view cell for item at")
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendImageCollectionViewCell", for: indexPath) as? TrendImageCollectionViewCell
         
         cell?.imageTrend.image = trendGroupList[collectionView.tag].trendList![indexPath.item].trendImage
         
         return cell!
     }
-    
-    
 }
 
