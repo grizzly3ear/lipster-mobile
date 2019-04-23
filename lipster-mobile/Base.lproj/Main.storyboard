@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -402,7 +402,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" reuseIdentifier="RecCollectionViewCell" id="UaK-4z-hLT" customClass="RecHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" reuseIdentifier="recommendCollectionViewCell" id="UaK-4z-hLT" customClass="RecHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="4" width="108" height="146"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -501,7 +501,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecentlyCollectionViewCell" id="2wm-Fc-qOm" customClass="RecentlyViewHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recentlyCollectionViewCell" id="2wm-Fc-qOm" customClass="RecentlyViewHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="108" height="146"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1100,7 +1100,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>
@@ -1325,59 +1325,59 @@
                                             <action selector="clickedTryMe:" destination="teV-rM-HJk" eventType="touchUpInside" id="fNa-GM-Obp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeI-th-iYD">
-                                        <rect key="frame" x="28" y="280" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="01"/>
-                                        <connections>
-                                            <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="VQi-L5-Vhk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU5-Fw-3JJ">
-                                        <rect key="frame" x="76" y="280" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="02"/>
-                                        <connections>
-                                            <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="zec-Xi-DBB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgX-6G-RLV">
-                                        <rect key="frame" x="124" y="280" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="03"/>
-                                        <connections>
-                                            <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="yTX-pi-0Bh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqu-Vs-Fcq">
-                                        <rect key="frame" x="172" y="280" width="40" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="04"/>
-                                        <connections>
-                                            <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="cWP-nG-pfL"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-6b-3f5">
-                                        <rect key="frame" x="228" y="285" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="imageColorButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="fRr-TL-goe"/>
-                                        </connections>
-                                    </button>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-4A-Jwd">
                                         <rect key="frame" x="87" y="235" width="200" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </pageControl>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-Pu-aKZ">
+                                        <rect key="frame" x="8" y="280" width="266" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OVI-Oc-egT">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectColorFromDetailCollectionViewCell" id="zMi-9u-GSb" customClass="SelectColorFromDetailCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3f-hz-jjB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.091328337740000001" green="0.74616194459999996" blue="0.78087478089999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="sbI-Ma-4Ml"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </view>
+                                                <size key="customSize" width="35" height="35"/>
+                                                <connections>
+                                                    <outlet property="clickedLipstickColorButton" destination="i3f-hz-jjB" id="gkM-KU-aHh"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="teV-rM-HJk" id="xIN-Na-l1m"/>
+                                            <outlet property="delegate" destination="teV-rM-HJk" id="JEf-B5-mz4"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ei9-aP-oSZ" firstAttribute="top" secondItem="4T3-CY-Eih" secondAttribute="bottom" constant="8" symbolic="YES" id="0Kb-gl-Dxs"/>
@@ -1417,9 +1417,7 @@
                     <size key="freeformSize" width="750" height="800"/>
                     <connections>
                         <outlet property="clickedPostButton" destination="206-je-nJc" id="BlH-zp-7bu"/>
-                        <outlet property="imageColorButton" destination="YsH-6b-3f5" id="ZOh-Fo-wqm"/>
                         <outlet property="lipImageColor" destination="PLt-Zv-RHb" id="0fd-CX-mb1"/>
-                        <outlet property="lipSelectColor" destination="cqu-Vs-Fcq" id="NJ0-tt-Bun"/>
                         <outlet property="lipstickBrand" destination="RxD-Xm-JhL" id="UMU-A7-XoT"/>
                         <outlet property="lipstickColorName" destination="5yV-ks-Wo6" id="68y-pT-d2v"/>
                         <outlet property="lipstickImage" destination="PLt-Zv-RHb" id="8lc-8l-c6k"/>
@@ -1430,6 +1428,7 @@
                         <outlet property="scrollLipImg" destination="dMD-Tf-If1" id="W7A-Nc-gcj"/>
                         <outlet property="scrollView" destination="Ei9-aP-oSZ" id="ZdV-2y-GYl"/>
                         <outlet property="seemore" destination="BSi-Mt-E5P" id="q9w-8Z-g4S"/>
+                        <outlet property="selectLipstickColorCollectionView" destination="h7B-Pu-aKZ" id="a5b-eE-XZQ"/>
                         <outlet property="tryMeButton" destination="D0R-hO-t17" id="vex-aP-jw8"/>
                         <outlet property="typeReviewTextView" destination="vFW-z2-5vp" id="ZXx-Mc-B7c"/>
                         <segue destination="MjW-ox-6lU" kind="show" identifier="showTryMe" id="gO6-xR-FiA"/>
@@ -1568,6 +1567,6 @@
         <image name="try me" width="1078" height="652"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TWS-gk-k14"/>
+        <segue reference="WMu-Ze-rVT"/>
     </inferredMetricsTieBreakers>
 </document>

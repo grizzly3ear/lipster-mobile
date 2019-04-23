@@ -31,6 +31,9 @@ class LipDetailSegmentVC: UIViewController {
     @IBOutlet weak var typeReviewTextView: UITextView!
     @IBOutlet weak var clickedPostButton: UIButton!
     
+    
+    @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
+    
     var imageOfDetail = UIImage()
     var lipBrandofDetail = String()
     var lipNameOfDetail = String()
@@ -41,7 +44,7 @@ class LipDetailSegmentVC: UIViewController {
     var reviewTblView = UITableView()
     var detailView : UIView!
     var reviewView : UIView!
-    var lipstick : Lipstick?
+    var lipstickList : Lipstick?
     
     //---------------------- page control----------------------
     var imgPageControl : [String] = ["BE115","BE115_pic2"]
@@ -56,7 +59,7 @@ class LipDetailSegmentVC: UIViewController {
         clickedPostButton.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
 
-        if let lipstick = self.lipstick{
+        if let lipstick = self.lipstickList{
             self.lipstickImage.image =  lipstick.lipstickImage[0]
             self.lipstickImage.image =  lipstick.lipstickImage[1]
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -91,7 +94,7 @@ class LipDetailSegmentVC: UIViewController {
     
     // ----------------------select LipColor and LipImage will change-------------------------
     @IBOutlet weak var lipImageColor: UIImageView!
-    @IBOutlet weak var imageColorButton: UIButton!
+    @IBOutlet weak var selectColorButton: UIButton!
     @IBAction func clickedColor(_ sender: UIButton) {
         print("clicked!!! \(sender.tag)")
         
@@ -246,16 +249,33 @@ extension LipDetailSegmentVC {
 // page controll to show multi Lipstick image 
 extension LipDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
-        pageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
+        pageControl.numberOfPages = (self.lipstickList?.lipstickImage.count)!
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
             frame.size = scrollLipImg.frame.size
     
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.lipstick!.lipstickImage[index]
+            imgView.image = self.lipstickList!.lipstickImage[index]
             self.scrollLipImg.addSubview(imgView)
         }
         scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipImg.frame.size.height)
         scrollLipImg.delegate = self
     }
+}
+
+extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return  (lipstickList?.lipColorCode.accessibilityElementCount())!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("collection view cell ")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
+        cell?.clickedLipstickColorButton.backgroundColor = lipstickList?.lipColorCode
+       // cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
+        return cell!
+    }
+    
+    
 }

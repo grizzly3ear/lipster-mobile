@@ -154,14 +154,14 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             return cell
         }
         else if (collectionView == recentCollectionView){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
             cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
             cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
             cell.RecentNameLabel.text! = arrayOfRecName[indexPath.row]
             return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
             //            let imageView = cell.viewWithTag(2) as! UIImageView
             //            imageView.image = arrayOfRecImage[indexPath.row]
             cell.recImageView.image = arrayOfRecImage[indexPath.row]
