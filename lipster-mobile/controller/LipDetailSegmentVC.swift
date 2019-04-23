@@ -15,7 +15,7 @@ class LipDetailSegmentVC: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollLipImg: UIScrollView!
     @IBOutlet weak var lipstickImage: UIImageView!
-    @IBOutlet weak var lipSelectColor: UIButton!
+
     @IBOutlet weak var tryMeButton: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -34,6 +34,7 @@ class LipDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
+    
     var imageOfDetail = UIImage()
     var lipBrandofDetail = String()
     var lipNameOfDetail = String()
@@ -47,7 +48,7 @@ class LipDetailSegmentVC: UIViewController {
     var lipstickList : Lipstick?
     
     //---------------------- page control----------------------
-    var imgPageControl : [String] = ["BE115","BE115_pic2"]
+ //   var imgPageControl : [String] = ["BE115","BE115_pic2"]
 //    var imgPageControl : [String]
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
@@ -100,46 +101,26 @@ class LipDetailSegmentVC: UIViewController {
         
         if sender.tag == 0{
             let imageClicked  = sender.image(for: .normal)
-            lipImageColor.image = #imageLiteral(resourceName: "PK037")
-            lipstickBrand.text = "ETUDE"
-            lipstickName.text =  "Dear My Lip Talk "
-            lipstickColorName.text = "BE115"
-            lipstickShortDetail.text = "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour."
+           
             
         }
 
         if sender.tag == 1{
             let imageClicked  = sender.image(for: .normal)
-            lipImageColor.image = #imageLiteral(resourceName: "BE115")
-            lipstickBrand.text = "ETUDE"
-            lipstickName.text =  "Dear My Lip Talk "
-            lipstickColorName.text = "BE116"
-            lipstickShortDetail.text = "Detail of the lipstick is  ...."
+          
         }
         if sender.tag == 2{
             let imageClicked  = sender.image(for: .normal)
-            lipImageColor.image = #imageLiteral(resourceName: "BE116")
-            lipstickBrand.text = "ETUDE"
-            lipstickName.text =  "Dear My Lip Talk "
-            lipstickColorName.text = "OR241"
-            lipstickShortDetail.text = "Detail of the lipstick is  ....OR241"
+            
             
         }
         if sender.tag == 3{
             let imageClicked  = sender.image(for: .normal)
-            lipImageColor.image = #imageLiteral(resourceName: "PK037")
-            lipstickBrand.text = "ETUDE"
-            lipstickName.text =  "Dear My Lip Talk "
-            lipstickColorName.text = "PK035"
-            lipstickShortDetail.text = "Detail of the lipstick is  ....PK035"
+        
         }
         if sender.tag == 4{
             let imageClicked  = sender.image(for: .normal)
-            lipImageColor.image = #imageLiteral(resourceName: "BE115")
-            lipstickBrand.text = "ETUDE"
-            lipstickName.text =  "Dear My Lip Talk "
-            lipstickColorName.text = "PK037"
-            lipstickShortDetail.text = "Detail of the lipstick is  ....PK037"
+           
         }
     }
 
@@ -266,13 +247,15 @@ extension LipDetailSegmentVC : UIScrollViewDelegate {
 extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  (lipstickList?.lipColorCode.accessibilityElementCount())!
+        return  10
+        
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("collection view cell ")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
-        cell?.clickedLipstickColorButton.backgroundColor = lipstickList?.lipColorCode
+        cell?.clickedLipstickColorButton.backgroundColor = .red
        // cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
         return cell!
     }
