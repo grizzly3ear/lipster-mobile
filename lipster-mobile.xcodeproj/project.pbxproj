@@ -21,10 +21,10 @@
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D8224AC9225C881600B7E403 /* LipDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8224AC8225C881600B7E403 /* LipDetailSegmentVC.swift */; };
-		D8250E46226F7E6D009A2D25 /* LipstickImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E45226F7E6D009A2D25 /* LipstickImages.swift */; };
-		D8250E48226F7F28009A2D25 /* LipstickColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E47226F7F28009A2D25 /* LipstickColors.swift */; };
-		D8250E4A226F80FD009A2D25 /* LipstickDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E49226F80FD009A2D25 /* LipstickDetails.swift */; };
-		D8250E4C226F83FB009A2D25 /* LipstickBrands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E4B226F83FB009A2D25 /* LipstickBrands.swift */; };
+		D8250E46226F7E6D009A2D25 /* LipstickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E45226F7E6D009A2D25 /* LipstickImage.swift */; };
+		D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E47226F7F28009A2D25 /* LipstickColor.swift */; };
+		D8250E4A226F80FD009A2D25 /* LipstickDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E49226F80FD009A2D25 /* LipstickDetail.swift */; };
+		D8250E4C226F83FB009A2D25 /* LipstickBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E4B226F83FB009A2D25 /* LipstickBrand.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
@@ -75,10 +75,10 @@
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D8224AC8225C881600B7E403 /* LipDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipDetailSegmentVC.swift; sourceTree = "<group>"; };
-		D8250E45226F7E6D009A2D25 /* LipstickImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickImages.swift; sourceTree = "<group>"; };
-		D8250E47226F7F28009A2D25 /* LipstickColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickColors.swift; sourceTree = "<group>"; };
-		D8250E49226F80FD009A2D25 /* LipstickDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetails.swift; sourceTree = "<group>"; };
-		D8250E4B226F83FB009A2D25 /* LipstickBrands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickBrands.swift; sourceTree = "<group>"; };
+		D8250E45226F7E6D009A2D25 /* LipstickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickImage.swift; sourceTree = "<group>"; };
+		D8250E47226F7F28009A2D25 /* LipstickColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickColor.swift; sourceTree = "<group>"; };
+		D8250E49226F80FD009A2D25 /* LipstickDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetail.swift; sourceTree = "<group>"; };
+		D8250E4B226F83FB009A2D25 /* LipstickBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickBrand.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -164,10 +164,10 @@
 				30B966F1224E06F700258CA6 /* FaceDetection.swift */,
 				D8E48D88226CC2C300A192EB /* Trend.swift */,
 				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
-				D8250E45226F7E6D009A2D25 /* LipstickImages.swift */,
-				D8250E47226F7F28009A2D25 /* LipstickColors.swift */,
-				D8250E49226F80FD009A2D25 /* LipstickDetails.swift */,
-				D8250E4B226F83FB009A2D25 /* LipstickBrands.swift */,
+				D8250E45226F7E6D009A2D25 /* LipstickImage.swift */,
+				D8250E47226F7F28009A2D25 /* LipstickColor.swift */,
+				D8250E49226F80FD009A2D25 /* LipstickDetail.swift */,
+				D8250E4B226F83FB009A2D25 /* LipstickBrand.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8250E46226F7E6D009A2D25 /* LipstickImages.swift in Sources */,
+				D8250E46226F7E6D009A2D25 /* LipstickImage.swift in Sources */,
 				D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */,
 				D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */,
 				D8E48D95226DE0A200A192EB /* TrendImageCollectionViewCell.swift in Sources */,
@@ -360,7 +360,7 @@
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
-				D8250E4C226F83FB009A2D25 /* LipstickBrands.swift in Sources */,
+				D8250E4C226F83FB009A2D25 /* LipstickBrand.swift in Sources */,
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
@@ -377,10 +377,10 @@
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
-				D8250E48226F7F28009A2D25 /* LipstickColors.swift in Sources */,
+				D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */,
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
-				D8250E4A226F80FD009A2D25 /* LipstickDetails.swift in Sources */,
+				D8250E4A226F80FD009A2D25 /* LipstickDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

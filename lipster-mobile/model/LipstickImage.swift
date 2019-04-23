@@ -8,13 +8,18 @@
 
 import UIKit
 
-class LipstickImages {
+class LipstickImage {
     
+    var lipstickImageId : Int
     var lipstickImage : UIImage
-    var lipstickImageId : String
-
-    init(lipstickImage : UIImage , lipstickImageId : String) {
+    
+    init(lipstickImageId : Int, lipstickImage : UIImage) {
         self.lipstickImage = lipstickImage
         self.lipstickImageId = lipstickImageId
+    }
+    
+    init(){
+        self.lipstickImage = UIImage()
+        self.lipstickImageId = Int()
     }
 }

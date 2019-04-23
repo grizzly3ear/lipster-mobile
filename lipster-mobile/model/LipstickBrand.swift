@@ -8,16 +8,16 @@
 
 import UIKit
 
-class LipstickBrands {
+class LipstickBrand {
     
-    var lipstickBrandId : String
+    var lipstickBrandId : Int
     var lipstickBrand : String
-    var lipstickDetailGroups : [LipstickDetails]?
+    var lipstickDetails : [LipstickDetail]?
     
-    init(lipstickBrandId : String ,lipstickBrand : String , lipstickDetailGroups : [LipstickDetails]) {
+    init(lipstickBrandId : Int, lipstickBrand : String, lipstickDetails : [LipstickDetail]) {
         
         self.lipstickBrandId = lipstickBrandId
         self.lipstickBrand = lipstickBrand
-        self.lipstickDetailGroups = lipstickDetailGroups
+        self.lipstickDetails = lipstickDetails
     }
 }
