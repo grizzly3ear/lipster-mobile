@@ -1373,7 +1373,7 @@
                                                 </view>
                                                 <size key="customSize" width="35" height="35"/>
                                                 <connections>
-                                                    <outlet property="clickedLipstickColorButton" destination="i3f-hz-jjB" id="gkM-KU-aHh"/>
+                                                    <outlet property="lipstickSelectColorButton" destination="i3f-hz-jjB" id="gkM-KU-aHh"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

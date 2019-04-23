@@ -247,16 +247,17 @@ extension LipDetailSegmentVC : UIScrollViewDelegate {
 extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  10
         
+        //return  (lipstickList?.lipColorCode.accessibilityElementCount())!
+        return 8
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("collection view cell ")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
-        cell?.clickedLipstickColorButton.backgroundColor = .red
-       // cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
+       
+        cell?.lipstickSelectColorButton.backgroundColor = lipstickList!.lipColorCode
         return cell!
     }
     
