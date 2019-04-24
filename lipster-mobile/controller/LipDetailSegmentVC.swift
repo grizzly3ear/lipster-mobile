@@ -52,6 +52,7 @@ class LipDetailSegmentVC: UIViewController {
 //    var imgPageControl : [String]
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
+    var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     override func viewDidLoad() {
         super.viewDidLoad()
         typeReview()
@@ -59,6 +60,7 @@ class LipDetailSegmentVC: UIViewController {
         self.userList = self.createUserArray()
         clickedPostButton.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+        
 
         if let lipstick = self.lipstickList{
             self.lipstickImage.image =  lipstick.lipstickImage[0]
@@ -257,7 +259,7 @@ extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSou
         print("collection view cell ")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
        
-        cell?.lipstickSelectColorButton.backgroundColor = lipstickList!.lipColorCode
+        cell?.lipstickSelectColorButton.backgroundColor = arrayOfLipstickColor[indexPath.row]
         return cell!
     }
     
