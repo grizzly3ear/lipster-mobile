@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vy2-HM-aju">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -590,8 +590,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="iEC-Ag-3N8"/>
                     <connections>
-                        <outlet property="RecCollectionView" destination="G5J-Ep-gXf" id="RZu-Vz-Zgg"/>
-                        <outlet property="RecentCollectionView" destination="dlZ-hY-uV9" id="kLN-RG-2Q0"/>
+                        <outlet property="recCollectionView" destination="G5J-Ep-gXf" id="DVT-4R-iEP"/>
+                        <outlet property="recentCollectionView" destination="dlZ-hY-uV9" id="TIC-Qm-rJT"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                     </connections>
                 </viewController>
@@ -1100,7 +1100,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>
