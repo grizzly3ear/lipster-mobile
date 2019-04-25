@@ -13,8 +13,7 @@ import ExpandableLabel
 class LipDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollLipImg: UIScrollView!
-    @IBOutlet weak var lipstickImage: UIImageView!
+    @IBOutlet weak var scrollLipstickImages: UIScrollView!
 
     @IBOutlet weak var tryMeButton: UIButton!
     
@@ -63,8 +62,6 @@ class LipDetailSegmentVC: UIViewController {
         
 
         if let lipstick = self.lipstickList{
-            self.lipstickImage.image =  lipstick.lipstickImage[0]
-            self.lipstickImage.image =  lipstick.lipstickImage[1]
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
@@ -214,7 +211,7 @@ extension LipDetailSegmentVC {
 //scrollView of lipImg method
 extension LipDetailSegmentVC {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var pageNumber = scrollLipImg.contentOffset.x / scrollLipImg.frame.size.width
+        var pageNumber = scrollLipstickImages.contentOffset.x / scrollLipstickImages.frame.size.width
         pageControl.currentPage = Int(pageNumber)
     }
 }
@@ -234,15 +231,15 @@ extension LipDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
         pageControl.numberOfPages = (self.lipstickList?.lipstickImage.count)!
         for index in 0..<pageControl.numberOfPages {
-            frame.origin.x = scrollLipImg.frame.size.width * CGFloat(index)
-            frame.size = scrollLipImg.frame.size
+            frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
+            frame.size = scrollLipstickImages.frame.size
     
             let imgView = UIImageView(frame: frame)
             imgView.image = self.lipstickList!.lipstickImage[index]
-            self.scrollLipImg.addSubview(imgView)
+            self.scrollLipstickImages.addSubview(imgView)
         }
-        scrollLipImg.contentSize = CGSize(width :(scrollLipImg.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipImg.frame.size.height)
-        scrollLipImg.delegate = self
+        scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
+        scrollLipstickImages.delegate = self
     }
 }
 
@@ -259,7 +256,9 @@ extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSou
         print("collection view cell ")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
        
+        print(indexPath.row)
         cell?.lipstickSelectColorButton.backgroundColor = arrayOfLipstickColor[indexPath.row]
+        
         return cell!
     }
     
