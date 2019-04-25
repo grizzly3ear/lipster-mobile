@@ -51,7 +51,7 @@ class LipDetailSegmentVC: UIViewController {
 //    var imgPageControl : [String]
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
-    var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
+    var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     override func viewDidLoad() {
         super.viewDidLoad()
         typeReview()
@@ -248,7 +248,7 @@ extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //return  (lipstickList?.lipColorCode.accessibilityElementCount())!
-        return 8
+        return arrayOfLipstickColor.count
     }
     
     
