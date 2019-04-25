@@ -12,35 +12,38 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
-    @IBOutlet weak var recCollectionView: UICollectionView!
+    @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var recentCollectionView: UICollectionView!
-    
-    var arrayOfTrendImg = [UIImage]()
-    var arrayOfRecImage  = [UIImage]()
-    var arrayOfRecBrand = [String]()
-    var arrayOfRecName = [String]()
     
     var searchController : UISearchController!
     
     var trendGroup = TrendGroup()
+    var recommendLipstick = [LipstickColor]()
+    var recentViewLipstick = [LipstickColor]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load")
-        createTrendsArray()
-        arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ,UIImage(named: "user1")! ,UIImage(named: "user1")! ]
-        arrayOfRecImage = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")! ]
-        arrayOfRecBrand = ["ETUDE" , "CHANEL" , "aaaa","aeee"]
-        arrayOfRecName = ["2222" , "aaaa" , "aaaa","aeee"]
+        let defaults = UserDefaults.standard
+        
+        if (false) { // if have internet connection
+            guard let token: String = defaults.string(forKey: "userToken") else {return}
+            retrieveData(token: token)
+        } else {
+//            use old data
+        }
+        // we gonna set data manually first for dev phase
+        retrieveData(token: "some test token")
         
         // LipstickListViewController().addNavBarImage()
-      //  LipstickListViewController().searchBarLip()
+        //  LipstickListViewController().searchBarLip()
         searchBarLip()
         addNavBarImage()
        
     }
     
-    func createTrendsArray() {
+    func retrieveData(token: String) {
+        let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
+        
         trendGroup.trendName = "Trend of the month | January 2019"
         trendGroup.trendList = [Trend]()
         let trend1 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
@@ -51,37 +54,49 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         trendGroup.trendList?.append(trend2)
         trendGroup.trendList?.append(trend3)
         trendGroup.trendList?.append(trend4)
+
+        var lipstickImages = [LipstickImage]()
+        var i = 1
+        images.forEach { (image) in
+            let lipstickImage = LipstickImage(lipstickImageId: i, lipstickImage: image)
+            lipstickImages.append(lipstickImage)
+            i += 1
+        }
+        recommendLipstick.append(LipstickColor(lipstickColorId: 1, lipstickColorName: "firstLip", lipstickRGB: UIColor(rgb: 0xFF0000), lipstickColorCode: "R01", lipstickImages: lipstickImages))
+        recommendLipstick.append(LipstickColor(lipstickColorId: 2, lipstickColorName: "secondLip", lipstickRGB: UIColor(rgb: 0xFF5555), lipstickColorCode: "R02", lipstickImages: lipstickImages))
+        recommendLipstick.append(LipstickColor(lipstickColorId: 3, lipstickColorName: "thirdLip", lipstickRGB: UIColor(rgb: 0xFFAAAA), lipstickColorCode: "R03", lipstickImages: lipstickImages))
+        recommendLipstick.append(LipstickColor(lipstickColorId: 4, lipstickColorName: "fourthLip", lipstickRGB: UIColor(rgb: 0xFFEEEE), lipstickColorCode: "R04", lipstickImages: lipstickImages))
         
-        print("finish create trend array")
-        print(trendGroup.trendName)
+        recentViewLipstick.append(LipstickColor(lipstickColorId: 1, lipstickColorName: "firstLip", lipstickRGB: UIColor(rgb: 0xFF0000), lipstickColorCode: "R01", lipstickImages: lipstickImages))
+        recentViewLipstick.append(LipstickColor(lipstickColorId: 2, lipstickColorName: "secondLip", lipstickRGB: UIColor(rgb: 0xFF5555), lipstickColorCode: "R02", lipstickImages: lipstickImages))
+        recentViewLipstick.append(LipstickColor(lipstickColorId: 3, lipstickColorName: "thirdLip", lipstickRGB: UIColor(rgb: 0xFFAAAA), lipstickColorCode: "R03", lipstickImages: lipstickImages))
+        recentViewLipstick.append(LipstickColor(lipstickColorId: 4, lipstickColorName: "fourthLip", lipstickRGB: UIColor(rgb: 0xFFEEEE), lipstickColorCode: "R04", lipstickImages: lipstickImages))
+        
     }
-    
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
             print("showRecommendList")
 //            var destination = segue.destination as? LipstickListViewController {
-//                // we gonna set the array of lipstick here
+
 //            }
             
         } else if segueIdentifier == "showRecentList" {
             print("showRecentList")
 //            var destination = segue.destination as? LipstickListViewController {
-//                // we gonna set the array of lipstick here
+
 //            }
             
         } else if segueIdentifier == "showTrendGroupList" {
             print("showTrendGroupList")
             if segue.destination is TrendListViewController {
-//                // we gonna set the array of trend here
-    
+
             }
         }
     }
-   
-    
 }
+
 extension HomeViewController{
     func searchBarLip() {
         //navigationController?.navigationBar.prefersLargeTitles = true
@@ -118,6 +133,7 @@ extension HomeViewController{
         }
     }
 }
+
 extension HomeViewController {
     func addNavBarImage(){
         let navController = navigationController!
@@ -142,40 +158,31 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("create collection cell")
         if collectionView == trendsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
-//            let imageView = cell.viewWithTag(1) as! UIImageView
-//            imageView.image =  arrayOfTrendImg[indexPath.row]
-            print("\(indexPath.row)")
-            print("\(indexPath.item)")
+
             cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
          
             return cell
         }
         else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
-            cell.RecentImageView.image = arrayOfRecImage[indexPath.row]
-            cell.RecentBrandLabel.text! = arrayOfRecBrand[indexPath.row]
-            cell.RecentNameLabel.text! = arrayOfRecName[indexPath.row]
+
+            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImages?.first?.lipstickImage
+            cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickColorName
+            cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickColorCode
+            
             return cell
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
-            //            let imageView = cell.viewWithTag(2) as! UIImageView
-            //            imageView.image = arrayOfRecImage[indexPath.row]
-            cell.recImageView.image = arrayOfRecImage[indexPath.row]
-            cell.recBrandLabel.text! = arrayOfRecBrand[indexPath.row]
-            cell.recNameLabel.text! = arrayOfRecName[indexPath.row]
+            
+            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImages?.first?.lipstickImage
+            cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickColorName
+            cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickColorCode
+            
             return cell
         }
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let mainTrendStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let desVc = mainTrendStoryboard.instantiateViewController(withIdentifier: "TrendsViewController") as! TrendsViewController
-//      //  desVc.trendBigImage = arrayOfTrendImg[indexPath.row]
-//     //   desVc.trendLipColor = trends[indexPath.row].trendLipstickColor
-//     //   desVc.trendSkinColor = trends[indexPath.row].trendSkinColor
-//        self.navigationController?.pushViewController(desVc, animated: true)
-//    }
+
 }

@@ -537,9 +537,9 @@
                                                                     </subviews>
                                                                 </view>
                                                                 <connections>
-                                                                    <outlet property="RecentBrandLabel" destination="aYr-fL-sUw" id="dua-uw-Uef"/>
-                                                                    <outlet property="RecentImageView" destination="ViO-tp-yTP" id="B14-ge-J1J"/>
-                                                                    <outlet property="RecentNameLabel" destination="8Pa-c9-HR3" id="eok-EL-Mub"/>
+                                                                    <outlet property="recentBrandLabel" destination="aYr-fL-sUw" id="dua-uw-Uef"/>
+                                                                    <outlet property="recentImageView" destination="ViO-tp-yTP" id="B14-ge-J1J"/>
+                                                                    <outlet property="recentNameLabel" destination="8Pa-c9-HR3" id="eok-EL-Mub"/>
                                                                     <segue destination="2my-jU-SWf" kind="show" identifier="showRecentList" id="WMu-Ze-rVT"/>
                                                                 </connections>
                                                             </collectionViewCell>
@@ -590,8 +590,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="iEC-Ag-3N8"/>
                     <connections>
-                        <outlet property="recCollectionView" destination="G5J-Ep-gXf" id="DVT-4R-iEP"/>
                         <outlet property="recentCollectionView" destination="dlZ-hY-uV9" id="TIC-Qm-rJT"/>
+                        <outlet property="recommendCollectionView" destination="G5J-Ep-gXf" id="nN6-qN-UJc"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                     </connections>
                 </viewController>

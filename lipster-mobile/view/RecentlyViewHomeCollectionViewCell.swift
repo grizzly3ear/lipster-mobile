@@ -10,7 +10,7 @@ import UIKit
 
 class RecentlyViewHomeCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var RecentImageView: UIImageView!
-    @IBOutlet weak var RecentBrandLabel: UILabel!
-    @IBOutlet weak var RecentNameLabel: UILabel!
+    @IBOutlet weak var recentImageView: UIImageView!
+    @IBOutlet weak var recentBrandLabel: UILabel!
+    @IBOutlet weak var recentNameLabel: UILabel!
 }
