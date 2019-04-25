@@ -12,6 +12,7 @@
 		3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13322573BFE0056EE74 /* UIViewHelper.swift */; };
 		30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A532C62255AAF800205429 /* UIImageHelper.swift */; };
 		30A889DA227196C600D00FCC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889D9227196C600D00FCC /* Notification.swift */; };
+		30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889DD2271A7CC00D00FCC /* HttpRequest.swift */; };
 		30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E84221A6DDC001FD8EF /* AppDelegate.swift */; };
 		30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */; };
 		30B36E8A221A6DDC001FD8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B36E88221A6DDC001FD8EF /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
 		30A889D9227196C600D00FCC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		30A889DD2271A7CC00D00FCC /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		30B36E81221A6DDC001FD8EF /* lipster-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lipster-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B36E84221A6DDC001FD8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				D8250E49226F80FD009A2D25 /* LipstickDetail.swift */,
 				D8250E4B226F83FB009A2D25 /* LipstickBrand.swift */,
 				30A889D9227196C600D00FCC /* Notification.swift */,
+				30A889DD2271A7CC00D00FCC /* HttpRequest.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
+				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				D8250E4C226F83FB009A2D25 /* LipstickBrand.swift in Sources */,
