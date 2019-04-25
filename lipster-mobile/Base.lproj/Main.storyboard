@@ -864,7 +864,7 @@
                                                 <rect key="frame" x="45" y="295" width="285" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.22745098039215686" green="0.33333333333333331" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Login with facebook">
+                                                <state key="normal" title="        Login with facebook">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
@@ -883,8 +883,8 @@
                                                 <rect key="frame" x="203" y="266" width="127" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook (2)" translatesAutoresizingMaskIntoConstraints="NO" id="dOb-a8-56T">
-                                                <rect key="frame" x="78" y="296" width="38" height="33"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="dOb-a8-56T">
+                                                <rect key="frame" x="99" y="296" width="35" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -1697,7 +1697,7 @@
         <image name="backgroundLipDetail" width="824" height="532"/>
         <image name="backgroundLiplist" width="572" height="782"/>
         <image name="bgTrend2" width="756" height="1102"/>
-        <image name="facebook (2)" width="24" height="24"/>
+        <image name="facebook" width="378" height="304"/>
         <image name="favButton_off" width="256" height="256"/>
         <image name="line" width="512" height="512"/>
         <image name="logo-3" width="2835" height="850"/>

@@ -33,11 +33,11 @@ class LoginViewController: UIViewController {
         textFieldPassword.setIcon(image: #imageLiteral(resourceName: "lock"))
         loginButton.layer.cornerRadius = 10
         loginWithFacebookButton.layer.cornerRadius = 10
-     //   loginWithFacebookButton.setImage(#imageLiteral(resourceName: "facebook-1"), for: .normal)
-        let icon = #imageLiteral(resourceName: "facebook")
-        loginWithFacebookButton.setImage(icon, for: .normal)
-        loginWithFacebookButton.imageView?.contentMode = .scaleAspectFit
-        loginWithFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+
+//        let icon = #imageLiteral(resourceName: "facebook_icon")
+//        loginWithFacebookButton.setImage(icon, for: .normal)
+//        loginWithFacebookButton.imageView?.contentMode = .scaleAspectFit
+//        loginWithFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         
 
     }
