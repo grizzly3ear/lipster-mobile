@@ -12,11 +12,11 @@ class LipstickColor {
     
     var lipstickColorId : Int
     var lipstickColorName : String
-    var lipstickRGB : String
+    var lipstickRGB : UIColor
     var lipstickColorCode : String
     var lipstickImages : [LipstickImage]?
     
-    init(lipstickColorId : Int, lipstickColorName : String, lipstickRGB : String, lipstickColorCode : String, lipstickImages : [LipstickImage]) {
+    init(lipstickColorId : Int, lipstickColorName : String, lipstickRGB : UIColor, lipstickColorCode : String, lipstickImages : [LipstickImage]) {
         self.lipstickColorId = lipstickColorId
         self.lipstickColorName = lipstickColorName
         self.lipstickRGB = lipstickRGB
@@ -27,7 +27,7 @@ class LipstickColor {
     init() {
         self.lipstickColorId = Int()
         self.lipstickColorName = String()
-        self.lipstickRGB = String()
+        self.lipstickRGB = UIColor()
         self.lipstickColorCode = String()
         self.lipstickImages = [LipstickImage]()
     }
