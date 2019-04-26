@@ -12,8 +12,16 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginWithFacebookButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var textFieldEmail: UITextField!
-    @IBOutlet weak var textFieldPassword: UITextField!
+    @IBOutlet weak var loginEmailTextField: UITextField!
+    @IBOutlet weak var loginPasswordTextField: UITextField!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerLoginWithFacebookButton: UIButton!
+    @IBOutlet weak var registerNameTextFiled: UITextField!
+    @IBOutlet weak var registerEmailTextField: UITextField!
+    @IBOutlet weak var registerPasswordTextField: UITextField!
+    @IBOutlet weak var registerReTypePasswordTextField: UITextField!
+    
     @IBOutlet weak var loginScrollView: UIScrollView!
     @IBAction func loginSegments(_ sender: Any) {
         print ("Clicked segment")
@@ -29,10 +37,17 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldEmail.setIcon(image: #imageLiteral(resourceName: "mail"))
-        textFieldPassword.setIcon(image: #imageLiteral(resourceName: "lock"))
+        loginEmailTextField.setIcon(image: #imageLiteral(resourceName: "mail"))
+        loginPasswordTextField.setIcon(image: #imageLiteral(resourceName: "lock"))
+        registerNameTextFiled.setIcon(image: #imageLiteral(resourceName: "userIcon"))
+        registerEmailTextField.setIcon(image: #imageLiteral(resourceName: "mail"))
+        registerPasswordTextField.setIcon(image: #imageLiteral(resourceName: "lock"))
+        registerReTypePasswordTextField.setIcon(image: #imageLiteral(resourceName: "lock"))
         loginButton.layer.cornerRadius = 10
         loginWithFacebookButton.layer.cornerRadius = 10
+        registerButton.layer.cornerRadius = 10
+        registerLoginWithFacebookButton.layer.cornerRadius = 10
+        
 
 //        let icon = #imageLiteral(resourceName: "facebook_icon")
 //        loginWithFacebookButton.setImage(icon, for: .normal)
