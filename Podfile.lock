@@ -4,6 +4,7 @@ PODS:
   - FlexiblePageControl (1.0.7)
   - ImagePicker (3.1.0)
   - SwiftSpinner (1.6.2)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - FlexiblePageControl
   - ImagePicker
   - SwiftSpinner
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - FlexiblePageControl
     - ImagePicker
     - SwiftSpinner
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -26,7 +29,8 @@ SPEC CHECKSUMS:
   FlexiblePageControl: 2ce8446da3d75df6432dbad7b9e19151629dae62
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: bbe8af465b89f0904d81f9b4e5f064f876766fd7
+PODFILE CHECKSUM: 7b2c5119afda5af08dd69dacfdae025bffec6cd4
 
 COCOAPODS: 1.6.1

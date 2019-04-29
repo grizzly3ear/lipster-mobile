@@ -7,6 +7,6 @@ pod 'SwiftSpinner'
 pod 'Alamofire'
 pod 'ExpandableLabel'
 pod 'FlexiblePageControl'
-
+pod 'SwiftyJSON'
 
 end
