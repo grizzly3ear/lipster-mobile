@@ -10,6 +10,7 @@
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13122573B560056EE74 /* UIColorHelper.swift */; };
 		3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13322573BFE0056EE74 /* UIViewHelper.swift */; };
+		308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */; };
 		30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A532C62255AAF800205429 /* UIImageHelper.swift */; };
 		30A889DA227196C600D00FCC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889D9227196C600D00FCC /* Notification.swift */; };
 		30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889DD2271A7CC00D00FCC /* HttpRequest.swift */; };
@@ -65,6 +66,7 @@
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071C13122573B560056EE74 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
+		308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewHelper.swift; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
 		30A889D9227196C600D00FCC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		30A889DD2271A7CC00D00FCC /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				3071C13122573B560056EE74 /* UIColorHelper.swift */,
 				3071C13322573BFE0056EE74 /* UIViewHelper.swift */,
 				30694E3F226B4BE20091C698 /* StringHelper.swift */,
+				308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
+				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
 				D8EA96AB226AEE9F0060B78A /* TrendListViewController.swift in Sources */,
 				D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,

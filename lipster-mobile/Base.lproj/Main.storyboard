@@ -1009,6 +1009,7 @@
                         <outlet property="loginEmailTextField" destination="o4C-We-rUt" id="4Ax-tY-CFe"/>
                         <outlet property="loginPasswordTextField" destination="UQ9-Ta-mJN" id="tMs-Fu-T8x"/>
                         <outlet property="loginScrollView" destination="svE-7V-cel" id="tpl-yd-zfJ"/>
+                        <outlet property="loginSegment" destination="z0S-pI-uiY" id="HQR-DL-eGj"/>
                         <outlet property="loginWithFacebookButton" destination="GxJ-x1-8JT" id="7or-Xs-OIQ"/>
                         <outlet property="registerButton" destination="S0r-0d-pXB" id="97g-Wj-7yX"/>
                         <outlet property="registerEmailTextField" destination="aYd-5p-vSV" id="d7a-2p-prI"/>

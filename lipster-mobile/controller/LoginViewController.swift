@@ -23,21 +23,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerReTypePasswordTextField: UITextField!
     
     @IBOutlet weak var loginScrollView: UIScrollView!
+    @IBOutlet weak var loginSegment: UISegmentedControl!
     
-    @IBAction func loginSegments(_ sender: Any) {
-        print ("Clicked segment")
-        switch (sender as AnyObject).selectedSegmentIndex{
-        case 0 :
-            loginScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
-        case 1 :
-            loginScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
-            
-        default:
-            print("")
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initScrollView()
         loginEmailTextField.setIcon(image: #imageLiteral(resourceName: "mail"))
         loginPasswordTextField.setIcon(image: #imageLiteral(resourceName: "lock"))
         registerNameTextFiled.setIcon(image: #imageLiteral(resourceName: "userIcon"))
@@ -54,14 +45,35 @@ class LoginViewController: UIViewController {
 //        loginWithFacebookButton.setImage(icon, for: .normal)
 //        loginWithFacebookButton.imageView?.contentMode = .scaleAspectFit
 //        loginWithFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
-        
-
     }
     
     @IBAction func didLoginButtonPress(_ sender: UIButton) {
         performSegue(withIdentifier: "replaceHomePage", sender: self)
     }
     
+    @IBAction func loginSegments(_ sender: Any) {
+        print ("Clicked segment")
+        switch (sender as AnyObject).selectedSegmentIndex{
+        case 0 :
+            loginScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
+            break
+        case 1 :
+            loginScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
+            break
+        default:
+            print("")
+        }
+    }
+    
+}
+
+extension LoginViewController: UIScrollViewDelegate {
+    func initScrollView() {
+        self.loginScrollView.delegate = self
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {        
+        loginSegment.selectedSegmentIndex = loginScrollView.currentPage()
+    }
 }
 
 extension UITextField {
@@ -73,6 +85,5 @@ extension UITextField {
         iconContainerView.addSubview(iconView)
         leftView = iconContainerView
         leftViewMode = .always
-        
     }
 }
