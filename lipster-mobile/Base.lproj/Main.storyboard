@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -874,6 +874,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didLoginButtonPress:" destination="poZ-ge-zXy" eventType="touchUpInside" id="P7e-f8-jCq"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdi-p5-WHU">
                                         <rect key="frame" x="176" y="272" width="24" height="21"/>
@@ -1013,11 +1016,12 @@
                         <outlet property="registerNameTextFiled" destination="NbR-tx-6Ft" id="yp1-Fy-FrM"/>
                         <outlet property="registerPasswordTextField" destination="xV6-QG-ZRN" id="XNR-Hn-6L2"/>
                         <outlet property="registerReTypePasswordTextField" destination="WO1-5C-9RP" id="6bx-kh-Xx9"/>
+                        <segue destination="Vy2-HM-aju" kind="showDetail" identifier="replaceHomePage" id="n6X-hP-BaA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2S0-pu-yiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828.8" y="2433.7331334332835"/>
+            <point key="canvasLocation" x="-2170" y="98"/>
         </scene>
         <!--NOTIFICATION-->
         <scene sceneID="b0S-wl-U9s">
@@ -1316,7 +1320,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497" height="401"/>
+                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
                                         </constraints>

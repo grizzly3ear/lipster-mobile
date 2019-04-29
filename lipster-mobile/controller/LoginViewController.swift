@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerReTypePasswordTextField: UITextField!
     
     @IBOutlet weak var loginScrollView: UIScrollView!
+    
     @IBAction func loginSegments(_ sender: Any) {
         print ("Clicked segment")
         switch (sender as AnyObject).selectedSegmentIndex{
@@ -55,6 +56,10 @@ class LoginViewController: UIViewController {
 //        loginWithFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
         
 
+    }
+    
+    @IBAction func didLoginButtonPress(_ sender: UIButton) {
+        performSegue(withIdentifier: "replaceHomePage", sender: self)
     }
     
 }
