@@ -18,8 +18,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     var searchController : UISearchController!
     
     var trendGroup = TrendGroup()
-    var recommendLipstick = [LipstickColor]()
-    var recentViewLipstick = [LipstickColor]()
+    var recommendLipstick = [Lipstick]()
+    var recentViewLipstick = [Lipstick]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         // we gonna set data manually first for dev phase
         retrieveData(token: "some test token")
         
-        // LipstickListViewController().addNavBarImage()
-        //  LipstickListViewController().searchBarLip()
         searchBarLip()
         addNavBarImage()
        
@@ -55,22 +53,23 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         trendGroup.trendList?.append(trend3)
         trendGroup.trendList?.append(trend4)
 
-        var lipstickImages = [LipstickImage]()
-        var i = 1
-        images.forEach { (image) in
-            let lipstickImage = LipstickImage(lipstickImageId: i, lipstickImage: image)
-            lipstickImages.append(lipstickImage)
-            i += 1
+        recommendLipstick.forEach { (lipstick) in
+            lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
+            lipstick.lipstickBrand = "Brand 1"
+            lipstick.lipstickName = "firstLip"
+            lipstick.lipstickColorName = "R01"
+            lipstick.lipShortDetail = "Detail"
+            lipstick.lipstickImage = images
         }
-        recommendLipstick.append(LipstickColor(lipstickColorId: 1, lipstickColorName: "firstLip", lipstickRGB: UIColor(rgb: 0xFF0000), lipstickColorCode: "R01", lipstickImages: lipstickImages))
-        recommendLipstick.append(LipstickColor(lipstickColorId: 2, lipstickColorName: "secondLip", lipstickRGB: UIColor(rgb: 0xFF5555), lipstickColorCode: "R02", lipstickImages: lipstickImages))
-        recommendLipstick.append(LipstickColor(lipstickColorId: 3, lipstickColorName: "thirdLip", lipstickRGB: UIColor(rgb: 0xFFAAAA), lipstickColorCode: "R03", lipstickImages: lipstickImages))
-        recommendLipstick.append(LipstickColor(lipstickColorId: 4, lipstickColorName: "fourthLip", lipstickRGB: UIColor(rgb: 0xFFEEEE), lipstickColorCode: "R04", lipstickImages: lipstickImages))
         
-        recentViewLipstick.append(LipstickColor(lipstickColorId: 1, lipstickColorName: "firstLip", lipstickRGB: UIColor(rgb: 0xFF0000), lipstickColorCode: "R01", lipstickImages: lipstickImages))
-        recentViewLipstick.append(LipstickColor(lipstickColorId: 2, lipstickColorName: "secondLip", lipstickRGB: UIColor(rgb: 0xFF5555), lipstickColorCode: "R02", lipstickImages: lipstickImages))
-        recentViewLipstick.append(LipstickColor(lipstickColorId: 3, lipstickColorName: "thirdLip", lipstickRGB: UIColor(rgb: 0xFFAAAA), lipstickColorCode: "R03", lipstickImages: lipstickImages))
-        recentViewLipstick.append(LipstickColor(lipstickColorId: 4, lipstickColorName: "fourthLip", lipstickRGB: UIColor(rgb: 0xFFEEEE), lipstickColorCode: "R04", lipstickImages: lipstickImages))
+        recentViewLipstick.forEach { (lipstick) in
+            lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
+            lipstick.lipstickBrand = "Brand 1"
+            lipstick.lipstickName = "firstLip"
+            lipstick.lipstickColorName = "R01"
+            lipstick.lipShortDetail = "Detail"
+            lipstick.lipstickImage = images
+        }
         
     }
  
@@ -78,9 +77,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
             print("showRecommendList")
-//            var destination = segue.destination as? LipstickListViewController {
-
-//            }
+            if let destination = segue.destination as? LipstickListViewController {
+                
+            }
             
         } else if segueIdentifier == "showRecentList" {
             print("showRecentList")
@@ -168,18 +167,18 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
 
-            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImages?.first?.lipstickImage
-            cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickColorName
-            cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickColorCode
+            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
+            cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickBrand
+            cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickName
             
             return cell
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
             
-            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImages?.first?.lipstickImage
-            cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickColorName
-            cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickColorCode
+            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
+            cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickBrand
+            cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickName
             
             return cell
         }
