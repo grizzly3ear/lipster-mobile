@@ -10,7 +10,9 @@ import UIKit
 
 class SelectColorFromDetailCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var lipstickSelectColorButton: UIButton!
+    @IBOutlet weak var selectColorView: UIView!
+    
+    @IBOutlet weak var triangleView: TriangleView!
     
   
 }

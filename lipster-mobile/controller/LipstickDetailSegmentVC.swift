@@ -17,6 +17,7 @@ class LipstickDetailSegmentVC: UIViewController {
 
     @IBOutlet weak var tryMeButton: UIButton!
     
+    
     @IBOutlet weak var contentSegmentControl: UISegmentedControl!
     @IBOutlet weak var contentScrollView: UIScrollView!
     
@@ -56,7 +57,7 @@ class LipstickDetailSegmentVC: UIViewController {
         
         //----------------Read more / Read less--------------
         seemore.delegate = self as? ExpandableLabelDelegate
-        seemore.numberOfLines = 3
+       // seemore.numberOfLines = 3
         seemore.collapsed = true
         seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
         seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
@@ -79,36 +80,8 @@ class LipstickDetailSegmentVC: UIViewController {
     }
     
     // ----------------------select LipColor and LipImage will change-------------------------
-    @IBOutlet weak var lipImageColor: UIImageView!
-    @IBOutlet weak var selectColorButton: UIButton!
-    @IBAction func clickedColor(_ sender: UIButton) {
-        print("clicked!!! \(sender.tag)")
-        
-        if sender.tag == 0{
-            let imageClicked  = sender.image(for: .normal)
-           
-            
-        }
 
-        if sender.tag == 1{
-            let imageClicked  = sender.image(for: .normal)
-          
-        }
-        if sender.tag == 2{
-            let imageClicked  = sender.image(for: .normal)
-            
-            
-        }
-        if sender.tag == 3{
-            let imageClicked  = sender.image(for: .normal)
-        
-        }
-        if sender.tag == 4{
-            let imageClicked  = sender.image(for: .normal)
-           
-        }
-    }
-
+    
     @IBAction func segments(_ sender: UISegmentedControl) {
         print ("Clicked segment")
         switch sender.selectedSegmentIndex{
@@ -237,8 +210,6 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
 extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        //return  (lipstick?.lipColorCode.accessibilityElementCount())!
         return arrayOfLipstickColor.count
     }
     
@@ -247,8 +218,20 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
        
         print(indexPath.row)
-        cell?.lipstickSelectColorButton.backgroundColor = arrayOfLipstickColor[indexPath.row]
+        cell?.selectColorView.backgroundColor = arrayOfLipstickColor[indexPath.row]
+        cell?.triangleView.isHidden = true
         
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectColorFromDetailCollectionViewCell
+        cell.triangleView.isHidden = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SelectColorFromDetailCollectionViewCell else {return}
+        cell.triangleView.isHidden = true
     }
 }

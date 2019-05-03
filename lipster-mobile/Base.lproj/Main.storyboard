@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1277,13 +1277,7 @@
                                             <constraint firstAttribute="height" constant="800" id="sTp-fP-8F5"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="jNn-Zu-QmK">
-                                        <rect key="frame" x="-54" y="-36" width="497.00000000000023" height="401"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="497" id="3YD-lp-meY"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLiplist" translatesAutoresizingMaskIntoConstraints="NO" id="dUB-Ku-LEA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLiplist" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUB-Ku-LEA">
                                         <rect key="frame" x="0.0" y="270" width="375" height="530"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="530" id="Bwt-aM-POs"/>
@@ -1488,12 +1482,8 @@
                                             <constraint firstItem="RxD-Xm-JhL" firstAttribute="top" secondItem="Ei9-aP-oSZ" secondAttribute="top" constant="15" id="zUJ-Ue-z8w"/>
                                         </constraints>
                                     </scrollView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-Tf-If1">
-                                        <rect key="frame" x="87" y="37" width="200" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0R-hO-t17">
-                                        <rect key="frame" x="274" y="270" width="101" height="61"/>
+                                        <rect key="frame" x="278" y="270" width="97" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="try me"/>
                                         <connections>
@@ -1503,52 +1493,56 @@
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dKY-4A-Jwd">
                                         <rect key="frame" x="87" y="235" width="200" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </pageControl>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h7B-Pu-aKZ">
-                                        <rect key="frame" x="12" y="282" width="262" height="49"/>
+                                        <rect key="frame" x="0.0" y="282" width="278" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" id="mbD-rL-50M">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" sectionInsetReference="layoutMargins" id="mbD-rL-50M">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLiplist" id="Dsh-x6-UCe">
-                                            <rect key="frame" x="0.0" y="0.0" width="262" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="49"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectColorFromDetailCollectionViewCell" id="zMi-9u-GSb" customClass="SelectColorFromDetailCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="7" width="35" height="35"/>
+                                                <rect key="frame" x="8" y="7" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3f-hz-jjB">
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0M-00-veh">
                                                             <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.091328337740000001" green="0.74616194459999996" blue="0.78087478089999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <subviews>
+                                                                <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zT-G2-gje" customClass="TriangleView" customModule="lipster_mobile" customModuleProvider="target">
+                                                                    <rect key="frame" x="15" y="14" width="20" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                    <real key="value" value="2"/>
+                                                                    <real key="value" value="3"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="value" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="clickedColor:" destination="teV-rM-HJk" eventType="touchUpInside" id="sbI-Ma-4Ml"/>
-                                                            </connections>
-                                                        </button>
+                                                        </view>
                                                     </subviews>
                                                 </view>
                                                 <size key="customSize" width="35" height="35"/>
                                                 <connections>
-                                                    <outlet property="lipstickSelectColorButton" destination="i3f-hz-jjB" id="gkM-KU-aHh"/>
+                                                    <outlet property="selectColorView" destination="C0M-00-veh" id="Pnn-wj-FA7"/>
+                                                    <outlet property="triangleView" destination="2zT-G2-gje" id="TK4-RP-hd9"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -1557,16 +1551,18 @@
                                             <outlet property="delegate" destination="teV-rM-HJk" id="JEf-B5-mz4"/>
                                         </connections>
                                     </collectionView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-Tf-If1">
+                                        <rect key="frame" x="76" y="8" width="225" height="225"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ei9-aP-oSZ" firstAttribute="top" secondItem="4T3-CY-Eih" secondAttribute="bottom" constant="8" symbolic="YES" id="0Kb-gl-Dxs"/>
                                     <constraint firstAttribute="bottom" secondItem="dUB-Ku-LEA" secondAttribute="bottom" constant="-20" id="956-zK-OCz"/>
                                     <constraint firstItem="dUB-Ku-LEA" firstAttribute="leading" secondItem="4T3-CY-Eih" secondAttribute="leading" id="C1W-Fv-rIi"/>
-                                    <constraint firstItem="jNn-Zu-QmK" firstAttribute="top" secondItem="n0Q-mJ-swF" secondAttribute="top" constant="-36" id="G51-vc-glV"/>
                                     <constraint firstItem="dUB-Ku-LEA" firstAttribute="bottom" secondItem="hgS-30-Aki" secondAttribute="bottom" id="HPz-05-ZhA"/>
                                     <constraint firstItem="hgS-30-Aki" firstAttribute="top" secondItem="n0Q-mJ-swF" secondAttribute="top" id="Iph-v0-obV"/>
                                     <constraint firstItem="Ei9-aP-oSZ" firstAttribute="trailing" secondItem="4T3-CY-Eih" secondAttribute="trailing" id="J3S-b6-oTb"/>
-                                    <constraint firstItem="Ei9-aP-oSZ" firstAttribute="top" secondItem="jNn-Zu-QmK" secondAttribute="bottom" constant="8" symbolic="YES" id="LpE-Oz-oSy"/>
                                     <constraint firstItem="hgS-30-Aki" firstAttribute="leading" secondItem="n0Q-mJ-swF" secondAttribute="leading" id="PvI-8s-Cee"/>
                                     <constraint firstAttribute="bottom" secondItem="Ei9-aP-oSZ" secondAttribute="bottom" constant="-93" id="SIc-7v-eL9"/>
                                     <constraint firstAttribute="trailing" secondItem="hgS-30-Aki" secondAttribute="trailing" id="Yy5-0m-zMU"/>
@@ -1574,7 +1570,6 @@
                                     <constraint firstItem="4T3-CY-Eih" firstAttribute="top" secondItem="n0Q-mJ-swF" secondAttribute="top" constant="331" id="gHl-hb-mUY"/>
                                     <constraint firstItem="4T3-CY-Eih" firstAttribute="trailing" secondItem="hgS-30-Aki" secondAttribute="trailing" id="hxp-sB-GkD"/>
                                     <constraint firstItem="4T3-CY-Eih" firstAttribute="leading" secondItem="hgS-30-Aki" secondAttribute="leading" id="j1K-if-coc"/>
-                                    <constraint firstItem="jNn-Zu-QmK" firstAttribute="leading" secondItem="n0Q-mJ-swF" secondAttribute="leading" constant="-54" id="qJF-Gi-tx6"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1620,8 +1615,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
-                                <rect key="frame" x="272" y="97" width="83" height="508"/>
+                                <rect key="frame" x="299" y="79" width="60" height="508"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="53Z-lz-hdm">
@@ -1632,23 +1632,22 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="Q08-qg-DGw" customClass="LipSelectedColorCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="16.5" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="5" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJf-Wx-STs">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-xC-xyG">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <connections>
-                                                        <action selector="clickedLipstickColorButton:" destination="MjW-ox-6lU" eventType="touchUpInside" id="vAn-os-GLh"/>
-                                                    </connections>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-hh-dTe">
-                                                    <rect key="frame" x="20" y="20" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <subviews>
+                                                        <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsn-uL-gDh" customClass="TriangleView" customModule="lipster_mobile" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </view>
+                                                    </subviews>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <userDefinedRuntimeAttributes>
@@ -1660,7 +1659,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="lipColorButton" destination="kJf-Wx-STs" id="UzE-en-cm4"/>
+                                            <outlet property="colorDisplay" destination="K5h-xC-xyG" id="acb-I4-0AS"/>
+                                            <outlet property="triangleView" destination="Wsn-uL-gDh" id="BNb-hf-h3G"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1669,25 +1669,19 @@
                                     <outlet property="delegate" destination="MjW-ox-6lU" id="IUg-7Q-dJK"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TRY ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTo-mX-oI0">
-                                <rect key="frame" x="76" y="303" width="172" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="V6y-xR-BOa"/>
                     </view>
                     <navigationItem key="navigationItem" id="XLj-RZ-5qJ"/>
                     <connections>
+                        <outlet property="capturePreview" destination="gND-Xd-kF3" id="3Px-Jm-DbN"/>
                         <outlet property="collectionView" destination="yvG-zx-Lby" id="3bc-H9-ffP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFl-9q-5KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4644" y="88"/>
+            <point key="canvasLocation" x="4644" y="87.706146926536732"/>
         </scene>
         <!--CAMERA-->
         <scene sceneID="5PU-kw-6gr">
