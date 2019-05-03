@@ -1593,13 +1593,13 @@
                     <connections>
                         <outlet property="clickedPostButton" destination="206-je-nJc" id="BlH-zp-7bu"/>
                         <outlet property="contentScrollView" destination="Ei9-aP-oSZ" id="PZf-cw-0kF"/>
-                        <outlet property="contentSegment" destination="4T3-CY-Eih" id="QCU-ov-nzT"/>
+                        <outlet property="contentSegmentControl" destination="4T3-CY-Eih" id="icv-Yv-OXt"/>
                         <outlet property="lipstickBrand" destination="RxD-Xm-JhL" id="UMU-A7-XoT"/>
                         <outlet property="lipstickColorName" destination="5yV-ks-Wo6" id="68y-pT-d2v"/>
+                        <outlet property="lipstickImagesPageControl" destination="dKY-4A-Jwd" id="UdF-Sg-baN"/>
                         <outlet property="lipstickName" destination="lLW-pt-hrz" id="dOB-8U-QJ7"/>
                         <outlet property="lipstickSelectColorCollectionView" destination="h7B-Pu-aKZ" id="a5b-eE-XZQ"/>
                         <outlet property="lipstickShortDetail" destination="BSi-Mt-E5P" id="g8X-yq-Fn8"/>
-                        <outlet property="pageControl" destination="dKY-4A-Jwd" id="UdF-Sg-baN"/>
                         <outlet property="reviewTableView" destination="1En-6D-OmD" id="tIn-aU-qqP"/>
                         <outlet property="scrollLipstickImages" destination="dMD-Tf-If1" id="MnI-ol-dze"/>
                         <outlet property="seemore" destination="BSi-Mt-E5P" id="q9w-8Z-g4S"/>

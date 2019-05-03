@@ -53,24 +53,19 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         trendGroup.trendList?.append(trend3)
         trendGroup.trendList?.append(trend4)
 
-        recommendLipstick.forEach { (lipstick) in
+        for i in 1...5 {
+            var lipstick = Lipstick()
             lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
             lipstick.lipstickBrand = "Brand 1"
             lipstick.lipstickName = "firstLip"
             lipstick.lipstickColorName = "R01"
             lipstick.lipShortDetail = "Detail"
             lipstick.lipstickImage = images
+            recommendLipstick.append(lipstick)
+            recentViewLipstick.append(lipstick)
         }
         
-        recentViewLipstick.forEach { (lipstick) in
-            lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
-            lipstick.lipstickBrand = "Brand 1"
-            lipstick.lipstickName = "firstLip"
-            lipstick.lipstickColorName = "R01"
-            lipstick.lipShortDetail = "Detail"
-            lipstick.lipstickImage = images
-        }
-        
+        print("finish init data")
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,6 +162,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
 
+            print(recentViewLipstick.count)
+            print(recentViewLipstick[indexPath.item].lipstickImage.count)
             cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
             cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickBrand
             cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickName

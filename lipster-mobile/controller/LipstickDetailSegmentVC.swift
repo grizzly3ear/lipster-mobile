@@ -12,11 +12,12 @@ import ExpandableLabel
 
 class LipstickDetailSegmentVC: UIViewController {
     
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
 
     @IBOutlet weak var tryMeButton: UIButton!
     
+    @IBOutlet weak var contentSegmentControl: UISegmentedControl!
     @IBOutlet weak var contentScrollView: UIScrollView!
     
     @IBOutlet weak var lipstickBrand: UILabel!
@@ -193,14 +194,6 @@ extension LipstickDetailSegmentVC {
     }
 }
 
-//scrollView of lipImg method
-extension LipstickDetailSegmentVC {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var pageNumber = scrollLipstickImages.contentOffset.x / scrollLipstickImages.frame.size.width
-        pageControl.currentPage = Int(pageNumber)
-    }
-}
-
 // type reivew in review segment
 extension LipstickDetailSegmentVC {
     func typeReview() {
@@ -214,8 +207,8 @@ extension LipstickDetailSegmentVC {
 // page controll to show multi Lipstick image 
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
-        pageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
-        for index in 0..<pageControl.numberOfPages {
+        lipstickImagesPageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
+        for index in 0..<lipstickImagesPageControl.numberOfPages {
             frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
             frame.size = scrollLipstickImages.frame.size
     
@@ -223,8 +216,21 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
             imgView.image = self.lipstick!.lipstickImage[index]
             self.scrollLipstickImages.addSubview(imgView)
         }
-        scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
+        scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
         scrollLipstickImages.delegate = self
+        
+        contentScrollView.delegate = self
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("\(scrollView.currentPage())")
+        if scrollView == scrollLipstickImages {
+            lipstickImagesPageControl.currentPage = scrollView.currentPage()
+        } else if scrollView == contentScrollView {
+            contentSegmentControl.selectedSegmentIndex = scrollView.currentPage()
+        }
+        
+        
     }
 }
 

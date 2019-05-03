@@ -28,6 +28,16 @@ class Lipstick {
         self.lipSelectedColor = lipSelectedColor
         self.lipstickColor = lipstickColor
     }
+    
+    init() {
+        self.lipstickImage = [UIImage()]
+        self.lipstickBrand = String()
+        self.lipstickName =  String()
+        self.lipstickColorName = String()
+        self.lipShortDetail = String()
+        self.lipSelectedColor = UIImage()
+        self.lipstickColor = UIColor()
+    }
    
     
 }
