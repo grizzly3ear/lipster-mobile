@@ -10,6 +10,7 @@
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13122573B560056EE74 /* UIColorHelper.swift */; };
 		3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13322573BFE0056EE74 /* UIViewHelper.swift */; };
+		3073907D227C2766003B9013 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073907C227C2766003B9013 /* TriangleView.swift */; };
 		308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */; };
 		30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A532C62255AAF800205429 /* UIImageHelper.swift */; };
 		30A889DA227196C600D00FCC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889D9227196C600D00FCC /* Notification.swift */; };
@@ -66,6 +67,7 @@
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071C13122573B560056EE74 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
+		3073907C227C2766003B9013 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewHelper.swift; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
 		30A889D9227196C600D00FCC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
 				D8E48D92226DD7C600A192EB /* TrendGroupTableViewCell.swift */,
 				D8E48D94226DE0A200A192EB /* TrendImageCollectionViewCell.swift */,
+				3073907C227C2766003B9013 /* TriangleView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */,
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
+				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
 				D8250E4A226F80FD009A2D25 /* LipstickDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
