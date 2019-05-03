@@ -1,5 +1,5 @@
 //
-//  LipDetailSegmentVC.swift
+//  LipstickDetailSegmentVC.swift
 //  lipster-mobile
 //
 //  Created by Mainatvara on 9/4/2562 BE.
@@ -10,7 +10,7 @@ import UIKit
 import ExpandableLabel
 
 
-class LipDetailSegmentVC: UIViewController {
+class LipstickDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
@@ -143,7 +143,7 @@ class LipDetailSegmentVC: UIViewController {
    
 }
 
-extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
+extension LipstickDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -164,7 +164,7 @@ extension LipDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
     }
 }
 
-extension LipDetailSegmentVC: UITextViewDelegate {
+extension LipstickDetailSegmentVC: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Review this lipstick here." {
@@ -191,7 +191,7 @@ extension LipDetailSegmentVC: UITextViewDelegate {
 }
 
 // Post Button Config
-extension LipDetailSegmentVC {
+extension LipstickDetailSegmentVC {
     @IBAction func clickedPostReviewButton(_ sender: Any) {
         
         //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
@@ -217,7 +217,7 @@ extension LipDetailSegmentVC {
 }
 
 // type reivew in review segment
-extension LipDetailSegmentVC {
+extension LipstickDetailSegmentVC {
     func typeReview() {
         typeReviewTextView.text = "Review this lipstick here."
         typeReviewTextView.textColor = UIColor.lightGray
@@ -227,7 +227,7 @@ extension LipDetailSegmentVC {
 }
 
 // page controll to show multi Lipstick image 
-extension LipDetailSegmentVC : UIScrollViewDelegate {
+extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
         pageControl.numberOfPages = (self.lipstickList?.lipstickImage.count)!
         for index in 0..<pageControl.numberOfPages {
@@ -243,7 +243,7 @@ extension LipDetailSegmentVC : UIScrollViewDelegate {
     }
 }
 
-extension LipDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
+extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
