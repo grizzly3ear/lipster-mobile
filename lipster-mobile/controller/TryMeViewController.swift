@@ -11,9 +11,7 @@ import UIKit
 class TryMeViewController: UIViewController  {
  
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBAction func clickedLipstickColorButton(_ sender: Any) {
-        print("clicked color button")
-    }
+    @IBOutlet weak var capturePreview: UIView!
     
     let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
     
@@ -27,14 +25,27 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  colorCode.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! LipSelectedColorCollectionViewCell
-        cell.lipColorButton.backgroundColor = colorCode[indexPath.item]
+        cell.colorDisplay.backgroundColor = colorCode[indexPath.item]
+        cell.triangleView.isHidden = true
+        cell.bringSubviewToFront(cell.triangleView)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("click")
+        let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
+        cell.triangleView.isHidden = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("declick")
+        let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
+        cell.triangleView.isHidden = true
     }
     
 }

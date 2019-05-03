@@ -10,9 +10,9 @@ import UIKit
 
 class LipSelectedColorCollectionViewCell: UICollectionViewCell {
     
- 
-    @IBOutlet weak var lipColorButton: UIButton!
     
-
+    @IBOutlet weak var colorDisplay: UIView!
+    
+    @IBOutlet weak var triangleView: TriangleView!
     
 }
