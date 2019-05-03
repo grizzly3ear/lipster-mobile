@@ -30,10 +30,6 @@ class TrendListViewController: UITableViewController   {
             trendGroupList.append(trendGroup)
             
         }
-//        arrayOfTrendImg = [UIImage(named: "user1")! ,UIImage(named: "user2")!,UIImage(named: "user2")! ,UIImage(named: "user1")! ,UIImage(named: "user1")! ]
-//        arrayOfTrendLipColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
-//        arrayOfTrendLipColor = [ UIColor(rgb: 0xF4D3C0), UIColor(rgb: 0xE3C19C) , UIColor(rgb: 0xF6C5A4), UIColor(rgb: 0xF6C5A4), UIColor(rgb: 0xFA4805)]
-//       arrayOfTrendName = [ "Trend of the year 2019 ","Trend of the year 2013 ","Trend of the year 2018 ","Trend of the year 2019 ","Trend of the year 2010" ]
     }
     
     
@@ -60,7 +56,6 @@ extension TrendListViewController {
         print("name is \(trendGroupList[indexPath.item])")
         cell.trendName.text = trendGroupList[indexPath.item].trendName
         
-
         return cell
     }
     

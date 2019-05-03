@@ -48,7 +48,7 @@ class LipstickListViewController:  UITableViewController  {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LipstickDetailSegmentVC {
-            destination.lipstickList = lipstickList[(lipListTableView.indexPathForSelectedRow?.row)!]
+            destination.lipstick = lipstickList[(lipListTableView.indexPathForSelectedRow?.row)!]
         }
     }
 

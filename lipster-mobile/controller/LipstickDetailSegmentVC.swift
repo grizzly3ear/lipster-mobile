@@ -17,7 +17,7 @@ class LipstickDetailSegmentVC: UIViewController {
 
     @IBOutlet weak var tryMeButton: UIButton!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentScrollView: UIScrollView!
     
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
@@ -32,7 +32,7 @@ class LipstickDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
-    var lipstickList : Lipstick?
+    var lipstick : Lipstick?
     
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
@@ -46,7 +46,7 @@ class LipstickDetailSegmentVC: UIViewController {
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
         
 
-        if let lipstick = self.lipstickList{
+        if let lipstick = self.lipstick{
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
@@ -112,9 +112,9 @@ class LipstickDetailSegmentVC: UIViewController {
         print ("Clicked segment")
         switch sender.selectedSegmentIndex{
         case 0 :
-            scrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
+            contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         case 1 :
-            scrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
+            contentScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
             
         default:
             print("")
@@ -194,7 +194,7 @@ extension LipstickDetailSegmentVC {
 }
 
 //scrollView of lipImg method
-extension LipDetailSegmentVC {
+extension LipstickDetailSegmentVC {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         var pageNumber = scrollLipstickImages.contentOffset.x / scrollLipstickImages.frame.size.width
         pageControl.currentPage = Int(pageNumber)
@@ -214,13 +214,13 @@ extension LipstickDetailSegmentVC {
 // page controll to show multi Lipstick image 
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
-        pageControl.numberOfPages = (self.lipstickList?.lipstickImage.count)!
+        pageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
             frame.size = scrollLipstickImages.frame.size
     
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.lipstickList!.lipstickImage[index]
+            imgView.image = self.lipstick!.lipstickImage[index]
             self.scrollLipstickImages.addSubview(imgView)
         }
         scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
@@ -232,10 +232,9 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //return  (lipstickList?.lipColorCode.accessibilityElementCount())!
+        //return  (lipstick?.lipColorCode.accessibilityElementCount())!
         return arrayOfLipstickColor.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("collection view cell ")
@@ -246,6 +245,4 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
         
         return cell!
     }
-    
-    
 }

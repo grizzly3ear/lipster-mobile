@@ -1592,7 +1592,7 @@
                     <size key="freeformSize" width="750" height="800"/>
                     <connections>
                         <outlet property="clickedPostButton" destination="206-je-nJc" id="BlH-zp-7bu"/>
-                        <outlet property="contentScrollView" destination="Ei9-aP-oSZ" id="adg-e5-QbG"/>
+                        <outlet property="contentScrollView" destination="Ei9-aP-oSZ" id="PZf-cw-0kF"/>
                         <outlet property="contentSegment" destination="4T3-CY-Eih" id="QCU-ov-nzT"/>
                         <outlet property="lipstickBrand" destination="RxD-Xm-JhL" id="UMU-A7-XoT"/>
                         <outlet property="lipstickColorName" destination="5yV-ks-Wo6" id="68y-pT-d2v"/>
@@ -1642,7 +1642,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <action selector="clickedLipColorBtn:" destination="MjW-ox-6lU" eventType="touchUpInside" id="vAn-os-GLh"/>
+                                                        <action selector="clickedLipstickColorButton:" destination="MjW-ox-6lU" eventType="touchUpInside" id="vAn-os-GLh"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-hh-dTe">

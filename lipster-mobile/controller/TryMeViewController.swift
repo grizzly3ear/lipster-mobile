@@ -11,7 +11,7 @@ import UIKit
 class TryMeViewController: UIViewController  {
  
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBAction func clickedLipColorBtn(_ sender: Any) {
+    @IBAction func clickedLipstickColorButton(_ sender: Any) {
         print("clicked color button")
     }
     
