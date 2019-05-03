@@ -30,28 +30,13 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBOutlet weak var typeReviewTextView: UITextView!
     @IBOutlet weak var clickedPostButton: UIButton!
     
-    
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
-    
-    var imageOfDetail = UIImage()
-    var lipBrandofDetail = String()
-    var lipNameOfDetail = String()
-    var lipColorNameOfDetail = String()
-    var lipAllDetail = String()
-    var lipClickedColor = UIImage()
-   
-    var reviewTblView = UITableView()
-    var detailView : UIView!
-    var reviewView : UIView!
     var lipstickList : Lipstick?
     
-    //---------------------- page control----------------------
- //   var imgPageControl : [String] = ["BE115","BE115_pic2"]
-//    var imgPageControl : [String]
     var frame = CGRect(x:0,y:0,width:0 , height:0)
-    
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         typeReview()
