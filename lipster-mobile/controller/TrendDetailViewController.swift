@@ -3,7 +3,6 @@ import FlexiblePageControl
 
 class TrendDetailViewController: UIViewController {
 
-    @IBOutlet weak var trendBigImageView: UIImageView!
     @IBOutlet weak var trendLipColorView: UIView!
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
@@ -11,6 +10,7 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var scrollTrendImage: UIScrollView!
     @IBOutlet weak var pageControl: FlexiblePageControl!
     
+    @IBOutlet weak var titleNavigationItem: UINavigationItem!
     var trendGroup: TrendGroup!
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     
@@ -20,6 +20,10 @@ class TrendDetailViewController: UIViewController {
         initScrollView()
         initPageControl()
         initUserInterface()
+        self.titleNavigationItem.title = trendGroup.trendName
+        
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
