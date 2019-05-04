@@ -84,7 +84,9 @@ extension TrendDetailViewController {
             self.scrollTrendImage.addSubview(imgView)
         }
         scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
-
+        
+        pageControl.pageIndicatorTintColor = UIColor.
+        pageControl.currentPageIndicatorTintColor = UIColor.black
     }
 
 }
