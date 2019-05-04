@@ -34,8 +34,10 @@ class LipstickDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
-    var lipstick : Lipstick?
+    @IBOutlet weak var titleNavigationItem: UINavigationItem!
     
+
+    var lipstick : Lipstick?
     var frame = CGRect(x:0,y:0,width:0 , height:0)
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     
@@ -46,7 +48,10 @@ class LipstickDetailSegmentVC: UIViewController {
         self.userList = self.createUserArray()
         clickedPostButton.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+        self.titleNavigationItem.title = lipstick?.lipstickBrand
         
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
 
         if let lipstick = self.lipstick{
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -101,6 +106,7 @@ class LipstickDetailSegmentVC: UIViewController {
     }
    
 }
+
 
 extension LipstickDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
   
@@ -207,6 +213,7 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     }
 }
 
+// collectionView cell
 extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
