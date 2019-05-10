@@ -21,6 +21,8 @@ class FaceDetection {
     
     public func getLipColorFromImage(for source: UIImageView, complete: @escaping ((UIColor)?) -> Void){
         var colorDetect: UIColor?
+        maintainSize = AVMakeRect(aspectRatio: source.image!.size, insideRect: source.frame)
+        multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
         
 //        print("multiplier: \(multiplier)")
 //
@@ -56,8 +58,7 @@ class FaceDetection {
     }
     
     public func drawLipLandmarkLayer(for source: UIImageView) {
-        maintainSize = AVMakeRect(aspectRatio: source.image!.size, insideRect: source.frame)
-        multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
+        
         
         self.getLipsLandmarksFireBase(for: source, mode: .fast, options: [.upperLipBottom, .upperLipTop, .lowerLipBottom, .lowerLipTop]) { (contourDictionary) in
             
