@@ -27,6 +27,7 @@
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C6B5C22722D4E009D05FD /* LoginViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
+		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
 		D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */; };
 		D8250E46226F7E6D009A2D25 /* LipstickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E45226F7E6D009A2D25 /* LipstickImage.swift */; };
 		D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E47226F7F28009A2D25 /* LipstickColor.swift */; };
@@ -88,6 +89,7 @@
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5C22722D4E009D05FD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
 		D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailSegmentVC.swift; sourceTree = "<group>"; };
 		D8250E45226F7E6D009A2D25 /* LipstickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickImage.swift; sourceTree = "<group>"; };
 		D8250E47226F7F28009A2D25 /* LipstickColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickColor.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				D8EA969A226986A80060B78A /* HomeViewController.swift */,
 				D8EA96AA226AEE9F0060B78A /* TrendListViewController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
+				D81CCE54228592F30028C19A /* NearByViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
+				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				D8250E4C226F83FB009A2D25 /* LipstickBrand.swift in Sources */,
