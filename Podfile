@@ -9,4 +9,9 @@ pod 'ExpandableLabel'
 pod 'FlexiblePageControl'
 pod 'SwiftyJSON'
 
+pod 'Firebase/Core'
+pod 'Firebase/Analytics'
+pod 'Firebase/MLVision'
+pod 'Firebase/MLVisionFaceModel'
+
 end
