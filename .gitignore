@@ -11,6 +11,41 @@
 *.xcworkspace
 xcuserdata
 
+# Large Pod file
+Pods/Firebase
+Pods/FirebaseAnalytics
+Pods/FirebaseCore
+Pods/FirebaseInstanceID
+Pods/FirebaseMLCommon
+Pods/FirebaseMLVision
+Pods/FirebaseMLVisionFaceModel
+Pods/GoogleAPIClientForREST
+Pods/GoogleAppMeasurement
+Pods/GoogleMobileVision
+Pods/GoogleToolboxForMac
+Pods/GoogleUtilities
+Pods/GTMSessionFetcher
+Pods/Headers
+Pods/nanopb
+Pods/Protobuf
+Pods/Target Support Files/Firebase
+Pods/Target Support Files/FirebaseAnalytics
+Pods/Target Support Files/FirebaseCore
+Pods/Target Support Files/FirebaseInstanceID
+Pods/Target Support Files/FirebaseMLCommon
+Pods/Target Support Files/FirebaseMLVision
+Pods/Target Support Files/FirebaseMLVisionFaceModel
+Pods/Target Support Files/GoogleAPIClientForREST
+Pods/Target Support Files/GoogleAppMeasurement
+Pods/Target Support Files/GoogleMobileVision
+Pods/Target Support Files/GoogleToolboxForMac
+Pods/Target Support Files/GoogleUtilities
+Pods/Target Support Files/GTMSessionFetcher
+Pods/Target Support Files/Headers
+Pods/Target Support Files/nanopb
+Pods/Target Support Files/Protobuf
+
+
 # Build products
 build/
 *.o
