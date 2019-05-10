@@ -8,31 +8,26 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class HttpRequest {
     
     var domain: String!
-    var token: String!
+    var token: String?
     
     init(_ domain: String) {
         self.domain = domain
         self.token = ""
     }
     
-    init(_ domain: String, _ token: String) {
+    init(_ domain: String, _ token: String?) {
         self.domain = domain
         self.token = token
     }
     
     public func get(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
-        
-        guard let url = URL(string: "\(domain)/\(route)") else {
-            completion(nil)
-            return
-        }
-        
-        Alamofire.request(url, method: .get, parameters: params, headers: header).validate().responseJSON { (response) in
+        Alamofire.request("\(domain!)/\(route)", method: .get, parameters: params, headers: header).validate().responseJSON { (response) in
             
             guard response.result.isSuccess else {
                 completion(nil)
@@ -48,14 +43,31 @@ class HttpRequest {
         }
     }
     
-    public func post(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
+    public func getImage(_ urlSource: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (UIImage?) -> (Void)) {
         
-        guard let url = URL(string: "\(domain)/\(route)") else {
+        guard let url = URL(string: urlSource) else {
             completion(nil)
             return
         }
         
-        Alamofire.request(url, method: .post, parameters: params, headers: header).validate().responseJSON { (response) in
+        Alamofire.request("\(url)").validate().responseImage { (response) in
+            guard response.result.isSuccess else {
+                completion(nil)
+                return
+            }
+            
+            if let image = response.result.value {
+                let uiImage = image.af_imageAspectScaled(toFill: CGSize(width: 150, height: 150))
+                completion(uiImage)
+            }
+            
+            completion(nil)
+        }
+    }
+    
+    public func post(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
+        
+        Alamofire.request("\(domain!)/\(route)", method: .post, parameters: params, headers: header).validate().responseJSON { (response) in
             
             guard response.result.isSuccess else {
                 completion(nil)
@@ -73,12 +85,7 @@ class HttpRequest {
     
     public func put(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        guard let url = URL(string: "\(domain)/\(route)") else {
-            completion(nil)
-            return
-        }
-        
-        Alamofire.request(url, method: .put, parameters: params, headers: header).validate().responseJSON { (response) in
+        Alamofire.request("\(domain!)/\(route)", method: .put, parameters: params, headers: header).validate().responseJSON { (response) in
             
             guard response.result.isSuccess else {
                 completion(nil)

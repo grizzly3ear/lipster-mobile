@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import AlamofireImage
 
 class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
@@ -20,6 +22,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     var trendGroup = TrendGroup()
     var recommendLipstick = [Lipstick]()
     var recentViewLipstick = [Lipstick]()
+    let request = HttpRequest("http://18.136.104.217", nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +43,45 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
     func retrieveData(token: String) {
-        let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
+        DispatchQueue.global().sync {
+            self.request.get("api/lipstick", nil, nil) { (response) -> (Void) in
+                let brandsJSON = response!["data"]
+                var lipsticksData = [Lipstick]()
+                
+                for brand in brandsJSON {
+                    
+                    for lipstickDetail in brand.1["detail"] {
+                        
+                        for lipstickColor in lipstickDetail.1["colors"] {
+                            
+                            var images = [UIImage]()
+                            for image in lipstickColor.1["images"] {
+                                self.request.getImage(image.1["image"].stringValue, nil, nil, completion: { (imageResponse) -> (Void) in
+                                    
+                                    guard (imageResponse != nil) else {
+                                        return
+                                    }
+                                    
+                                    images.append(imageResponse!)
+                                })
+                            }
+                            let lipstickBrand = brand.1["name"].stringValue
+                            let lipstickName = lipstickDetail.1["name"].stringValue
+                            let lipstickColorName = lipstickColor.1["color_name"].stringValue
+                            let lipstickDescription = lipstickDetail.1["description"].stringValue
+                            let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
+                                
+                            lipsticksData.append(Lipstick(lipstickImage: images, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDescription, lipstickColor: lipstickColor))
+                        }
+                    }
+                }
+                
+            }
+            
+        }
         
+        let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
+
         trendGroup.trendName = "Trend of the month | January 2019"
         trendGroup.trendList = [Trend]()
         let trend1 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
