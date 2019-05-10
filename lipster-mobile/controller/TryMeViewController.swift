@@ -7,17 +7,50 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TryMeViewController: UIViewController  {
  
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var capturePreview: UIView!
+    @IBOutlet weak var previewLayer: UIView!
+    
+    var session: AVCaptureSession?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var input: AVCaptureDeviceInput?
+    var output: AVCaptureVideoDataOutput?
     
     let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        session = AVCaptureSession()
+        session!.sessionPreset = .medium
         
+        guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {return}
+        
+        input = try? AVCaptureDeviceInput(device: frontCamera)
+        
+        if (session?.canAddInput(input!))! {
+            session?.addInput(input!)
+        }
+        
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
+        videoPreviewLayer?.frame = previewLayer.bounds
+        previewLayer.layer.addSublayer(videoPreviewLayer!)
+        session?.startRunning()
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        session?.stopRunning()
     }
 }
 
@@ -47,5 +80,20 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
         let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
         cell.triangleView.isHidden = true
     }
+    
+}
+
+extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        print("\(Date())")
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+    }
+}
+
+// MARK: capture configuration
+extension TryMeViewController {
     
 }

@@ -11,6 +11,7 @@ class LipColorDetectionController: UIViewController {
     
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
+    let faceDetection = FaceDetection()
     
     override func viewDidLoad() {
         navigationController?.isNavigationBarHidden = true
@@ -81,7 +82,7 @@ extension LipColorDetectionController {
     
     @objc func onTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: imagePreview)
-        let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+        let color = imagePreview?.getPixelColor(point: touchPoint)
         colorDetectPreview.backgroundColor = color
         
         draggableSelectColorView.isHidden = false
@@ -95,13 +96,15 @@ extension LipColorDetectionController {
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
         if sender.state == .began || sender.state == .changed {
             let touchPoint = sender.location(in: imagePreview)
-            let color = imagePreview?.image?.getPixelColor(point: touchPoint, sourceView: imagePreview)
+            let color = imagePreview?.getPixelColor(point: touchPoint)
             colorDetectPreview.backgroundColor = color
             
             draggableSelectColorView.isHidden = false
             draggableSelectColorView.backgroundColor = color
             
             moveDetectColorPreview(at: sender.location(in: self.view))
+            print("touchPoint: \(touchPoint)")
+            print("viewPoint: \(sender.location(in: self.view))")
         }
         if sender.state == .cancelled || sender.state == .ended {
             draggableSelectColorView.isHidden = true
@@ -117,25 +120,24 @@ extension LipColorDetectionController: ImagePickerDelegate {
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
-        DispatchQueue.global(qos: .background).async {
-//            FaceDetection.getLipsLandmarks(for: self.imagePreview) { (color) in
-//                DispatchQueue.main.async {
-//                    self.colorDetectPreview.backgroundColor = color
-//                    print(color)
-//                }
-//            }
-            DispatchQueue.main.async {
-                self.colorDetectPreview.backgroundColor = FaceDetection.getLipColorFromImage(for: self.imagePreview)
-                SwiftSpinner.hide()
-            }   
-            
-        }
-        
-        pickerController.dismiss(animated: true, completion: nil)
+        SwiftSpinner.show("Processing Image...")
         imagePreview.image = images.first
+        pickerController.dismiss(animated: true, completion: nil)
+        
         toggleCamera = false
         self.colorDetectPreview.backgroundColor = .black
-        SwiftSpinner.show("Processing Image...")
+        
+        DispatchQueue.main.async {
+            self.faceDetection.getLipColorFromImage(for: self.imagePreview, complete: { (color) in
+                print("compute... :\(color)")
+                guard (color != nil) else {
+                    return
+                }
+                self.colorDetectPreview.backgroundColor = color!
+            })
+            print("im outside 1")
+            SwiftSpinner.hide()
+        }
     
     }
     
