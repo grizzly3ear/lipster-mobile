@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ProfileTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:lipster-mobile.xcodeproj">
    </FileRef>
    <FileRef
