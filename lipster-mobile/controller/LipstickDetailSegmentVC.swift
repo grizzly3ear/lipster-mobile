@@ -104,6 +104,8 @@ class LipstickDetailSegmentVC: UIViewController {
         print("clicked TRY ME")
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
+    
+
    
 }
 

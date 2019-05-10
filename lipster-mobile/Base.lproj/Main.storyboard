@@ -307,6 +307,7 @@
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Post"/>
                                                         <connections>
+                                                            <action selector="clickedPostReviewButton:" destination="2O8-hK-JQi" eventType="touchUpInside" id="9cN-Cv-IdR"/>
                                                             <action selector="clickedPostReviewButton:" destination="teV-rM-HJk" eventType="touchUpInside" id="b2c-Tv-cCS"/>
                                                         </connections>
                                                     </button>
