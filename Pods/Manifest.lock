@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.8.0)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
   - ExpandableLabel (0.5.1)
   - Firebase/Analytics (5.19.0):
     - Firebase/Core
@@ -102,6 +104,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage
   - ExpandableLabel
   - Firebase/Analytics
   - Firebase/Core
@@ -115,6 +118,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AlamofireImage
     - ExpandableLabel
     - Firebase
     - FirebaseAnalytics
@@ -138,6 +142,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   ExpandableLabel: 80783721b4d849bc62c19b44bbb88aa8bb518423
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
@@ -159,6 +164,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 92bb99bd23b74c8f6fcc72d137be36fc6bd5a953
+PODFILE CHECKSUM: eccd94e7a8bdb1a17568a66a2a6d8c35d9f18473
 
 COCOAPODS: 1.6.1

@@ -8,6 +8,7 @@ pod 'Alamofire'
 pod 'ExpandableLabel'
 pod 'FlexiblePageControl'
 pod 'SwiftyJSON'
+pod 'AlamofireImage'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
