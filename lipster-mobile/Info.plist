@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+			<key>http://18.136.104.217</key>
+			<dict/>
+		</dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Pls</string>
 	<key>NSPhotoLibraryUsageDescription</key>

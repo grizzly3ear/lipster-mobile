@@ -26,7 +26,8 @@ class TryMeViewController: UIViewController  {
 
         session = AVCaptureSession()
         session!.sessionPreset = .medium
-        
+        output = AVCaptureVideoDataOutput()
+        output?.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoOutput"))
         guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {return}
         
         input = try? AVCaptureDeviceInput(device: frontCamera)
@@ -35,8 +36,12 @@ class TryMeViewController: UIViewController  {
             session?.addInput(input!)
         }
         
+        if (session?.canAddOutput(output!))! {
+            session?.addOutput(output!)
+        }
+        
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-        videoPreviewLayer?.frame = previewLayer.bounds
+        videoPreviewLayer?.frame = previewLayer.frame
         previewLayer.layer.addSublayer(videoPreviewLayer!)
         session?.startRunning()
         
