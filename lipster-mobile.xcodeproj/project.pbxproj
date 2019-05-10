@@ -28,6 +28,8 @@
 		D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C6B5C22722D4E009D05FD /* LoginViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
 		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
+		D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE562285D8BB0028C19A /* NotificationViewController.swift */; };
+		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
 		D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */; };
 		D8250E46226F7E6D009A2D25 /* LipstickImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E45226F7E6D009A2D25 /* LipstickImage.swift */; };
 		D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8250E47226F7F28009A2D25 /* LipstickColor.swift */; };
@@ -90,6 +92,8 @@
 		D81C6B5C22722D4E009D05FD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
+		D81CCE562285D8BB0028C19A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailSegmentVC.swift; sourceTree = "<group>"; };
 		D8250E45226F7E6D009A2D25 /* LipstickImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickImage.swift; sourceTree = "<group>"; };
 		D8250E47226F7F28009A2D25 /* LipstickColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickColor.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				D8EA96AA226AEE9F0060B78A /* TrendListViewController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
 				D81CCE54228592F30028C19A /* NearByViewController.swift */,
+				D81CCE562285D8BB0028C19A /* NotificationViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				D8E48D92226DD7C600A192EB /* TrendGroupTableViewCell.swift */,
 				D8E48D94226DE0A200A192EB /* TrendImageCollectionViewCell.swift */,
 				3073907C227C2766003B9013 /* TriangleView.swift */,
+				D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -449,6 +455,8 @@
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
 				D8250E48226F7F28009A2D25 /* LipstickColor.swift in Sources */,
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
+				D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */,
+				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
 				D8250E4A226F80FD009A2D25 /* LipstickDetail.swift in Sources */,
