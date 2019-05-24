@@ -24,43 +24,24 @@ class FaceDetection {
         maintainSize = AVMakeRect(aspectRatio: source.image!.size, insideRect: source.frame)
         multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
         
-//        print("multiplier: \(multiplier)")
-//
-//        print("maintain minX: \(maintainSize.minX)")
-//        print("maintain maxX: \(maintainSize.maxX)")
-//        print("maintain minY: \(maintainSize.minY)")
-//        print("maintain maxY: \(maintainSize.maxY)")
-//        print("maintain width: \(maintainSize.width)")
-//        print("maintain height: \(maintainSize.height)")
-//
-//        print("source.frame minX: \(source.frame.minX)")
-//        print("source.frame maxX: \(source.frame.maxX)")
-//        print("source.frame minY: \(source.frame.minY)")
-//        print("source.frame maxY: \(source.frame.maxY)")
-//        print("source.frame width: \(source.frame.width)")
-//        print("source.frame height: \(source.frame.height)")
-//
-//        print("image width: \(source.image!.size.width)")
-//        print("image height: \(source.image!.size.height)")
-        
         self.getLipsLandmarksFireBase(for: source, mode: .accurate, options: [.upperLipBottom]) { (contourDictionary) in
-            print("check contour resposne: \(contourDictionary)")
+            
             guard (contourDictionary != nil), let upperLipBottom = contourDictionary!["UpperLipBottom"]!, !upperLipBottom.isEmpty else {
+                
                 complete(UIColor.black)
                 return
             }
-            print("finding color...")
             colorDetect = source.getPixelColor(point: upperLipBottom[1])
-            print("find complete: \(colorDetect)")
-            print("from point: \(upperLipBottom[1])")
+            
             complete(colorDetect)
         }
     }
     
     public func drawLipLandmarkLayer(for source: UIImageView) {
         
-        
         self.getLipsLandmarksFireBase(for: source, mode: .fast, options: [.upperLipBottom, .upperLipTop, .lowerLipBottom, .lowerLipTop]) { (contourDictionary) in
+            
+            
             
         }
     }
@@ -144,7 +125,6 @@ extension FaceDetection {
                             
                             return landmarkPoint
                         })
-                        print(landmarkPoints)
                         complete(landmarkPoints!)
                     }
                 }
