@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecHomeCollectionViewCell: UICollectionViewCell {
+class RecommendHomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var recImageView: UIImageView!
     @IBOutlet weak var recBrandLabel: UILabel!

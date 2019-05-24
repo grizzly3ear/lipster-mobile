@@ -211,7 +211,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecHomeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             
             cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
             cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickBrand
