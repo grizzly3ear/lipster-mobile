@@ -1,6 +1,9 @@
 import UIKit
 import ImagePicker
 import SwiftSpinner
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 class LipColorDetectionController: UIViewController {
     
@@ -13,6 +16,9 @@ class LipColorDetectionController: UIViewController {
     var toggleCamera: Bool = false
     let faceDetection = FaceDetection()
     
+    let colorDetectionPipe = Signal<UIColor, NoError>.pipe()
+    var colorDetectionObserver: Signal<UIColor, NoError>.Observer?
+    
     override func viewDidLoad() {
         navigationController?.isNavigationBarHidden = true
         
@@ -20,6 +26,8 @@ class LipColorDetectionController: UIViewController {
         initDetectColorPreview()
         toggleCamera = true
         setUpGesture()
+        
+        configureReactiveColorDetection()
         
         self.present(pickerController, animated: true, completion: nil)
         print("view did load")
@@ -31,7 +39,6 @@ class LipColorDetectionController: UIViewController {
             setConfiguration()
             self.present(pickerController, animated: true, completion: nil)
         }
-        print("view did appear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -59,7 +66,7 @@ class LipColorDetectionController: UIViewController {
     
 }
 
-// set up gesture on imagePreview
+// MARK: Set up gesture on imagePreview
 extension LipColorDetectionController {
     func setUpGesture() {
         imagePreview.isUserInteractionEnabled = true
@@ -103,8 +110,6 @@ extension LipColorDetectionController {
             draggableSelectColorView.backgroundColor = color
             
             moveDetectColorPreview(at: sender.location(in: self.view))
-            print("touchPoint: \(touchPoint)")
-            print("viewPoint: \(sender.location(in: self.view))")
         }
         if sender.state == .cancelled || sender.state == .ended {
             draggableSelectColorView.isHidden = true
@@ -113,8 +118,20 @@ extension LipColorDetectionController {
 
 }
 
-// image picker delegate
+// MARK: Reactive init
+extension LipColorDetectionController {
+    func configureReactiveColorDetection() {
+        colorDetectionObserver = Signal<UIColor, NoError>.Observer(value: { (color) in
+            self.colorDetectPreview.backgroundColor = color
+        })
+        
+        colorDetectionPipe.output.observe(colorDetectionObserver!)
+    }
+}
+
+// MARK: Image picker delegate
 extension LipColorDetectionController: ImagePickerDelegate {
+    
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     }
     
@@ -130,12 +147,8 @@ extension LipColorDetectionController: ImagePickerDelegate {
         DispatchQueue.main.async {
             self.faceDetection.getLipColorFromImage(for: self.imagePreview, complete: { (color) in
                 print("compute... :\(color)")
-                guard (color != nil) else {
-                    return
-                }
-                self.colorDetectPreview.backgroundColor = color!
+                self.colorDetectionPipe.input.send(value: color!)
             })
-            print("im outside 1")
             SwiftSpinner.hide()
         }
     
