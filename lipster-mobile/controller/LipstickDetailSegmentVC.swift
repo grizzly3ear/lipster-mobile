@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ExpandableLabel
 
 
 class LipstickDetailSegmentVC: UIViewController {
@@ -26,7 +25,7 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     @IBOutlet weak var detailViewContainer: UIView!
-    @IBOutlet weak var seemore: ExpandableLabel!
+//    @IBOutlet weak var seemore: ExpandableLabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var typeReviewTextView: UITextView!
@@ -60,14 +59,14 @@ class LipstickDetailSegmentVC: UIViewController {
             self.lipstickShortDetail.text = lipstick.lipShortDetail
         }
         
-        //----------------Read more / Read less--------------
-        seemore.delegate = self as? ExpandableLabelDelegate
-       // seemore.numberOfLines = 3
-        seemore.collapsed = true
-        seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
-        seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
-        //seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
-        seemore.ellipsis = NSAttributedString(string: "...")
+//        //----------------Read more / Read less--------------
+//        seemore.delegate = self as? ExpandableLabelDelegate
+//       // seemore.numberOfLines = 3
+//        seemore.collapsed = true
+//        seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
+//        seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
+//        //seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
+//        seemore.ellipsis = NSAttributedString(string: "...")
         
     }
   

@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
-  - ExpandableLabel (0.5.1)
   - Firebase/Analytics (5.19.0):
     - Firebase/Core
   - Firebase/Core (5.19.0):
@@ -99,19 +98,24 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - ReactiveCocoa (9.0.0):
+    - ReactiveSwift (~> 5.0)
+  - ReactiveSwift (5.0.0):
+    - Result (~> 4.1)
+  - Result (4.1.0)
   - SwiftSpinner (1.6.2)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - ExpandableLabel
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/MLVision
   - Firebase/MLVisionFaceModel
   - FlexiblePageControl
   - ImagePicker
+  - ReactiveCocoa (~> 9.0)
   - SwiftSpinner
   - SwiftyJSON
 
@@ -119,7 +123,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
-    - ExpandableLabel
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -137,13 +140,15 @@ SPEC REPOS:
     - ImagePicker
     - nanopb
     - Protobuf
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Result
     - SwiftSpinner
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
-  ExpandableLabel: 80783721b4d849bc62c19b44bbb88aa8bb518423
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
@@ -161,9 +166,12 @@ SPEC CHECKSUMS:
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
+  ReactiveSwift: bd4c122943593e67cb441409370c5c1e3cb32791
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: eccd94e7a8bdb1a17568a66a2a6d8c35d9f18473
+PODFILE CHECKSUM: 7c739d23c99d7b2a24e7deb0dfda436295817f10
 
 COCOAPODS: 1.6.1
