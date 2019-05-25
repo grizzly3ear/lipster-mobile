@@ -25,13 +25,10 @@ class PreviewMaskLayer: UIView {
     // TODO: Change parameter in craeteLayer for face bound
     public func drawLandmark(for contourPoints: Dictionary<String, [CGPoint]?>?, lipstickColor: UIColor) {
         
-        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -frame.height)
-        let translate = CGAffineTransform.identity.scaledBy(x: frame.width, y: frame.height)
-        let bound = frame.applying(translate).applying(transform)
         let faceLayer = createLayer(in: frame)
         
         guard contourPoints != nil else { return }
-        print(contourPoints!["LowerLipTop"]!)
+
         drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipTop"]!, isClosed: false, color: lipstickColor)
         drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipBottom"]!, isClosed: false, color: lipstickColor)
         drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["UpperLipTop"]!, isClosed: false, color: lipstickColor)
@@ -93,7 +90,7 @@ extension PreviewMaskLayer {
         
         let lineLayer = CAShapeLayer()
         lineLayer.path = linePath.cgPath
-        lineLayer.fillColor = color.cgColor
+//        lineLayer.fillColor = color.cgColor
         lineLayer.opacity = 1.0
         lineLayer.lineWidth = 1.0
         
