@@ -8,43 +8,47 @@
 
 import UIKit
 import AVFoundation
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class TryMeViewController: UIViewController  {
  
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var previewLayer: UIView!
+    @IBOutlet weak var previewLayer: PreviewMaskLayer!
     
-    var session: AVCaptureSession?
+    var session: AVCaptureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var input: AVCaptureDeviceInput?
     var output: AVCaptureVideoDataOutput?
+    let faceDetection: FaceDetection = FaceDetection()
+    let videoOutputQueue = DispatchQueue(label: "videoOutput", qos: .userInteractive, attributes: .concurrent)
+    
+    let lipstickARPipe = Signal<Dictionary<String, [CGPoint]?>?, NoError>.pipe()
+    var lipstickARObserver: Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer?
     
     let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        session = AVCaptureSession()
-        session!.sessionPreset = .medium
+        
+        previewLayer.session = session
+        session.sessionPreset = .medium
         output = AVCaptureVideoDataOutput()
-        output?.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoOutput"))
+        output?.setSampleBufferDelegate(self, queue: videoOutputQueue)
         guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {return}
         
         input = try? AVCaptureDeviceInput(device: frontCamera)
         
-        if (session?.canAddInput(input!))! {
-            session?.addInput(input!)
+        if session.canAddInput(input!) {
+            session.addInput(input!)
         }
         
-        if (session?.canAddOutput(output!))! {
-            session?.addOutput(output!)
+        if session.canAddOutput(output!) {
+            session.addOutput(output!)
         }
-        
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
-        videoPreviewLayer?.frame = previewLayer.frame
-        previewLayer.layer.addSublayer(videoPreviewLayer!)
-        session?.startRunning()
-        
+        configureReactiveAR()
+        session.startRunning()
         
     }
     
@@ -55,7 +59,7 @@ class TryMeViewController: UIViewController  {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        session?.stopRunning()
+        session.stopRunning()
     }
 }
 
@@ -90,7 +94,13 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
 
 extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        print("\(Date())")
+
+        videoOutputQueue.async {
+            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, frame: self.previewLayer, complete: { (contourDictionary) in
+                self.lipstickARPipe.input.send(value: contourDictionary)
+            })
+        }
+
     }
     
     func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -98,7 +108,14 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
 }
 
-// MARK: capture configuration
+// MARK: Reactive Configure
 extension TryMeViewController {
-    
+    func configureReactiveAR() {
+        lipstickARObserver = Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer(value: { (contourDictionary) in
+            self.previewLayer.removeMask()
+            self.previewLayer.drawLandmark(for: contourDictionary, lipstickColor: UIColor.red)
+        })
+        
+        lipstickARPipe.output.observe(lipstickARObserver!)
+    }
 }

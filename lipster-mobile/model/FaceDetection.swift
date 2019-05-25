@@ -12,11 +12,18 @@ enum Accuracy {
 
 class FaceDetection {
     
-    lazy var vision = Vision.vision()
+    
+    var vision = Vision.vision()
+    let options = VisionFaceDetectorOptions()
     var multiplier = 1.0
     var maintainSize = CGRect()
+    let metadata = VisionImageMetadata()
     
     init() {
+        options.classificationMode = .none
+        options.contourMode = .all
+        options.landmarkMode = .none
+        options.performanceMode = .fast
     }
     
     public func getLipColorFromImage(for source: UIImageView, complete: @escaping ((UIColor)?) -> Void){
@@ -24,7 +31,8 @@ class FaceDetection {
         maintainSize = AVMakeRect(aspectRatio: source.image!.size, insideRect: source.frame)
         multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
         
-        self.getLipsLandmarksFireBase(for: source, mode: .accurate, options: [.upperLipBottom]) { (contourDictionary) in
+        let image = VisionImage(image: source.image!)
+        self.getLipsLandmarksFireBase(for: image, mode: .accurate, frame: source, options: [.upperLipBottom]) { (contourDictionary) in
             
             guard (contourDictionary != nil), let upperLipBottom = contourDictionary!["UpperLipBottom"]!, !upperLipBottom.isEmpty else {
                 
@@ -37,13 +45,29 @@ class FaceDetection {
         }
     }
     
-    public func drawLipLandmarkLayer(for source: UIImageView) {
+    public func drawLipLandmarkLayer(for sourceBuffer: CMSampleBuffer, frame: UIView, complete: @escaping ((Dictionary<String, [CGPoint]?>)?) -> Void) {
         
-        self.getLipsLandmarksFireBase(for: source, mode: .fast, options: [.upperLipBottom, .upperLipTop, .lowerLipBottom, .lowerLipTop]) { (contourDictionary) in
-            
-            
-            
+        let deviceOrientation = UIDevice.current.orientation
+        switch deviceOrientation {
+        case .portrait:
+            metadata.orientation = .leftTop
+        case .landscapeLeft:
+            metadata.orientation = .bottomLeft
+        case .portraitUpsideDown:
+            metadata.orientation = .rightBottom
+        case .landscapeRight:
+            metadata.orientation = .topRight
+        case .faceDown, .faceUp, .unknown:
+            metadata.orientation = .leftTop
         }
+        
+        let image = VisionImage(buffer: sourceBuffer)
+        image.metadata = metadata
+        
+        getLipsLandmarksFireBase(for: image, mode: .fast, frame: frame, options: [.upperLipTop, .upperLipBottom, .lowerLipTop, .lowerLipBottom]) { (contourDictionary) in
+            complete(contourDictionary)
+        }
+        
     }
 
 }
@@ -51,8 +75,7 @@ class FaceDetection {
 // MARK: Private Function
 extension FaceDetection {
     
-    private func getLipsLandmarksFireBase(for source: UIImageView, mode: Accuracy, options contourOptions: [FaceContourType], complete: @escaping (Dictionary<String, [CGPoint]?>?) -> Void) {
-        let options = VisionFaceDetectorOptions()
+    private func getLipsLandmarksFireBase(for visionImage: VisionImage, mode: Accuracy, frame: UIView, options contourOptions: [FaceContourType], complete: @escaping (Dictionary<String, [CGPoint]?>?) -> Void) {
         
         switch mode {
         case .accurate:
@@ -62,13 +85,9 @@ extension FaceDetection {
             options.performanceMode = .fast
             break
         }
-        
-        options.contourMode = .all
-        
+
         let faceDetector = vision.faceDetector(options: options)
-        
-        let visionImage = VisionImage(image: source.image!)
-        
+
         var contourPoints = Dictionary<String, [CGPoint]?>()
         faceDetector.process(visionImage) { faces, err in
             guard err == nil, let faces = faces, !faces.isEmpty else {
@@ -77,7 +96,7 @@ extension FaceDetection {
             }
             for face in faces {
                 for contourOption in contourOptions {
-                    contourPoints[contourOption.rawValue] = self.getContourPoint(face: face, type: contourOption, for: source)
+                    contourPoints[contourOption.rawValue] = self.getContourPoint(face: face, type: contourOption, for: frame)
                 }
             }
             complete(contourPoints)
