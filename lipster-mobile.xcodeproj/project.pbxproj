@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30424ACD22990B97005D2E2C /* PreviewMaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */; };
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
 		304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */; };
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMaskLayer.swift; sourceTree = "<group>"; };
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewHelper.swift; sourceTree = "<group>"; };
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */,
 				D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */,
 				D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */,
+				30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
+				30424ACD22990B97005D2E2C /* PreviewMaskLayer.swift in Sources */,
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
