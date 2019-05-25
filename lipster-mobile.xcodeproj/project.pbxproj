@@ -24,6 +24,7 @@
 		30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B36E8D221A6DDD001FD8EF /* LaunchScreen.storyboard */; };
 		30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */; };
 		30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966F1224E06F700258CA6 /* FaceDetection.swift */; };
+		30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78E972299B91D0032A965 /* UIUtilityHelper.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C6B5C22722D4E009D05FD /* LoginViewController.swift */; };
@@ -89,6 +90,7 @@
 		30B36E90221A6DDD001FD8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LipColorDetectionController.swift; path = "lipster-mobile/Controller/LipColorDetectionController.swift"; sourceTree = SOURCE_ROOT; };
 		30B966F1224E06F700258CA6 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
+		30C78E972299B91D0032A965 /* UIUtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilityHelper.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5C22722D4E009D05FD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				30694E3F226B4BE20091C698 /* StringHelper.swift */,
 				308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */,
 				304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */,
+				30C78E972299B91D0032A965 /* UIUtilityHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D81CCE5D2285ED2C0028C19A /* ProfileTableViewCell.swift in Sources */,
+				30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
 				D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,

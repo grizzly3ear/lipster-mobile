@@ -12,12 +12,12 @@ enum Accuracy {
 
 class FaceDetection {
     
-    
-    var vision = Vision.vision()
+    lazy var vision = Vision.vision()
     let options = VisionFaceDetectorOptions()
     var multiplier = 1.0
     var maintainSize = CGRect()
     let metadata = VisionImageMetadata()
+    var contourDictionary = Dictionary<String, [CGPoint]?>()
     
     init() {
         options.classificationMode = .none
@@ -32,7 +32,7 @@ class FaceDetection {
         multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
         
         let image = VisionImage(image: source.image!)
-        self.getLipsLandmarksFireBase(for: image, mode: .accurate, frame: source, options: [.upperLipBottom]) { (contourDictionary) in
+        self.getLipsLandmarksFireBase(for: image, mode: .accurate, frame: source, options: [.upperLipBottom], width: source.frame.width, height: source.frame.height) { (contourDictionary) in
             
             guard (contourDictionary != nil), let upperLipBottom = contourDictionary!["UpperLipBottom"]!, !upperLipBottom.isEmpty else {
                 
@@ -46,25 +46,30 @@ class FaceDetection {
     }
     
     public func drawLipLandmarkLayer(for sourceBuffer: CMSampleBuffer, frame: UIView, complete: @escaping ((Dictionary<String, [CGPoint]?>)?) -> Void) {
+
+        let image = VisionImage(buffer: sourceBuffer)
         
-        let deviceOrientation = UIDevice.current.orientation
-        switch deviceOrientation {
-        case .portrait:
-            metadata.orientation = .leftTop
-        case .landscapeLeft:
-            metadata.orientation = .bottomLeft
-        case .portraitUpsideDown:
-            metadata.orientation = .rightBottom
-        case .landscapeRight:
-            metadata.orientation = .topRight
-        case .faceDown, .faceUp, .unknown:
-            metadata.orientation = .leftTop
+        let orientation = UIUtilityHelper.imageOrientation(fromDevicePosition: .front)
+        let visionOrientation = UIUtilityHelper.visionImageOrientation(from: orientation)
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sourceBuffer) else {
+            print("Failed to get image buffer from sample buffer.")
+            return
         }
         
-        let image = VisionImage(buffer: sourceBuffer)
+        metadata.orientation = visionOrientation
         image.metadata = metadata
         
-        getLipsLandmarksFireBase(for: image, mode: .fast, frame: frame, options: [.upperLipTop, .upperLipBottom, .lowerLipTop, .lowerLipBottom]) { (contourDictionary) in
+        let imageWidth = CGFloat(CVPixelBufferGetWidth(imageBuffer))
+        let imageHeight = CGFloat(CVPixelBufferGetHeight(imageBuffer))
+        
+        let options: [FaceContourType] = [
+            .lowerLipTop,
+            .lowerLipBottom,
+            .upperLipTop,
+            .upperLipBottom
+        ]
+        
+        getLipsLandmarksFireBase(for: image, mode: .fast, frame: frame, options: options, width: imageWidth, height: imageHeight) { (contourDictionary) in
             complete(contourDictionary)
         }
         
@@ -75,7 +80,7 @@ class FaceDetection {
 // MARK: Private Function
 extension FaceDetection {
     
-    private func getLipsLandmarksFireBase(for visionImage: VisionImage, mode: Accuracy, frame: UIView, options contourOptions: [FaceContourType], complete: @escaping (Dictionary<String, [CGPoint]?>?) -> Void) {
+    private func getLipsLandmarksFireBase(for visionImage: VisionImage, mode: Accuracy, frame: UIView, options contourOptions: [FaceContourType], width: CGFloat, height: CGFloat, complete: @escaping (Dictionary<String, [CGPoint]?>?) -> Void) {
         
         switch mode {
         case .accurate:
@@ -87,19 +92,23 @@ extension FaceDetection {
         }
 
         let faceDetector = vision.faceDetector(options: options)
-
-        var contourPoints = Dictionary<String, [CGPoint]?>()
-        faceDetector.process(visionImage) { faces, err in
+        
+        faceDetector.process(visionImage) { (faces, err) in
             guard err == nil, let faces = faces, !faces.isEmpty else {
                 complete(nil)
                 return
             }
+            
             for face in faces {
-                for contourOption in contourOptions {
-                    contourPoints[contourOption.rawValue] = self.getContourPoint(face: face, type: contourOption, for: frame)
+                if mode == .accurate {
+                    self.contourDictionary["UpperLipBottom"] = self.getContourPoint(face: face, type: .upperLipBottom, for: frame)
+                } else {
+                    self.addContours(for: face, width: width, height: height, for: frame as! PreviewMaskLayer)
                 }
+                
             }
-            complete(contourPoints)
+            complete(self.contourDictionary)
+
         }
     }
     
@@ -115,6 +124,48 @@ extension FaceDetection {
             return points
         }
         return points
+    }
+    
+    private func addContours(for face: VisionFace, width: CGFloat, height: CGFloat, for previewMaskLayer: PreviewMaskLayer) {
+        if let topUpperLipContour = face.contour(ofType: .upperLipTop) {
+            var points = [CGPoint]()
+            for point in topUpperLipContour.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewMaskLayer: previewMaskLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["UpperLipTop"] = points
+        }
+        if let bottomUpperLipContour = face.contour(ofType: .upperLipBottom) {
+            var points = [CGPoint]()
+            for point in bottomUpperLipContour.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewMaskLayer: previewMaskLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["UpperLipBottom"] = points
+        }
+        if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
+            var points = [CGPoint]()
+            for point in topLowerLipContour.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewMaskLayer: previewMaskLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["LowerLipTop"] = points
+        }
+        if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
+            var points = [CGPoint]()
+            for point in bottomLowerLipContour.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewMaskLayer: previewMaskLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["LowerLipBottom"] = points
+        }
+    }
+    
+    private func normalizedPoint(fromVisionPoint point: VisionPoint, width: CGFloat, height: CGFloat, previewMaskLayer: PreviewMaskLayer) -> CGPoint {
+        let cgPoint = CGPoint(x: CGFloat(point.x.floatValue), y: CGFloat(point.y.floatValue))
+        var normalizedPoint = CGPoint(x: cgPoint.x / width, y: cgPoint.y / height)
+        normalizedPoint = previewMaskLayer.videoPreviewLayer.layerPointConverted(fromCaptureDevicePoint: normalizedPoint)
+        return normalizedPoint
     }
 }
 
