@@ -1,12 +1,12 @@
 import UIKit
 
 extension UIImage {
-    func getPixelColor(pos: CGPoint) -> UIColor {
+    func getPixelColor(point: CGPoint) -> UIColor {
         
         let pixelData = self.cgImage!.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
-        let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        let pixelInfo: Int = ((Int(self.size.width) * Int(point.y)) + Int(point.x)) * 4
         
         let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
         let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
@@ -32,7 +32,7 @@ extension UIImage {
         return color
     }
     
-    func imageWithColor(color : UIColor, size :  CGSize) -> UIImage {
+    func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
@@ -41,5 +41,21 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return image!
+    }
+    
+    convenience init(urlKey: String, placeHolder: UIImage) {
+        if let url = URL(string: urlKey) {
+            do {
+                let data = try Data(contentsOf: url)
+                self.init(data: data)!
+            } catch let _ {
+                
+            }
+        }
+        self.init(uiImage: placeHolder)
+    }
+    
+    convenience init(uiImage: UIImage) {
+        self.init(cgImage: uiImage.cgImage!)
     }
 }

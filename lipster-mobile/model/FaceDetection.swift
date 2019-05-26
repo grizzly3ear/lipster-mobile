@@ -27,12 +27,12 @@ class FaceDetection {
         
         self.getAccurateLipsLandmarks(for: source) { (contourDictionary) in
             print(contourDictionary)
-            guard let upperLipBottom = contourDictionary["UpperLipBottom"]!, !upperLipBottom.isEmpty else {
+            guard let upperLipBottom = contourDictionary["UpperLipBottom"], !upperLipBottom!.isEmpty else {
                 
                 complete(UIColor.black)
                 return
             }
-            colorDetect = source.image?.getPixelColor(pos: upperLipBottom[3])
+            colorDetect = source.image?.getPixelColor(point: (upperLipBottom?[3])!)
             
             complete(colorDetect)
         }

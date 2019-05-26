@@ -25,4 +25,16 @@ extension UIImageView {
         pixel.deallocate()
         return color
     }
+    
+    func setImageFromUrl(imageUrl: String) {
+        URLSession.shared.dataTask(with: NSURL(string: imageUrl)! as URL, completionHandler: {
+            (data, response, error) -> Void in
+            DispatchQueue.main.async {
+                if let data = data {
+                    self.image = UIImage(data: data)
+                }
+            }
+        }).resume()
+    }
+
 }

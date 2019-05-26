@@ -56,7 +56,7 @@ class LipstickDetailSegmentVC: UIViewController {
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
-            self.lipstickShortDetail.text = lipstick.lipShortDetail
+            self.lipstickShortDetail.text = lipstick.lipstickDetail
         }
         
 //        //----------------Read more / Read less--------------
@@ -194,6 +194,7 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     
             let imgView = UIImageView(frame: frame)
             imgView.image = self.lipstick!.lipstickImage[index]
+//            imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "BE116"))
             self.scrollLipstickImages.addSubview(imgView)
         }
         scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)

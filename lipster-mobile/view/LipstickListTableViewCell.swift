@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LipstickListTableViewCell: UITableViewCell {
     
@@ -20,11 +21,14 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     
     func setLipstick(lipstick : Lipstick) {
+        print(UIImage(named: "BE116"))
+        print(lipstick.lipstickImage.first)
         lipImageView.image = lipstick.lipstickImage.first
+//        lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first!), placeholderImage: UIImage(named: "BE116"))
         lipBrandLabel.text = lipstick.lipstickBrand
         lipNameLabel.text = lipstick.lipstickName
         lipColorNameLabel.text = lipstick.lipstickColorName
-        lipDetailLabel.text = lipstick.lipShortDetail
+        lipDetailLabel.text = lipstick.lipstickDetail
         colorUIView.backgroundColor = lipstick.lipstickColor
     }
     

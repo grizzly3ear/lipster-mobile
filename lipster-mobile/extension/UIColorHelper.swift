@@ -9,7 +9,7 @@ extension UIColor {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
-    convenience init(hexString: String, alpha:CGFloat = 1.0) {
+    convenience init(hexString: String, alpha: CGFloat = 1.0) {
         
         // Convert hex string to an integer
         let hexint = Int(UIColor.intFromHexString(hexStr: hexString))

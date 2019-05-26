@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftSpinner
 
-class LipstickListViewController:  UITableViewController  {
+class LipstickListViewController: UITableViewController  {
 
     @IBOutlet var lipListTableView: UITableView!
     
@@ -25,7 +25,6 @@ class LipstickListViewController:  UITableViewController  {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = false
-        self.lipstickList = self.createArray()
  
         addNavBarImage()
         searchBarLip()
@@ -138,15 +137,15 @@ extension LipstickListViewController : UISearchControllerDelegate , UISearchBarD
 // create array of lipstick
 extension LipstickListViewController{
     
-    func createArray() -> [Lipstick] {
-        let lip1 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE115") , UIImage(named: "BE115_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipstickColor : UIColor(rgb: 0x91171E) )
-        let lip2 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE116") , UIImage(named: "BE116_pic2")!], lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xB74447) )
-        let lip3 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "OR214") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "OR214", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipstickColor : UIColor(rgb: 0xFA4855) )
-        let lip4 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK037") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFE486B) )
-        let lip5 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK035") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFF9A94) )
-        
-        return [lip1, lip2, lip3, lip4, lip5]
-    }
+//    func createArray() -> [Lipstick] {
+//        let lip1 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE115") , UIImage(named: "BE115_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipstickColor : UIColor(rgb: 0x91171E) )
+//        let lip2 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE116") , UIImage(named: "BE116_pic2")!], lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xB74447) )
+//        let lip3 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "OR214") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "OR214", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipstickColor : UIColor(rgb: 0xFA4855) )
+//        let lip4 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK037") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFE486B) )
+//        let lip5 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK035") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFF9A94) )
+//        
+//        return [lip1, lip2, lip3, lip4, lip5]
+//    }
 }
 
 

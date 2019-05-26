@@ -1,14 +1,5 @@
-//
-//  HttpRequest.swift
-//  lipster-mobile
-//
-//  Created by Bank on 25/4/2562 BE.
-//  Copyright © 2562 Bank. All rights reserved.
-//
-
 import Foundation
 import Alamofire
-import AlamofireImage
 import SwiftyJSON
 
 class HttpRequest {
@@ -26,76 +17,46 @@ class HttpRequest {
         self.token = token
     }
     
-    public func get(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
-        Alamofire.request("\(domain!)/\(route)", method: .get, parameters: params, headers: header).validate().responseJSON { (response) in
+    public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
+        
+        Alamofire.request("\(domain!)/\(route)", method: .get, parameters: params, headers: headers).validate().responseJSON { (response) in
             
-            guard response.result.isSuccess else {
+            guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
                 return
             }
             
-            guard let json = try? JSON(response.data) else {
-                completion(nil)
-                return
-            }
+            let json = JSON(value)
             
             completion(json)
         }
     }
     
-    public func getImage(_ urlSource: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (UIImage?) -> (Void)) {
+    public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        guard let url = URL(string: urlSource) else {
-            completion(nil)
-            return
-        }
-        
-        Alamofire.request("\(url)").validate().responseImage { (response) in
-            guard response.result.isSuccess else {
+        Alamofire.request("\(domain!)/\(route)", method: .post, parameters: params, headers: headers).validate().responseJSON { (response) in
+            
+            guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
                 return
             }
             
-            if let image = response.result.value {
-                let uiImage = image.af_imageAspectScaled(toFill: CGSize(width: 150, height: 150))
-                completion(uiImage)
-            }
-            
-            completion(nil)
-        }
-    }
-    
-    public func post(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
-        
-        Alamofire.request("\(domain!)/\(route)", method: .post, parameters: params, headers: header).validate().responseJSON { (response) in
-            
-            guard response.result.isSuccess else {
-                completion(nil)
-                return
-            }
-            
-            guard let json = try? JSON(response.data) else {
-                completion(nil)
-                return
-            }
+            let json = JSON(value)
             
             completion(json)
         }
     }
     
-    public func put(_ route: String, _ params: [String: Any]?, _ header: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
+    public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain!)/\(route)", method: .put, parameters: params, headers: header).validate().responseJSON { (response) in
+        Alamofire.request("\(domain!)/\(route)", method: .put, parameters: params, headers: headers).validate().responseJSON { (response) in
             
-            guard response.result.isSuccess else {
+            guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
                 return
             }
             
-            guard let json = try? JSON(response.data) else {
-                completion(nil)
-                return
-            }
+            let json = JSON(value)
             
             completion(json)
         }

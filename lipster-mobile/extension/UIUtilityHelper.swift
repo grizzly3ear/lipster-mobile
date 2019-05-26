@@ -13,9 +13,7 @@ import FirebaseMLVision
 
 public class UIUtilityHelper {
     
-    public static func imageOrientation(
-        fromDevicePosition devicePosition: AVCaptureDevice.Position = .back
-        ) -> UIImage.Orientation {
+    public static func imageOrientation(fromDevicePosition devicePosition: AVCaptureDevice.Position = .back) -> UIImage.Orientation {
         var deviceOrientation = UIDevice.current.orientation
         if deviceOrientation == .faceDown || deviceOrientation == .faceUp ||
             deviceOrientation == .unknown {
@@ -58,9 +56,7 @@ public class UIUtilityHelper {
         return deviceOrientation()
     }
     
-    public static func visionImageOrientation(
-        from imageOrientation: UIImage.Orientation
-        ) -> VisionDetectorImageOrientation {
+    public static func visionImageOrientation(from imageOrientation: UIImage.Orientation) -> VisionDetectorImageOrientation {
         switch imageOrientation {
         case .up:
             return .topLeft

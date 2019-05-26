@@ -12,9 +12,9 @@ class TrendGroup {
     var trendName: String?
     var trends: [Trend]?
     
-    init(_ trendName: String, _ trendList: [Trend]) {
+    init(_ trendName: String, _ trends: [Trend]) {
         self.trendName = trendName
-        self.trends = trendList
+        self.trends = trends
     }
     
     init() {
