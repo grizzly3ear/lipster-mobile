@@ -1,14 +1,8 @@
-//
-//  HomeViewController.swift
-//  lipster-mobile
-//
-//  Created by Mainatvara on 19/4/2562 BE.
-//  Copyright © 2562 Bank. All rights reserved.
-//
-
 import UIKit
 import SwiftyJSON
-import AlamofireImage
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
@@ -23,62 +17,36 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     var recommendLipstick = [Lipstick]()
     var recentViewLipstick = [Lipstick]()
     let request = HttpRequest("http://18.136.104.217", nil)
+    let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
         
+        let defaults = UserDefaults.standard
+        defaults.set(recentViewLipstick, forKey: "recentLipstickView")
         if (false) { // if have internet connection
-            guard let token: String = defaults.string(forKey: "userToken") else {return}
-            retrieveData(token: token)
+//            let token: String = (defaults.string(forKey: "userToken")?)!
+//            retrieveData(token: token)
         } else {
 //            use old data
         }
-        // we gonna set data manually first for dev phase
+        configureReactiveLipstickData()
         retrieveData(token: "some test token")
         
         searchBarLip()
         addNavBarImage()
-       
+        print(defaults.object(forKey: "recentLipstickView"))
+        print("view Did Load")
     }
     
     func retrieveData(token: String) {
-        DispatchQueue.global().sync {
-            self.request.get("api/lipstick", nil, nil) { (response) -> (Void) in
-                let brandsJSON = response!["data"]
-                var lipsticksData = [Lipstick]()
-                
-                for brand in brandsJSON {
-                    
-                    for lipstickDetail in brand.1["detail"] {
-                        
-                        for lipstickColor in lipstickDetail.1["colors"] {
-                            
-                            var images = [UIImage]()
-                            for image in lipstickColor.1["images"] {
-                                self.request.getImage(image.1["image"].stringValue, nil, nil, completion: { (imageResponse) -> (Void) in
-                                    
-                                    guard (imageResponse != nil) else {
-                                        return
-                                    }
-                                    
-                                    images.append(imageResponse!)
-                                })
-                            }
-                            let lipstickBrand = brand.1["name"].stringValue
-                            let lipstickName = lipstickDetail.1["name"].stringValue
-                            let lipstickColorName = lipstickColor.1["color_name"].stringValue
-                            let lipstickDescription = lipstickDetail.1["description"].stringValue
-                            let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
-                                
-                            lipsticksData.append(Lipstick(lipstickImage: images, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDescription, lipstickColor: lipstickColor))
-                        }
-                    }
-                }
-                
-            }
-            
+        
+        self.request.get("api/lipstick", nil, nil) { (response) -> (Void) in
+            self.lipstickDataPipe.input.send(value: Lipstick.makeArrayModelFromJSON(response: response))
         }
+        
+        
         
         let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
 
@@ -99,7 +67,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             lipstick.lipstickBrand = "Brand 1"
             lipstick.lipstickName = "firstLip"
             lipstick.lipstickColorName = "R01"
-            lipstick.lipShortDetail = "Detail"
+            lipstick.lipstickDetail = "Detail"
             lipstick.lipstickImage = images
             recommendLipstick.append(lipstick)
             recentViewLipstick.append(lipstick)
@@ -111,19 +79,16 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
-            print("showRecommendList")
             if let destination = segue.destination as? LipstickListViewController {
-                
+                destination.lipstickList = recommendLipstick
             }
             
         } else if segueIdentifier == "showRecentList" {
-            print("showRecentList")
-//            var destination = segue.destination as? LipstickListViewController {
-
-//            }
+            if let destination = segue.destination as? LipstickListViewController {
+                destination.lipstickList = recommendLipstick
+            }
             
         } else if segueIdentifier == "showTrendGroupList" {
-            print("showTrendGroupList")
             if segue.destination is TrendListViewController {
 
             }
@@ -133,7 +98,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
 extension HomeViewController{
     func searchBarLip() {
-        //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
@@ -142,18 +106,14 @@ extension HomeViewController{
             let search = UISearchController(searchResultsController: nil)
             search.delegate = self
             let searchBackground = search.searchBar
-            // searchBackground.tintColor = UIColor.white
             searchBackground.placeholder = "Brand, Color, ..."
-            // searchBackground.barTintColor = UIColor.white
             
             if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
                 textfield.textColor = UIColor.black
                 if let backgroundview = textfield.subviews.first {
                     
-                    // Background color
                     backgroundview.backgroundColor = UIColor.white
                     
-                    // corner
                     backgroundview.layer.cornerRadius = 10;
                     backgroundview.clipsToBounds = true;
                 }
@@ -201,9 +161,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         }
         else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
-
-            print(recentViewLipstick.count)
-            print(recentViewLipstick[indexPath.item].lipstickImage.count)
+            
             cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
             cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickBrand
             cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickName
@@ -213,6 +171,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             
+            print(recommendLipstick[indexPath.item].lipstickName)
             cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
             cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickBrand
             cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickName
@@ -221,4 +180,20 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         }
     }
 
+}
+
+// MARK: Reactive to retrieveData
+extension HomeViewController {
+    func configureReactiveLipstickData() {
+        lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            self.recommendLipstick = lipsticks
+            print("finish init")
+            self.recommendCollectionView.reloadData()
+            self.recommendCollectionView.setNeedsLayout()
+            self.recommendCollectionView.layoutIfNeeded()
+            
+            
+        })
+        lipstickDataPipe.output.observe(lipstickDataObserver!)
+    }
 }
