@@ -8,7 +8,7 @@ pod 'SwiftSpinner'
 pod 'Alamofire'
 pod 'FlexiblePageControl'
 pod 'SwiftyJSON'
-pod 'AlamofireImage'
+pod 'SDWebImage', '~> 5.0'
 pod 'ReactiveCocoa', '~> 9.0'
 
 pod 'Firebase/Core'
