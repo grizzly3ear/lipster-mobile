@@ -23,6 +23,7 @@ class TryMeViewController: UIViewController  {
     var output: AVCaptureVideoDataOutput?
     let faceDetection: FaceDetection = FaceDetection()
     let videoOutputQueue = DispatchQueue(label: "videoOutput", qos: .userInteractive, attributes: .concurrent)
+    private var lastFrame: CMSampleBuffer?
     
     let lipstickARPipe = Signal<Dictionary<String, [CGPoint]?>?, NoError>.pipe()
     var lipstickARObserver: Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer?
@@ -96,7 +97,7 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         videoOutputQueue.async {
-            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, frame: self.previewLayer.videoPreviewLayer, complete: { (contourDictionary) in
+            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, previewLayer: self.previewLayer.videoPreviewLayer, complete: { (contourDictionary) in
                 self.lipstickARPipe.input.send(value: contourDictionary)
             })
         }
