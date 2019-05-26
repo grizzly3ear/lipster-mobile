@@ -10,11 +10,11 @@ import UIKit
 
 class TrendGroup {
     var trendName: String?
-    var trendList: [Trend]?
+    var trends: [Trend]?
     
     init(_ trendName: String, _ trendList: [Trend]) {
         self.trendName = trendName
-        self.trendList = trendList
+        self.trends = trendList
     }
     
     init() {

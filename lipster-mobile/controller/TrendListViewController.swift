@@ -17,15 +17,15 @@ class TrendListViewController: UITableViewController   {
         for _ in 0...3 {
             let trendGroup = TrendGroup()
             trendGroup.trendName = "Trend of the year 2010"
-            trendGroup.trendList = [Trend]()
+            trendGroup.trends = [Trend]()
             
             let trend1 = Trend(trendImage: UIImage(named: "user\(1)")!,trendLipstickColor: UIColor(rgb: 0xFA4855), trendSkinColor: UIColor(rgb: 0xFA4855))
             let trend2 = Trend(trendImage: UIImage(named: "user\(2)")!,trendLipstickColor: UIColor(rgb: 0x22748B), trendSkinColor: UIColor(rgb: 0xE0E0E0))
             let trend3 = Trend(trendImage: UIImage(named: "user\(1)")!,trendLipstickColor: UIColor(rgb: 0xFFEE00), trendSkinColor: UIColor(rgb: 0xFFEE00))
             
-            trendGroup.trendList?.append(trend1)
-            trendGroup.trendList?.append(trend2)
-            trendGroup.trendList?.append(trend3)
+            trendGroup.trends?.append(trend1)
+            trendGroup.trends?.append(trend2)
+            trendGroup.trends?.append(trend3)
             
             trendGroupList.append(trendGroup)
             
@@ -78,14 +78,14 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         print(trendGroupList[collectionView.tag])
-        return trendGroupList[collectionView.tag].trendList!.count
+        return trendGroupList[collectionView.tag].trends!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendImageCollectionViewCell", for: indexPath) as? TrendImageCollectionViewCell
         
-        cell?.imageTrend.image = trendGroupList[collectionView.tag].trendList![indexPath.item].trendImage
+        cell?.imageTrend.image = trendGroupList[collectionView.tag].trends![indexPath.item].trendImage
         
         return cell!
     }

@@ -83,15 +83,15 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
 
         trendGroup.trendName = "Trend of the month | January 2019"
-        trendGroup.trendList = [Trend]()
+        trendGroup.trends = [Trend]()
         let trend1 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
         let trend2 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
         let trend3 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
         let trend4 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        trendGroup.trendList?.append(trend1)
-        trendGroup.trendList?.append(trend2)
-        trendGroup.trendList?.append(trend3)
-        trendGroup.trendList?.append(trend4)
+        trendGroup.trends?.append(trend1)
+        trendGroup.trends?.append(trend2)
+        trendGroup.trends?.append(trend3)
+        trendGroup.trends?.append(trend4)
 
         for i in 1...5 {
             var lipstick = Lipstick()
@@ -195,7 +195,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if collectionView == trendsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
-            cell.trendHomeImageView.image = trendGroup.trendList![indexPath.row].trendImage
+            cell.trendHomeImageView.image = trendGroup.trends![indexPath.row].trendImage
          
             return cell
         }

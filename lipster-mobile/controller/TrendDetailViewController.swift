@@ -43,7 +43,7 @@ extension TrendDetailViewController {
     
     func initUserInterface() {
         self.trendNameLabel.text = trendGroup.trendName
-        setUserInterface(trendGroup.trendList!.first!)
+        setUserInterface(trendGroup.trends!.first!)
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -58,7 +58,7 @@ extension TrendDetailViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
         
-        setUserInterface(trendGroup.trendList![pageControl.currentPage])
+        setUserInterface(trendGroup.trends![pageControl.currentPage])
         print("scroll end \(scrollView.contentOffset.x)")
     }
     
@@ -73,14 +73,14 @@ extension TrendDetailViewController: UIScrollViewDelegate {
 extension TrendDetailViewController {
     
     func initPageControl() {
-        pageControl.numberOfPages = trendGroup.trendList!.count
+        pageControl.numberOfPages = trendGroup.trends!.count
         
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollTrendImage.frame.size.width * CGFloat(index)
             frame.size = scrollTrendImage.frame.size
             
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.trendGroup.trendList![index].trendImage
+            imgView.image = self.trendGroup.trends![index].trendImage
             self.scrollTrendImage.addSubview(imgView)
         }
         scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
