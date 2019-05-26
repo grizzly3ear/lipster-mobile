@@ -94,9 +94,9 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
 
 extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-
+        
         videoOutputQueue.async {
-            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, frame: self.previewLayer, complete: { (contourDictionary) in
+            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, frame: self.previewLayer.videoPreviewLayer, complete: { (contourDictionary) in
                 self.lipstickARPipe.input.send(value: contourDictionary)
             })
         }
