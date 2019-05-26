@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class TrendGroup {
     var trendName: String?
@@ -19,5 +20,19 @@ class TrendGroup {
     
     init() {
         
+    }
+    
+    public static func makeModelFromJSON(response: JSON?) -> TrendGroup {
+        let data = response!["data"]
+        
+        var trends = [Trend]()
+        
+        for trend in data {
+            let trendImage = trend.1["image"].stringValue
+            let trendLipstickColor = UIColor(hexString: trend.1["color"]["rgb"].stringValue)
+            let trendSkinColor = UIColor(hexString: trend.1["skin_color"].stringValue)
+            trends.append(Trend(trendImage: trendImage, trendLipstickColor: trendLipstickColor, trendSkinColor: trendSkinColor))
+        }
+        return TrendGroup("Summer", trends)
     }
 }

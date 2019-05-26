@@ -13,12 +13,16 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var searchController : UISearchController!
     
-    var trendGroup = TrendGroup()
+    var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
     var recentViewLipstick = [Lipstick]()
     let request = HttpRequest("http://18.136.104.217", nil)
+    
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
+    
+    let trendDataPipe = Signal<TrendGroup, NoError>.pipe()
+    var trendDataObserver: Signal<TrendGroup, NoError>.Observer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +36,12 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 //            use old data
         }
         configureReactiveLipstickData()
+        configureReactiveTrendData()
         retrieveData(token: "some test token")
         
         searchBarLip()
         addNavBarImage()
         print(defaults.object(forKey: "recentLipstickView"))
-        print("view Did Load")
     }
     
     func retrieveData(token: String) {
@@ -46,20 +50,26 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             self.lipstickDataPipe.input.send(value: Lipstick.makeArrayModelFromJSON(response: response))
         }
         
+        self.request.get("api/trend", nil, nil) { (response) -> (Void) in
+            self.trendDataPipe.input.send(value: TrendGroup.makeModelFromJSON(response: response))
+        }
+        
         
         
         let images = [UIImage(named: "BE115")! ,UIImage(named: "BE115")!,UIImage(named: "BE116")!,UIImage(named: "BE116")!]
-
+        let trendGroup = TrendGroup()
         trendGroup.trendName = "Trend of the month | January 2019"
         trendGroup.trends = [Trend]()
-        let trend1 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend2 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend3 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
-        let trend4 = Trend(trendImage: UIImage(named: "user1")!, trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend1 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend2 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend3 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
+        let trend4 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6) )
         trendGroup.trends?.append(trend1)
         trendGroup.trends?.append(trend2)
         trendGroup.trends?.append(trend3)
         trendGroup.trends?.append(trend4)
+        
+        trendGroups.append(trendGroup)
 
         for i in 1...5 {
             var lipstick = Lipstick()
@@ -73,7 +83,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             recentViewLipstick.append(lipstick)
         }
         
-        print("finish init data")
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,8 +98,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
             }
             
         } else if segueIdentifier == "showTrendGroupList" {
-            if segue.destination is TrendListViewController {
-
+            if let destination = segue.destination as? TrendListViewController {
+                destination.trendGroupList = trendGroups
             }
         }
     }
@@ -155,7 +164,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if collectionView == trendsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
-            cell.trendHomeImageView.image = trendGroup.trends![indexPath.row].trendImage
+//            cell.trendHomeImageView.image = trendGroup.trends![indexPath.row].trendImage
+            cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups.first!.trends![indexPath.row].trendImage), placeholderImage: UIImage(named: "nopic"))
          
             return cell
         }
@@ -190,7 +200,7 @@ extension HomeViewController {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
             self.recentViewLipstick = lipsticks
-            print("finish init")
+            
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
             self.recommendCollectionView.layoutIfNeeded()
@@ -201,5 +211,16 @@ extension HomeViewController {
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)
+    }
+    
+    func configureReactiveTrendData() {
+        trendDataObserver = Signal<TrendGroup, NoError>.Observer(value: { (trendGroup) in
+            print(self.trendGroups.count)
+            self.trendGroups.append(trendGroup)
+            self.trendsCollectionView.reloadData()
+            self.trendsCollectionView.setNeedsLayout()
+            self.trendsCollectionView.layoutIfNeeded()
+        })
+        trendDataPipe.output.observe(trendDataObserver!)
     }
 }

@@ -59,7 +59,6 @@ extension TrendDetailViewController: UIScrollViewDelegate {
         pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
         
         setUserInterface(trendGroup.trends![pageControl.currentPage])
-        print("scroll end \(scrollView.contentOffset.x)")
     }
     
     func initScrollView() {
@@ -80,7 +79,8 @@ extension TrendDetailViewController {
             frame.size = scrollTrendImage.frame.size
             
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.trendGroup.trends![index].trendImage
+//            imgView.image = self.trendGroup.trends![index].trendImage
+            imgView.sd_setImage(with: URL(string: self.trendGroup.trends![index].trendImage), placeholderImage: UIImage(named: "nopic"))
             self.scrollTrendImage.addSubview(imgView)
         }
         scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
