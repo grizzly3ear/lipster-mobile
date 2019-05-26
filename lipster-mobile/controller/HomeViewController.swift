@@ -64,11 +64,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         for i in 1...5 {
             var lipstick = Lipstick()
             lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
-            lipstick.lipstickBrand = "Brand 1"
-            lipstick.lipstickName = "firstLip"
-            lipstick.lipstickColorName = "R01"
-            lipstick.lipstickDetail = "Detail"
-            lipstick.lipstickImage = images
+            lipstick.lipstickBrand = "brand"
+            lipstick.lipstickName = "lipstick_name"
+            lipstick.lipstickColorName = "color_name"
+            lipstick.lipstickDetail = "detail"
+            lipstick.lipstickImage = [""]
             recommendLipstick.append(lipstick)
             recentViewLipstick.append(lipstick)
         }
@@ -162,7 +162,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         else if (collectionView == recentCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
             
-            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
+//            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
+            cell.recentImageView.sd_setImage(with: URL(string: recentViewLipstick[indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
             cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickBrand
             cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickName
             
@@ -172,7 +173,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             
             print(recommendLipstick[indexPath.item].lipstickName)
-            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
+//            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
+            cell.recImageView.sd_setImage(with: URL(string: recommendLipstick[indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
             cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickBrand
             cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickName
             
@@ -187,11 +189,15 @@ extension HomeViewController {
     func configureReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
+            self.recentViewLipstick = lipsticks
             print("finish init")
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
             self.recommendCollectionView.layoutIfNeeded()
             
+            self.recentCollectionView.reloadData()
+            self.recentCollectionView.setNeedsLayout()
+            self.recentCollectionView.layoutIfNeeded()
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)

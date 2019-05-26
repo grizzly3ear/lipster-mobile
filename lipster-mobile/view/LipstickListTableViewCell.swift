@@ -21,10 +21,7 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var favButton: UIButton!
     
     func setLipstick(lipstick : Lipstick) {
-        print(UIImage(named: "BE116"))
-        print(lipstick.lipstickImage.first)
-        lipImageView.image = lipstick.lipstickImage.first
-//        lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first!), placeholderImage: UIImage(named: "BE116"))
+        lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
         lipBrandLabel.text = lipstick.lipstickBrand
         lipNameLabel.text = lipstick.lipstickName
         lipColorNameLabel.text = lipstick.lipstickColorName

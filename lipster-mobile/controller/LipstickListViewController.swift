@@ -17,7 +17,7 @@ class LipstickListViewController: UITableViewController  {
     var lipColor: UIColor?
     var searchController : UISearchController!
     var resultController = UITableViewController()
-    var lipstickList = [Lipstick] ()
+    var lipstickList = [Lipstick]()
     
     var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
@@ -63,6 +63,7 @@ extension LipstickListViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
         let lipstick = lipstickList[indexPath.item]
+        print(lipstick)
         cell.setLipstick(lipstick: lipstick)
         
         return cell
@@ -99,7 +100,6 @@ extension LipstickListViewController{
 extension LipstickListViewController : UISearchControllerDelegate , UISearchBarDelegate{
     
     func searchBarLip() {
-        //navigationController?.navigationBar.prefersLargeTitles = true
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
@@ -108,18 +108,14 @@ extension LipstickListViewController : UISearchControllerDelegate , UISearchBarD
             let search = UISearchController(searchResultsController: nil)
             search.delegate = self
             let searchBackground = search.searchBar
-            // searchBackground.tintColor = UIColor.white
             searchBackground.placeholder = "Brand, Color, ..."
-            // searchBackground.barTintColor = UIColor.white
             
             if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
                 textfield.textColor = UIColor.black
                 if let backgroundview = textfield.subviews.first {
                     
-                    // Background color
                     backgroundview.backgroundColor = UIColor.white
                     
-                    // corner
                     backgroundview.layer.cornerRadius = 10;
                     backgroundview.clipsToBounds = true;
                 }
@@ -132,20 +128,6 @@ extension LipstickListViewController : UISearchControllerDelegate , UISearchBarD
             navigationItem.hidesSearchBarWhenScrolling = false
         }
     }
-}
-
-// create array of lipstick
-extension LipstickListViewController{
-    
-//    func createArray() -> [Lipstick] {
-//        let lip1 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE115") , UIImage(named: "BE115_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "BE115", lipShortDetail: "Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.Matte, totally reinvented. Delivering a romantic blur of soft-focus colour, this weightless moisture-matte lipstick was developed to replicate a backstage technique: blending out edges of matte lipstick for a hazy effect. Its groundbreaking formula contains moisture-coated powder pigments that condition and hydrate lips. The result is the zero-shine look of a matte lipstick with the cushiony, lightweight feel of a balm. Fall for this all-new soft-touch, misty matte kiss of colour.", lipstickColor : UIColor(rgb: 0x91171E) )
-//        let lip2 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "BE116") , UIImage(named: "BE116_pic2")!], lipstickBrand: "ETUDE", lipstickName:"Dear My Lip Talk " , lipstickColorName: "BE116", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xB74447) )
-//        let lip3 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "OR214") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "OR214", lipstickColorName: "OR241", lipShortDetail: "Detail of the lipstick is  ....   ", lipstickColor : UIColor(rgb: 0xFA4855) )
-//        let lip4 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK037") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK035", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFE486B) )
-//        let lip5 : Lipstick = Lipstick(lipstickImage: [#imageLiteral(resourceName: "PK035") , UIImage(named: "OR214_pic2")!], lipstickBrand: "ETUDE", lipstickName: "Dear My Lip Talk ", lipstickColorName: "PK037", lipShortDetail: "Detail of the lipstick is  ....", lipstickColor : UIColor(rgb: 0xFF9A94) )
-//        
-//        return [lip1, lip2, lip3, lip4, lip5]
-//    }
 }
 
 

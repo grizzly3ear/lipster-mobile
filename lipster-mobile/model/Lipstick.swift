@@ -13,14 +13,14 @@ import SDWebImage
 
 class Lipstick {
 
-    var lipstickImage: [UIImage]
+    var lipstickImage: [String]
     var lipstickBrand: String
     var lipstickName: String
     var lipstickColorName: String
     var lipstickDetail: String
     var lipstickColor : UIColor
 
-    init(lipstickImage: [UIImage],lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String, lipstickColor : UIColor ) {
+    init(lipstickImage: [String],lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String, lipstickColor : UIColor ) {
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
         self.lipstickName =  lipstickName
@@ -30,7 +30,7 @@ class Lipstick {
     }
     
     init() {
-        self.lipstickImage = [UIImage]()
+        self.lipstickImage = [String]()
         self.lipstickBrand = String()
         self.lipstickName =  String()
         self.lipstickColorName = String()
@@ -50,10 +50,11 @@ class Lipstick {
                 
                 for lipstickColor in lipstickDetail.1["colors"] {
                     
-                    var images = [UIImage]()
+                    var images = [String]()
                     for image in lipstickColor.1["images"] {
-//                        images.append(image.1["image"].stringValue)
-                        images.append(UIImage(named: "BE116")!)
+                        print(image.1["image"].stringValue)
+                        images.append(image.1["image"].stringValue)
+//                        images.append(UIImage(named: "BE116")!)
                     }
                     let lipstickBrand = brand.1["name"].stringValue
                     let lipstickName = lipstickDetail.1["name"].stringValue

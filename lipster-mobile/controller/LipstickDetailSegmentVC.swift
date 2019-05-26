@@ -193,8 +193,8 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
             frame.size = scrollLipstickImages.frame.size
     
             let imgView = UIImageView(frame: frame)
-            imgView.image = self.lipstick!.lipstickImage[index]
-//            imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "BE116"))
+//            imgView.image = self.lipstick!.lipstickImage[index]
+            imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "nopic"))
             self.scrollLipstickImages.addSubview(imgView)
         }
         scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
