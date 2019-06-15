@@ -3,7 +3,7 @@ import AVFoundation
 
 class PreviewMaskLayer: UIView {
     
-    private var maskLayer = [CAShapeLayer]()
+    var maskLayer = [CAShapeLayer]()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
@@ -28,11 +28,12 @@ class PreviewMaskLayer: UIView {
         let faceLayer = createLayer(in: frame)
         
         guard contourPoints != nil else { return }
-
-        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipTop"]!, isClosed: false, color: lipstickColor)
-        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipBottom"]!, isClosed: false, color: lipstickColor)
-        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["UpperLipTop"]!, isClosed: false, color: lipstickColor)
-        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["UpperLipBottom"]!, isClosed: false, color: lipstickColor)
+        print(contourPoints!)
+        
+//        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipTop"]!, isClosed: false, color: lipstickColor)
+//        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["LowerLipBottom"]!, isClosed: false, color: lipstickColor)
+//        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["UpperLipTop"]!, isClosed: false, color: lipstickColor)
+//        drawLandMarks(on: faceLayer, landmarkPoints: contourPoints!["UpperLipBottom"]!, isClosed: false, color: lipstickColor)
         
     }
     
@@ -48,7 +49,7 @@ class PreviewMaskLayer: UIView {
 // MARK: Draw Function
 extension PreviewMaskLayer {
     
-    private func createLayer(in rect: CGRect) -> CAShapeLayer {
+    func createLayer(in rect: CGRect) -> CAShapeLayer {
         let mask = CAShapeLayer()
         mask.frame = rect
         
@@ -59,7 +60,7 @@ extension PreviewMaskLayer {
     }
     
     // TODO: Add argument to this method to recieve face contour points
-    private func drawLandMarks(on targetLayer: CALayer, landmarkPoints: [CGPoint]?, isClosed: Bool = true, color: UIColor) {
+    func drawLandMarks(on targetLayer: CALayer, landmarkPoints: [CGPoint]?, isClosed: Bool = true, color: UIColor) {
         let rect: CGRect = targetLayer.frame
         guard landmarkPoints != nil else { return }
         
@@ -76,7 +77,7 @@ extension PreviewMaskLayer {
     }
     
     // TODO: Add color of lipstick in lineLayer.fillColor
-    private func drawPointsOnLayer(landmarkPoints: [CGPoint], isClosed: Bool = true, color: UIColor) -> CALayer {
+    func drawPointsOnLayer(landmarkPoints: [CGPoint], isClosed: Bool = true, color: UIColor) -> CALayer {
         let linePath = UIBezierPath()
         linePath.move(to: landmarkPoints.first!)
         

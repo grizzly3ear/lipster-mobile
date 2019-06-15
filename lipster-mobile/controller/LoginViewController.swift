@@ -52,7 +52,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginSegments(_ sender: Any) {
-        print ("Clicked segment")
         switch (sender as AnyObject).selectedSegmentIndex{
         case 0 :
             loginScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)

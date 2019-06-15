@@ -23,7 +23,7 @@ class TryMeViewController: UIViewController  {
     var output: AVCaptureVideoDataOutput?
     let faceDetection: FaceDetection = FaceDetection()
     let videoOutputQueue = DispatchQueue(label: "videoOutput", qos: .userInteractive, attributes: .concurrent)
-    private var lastFrame: CMSampleBuffer?
+    var lastFrame: CMSampleBuffer?
     
     let lipstickARPipe = Signal<Dictionary<String, [CGPoint]?>?, NoError>.pipe()
     var lipstickARObserver: Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer?
@@ -80,13 +80,12 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("click")
+
         let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
         cell.triangleView.isHidden = false
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print("declick")
         let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
         cell.triangleView.isHidden = true
     }
@@ -95,12 +94,12 @@ extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDele
 
 extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        
-        videoOutputQueue.async {
-            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, previewLayer: self.previewLayer.videoPreviewLayer, complete: { (contourDictionary) in
+        DispatchQueue.main.async {
+            self.faceDetection.drawLipLandmarkLayer(for: sampleBuffer, previewLayer: self.previewLayer, complete: { (contourDictionary) in
                 self.lipstickARPipe.input.send(value: contourDictionary)
             })
         }
+        
 
     }
     
@@ -113,8 +112,8 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 extension TryMeViewController {
     func configureReactiveAR() {
         lipstickARObserver = Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer(value: { (contourDictionary) in
-            self.previewLayer.removeMask()
             self.previewLayer.drawLandmark(for: contourDictionary, lipstickColor: UIColor.red)
+            self.previewLayer.removeMask()
         })
         
         lipstickARPipe.output.observe(lipstickARObserver!)

@@ -13,11 +13,12 @@ class Trend {
     var trendImage : String
     var trendLipstickColor : UIColor
     var trendSkinColor : UIColor
+    var trendDescription: String
     
-    init(trendImage : String,  trendLipstickColor : UIColor, trendSkinColor : UIColor) {
+    init(trendImage: String,  trendLipstickColor: UIColor, trendSkinColor: UIColor, trendDescription: String) {
         self.trendImage = trendImage
         self.trendLipstickColor = trendLipstickColor
         self.trendSkinColor = trendSkinColor
-        
+        self.trendDescription = trendDescription   
     }
 }

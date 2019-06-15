@@ -6,6 +6,7 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendLipColorView: UIView!
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
+    @IBOutlet weak var trendDescription: UILabel!
     
     @IBOutlet weak var scrollTrendImage: UIScrollView!
     @IBOutlet weak var pageControl: FlexiblePageControl!
@@ -49,6 +50,7 @@ extension TrendDetailViewController {
     func setUserInterface(_ trend: Trend) {
         self.trendLipColorView.backgroundColor = trend.trendLipstickColor
         self.trendSkinColorView.backgroundColor = trend.trendSkinColor
+        self.trendDescription.text = trend.trendDescription
     }
 }
 

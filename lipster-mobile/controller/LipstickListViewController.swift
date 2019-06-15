@@ -25,13 +25,12 @@ class LipstickListViewController: UITableViewController  {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = false
- 
+        print(lipstickList)
         addNavBarImage()
         searchBarLip()
     }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
-        print("clicked!!!")
         if isFav == true {
             let image = UIImage(named: "favButton_off")
             sender.setImage(image, for: UIControl.State.normal)
@@ -63,7 +62,6 @@ extension LipstickListViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
         let lipstick = lipstickList[indexPath.item]
-        print(lipstick)
         cell.setLipstick(lipstick: lipstick)
         
         return cell

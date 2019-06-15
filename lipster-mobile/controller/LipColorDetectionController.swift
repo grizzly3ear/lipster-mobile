@@ -15,6 +15,7 @@ class LipColorDetectionController: UIViewController {
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
     let faceDetection = FaceDetection()
+    let request = HttpRequest("http://18.136.104.217", nil)
     
     let colorDetectionPipe = Signal<UIColor, NoError>.pipe()
     var colorDetectionObserver: Signal<UIColor, NoError>.Observer?
@@ -30,7 +31,6 @@ class LipColorDetectionController: UIViewController {
         configureReactiveColorDetection()
         
         self.present(pickerController, animated: true, completion: nil)
-        print("view did load")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,12 +51,12 @@ class LipColorDetectionController: UIViewController {
         } else {
             toggleCamera = true
         }
-        
-        print("view did disappear")
     }
     
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
-        performSegue(withIdentifier: "showLipstickFromColorList", sender: self)
+        let hexColor: String = colorDetectPreview.backgroundColor!.toHex!
+        
+        performSegue(withIdentifier: "showLipstickFromColorList", sender: hexColor)
     }
     
     @IBAction func onRetakeTap(_ sender: UIButton) {
@@ -146,7 +146,6 @@ extension LipColorDetectionController: ImagePickerDelegate {
         
         DispatchQueue.main.async {
             self.faceDetection.getLipColorFromImage(for: self.imagePreview, complete: { (color) in
-                print("compute... :\(color)")
                 self.colorDetectionPipe.input.send(value: color!)
             })
             SwiftSpinner.hide()
@@ -192,7 +191,18 @@ extension LipColorDetectionController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLipstickFromColorList" {
             if let destination = segue.destination as? LipstickListViewController {
-                destination.lipColor = colorDetectPreview.backgroundColor
+                var lipstickData = [Lipstick]()
+                let hexColor: String = sender as! String
+                
+                self.request.get("api/lipstick/color/\(hexColor)", nil, nil) { (response) -> (Void) in
+                    lipstickData = Lipstick.makeArrayFromLipstickColorResource(response: response)
+                    destination.lipstickList = lipstickData
+                    destination.lipListTableView.reloadData()
+                    destination.lipListTableView.layoutIfNeeded()
+                    destination.lipListTableView.setNeedsLayout()
+                }
+                
+                
             }
         }
     }

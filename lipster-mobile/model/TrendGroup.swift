@@ -31,7 +31,8 @@ class TrendGroup {
             let trendImage = trend.1["image"].stringValue
             let trendLipstickColor = UIColor(hexString: trend.1["color"]["rgb"].stringValue)
             let trendSkinColor = UIColor(hexString: trend.1["skin_color"].stringValue)
-            trends.append(Trend(trendImage: trendImage, trendLipstickColor: trendLipstickColor, trendSkinColor: trendSkinColor))
+            let trendDescription = "Summer - \(trend.1["title"].stringValue)"
+            trends.append(Trend(trendImage: trendImage, trendLipstickColor: trendLipstickColor, trendSkinColor: trendSkinColor, trendDescription: trendDescription))
         }
         return TrendGroup("Summer", trends)
     }

@@ -1212,6 +1212,7 @@
                         <outlet property="pageControl" destination="fAH-69-BET" id="gK1-nc-oMJ"/>
                         <outlet property="scrollTrendImage" destination="IvM-mB-DlO" id="Nlu-qn-Kel"/>
                         <outlet property="titleNavigationItem" destination="CWk-db-tVi" id="H0p-oB-h1K"/>
+                        <outlet property="trendDescription" destination="UHm-TZ-XE3" id="0db-5S-e1D"/>
                         <outlet property="trendLipColorView" destination="gZC-ew-wGe" id="xKP-FO-Dkh"/>
                         <outlet property="trendNameLabel" destination="5ed-Ff-9GO" id="FWX-Hq-CUb"/>
                         <outlet property="trendSkinColorView" destination="vp0-g6-vIs" id="p2E-k3-dsz"/>
@@ -2290,6 +2291,6 @@
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WMu-Ze-rVT"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>

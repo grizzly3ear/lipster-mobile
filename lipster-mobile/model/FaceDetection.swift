@@ -7,11 +7,11 @@ import FirebaseMLCommon
 
 class FaceDetection {
     
-    private lazy var vision = Vision.vision()
-    private let options = VisionFaceDetectorOptions()
-    private var multiplier = 1.0
-    private var maintainSize = CGRect()
-    private let metadata = VisionImageMetadata()
+    lazy var vision = Vision.vision()
+    let options = VisionFaceDetectorOptions()
+    var multiplier = 1.0
+    var maintainSize = CGRect()
+    let metadata = VisionImageMetadata()
     
     init() {
         options.classificationMode = .none
@@ -26,7 +26,6 @@ class FaceDetection {
         multiplier = Double(maintainSize.size.width / (source.image?.size.width)!)
         
         self.getAccurateLipsLandmarks(for: source) { (contourDictionary) in
-            print(contourDictionary)
             guard let upperLipBottom = contourDictionary["UpperLipBottom"], !upperLipBottom!.isEmpty else {
                 
                 complete(UIColor.black)
@@ -38,7 +37,7 @@ class FaceDetection {
         }
     }
     
-    public func drawLipLandmarkLayer(for sourceBuffer: CMSampleBuffer, previewLayer: AVCaptureVideoPreviewLayer, complete: @escaping ((Dictionary<String, [CGPoint]?>)?) -> Void) {
+    public func drawLipLandmarkLayer(for sourceBuffer: CMSampleBuffer, previewLayer: UIView, complete: @escaping ((Dictionary<String, [CGPoint]?>)?) -> Void) {
 
         let image = VisionImage(buffer: sourceBuffer)
         
@@ -61,7 +60,7 @@ class FaceDetection {
             .upperLipTop,
             .upperLipBottom
         ]
-        
+        print("capture")
         getFastLipsLandmarks(for: image, previewLayer: previewLayer, contourOptions: contourOptions, width: imageWidth, height: imageHeight) { (contourDictionary) in
             complete(contourDictionary)
         }
@@ -73,8 +72,8 @@ class FaceDetection {
 // MARK: Private Function
 extension FaceDetection {
     
-    private func getFastLipsLandmarks(for visionImage: VisionImage, previewLayer: AVCaptureVideoPreviewLayer, contourOptions: [FaceContourType], width: CGFloat, height: CGFloat, complete: @escaping (Dictionary<String, [CGPoint]?>) -> Void) {
-        
+    func getFastLipsLandmarks(for visionImage: VisionImage, previewLayer: UIView, contourOptions: [FaceContourType], width: CGFloat, height: CGFloat, complete: @escaping (Dictionary<String, [CGPoint]?>) -> Void) {
+        let previewMaskLayer = previewLayer as! PreviewMaskLayer
         let faceDetector = vision.faceDetector(options: options)
         var contourDictionary = Dictionary<String, [CGPoint]?>()
         faceDetector.process(visionImage) { (faces, err) in
@@ -84,7 +83,7 @@ extension FaceDetection {
             }
             
             for face in faces {
-                contourDictionary = self.getContourPoint(for: face, width: width, height: height, for: previewLayer, contourOptions: [.upperLipTop, .upperLipBottom, .lowerLipTop, .lowerLipBottom])
+                contourDictionary = self.getContourPoint(for: face, width: width, height: height, for: previewMaskLayer.videoPreviewLayer, contourOptions: [.upperLipTop, .upperLipBottom, .lowerLipTop, .lowerLipBottom])
                 
             }
             complete(contourDictionary)
@@ -93,7 +92,7 @@ extension FaceDetection {
         complete(contourDictionary)
     }
     
-    private func getAccurateLipsLandmarks(for source: UIImageView, complete: @escaping (Dictionary<String, [CGPoint]?>) -> Void) {
+    func getAccurateLipsLandmarks(for source: UIImageView, complete: @escaping (Dictionary<String, [CGPoint]?>) -> Void) {
         let faceDetectRequest = VNDetectFaceLandmarksRequest { (request, error) in
             if error == nil {
                 var contourDictionary = Dictionary<String, [CGPoint]?>()
@@ -113,7 +112,6 @@ extension FaceDetection {
                         let landmarkPoints = innerLip?.normalizedPoints.map({ (point) -> CGPoint in
                             
                             let imageRealSize = source.image!.size
-                            print(imageRealSize)
                             
                             let landmarkPoint: CGPoint = CGPoint(x: boundingRect.origin.x * source.image!.size.width + point.x * rectWidth,
                                                                  y: imageRealSize.height - (boundingRect.origin.y * source.image!.size.height + point.y * rectHeight))
@@ -132,23 +130,46 @@ extension FaceDetection {
         try? vnImage.perform([faceDetectRequest])
     }
     
-    private func getContourPoint(for face: VisionFace, width: CGFloat, height: CGFloat, for previewLayer: AVCaptureVideoPreviewLayer, contourOptions: [FaceContourType]) -> Dictionary<String, [CGPoint]?> {
+    func getContourPoint(for face: VisionFace, width: CGFloat, height: CGFloat, for previewLayer: AVCaptureVideoPreviewLayer, contourOptions: [FaceContourType]) -> Dictionary<String, [CGPoint]?> {
         var contourDictionary = Dictionary<String, [CGPoint]?>()
-        for contourOption in contourOptions {
-            if let contour = face.contour(ofType: contourOption) {
-                var points = [CGPoint]()
-                for point in contour.points {
-                    let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewLayer: previewLayer)
-                    points.append(cgPoint)
-                }
-                contourDictionary[contourOption.rawValue] = points
-            }
-        }
         
+        if let upperLipTop = face.contour(ofType: .upperLipTop) {
+            var points = [CGPoint]()
+            for point in upperLipTop.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewLayer: previewLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["UpperLipTop"] = points
+        }
+        if let upperLipBottom = face.contour(ofType: .upperLipBottom) {
+            var points = [CGPoint]()
+            for point in upperLipBottom.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewLayer: previewLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["UpperLipBottom"] = points
+        }
+        if let lowerLipTop = face.contour(ofType: .lowerLipTop) {
+            var points = [CGPoint]()
+            for point in lowerLipTop.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewLayer: previewLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["LowerLipTop"] = points
+        }
+        if let lowerLipBottom = face.contour(ofType: .lowerLipBottom) {
+            var points = [CGPoint]()
+            for point in lowerLipBottom.points {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height, previewLayer: previewLayer)
+                points.append(cgPoint)
+            }
+            contourDictionary["LowerLipBottom"] = points
+        }
+
         return contourDictionary
     }
     
-    private func normalizedPoint(fromVisionPoint point: VisionPoint, width: CGFloat, height: CGFloat, previewLayer: AVCaptureVideoPreviewLayer) -> CGPoint {
+    func normalizedPoint(fromVisionPoint point: VisionPoint, width: CGFloat, height: CGFloat, previewLayer: AVCaptureVideoPreviewLayer) -> CGPoint {
         let cgPoint = CGPoint(x: CGFloat(point.x.floatValue), y: CGFloat(point.y.floatValue))
         var normalizedPoint = CGPoint(x: cgPoint.x / width, y: cgPoint.y / height)
         
@@ -160,7 +181,7 @@ extension FaceDetection {
 // MARK: Deprecate
 extension FaceDetection {
     
-    private func getContourPoint(face: VisionFace, options contourTypes: [FaceContourType], for source: UIView) -> Dictionary<String, [CGPoint]?> {
+    func getContourPoint(face: VisionFace, options contourTypes: [FaceContourType], for source: UIView) -> Dictionary<String, [CGPoint]?> {
         var contourDictionary = Dictionary<String, [CGPoint]?>()
         var points = [CGPoint]()
         for contourType in contourTypes {

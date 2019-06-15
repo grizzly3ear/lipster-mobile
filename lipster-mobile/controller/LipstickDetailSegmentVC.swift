@@ -87,7 +87,6 @@ class LipstickDetailSegmentVC: UIViewController {
 
     
     @IBAction func segments(_ sender: UISegmentedControl) {
-        print ("Clicked segment")
         switch sender.selectedSegmentIndex{
         case 0 :
             contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
@@ -100,7 +99,6 @@ class LipstickDetailSegmentVC: UIViewController {
         
     }
     @IBAction func clickedTryMe(_ sender: Any) {
-        print("clicked TRY ME")
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
     
@@ -134,7 +132,6 @@ extension LipstickDetailSegmentVC: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Review this lipstick here." {
-            print("typing review")
             textView.text = ""
             textView.textColor = UIColor.black
         }
@@ -204,7 +201,6 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("\(scrollView.currentPage())")
         if scrollView == scrollLipstickImages {
             lipstickImagesPageControl.currentPage = scrollView.currentPage()
         } else if scrollView == contentScrollView {
@@ -223,10 +219,8 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("collection view cell ")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
        
-        print(indexPath.row)
         cell?.selectColorView.backgroundColor = arrayOfLipstickColor[indexPath.row]
         cell?.triangleView.isHidden = true
         
