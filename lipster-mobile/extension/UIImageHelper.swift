@@ -49,10 +49,12 @@ extension UIImage {
                 let data = try Data(contentsOf: url)
                 self.init(data: data)!
             } catch let _ {
-                
+                self.init(uiImage: placeHolder)
             }
+        } else {
+            self.init(uiImage: placeHolder)
         }
-        self.init(uiImage: placeHolder)
+        
     }
     
     convenience init(uiImage: UIImage) {
