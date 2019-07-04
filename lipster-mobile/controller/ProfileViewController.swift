@@ -11,10 +11,25 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileUserImageView: UIImageView!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var profileDetailButton: UIButton!
+    @IBOutlet weak var yourFavoriteButton: UIButton!
+    @IBOutlet weak var recentlyViewButton: UIButton!
     
-    var label = ["Profile Details" , "Your Favourite" , "Recently View"]
-    var icon = [#imageLiteral(resourceName: "profileDeatail") , #imageLiteral(resourceName: "heart") , #imageLiteral(resourceName: "recentlyView")]
     
+    @IBAction func profileDetailButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "showProfileDetail", sender: self)
+    }
+    @IBAction func yourFavoriteButtonPressed(_ sender: Any) {
+         self.performSegue(withIdentifier: "showYourFavorite", sender: self)
+    }
+    @IBAction func recentlyViewButtonPressed(_ sender: Any) {
+         self.performSegue(withIdentifier: "showRecentlyView", sender: self)
+    }
+    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,23 +40,4 @@ class ProfileViewController: UIViewController {
 
 
 }
-extension ProfileViewController : UITableViewDataSource , UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
-        cell.profileTitle.text = label[indexPath.row]
-        cell.profileIcon.image = icon[indexPath.row]
-        
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showProfileDetails", sender: self)
-    }
-  
-}
+
