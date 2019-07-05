@@ -32,7 +32,9 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            self.navigationItem.title = "Profile"
+        UINavigationBar.appearance().tintColor = UIColor.white
+      
         profileUserImageView.layer.cornerRadius = profileUserImageView.frame.size.width/2
         profileUserImageView.clipsToBounds = true
     }
