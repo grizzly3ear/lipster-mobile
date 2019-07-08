@@ -15,7 +15,7 @@ class RecommendHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recNameLabel: UILabel!
     
     override func awakeFromNib() {
-        recImageView.layer.cornerRadius = 15
+        recImageView.layer.cornerRadius = 20
         recImageView.clipsToBounds = true
     }
 }
