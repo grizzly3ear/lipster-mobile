@@ -20,7 +20,6 @@ class LipstickDetailSegmentVC: UIViewController {
 
     @IBOutlet weak var tryMeButton: UIButton!
     
-    
     @IBOutlet weak var contentSegmentControl: UISegmentedControl!
     @IBOutlet weak var contentScrollView: UIScrollView!
     
@@ -42,17 +41,18 @@ class LipstickDetailSegmentVC: UIViewController {
     let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
     var reviewDataObserver: Signal<[UserReview], NoError>.Observer?
     
+    var reviews: [UserReview] = [UserReview]()
+    var lipstick : Lipstick?
     let request = HttpRequest("http://18.136.104.217", nil)
     
-    var lipstick : Lipstick?
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData(lipstickId: lipstick?.lipstickId ?? 0)
+        configureReactiveReviewData()
         typeReview()
         pageController()
-        self.userList = self.createUserArray()
         clickedPostButton.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
         self.titleNavigationItem.title = lipstick?.lipstickBrand
@@ -66,18 +66,6 @@ class LipstickDetailSegmentVC: UIViewController {
             self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipstickDetail
         }
-    }
-  
-    var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
-                                  "love this color , should try!",
-                                  "nice one."]
-    
-    var userList  = [UserReview] ()
-    func createUserArray() -> [UserReview] {
-        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut" )
-        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara" )
-        
-        return [user1,user2]
     }
 
     @IBAction func segments(_ sender: UISegmentedControl) {
@@ -106,17 +94,17 @@ extension LipstickDetailSegmentVC {
     }
 }
 
-extension LipstickDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
+extension LipstickDetailSegmentVC: UITableViewDelegate , UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userReviews.count
+        return reviews.count
     }
             
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // อาเรย์ userReview ที่เเสดงเป็น tableList
-        let review = userReviews[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-        cell.userReviewLabel.text = review
+        cell.userReviewLabel.text = reviews[indexPath.item].userReview
+        cell.userNameLabel.text = reviews[indexPath.item].userName
         
         return cell
     }
@@ -155,17 +143,16 @@ extension LipstickDetailSegmentVC: UITextViewDelegate {
 extension LipstickDetailSegmentVC {
     @IBAction func clickedPostReviewButton(_ sender: Any) {
         
-        //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-        userReviews.append(typeReviewTextView.text!)
-        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
-        
-        reviewTableView.beginUpdates()
-        reviewTableView.insertRows(at: [indexPath], with: .automatic)
-        reviewTableView.endUpdates()
-        
-        typeReviewTextView.text = ""
-        clickedPostButton.isEnabled = false
-        view.endEditing(true)
+//        userReviews.append(typeReviewTextView.text!)
+//        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
+//
+//        reviewTableView.beginUpdates()
+//        reviewTableView.insertRows(at: [indexPath], with: .automatic)
+//        reviewTableView.endUpdates()
+//
+//        typeReviewTextView.text = ""
+//        clickedPostButton.isEnabled = false
+//        view.endEditing(true)
     }
 }
 
@@ -235,8 +222,9 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
 extension LipstickDetailSegmentVC {
     func configureReactiveReviewData() {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
-//            self.trendGroups.append(trendGroup)
-
+            self.reviews = userReviews
+            self.reviewTableView.reloadData()
+            self.reviewTableView.setNeedsLayout()
         })
         reviewDataPipe.output.observe(reviewDataObserver!)
     }
