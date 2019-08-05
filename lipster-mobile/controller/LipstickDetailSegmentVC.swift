@@ -59,18 +59,9 @@ class LipstickDetailSegmentVC: UIViewController {
             self.lipstickShortDetail.text = lipstick.lipstickDetail
         }
         
-//        //----------------Read more / Read less--------------
-//        seemore.delegate = self as? ExpandableLabelDelegate
-//       // seemore.numberOfLines = 3
-//        seemore.collapsed = true
-//        seemore.collapsedAttributedLink = NSAttributedString(string: "Read More")
-//        seemore.expandedAttributedLink = NSAttributedString(string: "Read Less")
-//        //seemore.setLessLinkWith(lessLink: "Close", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red], position: nil)
-//        seemore.ellipsis = NSAttributedString(string: "...")
         
     }
   
-    //-----------------------User Array------------------------
     var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
                                   "love this color , should try!",
                                   "nice one."]
@@ -94,7 +85,7 @@ class LipstickDetailSegmentVC: UIViewController {
             contentScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
             
         default:
-            print("")
+            contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         }
         
     }
@@ -184,13 +175,12 @@ extension LipstickDetailSegmentVC {
 // page controll to show multi Lipstick image 
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     func pageController(){
-        lipstickImagesPageControl.numberOfPages = (self.lipstick?.lipstickImage.count)!
+        lipstickImagesPageControl.numberOfPages = self.lipstick?.lipstickImage.count ?? 0
         for index in 0..<lipstickImagesPageControl.numberOfPages {
             frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
             frame.size = scrollLipstickImages.frame.size
     
             let imgView = UIImageView(frame: frame)
-//            imgView.image = self.lipstick!.lipstickImage[index]
             imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "nopic"))
             self.scrollLipstickImages.addSubview(imgView)
         }

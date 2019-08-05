@@ -25,7 +25,6 @@ class LipstickListViewController: UITableViewController  {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = false
-        print(lipstickList)
         addNavBarImage()
         searchBarLip()
     }

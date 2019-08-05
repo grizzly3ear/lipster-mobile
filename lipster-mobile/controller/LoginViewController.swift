@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
             loginScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
             break
         default:
-            print("")
+            break
         }
     }
     

@@ -25,12 +25,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (false) { // if have internet connection
-//            let token: String = (defaults.string(forKey: "userToken")?)!
-//            retrieveData(token: token)
-        } else {
-//            use old data
-        }
         configureReactiveLipstickData()
         configureReactiveTrendData()
         retrieveData(token: "some test token")
@@ -48,19 +42,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         }
     }
  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdentifier = segue.identifier
-        if segueIdentifier == "showRecommendList" {
-            if let destination = segue.destination as? LipstickListViewController {
-                destination.lipstickList = recommendLipstick
-            }
-            
-        } else if segueIdentifier == "showTrendGroupList" {
-            if let destination = segue.destination as? TrendListViewController {
-                destination.trendGroupList = trendGroups
-            }
-        }
-    }
 }
 
 extension HomeViewController{
@@ -112,6 +93,7 @@ extension HomeViewController {
         navigationItem.titleView  = imageView
     }
 }
+
 extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,17 +113,37 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
-            
             let lipstick = recommendLipstick[indexPath.item]
             var firstLipstickImage = ""
             if lipstick.lipstickImage.count > 0 {
                 firstLipstickImage = lipstick.lipstickImage.first!
             }
+            
             cell.recImageView.sd_setImage(with: URL(string: firstLipstickImage), placeholderImage: UIImage(named: "nopic"))
             cell.recBrandLabel.text = lipstick.lipstickBrand
             cell.recNameLabel.text = lipstick.lipstickName
             
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == recommendCollectionView {
+            performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showLipstickDetail" {
+            let destination = segue.destination as? LipstickDetailSegmentVC
+            let selectedIndex = sender as! Int
+            destination?.lipstick = recommendLipstick[selectedIndex]
+        }
+        else if segueIdentifier == "showTrendGroupList" {
+            if let destination = segue.destination as? TrendListViewController {
+                destination.trendGroupList = trendGroups
+            }
         }
     }
 
