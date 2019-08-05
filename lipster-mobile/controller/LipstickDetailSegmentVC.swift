@@ -34,7 +34,7 @@ class LipstickDetailSegmentVC: UIViewController {
     
     var reviews: [UserReview] = [UserReview]()
     var lipstick : Lipstick?
-    let request = HttpRequest("http://18.136.104.217", nil)
+    let request = HttpRequest(nil)
     
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     
