@@ -9,13 +9,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
-    @IBOutlet weak var recentCollectionView: UICollectionView!
     
     var searchController : UISearchController!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
-    var recentViewLipstick = [Lipstick]()
     let request = HttpRequest("http://18.136.104.217", nil)
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
@@ -27,8 +25,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = UserDefaults.standard
-        defaults.set(recentViewLipstick, forKey: "recentLipstickView")
         if (false) { // if have internet connection
 //            let token: String = (defaults.string(forKey: "userToken")?)!
 //            retrieveData(token: token)
@@ -44,51 +40,17 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
     func retrieveData(token: String) {
-        
-//        self.request.get("api/lipstick", nil, nil) { (response) -> (Void) in
-//            self.lipstickDataPipe.input.send(value: Lipstick.makeArrayModelFromJSON(response: response))
-//        }
-//        
-//        self.request.get("api/trend", nil, nil) { (response) -> (Void) in
-//            self.trendDataPipe.input.send(value: TrendGroup.makeModelFromJSON(response: response))
-//        }
-        
-        let trendGroup = TrendGroup()
-        trendGroup.trendName = "Trend of the month | January 2019"
-        trendGroup.trends = [Trend]()
-        let trend1 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6), trendDescription: "")
-        let trend2 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6), trendDescription: "")
-        let trend3 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6), trendDescription: "")
-        let trend4 = Trend(trendImage: "",trendLipstickColor: UIColor(rgb: 0xF4D3C0), trendSkinColor: UIColor(rgb: 0xF4D3C6), trendDescription: "")
-        trendGroup.trends?.append(trend1)
-        trendGroup.trends?.append(trend2)
-        trendGroup.trends?.append(trend3)
-        trendGroup.trends?.append(trend4)
-        
-        trendGroups.append(trendGroup)
-
-        for i in 1...5 {
-            var lipstick = Lipstick()
-            lipstick.lipstickColor = UIColor(rgb: 0xF4D3C6)
-            lipstick.lipstickBrand = "brand"
-            lipstick.lipstickName = "lipstick_name"
-            lipstick.lipstickColorName = "color_name"
-            lipstick.lipstickDetail = "detail"
-            lipstick.lipstickImage = [""]
-            recommendLipstick.append(lipstick)
-            recentViewLipstick.append(lipstick)
+        let params: [String: Any] = [
+            "part": "detail,color"
+        ]
+        self.request.get("api/brand", params, nil) { (response) -> (Void) in
+            self.lipstickDataPipe.input.send(value: Lipstick.makeArrayModelFromJSON(response: response))
         }
-        
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showRecommendList" {
-            if let destination = segue.destination as? LipstickListViewController {
-                destination.lipstickList = recommendLipstick
-            }
-            
-        } else if segueIdentifier == "showRecentList" {
             if let destination = segue.destination as? LipstickListViewController {
                 destination.lipstickList = recommendLipstick
             }
@@ -153,35 +115,31 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  3
+        switch collectionView {
+            case trendsCollectionView: return trendGroups.count
+            case recommendCollectionView: return recommendLipstick.count
+            default: return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == trendsCollectionView{
+        if collectionView == trendsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
-//            cell.trendHomeImageView.image = trendGroup.trends![indexPath.row].trendImage
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups.first!.trends![indexPath.row].trendImage), placeholderImage: UIImage(named: "nopic"))
          
             return cell
-        }
-        else if (collectionView == recentCollectionView){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recentlyCollectionViewCell" , for: indexPath) as! RecentlyViewHomeCollectionViewCell
-            
-//            cell.recentImageView.image = recentViewLipstick[indexPath.item].lipstickImage.first
-            cell.recentImageView.sd_setImage(with: URL(string: recentViewLipstick[indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
-            cell.recentBrandLabel.text = recentViewLipstick[indexPath.item].lipstickBrand
-            cell.recentNameLabel.text = recentViewLipstick[indexPath.item].lipstickName
-            
-            return cell
-        }
-        else{
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             
-//            cell.recImageView.image = recommendLipstick[indexPath.item].lipstickImage.first
-            cell.recImageView.sd_setImage(with: URL(string: recommendLipstick[indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
-            cell.recBrandLabel.text = recommendLipstick[indexPath.item].lipstickBrand
-            cell.recNameLabel.text = recommendLipstick[indexPath.item].lipstickName
+            let lipstick = recommendLipstick[indexPath.item]
+            var firstLipstickImage = ""
+            if lipstick.lipstickImage.count > 0 {
+                firstLipstickImage = lipstick.lipstickImage.first!
+            }
+            cell.recImageView.sd_setImage(with: URL(string: firstLipstickImage), placeholderImage: UIImage(named: "nopic"))
+            cell.recBrandLabel.text = lipstick.lipstickBrand
+            cell.recNameLabel.text = lipstick.lipstickName
             
             return cell
         }
@@ -194,15 +152,10 @@ extension HomeViewController {
     func configureReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
-            self.recentViewLipstick = lipsticks
             
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
             self.recommendCollectionView.layoutIfNeeded()
-            
-            self.recentCollectionView.reloadData()
-            self.recentCollectionView.setNeedsLayout()
-            self.recentCollectionView.layoutIfNeeded()
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)

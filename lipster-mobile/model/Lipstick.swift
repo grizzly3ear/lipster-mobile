@@ -42,7 +42,7 @@ class Lipstick {
         var lipsticks = [Lipstick]()
         
         let brandsJSON = response!["data"]
-        
+
         for brand in brandsJSON {
             
             for lipstickDetail in brand.1["detail"] {
@@ -52,7 +52,6 @@ class Lipstick {
                     var images = [String]()
                     for image in lipstickColor.1["images"] {
                         images.append(image.1["image"].stringValue)
-//                        images.append(UIImage(named: "BE116")!)
                     }
                     let lipstickBrand = brand.1["name"].stringValue
                     let lipstickName = lipstickDetail.1["name"].stringValue
