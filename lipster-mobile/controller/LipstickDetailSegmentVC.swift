@@ -1,17 +1,8 @@
-//
-//  LipstickDetailSegmentVC.swift
-//  lipster-mobile
-//
-//  Created by Mainatvara on 9/4/2562 BE.
-//  Copyright © 2562 Bank. All rights reserved.
-//
-
 import UIKit
 import SwiftyJSON
 import ReactiveCocoa
 import ReactiveSwift
 import Result
-
 
 class LipstickDetailSegmentVC: UIViewController {
     
@@ -168,7 +159,7 @@ extension LipstickDetailSegmentVC {
 
 // page controll to show multi Lipstick image 
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
-    func pageController(){
+    func pageController() {
         lipstickImagesPageControl.numberOfPages = self.lipstick?.lipstickImage.count ?? 0
         for index in 0..<lipstickImagesPageControl.numberOfPages {
             frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
