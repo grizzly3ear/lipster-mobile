@@ -98,8 +98,10 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-            case trendsCollectionView: return trendGroups.count
-            case recommendCollectionView: return recommendLipstick.count
+            case trendsCollectionView:
+                return trendGroups.count >= 10 ? 10 : trendGroups.count
+            case recommendCollectionView:
+                return recommendLipstick.count >= 10 ? 10 : recommendLipstick.count
             default: return 0
         }
     }
