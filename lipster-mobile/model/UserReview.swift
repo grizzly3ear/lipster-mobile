@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
+import SDWebImage
 
 class UserReview {
     
@@ -20,6 +22,11 @@ class UserReview {
         self.userProfile = userProfile
         self.userReview = userReview
         self.userName = userName
-        
+    }
+    
+    public static func makeArrayModelFromJSON(response: JSON?) -> [UserReview] {
+        let user = UserReview(userProfile: UIImage(named: "nopic")!, userReview: "dsa", userName: "23")
+        print(response)
+        return [user]
     }
 }

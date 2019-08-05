@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import SwiftyJSON
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 
 class LipstickDetailSegmentVC: UIViewController {
@@ -25,7 +29,6 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
     @IBOutlet weak var detailViewContainer: UIView!
-//    @IBOutlet weak var seemore: ExpandableLabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var typeReviewTextView: UITextView!
@@ -35,13 +38,18 @@ class LipstickDetailSegmentVC: UIViewController {
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
     
-
+    var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
+    var reviewDataObserver: Signal<[UserReview], NoError>.Observer?
+    
+    let request = HttpRequest("http://18.136.104.217", nil)
+    
     var lipstick : Lipstick?
-    var frame = CGRect(x:0,y:0,width:0 , height:0)
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData(lipstickId: lipstick?.lipstickId ?? 0)
         typeReview()
         pageController()
         self.userList = self.createUserArray()
@@ -58,8 +66,6 @@ class LipstickDetailSegmentVC: UIViewController {
             self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipstickDetail
         }
-        
-        
     }
   
     var userReviews : [String] = ["nicccccceeeeeeeeeeeee",
@@ -73,17 +79,13 @@ class LipstickDetailSegmentVC: UIViewController {
         
         return [user1,user2]
     }
-    
-    // ----------------------select LipColor and LipImage will change-------------------------
 
-    
     @IBAction func segments(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0 :
             contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         case 1 :
             contentScrollView.setContentOffset(CGPoint( x : 375 , y : 0), animated:true)
-            
         default:
             contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         }
@@ -93,17 +95,21 @@ class LipstickDetailSegmentVC: UIViewController {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
     
-
-   
 }
 
+// MARK: fetch data
+extension LipstickDetailSegmentVC {
+    func fetchData(lipstickId: Int) {
+        self.request.get("api/lipstick/color/\(lipstickId)/reviews", nil, nil) { (response) -> (Void) in
+            self.reviewDataPipe.input.send(value: UserReview.makeArrayModelFromJSON(response: response))
+        }
+    }
+}
 
 extension LipstickDetailSegmentVC   : UITableViewDelegate , UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return userReviews.count
-                
     }
             
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,10 +118,11 @@ extension LipstickDetailSegmentVC   : UITableViewDelegate , UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
         cell.userReviewLabel.text = review
         
-            return cell
+        return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
+        return 100
     }
 }
 
@@ -186,7 +193,6 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
         }
         scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
         scrollLipstickImages.delegate = self
-        
         contentScrollView.delegate = self
     }
     
@@ -196,8 +202,6 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
         } else if scrollView == contentScrollView {
             contentSegmentControl.selectedSegmentIndex = scrollView.currentPage()
         }
-        
-        
     }
 }
 
@@ -223,8 +227,17 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
         guard let cell = collectionView.cellForItem(at: indexPath) as? SelectColorFromDetailCollectionViewCell else {return}
         cell.triangleView.isHidden = true
+    }
+}
+
+extension LipstickDetailSegmentVC {
+    func configureReactiveReviewData() {
+        reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
+//            self.trendGroups.append(trendGroup)
+
+        })
+        reviewDataPipe.output.observe(reviewDataObserver!)
     }
 }

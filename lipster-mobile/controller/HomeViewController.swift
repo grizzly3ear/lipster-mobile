@@ -140,6 +140,9 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if segueIdentifier == "showLipstickDetail" {
             let destination = segue.destination as? LipstickDetailSegmentVC
             let selectedIndex = sender as! Int
+            if recommendLipstick[selectedIndex].lipstickImage.count == 0 {
+                recommendLipstick[selectedIndex].lipstickImage.append("")
+            }
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
         else if segueIdentifier == "showTrendGroupList" {
