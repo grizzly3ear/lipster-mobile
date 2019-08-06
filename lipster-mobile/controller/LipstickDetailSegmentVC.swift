@@ -32,30 +32,26 @@ class LipstickDetailSegmentVC: UIViewController {
     let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
     var reviewDataObserver: Signal<[UserReview], NoError>.Observer?
     
+    let colorDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var colorDataObserver: Signal<[Lipstick], NoError>.Observer?
+    
     var reviews: [UserReview] = [UserReview]()
     var lipstick : Lipstick?
-    
-    var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
+    var colors: [Lipstick] = [Lipstick]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        configureReactiveReviewData()
+        configureReactiveData()
         typeReview()
-        pageController()
         clickedPostButton.isEnabled = false
         reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
         self.titleNavigationItem.title = lipstick?.lipstickBrand
         
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-
-        if let lipstick = self.lipstick{
-            self.lipstickBrand.text = lipstick.lipstickBrand
-            self.lipstickName.text = lipstick.lipstickName
-            self.lipstickColorName.text = lipstick.lipstickColorName
-            self.lipstickShortDetail.text = lipstick.lipstickDetail
-        }
+        initialUI()
+        
     }
 
     @IBAction func segments(_ sender: UISegmentedControl) {
@@ -75,11 +71,24 @@ class LipstickDetailSegmentVC: UIViewController {
     
 }
 
+extension LipstickDetailSegmentVC {
+    
+}
+
 // MARK: fetch data
 extension LipstickDetailSegmentVC {
     func fetchData() {
+        fetchReview()
+        fetchLipstickSameDetail()
+    }
+    func fetchReview() {
         LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
             self.reviewDataPipe.input.send(value: userReviews)
+        }
+    }
+    func fetchLipstickSameDetail() {
+        LipstickRepository.fetchLipstickWithSameDetail(lipstick: self.lipstick!) { (lipsticks) in
+            self.colorDataPipe.input.send(value: lipsticks)
         }
     }
 }
@@ -156,10 +165,21 @@ extension LipstickDetailSegmentVC {
     }
 }
 
-// page controll to show multi Lipstick image 
+// Init UI
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
+    func initialUI() {
+        if let lipstick = self.lipstick{
+            self.lipstickBrand.text = lipstick.lipstickBrand
+            self.lipstickName.text = lipstick.lipstickName
+            self.lipstickColorName.text = lipstick.lipstickColorName
+            self.lipstickShortDetail.text = lipstick.lipstickDetail
+        }
+        pageController()
+    }
+    
     func pageController() {
         lipstickImagesPageControl.numberOfPages = self.lipstick?.lipstickImage.count ?? 0
+        
         for index in 0..<lipstickImagesPageControl.numberOfPages {
             frame.origin.x = scrollLipstickImages.frame.size.width * CGFloat(index)
             frame.size = scrollLipstickImages.frame.size
@@ -168,6 +188,15 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
             imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "nopic"))
             self.scrollLipstickImages.addSubview(imgView)
         }
+        if self.lipstick?.lipstickImage.count == 0 {
+            let imgView = UIImageView(frame: frame)
+            lipstickImagesPageControl.numberOfPages = 1
+            
+            lipstick?.lipstickImage.append("")
+            imgView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "nopic"))
+            self.scrollLipstickImages.addSubview(imgView)
+        }
+        
         scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
         scrollLipstickImages.delegate = self
         contentScrollView.delegate = self
@@ -186,36 +215,46 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
 extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfLipstickColor.count
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
-       
-        cell?.selectColorView.backgroundColor = arrayOfLipstickColor[indexPath.row]
-        cell?.triangleView.isHidden = true
+    
+        cell?.selectColorView.backgroundColor = colors[indexPath.item].lipstickColor
+        if colors[indexPath.item].lipstickId == lipstick?.lipstickId {
+            cell?.triangleView.isHidden = false
+        } else {
+            cell?.triangleView.isHidden = true
+        }
         
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! SelectColorFromDetailCollectionViewCell
-        cell.triangleView.isHidden = false
+        lipstick = colors[indexPath.item]
+        initialUI()
+        collectionView.reloadData()
+        fetchReview()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SelectColorFromDetailCollectionViewCell else {return}
-        cell.triangleView.isHidden = true
-    }
+
 }
 
 extension LipstickDetailSegmentVC {
-    func configureReactiveReviewData() {
+    func configureReactiveData() {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.reviews = userReviews
             self.reviewTableView.reloadData()
             self.reviewTableView.setNeedsLayout()
         })
         reviewDataPipe.output.observe(reviewDataObserver!)
+        
+        colorDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipstickColors) in
+            self.colors = lipstickColors
+            self.lipstickSelectColorCollectionView.reloadData()
+            self.lipstickSelectColorCollectionView.setNeedsLayout()
+        })
+        colorDataPipe.output.observe(colorDataObserver!)
     }
+    
 }
