@@ -5,14 +5,9 @@ import SwiftyJSON
 class HttpRequest {
     
     var domain = "http://18.136.104.217"
-    var token: String?
     var defaultHeaders = [
         "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")"
     ]
-    
-    init() {
-        self.token = ""
-    }
     
     public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
