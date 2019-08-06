@@ -76,7 +76,10 @@
     CGFloat scale = 1;
     NSNumber *scaleFactor = options[SDImageCoderDecodeScaleFactor];
     if (scaleFactor != nil) {
-        scale = MAX([scaleFactor doubleValue], 1);
+        scale = [scaleFactor doubleValue];
+        if (scale < 1) {
+            scale = 1;
+        }
     }
     
 #if SD_MAC
@@ -186,7 +189,10 @@
         CGFloat scale = 1;
         NSNumber *scaleFactor = options[SDImageCoderDecodeScaleFactor];
         if (scaleFactor != nil) {
-            scale = MAX([scaleFactor doubleValue], 1);
+            scale = [scaleFactor doubleValue];
+            if (scale < 1) {
+                scale = 1;
+            }
         }
         _scale = scale;
 #if SD_UIKIT
@@ -235,7 +241,10 @@
             CGFloat scale = _scale;
             NSNumber *scaleFactor = options[SDImageCoderDecodeScaleFactor];
             if (scaleFactor != nil) {
-                scale = MAX([scaleFactor doubleValue], 1);
+                scale = [scaleFactor doubleValue];
+                if (scale < 1) {
+                    scale = 1;
+                }
             }
 #if SD_UIKIT || SD_WATCH
             image = [[UIImage alloc] initWithCGImage:partialImageRef scale:scale orientation:UIImageOrientationUp];
@@ -330,7 +339,10 @@
         CGFloat scale = 1;
         NSNumber *scaleFactor = options[SDImageCoderDecodeScaleFactor];
         if (scaleFactor != nil) {
-            scale = MAX([scaleFactor doubleValue], 1);
+            scale = [scaleFactor doubleValue];
+            if (scale < 1) {
+                scale = 1;
+            }
         }
         _scale = scale;
         _imageSource = imageSource;

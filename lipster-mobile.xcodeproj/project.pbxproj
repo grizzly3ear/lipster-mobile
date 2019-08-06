@@ -35,13 +35,14 @@
 		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
 		D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE562285D8BB0028C19A /* NotificationViewController.swift */; };
 		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
-		D81CCE5B2285EBB50028C19A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* ProfileViewController.swift */; };
+		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE5D2285ED2C0028C19A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */; };
 		D81CCE5F2285F1B80028C19A /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
 		D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
+		D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */; };
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
@@ -104,13 +105,14 @@
 		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
 		D81CCE562285D8BB0028C19A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
-		D81CCE5A2285EBB50028C19A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageView.swift; sourceTree = "<group>"; };
 		D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailSegmentVC.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
@@ -246,8 +248,9 @@
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
 				D81CCE54228592F30028C19A /* NearByViewController.swift */,
 				D81CCE562285D8BB0028C19A /* NotificationViewController.swift */,
-				D81CCE5A2285EBB50028C19A /* ProfileViewController.swift */,
+				D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */,
 				D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */,
+				D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/PickerButton/PickerButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
@@ -426,6 +430,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PickerButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
@@ -484,7 +489,8 @@
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */,
-				D81CCE5B2285EBB50028C19A /* ProfileViewController.swift in Sources */,
+				D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */,
+				D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */,
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				D81CCE5F2285F1B80028C19A /* ProfileDetailsViewController.swift in Sources */,

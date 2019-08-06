@@ -2,7 +2,7 @@
 //  ProfileViewController.swift
 //  lipster-mobile
 //
-//  Created by Mainatvara on 11/5/2562 BE.
+//  Created by Mainatvara on 6/8/2562 BE.
 //  Copyright © 2562 Bank. All rights reserved.
 //
 
@@ -10,36 +10,27 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var profileUserImageView: UIImageView!
+    @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var userEmail: UILabel!
-    @IBOutlet weak var profileDetailButton: UIButton!
-    @IBOutlet weak var yourFavoriteButton: UIButton!
-    @IBOutlet weak var recentlyViewButton: UIButton!
-    
-    
-    @IBAction func profileDetailButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "showProfileDetail", sender: self)
-    }
-    @IBAction func yourFavoriteButtonPressed(_ sender: Any) {
-         self.performSegue(withIdentifier: "showYourFavorite", sender: self)
-    }
-    @IBAction func recentlyViewButtonPressed(_ sender: Any) {
-         self.performSegue(withIdentifier: "showRecentlyView", sender: self)
-    }
-    
 
-
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var editProfileButton: UIButton!
+    
+    
+    @IBAction func editProfileButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showEditProfile", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-            self.navigationItem.title = "Profile"
-        UINavigationBar.appearance().tintColor = UIColor.white
-      
-        profileUserImageView.layer.cornerRadius = profileUserImageView.frame.size.width/2
-        profileUserImageView.clipsToBounds = true
+        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
+        userProfileImage.clipsToBounds = true
+
+        background.layer.cornerRadius = 30
+        background.layer.shadowRadius = 20
+        
     }
     
 
 
 }
-

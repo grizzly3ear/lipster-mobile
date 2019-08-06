@@ -1,0 +1,6 @@
+framework module PickerButton {
+  umbrella header "PickerButton-umbrella.h"
+
+  export *
+  module * { export * }
+}
