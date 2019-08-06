@@ -7,20 +7,20 @@
 //
 
 import UIKit
+import iOSDropDown
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileUserImageView: UIImageView!
-    @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var userEmail: UILabel!
-    @IBOutlet weak var profileDetailButton: UIButton!
-    @IBOutlet weak var yourFavoriteButton: UIButton!
-    @IBOutlet weak var recentlyViewButton: UIButton!
+
+    
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var userFirstname: UITextField!
+    @IBOutlet weak var userLastname: UITextField!
     
     
-    @IBAction func profileDetailButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "showProfileDetail", sender: self)
-    }
+
     @IBAction func yourFavoriteButtonPressed(_ sender: Any) {
          self.performSegue(withIdentifier: "showYourFavorite", sender: self)
     }
@@ -37,9 +37,25 @@ class ProfileViewController: UIViewController {
       
         profileUserImageView.layer.cornerRadius = profileUserImageView.frame.size.width/2
         profileUserImageView.clipsToBounds = true
-    }
+    
+    
+    var getUserEmail = "janatvara@gmail.com"
+    var getUsername = "mmaimmaii"
+    var getFirstname = "Natwara"
+    var getLastname = "Jaratvithitpong"
+    
+    
+    username.text = getUsername
+    username.clearButtonMode = .whileEditing
+    userFirstname.text = getFirstname
+    userFirstname.clearButtonMode = .whileEditing
+    userLastname.text = getLastname
+    userLastname.clearButtonMode = .whileEditing
+    userEmail.text = getUserEmail
+    userEmail.clearButtonMode = .whileEditing
     
 
+}
 
 }
 
