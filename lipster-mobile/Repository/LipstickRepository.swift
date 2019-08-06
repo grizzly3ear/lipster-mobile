@@ -35,4 +35,14 @@ class LipstickRepository {
         }
     }
     
+    public static func fetchLipstickWithSameDetail(lipstick: Lipstick, completion: @escaping ([Lipstick]) -> Void ) {
+        let request = HttpRequest()
+        request.get("api/lipstick/detail/\(lipstick.lipstickDetailId)", ["part": "color,brand"], nil) { (response) -> (Void) in
+            if response == nil {
+                completion([Lipstick]())
+            }
+            completion(Lipstick.makeArrayModelFromDetailJSON(response: response))
+        }
+    }
+    
 }

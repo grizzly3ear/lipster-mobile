@@ -74,6 +74,34 @@ class Lipstick {
         return lipsticks
     }
     
+    public static func makeArrayModelFromDetailJSON(response: JSON?) -> [Lipstick] {
+        var lipsticks = [Lipstick]()
+        
+        let detail = response!["data"]
+        let colors = detail["colors"]
+        let brand = detail["brand"]["name"].stringValue
+        for color in colors {
+            let lipstick = color.1
+            var images = [String]()
+            for image in lipstick["images"] {
+                images.append(image.1["image"].stringValue)
+            }
+            lipsticks.append(Lipstick(
+                lipstick["id"].intValue,
+                images,
+                brand,
+                detail["name"].stringValue,
+                lipstick["color_name"].stringValue,
+                detail["description"].stringValue,
+                UIColor(hexString: lipstick["rgb"].stringValue),
+                detail["id"].intValue
+            ))
+            
+        }
+
+        return lipsticks
+    }
+    
     public static func makeArrayFromLipstickColorResource(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
         
