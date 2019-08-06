@@ -222,12 +222,28 @@
             </objects>
             <point key="canvasLocation" x="1348" y="1599.8500749625189"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Kzn-FU-ikX">
+            <objects>
+                <viewController id="vmn-Gm-6su" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d64-e8-YAn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HCG-RJ-xbS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="J0B-T3-d56"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8M-WM-ExO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3308" y="2348"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="Jf4-kQ-WMX">
             <objects>
-                <viewController id="tQ7-pN-4nh" customClass="ProfileViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tQ7-pN-4nh" customClass="EditProfileViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2EE-m1-jc8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgM-aN-Ypz">
@@ -324,19 +340,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eay-9Y-pDz">
-                                <rect key="frame" x="157" y="392" width="192" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="to1-fd-nr0" customClass="PickerButton" customModule="PickerButton">
+                                <rect key="frame" x="41" y="392" width="293" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AiW-3f-k8H"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="cXp-QX-7Uo"/>
                     <connections>
+                        <outlet property="genderButton" destination="to1-fd-nr0" id="2lv-8R-NJw"/>
                         <outlet property="profileUserImageView" destination="DCg-fG-eyq" id="Sw6-bb-cRp"/>
                         <outlet property="userEmail" destination="it4-6t-geo" id="BuC-US-Xqx"/>
                         <outlet property="userFirstname" destination="wmj-eg-fCZ" id="x6O-IG-NnO"/>
@@ -2457,7 +2475,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="tQ7-pN-4nh" kind="relationship" relationship="rootViewController" id="UPa-Cp-6yF"/>
+                        <segue destination="vmn-Gm-6su" kind="relationship" relationship="rootViewController" id="zXQ-AX-Dyd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-c6-qQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
