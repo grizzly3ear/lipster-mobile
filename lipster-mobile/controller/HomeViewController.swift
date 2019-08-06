@@ -13,7 +13,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
-    let request = HttpRequest()
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
