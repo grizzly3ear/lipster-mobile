@@ -14,7 +14,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
-    let request = HttpRequest("http://18.136.104.217", nil)
+    let request = HttpRequest("token")
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
@@ -140,6 +140,9 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if segueIdentifier == "showLipstickDetail" {
             let destination = segue.destination as? LipstickDetailSegmentVC
             let selectedIndex = sender as! Int
+            if recommendLipstick[selectedIndex].lipstickImage.count == 0 {
+                recommendLipstick[selectedIndex].lipstickImage.append("")
+            }
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
         else if segueIdentifier == "showTrendGroupList" {

@@ -13,6 +13,7 @@ import SDWebImage
 
 class Lipstick {
 
+    var lipstickId: Int
     var lipstickImage: [String]
     var lipstickBrand: String
     var lipstickName: String
@@ -20,7 +21,8 @@ class Lipstick {
     var lipstickDetail: String
     var lipstickColor : UIColor
 
-    init(lipstickImage: [String],lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String, lipstickColor : UIColor ) {
+    init(lipstickId: Int, lipstickImage: [String],lipstickBrand : String, lipstickName: String ,lipstickColorName : String, lipShortDetail : String, lipstickColor : UIColor ) {
+        self.lipstickId = lipstickId
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
         self.lipstickName =  lipstickName
@@ -30,6 +32,7 @@ class Lipstick {
     }
     
     init() {
+        self.lipstickId = Int()
         self.lipstickImage = [String]()
         self.lipstickBrand = String()
         self.lipstickName =  String()
@@ -45,7 +48,7 @@ class Lipstick {
 
         for brand in brandsJSON {
             
-            for lipstickDetail in brand.1["detail"] {
+            for lipstickDetail in brand.1["details"] {
                 
                 for lipstickColor in lipstickDetail.1["colors"] {
                     
@@ -53,13 +56,14 @@ class Lipstick {
                     for image in lipstickColor.1["images"] {
                         images.append(image.1["image"].stringValue)
                     }
+                    let lipstickId = lipstickColor.1["id"].intValue
                     let lipstickBrand = brand.1["name"].stringValue
                     let lipstickName = lipstickDetail.1["name"].stringValue
                     let lipstickColorName = lipstickColor.1["color_name"].stringValue
                     let lipstickDescription = lipstickDetail.1["description"].stringValue
                     let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
                     
-                    lipsticks.append(Lipstick(lipstickImage: images, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDescription, lipstickColor: lipstickColor))
+                    lipsticks.append(Lipstick(lipstickId: lipstickId, lipstickImage: images, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDescription, lipstickColor: lipstickColor))
                 }
             }
         }
@@ -73,6 +77,7 @@ class Lipstick {
 
         for lipstick in data {
             
+            let lipstickId = lipstick.1["id"].intValue
             let lipstickBrand = lipstick.1["brand"]["name"].stringValue
             let lipstickName = lipstick.1["color_name"].stringValue
             let lipstickColorName = lipstick.1[""].stringValue
@@ -83,7 +88,7 @@ class Lipstick {
                 images.append(image.1["image"].stringValue)
             }
             let lipstickImages = images
-            lipsticks.append(Lipstick(lipstickImage: lipstickImages, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDetail, lipstickColor: lipstickColor))
+            lipsticks.append(Lipstick(lipstickId: lipstickId, lipstickImage: lipstickImages, lipstickBrand: lipstickBrand, lipstickName: lipstickName, lipstickColorName: lipstickColorName, lipShortDetail: lipstickDetail, lipstickColor: lipstickColor))
         }
         return lipsticks
     }

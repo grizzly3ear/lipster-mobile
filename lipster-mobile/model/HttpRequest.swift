@@ -4,11 +4,10 @@ import SwiftyJSON
 
 class HttpRequest {
     
-    var domain: String!
+    var domain = "http://18.136.104.217"
     var token: String?
     
-    init(_ domain: String) {
-        self.domain = domain
+    init(_ token: String) {
         self.token = ""
     }
     
@@ -19,8 +18,8 @@ class HttpRequest {
     
     public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain!)/\(route)", method: .get, parameters: params, headers: headers).validate().responseJSON { (response) in
-            
+        Alamofire.request("\(domain)/\(route)", method: .get, parameters: params, headers: headers).validate().responseJSON { (response) in
+
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
                 return
@@ -34,7 +33,7 @@ class HttpRequest {
     
     public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain!)/\(route)", method: .post, parameters: params, headers: headers).validate().responseJSON { (response) in
+        Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: headers).validate().responseJSON { (response) in
             
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
@@ -49,7 +48,7 @@ class HttpRequest {
     
     public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain!)/\(route)", method: .put, parameters: params, headers: headers).validate().responseJSON { (response) in
+        Alamofire.request("\(domain)/\(route)", method: .put, parameters: params, headers: headers).validate().responseJSON { (response) in
             
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
