@@ -10,21 +10,27 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var userProfileImage: UIImageView!
+    @IBOutlet weak var username: UILabel!
+
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var editProfileButton: UIButton!
+    
+    
+    @IBAction func editProfileButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showEditProfile", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
+        userProfileImage.clipsToBounds = true
 
-        // Do any additional setup after loading the view.
+        background.layer.cornerRadius = 30
+        background.layer.shadowRadius = 20
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
