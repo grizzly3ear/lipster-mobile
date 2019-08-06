@@ -6,7 +6,6 @@ import Result
 
 class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
-    
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     
@@ -14,7 +13,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
-    let request = HttpRequest("token")
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
@@ -27,21 +25,20 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         
         configureReactiveLipstickData()
         configureReactiveTrendData()
-        retrieveData(token: "some test token")
-        
+        fetchData()
+
         searchBarLip()
         addNavBarImage()
     }
-    
-    func retrieveData(token: String) {
-        let params: [String: Any] = [
-            "part": "detail,color"
-        ]
-        self.request.get("api/brand", params, nil) { (response) -> (Void) in
-            self.lipstickDataPipe.input.send(value: Lipstick.makeArrayModelFromJSON(response: response))
+ 
+}
+
+extension HomeViewController {
+    func fetchData() {
+        LipstickRepository.fetchAllLipstickData { (response) in
+            self.lipstickDataPipe.input.send(value: response)
         }
     }
- 
 }
 
 extension HomeViewController{
