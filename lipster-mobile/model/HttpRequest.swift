@@ -6,20 +6,18 @@ class HttpRequest {
     
     var domain = "http://18.136.104.217"
     var token: String?
+    var defaultHeaders = [
+        "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")"
+    ]
     
-    init(_ token: String) {
+    init() {
         self.token = ""
-    }
-    
-    init(_ domain: String, _ token: String?) {
-        self.domain = domain
-        self.token = token
     }
     
     public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain)/\(route)", method: .get, parameters: params, headers: headers).validate().responseJSON { (response) in
-
+        Alamofire.request("\(domain)/\(route)", method: .get, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
+            
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
                 return
@@ -33,7 +31,7 @@ class HttpRequest {
     
     public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: headers).validate().responseJSON { (response) in
+        Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
             
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)
@@ -48,7 +46,7 @@ class HttpRequest {
     
     public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?) -> (Void)) {
         
-        Alamofire.request("\(domain)/\(route)", method: .put, parameters: params, headers: headers).validate().responseJSON { (response) in
+        Alamofire.request("\(domain)/\(route)", method: .put, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
             
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil)

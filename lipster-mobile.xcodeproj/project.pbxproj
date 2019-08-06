@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032BDD322F92755009E325A /* LipstickRepository.swift */; };
 		30424ACD22990B97005D2E2C /* PreviewMaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */; };
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
 		304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */; };
 		305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305477CE229A57CC009E4090 /* UITextFieldHelper.swift */; };
+		305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C5CA122F93C34003725C8 /* UserRepository.swift */; };
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13122573B560056EE74 /* UIColorHelper.swift */; };
 		3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13322573BFE0056EE74 /* UIViewHelper.swift */; };
@@ -72,10 +74,12 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		3032BDD322F92755009E325A /* LipstickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRepository.swift; sourceTree = "<group>"; };
 		30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMaskLayer.swift; sourceTree = "<group>"; };
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewHelper.swift; sourceTree = "<group>"; };
 		305477CE229A57CC009E4090 /* UITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
+		305C5CA122F93C34003725C8 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071C13122573B560056EE74 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
@@ -137,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3032BDD222F9271F009E325A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3032BDD322F92755009E325A /* LipstickRepository.swift */,
+				305C5CA122F93C34003725C8 /* UserRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		30A532C52255AAE000205429 /* extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 		30B36E83221A6DDC001FD8EF /* lipster-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				3032BDD222F9271F009E325A /* Repository */,
 				304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */,
 				30A532C52255AAE000205429 /* extension */,
 				30B966EE224E06B400258CA6 /* model */,
@@ -471,10 +485,12 @@
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */,
 				D81CCE5B2285EBB50028C19A /* ProfileViewController.swift in Sources */,
+				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				D81CCE5F2285F1B80028C19A /* ProfileDetailsViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
+				3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */,
 				D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

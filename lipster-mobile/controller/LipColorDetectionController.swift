@@ -15,7 +15,7 @@ class LipColorDetectionController: UIViewController {
     var pickerController: ImagePickerController!
     var toggleCamera: Bool = false
     let faceDetection = FaceDetection()
-    let request = HttpRequest("http://18.136.104.217", nil)
+    let request = HttpRequest()
     
     let colorDetectionPipe = Signal<UIColor, NoError>.pipe()
     var colorDetectionObserver: Signal<UIColor, NoError>.Observer?

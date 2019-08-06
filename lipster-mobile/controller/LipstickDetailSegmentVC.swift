@@ -34,13 +34,12 @@ class LipstickDetailSegmentVC: UIViewController {
     
     var reviews: [UserReview] = [UserReview]()
     var lipstick : Lipstick?
-    let request = HttpRequest("token")
     
     var arrayOfLipstickColor = [UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805) , UIColor(rgb: 0xFA4855) ,UIColor(rgb: 0xFA4825) ,UIColor(rgb: 0xFA4255), UIColor(rgb: 0xFA4805), UIColor(rgb: 0xFA4805)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData(lipstickId: lipstick?.lipstickId ?? 0)
+        fetchData()
         configureReactiveReviewData()
         typeReview()
         pageController()
@@ -78,9 +77,9 @@ class LipstickDetailSegmentVC: UIViewController {
 
 // MARK: fetch data
 extension LipstickDetailSegmentVC {
-    func fetchData(lipstickId: Int) {
-        self.request.get("api/lipstick/color/\(lipstickId)/reviews", nil, nil) { (response) -> (Void) in
-            self.reviewDataPipe.input.send(value: UserReview.makeArrayModelFromJSON(response: response))
+    func fetchData() {
+        LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
+            self.reviewDataPipe.input.send(value: userReviews)
         }
     }
 }

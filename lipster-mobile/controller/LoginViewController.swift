@@ -41,14 +41,12 @@ class LoginViewController: UIViewController {
         registerLoginWithFacebookButton.layer.cornerRadius = 10
         
 
-//        let icon = #imageLiteral(resourceName: "facebook_icon")
-//        loginWithFacebookButton.setImage(icon, for: .normal)
-//        loginWithFacebookButton.imageView?.contentMode = .scaleAspectFit
-//        loginWithFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
     }
     
     @IBAction func didLoginButtonPress(_ sender: UIButton) {
-        performSegue(withIdentifier: "replaceHomePage", sender: self)
+        UserRepository.authenticate(email: "example@gmail.com", password: "password") { () in
+            self.performSegue(withIdentifier: "replaceHomePage", sender: self)
+        }
     }
     
     @IBAction func loginSegments(_ sender: Any) {
