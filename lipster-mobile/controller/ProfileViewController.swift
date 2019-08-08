@@ -10,12 +10,13 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    
+    @IBOutlet weak var profileNavigationBar: UINavigationItem!
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
 
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var editProfileButton: UIButton!
-    
     
     @IBOutlet weak var favoriteLipstickView: UIView!
     @IBAction func favoriteLipstickIconButton(_ sender: Any) {
@@ -36,10 +37,13 @@ class ProfileViewController: UIViewController {
             self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
     }
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileNavigationBar.title = "PROFILE"
+        self.navigationController!.navigationBar.barStyle = .black
+
         userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
         userProfileImage.clipsToBounds = true
 

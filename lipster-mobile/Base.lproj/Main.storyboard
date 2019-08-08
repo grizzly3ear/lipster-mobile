@@ -397,6 +397,7 @@ Review</string>
                         <outlet property="background" destination="oAF-Lx-KDK" id="ig9-68-F6g"/>
                         <outlet property="editProfileButton" destination="Bks-us-JaX" id="XY1-ZA-Jp0"/>
                         <outlet property="favoriteLipstickView" destination="e1j-tk-14M" id="UbP-mO-5gZ"/>
+                        <outlet property="profileNavigationBar" destination="J0B-T3-d56" id="I5M-0z-5ef"/>
                         <outlet property="userProfileImage" destination="cBz-cd-Ysi" id="hk0-xi-BJp"/>
                         <outlet property="username" destination="dQM-of-AXh" id="QKk-Gh-r3e"/>
                     </connections>
@@ -2898,7 +2899,7 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="acc-yj-O4T"/>
-        <segue reference="Fg5-CQ-A5H"/>
+        <segue reference="iHi-jt-pK5"/>
         <segue reference="Idv-eu-btz"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
