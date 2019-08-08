@@ -17,18 +17,37 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var editProfileButton: UIButton!
     
     
+    @IBOutlet weak var favoriteLipstickView: UIView!
+    @IBAction func favoriteLipstickIconButton(_ sender: Any) {
+           self.performSegue(withIdentifier: "showFavoriteLipstickFromIcon", sender: self)
+    }
+    @IBAction func favoriteLipsickTextButton(_ sender: Any) {
+           self.performSegue(withIdentifier: "showFavoriteLipstickFromIcon", sender: self)
+    }
+    
+    
+    
     @IBAction func editProfileButtonAction(_ sender: Any) {
         self.performSegue(withIdentifier: "showEditProfile", sender: self)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
         userProfileImage.clipsToBounds = true
 
-        
         dropShadow()
-        
+
+        favoriteLipstickView.isUserInteractionEnabled = true
+
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(clickButton))
+            tapGesture.numberOfTapsRequired = 1
+            favoriteLipstickView.addGestureRecognizer(tapGesture)
+    }
+        // MARK:- clickButton
+    @objc func clickButton() {
+            print(" Click favorite lipstick button")
         
     }
     
