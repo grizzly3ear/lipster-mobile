@@ -26,11 +26,23 @@ class ProfileViewController: UIViewController {
         userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
         userProfileImage.clipsToBounds = true
 
-        background.layer.cornerRadius = 30
-        background.layer.shadowRadius = 20
+        
+        dropShadow()
+        
         
     }
     
+}
 
-
+extension ProfileViewController{
+    func dropShadow(scale: Bool = true) {
+        background.layer.cornerRadius = 30
+        background.layer.masksToBounds = false
+        background.layer.shadowColor = UIColor.black.cgColor
+        background.layer.shadowOpacity = 0.4
+        background.layer.shadowOffset = .zero
+        background.layer.shadowRadius = 6
+        background.layer.shouldRasterize = true
+        background.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
 }
