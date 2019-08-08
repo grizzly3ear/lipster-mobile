@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.0)
+  - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
   - Firebase/Analytics (5.19.0):
     - Firebase/Core
   - Firebase/Core (5.19.0):
@@ -110,6 +111,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CHTCollectionViewWaterfallLayout/Swift
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/MLVision
@@ -125,6 +127,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CHTCollectionViewWaterfallLayout
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -152,6 +155,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
@@ -177,6 +181,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 06192b79fdf79b672ed7533045f6c011b7d5e48a
+PODFILE CHECKSUM: c9c681926a033d880dfe19114f222d3458045347
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

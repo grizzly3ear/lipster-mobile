@@ -11,7 +11,7 @@ pod 'SwiftyJSON'
 pod 'SDWebImage', '~> 5.0'
 pod 'ReactiveCocoa', '~> 9.0'
 pod 'PickerButton'
-
+pod 'CHTCollectionViewWaterfallLayout/Swift'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
