@@ -252,7 +252,7 @@
                                 <rect key="frame" x="112" y="12" width="144" height="142"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1j-tk-14M">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1j-tk-14M" customClass="ButtonView" customModule="lipster_mobile" customModuleProvider="target">
                                 <rect key="frame" x="49" y="220" width="130" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -260,6 +260,9 @@
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="clock"/>
+                                        <connections>
+                                            <action selector="favoriteLipstickIconButton:" destination="vmn-Gm-6su" eventType="touchUpInside" id="De8-CB-8TU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="umi-Ov-Jvx">
                                         <rect key="frame" x="34" y="59" width="63" height="48"/>
@@ -270,6 +273,9 @@
 Lipsticks</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="favoriteLipsickTextButton:" destination="vmn-Gm-6su" eventType="touchUpInside" id="mBt-9g-Am9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -384,6 +390,7 @@ Review</string>
                     <connections>
                         <outlet property="background" destination="oAF-Lx-KDK" id="ig9-68-F6g"/>
                         <outlet property="editProfileButton" destination="Bks-us-JaX" id="XY1-ZA-Jp0"/>
+                        <outlet property="favoriteLipstickView" destination="e1j-tk-14M" id="UbP-mO-5gZ"/>
                         <outlet property="userProfileImage" destination="cBz-cd-Ysi" id="hk0-xi-BJp"/>
                         <outlet property="username" destination="dQM-of-AXh" id="QKk-Gh-r3e"/>
                     </connections>
@@ -502,6 +509,24 @@ Review</string>
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="co7-vh-bWz">
+                                <rect key="frame" x="25" y="468" width="324" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGl-ZF-WbK">
+                                        <rect key="frame" x="8" y="6" width="308" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveAction:" destination="tQ7-pN-4nh" eventType="touchUpInside" id="i0D-01-4RO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AiW-3f-k8H"/>
