@@ -7,18 +7,41 @@
 //
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Trend {
     
-    var trendImage : String
-    var trendLipstickColor : UIColor
-    var trendSkinColor : UIColor
-    var trendDescription: String
+    var title: String
+    var image: String
+    var lipstickColor: UIColor
+    var skinColor: UIColor
+    var description: String
     
-    init(trendImage: String,  trendLipstickColor: UIColor, trendSkinColor: UIColor, trendDescription: String) {
-        self.trendImage = trendImage
-        self.trendLipstickColor = trendLipstickColor
-        self.trendSkinColor = trendSkinColor
-        self.trendDescription = trendDescription   
+    init(_ title: String, _ trendImage: String, _ trendLipstickColor: UIColor, _ trendSkinColor: UIColor, _ trendDescription: String) {
+        self.title = title
+        self.image = trendImage
+        self.lipstickColor = trendLipstickColor
+        self.skinColor = trendSkinColor
+        self.description = trendDescription   
+    }
+    
+    public static func makeArrayModelFromJSON(response: JSON?) -> [Trend] {
+        var trends = [Trend]()
+        
+        if response == nil {
+            return trends
+        }
+        for trendJSON in response! {
+            let trend = trendJSON.1
+            let title = trend["title"].stringValue
+            let lipstickColor = UIColor.red
+            let image = trend["image"].stringValue
+            let skinColor = UIColor(hexString: trend["skin_color"].stringValue)
+            let description = trend["description"].stringValue
+            
+            trends.append(Trend(title, image, lipstickColor, skinColor, description))
+        }
+        return trends
+        
     }
 }

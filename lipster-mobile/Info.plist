@@ -8,29 +8,28 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>http://localhost:8000</key>
+			<string></string>
 			<key>NSExceptionAllowsInsecureHTTPLoads</key>
 			<true/>
 			<key>NSIncludesSubdomains</key>
 			<true/>
 			<key>http://18.136.104.217</key>
-			<dict/>
+			<string></string>
 		</dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This application requires location services to work</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This application requires location services to work</string>
-    
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This application requires location services to work</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This application requires location services to work</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Lipster want to access to your Photo Library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Lipster want to access to your camera</string>
-    
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -47,10 +46,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-    
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

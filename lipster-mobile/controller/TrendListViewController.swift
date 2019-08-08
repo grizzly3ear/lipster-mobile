@@ -35,7 +35,7 @@ extension TrendListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendGroupTableViewCell", for: indexPath) as! TrendGroupTableViewCell
-        cell.trendName.text = trendGroupList[indexPath.item].trendName
+        cell.trendName.text = trendGroupList[indexPath.item].name
         
         return cell
     }
@@ -67,7 +67,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendImageCollectionViewCell", for: indexPath) as? TrendImageCollectionViewCell
         
 //        cell?.imageTrend.image = trendGroupList[collectionView.tag].trends![indexPath.item].trendImage
-        cell?.imageTrend.sd_setImage(with: URL(string: trendGroupList[collectionView.tag].trends![indexPath.item].trendImage), placeholderImage: UIImage(named: "nopic"))
+        cell?.imageTrend.sd_setImage(with: URL(string: trendGroupList[collectionView.tag].trends![indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
         
         return cell!
     }

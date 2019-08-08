@@ -47,9 +47,10 @@ class Lipstick {
     public static func makeArrayModelFromBrandJSON(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
         
-        let brandsJSON = response!["data"]
-
-        for brand in brandsJSON {
+        if response == nil {
+            return lipsticks
+        }
+        for brand in response! {
             
             for lipstickDetail in brand.1["details"] {
                 
@@ -77,9 +78,11 @@ class Lipstick {
     public static func makeArrayModelFromDetailJSON(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
         
-        let detail = response!["data"]
-        let colors = detail["colors"]
-        let brand = detail["brand"]["name"].stringValue
+        if response == nil {
+            return lipsticks
+        }
+        let colors = response!["colors"]
+        let brand = response!["brand"]["name"].stringValue
         for color in colors {
             let lipstick = color.1
             var images = [String]()
@@ -90,11 +93,11 @@ class Lipstick {
                 lipstick["id"].intValue,
                 images,
                 brand,
-                detail["name"].stringValue,
+                response!["name"].stringValue,
                 lipstick["color_name"].stringValue,
-                detail["description"].stringValue,
+                response!["description"].stringValue,
                 UIColor(hexString: lipstick["rgb"].stringValue),
-                detail["id"].intValue
+                response!["id"].intValue
             ))
             
         }
@@ -105,9 +108,10 @@ class Lipstick {
     public static func makeArrayFromLipstickColorResource(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
         
-        let data = response!
-
-        for lipstick in data {
+        if response == nil {
+            return lipsticks
+        }
+        for lipstick in response! {
             
             let lipstickId = lipstick.1["id"].intValue
             let lipstickBrand = lipstick.1["brand"]["name"].stringValue

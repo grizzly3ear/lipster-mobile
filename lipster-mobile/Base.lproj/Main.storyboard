@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -523,7 +523,7 @@
             <objects>
                 <viewController id="2O8-hK-JQi" customClass="LipstickDetailSegmentVC" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5y-2S-QWz">
-                        <rect key="frame" x="0.0" y="0.0" width="750" height="850"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="801"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1Z-Nu-V3G">
@@ -958,7 +958,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="trendHomeImageView" destination="DVb-AP-XTe" id="vdr-mg-PKh"/>
-                                                                    <segue destination="G5r-9g-puV" kind="show" identifier="showTrendGroupList" id="FHp-u1-bz8"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -1100,6 +1099,8 @@
                         <outlet property="recommendCollectionView" destination="G5J-Ep-gXf" id="nN6-qN-UJc"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                         <segue destination="2O8-hK-JQi" kind="show" identifier="showLipstickDetail" id="VKI-vI-8e2"/>
+                        <segue destination="G5r-9g-puV" kind="show" identifier="showTrendGroupList" id="nXS-Aw-Aeh"/>
+                        <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendGroupDetail" id="M0x-Mo-1mI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2368,11 +2369,11 @@
             <objects>
                 <viewController id="MjW-ox-6lU" customClass="TryMeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qg2-Ut-RaP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3" customClass="PreviewMaskLayer" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
                                         <rect key="frame" x="307" y="72" width="60" height="508"/>
@@ -2532,7 +2533,7 @@
         <image name="edit" width="256" height="256"/>
         <image name="facebook" width="378" height="304"/>
         <image name="favButton_off" width="256" height="256"/>
-        <image name="frame" width="94" height="94"/>
+        <image name="frame" width="94.333335876464844" height="94.333335876464844"/>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="logo-3" width="2835" height="850"/>
@@ -2544,7 +2545,8 @@
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Idv-eu-btz"/>
-        <segue reference="nXF-J0-F0d"/>
+        <segue reference="M0x-Mo-1mI"/>
+        <segue reference="VKI-vI-8e2"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
