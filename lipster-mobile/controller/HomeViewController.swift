@@ -30,6 +30,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         searchBarLip()
         addNavBarImage()
     }
+    
+    @IBAction func seemoreButtonPress(_ sender: Any) {
+        performSegue(withIdentifier: "showTrendList", sender: self)
+    }
+    
  
 }
 
@@ -159,6 +164,11 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             if let destination = segue.destination as? TrendDetailViewController {
                 let selectedIndex = sender as! Int
                 destination.trendGroup = trendGroups[selectedIndex]
+            }
+        }
+        else if segueIdentifier == "showTrendList" {
+            if let destination = segue.destination as? TrendListViewController {
+                destination.trendCollections = trendGroups
             }
         }
     }

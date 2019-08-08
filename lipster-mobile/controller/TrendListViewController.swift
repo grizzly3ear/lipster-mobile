@@ -1,75 +1,64 @@
-//
-//  TrendsViewController.swift
-//  lipster-mobile
-//
-//  Created by Mainatvara on 20/4/2562 BE.
-//  Copyright © 2562 Bank. All rights reserved.
-//
-
 import UIKit
+import CHTCollectionViewWaterfallLayout
 
-class TrendListViewController: UITableViewController   {
+class TrendListViewController: UIViewController {
     
-    var trendGroupList = [TrendGroup]()
+    @IBOutlet var titleNavigationItem: UINavigationItem!
+    @IBOutlet weak var trendListCollectionView: UICollectionView!
+    
+    var trendCollections = [TrendGroup]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        titleNavigationItem.title = "Trends"
+        initCollectionViewProtocol()
+        setupCollectionView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            print("reload")
+            self.trendListCollectionView.reloadData()
+            self.trendListCollectionView.layoutIfNeeded()
+            self.trendListCollectionView.setNeedsLayout()
+        }
     }
 }
 
-// UITableView
-extension TrendListViewController {
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        guard let tableViewCell = cell as? TrendGroupTableViewCell else {return}
-        
-        tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self as UICollectionViewDataSource & UICollectionViewDelegate, forRow: indexPath.row)
+extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return trendCollections.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trendGroupList.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "trendGroupTableViewCell", for: indexPath) as! TrendGroupTableViewCell
-        cell.trendName.text = trendGroupList[indexPath.item].name
+        DispatchQueue.main.async {
+            cell.image.sd_setImage(with: URL(string: self.trendCollections[indexPath.item].image!), placeholderImage: UIImage(named: "nopic")!)
+            collectionView.layoutIfNeeded()
+            collectionView.setNeedsLayout()
+            collectionView.setNeedsDisplay()
+        }
+        
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TrendDetailViewController {
-            let indexItemSelect = sender as! Int
-            destination.trendGroup = trendGroupList[indexItemSelect]
-        }
-    }
-    
-}
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
 
-// UICollectionView
-extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let number = trendGroupList[collectionView.tag].trends!.count
-        return number < 4 ? number : 3
+        return (cell.image.image ?? UIImage(named: "nopic")!).size
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func initCollectionViewProtocol() {
+        self.trendListCollectionView.delegate = self
+        self.trendListCollectionView.dataSource = self
+    }
+    
+    func setupCollectionView() {
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.minimumColumnSpacing = 1.0
+        layout.minimumInteritemSpacing = 1.0
+        trendListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        trendListCollectionView.alwaysBounceVertical = true
+        trendListCollectionView.collectionViewLayout = layout
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendImageCollectionViewCell", for: indexPath) as? TrendImageCollectionViewCell
-        
-//        cell?.imageTrend.image = trendGroupList[collectionView.tag].trends![indexPath.item].trendImage
-        cell?.imageTrend.sd_setImage(with: URL(string: trendGroupList[collectionView.tag].trends![indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
-        
-        return cell!
     }
 }
-

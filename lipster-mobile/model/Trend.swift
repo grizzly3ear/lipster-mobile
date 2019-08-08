@@ -27,14 +27,14 @@ class Trend {
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [Trend] {
         var trends = [Trend]()
-        
+
         if response == nil {
             return trends
         }
         for trendJSON in response! {
             let trend = trendJSON.1
             let title = trend["title"].stringValue
-            let lipstickColor = UIColor.red
+            let lipstickColor = UIColor(hexString: trend["lipstick_color"].stringValue)
             let image = trend["image"].stringValue
             let skinColor = UIColor(hexString: trend["skin_color"].stringValue)
             let description = trend["description"].stringValue
