@@ -54,8 +54,7 @@ extension NearByViewController: MKMapViewDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = locValue
-        annotation.title = "Javed Multani"
-        annotation.subtitle = "current location"
+        annotation.title = "Beauty Buffet"
         mapView.addAnnotation(annotation)
     }
 }
