@@ -21,15 +21,21 @@ class ProfileViewController: UIViewController {
     @IBAction func favoriteLipstickIconButton(_ sender: Any) {
            self.performSegue(withIdentifier: "showFavoriteLipstickFromIcon", sender: self)
     }
-    @IBAction func favoriteLipsickTextButton(_ sender: Any) {
-           self.performSegue(withIdentifier: "showFavoriteLipstickFromIcon", sender: self)
+    @IBAction func favoriteLipsickLabelButton(_ sender: Any) {
+           self.performSegue(withIdentifier: "showFavoriteLipstickFromLabel", sender: self)
     }
-    
-    
     
     @IBAction func editProfileButtonAction(_ sender: Any) {
         self.performSegue(withIdentifier: "showEditProfile", sender: self)
     }
+    
+    @IBAction func recentlyViewIconButton(_ sender: Any) {
+            self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
+    }
+    @IBAction func recentlyViewLabelButton(_ sender: Any) {
+            self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
+    }
+    
     
     
     override func viewDidLoad() {
