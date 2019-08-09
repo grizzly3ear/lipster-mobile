@@ -13,7 +13,6 @@ class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var profileUserImageView: UIImageView!
 
-    
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var userFirstname: UITextField!
@@ -22,15 +21,10 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var genderButton: PickerButton!
      let pickerValues: [String] = ["Female", "Male"]
 
-    @IBAction func yourFavoriteButtonPressed(_ sender: Any) {
-         self.performSegue(withIdentifier: "showYourFavorite", sender: self)
-    }
-    @IBAction func recentlyViewButtonPressed(_ sender: Any) {
+    @IBAction func saveAction(_ sender: Any) {
          self.performSegue(withIdentifier: "showRecentlyView", sender: self)
     }
     
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,23 +38,21 @@ class EditProfileViewController: UIViewController {
         profileUserImageView.clipsToBounds = true
     
     
-    var getUserEmail = "janatvara@gmail.com"
-    var getUsername = "mmaimmaii"
-    var getFirstname = "Natwara"
-    var getLastname = "Jaratvithitpong"
+        var getUserEmail = "janatvara@gmail.com"
+        var getUsername = "mmaimmaii"
+        var getFirstname = "Natwara"
+        var getLastname = "Jaratvithitpong"
     
     
-    username.text = getUsername
-    username.clearButtonMode = .whileEditing
-    userFirstname.text = getFirstname
-    userFirstname.clearButtonMode = .whileEditing
-    userLastname.text = getLastname
-    userLastname.clearButtonMode = .whileEditing
-    userEmail.text = getUserEmail
-    userEmail.clearButtonMode = .whileEditing
-    
-
-}
+        username.text = getUsername
+        username.clearButtonMode = .whileEditing
+        userFirstname.text = getFirstname
+        userFirstname.clearButtonMode = .whileEditing
+        userLastname.text = getLastname
+        userLastname.clearButtonMode = .whileEditing
+        userEmail.text = getUserEmail
+        userEmail.clearButtonMode = .whileEditing
+    }
 
 }
 
