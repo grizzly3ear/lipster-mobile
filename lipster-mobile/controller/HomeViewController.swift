@@ -3,6 +3,7 @@ import SwiftyJSON
 import ReactiveCocoa
 import ReactiveSwift
 import Result
+import Hero
 
 class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
     
@@ -29,13 +30,13 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
         searchBarLip()
         addNavBarImage()
+        setupHero()
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "showTrendList", sender: self)
     }
     
- 
 }
 
 extension HomeViewController {
@@ -117,6 +118,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if collectionView == trendsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
+            cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
          
             return cell
@@ -128,6 +130,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
                 firstLipstickImage = lipstick.lipstickImage.first!
             }
             
+            cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.recImageView.sd_setImage(with: URL(string: firstLipstickImage), placeholderImage: UIImage(named: "nopic"))
             cell.recBrandLabel.text = lipstick.lipstickBrand
             cell.recNameLabel.text = lipstick.lipstickName
@@ -180,7 +183,7 @@ extension HomeViewController {
     func configureReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
-            
+            self.setupHero()
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
             self.recommendCollectionView.layoutIfNeeded()
@@ -198,5 +201,30 @@ extension HomeViewController {
             self.trendsCollectionView.layoutIfNeeded()
         })
         trendDataPipe.output.observe(trendDataObserver!)
+    }
+}
+
+extension HomeViewController {
+    func setupHero() {
+        self.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .push(direction: .left),
+            dismissing: .pull(direction: .right)
+        )
+        recommendCollectionView.hero.isEnabled = true
+        recommendCollectionView.hero.isEnabledForSubviews = true
+        recommendCollectionView.hero.modifiers = [.cascade]
+        for cell in recommendCollectionView.visibleCells {
+            cell.hero.modifiers = [
+                .fade,
+                .spring(
+                    stiffness: 5.0,
+                    damping: 15.0
+                )
+            ]
+        }
+        
+        trendsCollectionView.hero.isEnabled = true
+        trendsCollectionView.hero.isEnabledForSubviews = true
     }
 }

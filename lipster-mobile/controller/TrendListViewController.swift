@@ -1,6 +1,7 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 import SwiftEntryKit
+import Hero
 
 class TrendListViewController: UIViewController {
     
@@ -18,6 +19,18 @@ class TrendListViewController: UIViewController {
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepare")
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showTrendGroupDetail" {
+            let destination = segue.destination as! TrendDetailViewController
+            let indexPath = sender as! IndexPath
+            
+            destination.trendGroup = trendCollections[indexPath.item]
+            
+        }
     }
 }
 
@@ -65,12 +78,25 @@ extension TrendListViewController {
     }
     
     func setUpTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap))
-        tapGesture.numberOfTapsRequired = 2
-        trendListCollectionView.addGestureRecognizer(tapGesture)
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onDoubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        trendListCollectionView.addGestureRecognizer(doubleTapGesture)
+        
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onSingleTap))
+        singleTapGesture.numberOfTapsRequired = 1
+        trendListCollectionView.addGestureRecognizer(singleTapGesture)
+        
+        singleTapGesture.require(toFail: doubleTapGesture)
     }
     
-    @objc func onTap(_ sender: UITapGestureRecognizer) {
+    @objc func onSingleTap(_ sender: UITapGestureRecognizer) {
+        let touchPoint = sender.location(in: trendListCollectionView!)
+        let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
+        
+        performSegue(withIdentifier: "showTrendGroupDetail", sender: indexPath)
+    }
+    
+    @objc func onDoubleTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: trendListCollectionView!)
         
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
@@ -140,3 +166,4 @@ extension TrendListViewController {
     }
     
 }
+

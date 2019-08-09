@@ -1,5 +1,6 @@
 import UIKit
 import FlexiblePageControl
+import Hero
 
 class TrendDetailViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hero.isEnabled = true
         initScrollView()
         initPageControl()
         initUserInterface()
@@ -44,7 +45,7 @@ extension TrendDetailViewController {
     
     func initUserInterface() {
         self.trendNameLabel.text = trendGroup.name
-        setUserInterface(trendGroup.trends!.first!)
+        setUserInterface(trendGroup.trends!.first ?? Trend())
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -75,13 +76,15 @@ extension TrendDetailViewController {
     
     func initPageControl() {
         pageControl.numberOfPages = trendGroup.trends!.count
+        pageControl.hero.isEnabled = true
+        pageControl.hero.isEnabledForSubviews = true
+        pageControl.hero.id = "trendCollection"
         
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollTrendImage.frame.size.width * CGFloat(index)
             frame.size = scrollTrendImage.frame.size
             
             let imgView = UIImageView(frame: frame)
-//            imgView.image = self.trendGroup.trends![index].trendImage
             imgView.sd_setImage(with: URL(string: self.trendGroup.trends![index].image), placeholderImage: UIImage(named: "nopic"))
             self.scrollTrendImage.addSubview(imgView)
         }

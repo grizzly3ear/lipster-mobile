@@ -25,6 +25,14 @@ class Trend {
         self.description = trendDescription   
     }
     
+    init() {
+        title = String()
+        image = String()
+        lipstickColor = .black
+        skinColor = .black
+        description = String()
+    }
+    
     public static func makeArrayModelFromJSON(response: JSON?) -> [Trend] {
         var trends = [Trend]()
 
