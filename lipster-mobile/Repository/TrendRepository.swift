@@ -12,6 +12,6 @@ class TrendRepository {
                 completion([TrendGroup]())
             }
             completion(TrendGroup.makeArrayModelFromJSON(response: response))
-        }
+        } 
     }
 }
