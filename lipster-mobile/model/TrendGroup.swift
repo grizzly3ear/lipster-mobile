@@ -10,30 +10,37 @@ import UIKit
 import SwiftyJSON
 
 class TrendGroup {
-    var trendName: String?
+    var name: String?
     var trends: [Trend]?
+    var image: String?
     
-    init(_ trendName: String, _ trends: [Trend]) {
-        self.trendName = trendName
+    init(_ name: String, _ trends: [Trend], _ image: String) {
+        self.name = name
         self.trends = trends
+        self.image = image
     }
     
     init() {
-        
+        self.name = String()
+        self.trends = [Trend]()
+        self.image = String()
     }
     
-    public static func makeModelFromJSON(response: JSON?) -> TrendGroup {
-        let data = response!["data"]
-        
-        var trends = [Trend]()
-        
-        for trend in data {
-            let trendImage = trend.1["image"].stringValue
-            let trendLipstickColor = UIColor(hexString: trend.1["color"]["rgb"].stringValue)
-            let trendSkinColor = UIColor(hexString: trend.1["skin_color"].stringValue)
-            let trendDescription = "Summer - \(trend.1["title"].stringValue)"
-            trends.append(Trend(trendImage: trendImage, trendLipstickColor: trendLipstickColor, trendSkinColor: trendSkinColor, trendDescription: trendDescription))
+    public static func makeArrayModelFromJSON(response: JSON?) -> [TrendGroup] {
+        var trendCollections = [TrendGroup]()
+
+        if response == nil {
+            return trendCollections
         }
-        return TrendGroup("Summer", trends)
+        for trendCollectionJSON in response! {
+            let trendCollection = trendCollectionJSON.1
+            let name = trendCollection["name"].stringValue
+            let image = trendCollection["image"].stringValue
+            let trends = Trend.makeArrayModelFromJSON(response: trendCollection["trends"])
+            
+            trendCollections.append(TrendGroup(name, trends, image))
+        }
+        
+        return trendCollections
     }
 }

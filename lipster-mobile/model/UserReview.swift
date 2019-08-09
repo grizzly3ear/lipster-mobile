@@ -26,9 +26,10 @@ class UserReview {
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [UserReview] {
         var reviews = [UserReview]()
-        
-        let reviewsJson = response!["data"]
-        for review in reviewsJson {
+        if response == nil {
+            return reviews
+        }
+        for review in response! {
             print(review)
             let rating = review.1["rating"].intValue
             let comment = review.1["comment"].stringValue

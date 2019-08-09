@@ -17,8 +17,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
-    let trendDataPipe = Signal<TrendGroup, NoError>.pipe()
-    var trendDataObserver: Signal<TrendGroup, NoError>.Observer?
+    let trendDataPipe = Signal<[TrendGroup], NoError>.pipe()
+    var trendDataObserver: Signal<[TrendGroup], NoError>.Observer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +30,23 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         searchBarLip()
         addNavBarImage()
     }
+    
+    @IBAction func seemoreButtonPress(_ sender: Any) {
+        performSegue(withIdentifier: "showTrendList", sender: self)
+    }
+    
  
 }
 
 extension HomeViewController {
     func fetchData() {
-        LipstickRepository.fetchAllLipstickData { (response) in
-            self.lipstickDataPipe.input.send(value: response)
+        DispatchQueue.main.async {
+            LipstickRepository.fetchAllLipstickData { (response) in
+                self.lipstickDataPipe.input.send(value: response)
+            }
+            TrendRepository.fetchAllTrendData { (response) in
+                self.trendDataPipe.input.send(value: response)
+            }
         }
     }
 }
@@ -107,7 +117,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         if collectionView == trendsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
-            cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups.first!.trends![indexPath.row].trendImage), placeholderImage: UIImage(named: "nopic"))
+            cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
          
             return cell
         } else {
@@ -127,9 +137,17 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == recommendCollectionView {
+        switch collectionView {
+        case recommendCollectionView:
             performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
-        }
+            break
+        case trendsCollectionView:
+            performSegue(withIdentifier: "showTrendGroupDetail", sender: indexPath.item)
+            break
+        default:
+            break
+        }       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,9 +160,15 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             }
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
-        else if segueIdentifier == "showTrendGroupList" {
+        else if segueIdentifier == "showTrendGroupDetail" {
+            if let destination = segue.destination as? TrendDetailViewController {
+                let selectedIndex = sender as! Int
+                destination.trendGroup = trendGroups[selectedIndex]
+            }
+        }
+        else if segueIdentifier == "showTrendList" {
             if let destination = segue.destination as? TrendListViewController {
-                destination.trendGroupList = trendGroups
+                destination.trendCollections = trendGroups
             }
         }
     }
@@ -166,8 +190,9 @@ extension HomeViewController {
     }
     
     func configureReactiveTrendData() {
-        trendDataObserver = Signal<TrendGroup, NoError>.Observer(value: { (trendGroup) in
-            self.trendGroups.append(trendGroup)
+        trendDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
+            self.trendGroups = trendGroups
+            
             self.trendsCollectionView.reloadData()
             self.trendsCollectionView.setNeedsLayout()
             self.trendsCollectionView.layoutIfNeeded()

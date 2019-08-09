@@ -21,7 +21,7 @@ class TrendDetailViewController: UIViewController {
         initScrollView()
         initPageControl()
         initUserInterface()
-        self.titleNavigationItem.title = trendGroup.trendName
+        self.titleNavigationItem.title = trendGroup.name
         
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -43,14 +43,14 @@ class TrendDetailViewController: UIViewController {
 extension TrendDetailViewController {
     
     func initUserInterface() {
-        self.trendNameLabel.text = trendGroup.trendName
+        self.trendNameLabel.text = trendGroup.name
         setUserInterface(trendGroup.trends!.first!)
     }
     
     func setUserInterface(_ trend: Trend) {
-        self.trendLipColorView.backgroundColor = trend.trendLipstickColor
-        self.trendSkinColorView.backgroundColor = trend.trendSkinColor
-        self.trendDescription.text = trend.trendDescription
+        self.trendLipColorView.backgroundColor = trend.lipstickColor
+        self.trendSkinColorView.backgroundColor = trend.skinColor
+        self.trendDescription.text = trend.description
     }
 }
 
@@ -82,7 +82,7 @@ extension TrendDetailViewController {
             
             let imgView = UIImageView(frame: frame)
 //            imgView.image = self.trendGroup.trends![index].trendImage
-            imgView.sd_setImage(with: URL(string: self.trendGroup.trends![index].trendImage), placeholderImage: UIImage(named: "nopic"))
+            imgView.sd_setImage(with: URL(string: self.trendGroup.trends![index].image), placeholderImage: UIImage(named: "nopic"))
             self.scrollTrendImage.addSubview(imgView)
         }
         scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
