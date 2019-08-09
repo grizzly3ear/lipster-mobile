@@ -98,6 +98,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - PickerButton (0.1.4)
   - Protobuf (3.7.0)
+  - QuickLayout (3.0.0)
   - ReactiveCocoa (9.0.0):
     - ReactiveSwift (~> 5.0)
   - ReactiveSwift (5.0.0):
@@ -106,6 +107,8 @@ PODS:
   - SDWebImage (5.0.2):
     - SDWebImage/Core (= 5.0.2)
   - SDWebImage/Core (5.0.2)
+  - SwiftEntryKit (1.0.1):
+    - QuickLayout (= 3.0.0)
   - SwiftSpinner (1.6.2)
   - SwiftyJSON (4.2.0)
 
@@ -121,6 +124,7 @@ DEPENDENCIES:
   - PickerButton
   - ReactiveCocoa (~> 9.0)
   - SDWebImage (~> 5.0)
+  - SwiftEntryKit
   - SwiftSpinner
   - SwiftyJSON
 
@@ -146,10 +150,12 @@ SPEC REPOS:
     - nanopb
     - PickerButton
     - Protobuf
+    - QuickLayout
     - ReactiveCocoa
     - ReactiveSwift
     - Result
     - SDWebImage
+    - SwiftEntryKit
     - SwiftSpinner
     - SwiftyJSON
 
@@ -174,13 +180,15 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PickerButton: d92eba033a8cd678ff2e34f69b0ec3d7388e490a
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
   ReactiveSwift: bd4c122943593e67cb441409370c5c1e3cb32791
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
+  SwiftEntryKit: 3f55c0b8e676afe24a3703237bcac68372891c56
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: c9c681926a033d880dfe19114f222d3458045347
+PODFILE CHECKSUM: 1ded7fdbdad5d36fb6e5daa439df56ac50a4ee5e
 
 COCOAPODS: 1.6.1

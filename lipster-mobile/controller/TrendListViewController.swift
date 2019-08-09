@@ -1,5 +1,6 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
+import SwiftEntryKit
 
 class TrendListViewController: UIViewController {
     
@@ -7,10 +8,13 @@ class TrendListViewController: UIViewController {
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
     var trendCollections = [TrendGroup]()
+    var likePopupAttributes: EKAttributes!
+    var contentPopup: EKNotificationMessageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
+        initLikePopupAttributes()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
@@ -53,7 +57,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-// MARK: Set up gesture on imagePreview
+// MARK: Set up gesture on fav trend collection
 extension TrendListViewController {
     func setUpGesture() {
         trendListCollectionView.isUserInteractionEnabled = true
@@ -67,9 +71,72 @@ extension TrendListViewController {
     }
     
     @objc func onTap(_ sender: UITapGestureRecognizer) {
-        let touchPoint = sender.location(in: view!)
+        let touchPoint = sender.location(in: trendListCollectionView!)
         
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
+        let name = trendCollections[(indexPath?.item)!].name
+        let trendsCount = trendCollections[(indexPath?.item)!].trends!.count
+        createNotificationMessage(title: "Like \(name ?? "")", description: "\(trendsCount) trends have been add to your favorite", image: nil)
+        SwiftEntryKit.display(entry: contentPopup, using: likePopupAttributes)
     }
-}
     
+}
+
+extension TrendListViewController {
+    func initLikePopupAttributes() {
+        likePopupAttributes = EKAttributes.topFloat
+        likePopupAttributes.hapticFeedbackType = .success
+        likePopupAttributes.entryInteraction = .absorbTouches
+        likePopupAttributes.entryBackground = .gradient(
+            gradient: .init(
+                colors: [.gray, .lightGray],
+                startPoint: .zero,
+                endPoint: CGPoint(x: 1, y: 1)
+            )
+        )
+        likePopupAttributes.entranceAnimation = .init(
+            translate: .init(
+                duration: 0.5,
+                spring: .init(
+                    damping: 0.7,
+                    initialVelocity: 0
+                )
+            )
+        )
+        
+        likePopupAttributes.popBehavior = .animated(
+            animation: .init(
+                translate: .init(duration: 0.3),
+                scale: .init(from: 1, to: 0.7, duration: 0.7)
+            )
+        )
+        likePopupAttributes.scroll = .enabled(
+            swipeable: true,
+            pullbackAnimation: .easeOut
+        )
+        likePopupAttributes.displayDuration = .init(1)
+        likePopupAttributes.roundCorners = .all(radius: 5.0)
+    }
+    
+    func createNotificationMessage(title: String, description: String, image: UIImage?) {
+        let title = EKProperty.LabelContent(
+            text: title,
+            style: .init(
+                font: .systemFont(ofSize: 20),
+                color: .black
+            )
+        )
+        let description = EKProperty.LabelContent(
+            text: description,
+            style: .init(
+                font: .systemFont(ofSize: 15),
+                color: .black
+            )
+        )
+        let simpleMessage = EKSimpleMessage(title: title, description: description)
+        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+        
+        contentPopup = EKNotificationMessageView(with: notificationMessage)
+    }
+    
+}
