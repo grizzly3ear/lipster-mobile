@@ -42,6 +42,13 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func yourReviewLabelButton(_ sender: Any) {
           self.performSegue(withIdentifier: "showYourReviewFromLabel", sender: self)
+        
+    }
+    @IBAction func logoutFromIcon(_ sender: Any) {
+        tabBarController?.selectedIndex = 0
+    }
+    @IBAction func logoutFromLabel(_ sender: Any) {
+        tabBarController?.selectedIndex = 0
     }
     
 
