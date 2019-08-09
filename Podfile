@@ -14,6 +14,7 @@ pod 'ReactiveCocoa', '~> 9.0'
 pod 'PickerButton'
 pod 'CHTCollectionViewWaterfallLayout/Swift'
 pod 'SwiftEntryKit'
+pod 'Hero'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

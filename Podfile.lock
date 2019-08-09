@@ -90,6 +90,7 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - GTMSessionFetcher/Full (1.2.1):
     - GTMSessionFetcher/Core (= 1.2.1)
+  - Hero (1.4.0)
   - ImagePicker (3.1.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - Firebase/MLVision
   - Firebase/MLVisionFaceModel
   - FlexiblePageControl
+  - Hero
   - ImagePicker
   - PickerButton
   - ReactiveCocoa (~> 9.0)
@@ -146,6 +148,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Hero
     - ImagePicker
     - nanopb
     - PickerButton
@@ -176,6 +179,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PickerButton: d92eba033a8cd678ff2e34f69b0ec3d7388e490a
@@ -189,6 +193,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 1ded7fdbdad5d36fb6e5daa439df56ac50a4ee5e
+PODFILE CHECKSUM: a7c30d11056e232a6fd9e7133f42dbc338106156
 
 COCOAPODS: 1.6.1
