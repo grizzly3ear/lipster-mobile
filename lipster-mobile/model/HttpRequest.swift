@@ -4,8 +4,8 @@ import SwiftyJSON
 
 class HttpRequest {
     
-//    var domain = "http://18.136.104.217"
-    var domain = "http://localhost:8000"
+    var domain = "http://18.136.104.217"
+//    var domain = "http://localhost:8000"
     var defaultHeaders = [
         "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")"
     ]
