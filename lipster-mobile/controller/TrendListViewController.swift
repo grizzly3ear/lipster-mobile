@@ -10,15 +10,10 @@ class TrendListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpGesture()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            print("reload")
-            self.trendListCollectionView.reloadData()
-            self.trendListCollectionView.layoutIfNeeded()
-            self.trendListCollectionView.setNeedsLayout()
-        }
     }
 }
 
@@ -30,21 +25,16 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
         
-        DispatchQueue.main.async {
-            cell.image.sd_setImage(with: URL(string: self.trendCollections[indexPath.item].image!), placeholderImage: UIImage(named: "nopic")!)
-            collectionView.layoutIfNeeded()
-            collectionView.setNeedsLayout()
-            collectionView.setNeedsDisplay()
-        }
-        
+        cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
+        cell.image.contentMode = .scaleAspectFill
+        cell.image.clipsToBounds = true
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
-
-        return (cell.image.image ?? UIImage(named: "nopic")!).size
+        
+        return CGSize(width: 300, height: Int.random(in: 250...650) )
     }
     
     func initCollectionViewProtocol() {
@@ -62,3 +52,24 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
         
     }
 }
+
+// MARK: Set up gesture on imagePreview
+extension TrendListViewController {
+    func setUpGesture() {
+        trendListCollectionView.isUserInteractionEnabled = true
+        setUpTapGesture()
+    }
+    
+    func setUpTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.onTap))
+        tapGesture.numberOfTapsRequired = 2
+        trendListCollectionView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func onTap(_ sender: UITapGestureRecognizer) {
+        let touchPoint = sender.location(in: view!)
+        
+        let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
+    }
+}
+    

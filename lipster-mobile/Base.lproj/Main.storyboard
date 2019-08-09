@@ -1277,25 +1277,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="Prf-a1-WFv">
-                                    <size key="itemSize" width="180" height="225"/>
+                                    <size key="itemSize" width="180" height="168"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrendGroupCollectionViewCell" id="BdR-Cn-c9P" customClass="TrendGroupCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="225"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="168"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="225"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGA-DR-lpK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="162"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YGA-DR-lpK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="168"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="YGA-DR-lpK" secondAttribute="trailing" id="9cf-9W-QRz"/>
+                                            <constraint firstAttribute="bottom" secondItem="YGA-DR-lpK" secondAttribute="bottom" id="At6-0T-Sxf"/>
+                                            <constraint firstItem="YGA-DR-lpK" firstAttribute="top" secondItem="BdR-Cn-c9P" secondAttribute="top" id="K43-r4-xO5"/>
+                                            <constraint firstItem="YGA-DR-lpK" firstAttribute="leading" secondItem="BdR-Cn-c9P" secondAttribute="leading" id="qRT-3E-LtR"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="image" destination="YGA-DR-lpK" id="2H3-Oi-0dH"/>
                                         </connections>
@@ -1319,7 +1324,6 @@
         <!--Trends-->
         <scene sceneID="n04-SP-I2A">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cRA-NG-Tl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="G5r-9g-puV" customClass="TrendListViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="egP-Sa-UNx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1405,6 +1409,7 @@
                         <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendDetail" id="gDE-AP-Fl5"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRA-NG-Tl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="342" y="2416"/>
         </scene>
