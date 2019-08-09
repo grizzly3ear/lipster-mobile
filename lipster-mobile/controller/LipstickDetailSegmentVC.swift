@@ -3,6 +3,7 @@ import SwiftyJSON
 import ReactiveCocoa
 import ReactiveSwift
 import Result
+import Hero
 
 class LipstickDetailSegmentVC: UIViewController {
     
@@ -41,6 +42,8 @@ class LipstickDetailSegmentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hero.isEnabled = true
+        view.hero.isEnabledForSubviews = true
         fetchData()
         configureReactiveData()
         typeReview()
@@ -51,7 +54,6 @@ class LipstickDetailSegmentVC: UIViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         initialUI()
-        
     }
 
     @IBAction func segments(_ sender: UISegmentedControl) {
@@ -63,7 +65,6 @@ class LipstickDetailSegmentVC: UIViewController {
         default:
             contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         }
-        
     }
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
@@ -186,6 +187,8 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     
             let imgView = UIImageView(frame: frame)
             imgView.sd_setImage(with: URL(string: self.lipstick!.lipstickImage[index]), placeholderImage: UIImage(named: "nopic"))
+            imgView.contentMode = .scaleAspectFit
+            imgView.clipsToBounds = true
             self.scrollLipstickImages.addSubview(imgView)
         }
         if self.lipstick?.lipstickImage.count == 0 {
