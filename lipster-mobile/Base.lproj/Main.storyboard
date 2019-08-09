@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="poZ-ge-zXy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -316,6 +316,9 @@ Lipsticks</string>
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="clock"/>
+                                        <connections>
+                                            <action selector="logoutFromIcon:" destination="vmn-Gm-6su" eventType="touchUpInside" id="0sR-pm-PVa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="spH-9q-8eS">
                                         <rect key="frame" x="33" y="48" width="65" height="48"/>
@@ -324,6 +327,9 @@ Lipsticks</string>
                                         <state key="normal" title="Logout">
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logoutFromLabel:" destination="vmn-Gm-6su" eventType="touchUpInside" id="yWl-TA-csT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2729,9 +2735,6 @@ Review</string>
                             <outlet property="delegate" destination="Kfz-3P-mEd" id="oPq-Ld-JdM"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="yourReviewedTableView" destination="XMR-wZ-k2f" id="eOz-5g-6r1"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2972,7 +2975,7 @@ Review</string>
         <image name="edit" width="256" height="256"/>
         <image name="facebook" width="378" height="304"/>
         <image name="favButton_off" width="256" height="256"/>
-        <image name="frame" width="94.333335876464844" height="94.333335876464844"/>
+        <image name="frame" width="133" height="133"/>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="logo-3" width="2835" height="850"/>
@@ -2987,6 +2990,7 @@ Review</string>
         <segue reference="acc-yj-O4T"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="zid-xp-aA6"/>
+        <segue reference="M0x-Mo-1mI"/>
         <segue reference="Idv-eu-btz"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
