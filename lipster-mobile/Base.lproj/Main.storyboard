@@ -336,6 +336,9 @@ Lipsticks</string>
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="clock"/>
+                                        <connections>
+                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReviewFromIcon" id="zid-xp-aA6"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-p2-AUh">
                                         <rect key="frame" x="41" y="59" width="50" height="48"/>
@@ -346,6 +349,9 @@ Lipsticks</string>
 Review</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReviewFromLabel" id="Q11-LN-cwa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2651,6 +2657,86 @@ Review</string>
             </objects>
             <point key="canvasLocation" x="3232.8000000000002" y="1599.8500749625189"/>
         </scene>
+        <!--Your Reviews Table View Controller-->
+        <scene sceneID="jSy-S4-zDt">
+            <objects>
+                <tableViewController id="Kfz-3P-mEd" customClass="YourReviewsTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XMR-wZ-k2f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourReviewsTableViewCell" rowHeight="235" id="8kH-06-fre" customClass="YourReviewsTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="235"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8kH-06-fre" id="Cm6-Hc-4NZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="234.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08N-LY-B2S">
+                                            <rect key="frame" x="16" y="16" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAN-Ow-b9w">
+                                            <rect key="frame" x="130" y="34" width="212" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-jE-zXM">
+                                            <rect key="frame" x="130" y="54" width="212" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxB-cr-3Dy">
+                                            <rect key="frame" x="130" y="76" width="212" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Review" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPI-kr-bZ6">
+                                            <rect key="frame" x="130" y="119" width="229" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kru-Zd-YCo">
+                                            <rect key="frame" x="130" y="198" width="229" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.91997808218002319" green="0.59198039770126343" blue="0.70985203981399536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateReview" destination="kru-Zd-YCo" id="xep-Kx-LEK"/>
+                                    <outlet property="reviewBrandLabel" destination="VAN-Ow-b9w" id="s6p-Si-l0Y"/>
+                                    <outlet property="reviewColorNameLabel" destination="nyk-jE-zXM" id="5Bk-M5-9qa"/>
+                                    <outlet property="reviewFromUserLabel" destination="uPI-kr-bZ6" id="2Ep-V1-9p0"/>
+                                    <outlet property="reviewImageView" destination="08N-LY-B2S" id="GCg-do-mxz"/>
+                                    <outlet property="reviewNameLabel" destination="PxB-cr-3Dy" id="Tg9-xi-vi9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Kfz-3P-mEd" id="RyQ-Np-pWq"/>
+                            <outlet property="delegate" destination="Kfz-3P-mEd" id="oPq-Ld-JdM"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="yourReviewedTableView" destination="XMR-wZ-k2f" id="eOz-5g-6r1"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2543.1999999999998" y="3123.6881559220392"/>
+        </scene>
         <!--Favorite Lipstick Table View Controller-->
         <scene sceneID="y1p-EP-Kn8">
             <objects>
@@ -2900,6 +2986,7 @@ Review</string>
     <inferredMetricsTieBreakers>
         <segue reference="acc-yj-O4T"/>
         <segue reference="iHi-jt-pK5"/>
+        <segue reference="zid-xp-aA6"/>
         <segue reference="Idv-eu-btz"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>

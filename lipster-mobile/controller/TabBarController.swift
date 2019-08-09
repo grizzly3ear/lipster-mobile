@@ -54,7 +54,7 @@ class TabBarController: UITabBarController {
         tabBarItems.selectedImage = selectImage5
         
         let numberOfTab = CGFloat((tabBar.items?.count)!)
-        let tabBarSize = CGSize(width: tabBar.frame.width / numberOfTab, height: tabBar.frame.height)
+        let tabBarSize = CGSize(width: tabBar.frame.width / numberOfTab, height: tabBar.frame.height)        
 //        let tabBarColor = CGColor(colorSpace: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) as! CGColorSpace, components: )
       //  tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), size: tabBarSize)
         

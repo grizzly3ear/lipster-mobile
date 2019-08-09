@@ -37,6 +37,13 @@ class ProfileViewController: UIViewController {
             self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
     }
     
+    @IBAction func yourReviewIconButton(_ sender: Any) {
+          self.performSegue(withIdentifier: "showYourReviewFromIcon", sender: self)
+    }
+    @IBAction func yourReviewLabelButton(_ sender: Any) {
+          self.performSegue(withIdentifier: "showYourReviewFromLabel", sender: self)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

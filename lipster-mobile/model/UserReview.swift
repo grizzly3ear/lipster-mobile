@@ -16,12 +16,14 @@ class UserReview {
     var userProfile : UIImage
     var userReview : String
     var userName : String
+    var dateReview : String
     
     
-    init(userProfile : UIImage , userReview : String , userName : String ) {
+    init(userProfile : UIImage , userReview : String , userName : String , dateReview : String) {
         self.userProfile = userProfile
         self.userReview = userReview
         self.userName = userName
+        self.dateReview = dateReview
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [UserReview] {
@@ -35,7 +37,8 @@ class UserReview {
             let comment = review.1["comment"].stringValue
             let user = review.1["user"].stringValue
             let skinColor = review.1["skin_color"].stringValue
-            reviews.append(UserReview(userProfile: UIImage(named: "nopic")!, userReview: comment, userName: user))
+            let dateReview = review.1["date"].stringValue
+            reviews.append(UserReview(userProfile: UIImage(named: "nopic")!, userReview: comment, userName: user, dateReview: dateReview))
         }
         
         return reviews
