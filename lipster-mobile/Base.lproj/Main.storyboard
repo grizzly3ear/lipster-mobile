@@ -1975,7 +1975,7 @@ Review</string>
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="nCK-fr-RZZ" kind="show" identifier="showSignUp" id="lPZ-6r-fBu"/>
+                                    <segue destination="nCK-fr-RZZ" kind="show" identifier="showSignUp" animates="NO" id="lPZ-6r-fBu"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="X7v-c6-606">
@@ -2015,7 +2015,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJd-Zy-dde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2558" y="789"/>
+            <point key="canvasLocation" x="-2606" y="833"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="QY2-2U-0DS">
@@ -2129,6 +2129,15 @@ Review</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cun-gF-7T8">
+                                <rect key="frame" x="20" y="40" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="backButton"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="nCK-fr-RZZ" eventType="touchUpInside" id="64n-D9-P1e"/>
+                                    <segue destination="CzO-UI-R6t" kind="show" identifier="backToLogin" animates="NO" id="acR-UA-1XY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a6V-2J-5Fc"/>
@@ -2136,7 +2145,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhO-BT-YE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1802.4000000000001" y="787.55622188905556"/>
+            <point key="canvasLocation" x="-1785" y="833"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jz4-VR-yKO">
@@ -3216,6 +3225,7 @@ Review</string>
         <image name="02" width="516" height="516"/>
         <image name="03" width="516" height="516"/>
         <image name="04" width="516" height="514"/>
+        <image name="backButton" width="128" height="128"/>
         <image name="backgoundLogin" width="1076" height="1112"/>
         <image name="backgroundLipDetail" width="824" height="532"/>
         <image name="backgroundLiplist" width="572" height="782"/>

@@ -16,6 +16,9 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "backToLogin", sender: self)
+    }
+    
 
 }
