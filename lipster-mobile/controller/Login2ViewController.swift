@@ -10,21 +10,26 @@ import UIKit
 
 class Login2ViewController: UIViewController {
 
+    
+ 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBAction func signUpButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showSignUp", sender: self)
+    }
+    @IBAction func loginButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showHomePage", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      //  usernameTextField.setIcon(image: #imageLiteral(resourceName: "username"))
+       // passwordTextField.setIcon(image: #imageLiteral(resourceName: "password"))
+     
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
