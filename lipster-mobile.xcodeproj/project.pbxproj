@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
 		3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032BDD322F92755009E325A /* LipstickRepository.swift */; };
 		30424ACD22990B97005D2E2C /* PreviewMaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */; };
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
 		3032BDD322F92755009E325A /* LipstickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRepository.swift; sourceTree = "<group>"; };
 		30424ACC22990B97005D2E2C /* PreviewMaskLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMaskLayer.swift; sourceTree = "<group>"; };
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				D822550822FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift */,
 				D86BF81722FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift */,
 				D8799C8D22FD51E800441E6F /* YourReviewsTableViewCell.swift */,
+				302018FA2302D06C00FA5C6E /* LikeAnimator.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
 				D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
+				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,
 				D86BF81822FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */,
 				D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */,

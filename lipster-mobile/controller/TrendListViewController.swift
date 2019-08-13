@@ -107,12 +107,18 @@ extension TrendListViewController {
     
     @objc func onDoubleTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: trendListCollectionView!)
-        
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
-        let name = trendCollections[(indexPath?.item)!].name
-        let trendsCount = trendCollections[(indexPath?.item)!].trends!.count
-        createNotificationMessage(title: "Like \(name ?? "")", description: "\(trendsCount) trends have been add to your favorite", image: nil)
-        SwiftEntryKit.display(entry: contentPopup, using: likePopupAttributes)
+        let cell = trendListCollectionView.cellForItem(at: indexPath!) as! TrendGroupCollectionViewCell
+        
+        cell.likeAnimator.animate {
+            print("like")
+        }
+        
+//        let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
+//        let name = trendCollections[(indexPath?.item)!].name
+//        let trendsCount = trendCollections[(indexPath?.item)!].trends!.count
+//        createNotificationMessage(title: "Like \(name ?? "")", description: "\(trendsCount) trends have been add to your favorite", image: nil)
+//        SwiftEntryKit.display(entry: contentPopup, using: likePopupAttributes)
     }
     
 }

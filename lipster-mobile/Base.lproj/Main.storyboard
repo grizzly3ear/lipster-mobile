@@ -1458,19 +1458,29 @@ Review</string>
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YGA-DR-lpK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="168"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YGA-DR-lpK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoritePopup" translatesAutoresizingMaskIntoConstraints="NO" id="xs7-Lp-Qgo">
+                                                    <rect key="frame" x="83.5" y="83.5" width="0.0" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xs7-Lp-Qgo" secondAttribute="height" id="lXr-rY-V2u"/>
+                                                        <constraint firstAttribute="width" id="s3b-gQ-wdR"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="xs7-Lp-Qgo" firstAttribute="centerY" secondItem="BdR-Cn-c9P" secondAttribute="centerY" id="7Th-Cj-onN"/>
                                             <constraint firstAttribute="trailing" secondItem="YGA-DR-lpK" secondAttribute="trailing" id="9cf-9W-QRz"/>
                                             <constraint firstAttribute="bottom" secondItem="YGA-DR-lpK" secondAttribute="bottom" id="At6-0T-Sxf"/>
+                                            <constraint firstItem="xs7-Lp-Qgo" firstAttribute="centerX" secondItem="BdR-Cn-c9P" secondAttribute="centerX" id="Izk-bZ-Dmj"/>
                                             <constraint firstItem="YGA-DR-lpK" firstAttribute="top" secondItem="BdR-Cn-c9P" secondAttribute="top" id="K43-r4-xO5"/>
                                             <constraint firstItem="YGA-DR-lpK" firstAttribute="leading" secondItem="BdR-Cn-c9P" secondAttribute="leading" id="qRT-3E-LtR"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="image" destination="YGA-DR-lpK" id="2H3-Oi-0dH"/>
+                                            <outlet property="likeImageViewWidthConstraint" destination="s3b-gQ-wdR" id="n4e-mq-Cig"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -3257,6 +3267,7 @@ Review</string>
         <image name="facebook" width="378" height="304"/>
         <image name="facebook-1" width="128" height="128"/>
         <image name="favButton_off" width="256" height="256"/>
+        <image name="favoritePopup" width="512" height="512"/>
         <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
@@ -3280,7 +3291,7 @@ Review</string>
         <segue reference="acc-yj-O4T"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="zid-xp-aA6"/>
-        <segue reference="M0x-Mo-1mI"/>
+        <segue reference="Qsz-jI-Tpt"/>
         <segue reference="VKI-vI-8e2"/>
         <segue reference="TWS-gk-k14"/>
         <segue reference="zsa-bP-bMQ"/>
