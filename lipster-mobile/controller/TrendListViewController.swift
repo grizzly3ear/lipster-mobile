@@ -1,6 +1,5 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
-import SwiftEntryKit
 import Hero
 
 class TrendListViewController: UIViewController {
@@ -9,8 +8,6 @@ class TrendListViewController: UIViewController {
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
     var trendCollections = [TrendGroup]()
-    var likePopupAttributes: EKAttributes!
-    var contentPopup: EKNotificationMessageView!
     let padding: CGFloat = 15.0
     
     override func viewDidLoad() {
@@ -18,7 +15,6 @@ class TrendListViewController: UIViewController {
         
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         setUpGesture()
-        initLikePopupAttributes()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
@@ -122,63 +118,3 @@ extension TrendListViewController {
     }
     
 }
-
-extension TrendListViewController {
-    func initLikePopupAttributes() {
-        likePopupAttributes = EKAttributes.topFloat
-        likePopupAttributes.hapticFeedbackType = .success
-        likePopupAttributes.entryInteraction = .absorbTouches
-        likePopupAttributes.entryBackground = .gradient(
-            gradient: .init(
-                colors: [.gray, .lightGray],
-                startPoint: .zero,
-                endPoint: CGPoint(x: 1, y: 1)
-            )
-        )
-        likePopupAttributes.entranceAnimation = .init(
-            translate: .init(
-                duration: 0.5,
-                spring: .init(
-                    damping: 0.7,
-                    initialVelocity: 0
-                )
-            )
-        )
-        
-        likePopupAttributes.popBehavior = .animated(
-            animation: .init(
-                translate: .init(duration: 0.3),
-                scale: .init(from: 1, to: 0.7, duration: 0.7)
-            )
-        )
-        likePopupAttributes.scroll = .enabled(
-            swipeable: true,
-            pullbackAnimation: .easeOut
-        )
-        likePopupAttributes.displayDuration = .init(1)
-        likePopupAttributes.roundCorners = .all(radius: 5.0)
-    }
-    
-    func createNotificationMessage(title: String, description: String, image: UIImage?) {
-        let title = EKProperty.LabelContent(
-            text: title,
-            style: .init(
-                font: .systemFont(ofSize: 20),
-                color: .black
-            )
-        )
-        let description = EKProperty.LabelContent(
-            text: description,
-            style: .init(
-                font: .systemFont(ofSize: 15),
-                color: .black
-            )
-        )
-        let simpleMessage = EKSimpleMessage(title: title, description: description)
-        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-        
-        contentPopup = EKNotificationMessageView(with: notificationMessage)
-    }
-    
-}
-
