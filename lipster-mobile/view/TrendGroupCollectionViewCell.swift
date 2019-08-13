@@ -12,6 +12,10 @@ class TrendGroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
     @IBOutlet weak var likeImageViewWidthConstraint: NSLayoutConstraint!
     
-    lazy var likeAnimator = LikeAnimator(container: contentView, layoutConstraint: likeImageViewWidthConstraint)
+    lazy var likeAnimator = LikeAnimator(
+        container: contentView,
+        layoutConstraint: likeImageViewWidthConstraint,
+        popupSize: 60
+    )
     
 }

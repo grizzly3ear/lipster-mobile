@@ -12,14 +12,16 @@ class LikeAnimator {
     
     let container: UIView
     let layoutConstraint: NSLayoutConstraint
+    let popupSize: CGFloat
     
-    init(container: UIView, layoutConstraint: NSLayoutConstraint) {
+    init(container: UIView, layoutConstraint: NSLayoutConstraint, popupSize: CGFloat) {
         self.container = container
         self.layoutConstraint = layoutConstraint
+        self.popupSize = popupSize
     }
     
     func animate(completion: @escaping () -> Void) {
-        layoutConstraint.constant = 60
+        layoutConstraint.constant = popupSize
         
         UIView.animate(
             withDuration: 0.7,
