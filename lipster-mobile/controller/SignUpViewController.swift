@@ -7,18 +7,37 @@
 //
 
 import UIKit
+import Hero
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var formContainer: UIImageView!
+    @IBOutlet weak var leftLine: UIImageView!
+    @IBOutlet weak var rightLine: UIImageView!
+    @IBOutlet weak var lineLabel: UILabel!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        congigureHero()
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
         self.performSegue(withIdentifier: "backToLogin", sender: self)
     }
-    
+}
 
+extension SignUpViewController {
+    func congigureHero() {
+        self.hero.isEnabled = true
+        self.formContainer.hero.id = "formContainer"
+        self.leftLine.hero.id = "leftLine"
+        self.rightLine.hero.id = "rightLine"
+        self.lineLabel.hero.id = "lineLabel"
+        self.facebookButton.hero.id = "facebookButton"
+        self.submitButton.hero.id = "primaryActionButton"
+    }
 }

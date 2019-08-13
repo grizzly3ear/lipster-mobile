@@ -15,6 +15,7 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
     var trendGroup: TrendGroup!
     var frame = CGRect(x:0,y:0,width:0 , height:0)
+    var imageHeroId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class TrendDetailViewController: UIViewController {
         initPageControl()
         initUserInterface()
         self.titleNavigationItem.title = trendGroup.name
-        
+        self.scrollTrendImage.hero.id = imageHeroId
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }

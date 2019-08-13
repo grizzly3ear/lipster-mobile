@@ -39,11 +39,11 @@ class LipstickDetailSegmentVC: UIViewController {
     var reviews: [UserReview] = [UserReview]()
     var lipstick : Lipstick?
     var colors: [Lipstick] = [Lipstick]()
+    var imageHeroId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hero.isEnabled = true
-        view.hero.isEnabledForSubviews = true
+        configureHero()
         fetchData()
         configureReactiveData()
         typeReview()
@@ -69,10 +69,6 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
-    
-}
-
-extension LipstickDetailSegmentVC {
     
 }
 
@@ -260,4 +256,11 @@ extension LipstickDetailSegmentVC {
         colorDataPipe.output.observe(colorDataObserver!)
     }
     
+}
+
+extension LipstickDetailSegmentVC {
+    func configureHero() {
+        self.hero.isEnabled = true
+        self.scrollLipstickImages.hero.id = imageHeroId
+    }
 }
