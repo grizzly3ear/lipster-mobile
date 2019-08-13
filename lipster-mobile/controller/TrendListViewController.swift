@@ -19,17 +19,21 @@ class TrendListViewController: UIViewController {
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
+        
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .fade,
+            dismissing: .fade
+        )
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare")
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showTrendGroupDetail" {
             let destination = segue.destination as! TrendDetailViewController
             let indexPath = sender as! IndexPath
             
             destination.trendGroup = trendCollections[indexPath.item]
-            
+            destination.imageHeroId = "trend\(indexPath.item)"
         }
     }
 }
@@ -45,6 +49,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
         cell.image.contentMode = .scaleAspectFill
         cell.image.clipsToBounds = true
+        cell.image.hero.id = "trend\(indexPath.item)"
         
         return cell
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1923,6 +1923,11 @@ Review</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_bgBlur" translatesAutoresizingMaskIntoConstraints="NO" id="rZZ-8D-2d5">
                                 <rect key="frame" x="37" y="226" width="300" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="formContainer"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0va-ll-1Rz">
                                 <rect key="frame" x="102" y="287" width="202" height="30"/>
@@ -1975,7 +1980,7 @@ Review</string>
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="nCK-fr-RZZ" kind="show" identifier="showSignUp" animates="NO" id="lPZ-6r-fBu"/>
+                                    <segue destination="nCK-fr-RZZ" kind="show" identifier="showSignUp" id="lPZ-6r-fBu"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="X7v-c6-606">
@@ -2007,8 +2012,12 @@ Review</string>
                     </view>
                     <connections>
                         <outlet property="facebookButton" destination="Ww8-lf-KJR" id="8bd-B6-ZTO"/>
+                        <outlet property="formContainer" destination="rZZ-8D-2d5" id="Rgb-T0-V6D"/>
+                        <outlet property="leftLine" destination="WHN-8s-d2P" id="pX0-UD-xkN"/>
+                        <outlet property="lineLabel" destination="Vzd-8d-E8o" id="iet-xD-LIe"/>
                         <outlet property="loginButton" destination="0uf-7s-Ata" id="9o1-N4-MLn"/>
                         <outlet property="passwordTextField" destination="VkY-SC-ve3" id="SS5-Rj-iWJ"/>
+                        <outlet property="rightLine" destination="jzn-qP-ZhO" id="U5y-wo-aUs"/>
                         <outlet property="signUpButton" destination="Mng-Xd-zVZ" id="soH-8B-3sL"/>
                         <outlet property="usernameTextField" destination="0va-ll-1Rz" id="ZjT-g5-LOm"/>
                     </connections>
@@ -2056,6 +2065,11 @@ Review</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="signUp_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6ku-MM-JZb">
                                 <rect key="frame" x="37" y="206" width="301" height="301"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="formContainer"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohu-ik-oL0">
                                 <rect key="frame" x="143" y="225" width="88" height="29"/>
@@ -2135,13 +2149,20 @@ Review</string>
                                 <state key="normal" title="Button" image="backButton"/>
                                 <connections>
                                     <action selector="backButtonAction:" destination="nCK-fr-RZZ" eventType="touchUpInside" id="64n-D9-P1e"/>
-                                    <segue destination="CzO-UI-R6t" kind="show" identifier="backToLogin" animates="NO" id="acR-UA-1XY"/>
+                                    <segue destination="CzO-UI-R6t" kind="show" identifier="backToLogin" id="acR-UA-1XY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a6V-2J-5Fc"/>
                     </view>
+                    <connections>
+                        <outlet property="facebookButton" destination="Gf0-DB-atE" id="Afl-hP-0Sf"/>
+                        <outlet property="formContainer" destination="6ku-MM-JZb" id="2cV-7A-hdM"/>
+                        <outlet property="leftLine" destination="L16-8j-yHv" id="4Se-sd-EAy"/>
+                        <outlet property="lineLabel" destination="AfS-eo-fpF" id="oML-93-yNm"/>
+                        <outlet property="rightLine" destination="lFx-c6-fXH" id="8OI-ZW-3HG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhO-BT-YE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3235,7 +3256,7 @@ Review</string>
         <image name="facebook" width="378" height="304"/>
         <image name="facebook-1" width="128" height="128"/>
         <image name="favButton_off" width="256" height="256"/>
-        <image name="frame" width="133" height="133"/>
+        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="login_bg" width="375" height="667"/>

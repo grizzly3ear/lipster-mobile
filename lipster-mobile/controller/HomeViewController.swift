@@ -30,7 +30,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
         searchBarLip()
         addNavBarImage()
-        setupHero()
+        configureHero()
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -107,9 +107,9 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
             case trendsCollectionView:
-                return trendGroups.count >= 10 ? 10 : trendGroups.count
+                return trendGroups.count >= 5 ? 5 : trendGroups.count
             case recommendCollectionView:
-                return recommendLipstick.count >= 10 ? 10 : recommendLipstick.count
+                return recommendLipstick.count >= 5 ? 5 : recommendLipstick.count
             default: return 0
         }
     }
@@ -120,6 +120,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
 
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
+            cell.trendHomeImageView.hero.id = "trend\(indexPath.item)"
          
             return cell
         } else {
@@ -134,6 +135,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             cell.recImageView.sd_setImage(with: URL(string: firstLipstickImage), placeholderImage: UIImage(named: "nopic"))
             cell.recBrandLabel.text = lipstick.lipstickBrand
             cell.recNameLabel.text = lipstick.lipstickName
+            
+            cell.recImageView.hero.id = "lipstick\(indexPath.item)"
             
             return cell
         }
@@ -161,11 +164,13 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             if recommendLipstick[selectedIndex].lipstickImage.count == 0 {
                 recommendLipstick[selectedIndex].lipstickImage.append("")
             }
+            destination?.imageHeroId = "lipstick\(selectedIndex)"
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
         else if segueIdentifier == "showTrendGroupDetail" {
             if let destination = segue.destination as? TrendDetailViewController {
                 let selectedIndex = sender as! Int
+                destination.imageHeroId = "trend\(selectedIndex)"
                 destination.trendGroup = trendGroups[selectedIndex]
             }
         }
@@ -183,7 +188,6 @@ extension HomeViewController {
     func configureReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
-            self.setupHero()
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
             self.recommendCollectionView.layoutIfNeeded()
@@ -205,11 +209,11 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-    func setupHero() {
+    func configureHero() {
         self.hero.isEnabled = true
         self.navigationController?.hero.navigationAnimationType = .selectBy(
-            presenting: .push(direction: .left),
-            dismissing: .pull(direction: .right)
+            presenting: .fade,
+            dismissing: .fade
         )
         recommendCollectionView.hero.isEnabled = true
         recommendCollectionView.hero.isEnabledForSubviews = true
