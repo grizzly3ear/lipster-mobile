@@ -11,15 +11,17 @@ class TrendListViewController: UIViewController {
     var trendCollections = [TrendGroup]()
     var likePopupAttributes: EKAttributes!
     var contentPopup: EKNotificationMessageView!
+    let padding: CGFloat = 15.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         setUpGesture()
         initLikePopupAttributes()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
-        
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .fade,
             dismissing: .fade
@@ -47,6 +49,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
         
         cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
+        cell.image.layer.cornerRadius = 8.0
         cell.image.contentMode = .scaleAspectFill
         cell.image.clipsToBounds = true
         cell.image.hero.id = "trend\(indexPath.item)"
@@ -55,8 +58,9 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let rect = CGSize(width: 300, height: Int.random(in: 250...650) )
         
-        return CGSize(width: 300, height: Int.random(in: 250...650) )
+        return rect
     }
     
     func initCollectionViewProtocol() {
@@ -66,8 +70,8 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func setupCollectionView() {
         let layout = CHTCollectionViewWaterfallLayout()
-        layout.minimumColumnSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
+        layout.minimumColumnSpacing = 15.0
+        layout.minimumInteritemSpacing = 15.0
         trendListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         trendListCollectionView.alwaysBounceVertical = true
         trendListCollectionView.collectionViewLayout = layout

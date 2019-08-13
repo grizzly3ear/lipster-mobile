@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var rightLine: UIImageView!
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,5 +38,6 @@ extension SignUpViewController {
         self.rightLine.hero.id = "rightLine"
         self.lineLabel.hero.id = "lineLabel"
         self.facebookButton.hero.id = "facebookButton"
+        self.submitButton.hero.id = "primaryActionButton"
     }
 }

@@ -21,6 +21,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     let trendDataPipe = Signal<[TrendGroup], NoError>.pipe()
     var trendDataObserver: Signal<[TrendGroup], NoError>.Observer?
     
+    let padding: CGFloat = 8.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         configureReactiveTrendData()
         fetchData()
 
+        trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
+        recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         searchBarLip()
         addNavBarImage()
         configureHero()

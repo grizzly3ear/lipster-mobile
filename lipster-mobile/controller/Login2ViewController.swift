@@ -51,5 +51,6 @@ extension Login2ViewController {
         self.rightLine.hero.id = "rightLine"
         self.lineLabel.hero.id = "lineLabel"
         self.facebookButton.hero.id = "facebookButton"
+        self.loginButton.hero.id = "primaryActionButton"
     }
 }
