@@ -13,20 +13,19 @@ import SwiftSpinner
 class FavoriteLipstickTableViewController:  UITableViewController  {
     @IBOutlet var favoriteLipstickListTableView: UITableView!
   
-    var favoriteLipsticks  = [Lipstick] ()
+    var favoriteLipsticks = [Lipstick] ()
     var lipColor: UIColor?
     var resultController = UITableViewController()
     var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
     func createFavoriteLipstickArray() -> [Lipstick] {
-        let fav1 : Lipstick = Lipstick( 111 ,  ["nopic"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav2 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav3 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav4 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
+        let fav1: Lipstick = Lipstick(111, ["nopic"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav2: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav3: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav4: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
         
-        return [fav1 , fav2 ,fav3,fav4]
+        return [fav1, fav2, fav3, fav4]
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +66,7 @@ extension FavoriteLipstickTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteLipstickTableViewCell") as! FavoriteLipstickTableViewCell
-       let lipstick = favoriteLipsticks[indexPath.item]
+        let lipstick = favoriteLipsticks[indexPath.item]
         cell.setLipstick(lipstick: lipstick)
       //  cell.lipBrandLabel.text = brand[indexPath.row]
         return cell

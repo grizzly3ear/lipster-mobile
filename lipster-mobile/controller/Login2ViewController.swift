@@ -26,7 +26,7 @@ class Login2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        congigureHero()
+        initHero()
         
         //  usernameTextField.setIcon(image: #imageLiteral(resourceName: "username"))
         // passwordTextField.setIcon(image: #imageLiteral(resourceName: "password"))
@@ -34,7 +34,6 @@ class Login2ViewController: UIViewController {
     }
     
     @IBAction func signUpButtonAction(_ sender: Any) {
-        
         self.performSegue(withIdentifier: "showSignUp", sender: self)
     }
     
@@ -44,7 +43,7 @@ class Login2ViewController: UIViewController {
 }
 
 extension Login2ViewController {
-    func congigureHero() {
+    func initHero() {
         self.hero.isEnabled = true
         self.formContainer.hero.id = "formContainer"
         self.leftLine.hero.id = "leftLine"

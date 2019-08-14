@@ -13,12 +13,12 @@ class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var profileUserImageView: UIImageView!
 
-    @IBOutlet weak var userEmail: UITextField!
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var userFirstname: UITextField!
-    @IBOutlet weak var userLastname: UITextField!
+    @IBOutlet weak var emailLabel: UITextField!
+    @IBOutlet weak var usernameLabel: UITextField!
+    @IBOutlet weak var firstnameLabel: UITextField!
+    @IBOutlet weak var lastnameLabel: UITextField!
     
-    @IBOutlet weak var genderButton: PickerButton!
+    @IBOutlet weak var genderPicker: PickerButton!
      let pickerValues: [String] = ["Female", "Male"]
 
     @IBAction func saveAction(_ sender: Any) {
@@ -28,8 +28,8 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genderButton.delegate = self
-        genderButton.dataSource = self
+        genderPicker.delegate = self
+        genderPicker.dataSource = self
         
             self.navigationItem.title = "Profile"
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -38,20 +38,22 @@ class EditProfileViewController: UIViewController {
         profileUserImageView.clipsToBounds = true
     
     
-        var getUserEmail = "janatvara@gmail.com"
-        var getUsername = "mmaimmaii"
-        var getFirstname = "Natwara"
-        var getLastname = "Jaratvithitpong"
+        let email = "janatvara@gmail.com"
+        let username = "mmaimmaii"
+        let firstname = "Natwara"
+        let lastname = "Jaratvithitpong"
     
-    
-        username.text = getUsername
-        username.clearButtonMode = .whileEditing
-        userFirstname.text = getFirstname
-        userFirstname.clearButtonMode = .whileEditing
-        userLastname.text = getLastname
-        userLastname.clearButtonMode = .whileEditing
-        userEmail.text = getUserEmail
-        userEmail.clearButtonMode = .whileEditing
+        usernameLabel.text = username
+        usernameLabel.clearButtonMode = .whileEditing
+        
+        firstnameLabel.text = firstname
+        firstnameLabel.clearButtonMode = .whileEditing
+        
+        lastnameLabel.text = lastname
+        lastnameLabel.clearButtonMode = .whileEditing
+        
+        emailLabel.text = email
+        emailLabel.clearButtonMode = .whileEditing
     }
 
 }

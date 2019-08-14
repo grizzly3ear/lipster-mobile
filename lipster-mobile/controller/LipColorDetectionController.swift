@@ -28,7 +28,7 @@ class LipColorDetectionController: UIViewController {
         toggleCamera = true
         setUpGesture()
         
-        configureReactiveColorDetection()
+        initReactiveColorDetection()
         
         self.present(pickerController, animated: true, completion: nil)
     }
@@ -120,7 +120,7 @@ extension LipColorDetectionController {
 
 // MARK: Reactive init
 extension LipColorDetectionController {
-    func configureReactiveColorDetection() {
+    func initReactiveColorDetection() {
         colorDetectionObserver = Signal<UIColor, NoError>.Observer(value: { (color) in
             self.colorDetectPreview.backgroundColor = color
         })

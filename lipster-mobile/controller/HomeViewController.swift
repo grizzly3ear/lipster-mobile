@@ -26,15 +26,15 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureReactiveLipstickData()
-        configureReactiveTrendData()
+        initReactiveLipstickData()
+        initReactiveTrendData()
         fetchData()
 
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         searchBarLip()
         addNavBarImage()
-        configureHero()
+        initHero()
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -56,7 +56,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController{
+extension HomeViewController {
     func searchBarLip() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -156,8 +156,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             break
         default:
             break
-        }       
-        
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -189,7 +188,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
 
 // MARK: Reactive to retrieveData
 extension HomeViewController {
-    func configureReactiveLipstickData() {
+    func initReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.recommendLipstick = lipsticks
             self.recommendCollectionView.reloadData()
@@ -200,7 +199,7 @@ extension HomeViewController {
         lipstickDataPipe.output.observe(lipstickDataObserver!)
     }
     
-    func configureReactiveTrendData() {
+    func initReactiveTrendData() {
         trendDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
             self.trendGroups = trendGroups
             
@@ -213,7 +212,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-    func configureHero() {
+    func initHero() {
         self.hero.isEnabled = true
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .fade,

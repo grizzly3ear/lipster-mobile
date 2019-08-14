@@ -14,7 +14,7 @@ class TrendListViewController: UIViewController {
         super.viewDidLoad()
         
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
-        setUpGesture()
+        initGesture()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
@@ -77,7 +77,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
 
 // MARK: Set up gesture on fav trend collection
 extension TrendListViewController {
-    func setUpGesture() {
+    func initGesture() {
         trendListCollectionView.isUserInteractionEnabled = true
         setUpTapGesture()
     }

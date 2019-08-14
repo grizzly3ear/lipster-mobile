@@ -552,12 +552,12 @@ Review</string>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="cXp-QX-7Uo"/>
                     <connections>
-                        <outlet property="genderButton" destination="to1-fd-nr0" id="2lv-8R-NJw"/>
+                        <outlet property="emailLabel" destination="it4-6t-geo" id="5Ao-Zs-9Am"/>
+                        <outlet property="firstnameLabel" destination="wmj-eg-fCZ" id="Ihi-4q-LmZ"/>
+                        <outlet property="genderPicker" destination="to1-fd-nr0" id="3cf-J2-tl6"/>
+                        <outlet property="lastnameLabel" destination="69z-0w-fJu" id="58R-3t-s5y"/>
                         <outlet property="profileUserImageView" destination="DCg-fG-eyq" id="Sw6-bb-cRp"/>
-                        <outlet property="userEmail" destination="it4-6t-geo" id="BuC-US-Xqx"/>
-                        <outlet property="userFirstname" destination="wmj-eg-fCZ" id="x6O-IG-NnO"/>
-                        <outlet property="userLastname" destination="69z-0w-fJu" id="yfx-ZN-Ru9"/>
-                        <outlet property="username" destination="YV8-tN-O0E" id="Z6J-Fv-mMP"/>
+                        <outlet property="usernameLabel" destination="YV8-tN-O0E" id="J8b-gg-DJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgA-d2-l8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
