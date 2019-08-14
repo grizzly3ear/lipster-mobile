@@ -24,7 +24,6 @@ class NearByViewController: UIViewController {
             mapView.setCenter(coor, animated: true)
         }
     }
-
 }
 
 extension NearByViewController: CLLocationManagerDelegate {

@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        congigureHero()
+        initHero()
         
         // Do any additional setup after loading the view.
     }
@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController {
-    func congigureHero() {
+    func initHero() {
         self.hero.isEnabled = true
         self.formContainer.hero.id = "formContainer"
         self.leftLine.hero.id = "leftLine"

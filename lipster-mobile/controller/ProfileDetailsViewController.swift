@@ -20,7 +20,7 @@ class ProfileDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        profileDetailUserImageView.layer.cornerRadius = profileDetailUserImageView.frame.size.width/2
+        profileDetailUserImageView.layer.cornerRadius = profileDetailUserImageView.frame.size.width / 2
         profileDetailUserImageView.clipsToBounds = true
     }
     

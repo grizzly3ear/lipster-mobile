@@ -9,6 +9,7 @@
 import UIKit
 
 class RecentlyViewListTableViewController: UITableViewController {
+    
     @IBOutlet var recentlyViewListTableView: UITableView!
     
     var recentlyViewLipsticks  = [Lipstick] ()
@@ -17,12 +18,12 @@ class RecentlyViewListTableViewController: UITableViewController {
     var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
     func createRecentlyViewLipstickArray() -> [Lipstick] {
-        let fav1 : Lipstick = Lipstick( 111 ,  ["nopic"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav2 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav3 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
-        let fav4 : Lipstick = Lipstick( 111 ,  ["BE115 , BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee",  .gray, 225)
+        let fav1: Lipstick = Lipstick(111, ["nopic"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav2: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav3: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
+        let fav4: Lipstick = Lipstick(111, ["BE115", "BE116"], "AAA", "ddewe", "VE222", "dffvweeeeeeee", .gray, 225)
         
-        return [fav1 , fav2 ,fav3,fav4]
+        return [fav1, fav2, fav3, fav4]
     }
     
     

@@ -13,20 +13,16 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var pageControl: FlexiblePageControl!
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
+    
     var trendGroup: TrendGroup!
-    var frame = CGRect(x:0,y:0,width:0 , height:0)
+    var frame = CGRect(x:0, y:0, width:0 , height:0)
     var imageHeroId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hero.isEnabled = true
-        initScrollView()
-        initPageControl()
         initUserInterface()
-        self.titleNavigationItem.title = trendGroup.name
-        self.scrollTrendImage.hero.id = imageHeroId
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        initHero()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
@@ -45,8 +41,11 @@ class TrendDetailViewController: UIViewController {
 extension TrendDetailViewController {
     
     func initUserInterface() {
+        self.titleNavigationItem.title = trendGroup.name
         self.trendNameLabel.text = trendGroup.name
         setUserInterface(trendGroup.trends!.first ?? Trend())
+        initScrollView()
+        initPageControl()
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -56,7 +55,6 @@ extension TrendDetailViewController {
     }
 }
 
-//scrollView of lipImg method
 extension TrendDetailViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -72,14 +70,10 @@ extension TrendDetailViewController: UIScrollViewDelegate {
     
 }
 
-// page control
 extension TrendDetailViewController {
     
     func initPageControl() {
         pageControl.numberOfPages = trendGroup.trends!.count
-        pageControl.hero.isEnabled = true
-        pageControl.hero.isEnabledForSubviews = true
-        pageControl.hero.id = "trendCollection"
         
         for index in 0..<pageControl.numberOfPages {
             frame.origin.x = scrollTrendImage.frame.size.width * CGFloat(index)
@@ -89,10 +83,20 @@ extension TrendDetailViewController {
             imgView.sd_setImage(with: URL(string: self.trendGroup.trends![index].image), placeholderImage: UIImage(named: "nopic"))
             self.scrollTrendImage.addSubview(imgView)
         }
-        scrollTrendImage.contentSize = CGSize(width :(scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)) , height : scrollTrendImage.frame.size.height)
+        scrollTrendImage.contentSize = CGSize(
+            width: (scrollTrendImage.frame.size.width * CGFloat(pageControl.numberOfPages)),
+            height : scrollTrendImage.frame.size.height
+        )
         
         pageControl.pageIndicatorTintColor = UIColor.red
         pageControl.currentPageIndicatorTintColor = UIColor.black
     }
 
+}
+
+extension TrendDetailViewController {
+    func initHero() {
+        self.hero.isEnabled = true
+        self.scrollTrendImage.hero.id = imageHeroId
+    }
 }

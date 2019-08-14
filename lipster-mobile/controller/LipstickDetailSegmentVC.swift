@@ -43,16 +43,11 @@ class LipstickDetailSegmentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHero()
+        initHero()
+        initReactiveData()
         fetchData()
-        configureReactiveData()
-        typeReview()
-        clickedPostButton.isEnabled = false
-        reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.titleNavigationItem.title = lipstick?.lipstickBrand
-        
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
         initialUI()
     }
 
@@ -66,10 +61,10 @@ class LipstickDetailSegmentVC: UIViewController {
             contentScrollView.setContentOffset(CGPoint( x : 0 , y : 0), animated:true)
         }
     }
+    
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
-    
 }
 
 // MARK: fetch data
@@ -152,16 +147,6 @@ extension LipstickDetailSegmentVC {
     }
 }
 
-// type reivew in review segment
-extension LipstickDetailSegmentVC {
-    func typeReview() {
-        typeReviewTextView.text = "Review this lipstick here."
-        typeReviewTextView.textColor = UIColor.lightGray
-        typeReviewTextView.delegate = self
-        typeReviewTextView.returnKeyType = .done
-    }
-}
-
 // Init UI
 extension LipstickDetailSegmentVC : UIScrollViewDelegate {
     func initialUI() {
@@ -171,6 +156,12 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
             self.lipstickColorName.text = lipstick.lipstickColorName
             self.lipstickShortDetail.text = lipstick.lipstickDetail
         }
+        typeReviewTextView.text = "Review this lipstick here."
+        typeReviewTextView.textColor = UIColor.lightGray
+        typeReviewTextView.delegate = self
+        typeReviewTextView.returnKeyType = .done
+        clickedPostButton.isEnabled = false
+        reviewTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
         pageController()
     }
     
@@ -196,7 +187,9 @@ extension LipstickDetailSegmentVC : UIScrollViewDelegate {
             self.scrollLipstickImages.addSubview(imgView)
         }
         
-        scrollLipstickImages.contentSize = CGSize(width :(scrollLipstickImages.frame.size.width * CGFloat(lipstickImagesPageControl.numberOfPages)) , height : scrollLipstickImages.frame.size.height)
+        scrollLipstickImages.contentSize = CGSize(
+            width: (scrollLipstickImages.frame.size.width *  CGFloat(lipstickImagesPageControl.numberOfPages)),
+            height: scrollLipstickImages.frame.size.height)
         scrollLipstickImages.delegate = self
         contentScrollView.delegate = self
     }
@@ -240,7 +233,7 @@ extension LipstickDetailSegmentVC : UICollectionViewDelegate, UICollectionViewDa
 }
 
 extension LipstickDetailSegmentVC {
-    func configureReactiveData() {
+    func initReactiveData() {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.reviews = userReviews
             self.reviewTableView.reloadData()
@@ -259,7 +252,7 @@ extension LipstickDetailSegmentVC {
 }
 
 extension LipstickDetailSegmentVC {
-    func configureHero() {
+    func initHero() {
         self.hero.isEnabled = true
         self.scrollLipstickImages.hero.id = imageHeroId
     }

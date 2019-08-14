@@ -5,7 +5,7 @@
 //  Created by Mainatvara on 17/4/2562 BE.
 //  Copyright © 2562 Bank. All rights reserved.
 //
-
+// WIP
 import UIKit
 import AVFoundation
 import ReactiveCocoa
@@ -48,7 +48,7 @@ class TryMeViewController: UIViewController  {
         if session.canAddOutput(output!) {
             session.addOutput(output!)
         }
-        configureReactiveAR()
+        initReactiveAR()
         session.startRunning()
         
     }
@@ -110,7 +110,7 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
 
 // MARK: Reactive Configure
 extension TryMeViewController {
-    func configureReactiveAR() {
+    func initReactiveAR() {
         lipstickARObserver = Signal<Dictionary<String, [CGPoint]?>?, NoError>.Observer(value: { (contourDictionary) in
             self.previewLayer.drawLandmark(for: contourDictionary, lipstickColor: UIColor.red)
             self.previewLayer.removeMask()

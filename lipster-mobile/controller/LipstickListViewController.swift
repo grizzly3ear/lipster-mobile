@@ -5,7 +5,7 @@
 //  Created by Mainatvara on 13/3/2562 BE.
 //  Copyright © 2562 Mainatvara. All rights reserved.
 //
-
+// Not use this file
 import UIKit
 import Alamofire
 import SwiftSpinner

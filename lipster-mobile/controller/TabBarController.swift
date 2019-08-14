@@ -14,14 +14,8 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white] , for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white] , for: .selected)
         navigationController?.isNavigationBarHidden = true
-        
-       // UITabBar.appearance().backgroundColor = UIColor(cgColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
-        
-    
-        
-//    UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.darkGray] , for: .normal)
         
         let selectImage1 = UIImage(named: "homeNow")?.withRenderingMode(.alwaysOriginal)
         let noSelectImage1 = UIImage(named: "home")?.withRenderingMode(.alwaysOriginal)
@@ -54,9 +48,7 @@ class TabBarController: UITabBarController {
         tabBarItems.selectedImage = selectImage5
         
         let numberOfTab = CGFloat((tabBar.items?.count)!)
-        let tabBarSize = CGSize(width: tabBar.frame.width / numberOfTab, height: tabBar.frame.height)        
-//        let tabBarColor = CGColor(colorSpace: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) as! CGColorSpace, components: )
-      //  tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), size: tabBarSize)
+//        let tabBarSize = CGSize(width: tabBar.frame.width / numberOfTab, height: tabBar.frame.height)        
         
         self.selectedIndex = 0
     }
