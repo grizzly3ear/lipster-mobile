@@ -1527,7 +1527,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJd-Zy-dde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2055" y="833"/>
+            <point key="canvasLocation" x="-2503" y="833"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="QY2-2U-0DS">
@@ -1670,7 +1670,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhO-BT-YE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2607" y="1522"/>
+            <point key="canvasLocation" x="-3270" y="1598"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jz4-VR-yKO">
