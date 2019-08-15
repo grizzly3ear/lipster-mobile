@@ -10,24 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="6TL-ga-geG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vy2-HM-aju" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lq2-df-rFf">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-6C-hWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-983" y="88"/>
-        </scene>
         <!--LIPSTICK LIST-->
         <scene sceneID="IUN-Am-QK3">
             <objects>
@@ -142,14 +124,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2220" y="87.706146926536732"/>
+            <point key="canvasLocation" x="940" y="2039"/>
         </scene>
         <!--NEARBY-->
         <scene sceneID="b5c-No-tHW">
             <objects>
-                <viewController id="jAg-pR-acB" customClass="NearByViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NearByViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jAg-pR-acB" customClass="NearByViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teo-6v-MWq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundLipDetail" translatesAutoresizingMaskIntoConstraints="NO" id="o4l-Jf-p5a">
@@ -212,14 +194,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjw-vG-xei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348" y="1599.8500749625189"/>
+            <point key="canvasLocation" x="-850" y="3504"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="Kzn-FU-ikX">
             <objects>
                 <viewController id="vmn-Gm-6su" customClass="ProfileViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d64-e8-YAn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAF-Lx-KDK">
@@ -413,14 +395,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8M-WM-ExO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3308" y="2346.4767616191907"/>
+            <point key="canvasLocation" x="-12" y="4272"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Jf4-kQ-WMX">
             <objects>
                 <viewController id="tQ7-pN-4nh" customClass="EditProfileViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2EE-m1-jc8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgM-aN-Ypz">
@@ -559,14 +541,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgA-d2-l8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4197.6000000000004" y="2348.2758620689656"/>
+            <point key="canvasLocation" x="791" y="4272"/>
         </scene>
         <!--Brand name-->
         <scene sceneID="ef9-h0-RdY">
             <objects>
                 <viewController id="2O8-hK-JQi" customClass="LipstickDetailSegmentVC" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t5y-2S-QWz">
-                        <rect key="frame" x="0.0" y="0.0" width="750" height="801"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1Z-Nu-V3G">
@@ -856,14 +838,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vav-2d-3bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3532.8000000000002" y="-81.859070464767626"/>
+            <point key="canvasLocation" x="2328" y="1681"/>
         </scene>
         <!--Lip Color Detection Controller-->
         <scene sceneID="hq4-fw-bEo">
             <objects>
                 <viewController id="8fU-aG-tpW" customClass="LipColorDetectionController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CQq-AW-3N9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZt-qo-Jak">
@@ -932,18 +914,18 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280.8" y="87.706146926536732"/>
+            <point key="canvasLocation" x="-12" y="2039"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="DEA-kR-wGF">
             <objects>
                 <viewController id="Hxb-pv-PE7" customClass="HomeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Qq-Ul-KRJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3Q-uz-4us">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2B-vE-ONH">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -1161,14 +1143,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-447.19999999999999" y="1599.8500749625189"/>
+            <point key="canvasLocation" x="-12" y="833"/>
         </scene>
         <!--Trends-->
         <scene sceneID="Fu9-Ph-7YV">
             <objects>
                 <viewController id="Th2-S5-z7n" customClass="TrendListViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bN8-dQ-gQh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2jC-au-zk9">
@@ -1229,14 +1211,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dps-Az-AuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-447.19999999999999" y="2415.7421289355325"/>
+            <point key="canvasLocation" x="940" y="407"/>
         </scene>
         <!--Title-->
         <scene sceneID="fXy-On-nzZ">
             <objects>
                 <viewController storyboardIdentifier="TrendDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yRT-0L-hOz" customClass="TrendDetailViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1iS-6q-wfz" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="701"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bgTrend2" translatesAutoresizingMaskIntoConstraints="NO" id="q6n-Cz-w6v">
@@ -1331,14 +1313,14 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9h-NQ-45O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1280.8" y="2414.3928035982012"/>
+            <point key="canvasLocation" x="940" y="1240"/>
         </scene>
         <!--NOTIFICATION-->
         <scene sceneID="b0S-wl-U9s">
             <objects>
-                <viewController id="4Xu-JZ-HJ6" customClass="NotificationViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Xu-JZ-HJ6" customClass="NotificationViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Fj-S9-LLv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4RI-VI-sXN">
@@ -1407,7 +1389,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RM-oi-4lh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2336.8000000000002" y="1599.8500749625189"/>
+            <point key="canvasLocation" x="-850" y="2795"/>
         </scene>
         <!--Login2 View Controller-->
         <scene sceneID="Os6-5v-Zbh">
@@ -1688,7 +1670,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhO-BT-YE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3438" y="1600"/>
+            <point key="canvasLocation" x="-2607" y="1522"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jz4-VR-yKO">
@@ -1705,28 +1687,21 @@ Review</string>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="DBc-ud-dgg" kind="relationship" relationship="viewControllers" id="2mx-KW-zgC"/>
-                        <segue destination="jAg-pR-acB" kind="relationship" relationship="viewControllers" id="67E-VV-TIz"/>
-                        <segue destination="LdA-hd-DGY" kind="relationship" relationship="viewControllers" id="LQ4-Jh-dtV"/>
-                        <segue destination="4Xu-JZ-HJ6" kind="relationship" relationship="viewControllers" id="bVp-zE-kjI"/>
-                        <segue destination="KXB-Sh-Hye" kind="relationship" relationship="viewControllers" id="LeS-Fa-Nqx"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7b-Tt-MSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-983" y="834"/>
+            <point key="canvasLocation" x="-1654" y="833"/>
         </scene>
         <!--Try Me View Controller-->
         <scene sceneID="WPO-7S-zRf">
             <objects>
                 <viewController id="MjW-ox-6lU" customClass="TryMeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qg2-Ut-RaP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3" customClass="PreviewMaskLayer" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
                                         <rect key="frame" x="307" y="72" width="60" height="508"/>
@@ -1814,12 +1789,12 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFl-9q-5KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4944.8000000000002" y="87.706146926536732"/>
+            <point key="canvasLocation" x="3545" y="1681"/>
         </scene>
         <!--CAMERA-->
         <scene sceneID="5PU-kw-6gr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LdA-hd-DGY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LipColorDetectionViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LdA-hd-DGY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vrl-Nj-Qsi">
@@ -1836,12 +1811,12 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZh-wX-6zW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341.60000000000002" y="87.706146926536732"/>
+            <point key="canvasLocation" x="-850" y="2039"/>
         </scene>
         <!--HOME-->
         <scene sceneID="60s-v5-ccA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DBc-ud-dgg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DBc-ud-dgg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="HOME" id="Tdj-dx-EV6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hzs-7l-UgE">
@@ -1858,12 +1833,12 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-oL-ZBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1322" y="1600"/>
+            <point key="canvasLocation" x="-849" y="833"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="wdB-I7-qPR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXB-Sh-Hye" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KXB-Sh-Hye" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="PROFILE" id="VXs-Cf-gor"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k8K-6R-qW6">
@@ -1877,14 +1852,14 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-c6-qQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3232.8000000000002" y="1599.8500749625189"/>
+            <point key="canvasLocation" x="-834" y="4272"/>
         </scene>
         <!--Your Reviews Table View Controller-->
         <scene sceneID="jSy-S4-zDt">
             <objects>
                 <tableViewController id="Kfz-3P-mEd" customClass="YourReviewsTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XMR-wZ-k2f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -1954,14 +1929,14 @@ Review</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2543.1999999999998" y="3123.6881559220392"/>
+            <point key="canvasLocation" x="-1524" y="5796"/>
         </scene>
         <!--Favorite Lipstick Table View Controller-->
         <scene sceneID="y1p-EP-Kn8">
             <objects>
                 <tableViewController id="lud-9i-nph" customClass="FavoriteLipstickTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="afW-hq-f5S">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -2064,14 +2039,14 @@ Review</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJg-b1-GoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3233" y="3118"/>
+            <point key="canvasLocation" x="-834" y="5790"/>
         </scene>
         <!--Recently View List Table View Controller-->
         <scene sceneID="BDx-47-qWD">
             <objects>
                 <tableViewController id="UxA-jW-9DF" customClass="RecentlyViewListTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="csp-2V-p0O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -2175,7 +2150,7 @@ Review</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYy-il-aBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4001" y="3119"/>
+            <point key="canvasLocation" x="-66" y="5791"/>
         </scene>
     </scenes>
     <resources>
@@ -2207,11 +2182,11 @@ Review</string>
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="acc-yj-O4T"/>
+        <segue reference="s8G-gc-cZg"/>
         <segue reference="iHi-jt-pK5"/>
-        <segue reference="zid-xp-aA6"/>
+        <segue reference="Q11-LN-cwa"/>
         <segue reference="Qsz-jI-Tpt"/>
-        <segue reference="VKI-vI-8e2"/>
+        <segue reference="Idv-eu-btz"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>

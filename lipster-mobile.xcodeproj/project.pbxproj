@@ -32,6 +32,7 @@
 		30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966F1224E06F700258CA6 /* FaceDetection.swift */; };
 		30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78E972299B91D0032A965 /* UIUtilityHelper.swift */; };
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
+		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		30B966F1224E06F700258CA6 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
 		30C78E972299B91D0032A965 /* UIUtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilityHelper.swift; sourceTree = "<group>"; };
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
+		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,6 +238,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		30F76BCC23054F9C0009E998 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */,
+			);
+			name = Tabbar;
+			sourceTree = "<group>";
+		};
 		889722E715FF27223FAB1C95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +290,7 @@
 		D863452C2242155000AC0EA6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				30F76BCC23054F9C0009E998 /* Tabbar */,
 				D8E48D96226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift */,
 				D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */,
 				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
@@ -537,6 +548,7 @@
 				3071185922FC1BAC00E25AF4 /* TrendGroupCollectionViewCell.swift in Sources */,
 				D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */,
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
+				30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
