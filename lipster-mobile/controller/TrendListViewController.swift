@@ -42,7 +42,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendCollectionViewCell
         
         cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
@@ -104,7 +104,7 @@ extension TrendListViewController {
     @objc func onDoubleTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: trendListCollectionView!)
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
-        let cell = trendListCollectionView.cellForItem(at: indexPath!) as! TrendGroupCollectionViewCell
+        let cell = trendListCollectionView.cellForItem(at: indexPath!) as! TrendCollectionViewCell
         
         cell.likeAnimator.animate {
             print("like")

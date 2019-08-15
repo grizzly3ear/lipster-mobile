@@ -38,7 +38,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
-        performSegue(withIdentifier: "showTrendList", sender: self)
+        performSegue(withIdentifier: "showTrendGroup", sender: self)
     }
     
 }

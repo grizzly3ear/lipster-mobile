@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrendGroupCollectionViewCell: UICollectionViewCell {
+class TrendCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
     @IBOutlet weak var likeImageViewWidthConstraint: NSLayoutConstraint!
     
