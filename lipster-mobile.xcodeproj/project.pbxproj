@@ -34,14 +34,12 @@
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
-		D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81C6B5C22722D4E009D05FD /* LoginViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
 		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
 		D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE562285D8BB0028C19A /* NotificationViewController.swift */; };
 		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
 		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE5D2285ED2C0028C19A /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */; };
-		D81CCE5F2285F1B80028C19A /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
 		D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */; };
 		D822550722FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D822550622FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift */; };
@@ -115,14 +113,12 @@
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
-		D81C6B5C22722D4E009D05FD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
 		D81CCE562285D8BB0028C19A /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
-		D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageView.swift; sourceTree = "<group>"; };
 		D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailSegmentVC.swift; sourceTree = "<group>"; };
 		D822550622FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLipstickTableViewController.swift; sourceTree = "<group>"; };
@@ -260,7 +256,6 @@
 		D863452B2242152D00AC0EA6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				D81C6B5C22722D4E009D05FD /* LoginViewController.swift */,
 				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
 				30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */,
 				30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */,
@@ -271,7 +266,6 @@
 				D81CCE54228592F30028C19A /* NearByViewController.swift */,
 				D81CCE562285D8BB0028C19A /* NotificationViewController.swift */,
 				D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */,
-				D81CCE5E2285F1B80028C19A /* ProfileDetailsViewController.swift */,
 				D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */,
 				3071185622FC188300E25AF4 /* TrendListViewController.swift */,
 				D822550622FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift */,
@@ -531,7 +525,6 @@
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
 				304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */,
-				D81C6B5D22722D4E009D05FD /* LoginViewController.swift in Sources */,
 				305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */,
 				D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */,
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
@@ -543,7 +536,6 @@
 				D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */,
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
-				D81CCE5F2285F1B80028C19A /* ProfileDetailsViewController.swift in Sources */,
 				D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
