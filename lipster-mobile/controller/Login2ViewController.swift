@@ -28,8 +28,8 @@ class Login2ViewController: UIViewController {
         super.viewDidLoad()
         initHero()
         
-        //  usernameTextField.setIcon(image: #imageLiteral(resourceName: "username"))
-        // passwordTextField.setIcon(image: #imageLiteral(resourceName: "password"))
+        usernameTextField.text = "example@gmail.com"
+        passwordTextField.text = "password"
         
     }
     
@@ -38,7 +38,12 @@ class Login2ViewController: UIViewController {
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "showHomePage", sender: self)
+        UserRepository.authenticate(
+            email: usernameTextField.text ?? "",
+            password: passwordTextField.text ?? "") {
+                self.performSegue(withIdentifier: "showHomePage", sender: self)
+        }
+        
     }
 }
 
