@@ -15,6 +15,7 @@ pod 'PickerButton'
 pod 'CHTCollectionViewWaterfallLayout/Swift'
 pod 'SwiftEntryKit'
 pod 'Hero'
+pod 'ESTabBarController-swift'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

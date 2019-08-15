@@ -189,10 +189,10 @@
 		30B36E78221A6DDC001FD8EF = {
 			isa = PBXGroup;
 			children = (
-				30B36E83221A6DDC001FD8EF /* lipster-mobile */,
-				30B36E82221A6DDC001FD8EF /* Products */,
-				A415F209F71B6CF2EA33E851 /* Pods */,
 				889722E715FF27223FAB1C95 /* Frameworks */,
+				30B36E83221A6DDC001FD8EF /* lipster-mobile */,
+				A415F209F71B6CF2EA33E851 /* Pods */,
+				30B36E82221A6DDC001FD8EF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,23 +256,23 @@
 		D863452B2242152D00AC0EA6 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
-				30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */,
+				D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */,
+				D822550622FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift */,
+				D8EA969A226986A80060B78A /* HomeViewController.swift */,
 				30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */,
 				D8224AC8225C881600B7E403 /* LipstickDetailSegmentVC.swift */,
-				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
-				D8EA969A226986A80060B78A /* HomeViewController.swift */,
-				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
+				30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */,
+				D83DD820230069D5000098C1 /* Login2ViewController.swift */,
 				D81CCE54228592F30028C19A /* NearByViewController.swift */,
 				D81CCE562285D8BB0028C19A /* NotificationViewController.swift */,
-				D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */,
 				D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */,
-				3071185622FC188300E25AF4 /* TrendListViewController.swift */,
-				D822550622FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift */,
 				D86BF81522FC6D22003E1647 /* RecentlyViewListTableViewController.swift */,
-				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
-				D83DD820230069D5000098C1 /* Login2ViewController.swift */,
 				D83DD822230079EA000098C1 /* SignUpViewController.swift */,
+				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
+				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
+				3071185622FC188300E25AF4 /* TrendListViewController.swift */,
+				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
+				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -431,6 +431,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexiblePageControl/FlexiblePageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -456,6 +457,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexiblePageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
