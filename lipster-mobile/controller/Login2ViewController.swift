@@ -40,8 +40,11 @@ class Login2ViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         UserRepository.authenticate(
             email: usernameTextField.text ?? "",
-            password: passwordTextField.text ?? "") {_ in
-                self.performSegue(withIdentifier: "showHomePage", sender: self)
+            password: passwordTextField.text ?? "") { result in
+                if result {
+                    self.performSegue(withIdentifier: "showHomePage", sender: self)
+                }
+                
         }
         
     }

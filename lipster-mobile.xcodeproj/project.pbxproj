@@ -29,7 +29,6 @@
 		30B36E8A221A6DDC001FD8EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B36E88221A6DDC001FD8EF /* Main.storyboard */; };
 		30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B36E8D221A6DDD001FD8EF /* LaunchScreen.storyboard */; };
 		30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */; };
-		30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966F1224E06F700258CA6 /* FaceDetection.swift */; };
 		30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78E972299B91D0032A965 /* UIUtilityHelper.swift */; };
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
 		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
@@ -114,7 +113,6 @@
 		30B36E8E221A6DDD001FD8EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B36E90221A6DDD001FD8EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LipColorDetectionController.swift; path = "lipster-mobile/Controller/LipColorDetectionController.swift"; sourceTree = SOURCE_ROOT; };
-		30B966F1224E06F700258CA6 /* FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetection.swift; sourceTree = "<group>"; };
 		30C78E972299B91D0032A965 /* UIUtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilityHelper.swift; sourceTree = "<group>"; };
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
 		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 			children = (
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
-				30B966F1224E06F700258CA6 /* FaceDetection.swift */,
 				D8E48D88226CC2C300A192EB /* Trend.swift */,
 				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
 				30A889D9227196C600D00FCC /* Notification.swift */,
@@ -540,7 +537,6 @@
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
 				D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
-				30B966F2224E06F700258CA6 /* FaceDetection.swift in Sources */,
 				D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
 				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,

@@ -13,23 +13,26 @@ import FirebaseMLVision
 
 public class UIUtilityHelper {
     
-    public static func imageOrientation(fromDevicePosition devicePosition: AVCaptureDevice.Position = .back) -> UIImage.Orientation {
-        var deviceOrientation = UIDevice.current.orientation
-        if deviceOrientation == .faceDown || deviceOrientation == .faceUp ||
-            deviceOrientation == .unknown {
-            deviceOrientation = currentUIOrientation()
-        }
-        switch deviceOrientation {
-        case .portrait:
-            return devicePosition == .front ? .leftMirrored : .right
-        case .landscapeLeft:
-            return devicePosition == .front ? .downMirrored : .up
-        case .portraitUpsideDown:
-            return devicePosition == .front ? .rightMirrored : .left
-        case .landscapeRight:
-            return devicePosition == .front ? .upMirrored : .down
-        case .faceDown, .faceUp, .unknown:
-            return .up
+    public static func visionImageOrientation(
+        from imageOrientation: UIImage.Orientation
+        ) -> VisionDetectorImageOrientation {
+        switch imageOrientation {
+        case .up:
+            return .topLeft
+        case .down:
+            return .bottomRight
+        case .left:
+            return .leftBottom
+        case .right:
+            return .rightTop
+        case .upMirrored:
+            return .topRight
+        case .downMirrored:
+            return .bottomLeft
+        case .leftMirrored:
+            return .leftTop
+        case .rightMirrored:
+            return .rightBottom
         }
     }
     
@@ -56,24 +59,48 @@ public class UIUtilityHelper {
         return deviceOrientation()
     }
     
-    public static func visionImageOrientation(from imageOrientation: UIImage.Orientation) -> VisionDetectorImageOrientation {
-        switch imageOrientation {
-        case .up:
-            return .topLeft
-        case .down:
-            return .bottomRight
-        case .left:
-            return .leftBottom
-        case .right:
-            return .rightTop
-        case .upMirrored:
-            return .topRight
-        case .downMirrored:
-            return .bottomLeft
-        case .leftMirrored:
-            return .leftTop
-        case .rightMirrored:
-            return .rightBottom
+    public static func imageOrientation(
+        fromDevicePosition devicePosition: AVCaptureDevice.Position = .back
+        ) -> UIImage.Orientation {
+        var deviceOrientation = UIDevice.current.orientation
+        if deviceOrientation == .faceDown || deviceOrientation == .faceUp ||
+            deviceOrientation == .unknown {
+            deviceOrientation = currentUIOrientation()
+        }
+        switch deviceOrientation {
+        case .portrait:
+            return devicePosition == .front ? .leftMirrored : .right
+        case .landscapeLeft:
+            return devicePosition == .front ? .downMirrored : .up
+        case .portraitUpsideDown:
+            return devicePosition == .front ? .rightMirrored : .left
+        case .landscapeRight:
+            return devicePosition == .front ? .upMirrored : .down
+        case .faceDown, .faceUp, .unknown:
+            return .up
         }
     }
+    public static func addCircle(
+        atPoint point: CGPoint,
+        to view: UIView,
+        color: UIColor,
+        radius: CGFloat
+        ) {
+        let divisor: CGFloat = 2.0
+        let xCoord = point.x - radius / divisor
+        let yCoord = point.y - radius / divisor
+        let circleRect = CGRect(x: xCoord, y: yCoord, width: radius, height: radius)
+        let circleView = UIView(frame: circleRect)
+        circleView.layer.cornerRadius = radius / divisor
+        circleView.alpha = Constants.circleViewAlpha
+        circleView.backgroundColor = color
+        view.addSubview(circleView)
+    }
+}
+
+private enum Constants {
+    static let circleViewAlpha: CGFloat = 0.7
+    static let rectangleViewAlpha: CGFloat = 0.3
+    static let shapeViewAlpha: CGFloat = 0.3
+    static let rectangleViewCornerRadius: CGFloat = 10.0
 }
