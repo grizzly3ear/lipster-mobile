@@ -46,6 +46,8 @@
 		D822550922FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D822550822FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
+		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
+		D82B447D2306626500876302 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447C2306626500876302 /* MapView.swift */; };
 		D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* Login2ViewController.swift */; };
 		D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD822230079EA000098C1 /* SignUpViewController.swift */; };
 		D83DD82823054946000098C1 /* TrendGroup2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */; };
@@ -128,6 +130,8 @@
 		D822550822FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLipstickTableViewCell.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		D82B447C2306626500876302 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* Login2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login2ViewController.swift; sourceTree = "<group>"; };
 		D83DD822230079EA000098C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroup2TableViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
 				30A889D9227196C600D00FCC /* Notification.swift */,
 				30A889DD2271A7CC00D00FCC /* HttpRequest.swift */,
+				D82B447A2306608F00876302 /* Store.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				302018FA2302D06C00FA5C6E /* LikeAnimator.swift */,
 				D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */,
 				D83DD82923054962000098C1 /* TrendGroup2CollectionViewCell.swift */,
+				D82B447C2306626500876302 /* MapView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -528,10 +534,12 @@
 				D86BF81822FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift in Sources */,
 				D83DD82823054946000098C1 /* TrendGroup2TableViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */,
+				D82B447B2306608F00876302 /* Store.swift in Sources */,
 				D8224AC9225C881600B7E403 /* LipstickDetailSegmentVC.swift in Sources */,
 				30A889DA227196C600D00FCC /* Notification.swift in Sources */,
 				D822550722FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift in Sources */,
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
+				D82B447D2306626500876302 /* MapView.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
