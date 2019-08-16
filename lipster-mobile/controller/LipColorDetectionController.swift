@@ -106,7 +106,6 @@ extension LipColorDetectionController: UIImagePickerControllerDelegate, UINaviga
         if let pickedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             imageView.image = pickedImage
             imageView.contentMode = .scaleAspectFit
-//            updateImageView(with: pickedImage)
             detectFaces(image: pickedImage)
         }
         dismiss(animated: true)
@@ -169,43 +168,12 @@ extension LipColorDetectionController {
     func initReactiveColorDetection() {
         colorDetectionObserver = Signal<UIColor, NoError>.Observer(value: { (color) in
             self.colorDetectPreview.backgroundColor = color
+            print("get color")
         })
         
         colorDetectionPipe.output.observe(colorDetectionObserver!)
     }
 }
-
-//
-//// MARK: Image picker delegate
-//extension LipColorDetectionController: ImagePickerDelegate {
-//
-//    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-//    }
-//
-//    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-//
-////        SwiftSpinner.show("Processing Image...")
-//        imageView.image = images.first
-//        pickerController.dismiss(animated: true, completion: nil)
-//
-//        toggleCamera = false
-//        self.colorDetectPreview.backgroundColor = .black
-//
-////        DispatchQueue.main.async {
-////            self.faceDetection.getLipColorFromImage(for: self.imagePreview, complete: { (color) in
-////                self.colorDetectionPipe.input.send(value: color!)
-////            })
-////            SwiftSpinner.hide()
-////        }
-//
-//        detectFaces(image: imageView.image)
-//    }
-//
-//    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-//        toggleCamera = false
-//        pickerController.dismiss(animated: true, completion: nil)
-//    }
-//}
 
 // detectColorPreview dragable
 extension LipColorDetectionController {
@@ -230,65 +198,46 @@ extension LipColorDetectionController {
                 var lipstickData = [Lipstick]()
                 let hexColor: String = sender as! String
                 
-//                self.request.get("api/lipstick/color/\(hexColor)", nil, nil) { (response) -> (Void) in
-//                    lipstickData = Lipstick.makeArrayFromLipstickColorResource(response: response)
-//                    destination.lipstickList = lipstickData
-//                    destination.lipListTableView.reloadData()
-//                    destination.lipListTableView.layoutIfNeeded()
-//                    destination.lipListTableView.setNeedsLayout()
-//                }
-                
                 
             }
         }
     }
 }
 
+// MARK: lipcolor detection
 extension LipColorDetectionController {
-    
     
     func detectFaces(image: UIImage?) {
         guard let image = image else { return }
-        
-        // Create a face detector with options.
-        // [START config_face]
+
         let options = VisionFaceDetectorOptions()
-        options.landmarkMode = .all
-        options.classificationMode = .all
         options.performanceMode = .accurate
         options.contourMode = .all
-        // [END config_face]
         
-        // [START init_face]
         let faceDetector = vision.faceDetector(options: options)
-        // [END init_face]
         
-        // Define the metadata for the image.
         let imageMetadata = VisionImageMetadata()
         imageMetadata.orientation = UIUtilityHelper.visionImageOrientation(from: image.imageOrientation)
         
-        // Initialize a VisionImage object with the given UIImage.
         let visionImage = VisionImage(image: image)
         visionImage.metadata = imageMetadata
         
-        // [START detect_faces]
         faceDetector.process(visionImage) { faces, error in
             guard error == nil, let faces = faces, !faces.isEmpty else {
-                // Faces not detected
                 print("Not Detect")
+                self.colorDetectionPipe.input.send(value: .black)
                 return
             }
-            
-            // Faces detected
-            // [START_EXCLUDE]
             faces.forEach { face in
                 let transform = self.transformMatrix()
-//                self.addLandmarks(forFace: face, transform: transform)
-                self.addContours(forFace: face, transform: transform)
+
+                self.addContours(forFace: face, transform: transform) { points in
+                    print(points)
+                    let color = self.imageView.getPixelColor(point: points.first)
+                    self.colorDetectionPipe.input.send(value: color)
+                }
             }
-            // [END_EXCLUDE]
         }
-        // [END detect_faces]
     }
     
     private func transformMatrix() -> CGAffineTransform {
@@ -314,83 +263,28 @@ extension LipColorDetectionController {
         return transform
     }
     
-    private func addContours(forFace face: VisionFace, transform: CGAffineTransform) {
-        // Lips
+    private func addContours(forFace face: VisionFace, transform: CGAffineTransform, _ completion: @escaping ([CGPoint]) -> Void ) {
+        
+        var points = [CGPoint]()
         print("found!!!")
         if let topUpperLipContour = face.contour(ofType: .upperLipTop) {
             for point in topUpperLipContour.points {
                 let transformedPoint = pointFrom(point).applying(transform);
-                UIUtilityHelper.addCircle(
-                    atPoint: transformedPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.yellow,
-                    radius: Constants.smallDotRadius
-                )
-            }
-        }
-        if let bottomUpperLipContour = face.contour(ofType: .upperLipBottom) {
-            for point in bottomUpperLipContour.points {
-                let transformedPoint = pointFrom(point).applying(transform);
-                UIUtilityHelper.addCircle(
-                    atPoint: transformedPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.yellow,
-                    radius: Constants.smallDotRadius
-                )
+                points.append(transformedPoint)
             }
         }
         if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
             for point in topLowerLipContour.points {
                 let transformedPoint = pointFrom(point).applying(transform);
-                UIUtilityHelper.addCircle(
-                    atPoint: transformedPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.yellow,
-                    radius: Constants.smallDotRadius
-                )
+                points.append(transformedPoint)
             }
         }
-        if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
-            for point in bottomLowerLipContour.points {
-                let transformedPoint = pointFrom(point).applying(transform);
-                UIUtilityHelper.addCircle(
-                    atPoint: transformedPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.yellow,
-                    radius: Constants.smallDotRadius
-                )
-            }
-        }
-        
+        completion(points)
     }
     
     private func pointFrom(_ visionPoint: VisionPoint) -> CGPoint {
         return CGPoint(x: CGFloat(visionPoint.x.floatValue), y: CGFloat(visionPoint.y.floatValue))
     }
-//    private func updateImageView(with image: UIImage) {
-//        let orientation = UIApplication.shared.statusBarOrientation
-//        var scaledImageWidth: CGFloat = 0.0
-//        var scaledImageHeight: CGFloat = 0.0
-//        switch orientation {
-//        case .portrait, .portraitUpsideDown, .unknown:
-//            scaledImageWidth = imageView.bounds.size.width
-//            scaledImageHeight = image.size.height * scaledImageWidth / image.size.width
-//        case .landscapeLeft, .landscapeRight:
-//            scaledImageWidth = image.size.width * scaledImageHeight / image.size.height
-//            scaledImageHeight = imageView.bounds.size.height
-//        }
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            // Scale image while maintaining aspect ratio so it displays better in the UIImageView.
-//            var scaledImage = image.scaledImage(
-//                with: CGSize(width: scaledImageWidth, height: scaledImageHeight)
-//            )
-//            scaledImage = scaledImage ?? image
-//            guard let finalImage = scaledImage else { return }
-//            DispatchQueue.main.async {
-//                self.imageView.image = finalImage
-//            }
-//        }
-//    }
 }
 
 private enum Constants {
