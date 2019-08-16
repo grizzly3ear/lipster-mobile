@@ -45,4 +45,11 @@ class LipstickRepository {
         }
     }
     
+    public static func fetchSimilarLipstickHexColor(_ hex: String, completion: @escaping ([Lipstick]) -> Void ) {
+        let request = HttpRequest()
+        request.get("api/lipstick/color/rgb/\(hex)", ["part": "detail,brand"], nil) { (resposne, _) -> (Void) in
+            completion(Lipstick.makeArrayModelFromColorJSON(response: resposne))
+        }
+    }
+    
 }

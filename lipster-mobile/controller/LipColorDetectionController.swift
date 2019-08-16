@@ -21,14 +21,20 @@ class LipColorDetectionController: UIViewController {
     var colorDetectionObserver: Signal<UIColor, NoError>.Observer?
     
     override func viewDidLoad() {
-        navigationController?.isNavigationBarHidden = true
+        super.viewDidLoad()
         
+        navigationController?.isNavigationBarHidden = true
         imageView.addSubview(annotationOverlayView)
         initDetectColorPreview()
         setUpGesture()
         initReactiveColorDetection()
         imagePicker.delegate = self
         popAlert()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
     }
     
     func popAlert() {
@@ -47,14 +53,12 @@ class LipColorDetectionController: UIViewController {
     }
     
     func openCamera() {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
-        else
-        {
+        else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -168,9 +172,7 @@ extension LipColorDetectionController {
     func initReactiveColorDetection() {
         colorDetectionObserver = Signal<UIColor, NoError>.Observer(value: { (color) in
             self.colorDetectPreview.backgroundColor = color
-            print("get color")
         })
-        
         colorDetectionPipe.output.observe(colorDetectionObserver!)
     }
 }
@@ -195,10 +197,8 @@ extension LipColorDetectionController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLipstickFromColorList" {
             if let destination = segue.destination as? LipstickListViewController {
-                var lipstickData = [Lipstick]()
                 let hexColor: String = sender as! String
-                
-                
+                destination.lipHexColor = hexColor
             }
         }
     }
@@ -232,7 +232,6 @@ extension LipColorDetectionController {
                 let transform = self.transformMatrix()
 
                 self.addContours(forFace: face, transform: transform) { points in
-                    print(points)
                     let color = self.imageView.getPixelColor(point: points.first)
                     self.colorDetectionPipe.input.send(value: color)
                 }
