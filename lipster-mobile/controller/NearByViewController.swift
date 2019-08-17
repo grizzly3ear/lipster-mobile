@@ -14,11 +14,11 @@ class NearByViewController: UIViewController {
     
     var stores = [Store]()
     func createStoreArray() -> [Store] {
-        let store1 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700")
-        let store2 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok")
+        let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok")
+        let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700")
+        let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150")
         
-        
-        return [store1 , store2]
+        return [store1 , store2 , store3]
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -57,6 +57,7 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         cell.storeLogoImage.layer.cornerRadius = 8.0
         cell.storeLogoImage.contentMode = .scaleAspectFill
         cell.storeLogoImage.clipsToBounds = true
+        cell.layer.cornerRadius = 8
         
         let store = stores[indexPath.item]
         cell.setStore(store: store )
