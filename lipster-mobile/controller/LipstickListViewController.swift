@@ -7,8 +7,6 @@
 //
 // Not use this file
 import UIKit
-import Alamofire
-import SwiftSpinner
 import ReactiveSwift
 import ReactiveCocoa
 import Result
