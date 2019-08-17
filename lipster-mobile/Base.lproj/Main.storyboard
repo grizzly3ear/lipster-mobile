@@ -237,12 +237,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="NEARBY" id="S16-BO-1aY"/>
                     <connections>
+                        <outlet property="mapCollectionView" destination="Pr4-fy-1G5" id="nWu-Qj-G6Q"/>
                         <outlet property="mapView" destination="c3D-Kk-Cyg" id="wNT-qP-yZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjw-vG-xei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348" y="1599.8500749625189"/>
+            <point key="canvasLocation" x="737" y="1600"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="Kzn-FU-ikX">
@@ -2340,8 +2341,8 @@ Review</string>
         <segue reference="acc-yj-O4T"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="zid-xp-aA6"/>
-        <segue reference="Qsz-jI-Tpt"/>
-        <segue reference="8ws-yL-pe9"/>
+        <segue reference="M0x-Mo-1mI"/>
+        <segue reference="JIg-n3-5oa"/>
         <segue reference="VKI-vI-8e2"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>

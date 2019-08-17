@@ -24,11 +24,17 @@ class NearByViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager = CLLocationManager()
     
+    
+    @IBOutlet weak var mapCollectionView: UICollectionView!
+    let padding: CGFloat = 20.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.stores = self.createStoreArray()
         
+        mapCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
+       
         self.locationManager.requestWhenInUseAuthorization()
         initCoreLocationDelegate()
         initMapViewDelegate()
@@ -56,7 +62,6 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         cell.setStore(store: store )
         return cell
     }
-    
     
 }
 
