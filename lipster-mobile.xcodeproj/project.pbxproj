@@ -47,7 +47,7 @@
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
-		D82B447D2306626500876302 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447C2306626500876302 /* MapView.swift */; };
+		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
 		D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* Login2ViewController.swift */; };
 		D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD822230079EA000098C1 /* SignUpViewController.swift */; };
 		D83DD82823054946000098C1 /* TrendGroup2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */; };
@@ -131,7 +131,7 @@
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		D82B447C2306626500876302 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* Login2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login2ViewController.swift; sourceTree = "<group>"; };
 		D83DD822230079EA000098C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroup2TableViewCell.swift; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				302018FA2302D06C00FA5C6E /* LikeAnimator.swift */,
 				D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */,
 				D83DD82923054962000098C1 /* TrendGroup2CollectionViewCell.swift */,
-				D82B447C2306626500876302 /* MapView.swift */,
+				D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -539,7 +539,6 @@
 				30A889DA227196C600D00FCC /* Notification.swift in Sources */,
 				D822550722FC18A600F4EC42 /* FavoriteLipstickTableViewController.swift in Sources */,
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
-				D82B447D2306626500876302 /* MapView.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
@@ -560,6 +559,7 @@
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
 				3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */,
+				D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */,
 				30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */,
 				D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */,
 			);
