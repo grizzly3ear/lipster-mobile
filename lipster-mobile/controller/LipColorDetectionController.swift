@@ -1,5 +1,4 @@
 import UIKit
-import SwiftSpinner
 import ReactiveSwift
 import ReactiveCocoa
 import Result
@@ -12,6 +11,7 @@ class LipColorDetectionController: UIViewController {
     @IBOutlet weak var draggableSelectColorView: UIView!
     @IBOutlet weak var colorDetectPreview: UIView!
     @IBOutlet weak var findLipstickListButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var imagePicker = UIImagePickerController()
     let request = HttpRequest()
@@ -24,7 +24,7 @@ class LipColorDetectionController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = true
-        imageView.addSubview(annotationOverlayView)
+        spinner.isHidden = true
         initDetectColorPreview()
         setUpGesture()
         initReactiveColorDetection()
@@ -71,13 +71,6 @@ class LipColorDetectionController: UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    private lazy var annotationOverlayView: UIView = {
-        precondition(isViewLoaded)
-        let annotationOverlayView = UIView(frame: .zero)
-        annotationOverlayView.translatesAutoresizingMaskIntoConstraints = false
-        return annotationOverlayView
-    }()
-    
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
         let hexColor: String = colorDetectPreview.backgroundColor!.toHex!
         
@@ -88,12 +81,7 @@ class LipColorDetectionController: UIViewController {
         popAlert()
     }
     private func clearResults() {
-        removeDetectionAnnotations()
-    }
-    private func removeDetectionAnnotations() {
-        for annotationView in annotationOverlayView.subviews {
-            annotationView.removeFromSuperview()
-        }
+        colorDetectPreview.backgroundColor = .black
     }
     
 }
@@ -171,6 +159,7 @@ extension LipColorDetectionController {
 extension LipColorDetectionController {
     func initReactiveColorDetection() {
         colorDetectionObserver = Signal<UIColor, NoError>.Observer(value: { (color) in
+            self.spinner.isHidden = true
             self.colorDetectPreview.backgroundColor = color
         })
         colorDetectionPipe.output.observe(colorDetectionObserver!)
@@ -204,11 +193,25 @@ extension LipColorDetectionController {
     }
 }
 
+extension LipColorDetectionController {
+    func popCenterAlert(title: String, description: String, actionTitle: String, completion: (() -> Void)? = nil ) {
+        let alert  = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: completion)
+    }
+}
+
 // MARK: lipcolor detection
 extension LipColorDetectionController {
     
     func detectFaces(image: UIImage?) {
-        guard let image = image else { return }
+        
+        self.spinner.isHidden = false
+        guard let image = image else {
+            self.colorDetectionPipe.input.send(value: .black)
+            self.popCenterAlert(title: "Lip color detection", description: "Cannot retrieve your image data, please try again or use another image.", actionTitle: "Ok")
+            return
+        }
 
         let options = VisionFaceDetectorOptions()
         options.performanceMode = .accurate
@@ -226,6 +229,7 @@ extension LipColorDetectionController {
             guard error == nil, let faces = faces, !faces.isEmpty else {
                 print("Not Detect")
                 self.colorDetectionPipe.input.send(value: .black)
+                self.popCenterAlert(title: "Lip color detection", description: "Cannot detect your lip color in this image", actionTitle: "Ok")
                 return
             }
             faces.forEach { face in
