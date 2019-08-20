@@ -12,6 +12,8 @@ import CoreLocation
 
 class NearByViewController: UIViewController {
     
+    var pinView : MKAnnotationView!
+    
     var stores = [Store]()
     func createStoreArray() -> [Store] {
         let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok")
@@ -41,6 +43,12 @@ class NearByViewController: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
+        
+//        let annotationIcon = CustomePinAnnotation()
+//        annotationIcon.pinImage = "pin"
+//        mapView.addAnnotation(annotationIcon)
+//
+        
     }
 }
 
@@ -95,5 +103,53 @@ extension NearByViewController: MKMapViewDelegate {
         annotation.coordinate = locValue
         annotation.title = "Beauty Buffet"
         mapView.addAnnotation(annotation)
+        
     }
+    //MARK: - MapKit
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation.isMember(of: MKUserLocation.self) {
+            return nil
+        }
+        
+        let reuseId = "ProfilePinView"
+        
+        pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if pinView == nil {
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        }
+        pinView.canShowCallout = true
+        pinView.isDraggable = true
+        pinView.image = UIImage(named: "pin_lipstickStore_map")
+        
+        return pinView
+        
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        
+        if newState == MKAnnotationView.DragState.ending {
+            if let coordinate = view.annotation?.coordinate {
+                //  let coordinate = view.annotation?.coordinate
+                print(coordinate.latitude)
+            
+                view.dragState = MKAnnotationView.DragState.none
+                
+            }
+        }
+    }
+    
+    @objc func mapView(_ rendererFormapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        
+        let renderer = MKCircleRenderer(overlay: overlay)
+        renderer.fillColor = UIColor.black.withAlphaComponent(0.5)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 2
+        return renderer
+        
+    }
+
 }
+
