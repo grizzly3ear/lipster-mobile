@@ -1919,7 +1919,6 @@ Review</string>
                     <connections>
                         <outlet property="cameraView" destination="gND-Xd-kF3" id="yER-f6-zPP"/>
                         <outlet property="collectionView" destination="yvG-zx-Lby" id="3bc-H9-ffP"/>
-                        <outlet property="previewLayer" destination="gND-Xd-kF3" id="0U8-Mc-urJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFl-9q-5KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
