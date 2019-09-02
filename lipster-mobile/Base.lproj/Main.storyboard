@@ -1834,7 +1834,7 @@ Review</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3" customClass="PreviewMaskLayer" customModule="lipster_mobile" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
@@ -1917,6 +1917,7 @@ Review</string>
                     </view>
                     <navigationItem key="navigationItem" id="XLj-RZ-5qJ"/>
                     <connections>
+                        <outlet property="cameraView" destination="gND-Xd-kF3" id="yER-f6-zPP"/>
                         <outlet property="collectionView" destination="yvG-zx-Lby" id="3bc-H9-ffP"/>
                         <outlet property="previewLayer" destination="gND-Xd-kF3" id="0U8-Mc-urJ"/>
                     </connections>
