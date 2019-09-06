@@ -194,13 +194,13 @@ extension LipColorDetectionController {
                 var lipstickData = [Lipstick]()
                 let hexColor: String = sender as! String
                 
-                self.request.get("api/lipstick/color/\(hexColor)", nil, nil) { (response) -> (Void) in
-                    lipstickData = Lipstick.makeArrayFromLipstickColorResource(response: response)
-                    destination.lipstickList = lipstickData
-                    destination.lipListTableView.reloadData()
-                    destination.lipListTableView.layoutIfNeeded()
-                    destination.lipListTableView.setNeedsLayout()
-                }
+//                self.request.get("api/lipstick/color/\(hexColor)", nil, nil) { (response) -> (Void) in
+//                    lipstickData = Lipstick.makeArrayFromLipstickColorResource(response: response)
+//                    destination.lipstickList = lipstickData
+//                    destination.lipListTableView.reloadData()
+//                    destination.lipListTableView.layoutIfNeeded()
+//                    destination.lipListTableView.setNeedsLayout()
+//                }
                 
                 
             }
