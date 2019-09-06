@@ -7,7 +7,7 @@ class TrendListViewController: UIViewController {
     @IBOutlet var titleNavigationItem: UINavigationItem!
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
-    var trendCollections = [TrendGroup]()
+    var trends = [Trend]()
     let padding: CGFloat = 15.0
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class TrendListViewController: UIViewController {
             let destination = segue.destination as! TrendDetailViewController
             let indexPath = sender as! IndexPath
             
-            destination.trendGroup = trendCollections[indexPath.item]
+            destination.trend = trends[indexPath.item]
             destination.imageHeroId = "trend\(indexPath.item)"
         }
     }
@@ -38,13 +38,14 @@ class TrendListViewController: UIViewController {
 
 extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trendCollections.count
+        print("trend count: \(trends.count)")
+        return trends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendCollectionViewCell
         
-        cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
+        cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
         cell.image.contentMode = .scaleAspectFill
         cell.image.clipsToBounds = true
@@ -109,12 +110,7 @@ extension TrendListViewController {
         cell.likeAnimator.animate {
             print("like")
         }
-        
-//        let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
-//        let name = trendCollections[(indexPath?.item)!].name
-//        let trendsCount = trendCollections[(indexPath?.item)!].trends!.count
-//        createNotificationMessage(title: "Like \(name ?? "")", description: "\(trendsCount) trends have been add to your favorite", image: nil)
-//        SwiftEntryKit.display(entry: contentPopup, using: likePopupAttributes)
-    }
+
     
+    }
 }

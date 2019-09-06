@@ -152,7 +152,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
             break
         case trendsCollectionView:
-            performSegue(withIdentifier: "showTrendGroupDetail", sender: indexPath.item)
+            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
             break
         default:
             break
@@ -170,16 +170,18 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             destination?.imageHeroId = "lipstick\(selectedIndex)"
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
-        else if segueIdentifier == "showTrendGroupDetail" {
-            if let destination = segue.destination as? TrendDetailViewController {
-                let selectedIndex = sender as! Int
-                destination.imageHeroId = "trend\(selectedIndex)"
-                destination.trendGroup = trendGroups[selectedIndex]
-            }
-        }
         else if segueIdentifier == "showTrendList" {
             if let destination = segue.destination as? TrendListViewController {
-                destination.trendCollections = trendGroups
+                let item = sender as! Int
+                print(item)
+                print("trend in trendGroupCount: \(trendGroups[item].trends!.count)")
+                destination.trends = trendGroups[item].trends!
+            }
+        }
+        else if segueIdentifier == "showTrendGroup" {
+            if let destination = segue.destination as? TrendGroupViewController {
+                print(trendGroups[0].name)
+                destination.trendGroups = trendGroups
             }
         }
     }

@@ -14,6 +14,7 @@ class TrendGroup2CollectionViewCell: UICollectionViewCell {
     
     func setTrend(trend : Trend) {
         trendImage.sd_setImage(with: URL(string: trend.image), placeholderImage: UIImage(named: "nopic"))
+    
         
     }
 }

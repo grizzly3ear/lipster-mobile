@@ -18,9 +18,12 @@ class TrendGroup2TableViewCell: UITableViewCell {
         
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    func setTrendGroup(trendGroup : TrendGroup) {
+        trendGroupImage.sd_setImage(with: URL(string: trendGroup.image!), placeholderImage: UIImage(named: "nopic"))
+        trendName.text = trendGroup.name
+        
+      //  trendCollectionView.
+        
     }
 
 }

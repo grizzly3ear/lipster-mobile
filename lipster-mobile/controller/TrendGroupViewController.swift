@@ -12,13 +12,12 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.trends = self.createTrendArray()
    
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return trendGroups.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
@@ -28,33 +27,26 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
         cell.trendCollectionView.delegate = self
         cell.trendCollectionView.dataSource = self
         cell.trendCollectionView.tag = indexPath.row
+        cell.setTrendGroup(trendGroup: trendGroups[indexPath.item])
         cell.trendCollectionView.reloadData()
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showPinterest", sender: self)
+        self.performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
     }
     
-    var trends = [Trend]()
-    func createTrendArray() -> [Trend] {
-        let trendGroup1 : Trend = Trend("Trend of the year 2020", "dedefrg", .gray, .green , "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")
-        let trendGroup2 : Trend = Trend("Trend of the year 2020", "dedefrg", .gray, .green , "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")
-        let trendGroup3 : Trend = Trend("Trend of the year 2020", "dedefrg", .gray, .green , "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")
-        let trendGroup4 : Trend = Trend("Trend of the year 2020", "dedefrg", .gray, .green , "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ")
-        return [trendGroup1 , trendGroup2 , trendGroup3 ,trendGroup4]
-        
-    }
+    var trendGroups = [TrendGroup]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return trends.count
+        print(trendGroups[collectionView.tag].trends?.count)
+        return (trendGroups[collectionView.tag].trends?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroup2CollectionViewCell
         
-        let trend = trends[indexPath.item]
+        let trend = trendGroups[collectionView.tag].trends![indexPath.item]
         cell.setTrend(trend: trend)
         return cell
     }
@@ -64,9 +56,15 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
         , height: 144)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showPinterest" {
+            let item = sender as! Int
+            print(item)
+            let destination = segue.destination as? TrendListViewController
+            destination?.trends = trendGroups[item].trends!
+        }
+    }
     
 }
 

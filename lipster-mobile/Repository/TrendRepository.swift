@@ -7,7 +7,7 @@ class TrendRepository {
     
     public static func fetchAllTrendData(completion: @escaping ([TrendGroup]) -> Void) {
         let request = HttpRequest()
-        request.get("api/trend/collection", nil, nil) { (response, _) -> (Void) in
+        request.get("api/trend/collection", ["part": "trend"], nil) { (response, _) -> (Void) in
             if response == nil {
                 completion([TrendGroup]())
             }

@@ -291,12 +291,10 @@
 				D83DD822230079EA000098C1 /* SignUpViewController.swift */,
 				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
+				D83DD82B23054E57000098C1 /* TrendGroupViewController.swift */,
 				3071185622FC188300E25AF4 /* TrendListViewController.swift */,
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
-				D83DD820230069D5000098C1 /* Login2ViewController.swift */,
-				D83DD822230079EA000098C1 /* SignUpViewController.swift */,
-				D83DD82B23054E57000098C1 /* TrendGroupViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
