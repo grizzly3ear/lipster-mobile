@@ -171,7 +171,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
         else if segueIdentifier == "showTrendList" {
-            if let destination = segue.destination as? TrendListViewController {
+            if let destination = segue.destination as? PinterestViewController {
                 let item = sender as! Int
                 print(item)
                 print("trend in trendGroupCount: \(trendGroups[item].trends!.count)")

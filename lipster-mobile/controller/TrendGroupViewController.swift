@@ -61,7 +61,7 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
         if segueIdentifier == "showPinterest" {
             let item = sender as! Int
             print(item)
-            let destination = segue.destination as? TrendListViewController
+            let destination = segue.destination as? PinterestViewController
             destination?.trends = trendGroups[item].trends!
         }
     }

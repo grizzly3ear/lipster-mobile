@@ -2,7 +2,7 @@ import UIKit
 import CHTCollectionViewWaterfallLayout
 import Hero
 
-class TrendListViewController: UIViewController {
+class PinterestViewController: UIViewController {
     
     @IBOutlet var titleNavigationItem: UINavigationItem!
     @IBOutlet weak var trendListCollectionView: UICollectionView!
@@ -36,7 +36,7 @@ class TrendListViewController: UIViewController {
     }
 }
 
-extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("trend count: \(trends.count)")
         return trends.count
@@ -77,7 +77,7 @@ extension TrendListViewController: UICollectionViewDelegate, UICollectionViewDat
 }
 
 // MARK: Set up gesture on fav trend collection
-extension TrendListViewController {
+extension PinterestViewController {
     func initGesture() {
         trendListCollectionView.isUserInteractionEnabled = true
         setUpTapGesture()
