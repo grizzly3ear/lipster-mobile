@@ -33,7 +33,7 @@ class TrendDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let color = sender as? UIColor
         if let destination = segue.destination as? LipstickListViewController {
-            destination.lipColor = color
+            destination.lipHexColor = color?.toHex()
         }
     }
 }

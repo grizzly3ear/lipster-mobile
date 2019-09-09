@@ -92,7 +92,6 @@ PODS:
   - GTMSessionFetcher/Full (1.2.1):
     - GTMSessionFetcher/Core (= 1.2.1)
   - Hero (1.4.0)
-  - ImagePicker (3.1.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -111,7 +110,6 @@ PODS:
   - SDWebImage/Core (5.0.2)
   - SwiftEntryKit (1.0.1):
     - QuickLayout (= 3.0.0)
-  - SwiftSpinner (1.6.2)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -124,12 +122,10 @@ DEPENDENCIES:
   - Firebase/MLVisionFaceModel
   - FlexiblePageControl
   - Hero
-  - ImagePicker
   - PickerButton
   - ReactiveCocoa (~> 9.0)
   - SDWebImage (~> 5.0)
   - SwiftEntryKit
-  - SwiftSpinner
   - SwiftyJSON
 
 SPEC REPOS:
@@ -152,7 +148,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - Hero
-    - ImagePicker
     - nanopb
     - PickerButton
     - Protobuf
@@ -162,7 +157,6 @@ SPEC REPOS:
     - Result
     - SDWebImage
     - SwiftEntryKit
-    - SwiftSpinner
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -184,7 +178,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PickerButton: d92eba033a8cd678ff2e34f69b0ec3d7388e490a
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
@@ -194,9 +187,8 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
   SwiftEntryKit: 3f55c0b8e676afe24a3703237bcac68372891c56
-  SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 43574df2f1a9686654745f3de341363a45e1ce33
+PODFILE CHECKSUM: ceee0e1390485f69781629c952d59603cf75568e
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.5

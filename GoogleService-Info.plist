@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>929204994294-ebrm7dd4bfffdsip86h41685j58qaksl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.929204994294-ebrm7dd4bfffdsip86h41685j58qaksl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZxocznWXAw4RHiEaH6Teo7ZOrTAKtUT4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>929204994294</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.anyong.lipster-mobile</string>
+	<key>PROJECT_ID</key>
+	<string>lipster</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lipster.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:929204994294:ios:9b807cad4a310292</string>
+	<key>DATABASE_URL</key>
+	<string>https://lipster.firebaseio.com</string>
+</dict>
+</plist>

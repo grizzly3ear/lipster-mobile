@@ -105,29 +105,37 @@ class Lipstick {
         return lipsticks
     }
     
-    public static func makeArrayFromLipstickColorResource(response: JSON?) -> [Lipstick] {
+    public static func makeArrayModelFromColorJSON(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
         
         if response == nil {
             return lipsticks
         }
         for lipstick in response! {
-            
-            let lipstickId = lipstick.1["id"].intValue
-            let lipstickBrand = lipstick.1["brand"]["name"].stringValue
-            let lipstickName = lipstick.1["color_name"].stringValue
-            let lipstickColorName = lipstick.1[""].stringValue
-            let lipstickDetail = lipstick.1["detail"].stringValue
-            let lipstickColor = UIColor(hexString: lipstick.1["rgb"].stringValue)
+            let id = lipstick.1["id"].intValue
             var images = [String]()
             for image in lipstick.1["images"] {
                 images.append(image.1["image"].stringValue)
             }
-            let lipstickImages = images
-            let lipstickDetailId = lipstick.1["detail"]["id"].intValue
+            let brandName = lipstick.1["brand"]["name"].stringValue
+            let name = lipstick.1["detail"]["name"].stringValue
+            let colorName = lipstick.1["color_name"].stringValue
+            let description = lipstick.1["detail"]["description"].stringValue
+            let color = UIColor(hexString: lipstick.1["rgb"].stringValue)
+            let detailId = lipstick.1["detail"]["id"].intValue
             
-            lipsticks.append(Lipstick(lipstickId, lipstickImages, lipstickBrand, lipstickName, lipstickColorName, lipstickDetail, lipstickColor, lipstickDetailId))
+            lipsticks.append(Lipstick(
+                id,
+                images,
+                brandName,
+                name,
+                colorName,
+                description,
+                color,
+                detailId
+            ))
         }
+        print(lipsticks.count)
         return lipsticks
     }
     

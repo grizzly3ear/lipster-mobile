@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftSpinner
 
 class FavoriteLipstickTableViewController:  UITableViewController  {
     @IBOutlet var favoriteLipstickListTableView: UITableView!

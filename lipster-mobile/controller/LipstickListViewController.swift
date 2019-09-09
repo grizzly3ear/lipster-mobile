@@ -7,26 +7,34 @@
 //
 // Not use this file
 import UIKit
-import Alamofire
-import SwiftSpinner
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 class LipstickListViewController: UITableViewController  {
 
     @IBOutlet var lipListTableView: UITableView!
     
-    var lipColor: UIColor?
+    var lipHexColor: String?
     var searchController : UISearchController!
     var resultController = UITableViewController()
     var lipstickList = [Lipstick]()
     
     var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
+    let lipstickListPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickListObserver: Signal<[Lipstick], NoError>.Observer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initReactiveLipstickList()
+        lipListTableView.delegate = self
+        lipListTableView.dataSource = self
         navigationController?.isNavigationBarHidden = false
         addNavBarImage()
         searchBarLip()
+        fetchData()
     }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
@@ -48,7 +56,14 @@ class LipstickListViewController: UITableViewController  {
             destination.lipstick = lipstickList[(lipListTableView.indexPathForSelectedRow?.row)!]
         }
     }
+}
 
+extension LipstickListViewController {
+    func fetchData() {
+        LipstickRepository.fetchSimilarLipstickHexColor(self.lipHexColor ?? "") { (lipsticks) in
+            self.lipstickListPipe.input.send(value: lipsticks)
+        }
+    }
 }
 
 extension LipstickListViewController {
@@ -127,4 +142,15 @@ extension LipstickListViewController : UISearchControllerDelegate , UISearchBarD
     }
 }
 
-
+// MARK: Reactive init
+extension LipstickListViewController {
+    func initReactiveLipstickList() {
+        lipstickListObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            self.lipstickList = lipsticks
+            print(lipsticks.count)
+            self.lipListTableView.reloadData()
+            self.lipListTableView.layoutIfNeeded()
+        })
+        lipstickListPipe.output.observe(lipstickListObserver!)
+    }
+}
