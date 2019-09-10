@@ -173,14 +173,11 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
         else if segueIdentifier == "showTrendList" {
             if let destination = segue.destination as? PinterestViewController {
                 let item = sender as! Int
-                print(item)
-                print("trend in trendGroupCount: \(trendGroups[item].trends!.count)")
                 destination.trends = trendGroups[item].trends!
             }
         }
         else if segueIdentifier == "showTrendGroup" {
             if let destination = segue.destination as? TrendGroupViewController {
-                print(trendGroups[0].name)
                 destination.trendGroups = trendGroups
             }
         }

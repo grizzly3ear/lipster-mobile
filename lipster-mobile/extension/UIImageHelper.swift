@@ -48,7 +48,7 @@ extension UIImage {
             do {
                 let data = try Data(contentsOf: url)
                 self.init(data: data)!
-            } catch let _ {
+            } catch _ {
                 self.init(uiImage: placeHolder)
             }
         } else {

@@ -38,7 +38,6 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
     var trendGroups = [TrendGroup]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(trendGroups[collectionView.tag].trends?.count)
         return (trendGroups[collectionView.tag].trends?.count)!
     }
     
