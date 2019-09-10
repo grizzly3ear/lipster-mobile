@@ -12,8 +12,6 @@ import AVFoundation
 import Firebase
 
 class TryMeViewController: UIViewController  {
- 
-//    lazy var vision = Vision.vision()
     
     private let detectors: [Detector] = [.onDeviceFace,
                                          .onDeviceObjectProminentNoClassifier,
@@ -59,7 +57,24 @@ class TryMeViewController: UIViewController  {
         setUpAnnotationOverlayView()
         setUpCaptureSessionOutput()
         setUpCaptureSessionInput()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        startSession()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        stopSession()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        previewLayer.frame = cameraView.frame
     }
 }
 
@@ -241,20 +256,20 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         visionImage.metadata = metadata
         let imageWidth = CGFloat(CVPixelBufferGetWidth(imageBuffer))
         let imageHeight = CGFloat(CVPixelBufferGetHeight(imageBuffer))
-        var shouldEnableClassification = false
-        var shouldEnableMultipleObjects = false
-        switch currentDetector {
-        case .onDeviceObjectProminentWithClassifier, .onDeviceObjectMultipleWithClassifier:
-            shouldEnableClassification = true
-        default:
-            break
-        }
-        switch currentDetector {
-        case .onDeviceObjectMultipleNoClassifier, .onDeviceObjectMultipleWithClassifier:
-            shouldEnableMultipleObjects = true
-        default:
-            break
-        }
+//        var shouldEnableClassification = false
+//        var shouldEnableMultipleObjects = false
+//        switch currentDetector {
+//        case .onDeviceObjectProminentWithClassifier, .onDeviceObjectMultipleWithClassifier:
+//            shouldEnableClassification = true
+//        default:
+//            break
+//        }
+//        switch currentDetector {
+//        case .onDeviceObjectMultipleNoClassifier, .onDeviceObjectMultipleWithClassifier:
+//            shouldEnableMultipleObjects = true
+//        default:
+//            break
+//        }
         
         switch currentDetector {
         case .onDeviceFace:
@@ -306,7 +321,7 @@ extension TryMeViewController {
                     width: face.frame.size.width / width,
                     height: face.frame.size.height / height
                 )
-                let standardizedRect =
+                _ =
                     self.previewLayer.layerRectConverted(fromMetadataOutputRect: normalizedRect).standardized
                 self.addContours(for: face, width: width, height: height)
             }
