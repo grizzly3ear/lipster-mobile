@@ -13,11 +13,13 @@ class UserReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userReviewLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var reviewDate: UILabel!
     
     func setUserReview(user : UserReview) {
         userImage.image = user.userProfile
         userNameLabel.text = user.userName
         userReviewLabel.text = user.userReview
+        reviewDate.text = user.dateReview
         
     }
     
