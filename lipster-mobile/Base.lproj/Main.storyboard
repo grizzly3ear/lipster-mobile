@@ -850,7 +850,6 @@ Review</string>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="clickedPostButton" destination="xSD-uz-Cv7" id="FBg-Bt-6yg"/>
                         <outlet property="contentScrollView" destination="2LV-Uz-d07" id="zjO-vP-5Rh"/>
                         <outlet property="contentSegmentControl" destination="BoW-Gy-Ags" id="l7k-SG-Rib"/>
                         <outlet property="lipstickBrand" destination="zIz-5V-h9E" id="hho-e9-EeL"/>
@@ -2576,32 +2575,36 @@ Review</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="reviewDate" destination="F3c-f5-ilr" id="2XH-Ym-uEM"/>
+                                            <outlet property="reviewDate" destination="F3c-f5-ilr" id="gsx-Df-T7d"/>
                                             <outlet property="userImage" destination="HNs-LW-r6R" id="qAh-Wu-MYZ"/>
                                             <outlet property="userNameLabel" destination="N8M-OC-V78" id="D69-D8-7OD"/>
                                             <outlet property="userReviewLabel" destination="dfL-XL-bO1" id="1eP-uS-F0e"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6rW-uu-4Cf" id="eBh-oT-yT0"/>
+                                    <outlet property="delegate" destination="6rW-uu-4Cf" id="Baf-cU-B7N"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-VR-iqg">
                                 <rect key="frame" x="0.0" y="559" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write your review" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="maL-Ug-bfr">
-                                <rect key="frame" x="16" y="577" width="292" height="31"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryo-wH-8Fa">
+                                <rect key="frame" x="16" y="573" width="303" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlq-aK-rBD">
                                 <rect key="frame" x="333" y="579" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="send"/>
                                 <connections>
-                                    <action selector="clickedPostReviewButton:" destination="6rW-uu-4Cf" eventType="touchUpInside" id="QCn-pM-8uO"/>
+                                    <action selector="sendButton:" destination="6rW-uu-4Cf" eventType="touchUpInside" id="2Jc-gg-0qi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2610,13 +2613,12 @@ Review</string>
                     </view>
                     <navigationItem key="navigationItem" id="lXE-wJ-0iB"/>
                     <connections>
-                        <outlet property="clickedPostButton" destination="mlq-aK-rBD" id="aM5-az-SYu"/>
                         <outlet property="lipstickBrand" destination="LxO-bX-M6a" id="OdS-RJ-qEz"/>
                         <outlet property="lipstickColorName" destination="3Il-7b-jVr" id="IQh-Rj-6oB"/>
                         <outlet property="lipstickImage" destination="MZo-Or-s0E" id="nU3-vl-CWg"/>
                         <outlet property="lipstickName" destination="YK3-A0-f9Y" id="fJx-Xa-T0a"/>
                         <outlet property="reviewTableView" destination="JDZ-Cu-545" id="qXK-Ee-Hao"/>
-                        <outlet property="typeReviewTextView" destination="maL-Ug-bfr" id="D9C-av-Y2t"/>
+                        <outlet property="typeReview" destination="ryo-wH-8Fa" id="2OL-p8-nox"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wga-fg-tUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
