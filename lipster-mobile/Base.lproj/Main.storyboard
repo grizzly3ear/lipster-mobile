@@ -104,7 +104,6 @@
                                     <outlet property="lipDetailLabel" destination="mlC-Ot-U3h" id="cMh-5D-BE1"/>
                                     <outlet property="lipImageView" destination="BoD-Qj-KHK" id="4Ud-9P-vXP"/>
                                     <outlet property="lipNameLabel" destination="M8I-Jm-kFN" id="sg4-Qj-P3c"/>
-                                    <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="KhL-T3-y4x"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,6 +119,7 @@
                     <connections>
                         <outlet property="lipListTableView" destination="wwH-Np-wde" id="fsS-G9-IsC"/>
                         <outlet property="tableView" destination="wwH-Np-wde" id="Vbf-RH-PyH"/>
+                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="7xa-ab-yxx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1837,7 +1837,7 @@ Review</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
-                                        <rect key="frame" x="307" y="28" width="60" height="601"/>
+                                        <rect key="frame" x="307" y="72" width="60" height="508"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="53Z-lz-hdm">
                                             <size key="itemSize" width="50" height="50"/>
@@ -2294,7 +2294,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="856"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="807"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
@@ -2306,7 +2306,7 @@ Review</string>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hln-nP-OFo">
                                                 <rect key="frame" x="298" y="146" width="42" height="42"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button" image="heart_red"/>
+                                                <state key="normal" title="Button" image="heart_white"/>
                                                 <connections>
                                                     <action selector="favButtonClicked:" destination="udf-5l-NvU" eventType="touchUpInside" id="9gn-6G-CvM"/>
                                                 </connections>
@@ -2448,7 +2448,7 @@ Review</string>
                                                     <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="rOv-yL-EsG"/>
                                                 </connections>
                                             </button>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uqo-7f-rOw">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uqo-7f-rOw">
                                                 <rect key="frame" x="97" y="10" width="181" height="178"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </scrollView>
@@ -2491,7 +2491,7 @@ Review</string>
                         <outlet property="lipstickImagesPageControl" destination="X0G-MV-q6e" id="Opw-JE-fNs"/>
                         <outlet property="lipstickName" destination="ltl-ql-sD7" id="pMD-oy-mNJ"/>
                         <outlet property="lipstickSelectColorCollectionView" destination="foo-PG-bWk" id="Uhc-yb-5cQ"/>
-                        <outlet property="scrollLipstickImages" destination="Uqo-7f-rOw" id="Obs-jY-dwb"/>
+                        <outlet property="scrollLipstickImages" destination="Uqo-7f-rOw" id="Ebj-DK-4oC"/>
                         <outlet property="scrollView" destination="iOI-yW-lf1" id="uV9-gM-bKM"/>
                         <outlet property="segmentedControl3" destination="Yhv-km-JxF" id="yJO-Xy-dLU"/>
                         <outlet property="titleNavigationItem" destination="MEO-e2-Xae" id="gYW-zR-g1i"/>
@@ -2660,7 +2660,7 @@ Review</string>
         <image name="favButton_off" width="192" height="192"/>
         <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="frame" width="400" height="400"/>
-        <image name="heart_red" width="40" height="40"/>
+        <image name="heart_white" width="40" height="40"/>
         <image name="line" width="384" height="384"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="login_bg" width="375" height="667"/>
@@ -2684,11 +2684,11 @@ Review</string>
         <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wGH-AF-6ic"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="s8G-gc-cZg"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="Q11-LN-cwa"/>
-        <segue reference="YmI-uT-o6X"/>
+        <segue reference="Lqe-bR-pOS"/>
         <segue reference="JIg-n3-5oa"/>
         <segue reference="nXF-J0-F0d"/>
     </inferredMetricsTieBreakers>
