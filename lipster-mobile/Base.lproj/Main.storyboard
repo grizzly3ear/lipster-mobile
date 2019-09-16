@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="udf-5l-NvU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1134,7 +1134,6 @@ Review</string>
                                                                     <outlet property="recBrandLabel" destination="jcA-SE-1Mz" id="S00-7r-KPe"/>
                                                                     <outlet property="recImageView" destination="K66-ei-d1x" id="cnt-tX-Mgv"/>
                                                                     <outlet property="recNameLabel" destination="kOc-2p-aFQ" id="qrF-S7-YUB"/>
-                                                                    <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="CvX-jT-s0F"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -1180,6 +1179,7 @@ Review</string>
                         <outlet property="recommendCollectionView" destination="G5J-Ep-gXf" id="nN6-qN-UJc"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                         <segue destination="Th2-S5-z7n" kind="show" identifier="showTrendList" id="JIg-n3-5oa"/>
+                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2294,7 +2294,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="807"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="856"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
@@ -2535,8 +2535,8 @@ Review</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-Cu-545">
-                                <rect key="frame" x="0.0" y="181" width="375" height="379"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-Cu-545">
+                                <rect key="frame" x="0.0" y="181" width="375" height="394"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2588,19 +2588,19 @@ Review</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-VR-iqg">
-                                <rect key="frame" x="0.0" y="559" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryo-wH-8Fa">
-                                <rect key="frame" x="16" y="573" width="303" height="30"/>
+                                <rect key="frame" x="16" y="598" width="303" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlq-aK-rBD">
-                                <rect key="frame" x="333" y="579" width="26" height="26"/>
+                                <rect key="frame" x="333" y="594" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="send"/>
                                 <connections>
@@ -2684,8 +2684,7 @@ Review</string>
         <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lPZ-6r-fBu"/>
-        <segue reference="KhL-T3-y4x"/>
+        <segue reference="wGH-AF-6ic"/>
         <segue reference="s8G-gc-cZg"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="Q11-LN-cwa"/>

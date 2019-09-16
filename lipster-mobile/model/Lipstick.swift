@@ -101,7 +101,6 @@ class Lipstick {
             ))
             
         }
-
         return lipsticks
     }
     
@@ -135,7 +134,6 @@ class Lipstick {
                 detailId
             ))
         }
-        print(lipsticks.count)
         return lipsticks
     }
     

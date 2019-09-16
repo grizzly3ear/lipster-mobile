@@ -52,8 +52,6 @@ class NewLipstickDetailViewcontroller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(">>>>self.lipstick>>>>>> \(self.lipstick)")
-        
         initHero()
         initReactiveData()
         fetchData()
@@ -106,14 +104,14 @@ class NewLipstickDetailViewcontroller: UIViewController {
 extension NewLipstickDetailViewcontroller {
     func fetchData() {
         
-       // fetchLipstickSameDetail()
+        fetchLipstickSameDetail()
     }
    
-//    func fetchLipstickSameDetail() {
-//        LipstickRepository.fetchLipstickWithSameDetail(lipstick: self.lipstick!) { (lipsticks) in
-//            self.colorDataPipe.input.send(value: lipsticks)
-//        }
-//    }
+    func fetchLipstickSameDetail() {
+        LipstickRepository.fetchLipstickWithSameDetail(lipstick: self.lipstick!) { (lipsticks) in
+            self.colorDataPipe.input.send(value: lipsticks)
+        }
+    }
 }
 
 
@@ -179,7 +177,7 @@ extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
-        
+        print(colors[indexPath.item].lipstickColor)
         cell?.selectColorView.backgroundColor = colors[indexPath.item].lipstickColor
         if colors[indexPath.item].lipstickId == lipstick?.lipstickId {
             cell?.triangleView.isHidden = false
@@ -207,11 +205,12 @@ extension NewLipstickDetailViewcontroller{
 //            self.reviewTableView.setNeedsLayout()
 //        })
 //        reviewDataPipe.output.observe(reviewDataObserver!)
-//        
+//
         colorDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipstickColors) in
             self.colors = lipstickColors
             self.lipstickSelectColorCollectionView.reloadData()
             self.lipstickSelectColorCollectionView.setNeedsLayout()
+            self.lipstickSelectColorCollectionView.setNeedsDisplay()
         })
         colorDataPipe.output.observe(colorDataObserver!)
     }
