@@ -35,6 +35,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         searchBarLip()
         addNavBarImage()
         initHero()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
