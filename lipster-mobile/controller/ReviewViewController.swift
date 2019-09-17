@@ -40,7 +40,7 @@ class ReviewViewController: UIViewController {
         
         return [user1,user2]
     }
-    var userReviews: [String] = ["nicccccceeeeeeeeeeeee",
+    var userReviews: [String] = ["Today I bought this stain in Always Red and Dark Berry. I tried a bit of it in the store, and it was amazing. Since I am not a fan of the sticky feel of lip gloss or the weight of most lipsticks, this product is perfect for me. It doesn't even feel like its there, and the sales rep that helped me said that it lasts for hours. It's creamy and comfortable, and the color isn't too sheer. I let a friend try some once I opened mine, and she loved all the same things I do. Even better, it is decently priced for something so good that will last me a while, because it doesn't take all that much to decently cover my lips.",
                                  "love this color , should try!",
                                  "nice one."]
     
@@ -77,7 +77,12 @@ extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
 //        cell.userReviewLabel.text = reviews[indexPath.item].userReview
 //        cell.userNameLabel.text = reviews[indexPath.item].userName
 //        cell.reviewDate.text = reviews[indexPath.item].dateReview
+        cell.userImage.layer.masksToBounds = true
+        cell.userImage.layer.cornerRadius = 30.0
         
+
+        cell.userImage.layer.borderColor = UIColor.black.cgColor
+        cell.userImage.layer.borderWidth = 1
         
         return cell
     }
