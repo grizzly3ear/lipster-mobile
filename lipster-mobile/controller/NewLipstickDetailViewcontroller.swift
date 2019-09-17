@@ -102,11 +102,13 @@ class NewLipstickDetailViewcontroller: UIViewController {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showReview" {
             if let destination = segue.destination as? ReviewViewController {
-                print(lipstick?.lipstickBrand)
+                print(lipstick?.lipstickName)
                 destination.lipstick = lipstick
-//                destination.lipstickBrand.text = lipstick?.lipstickBrand
-//                destination.lipstickImage.sd_setImage(with: URL(string: (lipstick?.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
-//                destination.lipstickColorName.text = lipstick?.lipstickColorName
+
+            }
+        }else if segueIdentifier == "showContainer" {
+            if let destination = segue.destination as? ContainerViewController {
+               destination.lipstick = lipstick
             }
         }
     }

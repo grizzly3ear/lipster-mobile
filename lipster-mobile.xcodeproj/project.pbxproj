@@ -34,6 +34,7 @@
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
 		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
+		D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80F336A2330E44F0057B782 /* ContainerViewController.swift */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
 		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
@@ -121,6 +122,7 @@
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
 		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D80F336A2330E44F0057B782 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
 				D826C443232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift */,
 				D8573504232EA6FB00164E2E /* ReviewViewController.swift */,
+				D80F336A2330E44F0057B782 /* ContainerViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				D83DD82C23054E57000098C1 /* TrendGroupViewController.swift in Sources */,
 				3071185722FC188300E25AF4 /* PinterestViewController.swift in Sources */,
+				D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
