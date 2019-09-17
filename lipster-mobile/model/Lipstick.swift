@@ -21,8 +21,9 @@ class Lipstick {
     var lipstickDetail: String
     var lipstickColor : UIColor
     var lipstickDetailId: Int
+    var lipstickIngradients : String
 
-    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int) {
+    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int, _ lipstickIngradients: String = "") {
         self.lipstickId = lipstickId
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
@@ -31,6 +32,7 @@ class Lipstick {
         self.lipstickDetail = lipShortDetail
         self.lipstickColor = lipstickColor
         self.lipstickDetailId = lipstickDetailId
+        self.lipstickIngradients = lipstickIngradients
     }
     
     init() {
@@ -42,6 +44,7 @@ class Lipstick {
         self.lipstickDetail = String()
         self.lipstickColor = UIColor()
         self.lipstickDetailId = Int()
+        self.lipstickIngradients = String()
     }
     
     public static func makeArrayModelFromBrandJSON(response: JSON?) -> [Lipstick] {
@@ -68,7 +71,9 @@ class Lipstick {
                     let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
                     let lipstickDetailId = lipstickDetail.1["id"].intValue
                     
-                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId))
+                    let lipstickIngradients = lipstickDetail.1["ingredients"].stringValue
+                    
+                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId, lipstickIngradients ))
                 }
             }
         }
@@ -97,7 +102,8 @@ class Lipstick {
                 lipstick["color_name"].stringValue,
                 response!["description"].stringValue,
                 UIColor(hexString: lipstick["rgb"].stringValue),
-                response!["id"].intValue
+                response!["id"].intValue,
+                ""
             ))
             
         }
@@ -131,7 +137,8 @@ class Lipstick {
                 colorName,
                 description,
                 color,
-                detailId
+                detailId,
+                ""
             ))
         }
         return lipsticks
