@@ -75,6 +75,7 @@ class TryMeViewController: UIViewController  {
         super.viewDidLayoutSubviews()
         
         previewLayer.frame = cameraView.frame
+        cameraView.bringSubviewToFront(collectionView)
     }
 }
 
