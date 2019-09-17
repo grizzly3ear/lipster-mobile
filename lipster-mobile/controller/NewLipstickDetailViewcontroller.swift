@@ -48,6 +48,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
     var colors: [Lipstick] = [Lipstick]()
     var imageHeroId = String()
    
+    var lipsticks = [Lipstick]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +96,18 @@ class NewLipstickDetailViewcontroller: UIViewController {
         if let segment = segmentedControl.segment(at: segmentedControl.selectedIndex) {
             segmentedControl.indicator.boxView.backgroundColor = segment.titleColor(for: .selected)
             segmentedControl.indicator.lineView.backgroundColor = segment.titleColor(for: .selected)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showReview" {
+            if let destination = segue.destination as? ReviewViewController {
+                print(lipstick?.lipstickBrand)
+                destination.lipstick = lipstick
+//                destination.lipstickBrand.text = lipstick?.lipstickBrand
+//                destination.lipstickImage.sd_setImage(with: URL(string: (lipstick?.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
+//                destination.lipstickColorName.text = lipstick?.lipstickColorName
+            }
         }
     }
     

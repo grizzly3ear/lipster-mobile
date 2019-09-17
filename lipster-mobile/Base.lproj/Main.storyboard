@@ -2613,10 +2613,10 @@ Review</string>
                     </view>
                     <navigationItem key="navigationItem" id="lXE-wJ-0iB"/>
                     <connections>
-                        <outlet property="lipstickBrand" destination="LxO-bX-M6a" id="OdS-RJ-qEz"/>
-                        <outlet property="lipstickColorName" destination="3Il-7b-jVr" id="IQh-Rj-6oB"/>
-                        <outlet property="lipstickImage" destination="MZo-Or-s0E" id="nU3-vl-CWg"/>
-                        <outlet property="lipstickName" destination="YK3-A0-f9Y" id="fJx-Xa-T0a"/>
+                        <outlet property="lipstickBrand" destination="LxO-bX-M6a" id="BVg-mh-Zpj"/>
+                        <outlet property="lipstickColorName" destination="3Il-7b-jVr" id="TdV-GI-8XP"/>
+                        <outlet property="lipstickImage" destination="MZo-Or-s0E" id="RdD-bl-pZg"/>
+                        <outlet property="lipstickName" destination="YK3-A0-f9Y" id="gOT-Bp-3jB"/>
                         <outlet property="reviewTableView" destination="JDZ-Cu-545" id="qXK-Ee-Hao"/>
                         <outlet property="typeReview" destination="ryo-wH-8Fa" id="2OL-p8-nox"/>
                     </connections>

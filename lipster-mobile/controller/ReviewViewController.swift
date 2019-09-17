@@ -18,12 +18,14 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var reviewTableView: UITableView!
 
     @IBOutlet weak var typeReview: UITextField!
+    
+    var lipstick: Lipstick!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userList = self.createUserArray()
-        
+        initialUI()
     }
     @IBAction func sendButton(_ sender: Any) {
         insertNewReview()
@@ -85,6 +87,10 @@ extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
     }
 }
 
-
-
-
+extension ReviewViewController {
+    func initialUI() {
+        self.lipstickBrand.text = lipstick.lipstickBrand
+        self.lipstickImage.sd_setImage(with: URL(string: (lipstick.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
+        self.lipstickColorName.text = lipstick.lipstickColorName
+    }
+}
