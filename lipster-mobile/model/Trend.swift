@@ -9,28 +9,57 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-class Trend {
+class Trend: NSObject, NSCoding {
     
     var title: String
     var image: String
     var lipstickColor: UIColor
     var skinColor: UIColor
-    var description: String
+    var detail: String
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(title, forKey: "title")
+        aCoder.encode(image, forKey: "image")
+        aCoder.encode(lipstickColor, forKey: "lipstickColor")
+        aCoder.encode(skinColor, forKey: "skinColor")
+        aCoder.encode(detail, forKey: "detail")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let title = aDecoder.decodeObject(forKey: "title") as! String
+        let image = aDecoder.decodeObject(forKey: "image") as! String
+        let lipstickColor = aDecoder.decodeObject(forKey: "lipstickColor") as! UIColor
+        let skinColor = aDecoder.decodeObject(forKey: "skinColor") as! UIColor
+        let detail = aDecoder.decodeObject(forKey: "detail") as! String
+        self.init(title, image, lipstickColor, skinColor, detail)
+    }
     
     init(_ title: String, _ trendImage: String, _ trendLipstickColor: UIColor, _ trendSkinColor: UIColor, _ trendDescription: String) {
         self.title = title
         self.image = trendImage
         self.lipstickColor = trendLipstickColor
         self.skinColor = trendSkinColor
-        self.description = trendDescription   
+        self.detail = trendDescription   
     }
     
-    init() {
+    override init() {
         title = String()
         image = String()
         lipstickColor = .black
         skinColor = .black
-        description = String()
+        detail = String()
+    }
+    
+    public static func getTrendArrayFromUserDefault(forKey: String) -> [Trend] {
+        if let encodedFavTrends = UserDefaults.standard.data(forKey: forKey) {
+            return NSKeyedUnarchiver.unarchiveObject(with: encodedFavTrends) as! [Trend]
+        }
+        return [Trend]()
+    }
+    
+    public static func setTrendArrayToUserDefault(forKey: String, _ arr: [Trend]) {
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: arr)
+        UserDefaults.standard.set(encodedData, forKey: forKey)
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [Trend] {

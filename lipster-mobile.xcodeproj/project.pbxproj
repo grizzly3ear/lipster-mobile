@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
+		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
 		3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032BDD322F92755009E325A /* LipstickRepository.swift */; };
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
 		3032BDD322F92755009E325A /* LipstickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRepository.swift; sourceTree = "<group>"; };
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */,
 				30C78E972299B91D0032A965 /* UIUtilityHelper.swift */,
 				305477CE229A57CC009E4090 /* UITextFieldHelper.swift */,
+				2CCBA1B62330C1DC00F2978F /* Constant.swift */,
+				2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */,
 				D822550922FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift in Sources */,
 				D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */,
+				2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
@@ -506,6 +513,7 @@
 				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
 				D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */,
 				D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */,
+				2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */,
 				3071185922FC1BAC00E25AF4 /* TrendCollectionViewCell.swift in Sources */,
 				D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */,
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,

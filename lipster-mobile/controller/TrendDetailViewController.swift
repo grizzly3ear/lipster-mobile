@@ -22,12 +22,15 @@ class TrendDetailViewController: UIViewController {
         super.viewDidLoad()
         initUserInterface()
         initHero()
+        initGesture()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
         let colorSelect = trendLipColorView.backgroundColor!
-        performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
+
+        self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,9 +52,67 @@ extension TrendDetailViewController {
     func setUserInterface(_ trend: Trend) {
         self.trendLipColorView.backgroundColor = trend.lipstickColor
         self.trendSkinColorView.backgroundColor = trend.skinColor
-        self.trendDescription.text = trend.description
+        self.trendDescription.text = trend.detail
         self.trendImageView.sd_setImage(with: URL(string:  trend.image), placeholderImage: UIImage(named: "nopic")!)
     }
+}
+
+// MARK: Set up gesture on fav trend collection
+extension TrendDetailViewController {
+    func initGesture() {
+        trendImageView.isUserInteractionEnabled = true
+        setUpPanGesture()
+    }
+    
+    func setUpPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.onDrag))
+        trendImageView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func onDrag(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: nil)
+        let progress = translation.y / 2 / view.bounds.height
+        switch sender.state {
+        case .began:
+            hero.dismissViewController()
+        case .changed:
+            Hero.shared.update(progress)
+            
+            Hero.shared.apply(modifiers: [.position(CGPoint(
+                x: trendImageView.center.x,
+                y: translation.y + trendImageView.center.y
+            ))], to: trendImageView)
+            
+            Hero.shared.apply(modifiers: [.position(CGPoint(
+                x: trendLipColorView.center.x,
+                y: translation.y + trendLipColorView.center.y
+            ))], to: trendLipColorView)
+            
+            Hero.shared.apply(modifiers: [.position(CGPoint(
+                x: trendSkinColorView.center.x,
+                y: translation.y + trendSkinColorView.center.y
+            ))], to: trendSkinColorView)
+            
+            Hero.shared.apply(modifiers: [.position(CGPoint(
+                x: trendNameLabel.center.x,
+                y: translation.y + trendNameLabel.center.y
+            ))], to: trendNameLabel)
+            
+            Hero.shared.apply(modifiers: [.position(CGPoint(
+                x: trendDescription.center.x,
+                y: translation.y + trendDescription.center.y
+            ))], to: trendDescription)
+
+            
+        default:
+            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.3 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+    }
+
 }
 
 

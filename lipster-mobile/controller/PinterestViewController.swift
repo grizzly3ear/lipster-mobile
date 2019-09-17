@@ -108,9 +108,26 @@ extension PinterestViewController {
         let cell = trendListCollectionView.cellForItem(at: indexPath!) as! TrendCollectionViewCell
         
         cell.likeAnimator.animate {
-            print("like")
+            self.addFavoriteTrend(self.trends[(indexPath?.item)!])
         }
+    }
+}
 
-    
+extension PinterestViewController {
+    func addFavoriteTrend(_ trend: Trend?) {
+        var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+        
+        if (trend != nil) {
+            let contain = favTrends.contains {
+                $0.title == trend?.title &&
+                $0.detail == trend?.detail &&
+                $0.image == trend?.image
+            }
+            if !contain {
+                favTrends.append(trend!)
+            }
+            print(favTrends.count)
+            Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
+        }        
     }
 }
