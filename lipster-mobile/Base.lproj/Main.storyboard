@@ -1898,7 +1898,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="562"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
                                         <rect key="frame" x="307" y="15" width="60" height="508"/>
@@ -1967,7 +1967,7 @@ Review</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gND-Xd-kF3" firstAttribute="leading" secondItem="Qg2-Ut-RaP" secondAttribute="leading" id="KmO-5F-5Ji"/>
-                            <constraint firstAttribute="bottom" secondItem="gND-Xd-kF3" secondAttribute="bottom" id="VFh-0M-I0b"/>
+                            <constraint firstAttribute="bottom" secondItem="gND-Xd-kF3" secondAttribute="bottom" constant="105" id="VFh-0M-I0b"/>
                             <constraint firstItem="gND-Xd-kF3" firstAttribute="top" secondItem="Qg2-Ut-RaP" secondAttribute="top" id="hKM-5h-7Lo"/>
                             <constraint firstAttribute="trailing" secondItem="gND-Xd-kF3" secondAttribute="trailing" id="zOS-iD-tGe"/>
                         </constraints>
@@ -2807,6 +2807,7 @@ Review</string>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="0dF-lu-0WY"/>
         <segue reference="JIg-n3-5oa"/>
+        <segue reference="8ws-yL-pe9"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
