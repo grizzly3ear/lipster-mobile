@@ -92,5 +92,6 @@ extension ReviewViewController {
         self.lipstickBrand.text = lipstick.lipstickBrand
         self.lipstickImage.sd_setImage(with: URL(string: (lipstick.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
         self.lipstickColorName.text = lipstick.lipstickColorName
+        self.lipstickName.text = lipstick.lipstickName
     }
 }
