@@ -32,7 +32,6 @@ class TryMeViewController: UIViewController  {
     @IBOutlet private weak var cameraView: UIView!
     
     private lazy var previewOverlayView: UIImageView = {
-        
         precondition(isViewLoaded)
         let previewOverlayView = UIImageView(frame: .zero)
         previewOverlayView.contentMode = UIView.ContentMode.scaleAspectFill
@@ -52,6 +51,7 @@ class TryMeViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cameraView.frame = view.frame
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         setUpPreviewOverlayView()
         setUpAnnotationOverlayView()
@@ -256,20 +256,6 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         visionImage.metadata = metadata
         let imageWidth = CGFloat(CVPixelBufferGetWidth(imageBuffer))
         let imageHeight = CGFloat(CVPixelBufferGetHeight(imageBuffer))
-//        var shouldEnableClassification = false
-//        var shouldEnableMultipleObjects = false
-//        switch currentDetector {
-//        case .onDeviceObjectProminentWithClassifier, .onDeviceObjectMultipleWithClassifier:
-//            shouldEnableClassification = true
-//        default:
-//            break
-//        }
-//        switch currentDetector {
-//        case .onDeviceObjectMultipleNoClassifier, .onDeviceObjectMultipleWithClassifier:
-//            shouldEnableMultipleObjects = true
-//        default:
-//            break
-//        }
         
         switch currentDetector {
         case .onDeviceFace:
@@ -329,20 +315,6 @@ extension TryMeViewController {
     }
     
     private func addContours(for face: VisionFace, width: CGFloat, height: CGFloat) {
-//        // Face
-//        if let faceContour = face.contour(ofType: .face) {
-//            for point in faceContour.points {
-//                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-//                UIUtilities.addCircle(
-//                    atPoint: cgPoint,
-//                    to: annotationOverlayView,
-//                    color: UIColor.blue,
-//                    radius: Constant.smallDotRadius
-//                )
-//            }
-//        }
-        
-        // Lips
         if let topUpperLipContour = face.contour(ofType: .upperLipTop) {
             for point in topUpperLipContour.points {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
