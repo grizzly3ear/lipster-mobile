@@ -2405,7 +2405,6 @@ Review</string>
                                                 <state key="normal" title="Button" image="try-this-shade"/>
                                                 <connections>
                                                     <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
-                                                    <segue destination="MjW-ox-6lU" kind="show" identifier="showTryMe" id="Lqe-bR-pOS"/>
                                                 </connections>
                                             </button>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-yW-lf1">
@@ -2445,7 +2444,6 @@ Review</string>
                                                 </state>
                                                 <connections>
                                                     <action selector="clickedSeeReviews:" destination="udf-5l-NvU" eventType="touchUpInside" id="IJB-Zr-aiM"/>
-                                                    <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="rOv-yL-EsG"/>
                                                 </connections>
                                             </button>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uqo-7f-rOw">
@@ -2496,6 +2494,8 @@ Review</string>
                         <outlet property="segmentedControl3" destination="Yhv-km-JxF" id="yJO-Xy-dLU"/>
                         <outlet property="titleNavigationItem" destination="MEO-e2-Xae" id="gYW-zR-g1i"/>
                         <outlet property="tryMeButton" destination="r1A-fK-jfp" id="NLb-2s-Pd3"/>
+                        <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="sbi-OJ-sqx"/>
+                        <segue destination="MjW-ox-6lU" kind="show" identifier="showTryMe" id="0dF-lu-0WY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SL-zn-LFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2511,32 +2511,32 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-Or-s0E">
-                                <rect key="frame" x="36" y="82" width="70" height="70"/>
+                                <rect key="frame" x="36" y="22" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxO-bX-M6a">
-                                <rect key="frame" x="131" y="84" width="215" height="21"/>
+                                <rect key="frame" x="131" y="24" width="215" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Il-7b-jVr">
-                                <rect key="frame" x="131" y="108" width="215" height="21"/>
+                                <rect key="frame" x="131" y="48" width="215" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK3-A0-f9Y">
-                                <rect key="frame" x="131" y="131" width="215" height="21"/>
+                                <rect key="frame" x="131" y="71" width="215" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-Cu-545">
-                                <rect key="frame" x="0.0" y="181" width="375" height="394"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="366"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2588,19 +2588,19 @@ Review</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-VR-iqg">
-                                <rect key="frame" x="0.0" y="574" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="479" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ryo-wH-8Fa">
-                                <rect key="frame" x="16" y="598" width="303" height="30"/>
+                                <rect key="frame" x="16" y="490" width="303" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlq-aK-rBD">
-                                <rect key="frame" x="333" y="594" width="26" height="26"/>
+                                <rect key="frame" x="333" y="491" width="26" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="send"/>
                                 <connections>
@@ -2688,7 +2688,7 @@ Review</string>
         <segue reference="s8G-gc-cZg"/>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="Q11-LN-cwa"/>
-        <segue reference="Lqe-bR-pOS"/>
+        <segue reference="0dF-lu-0WY"/>
         <segue reference="JIg-n3-5oa"/>
         <segue reference="nXF-J0-F0d"/>
     </inferredMetricsTieBreakers>
