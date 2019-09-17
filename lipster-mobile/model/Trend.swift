@@ -51,10 +51,15 @@ class Trend: NSObject, NSCoding {
     }
     
     public static func getTrendArrayFromUserDefault(forKey: String) -> [Trend] {
-        if let encodedFavTrends = UserDefaults.standard.data(forKey: DefaultConstant.favoriteTrends) {
+        if let encodedFavTrends = UserDefaults.standard.data(forKey: forKey) {
             return NSKeyedUnarchiver.unarchiveObject(with: encodedFavTrends) as! [Trend]
         }
         return [Trend]()
+    }
+    
+    public static func setTrendArrayToUserDefault(forKey: String, _ arr: [Trend]) {
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: arr)
+        UserDefaults.standard.set(encodedData, forKey: forKey)
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [Trend] {
