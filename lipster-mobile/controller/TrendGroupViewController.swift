@@ -33,6 +33,7 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     var trendGroups = [TrendGroup]()

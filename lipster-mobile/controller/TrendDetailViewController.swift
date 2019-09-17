@@ -72,45 +72,55 @@ extension TrendDetailViewController {
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: nil)
         let progress = translation.y / 2 / view.bounds.height
-        switch sender.state {
-        case .began:
-            hero.dismissViewController()
-        case .changed:
-            Hero.shared.update(progress)
-            
-            Hero.shared.apply(modifiers: [.position(CGPoint(
-                x: trendImageView.center.x,
-                y: translation.y + trendImageView.center.y
-            ))], to: trendImageView)
-            
-            Hero.shared.apply(modifiers: [.position(CGPoint(
-                x: trendLipColorView.center.x,
-                y: translation.y + trendLipColorView.center.y
-            ))], to: trendLipColorView)
-            
-            Hero.shared.apply(modifiers: [.position(CGPoint(
-                x: trendSkinColorView.center.x,
-                y: translation.y + trendSkinColorView.center.y
-            ))], to: trendSkinColorView)
-            
-            Hero.shared.apply(modifiers: [.position(CGPoint(
-                x: trendNameLabel.center.x,
-                y: translation.y + trendNameLabel.center.y
-            ))], to: trendNameLabel)
-            
-            Hero.shared.apply(modifiers: [.position(CGPoint(
-                x: trendDescription.center.x,
-                y: translation.y + trendDescription.center.y
-            ))], to: trendDescription)
-
-            
-        default:
-            if progress + sender.velocity(in: nil).y / view.bounds.height > 0.3 {
-                Hero.shared.finish()
+        print("translation \(translation)")
+        if translation.y <= 0 {
+            if translation.x <= 0 {
+                print("swipe left")
             } else {
-                Hero.shared.cancel()
+                print("swipe right")
+            }
+        } else {
+            switch sender.state {
+            case .began:
+                hero.dismissViewController()
+            case .changed:
+                Hero.shared.update(progress)
+                
+                Hero.shared.apply(modifiers: [.position(CGPoint(
+                    x: trendImageView.center.x,
+                    y: translation.y + trendImageView.center.y
+                ))], to: trendImageView)
+                
+                Hero.shared.apply(modifiers: [.position(CGPoint(
+                    x: trendLipColorView.center.x,
+                    y: translation.y + trendLipColorView.center.y
+                ))], to: trendLipColorView)
+                
+                Hero.shared.apply(modifiers: [.position(CGPoint(
+                    x: trendSkinColorView.center.x,
+                    y: translation.y + trendSkinColorView.center.y
+                ))], to: trendSkinColorView)
+                
+                Hero.shared.apply(modifiers: [.position(CGPoint(
+                    x: trendNameLabel.center.x,
+                    y: translation.y + trendNameLabel.center.y
+                ))], to: trendNameLabel)
+                
+                Hero.shared.apply(modifiers: [.position(CGPoint(
+                    x: trendDescription.center.x,
+                    y: translation.y + trendDescription.center.y
+                ))], to: trendDescription)
+                
+                
+            default:
+                if progress + sender.velocity(in: nil).y / view.bounds.height > 0.3 {
+                    Hero.shared.finish()
+                } else {
+                    Hero.shared.cancel()
+                }
             }
         }
+        
     }
 
 }
