@@ -1900,8 +1900,9 @@ Review</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Xd-kF3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
-                                        <rect key="frame" x="307" y="72" width="60" height="508"/>
+                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yvG-zx-Lby">
+                                        <rect key="frame" x="307" y="15" width="60" height="508"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="53Z-lz-hdm">
                                             <size key="itemSize" width="50" height="50"/>
@@ -1959,13 +1960,7 @@ Review</string>
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="yvG-zx-Lby" firstAttribute="top" secondItem="gND-Xd-kF3" secondAttribute="topMargin" id="8I6-Ro-F59"/>
-                                    <constraint firstItem="yvG-zx-Lby" firstAttribute="leading" secondItem="b1u-Qh-ba8" secondAttribute="leading" constant="307" id="CJE-WH-dRS"/>
-                                    <constraint firstItem="yvG-zx-Lby" firstAttribute="trailing" secondItem="gND-Xd-kF3" secondAttribute="trailingMargin" id="KXZ-VO-uw0"/>
-                                    <constraint firstItem="b1u-Qh-ba8" firstAttribute="bottom" secondItem="yvG-zx-Lby" secondAttribute="bottom" constant="38" id="ecU-jP-cXu"/>
-                                </constraints>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <viewLayoutGuide key="safeArea" id="b1u-Qh-ba8"/>
                             </view>
                         </subviews>
