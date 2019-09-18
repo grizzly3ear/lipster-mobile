@@ -2438,9 +2438,9 @@ Review</string>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUg-Xc-sfC">
                                                 <rect key="frame" x="45" y="399" width="284" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <state key="normal" title="Button" backgroundImage="review bg">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="clickedSeeReviews:" destination="udf-5l-NvU" eventType="touchUpInside" id="IJB-Zr-aiM"/>
@@ -2605,7 +2605,7 @@ Review</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="review_line" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-MZ-mAb">
-                                <rect key="frame" x="0.0" y="103" width="375" height="25"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="7"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZo-Or-s0E">
@@ -2695,7 +2695,7 @@ Review</string>
         <image name="open-close" width="96" height="96"/>
         <image name="password" width="96" height="96"/>
         <image name="review bg" width="741" height="79"/>
-        <image name="review_line" width="593" height="23"/>
+        <image name="review_line" width="780" height="8"/>
         <image name="send" width="48" height="48"/>
         <image name="show lipstick list" width="468" height="59"/>
         <image name="signUp_bg" width="427" height="471"/>

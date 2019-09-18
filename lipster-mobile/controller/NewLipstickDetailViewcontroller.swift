@@ -29,6 +29,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
  
+    @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
@@ -52,7 +53,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        numberOfReviewLabel()
+        print("review ==> \(reviews.count)")
         initHero()
         initReactiveData()
         fetchData()
@@ -61,8 +63,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.titleNavigationItem.title = lipstick?.lipstickBrand
      
-        segmentedControl3.append(title: "Description").set(title: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1) , for: .selected)
-        segmentedControl3.append(title: "Ingredient").set(title: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), for: .selected)
+        segmentedControl3.append(title: "Description").set(title: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1) , for: .selected)
+        segmentedControl3.append(title: "Ingredient").set(title: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .selected)
 
       //  segmentedControl3.indicator.boxView.alpha = 0.1
         
@@ -88,9 +90,20 @@ class NewLipstickDetailViewcontroller: UIViewController {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
     
+    func numberOfReviewLabel(){
+        if reviews.count == 0 {
+            reviewButton.setTitle("No review", for: .normal)
+        } else {
+            reviewButton.setTitle("See review (\(reviews.count))", for: .normal)
+        }
+    }
+    
     @IBAction func clickedSeeReviews(_ sender: Any) {
         self.performSegue(withIdentifier: "showReview", sender: self)
+     
     }
+    
+    
     @objc func changeIndex(segmentedControl: MXSegmentedControl) {
         
         if let segment = segmentedControl.segment(at: segmentedControl.selectedIndex) {

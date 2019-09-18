@@ -40,9 +40,7 @@ class ReviewViewController: UIViewController {
         
         return [user1,user2]
     }
-    var userReviews: [String] = ["Today I bought this stain in Always Red and Dark Berry. I tried a bit of it in the store, and it was amazing. Since I am not a fan of the sticky feel of lip gloss or the weight of most lipsticks, this product is perfect for me. It doesn't even feel like its there, and the sales rep that helped me said that it lasts for hours. It's creamy and comfortable, and the color isn't too sheer. I let a friend try some once I opened mine, and she loved all the same things I do. Even better, it is decently priced for something so good that will last me a while, because it doesn't take all that much to decently cover my lips.",
-                                 "love this color , should try!",
-                                 "nice one."]
+   // var userReviews: [String] = ["Today I bought this stain in Always Red and Dark Berry. I tried a bit of it in the store, and it was amazing. Since I am not a fan of the sticky feel of lip gloss or the weight of most lipsticks, this product is perfect for me. It doesn't even feel like its there, and the sales rep that helped me said that it lasts for hours. It's creamy and comfortable, and the color isn't too sheer. I let a friend try some once I opened mine, and she loved all the same things I do. Even better, it is decently priced for something so good that will last me a while, because it doesn't take all that much to decently cover my lips.","love this color , should try!","nice one."]
     
     func insertNewReview() {
         
@@ -50,8 +48,8 @@ class ReviewViewController: UIViewController {
             print("Add Review Text Field is empty")
         }
         //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-        userReviews.append(typeReview.text!)
-        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
+     //   userReviews.append(typeReview.text!)
+        let indexPath = IndexPath(row: userList.count - 1, section: 0)
         
         reviewTableView.beginUpdates()
         reviewTableView.insertRows(at: [indexPath], with: .automatic)
@@ -66,14 +64,15 @@ class ReviewViewController: UIViewController {
 extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userReviews.count
+        return userList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-        let review = userReviews[indexPath.row]
-        cell.userReviewLabel.text = review
+        let review = userList[indexPath.row]
+        cell.setUserReview(user: review)
+       // cell.userReviewLabel.text = review
 //        cell.userReviewLabel.text = reviews[indexPath.item].userReview
 //        cell.userNameLabel.text = reviews[indexPath.item].userName
 //        cell.reviewDate.text = reviews[indexPath.item].dateReview
