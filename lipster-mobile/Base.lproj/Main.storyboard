@@ -2330,13 +2330,6 @@ Review</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
-                                                <rect key="frame" x="96" y="358" width="182" height="30"/>
-                                                <state key="normal" title="Button" image="try-this-shade"/>
-                                                <connections>
-                                                    <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
-                                                </connections>
-                                            </button>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-yW-lf1">
                                                 <rect key="frame" x="0.0" y="492" width="375" height="420"/>
                                                 <subviews>
@@ -2443,6 +2436,14 @@ Review</string>
                                                     <outlet property="delegate" destination="udf-5l-NvU" id="Zvc-eV-NXa"/>
                                                 </connections>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
+                                                <rect key="frame" x="86" y="353" width="202" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="try-this-shade"/>
+                                                <connections>
+                                                    <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2450,7 +2451,6 @@ Review</string>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="bottom" secondItem="jAb-2q-rZ1" secondAttribute="bottomMargin" id="5CN-lh-19U"/>
                                             <constraint firstItem="ltl-ql-sD7" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="273" id="AV3-sF-gEU"/>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="bottom" secondItem="Hln-nP-OFo" secondAttribute="bottom" id="AVQ-4C-IsW"/>
-                                            <constraint firstItem="LNL-eK-Jgg" firstAttribute="trailing" secondItem="r1A-fK-jfp" secondAttribute="trailing" id="Ba3-Hs-e0g"/>
                                             <constraint firstAttribute="trailing" secondItem="iOI-yW-lf1" secondAttribute="trailing" id="C5L-Dz-tuC"/>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="leading" secondItem="jAb-2q-rZ1" secondAttribute="leading" constant="45" id="CZE-Wr-Imj"/>
                                             <constraint firstItem="LIA-RK-nHR" firstAttribute="top" secondItem="8hm-Ti-ecJ" secondAttribute="bottom" constant="3" id="Cih-zB-0w4"/>
@@ -2459,7 +2459,6 @@ Review</string>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="leading" secondItem="LIA-RK-nHR" secondAttribute="leading" id="LhH-aP-AmQ"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="LIA-RK-nHR" secondAttribute="centerX" id="N7L-Wh-rW4"/>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="centerX" secondItem="LNL-eK-Jgg" secondAttribute="centerX" id="NBi-CY-ZY5"/>
-                                            <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="r1A-fK-jfp" secondAttribute="centerX" id="Rrw-eJ-ImL"/>
                                             <constraint firstItem="hUg-Xc-sfC" firstAttribute="centerX" secondItem="Uqo-7f-rOw" secondAttribute="centerX" id="Rzn-KK-ioO"/>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="leading" secondItem="hUg-Xc-sfC" secondAttribute="leading" id="Tpd-tX-l2U"/>
                                             <constraint firstAttribute="height" constant="920" id="UXX-hE-baX"/>
@@ -2468,7 +2467,6 @@ Review</string>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="leading" secondItem="Uqo-7f-rOw" secondAttribute="leading" id="ZIE-Ej-ZhE"/>
                                             <constraint firstItem="Uqo-7f-rOw" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="10" id="ap2-bJ-oWf"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="X0G-MV-q6e" secondAttribute="centerX" id="bTY-59-oEP"/>
-                                            <constraint firstItem="r1A-fK-jfp" firstAttribute="top" secondItem="ltl-ql-sD7" secondAttribute="bottom" constant="64" id="dpV-O3-dm8"/>
                                             <constraint firstAttribute="bottom" secondItem="Yhv-km-JxF" secondAttribute="bottom" constant="429" id="ePO-f4-Udc"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="hUg-Xc-sfC" secondAttribute="centerX" id="ezh-Vf-F1n"/>
                                             <constraint firstItem="Hln-nP-OFo" firstAttribute="leading" secondItem="LNL-eK-Jgg" secondAttribute="trailing" constant="20" id="g7C-5y-Qoh"/>
@@ -2476,7 +2474,6 @@ Review</string>
                                             <constraint firstItem="hUg-Xc-sfC" firstAttribute="centerX" secondItem="LNL-eK-Jgg" secondAttribute="centerX" id="hc6-oH-Tlv"/>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="leading" secondItem="jAb-2q-rZ1" secondAttribute="leading" constant="97" id="hm9-5p-dKP"/>
                                             <constraint firstItem="hUg-Xc-sfC" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="399" id="iYh-Kw-Hac"/>
-                                            <constraint firstItem="hUg-Xc-sfC" firstAttribute="top" secondItem="r1A-fK-jfp" secondAttribute="bottom" constant="11" id="nFX-RX-cah"/>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="topMargin" id="t4R-W3-mcY"/>
                                             <constraint firstItem="Yhv-km-JxF" firstAttribute="leading" secondItem="jAb-2q-rZ1" secondAttribute="leading" constant="1" id="t5q-TT-Uh6"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="top" secondItem="Yhv-km-JxF" secondAttribute="bottom" constant="1" id="tNc-BR-ubv"/>
@@ -2736,7 +2733,7 @@ Review</string>
         <segue reference="iHi-jt-pK5"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="0dF-lu-0WY"/>
-        <segue reference="8ws-yL-pe9"/>
+        <segue reference="JIg-n3-5oa"/>
         <segue reference="nXF-J0-F0d"/>
     </inferredMetricsTieBreakers>
 </document>
