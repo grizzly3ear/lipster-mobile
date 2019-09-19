@@ -57,21 +57,21 @@ class Lipstick {
             
             for lipstickDetail in brand.1["details"] {
                 
-                for lipstickColor in lipstickDetail.1["colors"] {
+                for lipstickColorJSON in lipstickDetail.1["colors"] {
                     
                     var images = [String]()
-                    for image in lipstickColor.1["images"] {
+                    for image in lipstickColorJSON.1["images"] {
                         images.append(image.1["image"].stringValue)
                     }
-                    let lipstickId = lipstickColor.1["id"].intValue
+                    let lipstickId = lipstickColorJSON.1["id"].intValue
                     let lipstickBrand = brand.1["name"].stringValue
                     let lipstickName = lipstickDetail.1["name"].stringValue
-                    let lipstickColorName = lipstickColor.1["color_name"].stringValue
+                    let lipstickColorName = lipstickColorJSON.1["color_name"].stringValue
                     let lipstickDescription = lipstickDetail.1["description"].stringValue
-                    let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
+                    let lipstickColor = UIColor.init(hexString: lipstickColorJSON.1["rgb"].stringValue)
                     let lipstickDetailId = lipstickDetail.1["id"].intValue
                     
-                    let lipstickIngradients = lipstickDetail.1["ingredients"].stringValue
+                    let lipstickIngradients = lipstickColorJSON.1["composition"].stringValue
                     
                     lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId, lipstickIngradients ))
                 }
