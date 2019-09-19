@@ -53,6 +53,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.reviews = self.createUserArray()
         numberOfReviewLabel()
         print("review ==> \(reviews.count)")
         initHero()
@@ -70,6 +72,13 @@ class NewLipstickDetailViewcontroller: UIViewController {
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
        
+    }
+    
+    func createUserArray() -> [UserReview] {
+        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
+        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
+        
+        return [user1,user2]
     }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
@@ -93,8 +102,10 @@ class NewLipstickDetailViewcontroller: UIViewController {
     func numberOfReviewLabel(){
         if reviews.count == 0 {
             reviewButton.setTitle("No review", for: .normal)
+            reviewButton.isEnabled = false
         } else {
             reviewButton.setTitle("See review (\(reviews.count))", for: .normal)
+            reviewButton.isEnabled = true
         }
     }
     
@@ -117,7 +128,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
             if let destination = segue.destination as? ReviewViewController {
                 print(lipstick?.lipstickName)
                 destination.lipstick = lipstick
-
+                destination.userReviews = reviews
             }
         }else if segueIdentifier == "showContainer" {
             if let destination = segue.destination as? ContainerViewController {

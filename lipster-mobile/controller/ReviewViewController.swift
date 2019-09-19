@@ -24,7 +24,6 @@ class ReviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userList = self.createUserArray()
         initialUI()
     }
     @IBAction func sendButton(_ sender: Any) {
@@ -32,16 +31,8 @@ class ReviewViewController: UIViewController {
         
     }
     
-    var userList  = [UserReview] ()
-    
-    func createUserArray() -> [UserReview] {
-        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
-        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
-        
-        return [user1,user2]
-    }
-   // var userReviews: [String] = ["Today I bought this stain in Always Red and Dark Berry. I tried a bit of it in the store, and it was amazing. Since I am not a fan of the sticky feel of lip gloss or the weight of most lipsticks, this product is perfect for me. It doesn't even feel like its there, and the sales rep that helped me said that it lasts for hours. It's creamy and comfortable, and the color isn't too sheer. I let a friend try some once I opened mine, and she loved all the same things I do. Even better, it is decently priced for something so good that will last me a while, because it doesn't take all that much to decently cover my lips.","love this color , should try!","nice one."]
-    
+    var userReviews  = [UserReview]()
+
     func insertNewReview() {
         
         if typeReview.text!.isEmpty {
@@ -49,7 +40,7 @@ class ReviewViewController: UIViewController {
         }
         //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
      //   userReviews.append(typeReview.text!)
-        let indexPath = IndexPath(row: userList.count - 1, section: 0)
+        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
         
         reviewTableView.beginUpdates()
         reviewTableView.insertRows(at: [indexPath], with: .automatic)
@@ -64,13 +55,13 @@ class ReviewViewController: UIViewController {
 extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userList.count
+        return userReviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
-        let review = userList[indexPath.row]
+        let review = userReviews[indexPath.row]
         cell.setUserReview(user: review)
        // cell.userReviewLabel.text = review
 //        cell.userReviewLabel.text = reviews[indexPath.item].userReview
