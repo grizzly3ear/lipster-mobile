@@ -35,6 +35,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
   
+    let padding: CGFloat = 20.0
+    
     var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -60,6 +62,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
         initReactiveData()
         fetchData()
         initialUI()
+        lipstickSelectColorCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.titleNavigationItem.title = lipstick?.lipstickBrand
