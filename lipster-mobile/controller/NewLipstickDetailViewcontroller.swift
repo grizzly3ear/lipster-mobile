@@ -56,7 +56,6 @@ class NewLipstickDetailViewcontroller: UIViewController {
         
         self.reviews = self.createUserArray()
         numberOfReviewLabel()
-        print("review ==> \(reviews.count)")
         initHero()
         initReactiveData()
         fetchData()
@@ -250,6 +249,7 @@ extension NewLipstickDetailViewcontroller{
             self.lipstickSelectColorCollectionView.reloadData()
             self.lipstickSelectColorCollectionView.setNeedsLayout()
             self.lipstickSelectColorCollectionView.setNeedsDisplay()
+            print("color ==> \(self.colors.count)")
         })
         colorDataPipe.output.observe(colorDataObserver!)
     }
