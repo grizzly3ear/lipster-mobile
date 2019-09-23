@@ -23,6 +23,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     let padding: CGFloat = 8.0
     
+    var resultsTableViewController:  SearchViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +37,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         searchBarLip()
         addNavBarImage()
         initHero()
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -59,33 +61,39 @@ extension HomeViewController {
 
 extension HomeViewController {
     func searchBarLip() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as UIViewController
         
-        if #available(iOS 11.0, *) {
-            let search = UISearchController(searchResultsController: nil)
-            search.delegate = self
-            let searchBackground = search.searchBar
-            searchBackground.placeholder = "Brand, Color, ..."
-            
-            if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
-                textfield.textColor = UIColor.black
-                if let backgroundview = textfield.subviews.first {
-                    
-                    backgroundview.backgroundColor = UIColor.white
-                    
-                    backgroundview.layer.cornerRadius = 10;
-                    backgroundview.clipsToBounds = true;
-                }
+        let search = UISearchController(searchResultsController: viewController)
+        search.delegate = self
+        search.searchResultsUpdater = viewController as! UISearchResultsUpdating
+        search.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        search.loadViewIfNeeded()
+        
+        search.searchBar.delegate = viewController as! UISearchBarDelegate
+        search.hidesNavigationBarDuringPresentation = false
+        navigationItem.titleView = search.searchBar
+        let searchBackground = search.searchBar
+        searchBackground.placeholder = "Brand, Color, ..."
+        
+        if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            if let backgroundview = textfield.subviews.first {
+                
+                backgroundview.backgroundColor = UIColor.white
+                
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
             }
-            
-            if let navigationbar = self.navigationController?.navigationBar {
-                navigationbar.barTintColor = UIColor.black
-            }
-            navigationItem.searchController = search
-            navigationItem.hidesSearchBarWhenScrolling = false
         }
+        
+        if let navigationbar = self.navigationController?.navigationBar {
+            navigationbar.barTintColor = UIColor.black
+        }
+        navigationItem.searchController = search
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
 }
 
