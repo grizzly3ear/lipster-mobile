@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2553,7 +2553,7 @@ Review</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-Cu-545">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JDZ-Cu-545">
                                 <rect key="frame" x="0.0" y="116" width="375" height="366"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2565,38 +2565,53 @@ Review</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user1" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-LW-r6R">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user1" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-LW-r6R">
                                                     <rect key="frame" x="15" y="11" width="62" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="bBN-Be-i2T"/>
+                                                        <constraint firstAttribute="width" constant="62" id="tVc-lm-faN"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8M-OC-V78">
-                                                    <rect key="frame" x="100" y="6" width="247" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8M-OC-V78">
+                                                    <rect key="frame" x="100" y="8" width="82" height="19"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfL-XL-bO1">
-                                                    <rect key="frame" x="100" y="27" width="247" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfL-XL-bO1" customClass="ExpandableLabel" customModule="ExpandableLabel">
+                                                    <rect key="frame" x="100" y="27" width="260" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="02J-bu-Rdq"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="V9g-US-RtA"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3c-f5-ilr">
-                                                    <rect key="frame" x="100" y="74" width="106" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3c-f5-ilr">
+                                                    <rect key="frame" x="100" y="75.5" width="32.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dfL-XL-bO1" firstAttribute="leading" secondItem="HNs-LW-r6R" secondAttribute="trailing" constant="23" id="Od5-I5-pFx"/>
+                                                <constraint firstItem="HNs-LW-r6R" firstAttribute="leading" secondItem="HwS-fO-esM" secondAttribute="leading" constant="15" id="Q8T-j9-vfP"/>
+                                                <constraint firstItem="N8M-OC-V78" firstAttribute="leading" secondItem="HNs-LW-r6R" secondAttribute="trailing" constant="23" id="SHr-mb-riA"/>
+                                                <constraint firstAttribute="bottom" secondItem="dfL-XL-bO1" secondAttribute="bottom" constant="19.5" id="bla-bQ-7Ub"/>
+                                                <constraint firstItem="F3c-f5-ilr" firstAttribute="leading" secondItem="HwS-fO-esM" secondAttribute="leading" constant="100" id="e8L-PP-cBo"/>
+                                                <constraint firstAttribute="bottom" secondItem="F3c-f5-ilr" secondAttribute="bottom" constant="2" id="l9w-hv-OqH"/>
+                                                <constraint firstItem="dfL-XL-bO1" firstAttribute="top" secondItem="N8M-OC-V78" secondAttribute="bottom" id="tjp-bg-N5w"/>
+                                                <constraint firstItem="N8M-OC-V78" firstAttribute="top" secondItem="HwS-fO-esM" secondAttribute="top" constant="8" id="wnE-4u-92X"/>
+                                                <constraint firstItem="HNs-LW-r6R" firstAttribute="top" secondItem="HwS-fO-esM" secondAttribute="top" constant="11" id="zi1-uc-vAA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="reviewDate" destination="F3c-f5-ilr" id="gsx-Df-T7d"/>
                                             <outlet property="userImage" destination="HNs-LW-r6R" id="qAh-Wu-MYZ"/>
                                             <outlet property="userNameLabel" destination="N8M-OC-V78" id="D69-D8-7OD"/>
-                                            <outlet property="userReviewLabel" destination="dfL-XL-bO1" id="1eP-uS-F0e"/>
+                                            <outlet property="userReviewLabel" destination="dfL-XL-bO1" id="Bbo-2s-qvJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2693,39 +2708,39 @@ Review</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="backgroundLiplist" width="286" height="391"/>
-        <image name="bgTrend2" width="264" height="397"/>
+        <image name="backButton" width="128" height="128"/>
+        <image name="backgroundLiplist" width="572" height="782"/>
+        <image name="bgTrend2" width="528" height="794"/>
         <image name="clock" width="256" height="256"/>
-        <image name="edit" width="512" height="512"/>
-        <image name="facebook-1" width="96" height="96"/>
-        <image name="favButton_off" width="192" height="192"/>
-        <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="frame" width="400" height="400"/>
+        <image name="edit" width="256" height="256"/>
+        <image name="facebook-1" width="128" height="128"/>
+        <image name="favButton_off" width="256" height="256"/>
+        <image name="favoritePopup" width="512" height="512"/>
+        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="line" width="384" height="384"/>
+        <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="485" height="336"/>
+        <image name="login_bgBlur" width="970" height="672"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="logo-3" width="2835" height="850"/>
-        <image name="mail-1" width="96" height="96"/>
+        <image name="mail-1" width="128" height="128"/>
         <image name="nopic" width="1417" height="1417"/>
-        <image name="notiTrend1" width="262" height="213"/>
-        <image name="open-close" width="96" height="96"/>
-        <image name="password" width="96" height="96"/>
-        <image name="review bg" width="741" height="79"/>
-        <image name="review_line" width="780" height="8"/>
-        <image name="send" width="48" height="48"/>
+        <image name="notiTrend1" width="524" height="426"/>
+        <image name="open-close" width="128" height="128"/>
+        <image name="password" width="128" height="128"/>
+        <image name="review bg" width="1482" height="158"/>
+        <image name="review_line" width="1560" height="16"/>
+        <image name="send" width="64" height="64"/>
         <image name="show lipstick list" width="468" height="59"/>
-        <image name="signUp_bg" width="427" height="471"/>
+        <image name="signUp_bg" width="854" height="942"/>
         <image name="try this shade" width="368" height="59"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="340" height="339"/>
-        <image name="user2" width="332" height="332"/>
-        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="whiteLine" width="48" height="48"/>
+        <image name="user1" width="680" height="678"/>
+        <image name="user2" width="664" height="664"/>
+        <image name="username" width="128" height="128"/>
+        <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7xa-ab-yxx"/>

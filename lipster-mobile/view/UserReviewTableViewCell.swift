@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import ExpandableLabel
 
 class UserReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userReviewLabel: UILabel!
+    @IBOutlet weak var userReviewLabel: ExpandableLabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var reviewDate: UILabel!
     
@@ -20,7 +21,12 @@ class UserReviewTableViewCell: UITableViewCell {
         userNameLabel.text = user.userName
         userReviewLabel.text = user.userReview
         reviewDate.text = user.dateReview
-        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userReviewLabel.collapsed = true
+        userReviewLabel.text = nil
     }
     
     

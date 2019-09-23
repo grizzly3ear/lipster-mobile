@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExpandableLabel
 
 class ReviewViewController: UIViewController {
 
@@ -20,26 +21,31 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var typeReview: UITextField!
     
     var lipstick: Lipstick!
-
+    var userReviews  = [UserReview]()
+    var labelState: [Bool]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initialUI()
-    }
-    @IBAction func sendButton(_ sender: Any) {
-        insertNewReview()
-        
+        labelState = Array(repeating: true, count: userReviews.count)
+        reviewTableView.rowHeight = UITableView.automaticDimension
     }
     
-    var userReviews  = [UserReview]()
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reviewTableView.reloadData()
+    }
+    
+    @IBAction func sendButton(_ sender: Any) {
+        insertNewReview()
+    }
+    
     func insertNewReview() {
         
         if typeReview.text!.isEmpty {
             print("Add Review Text Field is empty")
         }
-        //cell.lipNameLabel.text = lipList[indexPath.row].lipstickName
-     //   userReviews.append(typeReview.text!)
+        
         let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
         
         reviewTableView.beginUpdates()
@@ -52,7 +58,29 @@ class ReviewViewController: UIViewController {
 
 }
 
-extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
+extension ReviewViewController: UITableViewDelegate , UITableViewDataSource, ExpandableLabelDelegate {
+    
+    func willExpandLabel(_ label: ExpandableLabel) {
+        reviewTableView.beginUpdates()
+    }
+    
+    func didExpandLabel(_ label: ExpandableLabel) {
+        let point = label.convert(CGPoint.zero, to: reviewTableView)
+        if let indexPath = reviewTableView.indexPathForRow(at: point) as IndexPath? {
+            print(indexPath.row)
+            labelState[indexPath.row] = false
+        }
+        print(point)
+        reviewTableView.endUpdates()
+        reviewTableView.reloadData()
+    }
+    
+    func willCollapseLabel(_ label: ExpandableLabel) {
+    }
+    
+    func didCollapseLabel(_ label: ExpandableLabel) {
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userReviews.count
@@ -63,22 +91,25 @@ extension ReviewViewController: UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserReviewTableViewCell") as! UserReviewTableViewCell
         let review = userReviews[indexPath.row]
         cell.setUserReview(user: review)
-       // cell.userReviewLabel.text = review
-//        cell.userReviewLabel.text = reviews[indexPath.item].userReview
-//        cell.userNameLabel.text = reviews[indexPath.item].userName
-//        cell.reviewDate.text = reviews[indexPath.item].dateReview
+        
         cell.userImage.layer.masksToBounds = true
         cell.userImage.layer.cornerRadius = 30.0
         
-
+        cell.layoutIfNeeded()
+        
         cell.userImage.layer.borderColor = UIColor.black.cgColor
         cell.userImage.layer.borderWidth = 1
+        
+        cell.userReviewLabel.delegate = self
+        cell.userReviewLabel.numberOfLines = 2
+        cell.userReviewLabel.collapsed = labelState[indexPath.row]
+        cell.userReviewLabel.sizeToFit()
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        reviewTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
