@@ -74,15 +74,22 @@ extension HomeViewController {
         search.searchBar.delegate = viewController as! UISearchBarDelegate
         search.hidesNavigationBarDuringPresentation = false
         navigationItem.titleView = search.searchBar
+        
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+        
+        
+        
         let searchBackground = search.searchBar
         searchBackground.placeholder = "Brand, Color, ..."
         
+
         if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.black
+            textfield.tintColor = UIColor.black
             if let backgroundview = textfield.subviews.first {
                 
                 backgroundview.backgroundColor = UIColor.white
-                
                 backgroundview.layer.cornerRadius = 10;
                 backgroundview.clipsToBounds = true;
             }
