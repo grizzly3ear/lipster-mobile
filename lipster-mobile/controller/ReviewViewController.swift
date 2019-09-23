@@ -29,11 +29,22 @@ class ReviewViewController: UIViewController {
         initialUI()
         labelState = Array(repeating: true, count: userReviews.count)
         reviewTableView.rowHeight = UITableView.automaticDimension
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reviewTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
     }
     
     @IBAction func sendButton(_ sender: Any) {
