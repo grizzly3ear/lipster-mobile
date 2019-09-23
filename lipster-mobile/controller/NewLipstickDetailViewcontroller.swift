@@ -77,8 +77,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
     }
     
     func createUserArray() -> [UserReview] {
-        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "REVIEWWWWWWWWWWWWWW!!!!!", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
-        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "nice!!!!!!!!!", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
+        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
+        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
         
         return [user1,user2]
     }
