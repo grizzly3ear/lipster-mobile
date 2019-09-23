@@ -2650,7 +2650,7 @@ Review</string>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Vkd-XR-U5u"/>
+                        <viewLayoutGuide key="safeArea" id="o5v-ml-0SP"/>
                     </view>
                     <navigationItem key="navigationItem" id="lXE-wJ-0iB"/>
                     <connections>

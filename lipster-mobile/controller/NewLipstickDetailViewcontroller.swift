@@ -56,7 +56,6 @@ class NewLipstickDetailViewcontroller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.reviews = self.createUserArray()
         numberOfReviewLabel()
         initHero()
         initReactiveData()
@@ -69,19 +68,17 @@ class NewLipstickDetailViewcontroller: UIViewController {
      
         segmentedControl3.append(title: "Description").set(title: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1) , for: .selected)
         segmentedControl3.append(title: "Ingredient").set(title: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .selected)
-
-      //  segmentedControl3.indicator.boxView.alpha = 0.1
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
        
     }
     
-    func createUserArray() -> [UserReview] {
-        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
-        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
-        
-        return [user1,user2]
-    }
+//    func createUserArray() -> [UserReview] {
+//        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
+//        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
+//
+//        return [user1,user2]
+//    }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
         if isFav == true {
@@ -102,20 +99,13 @@ class NewLipstickDetailViewcontroller: UIViewController {
     }
     
     func numberOfReviewLabel(){
-        if reviews.count == 0 {
-            reviewButton.setTitle("No review", for: .normal)
-            reviewButton.isEnabled = false
-        } else {
-            reviewButton.setTitle("See review (\(reviews.count))", for: .normal)
-            reviewButton.isEnabled = true
-        }
+        reviewButton.setTitle("See review\(reviews.count > 1 ? "s" : "") (\(reviews.count))", for: .normal)
+        reviewButton.isEnabled = true
     }
     
     @IBAction func clickedSeeReviews(_ sender: Any) {
         self.performSegue(withIdentifier: "showReview", sender: self)
-     
     }
-    
     
     @objc func changeIndex(segmentedControl: MXSegmentedControl) {
         
@@ -128,11 +118,10 @@ class NewLipstickDetailViewcontroller: UIViewController {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showReview" {
             if let destination = segue.destination as? ReviewViewController {
-                print(lipstick?.lipstickName)
                 destination.lipstick = lipstick
                 destination.userReviews = reviews
             }
-        }else if segueIdentifier == "showContainer" {
+        } else if segueIdentifier == "showContainer" {
             if let destination = segue.destination as? ContainerViewController {
                destination.lipstick = lipstick
             }
@@ -144,8 +133,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
 // MARK: fetch data
 extension NewLipstickDetailViewcontroller {
     func fetchData() {
-        
         fetchLipstickSameDetail()
+        fetchLipstickReview()
     }
    
     func fetchLipstickSameDetail() {
@@ -153,8 +142,13 @@ extension NewLipstickDetailViewcontroller {
             self.colorDataPipe.input.send(value: lipsticks)
         }
     }
+    
+    func fetchLipstickReview() {
+        LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
+            self.reviewDataPipe.input.send(value: userReviews)
+        }
+    }
 }
-
 
 // Init UI
 extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
@@ -195,7 +189,6 @@ extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
             width: (scrollLipstickImages.frame.size.width *  CGFloat(lipstickImagesPageControl.numberOfPages)),
             height: scrollLipstickImages.frame.size.height)
         scrollLipstickImages.delegate = self
-        //contentScrollView.delegate = self
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -240,19 +233,16 @@ extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollecti
 
 extension NewLipstickDetailViewcontroller{
     func initReactiveData() {
-//        reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
-//            self.reviews = userReviews
-//            self.reviewTableView.reloadData()
-//            self.reviewTableView.setNeedsLayout()
-//        })
-//        reviewDataPipe.output.observe(reviewDataObserver!)
-//
+        reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
+            self.reviews = userReviews
+        })
+        reviewDataPipe.output.observe(reviewDataObserver!)
+
         colorDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipstickColors) in
             self.colors = lipstickColors
             self.lipstickSelectColorCollectionView.reloadData()
             self.lipstickSelectColorCollectionView.setNeedsLayout()
             self.lipstickSelectColorCollectionView.setNeedsDisplay()
-            print("color ==> \(self.colors.count)")
         })
         colorDataPipe.output.observe(colorDataObserver!)
     }
