@@ -52,6 +52,7 @@ class Trend: NSObject, NSCoding {
     
     public static func getTrendArrayFromUserDefault(forKey: String) -> [Trend] {
         if let encodedFavTrends = UserDefaults.standard.data(forKey: forKey) {
+            print(encodedFavTrends)
             return NSKeyedUnarchiver.unarchiveObject(with: encodedFavTrends) as! [Trend]
         }
         return [Trend]()

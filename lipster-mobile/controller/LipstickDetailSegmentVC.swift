@@ -4,8 +4,8 @@ import ReactiveCocoa
 import ReactiveSwift
 import Result
 import Hero
-
-class LipstickDetailSegmentVC: UIViewController {
+import MXSegmentedControl
+class LipstickDetailSegmentVC: UIViewController  {
     
     @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
@@ -19,7 +19,6 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var lipstickShortDetail: UILabel!
-    @IBOutlet weak var detailViewContainer: UIView!
     
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var typeReviewTextView: UITextView!
@@ -28,6 +27,8 @@ class LipstickDetailSegmentVC: UIViewController {
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
+
+    
     
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
@@ -66,6 +67,7 @@ class LipstickDetailSegmentVC: UIViewController {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
 }
+
 
 // MARK: fetch data
 extension LipstickDetailSegmentVC {

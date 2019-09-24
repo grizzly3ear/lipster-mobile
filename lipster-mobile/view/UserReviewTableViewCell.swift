@@ -7,30 +7,28 @@
 //
 
 import UIKit
+import ExpandableLabel
 
 class UserReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userReviewLabel: UILabel!
+    @IBOutlet weak var userReviewLabel: ExpandableLabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var reviewDate: UILabel!
     
     func setUserReview(user : UserReview) {
         userImage.image = user.userProfile
         userNameLabel.text = user.userName
         userReviewLabel.text = user.userReview
-        
+        reviewDate.text = user.dateReview
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userReviewLabel.collapsed = true
+        userReviewLabel.text = nil
     }
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

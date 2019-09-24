@@ -14,6 +14,8 @@ pod 'CHTCollectionViewWaterfallLayout/Swift'
 pod 'SwiftEntryKit'
 pod 'Hero'
 pod 'ESTabBarController-swift'
+pod 'MXSegmentedControl'
+pod 'ExpandableLabel'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

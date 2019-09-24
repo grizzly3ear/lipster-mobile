@@ -32,7 +32,6 @@ class UserReview {
             return reviews
         }
         for review in response! {
-            print(review)
             let rating = review.1["rating"].intValue
             let comment = review.1["comment"].stringValue
             let user = review.1["user"].stringValue

@@ -34,6 +34,7 @@
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
 		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
+		D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80F336A2330E44F0057B782 /* ContainerViewController.swift */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
 		D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE54228592F30028C19A /* NearByViewController.swift */; };
@@ -47,6 +48,7 @@
 		D822550922FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D822550822FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
+		D826C444232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826C443232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift */; };
 		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
 		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
 		D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* Login2ViewController.swift */; };
@@ -55,6 +57,7 @@
 		D83DD82A23054962000098C1 /* TrendGroup2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD82923054962000098C1 /* TrendGroup2CollectionViewCell.swift */; };
 		D83DD82C23054E57000098C1 /* TrendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD82B23054E57000098C1 /* TrendGroupViewController.swift */; };
 		D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */; };
+		D8573505232EA6FB00164E2E /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8573504232EA6FB00164E2E /* ReviewViewController.swift */; };
 		D86BF81622FC6D22003E1647 /* RecentlyViewListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86BF81522FC6D22003E1647 /* RecentlyViewListTableViewController.swift */; };
 		D86BF81822FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86BF81722FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift */; };
 		D8799C8C22FD4ED300441E6F /* YourReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */; };
@@ -119,6 +122,7 @@
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
 		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D80F336A2330E44F0057B782 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81CCE54228592F30028C19A /* NearByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		D822550822FC1B9700F4EC42 /* FavoriteLipstickTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLipstickTableViewCell.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D826C443232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLipstickDetailViewcontroller.swift; sourceTree = "<group>"; };
 		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* Login2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login2ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		D83DD82923054962000098C1 /* TrendGroup2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroup2CollectionViewCell.swift; sourceTree = "<group>"; };
 		D83DD82B23054E57000098C1 /* TrendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroupViewController.swift; sourceTree = "<group>"; };
 		D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D8573504232EA6FB00164E2E /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		D86BF81522FC6D22003E1647 /* RecentlyViewListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewListTableViewController.swift; sourceTree = "<group>"; };
 		D86BF81722FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewListTableViewCell.swift; sourceTree = "<group>"; };
 		D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +302,9 @@
 				3071185622FC188300E25AF4 /* PinterestViewController.swift */,
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
+				D826C443232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift */,
+				D8573504232EA6FB00164E2E /* ReviewViewController.swift */,
+				D80F336A2330E44F0057B782 /* ContainerViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -478,6 +487,7 @@
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				D83DD82C23054E57000098C1 /* TrendGroupViewController.swift in Sources */,
 				3071185722FC188300E25AF4 /* PinterestViewController.swift in Sources */,
+				D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
@@ -493,6 +503,7 @@
 				D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
 				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,
+				D826C444232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift in Sources */,
 				D86BF81822FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift in Sources */,
 				D83DD82823054946000098C1 /* TrendGroup2TableViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* Login2ViewController.swift in Sources */,
@@ -503,6 +514,7 @@
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
+				D8573505232EA6FB00164E2E /* ReviewViewController.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
 				304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */,
 				305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */,

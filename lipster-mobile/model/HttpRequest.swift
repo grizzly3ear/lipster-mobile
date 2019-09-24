@@ -28,7 +28,6 @@ class HttpRequest {
     public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
         
         Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
-            print(response)
             guard response.result.isSuccess, let value = response.result.value else {
                 completion(nil, response.response!.statusCode)
                 return

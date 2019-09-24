@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import SDWebImage
 
-class Lipstick {
+class Lipstick: NSObject, NSCoding {
 
     var lipstickId: Int
     var lipstickImage: [String]
@@ -21,8 +21,34 @@ class Lipstick {
     var lipstickDetail: String
     var lipstickColor : UIColor
     var lipstickDetailId: Int
+    var lipstickIngredients: String
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(lipstickId, forKey: "lipstickId")
+        aCoder.encode(lipstickImage, forKey: "lipstickImage")
+        aCoder.encode(lipstickBrand, forKey: "lipstickBrand")
+        aCoder.encode(lipstickName, forKey: "lipstickName")
+        aCoder.encode(lipstickColorName, forKey: "lipstickColorName")
+        aCoder.encode(lipstickDetail, forKey: "lipstickDetail")
+        aCoder.encode(lipstickColor, forKey: "lipstickColor")
+        aCoder.encode(lipstickDetailId, forKey: "lipstickDetailId")
+        aCoder.encode(lipstickIngredients, forKey: "lipstickIngredients")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let lipstickId = aDecoder.decodeInteger(forKey: "lipstickId")
+        let lipstickImage = aDecoder.decodeObject(forKey: "lipstickImage") as! [String]
+        let lipstickBrand = aDecoder.decodeObject(forKey: "lipstickBrand") as! String
+        let lipstickName = aDecoder.decodeObject(forKey: "lipstickName") as! String
+        let lipstickColorName = aDecoder.decodeObject(forKey: "lipstickColorName") as! String
+        let lisptickDetail = aDecoder.decodeObject(forKey: "lipstickDetail") as! String
+        let lipstickColor = aDecoder.decodeObject(forKey: "lipstickColor") as! UIColor
+        let lipstickDetailId = aDecoder.decodeInteger(forKey: "lipstickDetailId")
+        let lipstickIngredients = aDecoder.decodeObject(forKey: "lipstickIngredients") as! String
+        self.init(lipstickId, [String](), lipstickBrand, lipstickName, lipstickColorName, lisptickDetail, lipstickColor, lipstickDetailId, lipstickIngredients)
+    }
 
-    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int) {
+    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int, _ lipstickIngredients: String = "") {
         self.lipstickId = lipstickId
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
@@ -31,9 +57,10 @@ class Lipstick {
         self.lipstickDetail = lipShortDetail
         self.lipstickColor = lipstickColor
         self.lipstickDetailId = lipstickDetailId
+        self.lipstickIngredients = lipstickIngredients
     }
     
-    init() {
+    override init() {
         self.lipstickId = Int()
         self.lipstickImage = [String]()
         self.lipstickBrand = String()
@@ -42,6 +69,7 @@ class Lipstick {
         self.lipstickDetail = String()
         self.lipstickColor = UIColor()
         self.lipstickDetailId = Int()
+        self.lipstickIngredients = String()
     }
     
     public static func makeArrayModelFromBrandJSON(response: JSON?) -> [Lipstick] {
@@ -54,21 +82,23 @@ class Lipstick {
             
             for lipstickDetail in brand.1["details"] {
                 
-                for lipstickColor in lipstickDetail.1["colors"] {
+                for lipstickColorJSON in lipstickDetail.1["colors"] {
                     
                     var images = [String]()
-                    for image in lipstickColor.1["images"] {
+                    for image in lipstickColorJSON.1["images"] {
                         images.append(image.1["image"].stringValue)
                     }
-                    let lipstickId = lipstickColor.1["id"].intValue
+                    let lipstickId = lipstickColorJSON.1["id"].intValue
                     let lipstickBrand = brand.1["name"].stringValue
                     let lipstickName = lipstickDetail.1["name"].stringValue
-                    let lipstickColorName = lipstickColor.1["color_name"].stringValue
+                    let lipstickColorName = lipstickColorJSON.1["color_name"].stringValue
                     let lipstickDescription = lipstickDetail.1["description"].stringValue
-                    let lipstickColor = UIColor.init(hexString: lipstickColor.1["rgb"].stringValue)
+                    let lipstickColor = UIColor.init(hexString: lipstickColorJSON.1["rgb"].stringValue)
                     let lipstickDetailId = lipstickDetail.1["id"].intValue
                     
-                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId))
+                    let lipstickIngredients = lipstickColorJSON.1["composition"].stringValue
+                    
+                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId, lipstickIngredients ))
                 }
             }
         }
@@ -97,11 +127,11 @@ class Lipstick {
                 lipstick["color_name"].stringValue,
                 response!["description"].stringValue,
                 UIColor(hexString: lipstick["rgb"].stringValue),
-                response!["id"].intValue
+                response!["id"].intValue,
+                ""
             ))
             
         }
-
         return lipsticks
     }
     
@@ -132,11 +162,27 @@ class Lipstick {
                 colorName,
                 description,
                 color,
-                detailId
+                detailId,
+                ""
             ))
         }
-        print(lipsticks.count)
         return lipsticks
+    }
+    
+    public static func getLipstickArrayFromUserDefault(forKey: String) -> [Lipstick] {
+        if let encodedLipstick = UserDefaults.standard.data(forKey: forKey) {
+            return NSKeyedUnarchiver.unarchiveObject(with: encodedLipstick) as! [Lipstick]
+        }
+        return [Lipstick]()
+    }
+    
+    public static func setLipstickArrayToUserDefault(forKey: String, _ arr: [Lipstick]) {
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: arr)
+        UserDefaults.standard.set(encodedData, forKey: forKey)
+    }
+    
+    public static func ==(lhs: Lipstick, rhs: Lipstick) -> Bool {
+        return lhs.lipstickId == rhs.lipstickId && lhs.lipstickDetailId == rhs.lipstickDetailId && lhs.lipstickColorName == rhs.lipstickColorName
     }
     
 }
