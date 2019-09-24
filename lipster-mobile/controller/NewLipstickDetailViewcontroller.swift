@@ -187,10 +187,6 @@ extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == scrollLipstickImages {
             lipstickImagesPageControl.currentPage = scrollView.currentPage()
-        } else {
-//            if scrollView == contentScrollView {
-//            contentSegmentControl.selectedSegmentIndex = scrollView.currentPage()
-//
         }
     }
 }
@@ -253,15 +249,13 @@ extension NewLipstickDetailViewcontroller {
         if lipstick != nil {
             
             var lipstickHistory: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipsticksHistory)
-            
-            let contain = lipstickHistory.contains {
-                $0 == lipstick!
-            }
-            if !contain {
-                lipstickHistory.append(lipstick!)
+
+            if let i = lipstickHistory.firstIndex(where: { $0 == lipstick! }) {
+                lipstickHistory.remove(at: i)
             }
             
-            print(lipstickHistory.count)
+            lipstickHistory.append(lipstick!)
+            
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipsticksHistory, lipstickHistory)
         }
 
