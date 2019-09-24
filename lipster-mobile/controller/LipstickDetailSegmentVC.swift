@@ -44,7 +44,6 @@ class LipstickDetailSegmentVC: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(">>>>>>>>>> \(self.lipstick)")
         initHero()
         initReactiveData()
         fetchData()
