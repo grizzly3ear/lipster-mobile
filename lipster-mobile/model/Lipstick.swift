@@ -182,7 +182,7 @@ class Lipstick: NSObject, NSCoding {
     }
     
     public static func ==(lhs: Lipstick, rhs: Lipstick) -> Bool {
-        return lhs.lipstickId == rhs.lipstickId && lhs.lipstickDetailId == rhs.lipstickDetailId
+        return lhs.lipstickId == rhs.lipstickId && lhs.lipstickDetailId == rhs.lipstickDetailId && lhs.lipstickColorName == rhs.lipstickColorName
     }
     
 }

@@ -2505,6 +2505,7 @@ Review</string>
                     <navigationItem key="navigationItem" title="Brand Name" id="MEO-e2-Xae"/>
                     <size key="freeformSize" width="375" height="920"/>
                     <connections>
+                        <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
                         <outlet property="lipstickBrand" destination="8hm-Ti-ecJ" id="Pif-Gf-2gk"/>
                         <outlet property="lipstickColorName" destination="LIA-RK-nHR" id="zbz-SV-gdd"/>
                         <outlet property="lipstickImagesPageControl" destination="X0G-MV-q6e" id="Opw-JE-fNs"/>

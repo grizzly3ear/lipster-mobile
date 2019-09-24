@@ -22,7 +22,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var tryMeButton: UIButton!
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
     @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
-    
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
@@ -46,7 +46,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
     var colorDataObserver: Signal<[Lipstick], NoError>.Observer?
     
     var reviews: [UserReview] = [UserReview]()
-    var lipstick : Lipstick?
+    var lipstick: Lipstick?
     var colors: [Lipstick] = [Lipstick]()
     var imageHeroId = String()
    
@@ -73,17 +73,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
     }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
-        if isFav == true {
-            let image = UIImage(named: "heart_white")
-            sender.setImage(image, for: UIControl.State.normal)
-        } else {
-            let image = UIImage(named: "heart_red")
-            sender.setImage(image, for: UIControl.State.normal)
-        }
-        
-        isFav = !isFav
-        UserDefaults.standard.set(isFav, forKey: "isFav")
-        UserDefaults.standard.synchronize()
+        self.toggleFavLipstick()
+        initialUI()
     }
     
     @IBAction func clickedTryMe(_ sender: Any) {
@@ -149,12 +140,21 @@ extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
             self.lipstickBrand.text = lipstick.lipstickBrand
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
-          //  self.lipstickShortDetail.text = lipstick.lipstickDetail
+          //  self.lipstickShortDetail.text = lipstick.lipstickDetail'
+            
             addLipstickToHistory()
+        }
+        if isLipstickFav() {
+            let image = UIImage(named: "heart_red")
+            favoriteButton.setImage(image, for: UIControl.State.normal)
+        } else {
+            let image = UIImage(named: "heart_white")
+            favoriteButton.setImage(image, for: UIControl.State.normal)
         }
        
         pageController()
     }
+    
     
     func pageController() {
         lipstickImagesPageControl.numberOfPages = self.lipstick?.lipstickImage.count ?? 0
@@ -259,6 +259,34 @@ extension NewLipstickDetailViewcontroller {
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipsticksHistory, lipstickHistory)
         }
 
+    }
+    func toggleFavLipstick() {
+        if lipstick != nil {
+            var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                print("remove")
+                favLipstick.remove(at: i)
+                
+            } else {
+                print("add")
+                favLipstick.append(lipstick!)
+            }
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)
+        }
+        
+        
+    }
+    func isLipstickFav() -> Bool {
+        if lipstick != nil {
+            let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                return true
+                
+            }
+        }
+        return false
     }
 }
 
