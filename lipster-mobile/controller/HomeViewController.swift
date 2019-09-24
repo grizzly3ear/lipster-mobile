@@ -149,7 +149,6 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case recommendCollectionView:
-            print(indexPath.item)
             performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
             break
         case trendsCollectionView:
