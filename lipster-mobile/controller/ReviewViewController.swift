@@ -130,5 +130,26 @@ extension ReviewViewController {
         self.lipstickImage.sd_setImage(with: URL(string: (lipstick.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
         self.lipstickColorName.text = lipstick.lipstickColorName
         self.lipstickName.text = lipstick.lipstickName
+        
+        if userReviews.count == 0 {
+            self.reviewTableView.separatorStyle = .none
+            self.reviewTableView.tableFooterView = UIView(frame: .zero)
+            self.reviewTableView.backgroundColor = .clear
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.reviewTableView.frame.size.width
+            label.center = self.reviewTableView.center
+            label.center.y = self.reviewTableView.frame.size.height / 2
+            label.numberOfLines = 2
+            label.textColor = .darkGray
+            label.text = "There are no review yet."
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.reviewTableView.addSubview(label)
+        } else {
+            self.reviewTableView.viewWithTag(1)?.removeFromSuperview()
+        }
     }
 }
