@@ -8,40 +8,67 @@
 
 import UIKit
 
-class SearchViewTableViewController: UIViewController {
+class SearchTableViewController: UITableViewController ,UISearchResultsUpdating, UISearchBarDelegate{
     
     @IBOutlet weak var searchTableView: UITableView!
+ 
     var array = ["Brazil", "Bolivia", "United States", "Canada", "England", "Germany", "France", "Portugal"]
     
     var arrayFilter = [String]()
     
+    
+    var searching = false
+    var searchLipstickArray = [Lipstick] ()
+    var searchLipstickFilter = [String]()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad()")
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+      
     }
-    
-}
-
-extension SearchViewTableViewController : UITableViewDelegate , UITableViewDataSource , UISearchResultsUpdating, UISearchBarDelegate {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        print("updateSearchResults")
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
         
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayFilter.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        cell.searchLabel?.text = arrayFilter[indexPath.row]
+      // cell.textLabel?.text = searchLipstickFilter[indexPath.row]
+       cell.textLabel?.text = arrayFilter[indexPath.row]
         
         return cell
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        print("updateSearchResults")
+        arrayFilter.removeAll()
+        
+        if let text = searchController.searchBar.text {
+            for string in array {
+                if string.contains(text) {
+                    arrayFilter.append(string)
+                }
+            }
+        }
+        
+        searchTableView.reloadData()
+        
+    }
+    
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchBarSearchButtonClicked")
+        
         arrayFilter.removeAll()
         
         if let text = searchBar.text {
@@ -53,21 +80,23 @@ extension SearchViewTableViewController : UITableViewDelegate , UITableViewDataS
         }
         
         searchTableView.reloadData()
+        
     }
     
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("searchBarCancelButtonClicked")
+        
         arrayFilter.removeAll()
         searchTableView.reloadData()
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        print("searchBarShouldBeginEditing")
+        
         arrayFilter.removeAll()
         searchTableView.reloadData()
         
         return true
     }
     
-    
 }
+

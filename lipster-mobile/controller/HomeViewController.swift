@@ -10,7 +10,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     
-    var searchController : UISearchController!
+    var search : UISearchController!
+    var resultsTableViewController : SearchTableViewController!
+    
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -22,8 +24,6 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     var trendDataObserver: Signal<[TrendGroup], NoError>.Observer?
     
     let padding: CGFloat = 8.0
-    
-    var resultsTableViewController:  SearchViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         searchBarLip()
         addNavBarImage()
         initHero()
-        resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+
+        //resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController
+        search = UISearchController(searchResultsController: resultsTableViewController)
+        search.searchResultsUpdater = resultsTableViewController
+        search.searchBar.delegate = resultsTableViewController
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -61,9 +65,9 @@ extension HomeViewController {
 
 extension HomeViewController {
     func searchBarLip() {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as UIViewController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchTableViewController") as UIViewController
         
-        let search = UISearchController(searchResultsController: viewController)
+        search = UISearchController(searchResultsController: viewController)
         search.delegate = self
         search.searchResultsUpdater = viewController as! UISearchResultsUpdating
         search.dimsBackgroundDuringPresentation = true
@@ -71,14 +75,11 @@ extension HomeViewController {
         
         search.loadViewIfNeeded()
         
-        search.searchBar.delegate = viewController as! UISearchBarDelegate
         search.hidesNavigationBarDuringPresentation = false
         navigationItem.titleView = search.searchBar
         
         let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
-        
-        
         
         let searchBackground = search.searchBar
         searchBackground.placeholder = "Brand, Color, ..."
