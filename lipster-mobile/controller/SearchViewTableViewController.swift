@@ -13,14 +13,19 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     @IBOutlet weak var searchTableView: UITableView!
  
     var array = ["Brazil", "Bolivia", "United States", "Canada", "England", "Germany", "France", "Portugal"]
-    
     var arrayFilter = [String]()
     
-    
     var searching = false
-    var searchLipstickArray = [Lipstick] ()
-    var searchLipstickFilter = [String]()
-    
+   
+    var searchLipsticks = [Lipstick]()
+    var searchLipstickFilter = [Lipstick]()
+    func createSearchLipstickArray() -> [Lipstick] {
+        let searhLipstick1 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "MAC", "mmmm",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
+        let searhLipstick2 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "YSL", "mmmm",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
+        let searhLipstick3 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "ETUDE", "mmmm",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
+        
+        return [searhLipstick1 , searhLipstick2 , searhLipstick3]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,7 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         searchTableView.delegate = self
         searchTableView.dataSource = self
       
+        self.searchLipsticks = self.createSearchLipstickArray()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,26 +44,33 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayFilter.count
+        
+        return searchLipstickFilter.count
+       
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-      // cell.textLabel?.text = searchLipstickFilter[indexPath.row]
-       cell.textLabel?.text = arrayFilter[indexPath.row]
+            cell.textLabel?.text = searchLipstickFilter[indexPath.item].lipstickBrand
         
+        
+//        let lipstick = searchLipstickArray[indexPath.item]
+//        cell.setSearchLipstick(searchLipstick: lipstick)
         return cell
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        print("updateSearchResults")
-        arrayFilter.removeAll()
+        print("updateSearchResults -- \(searchLipstickFilter.count)--")
+//        searchLipstickFilter.removeAll()
         
         if let text = searchController.searchBar.text {
-            for string in array {
-                if string.contains(text) {
-                    arrayFilter.append(string)
+            print("text \(text)")
+            print("searchLipstick\(searchLipsticks.count)")
+            for lipstick in searchLipsticks {
+                print("lipstick \(lipstick)")
+                if lipstick.lipstickBrand.contains(text) {
+                    searchLipstickFilter.append(lipstick)
                 }
             }
         }
@@ -69,12 +82,12 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        arrayFilter.removeAll()
+        searchLipsticks.removeAll()
         
         if let text = searchBar.text {
-            for string in array {
-                if string.contains(text) {
-                    arrayFilter.append(string)
+            for lipstick in searchLipsticks {
+                if lipstick.lipstickBrand.contains(text) {
+                    searchLipstickFilter.append(lipstick)
                 }
             }
         }
@@ -85,14 +98,15 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        arrayFilter.removeAll()
+        searching = false
+        searchBar.text = ""
+        searchLipsticks.removeAll()
         searchTableView.reloadData()
     }
-    
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         
-        arrayFilter.removeAll()
+        searchLipsticks.removeAll()
         searchTableView.reloadData()
         
         return true
