@@ -10,4 +10,6 @@ import Foundation
 
 class DefaultConstant {
     public static let favoriteTrends: String = "favoriteTrends"
+    public static let favoriteLipsticks: String = "favoriteLipsticks"
+    public static let lipsticksHistory: String = "lipsticksHistory"
 }

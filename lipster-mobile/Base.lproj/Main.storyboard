@@ -2699,7 +2699,7 @@ Review</string>
                     </view>
                     <connections>
                         <outlet property="lipstickDescription" destination="rqB-mO-myG" id="kYs-aC-7QU"/>
-                        <outlet property="lipstickIngradients" destination="BjU-vh-hht" id="B6y-wi-1QG"/>
+                        <outlet property="lipstickIngredients" destination="BjU-vh-hht" id="B6y-wi-1QG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9x-hI-rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>

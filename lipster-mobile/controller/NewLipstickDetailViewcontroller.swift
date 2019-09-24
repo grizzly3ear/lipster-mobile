@@ -19,7 +19,6 @@ class NewLipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var segmentedControl3: MXSegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     @IBOutlet weak var tryMeButton: UIButton!
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
     @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
@@ -70,15 +69,8 @@ class NewLipstickDetailViewcontroller: UIViewController {
         segmentedControl3.append(title: "Ingredient").set(title: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .selected)
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
-       
+        addLipstickToHistory()
     }
-    
-//    func createUserArray() -> [UserReview] {
-//        let user1 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user2"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "BankAha Wisarut", dateReview: " 07 May 2019" )
-//        let user2 : UserReview = UserReview(userProfile: #imageLiteral(resourceName: "user1"), userReview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", userName: "Bowie Ketsara", dateReview: "07 May 2019" )
-//
-//        return [user1,user2]
-//    }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
         if isFav == true {
@@ -158,6 +150,7 @@ extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
             self.lipstickName.text = lipstick.lipstickName
             self.lipstickColorName.text = lipstick.lipstickColorName
           //  self.lipstickShortDetail.text = lipstick.lipstickDetail
+            addLipstickToHistory()
         }
        
         pageController()
@@ -211,7 +204,6 @@ extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
-        print(colors[indexPath.item].lipstickColor)
         cell?.selectColorView.backgroundColor = colors[indexPath.item].lipstickColor
         if colors[indexPath.item].lipstickId == lipstick?.lipstickId {
             cell?.triangleView.isHidden = false
@@ -253,6 +245,26 @@ extension NewLipstickDetailViewcontroller {
     func initHero() {
         self.hero.isEnabled = true
         self.scrollLipstickImages.hero.id = imageHeroId
+    }
+}
+
+extension NewLipstickDetailViewcontroller {
+    func addLipstickToHistory() {
+        if lipstick != nil {
+            
+            var lipstickHistory: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipsticksHistory)
+            
+            let contain = lipstickHistory.contains {
+                $0 == lipstick!
+            }
+            if !contain {
+                lipstickHistory.append(lipstick!)
+            }
+            
+            print(lipstickHistory.count)
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipsticksHistory, lipstickHistory)
+        }
+
     }
 }
 

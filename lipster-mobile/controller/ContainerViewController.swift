@@ -13,7 +13,7 @@ class ContainerViewController: UIViewController {
     
     
     @IBOutlet weak var lipstickDescription: UILabel!
-    @IBOutlet weak var lipstickIngradients: UILabel!
+    @IBOutlet weak var lipstickIngredients: UILabel!
     
     var lipstick : Lipstick?
     
@@ -27,7 +27,7 @@ class ContainerViewController: UIViewController {
         if let lipstick = self.lipstick{
             
             self.lipstickDescription.text = lipstick.lipstickDetail
-            self.lipstickIngradients.text = lipstick.lipstickIngradients
+            self.lipstickIngredients.text = lipstick.lipstickIngredients
         }
     }
 }
