@@ -15,12 +15,16 @@ class Store {
     var storeName : String
     var storeHours : String
     var storeAddress : String
+    var storeLatitude : Double
+    var storeLongitude : Double
     
     
-    init( storeLogoImage: UIImage , storeName : String , storeHours : String , storeAddress : String) {
+    init( storeLogoImage: UIImage , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double) {
         self.storeLogoImage = storeLogoImage
         self.storeName = storeName
         self.storeHours = storeHours
         self.storeAddress = storeAddress
+        self.storeLatitude = storeLatitude
+        self.storeLongitude = storeLongitude
     }
 }
