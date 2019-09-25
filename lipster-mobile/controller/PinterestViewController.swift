@@ -131,14 +131,13 @@ extension PinterestViewController {
         var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
         
         if (trend != nil) {
-            let contain = favTrends.contains {
-                $0.title == trend?.title &&
-                $0.detail == trend?.detail &&
-                $0.image == trend?.image
-            }
-            if !contain {
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+            } else {
+                print("add")
                 favTrends.append(trend!)
             }
+
             print(favTrends.count)
             Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
         }        

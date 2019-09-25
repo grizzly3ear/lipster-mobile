@@ -10,6 +10,7 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendDescription: UILabel!
     
     @IBOutlet weak var trendImageView: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
     
@@ -19,7 +20,7 @@ class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUserInterface()
+        initUI()
         initHero()
         initGesture()
     }
@@ -28,6 +29,11 @@ class TrendDetailViewController: UIViewController {
         let colorSelect = trendLipColorView.backgroundColor!
 
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
+    }
+    
+    @IBAction func toggleFavoriteTrend(_ sender: Any?) {
+        toggleTrendFav()
+        initUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,11 +46,18 @@ class TrendDetailViewController: UIViewController {
 
 extension TrendDetailViewController {
     
-    func initUserInterface() {
+    func initUI() {
         self.titleNavigationItem.title = trend.title
         self.trendNameLabel.text = trend.title
         setUserInterface(trend ?? Trend())
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if isTrendFav() {
+            let image = UIImage(named: "heart_red")!
+            favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "heart_white")!
+            favoriteButton.setImage(image, for: .normal)
+        }
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -121,5 +134,36 @@ extension TrendDetailViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.trendImageView.hero.id = imageHeroId
+    }
+}
+
+extension TrendDetailViewController {
+    func toggleTrendFav() {
+        if trend != nil {
+            var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+                print("remove")
+                favTrends.remove(at: i)
+                
+            } else {
+                print("add")
+                favTrends.append(trend!)
+            }
+            Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
+        }
+        
+        
+    }
+    func isTrendFav() -> Bool {
+        if trend != nil {
+            let favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+                return true
+                
+            }
+        }
+        return false
     }
 }
