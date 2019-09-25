@@ -12,16 +12,16 @@ class PinterestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initHero()
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         initGesture()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
-        self.navigationController?.hero.navigationAnimationType = .selectBy(
-            presenting: .fade,
-            dismissing: .fade
-        )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,6 +44,8 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendCollectionViewCell
+        
+        cell.hero.modifiers = [.fade, .scale(0.5)]
         
         cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
@@ -110,6 +112,17 @@ extension PinterestViewController {
         cell.likeAnimator.animate {
             self.addFavoriteTrend(self.trends[(indexPath?.item)!])
         }
+    }
+}
+
+extension PinterestViewController {
+    func initHero() {
+        self.hero.isEnabled = true
+        self.trendListCollectionView.hero.modifiers = [.cascade]
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .slide(direction: .left),
+            dismissing: .slide(direction: .right)
+        )
     }
 }
 
