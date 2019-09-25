@@ -38,7 +38,6 @@ class PinterestViewController: UIViewController {
 
 extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("trend count: \(trends.count)")
         return trends.count
     }
     
@@ -100,8 +99,9 @@ extension PinterestViewController {
     @objc func onSingleTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: trendListCollectionView!)
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
-        
-        performSegue(withIdentifier: "showTrendGroupDetail", sender: indexPath)
+        if let selectedIndex = indexPath {
+            performSegue(withIdentifier: "showTrendGroupDetail", sender: selectedIndex)
+        }
     }
     
     @objc func onDoubleTap(_ sender: UITapGestureRecognizer) {
