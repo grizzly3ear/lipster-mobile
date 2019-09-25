@@ -29,7 +29,7 @@ class ReviewViewController: UIViewController {
         initialUI()
         labelState = Array(repeating: true, count: userReviews.count)
         reviewTableView.rowHeight = UITableView.automaticDimension
-        self.tabBarController?.tabBar.isHidden = true
+        hideTabBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,7 +39,7 @@ class ReviewViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        showTabBar()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
