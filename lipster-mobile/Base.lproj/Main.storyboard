@@ -1124,7 +1124,7 @@ Review</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebV-Xc-6vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317.5999999999999" y="448.42578710644682"/>
+            <point key="canvasLocation" x="1687" y="450"/>
         </scene>
         <!--Title-->
         <scene sceneID="fXy-On-nzZ">
