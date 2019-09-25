@@ -9,7 +9,6 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendNameLabel: UILabel!
     @IBOutlet weak var trendDescription: UILabel!
     
-    
     @IBOutlet weak var trendImageView: UIImageView!
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
@@ -23,14 +22,12 @@ class TrendDetailViewController: UIViewController {
         initUserInterface()
         initHero()
         initGesture()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
         let colorSelect = trendLipColorView.backgroundColor!
 
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +44,7 @@ extension TrendDetailViewController {
         self.titleNavigationItem.title = trend.title
         self.trendNameLabel.text = trend.title
         setUserInterface(trend ?? Trend())
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -72,14 +70,8 @@ extension TrendDetailViewController {
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: nil)
         let progress = translation.y / 2 / view.bounds.height
-        print("translation \(translation)")
-        if translation.y <= 0 {
-            if translation.x <= 0 {
-                print("swipe left")
-            } else {
-                print("swipe right")
-            }
-        } else {
+    
+        if translation.y > 0 {
             switch sender.state {
             case .began:
                 hero.dismissViewController()
@@ -110,7 +102,6 @@ extension TrendDetailViewController {
                     x: trendDescription.center.x,
                     y: translation.y + trendDescription.center.y
                 ))], to: trendDescription)
-                
                 
             default:
                 if progress + sender.velocity(in: nil).y / view.bounds.height > 0.3 {
