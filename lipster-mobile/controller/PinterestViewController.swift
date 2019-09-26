@@ -12,16 +12,16 @@ class PinterestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initHero()
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         initGesture()
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
-        self.navigationController?.hero.navigationAnimationType = .selectBy(
-            presenting: .fade,
-            dismissing: .fade
-        )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,12 +38,13 @@ class PinterestViewController: UIViewController {
 
 extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("trend count: \(trends.count)")
         return trends.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendCollectionViewCell
+        
+        cell.hero.modifiers = [.fade, .scale(0.5)]
         
         cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
@@ -98,8 +99,9 @@ extension PinterestViewController {
     @objc func onSingleTap(_ sender: UITapGestureRecognizer) {
         let touchPoint = sender.location(in: trendListCollectionView!)
         let indexPath = trendListCollectionView.indexPathForItem(at: touchPoint)
-        
-        performSegue(withIdentifier: "showTrendGroupDetail", sender: indexPath)
+        if let selectedIndex = indexPath {
+            performSegue(withIdentifier: "showTrendGroupDetail", sender: selectedIndex)
+        }
     }
     
     @objc func onDoubleTap(_ sender: UITapGestureRecognizer) {
@@ -114,18 +116,28 @@ extension PinterestViewController {
 }
 
 extension PinterestViewController {
+    func initHero() {
+        self.hero.isEnabled = true
+        self.trendListCollectionView.hero.modifiers = [.cascade]
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .slide(direction: .left),
+            dismissing: .slide(direction: .right)
+        )
+    }
+}
+
+extension PinterestViewController {
     func addFavoriteTrend(_ trend: Trend?) {
         var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
         
         if (trend != nil) {
-            let contain = favTrends.contains {
-                $0.title == trend?.title &&
-                $0.detail == trend?.detail &&
-                $0.image == trend?.image
-            }
-            if !contain {
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+            } else {
+                print("add")
                 favTrends.append(trend!)
             }
+
             print(favTrends.count)
             Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
         }        

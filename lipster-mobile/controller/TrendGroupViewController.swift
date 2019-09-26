@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class TrendGroupViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
@@ -14,7 +15,6 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
         super.viewDidLoad()
    
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendGroups.count
@@ -45,6 +45,8 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendGroup2CollectionViewCell
+        
+        cell.hero.modifiers = [.fade, .scale(0.2)]
         
         let trend = trendGroups[collectionView.tag].trends![indexPath.item]
         cell.setTrend(trend: trend)

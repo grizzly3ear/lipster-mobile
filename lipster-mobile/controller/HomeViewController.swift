@@ -124,7 +124,6 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
 
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
-            cell.trendHomeImageView.hero.id = "trend\(indexPath.item)"
          
             return cell
         } else {
@@ -213,24 +212,5 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
-        self.navigationController?.hero.navigationAnimationType = .selectBy(
-            presenting: .fade,
-            dismissing: .fade
-        )
-        recommendCollectionView.hero.isEnabled = true
-        recommendCollectionView.hero.isEnabledForSubviews = true
-        recommendCollectionView.hero.modifiers = [.cascade]
-        for cell in recommendCollectionView.visibleCells {
-            cell.hero.modifiers = [
-                .fade,
-                .spring(
-                    stiffness: 5.0,
-                    damping: 15.0
-                )
-            ]
-        }
-        
-        trendsCollectionView.hero.isEnabled = true
-        trendsCollectionView.hero.isEnabledForSubviews = true
     }
 }

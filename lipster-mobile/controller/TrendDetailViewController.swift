@@ -9,8 +9,8 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendNameLabel: UILabel!
     @IBOutlet weak var trendDescription: UILabel!
     
-    
     @IBOutlet weak var trendImageView: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var titleNavigationItem: UINavigationItem!
     
@@ -20,17 +20,20 @@ class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUserInterface()
+        initUI()
         initHero()
         initGesture()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
         let colorSelect = trendLipColorView.backgroundColor!
 
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
-        
+    }
+    
+    @IBAction func toggleFavoriteTrend(_ sender: Any?) {
+        toggleTrendFav()
+        initUI()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,10 +46,18 @@ class TrendDetailViewController: UIViewController {
 
 extension TrendDetailViewController {
     
-    func initUserInterface() {
+    func initUI() {
         self.titleNavigationItem.title = trend.title
         self.trendNameLabel.text = trend.title
         setUserInterface(trend ?? Trend())
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        if isTrendFav() {
+            let image = UIImage(named: "heart_red")!
+            favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "heart_white")!
+            favoriteButton.setImage(image, for: .normal)
+        }
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -72,14 +83,8 @@ extension TrendDetailViewController {
     @objc func onDrag(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: nil)
         let progress = translation.y / 2 / view.bounds.height
-        print("translation \(translation)")
-        if translation.y <= 0 {
-            if translation.x <= 0 {
-                print("swipe left")
-            } else {
-                print("swipe right")
-            }
-        } else {
+    
+        if translation.y > 0 {
             switch sender.state {
             case .began:
                 hero.dismissViewController()
@@ -111,7 +116,6 @@ extension TrendDetailViewController {
                     y: translation.y + trendDescription.center.y
                 ))], to: trendDescription)
                 
-                
             default:
                 if progress + sender.velocity(in: nil).y / view.bounds.height > 0.3 {
                     Hero.shared.finish()
@@ -130,5 +134,36 @@ extension TrendDetailViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.trendImageView.hero.id = imageHeroId
+    }
+}
+
+extension TrendDetailViewController {
+    func toggleTrendFav() {
+        if trend != nil {
+            var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+                print("remove")
+                favTrends.remove(at: i)
+                
+            } else {
+                print("add")
+                favTrends.append(trend!)
+            }
+            Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
+        }
+        
+        
+    }
+    func isTrendFav() -> Bool {
+        if trend != nil {
+            let favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+                return true
+                
+            }
+        }
+        return false
     }
 }

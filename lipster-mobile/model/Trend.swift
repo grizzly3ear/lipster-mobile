@@ -82,4 +82,8 @@ class Trend: NSObject, NSCoding {
         return trends
         
     }
+    
+    public static func ==(lhs: Trend, rhs: Trend) -> Bool {
+        return lhs.title == rhs.title && lhs.detail == rhs.detail && lhs.image == rhs.image && lhs.detail == rhs.detail
+    }
 }

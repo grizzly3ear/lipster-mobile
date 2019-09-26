@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
 		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				305477CE229A57CC009E4090 /* UITextFieldHelper.swift */,
 				2CCBA1B62330C1DC00F2978F /* Constant.swift */,
 				2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */,
+				2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D86BF81622FC6D22003E1647 /* RecentlyViewListTableViewController.swift in Sources */,
+				2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */,
 				D81CCE5D2285ED2C0028C19A /* ProfileTableViewCell.swift in Sources */,
 				30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */,
 				D8799C8E22FD51E800441E6F /* YourReviewsTableViewCell.swift in Sources */,
