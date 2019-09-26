@@ -14,6 +14,7 @@ class NearByCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storeName: UILabel!
     @IBOutlet weak var storehours: UILabel!
     @IBOutlet weak var storeAddress: UILabel!
+    @IBOutlet weak var storePhoneNumber: UILabel!
     
     func setStore(store: Store) {
         //storeLogoImage.sd_setImage(with: URL(string: store.storeLogoImage), placeholderImage: UIImage(named: "nopic"))
@@ -21,5 +22,6 @@ class NearByCollectionViewCell: UICollectionViewCell {
         storeName.text = store.name
         storehours.text = store.hours
         storeAddress.text = store.address
+        storePhoneNumber.text = store.phoneNumber
     }
 }
