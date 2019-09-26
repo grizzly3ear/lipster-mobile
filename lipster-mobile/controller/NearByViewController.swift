@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class NearByViewController: UIViewController {
+class NearByViewController: UIViewController   {
     
     var pinView : MKAnnotationView!
     
@@ -19,8 +19,9 @@ class NearByViewController: UIViewController {
         let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok" ,storeLatitude : 37.755834 , storeLongitude : -122.416417 , storePhoneNumber : "062-875-9836")
         let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700" , storeLatitude : 37.755834 , storeLongitude : -122.416417 , storePhoneNumber : "062-875-9836")
         let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150" , storeLatitude : 37.755834 , storeLongitude : -122.416417, storePhoneNumber : "062-875-9836")
+        let store4 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150" , storeLatitude : 37.755834 , storeLongitude : -122.416417, storePhoneNumber : "062-875-9836")
         
-        return [store1 , store2 , store3]
+        return [store1 , store2 , store3 , store4]
     }
     
     @IBOutlet weak var mapView: MKMapView!
@@ -28,10 +29,12 @@ class NearByViewController: UIViewController {
     
     
     @IBOutlet weak var mapCollectionView: UICollectionView!
+    @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
     let padding: CGFloat = 20.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewLayout.minimumLineSpacing = 10
         
         self.stores = self.createStoreArray()
         
@@ -42,12 +45,22 @@ class NearByViewController: UIViewController {
         initMapViewDelegate()
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
+            
+            
+
         }
         
     }
 }
 
-extension NearByViewController : UICollectionViewDelegate , UICollectionViewDataSource{
+extension NearByViewController : UICollectionViewDelegate , UICollectionViewDataSource  {
+    private func indexOfMajorCell() -> Int {
+        let itemWidth = collectionViewLayout.itemSize.width
+        let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
+        let index = Int(round(proportionalOffset))
+        let safeIndex = max(0, min(stores.count - 1, index))
+        return safeIndex
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return stores.count
@@ -65,6 +78,12 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         let store = stores[indexPath.item]
         cell.setStore(store: store )
         return cell
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        targetContentOffset.pointee = scrollView.contentOffset
+        let indexOfMajorCell = self.indexOfMajorCell()
+        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
 }

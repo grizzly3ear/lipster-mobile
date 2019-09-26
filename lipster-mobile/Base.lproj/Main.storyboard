@@ -189,6 +189,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="collectionViewLayout" destination="OID-iN-I2K" id="jh9-UU-oa1"/>
                         <outlet property="mapCollectionView" destination="Pr4-fy-1G5" id="nWu-Qj-G6Q"/>
                         <outlet property="mapView" destination="c3D-Kk-Cyg" id="wNT-qP-yZt"/>
                     </connections>
