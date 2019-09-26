@@ -17,9 +17,9 @@ class NearByCollectionViewCell: UICollectionViewCell {
     
     func setStore(store: Store) {
         //storeLogoImage.sd_setImage(with: URL(string: store.storeLogoImage), placeholderImage: UIImage(named: "nopic"))
-        storeLogoImage.image = store.storeLogoImage
-        storeName.text = store.storeName
-        storehours.text = store.storeHours
-        storeAddress.text = store.storeAddress
+        storeLogoImage.image = store.image
+        storeName.text = store.name
+        storehours.text = store.hours
+        storeAddress.text = store.address
     }
 }

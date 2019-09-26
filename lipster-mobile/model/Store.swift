@@ -11,20 +11,20 @@ import UIKit
 
 class Store {
     
-    var storeLogoImage : UIImage
-    var storeName : String
-    var storeHours : String
-    var storeAddress : String
-    var storeLatitude : Double
-    var storeLongitude : Double
+    var image : UIImage
+    var name : String
+    var hours : String
+    var address : String
+    var latitude : Double
+    var longitude : Double
     
     
     init( storeLogoImage: UIImage , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double) {
-        self.storeLogoImage = storeLogoImage
-        self.storeName = storeName
-        self.storeHours = storeHours
-        self.storeAddress = storeAddress
-        self.storeLatitude = storeLatitude
-        self.storeLongitude = storeLongitude
+        self.image = storeLogoImage
+        self.name = storeName
+        self.hours = storeHours
+        self.address = storeAddress
+        self.latitude = storeLatitude
+        self.longitude = storeLongitude
     }
 }

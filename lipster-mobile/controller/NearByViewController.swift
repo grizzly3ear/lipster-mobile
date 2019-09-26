@@ -16,9 +16,9 @@ class NearByViewController: UIViewController {
     
     var stores = [Store]()
     func createStoreArray() -> [Store] {
-        let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok" ,storeLatitude : 100.493872 , storeLongitude : 13.652383)
-        let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700" , storeLatitude : 100.493879 , storeLongitude : 13.652389)
-        let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150" , storeLatitude : 100.493875 , storeLongitude : 13.652385)
+        let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok" ,storeLatitude : 37.755834 , storeLongitude : -122.416417)
+        let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700" , storeLatitude : 37.755834 , storeLongitude : -122.416417)
+        let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150" , storeLatitude : 37.755834 , storeLongitude : -122.416417)
         
         return [store1 , store2 , store3]
     }
@@ -43,11 +43,6 @@ class NearByViewController: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-        
-//        let annotationIcon = CustomePinAnnotation()
-//        annotationIcon.pinImage = "pin"
-//        mapView.addAnnotation(annotationIcon)
-//
         
     }
 }
@@ -94,7 +89,7 @@ extension NearByViewController: MKMapViewDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let locValue: CLLocationCoordinate2D = manager.location!.coordinate
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
@@ -104,6 +99,16 @@ extension NearByViewController: MKMapViewDelegate {
         annotation.coordinate = locValue
         annotation.title = "Beauty Buffet"
         mapView.addAnnotation(annotation)
+        print(locValue)
+        stores.forEach { (store) in
+            let coor = CLLocation(latitude: store.latitude, longitude: store.longitude).coordinate
+            let storeAnnotation = MKPointAnnotation()
+            
+            storeAnnotation.coordinate = coor
+            storeAnnotation.title = "\(store.name)"
+            mapView.addAnnotation(storeAnnotation)
+            
+        }
         
     }
     //MARK: - MapKit
