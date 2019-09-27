@@ -16,6 +16,7 @@ pod 'Hero'
 pod 'ESTabBarController-swift'
 pod 'MXSegmentedControl'
 pod 'ExpandableLabel'
+pod 'SPStorkController'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

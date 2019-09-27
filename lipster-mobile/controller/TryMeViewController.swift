@@ -8,11 +8,12 @@
 // WIP
 import UIKit
 import AVFoundation
+import SPStorkController
 
 import Firebase
 
 class TryMeViewController: UIViewController  {
-    
+
     private let detectors: [Detector] = [.onDeviceFace,
                                          .onDeviceObjectProminentNoClassifier,
                                          .onDeviceObjectProminentWithClassifier,
@@ -51,24 +52,36 @@ class TryMeViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cameraView.frame = view.frame
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         setUpPreviewOverlayView()
         setUpAnnotationOverlayView()
         setUpCaptureSessionOutput()
         setUpCaptureSessionInput()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        hideTabBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
         startSession()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showTabBar()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+
         stopSession()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,9 +90,31 @@ class TryMeViewController: UIViewController  {
         previewLayer.frame = cameraView.frame
         cameraView.bringSubviewToFront(collectionView)
     }
+    
+    @IBAction func onPressDetail(_ sender: Any) {
+        let modal = storyboard?.instantiateViewController(withIdentifier: "LipstickDetailModalViewController") as! LipstickDetailModalViewController
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        transitionDelegate.storkDelegate = self
+        modal.transitioningDelegate = transitionDelegate
+        modal.modalPresentationStyle = .custom
+        transitionDelegate.customHeight = 200
+        transitionDelegate.translateForDismiss = 75
+        self.present(modal, animated: true, completion: nil)
+    }
+    
 }
 
-extension TryMeViewController : UICollectionViewDataSource ,UICollectionViewDelegate{
+extension TryMeViewController: SPStorkControllerDelegate {
+    func didDismissStorkByTap() {
+        print("SPStorkControllerDelegate - didDismissStorkByTap")
+    }
+    
+    func didDismissStorkBySwipe() {
+        print("SPStorkControllerDelegate - didDismissStorkBySwipe")
+    }
+}
+
+extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  colorCode.count

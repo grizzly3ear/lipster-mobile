@@ -110,6 +110,7 @@ PODS:
   - SDWebImage (5.0.2):
     - SDWebImage/Core (= 5.0.2)
   - SDWebImage/Core (5.0.2)
+  - SPStorkController (1.7.9)
   - SwiftEntryKit (1.0.1):
     - QuickLayout (= 3.0.0)
   - SwiftyJSON (4.2.0)
@@ -129,6 +130,7 @@ DEPENDENCIES:
   - PickerButton
   - ReactiveCocoa (~> 9.0)
   - SDWebImage (~> 5.0)
+  - SPStorkController
   - SwiftEntryKit
   - SwiftyJSON
 
@@ -162,6 +164,7 @@ SPEC REPOS:
     - ReactiveSwift
     - Result
     - SDWebImage
+    - SPStorkController
     - SwiftEntryKit
     - SwiftyJSON
 
@@ -194,9 +197,10 @@ SPEC CHECKSUMS:
   ReactiveSwift: bd4c122943593e67cb441409370c5c1e3cb32791
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
+  SPStorkController: 36bd84206267232747b19d48852659bd71ede28f
   SwiftEntryKit: 3f55c0b8e676afe24a3703237bcac68372891c56
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 907d52613d05f947c0acc1221670c7fd3621f636
+PODFILE CHECKSUM: f4e922c0d41354c38126271b0809c0befc0cbdbc
 
 COCOAPODS: 1.7.5
