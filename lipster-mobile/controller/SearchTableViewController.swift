@@ -19,6 +19,7 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
    
     var searchLipsticks = [Lipstick]()
     var searchLipstickFilter = [Lipstick]()
+    var searchLipstickDictionary: Dictionary<Int, [String: Lipstick]> = Dictionary()
     func createSearchLipstickArray() -> [Lipstick] {
         let searhLipstick1 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "MAC", "mmmm",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
         let searhLipstick2 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "YSL", "mmmm",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
@@ -45,7 +46,7 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return searchLipstickFilter.count
+        return searchLipstickDictionary.count
        
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -55,14 +56,8 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-            cell.textLabel?.text = searchLipstickFilter[indexPath.row].lipstickBrand
-            cell.textLabel?.text = searchLipstickFilter[indexPath.row].lipstickColorName
-            cell.textLabel?.text = searchLipstickFilter[indexPath.row].lipstickName
+        cell.searchLabel.text = searchLipstickDictionary[indexPath.row]?.keys.first
         
-        
-        
-//        let lipstick = searchLipstickArray[indexPath.item]
-//        cell.setSearchLipstick(searchLipstick: lipstick)
         return cell
     }
     
@@ -70,16 +65,27 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         print("updateSearchResults -- \(searchLipstickFilter.count)--")
         searchLipstickFilter.removeAll()
         
-        if let text = searchController.searchBar.text {
-            print("text \(text)")
-            print("searchLipstick\(searchLipsticks.count)")
+        if let text = searchController.searchBar.text?.lowercased() {
+            var index = 0
             for lipstick in searchLipsticks {
-                print("lipstick \(lipstick)")
-                if lipstick.lipstickBrand.contains(text) {
-                    searchLipstickFilter.append(lipstick)
+                
+                if lipstick.lipstickBrand.lowercased().contains(text) {
+                    searchLipstickDictionary[index] = [
+                        lipstick.lipstickBrand: lipstick
+                    ]
+                    index += 1
                 }
-                if lipstick.lipstickName.contains(text) {
-                    searchLipstickFilter.append(lipstick)
+                if lipstick.lipstickName.lowercased().contains(text) {
+                    searchLipstickDictionary[index] = [
+                        lipstick.lipstickName: lipstick
+                    ]
+                    index += 1
+                }
+                if lipstick.lipstickColorName.lowercased().contains(text) {
+                    searchLipstickDictionary[index] = [
+                        lipstick.lipstickColorName: lipstick
+                    ]
+                    index += 1
                 }
             }
         }
@@ -105,12 +111,6 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("print searchBar-->\(searchBar)")
-        searchLipstickFilter = searchLipsticks.filter({$0.lipstickBrand.lowercased().prefix(searchText.count) == searchText.lowercased()})
-        searching = true
-        searchTableView.reloadData()
-    }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         searchBar.text = ""
