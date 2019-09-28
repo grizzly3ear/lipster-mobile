@@ -31,6 +31,7 @@ class TryMeViewController: UIViewController  {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet private weak var cameraView: UIView!
+    @IBOutlet weak var collapseDetailView: UIView!
     
     private lazy var previewOverlayView: UIImageView = {
         precondition(isViewLoaded)
@@ -47,7 +48,8 @@ class TryMeViewController: UIViewController  {
         return annotationOverlayView
     }()
     
-    let colorCode:[UIColor] = [UIColor(rgb: 0xB74447),UIColor(rgb: 0xFA4855),UIColor(rgb: 0xFE486B),UIColor(rgb: 0xFF9A94) ]
+    var lipstick: Lipstick!
+    var lipsticks: [Lipstick]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,11 @@ class TryMeViewController: UIViewController  {
         setUpCaptureSessionInput()
         collectionView.delegate = self
         collectionView.dataSource = self
+        collapseDetailView.layer.cornerRadius = 20
+        self.hero.isEnabled = true
+        collapseDetailView.hero.id = "pullableView"
         hideTabBar()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,7 +87,6 @@ class TryMeViewController: UIViewController  {
         super.viewDidDisappear(animated)
 
         stopSession()
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,8 +102,9 @@ class TryMeViewController: UIViewController  {
         transitionDelegate.storkDelegate = self
         modal.transitioningDelegate = transitionDelegate
         modal.modalPresentationStyle = .custom
-        transitionDelegate.customHeight = 200
-        transitionDelegate.translateForDismiss = 75
+        transitionDelegate.translateForDismiss = 100
+        modal.lipstick = lipstick
+        
         self.present(modal, animated: true, completion: nil)
     }
     
@@ -117,13 +123,18 @@ extension TryMeViewController: SPStorkControllerDelegate {
 extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  colorCode.count
+        print("lipstick count \(lipsticks.count)")
+        return  lipsticks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! LipSelectedColorCollectionViewCell
-        cell.colorDisplay.backgroundColor = colorCode[indexPath.item]
-        cell.triangleView.isHidden = true
+        cell.colorDisplay.backgroundColor = lipsticks[indexPath.item].lipstickColor
+        if lipsticks[indexPath.item].lipstickId == lipstick?.lipstickId {
+            cell.triangleView.isHidden = false
+        } else {
+            cell.triangleView.isHidden = true
+        }
         cell.bringSubviewToFront(cell.triangleView)
         
         return cell
@@ -131,8 +142,8 @@ extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
-        cell.triangleView.isHidden = false
+        lipstick = lipsticks[indexPath.item]
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
