@@ -100,7 +100,4 @@ public class UIUtilityHelper {
 
 private enum Constants {
     static let circleViewAlpha: CGFloat = 0.7
-    static let rectangleViewAlpha: CGFloat = 0.3
-    static let shapeViewAlpha: CGFloat = 0.3
-    static let rectangleViewCornerRadius: CGFloat = 10.0
 }

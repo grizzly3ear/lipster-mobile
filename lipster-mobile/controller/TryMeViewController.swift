@@ -5,7 +5,7 @@
 //  Created by Mainatvara on 17/4/2562 BE.
 //  Copyright © 2562 Bank. All rights reserved.
 //
-// WIP
+
 import UIKit
 import AVFoundation
 import SPStorkController
@@ -13,12 +13,7 @@ import SPStorkController
 import Firebase
 
 class TryMeViewController: UIViewController  {
-
-    private let detectors: [Detector] = [.onDeviceFace,
-                                         .onDeviceObjectProminentNoClassifier,
-                                         .onDeviceObjectProminentWithClassifier,
-                                         .onDeviceObjectMultipleNoClassifier,
-                                         .onDeviceObjectMultipleWithClassifier]
+    
     private var currentDetector: Detector = .onDeviceFace
     private var isUsingFrontCamera = true
     private var previewLayer: AVCaptureVideoPreviewLayer!
@@ -26,7 +21,6 @@ class TryMeViewController: UIViewController  {
     private lazy var sessionQueue = DispatchQueue(label: Constant.sessionQueueLabel)
     private lazy var vision = Vision.vision()
     private var lastFrame: CMSampleBuffer?
-    private var areAutoMLModelsRegistered = false
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -50,6 +44,7 @@ class TryMeViewController: UIViewController  {
     
     var lipstick: Lipstick!
     var lipsticks: [Lipstick]!
+    let lipstickColorAlpha: CGFloat = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +59,8 @@ class TryMeViewController: UIViewController  {
         collapseDetailView.layer.cornerRadius = 20
         self.hero.isEnabled = true
         collapseDetailView.hero.id = "pullableView"
-        hideTabBar()
         
+        hideTabBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,6 +75,7 @@ class TryMeViewController: UIViewController  {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         showTabBar()
     }
     
@@ -112,24 +108,22 @@ class TryMeViewController: UIViewController  {
 
 extension TryMeViewController: SPStorkControllerDelegate {
     func didDismissStorkByTap() {
-        print("SPStorkControllerDelegate - didDismissStorkByTap")
     }
     
     func didDismissStorkBySwipe() {
-        print("SPStorkControllerDelegate - didDismissStorkBySwipe")
     }
 }
 
-extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDelegate{
+extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("lipstick count \(lipsticks.count)")
         return  lipsticks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! LipSelectedColorCollectionViewCell
         cell.colorDisplay.backgroundColor = lipsticks[indexPath.item].lipstickColor
+        
         if lipsticks[indexPath.item].lipstickId == lipstick?.lipstickId {
             cell.triangleView.isHidden = false
         } else {
@@ -307,10 +301,7 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         switch currentDetector {
         case .onDeviceFace:
             detectFacesOnDevice(in: visionImage, width: imageWidth, height: imageHeight)
-        case .onDeviceObjectProminentNoClassifier,
-             .onDeviceObjectProminentWithClassifier,
-             .onDeviceObjectMultipleNoClassifier,
-             .onDeviceObjectMultipleWithClassifier:
+        default:
             break
         }
     }
@@ -362,50 +353,71 @@ extension TryMeViewController {
     }
     
     private func addContours(for face: VisionFace, width: CGFloat, height: CGFloat) {
+        
+        let view = annotationOverlayView
+        let upperLipPath = UIBezierPath()
+        let lowerLipPath = UIBezierPath()
+        let rect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        
         if let topUpperLipContour = face.contour(ofType: .upperLipTop) {
-            for point in topUpperLipContour.points {
+            for (index, point) in topUpperLipContour.points.enumerated() {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                UIUtilityHelper.addCircle(
-                    atPoint: cgPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.red,
-                    radius: Constant.smallDotRadius
-                )
+                if index == 0 {
+                    upperLipPath.move(to: cgPoint)
+                } else {
+                    upperLipPath.addLine(to: cgPoint)
+                }
             }
         }
+        
         if let bottomUpperLipContour = face.contour(ofType: .upperLipBottom) {
-            for point in bottomUpperLipContour.points {
+            for (index, point) in bottomUpperLipContour.points.reversed().enumerated() {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                UIUtilityHelper.addCircle(
-                    atPoint: cgPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.red,
-                    radius: Constant.smallDotRadius
-                )
+                if index != 0 && index != bottomUpperLipContour.points.count - 1 {
+                    upperLipPath.addLine(to: cgPoint)
+                }
             }
         }
-        if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
-            for point in topLowerLipContour.points {
-                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                UIUtilityHelper.addCircle(
-                    atPoint: cgPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.red,
-                    radius: Constant.smallDotRadius
-                )
-            }
-        }
+        
+        upperLipPath.close()
+        
+        let upperShapeLayer = CAShapeLayer()
+        upperShapeLayer.path = upperLipPath.cgPath
+        upperShapeLayer.fillColor = lipstick.lipstickColor.cgColor
+        let upperShapeView = UIView(frame: rect)
+        upperShapeView.alpha = lipstickColorAlpha
+        upperShapeView.layer.addSublayer(upperShapeLayer)
+        view.addSubview(upperShapeView)
+        
         if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
-            for point in bottomLowerLipContour.points {
+            for (index, point) in bottomLowerLipContour.points.enumerated() {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                UIUtilityHelper.addCircle(
-                    atPoint: cgPoint,
-                    to: annotationOverlayView,
-                    color: UIColor.red,
-                    radius: Constant.smallDotRadius
-                )
+                if index == 0 {
+                    lowerLipPath.move(to: cgPoint)
+                } else {
+                    lowerLipPath.addLine(to: cgPoint)
+                }
             }
         }
+        
+        if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
+            for (index, point) in topLowerLipContour.points.reversed().enumerated() {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
+                if index != 0 && index != topLowerLipContour.points.count - 1 {
+                    lowerLipPath.addLine(to: cgPoint)
+                }
+            }
+        }
+
+        lowerLipPath.close()
+        
+        let lowerShapeLayer = CAShapeLayer()
+        lowerShapeLayer.path = lowerLipPath.cgPath
+        lowerShapeLayer.fillColor = lipstick.lipstickColor.cgColor
+        let lowerShapeView = UIView(frame: rect)
+        lowerShapeView.alpha = lipstickColorAlpha
+        lowerShapeView.layer.addSublayer(lowerShapeLayer)
+        view.addSubview(lowerShapeView)
     }
 }
 
@@ -420,31 +432,29 @@ extension TryMeViewController {
         normalizedPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: normalizedPoint)
         return normalizedPoint
     }
+    
+    private func normalizedPoint(
+        fromVisionPoint points: [VisionPoint],
+        width: CGFloat,
+        height: CGFloat
+        ) -> [CGPoint] {
+        var normalizedPoints: [CGPoint] = [CGPoint]()
+        for point in points {
+            let cgPoint = CGPoint(x: CGFloat(point.x.floatValue), y: CGFloat(point.y.floatValue))
+            var normalizedPoint = CGPoint(x: cgPoint.x / width, y: cgPoint.y / height)
+            normalizedPoint = previewLayer.layerPointConverted(fromCaptureDevicePoint: normalizedPoint)
+            normalizedPoints.append(normalizedPoint)
+        }
+        return normalizedPoints
+    }
 }
 
 public enum Detector: String {
     case onDeviceFace = "On-Device Face Detection"
-    case onDeviceObjectProminentNoClassifier = "ODT for prominent object, only tracking"
-    case onDeviceObjectProminentWithClassifier = "ODT for prominent object with classification"
-    case onDeviceObjectMultipleNoClassifier = "ODT for multiple objects, only tracking"
-    case onDeviceObjectMultipleWithClassifier = "ODT for multiple objects with classification"
 }
 
 private enum Constant {
-    static let alertControllerTitle = "Vision Detectors"
-    static let alertControllerMessage = "Select a detector"
-    static let cancelActionTitleText = "Cancel"
     static let videoDataOutputQueueLabel = "com.google.firebaseml.visiondetector.VideoDataOutputQueue"
     static let sessionQueueLabel = "com.google.firebaseml.visiondetector.SessionQueue"
-    static let noResultsMessage = "No Results"
-    static let localAutoMLModelName = "local_automl_model"
-    static let remoteAutoMLModelName = "remote_automl_model"
-    static let localModelManifestFileName = "automl_labeler_manifest"
-    static let autoMLManifestFileType = "json"
-    static let labelConfidenceThreshold: Float = 0.75
-    static let smallDotRadius: CGFloat = 4.0
     static let originalScale: CGFloat = 1.0
-    static let padding: CGFloat = 10.0
-    static let resultsLabelHeight: CGFloat = 200.0
-    static let resultsLabelLines = 5
 }
