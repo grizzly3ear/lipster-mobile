@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 import Hero
 import CHTCollectionViewWaterfallLayout
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class LipstickDetailModalViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var lipstickTitle: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let trendDataPipe = Signal<[Trend], NoError>.pipe()
+    var trendDataObserver: Signal<[Trend], NoError>.Observer?
     
     var lipstick: Lipstick?
     var trends: [Trend]!
@@ -28,12 +34,13 @@ class LipstickDetailModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadTable()
         self.hero.isEnabled = true
         view.hero.id = "pullableView"
         setLipstick(lipstick!)
         collectionView.delegate = self
         collectionView.dataSource = self
-        trends = createArray()
+        fetchData()
     }
     
     func createArray() -> [Trend] {
@@ -41,6 +48,35 @@ class LipstickDetailModalViewController: UIViewController {
         let t2 = Trend("abc", "", .blue, .black, "")
         let t3 = Trend("abc", "", .blue, .black, "")
         return [t1, t2, t3]
+    }
+    
+    func fetchData() {
+        DispatchQueue.main.async {
+            TrendRepository.fetchSimilarTrendLipstick(self.lipstick!, completion: { (response) in
+                self.trendDataPipe.input.send(value: response)
+            })
+        }
+    }
+    
+    func reloadTable() {
+        if trends == nil || trends.count == 0 {
+            self.collectionView.backgroundColor = .clear
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.collectionView.frame.size.width
+            label.center = self.collectionView.center
+            label.center.y = self.collectionView.frame.size.height / 2
+            label.numberOfLines = 2
+            label.textColor = .darkGray
+            label.text = "There are no matching current trends."
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.collectionView.addSubview(label)
+        } else {
+            self.collectionView.viewWithTag(1)?.removeFromSuperview()
+        }
     }
 }
 
@@ -62,6 +98,20 @@ extension LipstickDetailModalViewController: UICollectionViewDelegate, UICollect
 //        cell.imageView.hero.id = "trend\(indexPath.item)"
         
         return cell
+    }
+}
+
+extension LipstickDetailModalViewController {
+    func initReactiveTrendData() {
+        trendDataObserver = Signal<[Trend], NoError>.Observer(value: { (trends) in
+            self.trends = trends
+            
+            self.collectionView.reloadData()
+            self.collectionView.setNeedsLayout()
+            self.collectionView.layoutIfNeeded()
+            self.reloadTable()
+        })
+        trendDataPipe.output.observe(trendDataObserver!)
     }
 }
 

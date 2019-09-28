@@ -14,4 +14,14 @@ class TrendRepository {
             completion(TrendGroup.makeArrayModelFromJSON(response: response))
         } 
     }
+    
+    public static func fetchSimilarTrendLipstick(_ lipstick: Lipstick, completion: @escaping ([Trend]) -> Void) {
+        let request = HttpRequest()
+        request.get("api/lipstick/color/rgb/\(lipstick.lipstickColor.toHex!)/trend", nil, nil) { (response, _) -> (Void) in
+            if response == nil {
+                completion([Trend]())
+            }
+            completion(Trend.makeArrayModelFromJSON(response: response))
+        }
+    }
 }
