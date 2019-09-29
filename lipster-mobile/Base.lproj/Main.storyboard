@@ -1160,7 +1160,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="24" y="479" width="20.000000000000057" height="47.000000000000114"/>
+                                        <rect key="frame" x="24" y="479" width="20" height="47"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Liu-cL-6cB">
                                         <rect key="frame" x="16" y="470" width="343" height="1"/>

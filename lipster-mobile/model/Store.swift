@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class Store {
     
+    var id: Int
     var image : String
     var name : String
     var hours : String
@@ -21,7 +22,8 @@ class Store {
     var phoneNumber : String
     
     
-    init( storeLogoImage: String , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double , storePhoneNumber : String) {
+    init(id: Int, storeLogoImage: String , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double , storePhoneNumber : String) {
+        self.id = id
         self.image = storeLogoImage
         self.name = storeName
         self.hours = storeHours
@@ -51,7 +53,7 @@ class Store {
                 let addressDetail = storeAddress["address_detail"].stringValue
                 let period = storeAddress["period"].stringValue
                 let tel = storeAddress["tel"].stringValue
-                stores.append(Store(storeLogoImage: image, storeName: name, storeHours: period, storeAddress: addressDetail, storeLatitude: latitude, storeLongitude: longtitude, storePhoneNumber: tel))
+                stores.append(Store(id: id, storeLogoImage: image, storeName: name, storeHours: period, storeAddress: addressDetail, storeLatitude: latitude, storeLongitude: longtitude, storePhoneNumber: tel))
             }
         }
         return stores
