@@ -315,6 +315,7 @@ extension NewLipstickDetailViewcontroller {
             }
             
             lipstickHistory.append(lipstick!)
+            print("add")
             
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipsticksHistory, lipstickHistory)
         }

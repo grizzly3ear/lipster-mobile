@@ -10,6 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Result
+import Hero
 
 class LipstickListViewController: UITableViewController  {
 
@@ -19,8 +20,6 @@ class LipstickListViewController: UITableViewController  {
     var searchController : UISearchController!
     var resultController = UITableViewController()
     var lipstickList = [Lipstick]()
-    
-    var isFav = UserDefaults.standard.bool(forKey: "isFav")
     
     let lipstickListPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickListObserver: Signal<[Lipstick], NoError>.Observer?
@@ -32,28 +31,16 @@ class LipstickListViewController: UITableViewController  {
         lipListTableView.delegate = self
         lipListTableView.dataSource = self
         navigationController?.isNavigationBarHidden = false
-        addNavBarImage()
-        searchBarLip()
-        fetchData()
-    }
-    
-    @IBAction func favButtonClicked(_ sender: UIButton) {
-        if isFav == true {
-            let image = UIImage(named: "favButton_off")
-            sender.setImage(image, for: UIControl.State.normal)
-        } else {
-            let image = UIImage(named: "favButton_on")
-            sender.setImage(image, for: UIControl.State.normal)
-        }
-        
-        isFav = !isFav
-        UserDefaults.standard.set(isFav, forKey: "isFav")
-        UserDefaults.standard.synchronize()
+        initHero()
+//        addNavBarImage()
+//        searchBarLip()
+//        fetchData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LipstickDetailSegmentVC {
-            destination.lipstick = lipstickList[(lipListTableView.indexPathForSelectedRow?.row)!]
+        if let destination = segue.destination as? NewLipstickDetailViewcontroller {
+            let index = sender as! IndexPath
+            destination.lipstick = lipstickList[index.row]
         }
     }
 }
@@ -77,15 +64,24 @@ extension LipstickListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LipstickListTableViewCell") as! LipstickListTableViewCell
         let lipstick = lipstickList[indexPath.item]
         cell.setLipstick(lipstick: lipstick)
+        cell.hero.isEnabled = true
+        cell.hero.modifiers = [
+            .whenPresenting(
+                .delay(Double(indexPath.row) * 0.1),
+                .fade,
+                .translate(y: CGFloat(500 + (indexPath.item * 50))),
+                .spring(stiffness: 100, damping: 17)
+            )
+        ]
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLipstickDetail" , sender: self)
+        performSegue(withIdentifier: "showLipstickDetail" , sender: indexPath)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return 95
     }
 }
 
@@ -152,5 +148,13 @@ extension LipstickListViewController {
             self.lipListTableView.layoutIfNeeded()
         })
         lipstickListPipe.output.observe(lipstickListObserver!)
+    }
+}
+
+extension LipstickListViewController {
+    func initHero() {
+        self.hero.isEnabled = true
+        self.lipListTableView.hero.modifiers = [.cascade]
+        print("hero")
     }
 }

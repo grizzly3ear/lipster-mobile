@@ -21,11 +21,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var favoriteLipstickView: UIView!
     
     @IBAction func favoriteLipstickIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showFavoriteLipstickFromIcon", sender: self)
+        self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
     }
     
     @IBAction func favoriteLipsickLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showFavoriteLipstickFromLabel", sender: self)
+        self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
     }
     
     @IBAction func editProfileButtonAction(_ sender: Any) {
@@ -33,19 +33,19 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func recentlyViewIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
+        self.performSegue(withIdentifier: "showRecentlyView", sender: self)
     }
     
     @IBAction func recentlyViewLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showRecentlyViewFromLabel", sender: self)
+        self.performSegue(withIdentifier: "showRecentlyView", sender: self)
     }
     
     @IBAction func yourReviewIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showYourReviewFromIcon", sender: self)
+        self.performSegue(withIdentifier: "showYourReview", sender: self)
     }
     
     @IBAction func yourReviewLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showYourReviewFromLabel", sender: self)
+        self.performSegue(withIdentifier: "showYourReview", sender: self)
     }
     
     @IBAction func logoutFromIcon(_ sender: Any) {
@@ -61,6 +61,21 @@ class ProfileViewController: UIViewController {
         
         iniUserInterface()
         initGesture()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFavoriteLipstick"{
+            let destination = segue.destination as! LipstickListViewController
+            destination.lipstickList = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks).reversed()
+        }
+        if segue.identifier == "showRecentlyView"{
+            let destination = segue.destination as! LipstickListViewController
+            destination.lipstickList = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipsticksHistory).reversed()
+        }
+        if segue.identifier == "showFavoriteTrend"{
+            let destination = segue.destination as! PinterestViewController
+            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
+        }
     }
     
 }

@@ -45,7 +45,7 @@ class Lipstick: NSObject, NSCoding {
         let lipstickColor = aDecoder.decodeObject(forKey: "lipstickColor") as! UIColor
         let lipstickDetailId = aDecoder.decodeInteger(forKey: "lipstickDetailId")
         let lipstickIngredients = aDecoder.decodeObject(forKey: "lipstickIngredients") as! String
-        self.init(lipstickId, [String](), lipstickBrand, lipstickName, lipstickColorName, lisptickDetail, lipstickColor, lipstickDetailId, lipstickIngredients)
+        self.init(lipstickId, lipstickImage, lipstickBrand, lipstickName, lipstickColorName, lisptickDetail, lipstickColor, lipstickDetailId, lipstickIngredients)
     }
 
     init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int, _ lipstickIngredients: String = "") {

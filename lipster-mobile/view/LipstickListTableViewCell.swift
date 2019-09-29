@@ -15,18 +15,15 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var lipBrandLabel: UILabel!
     @IBOutlet weak var lipNameLabel: UILabel!
     @IBOutlet weak var lipColorNameLabel: UILabel!
-    @IBOutlet weak var lipDetailLabel: UILabel!
-    @IBOutlet weak var colorUIView: UIView!
     
-    @IBOutlet weak var favButton: UIButton!
     
     func setLipstick(lipstick: Lipstick) {
+        print(lipstick.lipstickImage)
         lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
         lipBrandLabel.text = lipstick.lipstickBrand
         lipNameLabel.text = lipstick.lipstickName
         lipColorNameLabel.text = lipstick.lipstickColorName
-        lipDetailLabel.text = lipstick.lipstickDetail
-        colorUIView.backgroundColor = lipstick.lipstickColor
+        lipImageView.layer.cornerRadius = 5.0
     }
     
 }
