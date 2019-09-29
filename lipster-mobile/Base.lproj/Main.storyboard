@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -269,7 +269,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3p-JS-OUz">
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="clock"/>
+                                        <state key="normal" title="Button" image="lipstick (2)"/>
                                         <connections>
                                             <segue destination="lud-9i-nph" kind="show" identifier="showFavoriteLipstickFromIcon" id="iHi-jt-pK5"/>
                                         </connections>
@@ -297,7 +297,7 @@ Lipsticks</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRW-zL-kgF">
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="clock"/>
+                                        <state key="normal" title="Button" image="history"/>
                                         <connections>
                                             <segue destination="UxA-jW-9DF" kind="show" identifier="showRecentlyViewFromIcon" id="s8G-gc-cZg"/>
                                         </connections>
@@ -325,7 +325,7 @@ Lipsticks</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-ci-OR5">
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="clock"/>
+                                        <state key="normal" title="Button" image="log-out"/>
                                         <connections>
                                             <action selector="logoutFromIcon:" destination="vmn-Gm-6su" eventType="touchUpInside" id="0sR-pm-PVa"/>
                                         </connections>
@@ -351,7 +351,7 @@ Lipsticks</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iM-R4-eiP">
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="clock"/>
+                                        <state key="normal" title="Button" image="review-1"/>
                                         <connections>
                                             <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReviewFromIcon" id="zid-xp-aA6"/>
                                         </connections>
@@ -379,7 +379,7 @@ Review</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phT-nW-fHi">
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="clock"/>
+                                        <state key="normal" title="Button" image="makeup"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JgK-QW-Oa0">
                                         <rect key="frame" x="37" y="59" width="56" height="48"/>
@@ -2618,36 +2618,41 @@ Review</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="128" height="128"/>
-        <image name="backgroundLiplist" width="572" height="782"/>
-        <image name="clock" width="256" height="256"/>
-        <image name="edit" width="256" height="256"/>
-        <image name="facebook-1" width="128" height="128"/>
-        <image name="favButton_off" width="256" height="256"/>
-        <image name="favoritePopup" width="512" height="512"/>
-        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="backgroundLiplist" width="286" height="391"/>
+        <image name="edit" width="512" height="512"/>
+        <image name="facebook-1" width="96" height="96"/>
+        <image name="favButton_off" width="192" height="192"/>
+        <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="frame" width="400" height="400"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="line" width="512" height="512"/>
+        <image name="history" width="384" height="384"/>
+        <image name="line" width="384" height="384"/>
         <image name="lipColor" width="214" height="569"/>
+        <image name="lipstick (2)" width="326.2301025390625" height="326.2301025390625"/>
+        <image name="log-out" width="384" height="384"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="970" height="672"/>
+        <image name="login_bgBlur" width="485" height="336"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="logo-3" width="2835" height="850"/>
-        <image name="mail-1" width="128" height="128"/>
+        <image name="mail-1" width="96" height="96"/>
+        <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="nopic" width="1417" height="1417"/>
-        <image name="notiTrend1" width="524" height="426"/>
-        <image name="open-close" width="128" height="128"/>
-        <image name="password" width="128" height="128"/>
-        <image name="review bg" width="1482" height="158"/>
-        <image name="review_line" width="1560" height="16"/>
-        <image name="send" width="64" height="64"/>
-        <image name="signUp_bg" width="854" height="942"/>
+        <image name="notiTrend1" width="262" height="213"/>
+        <image name="open-close" width="96" height="96"/>
+        <image name="password" width="96" height="96"/>
+        <image name="review bg" width="741" height="79"/>
+        <image name="review-1" width="384" height="384"/>
+        <image name="review_line" width="780" height="8"/>
+        <image name="send" width="48" height="48"/>
+        <image name="signUp_bg" width="427" height="471"/>
+        <image name="try this shade" width="368" height="59"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="680" height="678"/>
-        <image name="user2" width="664" height="664"/>
-        <image name="username" width="128" height="128"/>
-        <image name="whiteLine" width="64" height="64"/>
+        <image name="user1" width="340" height="339"/>
+        <image name="user2" width="332" height="332"/>
+        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wGH-AF-6ic"/>
