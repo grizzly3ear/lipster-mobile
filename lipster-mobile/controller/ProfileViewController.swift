@@ -70,13 +70,17 @@ class ProfileViewController: UIViewController {
         if segue.identifier == "showFavoriteLipstickFromIcon"{
             
         }
-        if segue.identifier == "showFavoriteLipstickFromLabel"{
-            
-        }
+    
         if segue.identifier == "showRecentlyViewFromIcon"{
             
         }
         if segue.identifier == "showRecentlyViewFromLabel"{
+            
+        }
+        if segue.identifier == "showFavoriteTrendFromIcon"{
+            
+        }
+        if segue.identifier == "showFavoriteTrendFromLabel"{
             
         }
     }

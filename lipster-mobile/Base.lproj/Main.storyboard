@@ -380,6 +380,9 @@ Review</string>
                                         <rect key="frame" x="38" y="8" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="makeup"/>
+                                        <connections>
+                                            <segue destination="Th2-S5-z7n" kind="show" identifier="showFavoriteTrendFromIcon" id="o8m-Id-iYa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JgK-QW-Oa0">
                                         <rect key="frame" x="37" y="59" width="56" height="48"/>
@@ -390,6 +393,9 @@ Review</string>
  Trends</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Th2-S5-z7n" kind="show" identifier="showFavoriteTrendFromLabel" id="uiQ-35-l4p"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -572,7 +578,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgA-d2-l8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="791" y="4272"/>
+            <point key="canvasLocation" x="1471" y="4272"/>
         </scene>
         <!--Lip Color Detection Controller-->
         <scene sceneID="hq4-fw-bEo">
@@ -660,7 +666,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="2038.8305847076463"/>
+            <point key="canvasLocation" x="-145" y="2039"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="DEA-kR-wGF">
@@ -2659,6 +2665,7 @@ Review</string>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="JIg-n3-5oa"/>
+        <segue reference="uiQ-35-l4p"/>
         <segue reference="aDV-9f-do2"/>
     </inferredMetricsTieBreakers>
 </document>
