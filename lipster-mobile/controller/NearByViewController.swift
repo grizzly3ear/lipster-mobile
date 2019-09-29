@@ -23,6 +23,8 @@ class NearByViewController: UIViewController   {
     var stores = [Store]()
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var myCoorButton: UIButton!
+    
     var locationManager: CLLocationManager = CLLocationManager()
     
     @IBOutlet weak var mapCollectionView: UICollectionView!
@@ -47,7 +49,16 @@ class NearByViewController: UIViewController   {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
+        myCoorButton.layer.cornerRadius = 5.0
+        myCoorButton.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2, scale: true)
     }
+    
+    @IBAction func findMyCoor(_ sender: Any) {
+        if let coor = mapView.userLocation.location?.coordinate{
+            mapView.setCenter(coor, animated: true)
+        }
+    }
+    
     
     func fetchData() {
         StoreRepository.fetchAllStore { (response) in
@@ -76,6 +87,7 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         cell.storeLogoImage.contentMode = .scaleAspectFill
         cell.storeLogoImage.clipsToBounds = true
         cell.layer.cornerRadius = 8
+        cell.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2.0, scale: true)
         
         let store = stores[indexPath.item]
         cell.setStore(store: store )

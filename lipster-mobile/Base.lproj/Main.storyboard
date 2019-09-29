@@ -89,7 +89,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-Kk-Cyg">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-Kk-Cyg">
                                 <rect key="frame" x="0.0" y="32" width="375" height="586"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
@@ -124,7 +124,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5O-aR-tBS">
-                                                    <rect key="frame" x="11" y="29" width="60" height="60"/>
+                                                    <rect key="frame" x="11" y="31" width="60" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LG-DB-3dA">
@@ -150,7 +150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-Og-lvo">
-                                                    <rect key="frame" x="16" y="105" width="299" height="104"/>
+                                                    <rect key="frame" x="16" y="107" width="291" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -180,6 +180,16 @@
                                     <outlet property="delegate" destination="jAg-pR-acB" id="Rcp-b8-wb3"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJG-1G-x2N">
+                                <rect key="frame" x="319" y="80" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                <state key="normal" image="location"/>
+                                <connections>
+                                    <action selector="findMyCoor:" destination="jAg-pR-acB" eventType="touchUpInside" id="5Hu-2t-C0Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ulr-b0-hOM"/>
@@ -192,6 +202,7 @@
                         <outlet property="collectionViewLayout" destination="OID-iN-I2K" id="jh9-UU-oa1"/>
                         <outlet property="mapCollectionView" destination="Pr4-fy-1G5" id="nWu-Qj-G6Q"/>
                         <outlet property="mapView" destination="c3D-Kk-Cyg" id="wNT-qP-yZt"/>
+                        <outlet property="myCoorButton" destination="aJG-1G-x2N" id="Ijt-2i-ZEy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjw-vG-xei" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2390,6 +2401,7 @@ Review</string>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="lipstick (2)" width="512" height="512"/>
+        <image name="location" width="480" height="480"/>
         <image name="log-out" width="512" height="512"/>
         <image name="login_bg" width="375" height="667"/>
         <image name="login_bgBlur" width="970" height="672"/>

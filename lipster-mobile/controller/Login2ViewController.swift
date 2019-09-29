@@ -40,11 +40,12 @@ class Login2ViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         UserRepository.authenticate(
             email: usernameTextField.text ?? "",
-            password: passwordTextField.text ?? "") { result in
-                if result {
+            password: passwordTextField.text ?? "") { status, messages in
+                if status == 200 {
                     self.performSegue(withIdentifier: "showHomePage", sender: self)
+                } else {
+                    self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
                 }
-                
         }
         
     }
@@ -59,5 +60,11 @@ extension Login2ViewController {
         self.lineLabel.hero.id = "lineLabel"
         self.facebookButton.hero.id = "facebookButton"
         self.loginButton.hero.id = "primaryActionButton"
+    }
+    
+    func popCenterAlert(title: String, description: String, actionTitle: String, completion: (() -> Void)? = nil ) {
+        let alert  = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: completion)
     }
 }
