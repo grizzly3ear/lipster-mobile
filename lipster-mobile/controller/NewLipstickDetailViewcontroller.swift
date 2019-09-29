@@ -204,6 +204,7 @@ extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectColorFromDetailCollectionViewCell", for: indexPath) as? SelectColorFromDetailCollectionViewCell
         cell?.selectColorView.backgroundColor = colors[indexPath.item].lipstickColor
+        
         if colors[indexPath.item].lipstickId == lipstick?.lipstickId {
             cell?.triangleView.isHidden = false
         } else {
@@ -244,6 +245,68 @@ extension NewLipstickDetailViewcontroller {
     func initHero() {
         self.hero.isEnabled = true
         self.scrollLipstickImages.hero.id = imageHeroId
+        
+        self.lipstickBrand.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.1),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.4),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.lipstickColorName.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.2),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.4),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.lipstickName.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.3),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.2),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.tryMeButton.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.4),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.2),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.reviewButton.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.5),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.2),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.segmentedControl3.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.6),
+                .translate(y: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.2),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+
     }
 }
 
