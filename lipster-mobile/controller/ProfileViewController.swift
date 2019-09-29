@@ -63,6 +63,24 @@ class ProfileViewController: UIViewController {
         initGesture()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFavoriteLipstickFromLabel"{
+            
+        }
+        if segue.identifier == "showFavoriteLipstickFromIcon"{
+            
+        }
+        if segue.identifier == "showFavoriteLipstickFromLabel"{
+            
+        }
+        if segue.identifier == "showRecentlyViewFromIcon"{
+            
+        }
+        if segue.identifier == "showRecentlyViewFromLabel"{
+            
+        }
+    }
+    
 }
 
 extension ProfileViewController {

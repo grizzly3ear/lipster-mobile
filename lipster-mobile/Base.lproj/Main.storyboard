@@ -271,7 +271,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="lipstick (2)"/>
                                         <connections>
-                                            <segue destination="lud-9i-nph" kind="show" identifier="showFavoriteLipstickFromIcon" id="iHi-jt-pK5"/>
+                                            <segue destination="2my-jU-SWf" kind="show" identifier="showFavoriteLipstickFromIcon" id="1bJ-i5-nVn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="umi-Ov-Jvx">
@@ -284,7 +284,7 @@ Lipsticks</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="lud-9i-nph" kind="show" identifier="showFavoriteLipstickFromLabel" id="Fg5-CQ-A5H"/>
+                                            <segue destination="2my-jU-SWf" kind="show" identifier="showFavoriteLipstickFromLabel" id="aDV-9f-do2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -299,7 +299,7 @@ Lipsticks</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="history"/>
                                         <connections>
-                                            <segue destination="UxA-jW-9DF" kind="show" identifier="showRecentlyViewFromIcon" id="s8G-gc-cZg"/>
+                                            <segue destination="2my-jU-SWf" kind="show" identifier="showRecentlyViewFromIcon" id="pD8-zW-E8l"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-FT-qE5">
@@ -312,7 +312,7 @@ Lipsticks</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="UxA-jW-9DF" kind="show" identifier="showRecentlyViewFromLabel" id="acc-yj-O4T"/>
+                                            <segue destination="2my-jU-SWf" kind="show" identifier="showRecentlyViewFromLabel" id="PDE-4n-fpa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2656,10 +2656,9 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wGH-AF-6ic"/>
-        <segue reference="s8G-gc-cZg"/>
-        <segue reference="iHi-jt-pK5"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="JIg-n3-5oa"/>
-        <segue reference="TWS-gk-k14"/>
+        <segue reference="aDV-9f-do2"/>
     </inferredMetricsTieBreakers>
 </document>
