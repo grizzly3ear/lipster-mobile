@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
+		2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
 		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
@@ -95,6 +96,7 @@
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
 		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
+		2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailModalViewController.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				D826C443232BDD9200BF6B20 /* NewLipstickDetailViewcontroller.swift */,
 				D8573504232EA6FB00164E2E /* ReviewViewController.swift */,
 				D80F336A2330E44F0057B782 /* ContainerViewController.swift */,
+				2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
+				2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
 				D86BF81622FC6D22003E1647 /* RecentlyViewListTableViewController.swift in Sources */,
 				2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */,

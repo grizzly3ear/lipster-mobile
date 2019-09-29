@@ -49,8 +49,6 @@ class NewLipstickDetailViewcontroller: UIViewController {
     var lipstick: Lipstick?
     var colors: [Lipstick] = [Lipstick]()
     var imageHeroId = String()
-   
-    var lipsticks = [Lipstick]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +105,11 @@ class NewLipstickDetailViewcontroller: UIViewController {
         } else if segueIdentifier == "showContainer" {
             if let destination = segue.destination as? ContainerViewController {
                destination.lipstick = lipstick
+            }
+        } else if segueIdentifier == "showTryMe" {
+            if let destination = segue.destination as? TryMeViewController {
+                destination.lipstick = lipstick
+                destination.lipsticks = colors
             }
         }
     }
