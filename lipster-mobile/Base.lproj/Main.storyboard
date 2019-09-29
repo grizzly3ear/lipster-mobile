@@ -2026,7 +2026,7 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
-                                                <rect key="frame" x="86" y="353" width="202" height="40"/>
+                                                <rect key="frame" x="86" y="353" width="202" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button" image="try-this-shade"/>
                                                 <connections>
