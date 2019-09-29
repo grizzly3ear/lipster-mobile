@@ -251,9 +251,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.1),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.4),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.lipstickColorName.hero.modifiers = [
@@ -261,9 +260,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.2),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.4),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.lipstickName.hero.modifiers = [
@@ -271,9 +269,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.3),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.2),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.tryMeButton.hero.modifiers = [
@@ -281,9 +278,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.4),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.2),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.reviewButton.hero.modifiers = [
@@ -291,9 +287,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.5),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.2),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.segmentedControl3.hero.modifiers = [
@@ -301,9 +296,8 @@ extension NewLipstickDetailViewcontroller {
                 .delay(0.6),
                 .translate(y: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.2),
-                .spring(stiffness: 50, damping: 70)
+                
+                .spring(stiffness: 100, damping: 15)
             )
         ]
 

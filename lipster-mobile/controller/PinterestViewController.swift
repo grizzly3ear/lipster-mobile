@@ -48,10 +48,9 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
         
         cell.hero.modifiers = [
             .whenPresenting(
-                .translate(y: CGFloat(200 + (Double(indexPath.item) * 30))),
+                .translate(y: CGFloat(500 + (Double(indexPath.item) * 30))),
                 .fade,
-                .timingFunction(.easeIn),
-                .spring(stiffness: 50, damping: 70)
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         

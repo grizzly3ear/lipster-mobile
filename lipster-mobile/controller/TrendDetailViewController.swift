@@ -138,9 +138,7 @@ extension TrendDetailViewController {
             .whenPresenting(
                 .delay(0.2),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.2),
-                .spring(stiffness: 50, damping: 70)
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.trendNameLabel.hero.modifiers = [
@@ -148,9 +146,7 @@ extension TrendDetailViewController {
                 .delay(0.2),
                 .translate(x: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.1),
-                .spring(stiffness: 50, damping: 70)
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         self.trendDescription.hero.modifiers = [
@@ -158,9 +154,7 @@ extension TrendDetailViewController {
                 .delay(0.3),
                 .translate(x: 200),
                 .fade,
-                .timingFunction(.easeIn),
-                .duration(0.1),
-                .spring(stiffness: 50, damping: 70)
+                .spring(stiffness: 100, damping: 15)
             )
         ]
     }
