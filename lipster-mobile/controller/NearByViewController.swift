@@ -9,31 +9,37 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SwiftyJSON
+import ReactiveCocoa
+import ReactiveSwift
+import Result
+import Hero
 
-class NearByViewController: UIViewController {
+class NearByViewController: UIViewController   {
     
     var pinView : MKAnnotationView!
     
+    var index = 1
     var stores = [Store]()
-    func createStoreArray() -> [Store] {
-        let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok")
-        let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700")
-        let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150")
-        
-        return [store1 , store2 , store3]
-    }
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var myCoorButton: UIButton!
+    
     var locationManager: CLLocationManager = CLLocationManager()
     
-    
     @IBOutlet weak var mapCollectionView: UICollectionView!
+    @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
     let padding: CGFloat = 20.0
+    
+    let storeDataPipe = Signal<[Store], NoError>.pipe()
+    var storeDataObserver: Signal<[Store], NoError>.Observer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.stores = self.createStoreArray()
+        collectionViewLayout.minimumLineSpacing = 10
+        mapCollectionView.delegate = self
+        initReactiveStoreData()
+        fetchData()
         
         mapCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
        
@@ -43,16 +49,32 @@ class NearByViewController: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-        
-//        let annotationIcon = CustomePinAnnotation()
-//        annotationIcon.pinImage = "pin"
-//        mapView.addAnnotation(annotationIcon)
-//
-        
+        myCoorButton.layer.cornerRadius = 5.0
+        myCoorButton.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2, scale: true)
+    }
+    
+    @IBAction func findMyCoor(_ sender: Any) {
+        if let coor = mapView.userLocation.location?.coordinate{
+            mapView.setCenter(coor, animated: true)
+        }
+    }
+    
+    
+    func fetchData() {
+        StoreRepository.fetchAllStore { (response) in
+            self.storeDataPipe.input.send(value: response)
+        }
     }
 }
 
-extension NearByViewController : UICollectionViewDelegate , UICollectionViewDataSource{
+extension NearByViewController : UICollectionViewDelegate , UICollectionViewDataSource  {
+    private func indexOfMajorCell() -> Int {
+        let itemWidth = collectionViewLayout.itemSize.width
+        let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
+        let index = Int(round(proportionalOffset))
+        let safeIndex = max(0, min(stores.count - 1, index))
+        return safeIndex
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return stores.count
@@ -60,16 +82,29 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NearByCollectionViewCell", for: indexPath) as! NearByCollectionViewCell
-        
-       // cell.image.sd_setImage(with: URL(string: trendCollections[indexPath.item].image ?? ""), placeholderImage: UIImage(named: "nopic")!)
+
         cell.storeLogoImage.layer.cornerRadius = 8.0
         cell.storeLogoImage.contentMode = .scaleAspectFill
         cell.storeLogoImage.clipsToBounds = true
         cell.layer.cornerRadius = 8
+        cell.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2.0, scale: true)
         
         let store = stores[indexPath.item]
         cell.setStore(store: store )
         return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        targetContentOffset.pointee = scrollView.contentOffset
+        let indexOfMajorCell = self.indexOfMajorCell()
+        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        let store = stores[indexPath.item]
+        let coor = CLLocation(latitude: store.latitude, longitude: store.longitude).coordinate
+        
+        mapView.setCenter(coor, animated: true)
+    
     }
     
 }
@@ -90,19 +125,35 @@ extension NearByViewController: MKMapViewDelegate {
         mapView.mapType = .standard
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
+        
+    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+
+        if let annotationTitle = view.annotation?.title
+        {
+            let i = stores.firstIndex(where: { $0.name == annotationTitle })
+            mapCollectionView.scrollToItem(at: IndexPath(item: i!, section: 0), at: .centeredHorizontally, animated: true)
+
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let locValue: CLLocationCoordinate2D = manager.location!.coordinate
         
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
         mapView.setRegion(region, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locValue
-        annotation.title = "Beauty Buffet"
-        mapView.addAnnotation(annotation)
+        for (index, store) in stores.enumerated() {
+            let coor = CLLocation(latitude: store.latitude, longitude: store.longitude).coordinate
+            let storeAnnotation = MKPointAnnotation()
+            
+            storeAnnotation.coordinate = coor
+            storeAnnotation.title = "\(store.name)"
+            
+            mapView.addAnnotation(storeAnnotation)
+        }
         
     }
     //MARK: - MapKit
@@ -120,8 +171,9 @@ extension NearByViewController: MKMapViewDelegate {
         }
         pinView.canShowCallout = true
         pinView.isDraggable = true
-        pinView.image = UIImage(named: "pin_lipstickStore_map")
-        
+        pinView.image = UIImage(named: "pin_lipstick")
+        pinView.tag = index
+        index += 1
         return pinView
         
     }
@@ -131,9 +183,7 @@ extension NearByViewController: MKMapViewDelegate {
         
         if newState == MKAnnotationView.DragState.ending {
             if let coordinate = view.annotation?.coordinate {
-                //  let coordinate = view.annotation?.coordinate
-                print(coordinate.latitude)
-            
+
                 view.dragState = MKAnnotationView.DragState.none
                 
             }
@@ -141,7 +191,6 @@ extension NearByViewController: MKMapViewDelegate {
     }
     
     @objc func mapView(_ rendererFormapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        
         
         let renderer = MKCircleRenderer(overlay: overlay)
         renderer.fillColor = UIColor.black.withAlphaComponent(0.5)
@@ -153,3 +202,15 @@ extension NearByViewController: MKMapViewDelegate {
 
 }
 
+extension NearByViewController {
+    func initReactiveStoreData() {
+        storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
+            self.stores = stores
+            print(stores)
+            self.mapCollectionView.reloadData()
+            self.mapCollectionView.setNeedsLayout()
+            self.mapCollectionView.layoutIfNeeded()
+        })
+        storeDataPipe.output.observe(storeDataObserver!)
+    }
+}

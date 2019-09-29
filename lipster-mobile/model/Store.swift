@@ -8,19 +8,54 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class Store {
     
-    var storeLogoImage : UIImage
-    var storeName : String
-    var storeHours : String
-    var storeAddress : String
+    var id: Int
+    var image : String
+    var name : String
+    var hours : String
+    var address : String
+    var latitude : Double
+    var longitude : Double
+    var phoneNumber : String
     
     
-    init( storeLogoImage: UIImage , storeName : String , storeHours : String , storeAddress : String) {
-        self.storeLogoImage = storeLogoImage
-        self.storeName = storeName
-        self.storeHours = storeHours
-        self.storeAddress = storeAddress
+    init(id: Int, storeLogoImage: String , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double , storePhoneNumber : String) {
+        self.id = id
+        self.image = storeLogoImage
+        self.name = storeName
+        self.hours = storeHours
+        self.address = storeAddress
+        self.latitude = storeLatitude
+        self.longitude = storeLongitude
+        self.phoneNumber = storePhoneNumber
+    }
+    
+    public static func makeArrayModelFromJSON(response: JSON?) -> [Store] {
+        var stores = [Store]()
+        
+        if response == nil {
+            return stores
+        }
+        for storeJSON in response! {
+            let store = storeJSON.1
+            
+            for storeAddressJSON in store["addresses"] {
+                let storeAddress = storeAddressJSON.1
+                
+                let id = store["id"].intValue
+                let name = store["name"].stringValue
+                let image = store["image"].stringValue
+                let latitude = storeAddress["latitude"].doubleValue
+                let longtitude = storeAddress["longtitude"].doubleValue
+                let addressDetail = storeAddress["address_detail"].stringValue
+                let period = storeAddress["period"].stringValue
+                let tel = storeAddress["tel"].stringValue
+                stores.append(Store(id: id, storeLogoImage: image, storeName: name, storeHours: period, storeAddress: addressDetail, storeLatitude: latitude, storeLongitude: longtitude, storePhoneNumber: tel))
+            }
+        }
+        return stores
     }
 }

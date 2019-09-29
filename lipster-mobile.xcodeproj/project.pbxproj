@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
 		2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */; };
+		2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB002FE2340C9110091F3BD /* StoreRepository.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
 		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
@@ -97,6 +98,7 @@
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
 		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
 		2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailModalViewController.swift; sourceTree = "<group>"; };
+		2CB002FE2340C9110091F3BD /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				3032BDD322F92755009E325A /* LipstickRepository.swift */,
 				305C5CA122F93C34003725C8 /* UserRepository.swift */,
 				30CAE25722FBDA38004513C1 /* TrendRepository.swift */,
+				2CB002FE2340C9110091F3BD /* StoreRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				D8799C8E22FD51E800441E6F /* YourReviewsTableViewCell.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
 				D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */,
+				2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */,
 				D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */,
