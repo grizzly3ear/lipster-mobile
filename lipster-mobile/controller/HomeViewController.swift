@@ -213,5 +213,9 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .slide(direction: .left),
+            dismissing: .slide(direction: .right)
+        )
     }
 }

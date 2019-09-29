@@ -134,6 +134,35 @@ extension TrendDetailViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.trendImageView.hero.id = imageHeroId
+        self.favoriteButton.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.2),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.2),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.trendNameLabel.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.2),
+                .translate(x: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.1),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
+        self.trendDescription.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.3),
+                .translate(x: 200),
+                .fade,
+                .timingFunction(.easeIn),
+                .duration(0.1),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
     }
 }
 

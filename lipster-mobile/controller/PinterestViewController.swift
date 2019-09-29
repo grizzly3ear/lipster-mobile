@@ -41,10 +41,19 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
         return trends.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendGroupCollectionViewCell", for: indexPath) as! TrendCollectionViewCell
         
-        cell.hero.modifiers = [.fade, .scale(0.5)]
+        cell.hero.modifiers = [
+            .whenPresenting(
+                .translate(y: CGFloat(200 + (Double(indexPath.item) * 30))),
+                .fade,
+                .timingFunction(.easeIn),
+                .spring(stiffness: 50, damping: 70)
+            )
+        ]
         
         cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
@@ -56,6 +65,7 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        
         let rect = CGSize(width: 300, height: Int.random(in: 250...650) )
         
         return rect
@@ -73,7 +83,6 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
         trendListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         trendListCollectionView.alwaysBounceVertical = true
         trendListCollectionView.collectionViewLayout = layout
-        
     }
 }
 
