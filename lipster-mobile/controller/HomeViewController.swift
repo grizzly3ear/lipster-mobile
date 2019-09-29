@@ -9,6 +9,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
+    @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
     
     var search : UISearchController!
     var resultsTableViewController : SearchTableViewController!
@@ -25,6 +26,10 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     let padding: CGFloat = 8.0
     
+    
+    var searchBar = UISearchBar()
+    var searchBarButtonItem: UIBarButtonItem?
+    var logoImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,14 +39,80 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
-        searchBarLip()
-        addNavBarImage()
+       // searchBarLip()
+        //addNavBarImage()
         initHero()
 
         //resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController
         search = UISearchController(searchResultsController: resultsTableViewController)
         search.searchResultsUpdater = resultsTableViewController
         search.searchBar.delegate = resultsTableViewController
+        
+        
+        searchBar.delegate = self
+        searchBar.searchBarStyle = UISearchBar.Style.minimal
+        searchBarButtonItem = navigationItem.rightBarButtonItem
+        
+        
+//        let logoImage = UIImage(named: "logo-3")!
+        
+   //     leftButtonBarItem.image = UIImage(named: "logo-3")
+//        logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: logoImage.size.width, height: logoImage.size.height))
+//        logoImageView.image = logoImage
+//        logoImageView.contentMode = .scaleAspectFit
+//
+//        navigationItem.titleView = logoImageView
+        addLeftBarIcon(named:"logo-3")
+        
+    }
+
+    func addLeftBarIcon(named:String) {
+        
+        let logoImage = UIImage.init(named: "logo-3")
+        let logoImageView = UIImageView.init(image: logoImage)
+        logoImageView.frame = CGRect(x:0.0,y:0.0, width:130,height:40.0)
+        logoImageView.contentMode = .scaleAspectFit
+        let imageItem = UIBarButtonItem.init(customView: logoImageView)
+        let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 130)
+        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 40)
+        heightConstraint.isActive = true
+        widthConstraint.isActive = true
+        navigationItem.leftBarButtonItem =  imageItem
+    }
+    
+    func showSearchBar() {
+        
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchTableViewController") as UIViewController
+        
+        
+        search = UISearchController(searchResultsController: viewController)
+        navigationItem.titleView = searchBar
+        searchBar.alpha = 0
+        
+        navigationItem.setLeftBarButton(nil, animated: true)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.searchBar.alpha = 1
+        }, completion: { finished in
+            self.searchBar.becomeFirstResponder()
+        })
+        
+        
+        search.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        search.loadViewIfNeeded()
+        let searchBackground = search.searchBar
+        if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            textfield.tintColor = UIColor.black
+            if let backgroundview = textfield.subviews.first {
+                
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -49,6 +120,10 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     }
     
 }
+
+
+
+
 
 extension HomeViewController {
     func fetchData() {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -904,8 +904,12 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JOG-pq-sK5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iEC-Ag-3N8"/>
+                    <navigationItem key="navigationItem" id="iEC-Ag-3N8">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Vwm-h1-v8Y"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="ckf-LY-4Cc"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="leftButtonBarItem" destination="Vwm-h1-v8Y" id="voD-eo-Ao7"/>
                         <outlet property="recommendCollectionView" destination="G5J-Ep-gXf" id="nN6-qN-UJc"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                         <segue destination="Th2-S5-z7n" kind="show" identifier="showTrendList" id="JIg-n3-5oa"/>
@@ -1926,7 +1930,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="807"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="856"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
@@ -2485,7 +2489,7 @@ Review</string>
         <image name="location" width="480" height="480"/>
         <image name="log-out" width="512" height="512"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="970" height="672"/>
+        <image name="login_bgBlur" width="485" height="336"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="logo-3" width="2835" height="850"/>
@@ -2503,12 +2507,13 @@ Review</string>
         <image name="telephone-auricular-with-cable (1)" width="64" height="64"/>
         <image name="show lipstick list" width="468" height="59"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="680" height="678"/>
-        <image name="user2" width="664" height="664"/>
-        <image name="username" width="128" height="128"/>
-        <image name="whiteLine" width="64" height="64"/>
+        <image name="user1" width="340" height="339"/>
+        <image name="user2" width="332" height="332"/>
+        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="wGH-AF-6ic"/>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="uiQ-35-l4p"/>
