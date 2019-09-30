@@ -62,10 +62,9 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
-        
-        
         self.searchLipsticks = self.createSearchLipstickArray()
         self.searchStoreLipstick = self.createStoreLipstickArray()
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,11 +75,17 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if searchController.searchBar.text!.trim() == "" {
+//            return UserDefaults.standard.stringArray(forKey: DefaultConstant.searchHistory)?.count ?? 0
+//        }
         return searchFilterDictionary.count
        
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+//        var searchHistory = UserDefaults.standard.stringArray(forKey: DefaultConstant.searchHistory)!
+//        searchHistory.append(searchController.searchBar.text!)
+//        UserDefaults.standard.set(searchHistory, forKey: DefaultConstant.searchHistory)
+//        tableView.deselectRow(at: indexPath, animated: true)
 //        performSegue(withIdentifier: "showLipstickDetailFromSearch" , sender: self)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
