@@ -65,6 +65,10 @@ extension TrendDetailViewController {
         self.trendSkinColorView.backgroundColor = trend.skinColor
         self.trendDescription.text = trend.detail
         self.trendImageView.sd_setImage(with: URL(string:  trend.image), placeholderImage: UIImage(named: "nopic")!)
+        self.trendDescription.layoutIfNeeded()
+        self.trendDescription.layoutSubviews()
+        self.trendDescription.setNeedsLayout()
+        self.trendDescription.numberOfLines = 7
     }
 }
 

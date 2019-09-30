@@ -234,10 +234,22 @@ extension LipColorDetectionController {
             }
             faces.forEach { face in
                 let transform = self.transformMatrix()
-
+                print(face.frame)
                 self.addContours(forFace: face, transform: transform) { points in
-                    let color = self.imageView.getPixelColor(point: points.first)
+//                    let color = self.imageView.getPixelColor(point: points.first)
+//                    print(points)
+                    var colors = [UIColor]()
+                    for point in points {
+                        let color = self.imageView.getPixelColor(point: point)
+                        if !(color.toHex == "000000") {
+                            colors.append(color)
+                        }
+                    }
+                    let color = UIColor.averageColor(colors: colors)
                     self.colorDetectionPipe.input.send(value: color)
+                    if colors.count == 0 {
+                        self.popCenterAlert(title: "Lip color detection", description: "Your lip color is ambiguos. Please try again with another image.", actionTitle: "Ok")
+                    }
                 }
             }
         }
@@ -255,6 +267,10 @@ extension LipColorDetectionController {
         let scale = (imageViewAspectRatio > imageAspectRatio) ?
             imageViewHeight / imageHeight :
             imageViewWidth / imageWidth
+        
+        print("imageViewAspect Ratio: \(imageViewAspectRatio)")
+        print("imageAspectRatio: \(imageAspectRatio)")
+        print("scale: \(scale)")
 
         let scaledImageWidth = imageWidth * scale
         let scaledImageHeight = imageHeight * scale
@@ -278,6 +294,18 @@ extension LipColorDetectionController {
         }
         if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
             for point in topLowerLipContour.points {
+                let transformedPoint = pointFrom(point).applying(transform);
+                points.append(transformedPoint)
+            }
+        }
+        if let bottomUpperContour = face.contour(ofType: .upperLipBottom) {
+            for point in bottomUpperContour.points {
+                let transformedPoint = pointFrom(point).applying(transform);
+                points.append(transformedPoint)
+            }
+        }
+        if let topUpperContour = face.contour(ofType: .upperLipTop) {
+            for point in topUpperContour.points {
                 let transformedPoint = pointFrom(point).applying(transform);
                 points.append(transformedPoint)
             }

@@ -5,15 +5,12 @@ import ReactiveSwift
 import Result
 import Hero
 
-class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
-    
-    var search : UISearchController!
-    var resultsTableViewController : SearchTableViewController!
-    
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -26,10 +23,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     let padding: CGFloat = 8.0
     
-    
-    var searchBar = UISearchBar()
-    var searchBarButtonItem: UIBarButtonItem?
     var logoImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,29 +35,8 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
-       // searchBarLip()
-        //addNavBarImage()
         initHero()
-
-        //resultsTableViewController = storyboard!.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController
-        search = UISearchController(searchResultsController: resultsTableViewController)
-        search.searchResultsUpdater = resultsTableViewController
-        search.searchBar.delegate = resultsTableViewController
         
-        
-        searchBar.delegate = self
-        searchBar.searchBarStyle = UISearchBar.Style.minimal
-        searchBarButtonItem = navigationItem.rightBarButtonItem
-        
-        
-//        let logoImage = UIImage(named: "logo-3")!
-        
-   //     leftButtonBarItem.image = UIImage(named: "logo-3")
-//        logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: logoImage.size.width, height: logoImage.size.height))
-//        logoImageView.image = logoImage
-//        logoImageView.contentMode = .scaleAspectFit
-//
-//        navigationItem.titleView = logoImageView
         addLeftBarIcon(named:"logo-3")
         
     }
@@ -70,7 +45,7 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         
         let logoImage = UIImage.init(named: "logo-3")
         let logoImageView = UIImageView.init(image: logoImage)
-        logoImageView.frame = CGRect(x:0.0,y:0.0, width:130,height:40.0)
+        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: 130, height: 40)
         logoImageView.contentMode = .scaleAspectFit
         let imageItem = UIBarButtonItem.init(customView: logoImageView)
         let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 130)
@@ -80,50 +55,11 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
         navigationItem.leftBarButtonItem =  imageItem
     }
     
-    func showSearchBar() {
-        
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchTableViewController") as UIViewController
-        
-        
-        search = UISearchController(searchResultsController: viewController)
-        navigationItem.titleView = searchBar
-        searchBar.alpha = 0
-        
-        navigationItem.setLeftBarButton(nil, animated: true)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.searchBar.alpha = 1
-        }, completion: { finished in
-            self.searchBar.becomeFirstResponder()
-        })
-        
-        
-        search.dimsBackgroundDuringPresentation = true
-        definesPresentationContext = true
-        
-        search.loadViewIfNeeded()
-        let searchBackground = search.searchBar
-        if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.black
-            textfield.tintColor = UIColor.black
-            if let backgroundview = textfield.subviews.first {
-                
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        
-    }
-    
     @IBAction func seemoreButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "showTrendGroup", sender: self)
     }
     
 }
-
-
-
-
 
 extension HomeViewController {
     func fetchData() {
@@ -135,66 +71,6 @@ extension HomeViewController {
                 self.trendDataPipe.input.send(value: response)
             }
         }
-    }
-}
-
-extension HomeViewController {
-    func searchBarLip() {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchTableViewController") as UIViewController
-        
-        search = UISearchController(searchResultsController: viewController)
-        search.delegate = self
-        search.searchResultsUpdater = viewController as! UISearchResultsUpdating
-        search.dimsBackgroundDuringPresentation = true
-        definesPresentationContext = true
-        
-        search.loadViewIfNeeded()
-        
-        search.hidesNavigationBarDuringPresentation = false
-        navigationItem.titleView = search.searchBar
-        
-        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
-        
-        let searchBackground = search.searchBar
-        searchBackground.placeholder = "Brand, Color, ..."
-        
-
-        if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.black
-            textfield.tintColor = UIColor.black
-            if let backgroundview = textfield.subviews.first {
-                
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        
-        if let navigationbar = self.navigationController?.navigationBar {
-            navigationbar.barTintColor = UIColor.black
-        }
-        navigationItem.searchController = search
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
-    }
-}
-
-extension HomeViewController {
-    func addNavBarImage(){
-        let navController = navigationController!
-        let image = UIImage(named: "logo-3")
-        let imageView = UIImageView(image : image)
-        
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        
-        let bannerX = (bannerWidth / 2 ) - (image!.size.width / 2 )
-        let bannerY = (bannerHeight / 2 ) - (image!.size.height / 2 )
-        
-        imageView.frame = CGRect( x : bannerX, y: bannerY , width: bannerWidth , height : bannerHeight)
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView  = imageView
     }
 }
 
@@ -304,6 +180,7 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
+        searchButton.customView?.hero.id = "searchbar"
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .slide(direction: .left),
             dismissing: .slide(direction: .right)

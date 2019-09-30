@@ -7,16 +7,14 @@
 //
 
 import UIKit
+import Hero
 
-class SearchTableViewController: UITableViewController ,UISearchResultsUpdating, UISearchBarDelegate{
+class SearchTableViewController: UITableViewController , UISearchResultsUpdating, UISearchBarDelegate {
     
+    var searchController : UISearchController!
     @IBOutlet weak var searchTableView: UITableView!
- 
-    var array = ["Brazil", "Bolivia", "United States", "Canada", "England", "Germany", "France", "Portugal"]
-    var arrayFilter = [String]()
-    
+
     var searching = false
-   
     var searchLipsticks = [Lipstick]()
     var searchLipstickFilter = [Lipstick]()
     var searchLipstickDictionary: Dictionary<Int, [String: Lipstick]> = Dictionary()
@@ -35,19 +33,37 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         return [searhLipstick1 , searhLipstick2 , searhLipstick3]
     }
     func createStoreLipstickArray() -> [Store] {
-        let store1 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok")
-        let store2 : Store = Store(storeLogoImage: UIImage(named: "Sephora_black_logo")!, storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700")
-        let store3 : Store = Store(storeLogoImage: UIImage(named: "nopic")!, storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150")
+        let store1 : Store = Store(id: 1, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
+        let store2 : Store = Store(id: 2, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
+        let store3 : Store = Store(id: 3, storeLogoImage: "UIImage(named: nopic)!", storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
         
         return [store1 , store2 , store3]
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad()")
+        
+        self.hero.isEnabled = true
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        self.definesPresentationContext = true
+        let searchbar = searchController.searchBar
+
+        searchbar.hero.id = "searchbar"
+        searchbar.showsCancelButton = true
+        searchbar.delegate = self
+        searchbar.searchBarStyle = .minimal
+        
+        navigationItem.titleView = searchbar
+        searchController.hidesNavigationBarDuringPresentation = false
+        navigationItem.hidesBackButton = true
+        
         searchTableView.delegate = self
         searchTableView.dataSource = self
-      
+        
+        
+        
         self.searchLipsticks = self.createSearchLipstickArray()
         self.searchStoreLipstick = self.createStoreLipstickArray()
     }
@@ -60,9 +76,6 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        let totalCount = (searchStoreLipstickDictionary.count) + (searchLipstickDictionary.count)
-//        return totalCount
         return searchFilterDictionary.count
        
     }
@@ -80,10 +93,7 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-           
             searchFilterDictionary.removeAll()
-            
-        
             if let text = searchController.searchBar.text?.lowercased() {
                 var index = 0
                 for lipstick in searchLipsticks {
@@ -92,7 +102,6 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
                         searchFilterDictionary[index] = [
                             lipstick.lipstickBrand: lipstick
                         ]
-                        print("updateSearchResults -- \(lipstick.lipstickBrand)--")
                         index += 1
                     }
                     if lipstick.lipstickName.lowercased().contains(text) {
@@ -105,30 +114,24 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
                         searchFilterDictionary[index] = [
                             lipstick.lipstickColorName: lipstick
                         ]
-                        print("updateSearchResults -- \(lipstick.lipstickName)--")
                         index += 1
                     }
                 }
                 for store in searchStoreLipstick {
-                    if store.storeName.lowercased().contains(text) {
+                    if store.name.lowercased().contains(text) {
                         searchFilterDictionary[index] = [
-                            store.storeName: store
+                            store.name: store
                         ]
                         index += 1
                     }
-                    
                 }
             }
         }
         searchTableView.reloadData()
-        
     }
     
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         searchLipsticks.removeAll()
-        
         if let text = searchBar.text {
             for lipstick in searchLipsticks {
                 if lipstick.lipstickBrand.contains(text) {
@@ -137,16 +140,11 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
                 
             }
         }
-        
         searchTableView.reloadData()
-        
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searching = false
-        searchBar.text = ""
-        searchLipsticks.removeAll()
-        searchTableView.reloadData()
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -155,6 +153,10 @@ class SearchTableViewController: UITableViewController ,UISearchResultsUpdating,
         searchTableView.reloadData()
         
         return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        hero.dismissViewController()
     }
     
 }

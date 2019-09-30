@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import Hero
 
 class ContainerViewController: UIViewController {
-
-    
     
     @IBOutlet weak var lipstickDescription: UILabel!
     @IBOutlet weak var lipstickIngredients: UILabel!
@@ -28,6 +27,24 @@ class ContainerViewController: UIViewController {
             
             self.lipstickDescription.text = lipstick.lipstickDetail
             self.lipstickIngredients.text = lipstick.lipstickIngredients
+            lipstickDescription.numberOfLines = 7
+            lipstickIngredients.numberOfLines = 7
+            lipstickDescription.hero.modifiers = [
+                .whenPresenting(
+                    .delay(0.6),
+                    .translate(y: 200),
+                    .fade,
+                    .spring(stiffness: 100, damping: 15)
+                )
+            ]
+            lipstickIngredients.hero.modifiers = [
+                .whenPresenting(
+                    .delay(0.6),
+                    .translate(y: 200),
+                    .fade,
+                    .spring(stiffness: 100, damping: 15)
+                )
+            ]
         }
     }
 }

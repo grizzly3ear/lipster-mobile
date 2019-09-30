@@ -24,6 +24,7 @@ class LipstickListViewController: UITableViewController  {
     let lipstickListPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickListObserver: Signal<[Lipstick], NoError>.Observer?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +35,31 @@ class LipstickListViewController: UITableViewController  {
         initHero()
 //        addNavBarImage()
 //        searchBarLip()
-//        fetchData()
+        if self.lipHexColor != nil {
+            fetchData()
+        }
+        reloadData()
+        
+    }
+    
+    func reloadData() {
+        if lipstickList == nil || lipstickList.count == 0 {
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.lipListTableView.frame.size.width
+            label.center = self.lipListTableView.center
+            label.center.y = self.lipListTableView.frame.size.height / 3
+            label.numberOfLines = 2
+            label.textColor = .darkGray
+            label.text = "Sorry, There are no lipstick color you looking for."
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.lipListTableView.addSubview(label)
+        } else {
+            self.lipListTableView.viewWithTag(1)?.removeFromSuperview()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -146,6 +171,7 @@ extension LipstickListViewController {
             print(lipsticks.count)
             self.lipListTableView.reloadData()
             self.lipListTableView.layoutIfNeeded()
+            self.reloadData()
         })
         lipstickListPipe.output.observe(lipstickListObserver!)
     }

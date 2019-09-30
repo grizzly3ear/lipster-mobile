@@ -89,7 +89,9 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         cell.layer.cornerRadius = 8
         cell.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2.0, scale: true)
         
-        let store = stores[indexPath.item]
+        let store = stores[indexPath.row]
+        print(indexPath.row)
+        print(store.name)
         cell.setStore(store: store )
         return cell
     }
