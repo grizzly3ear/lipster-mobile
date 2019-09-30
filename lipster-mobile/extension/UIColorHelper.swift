@@ -72,4 +72,41 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
+    
+    public static func averageColor(colors: [UIColor]) -> UIColor {
+        if colors.count == 0 {
+            return .black
+        }
+        var red: UInt32 = 0
+        var green: UInt32 = 0
+        var blue: UInt32 = 0
+        for color in colors {
+            let hex = color.toHex
+            let hexInt = intFromHexString(hexStr: hex!)
+            red += (hexInt >> 16) & 0xFF
+            green += (hexInt >> 8) & 0xFF
+            blue += hexInt & 0xFF
+        }
+        return UIColor(red: Int(red)/colors.count, green: Int(green)/colors.count, blue: Int(blue)/colors.count).lighter(by: 17.0)!
+    }
+    
+    func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
+        return self.adjust(by: abs(percentage) )
+    }
+    
+    func darker(by percentage: CGFloat = 30.0) -> UIColor? {
+        return self.adjust(by: -1 * abs(percentage) )
+    }
+    
+    func adjust(by percentage: CGFloat = 30.0) -> UIColor? {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            return UIColor(red: min(red + percentage/100, 1.0),
+                           green: min(green + percentage/100, 1.0),
+                           blue: min(blue + percentage/100, 1.0),
+                           alpha: alpha)
+        } else {
+            return nil
+        }
+    }
 }

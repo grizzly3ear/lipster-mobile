@@ -30,6 +30,10 @@ class Login2ViewController: UIViewController {
         
         usernameTextField.text = "example@gmail.com"
         passwordTextField.text = "password"
+        passwordTextField.enablesReturnKeyAutomatically = true
+        usernameTextField.enablesReturnKeyAutomatically = true
+        passwordTextField.delegate = self
+        usernameTextField.delegate = self
         
     }
     
@@ -51,7 +55,7 @@ class Login2ViewController: UIViewController {
     }
 }
 
-extension Login2ViewController {
+extension Login2ViewController: UITextFieldDelegate {
     func initHero() {
         self.hero.isEnabled = true
         self.formContainer.hero.id = "formContainer"
@@ -66,5 +70,9 @@ extension Login2ViewController {
         let alert  = UIAlertController(title: title, message: description, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
         self.present(alert, animated: true, completion: completion)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

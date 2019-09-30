@@ -5,12 +5,12 @@ import ReactiveSwift
 import Result
 import Hero
 
-class HomeViewController: UIViewController , UISearchControllerDelegate , UISearchBarDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
-    
-    var searchController : UISearchController!
+    @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -23,6 +23,9 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
     
     let padding: CGFloat = 8.0
     
+    var logoImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,10 +35,24 @@ class HomeViewController: UIViewController , UISearchControllerDelegate , UISear
 
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
-        searchBarLip()
-        addNavBarImage()
         initHero()
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        
+        addLeftBarIcon(named:"logo-3")
+        
+    }
+
+    func addLeftBarIcon(named:String) {
+        
+        let logoImage = UIImage.init(named: "logo-3")
+        let logoImageView = UIImageView.init(image: logoImage)
+        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: 130, height: 40)
+        logoImageView.contentMode = .scaleAspectFit
+        let imageItem = UIBarButtonItem.init(customView: logoImageView)
+        let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 130)
+        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 40)
+        heightConstraint.isActive = true
+        widthConstraint.isActive = true
+        navigationItem.leftBarButtonItem =  imageItem
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -54,56 +71,6 @@ extension HomeViewController {
                 self.trendDataPipe.input.send(value: response)
             }
         }
-    }
-}
-
-extension HomeViewController {
-    func searchBarLip() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
-        
-        if #available(iOS 11.0, *) {
-            let search = UISearchController(searchResultsController: nil)
-            search.delegate = self
-            let searchBackground = search.searchBar
-            searchBackground.placeholder = "Brand, Color, ..."
-            
-            if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
-                textfield.textColor = UIColor.black
-                if let backgroundview = textfield.subviews.first {
-                    
-                    backgroundview.backgroundColor = UIColor.white
-                    
-                    backgroundview.layer.cornerRadius = 10;
-                    backgroundview.clipsToBounds = true;
-                }
-            }
-            
-            if let navigationbar = self.navigationController?.navigationBar {
-                navigationbar.barTintColor = UIColor.black
-            }
-            navigationItem.searchController = search
-            navigationItem.hidesSearchBarWhenScrolling = false
-        }
-    }
-}
-
-extension HomeViewController {
-    func addNavBarImage(){
-        let navController = navigationController!
-        let image = UIImage(named: "logo-3")
-        let imageView = UIImageView(image : image)
-        
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        
-        let bannerX = (bannerWidth / 2 ) - (image!.size.width / 2 )
-        let bannerY = (bannerHeight / 2 ) - (image!.size.height / 2 )
-        
-        imageView.frame = CGRect( x : bannerX, y: bannerY , width: bannerWidth , height : bannerHeight)
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView  = imageView
     }
 }
 
@@ -213,6 +180,7 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
+        searchButton.customView?.hero.id = "searchbar"
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .slide(direction: .left),
             dismissing: .slide(direction: .right)

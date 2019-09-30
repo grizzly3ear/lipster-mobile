@@ -18,6 +18,25 @@ class PinterestViewController: UIViewController {
         titleNavigationItem.title = "Trends"
         initCollectionViewProtocol()
         setupCollectionView()
+        
+        if trends == nil || trends.count == 0 {
+            self.trendListCollectionView.backgroundColor = .clear
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.trendListCollectionView.frame.size.width
+            label.center = self.trendListCollectionView.center
+            label.center.y = self.trendListCollectionView.frame.size.height / 3
+            label.numberOfLines = 2
+            label.textColor = .darkGray
+            label.text = "There are no trends that you looking for."
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.trendListCollectionView.addSubview(label)
+        } else {
+            self.trendListCollectionView.viewWithTag(1)?.removeFromSuperview()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

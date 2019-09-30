@@ -19,6 +19,7 @@ class LipstickDetailModalViewController: UIViewController {
     @IBOutlet weak var lipstickTitle: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var favButton: UIButton!
     
     let trendDataPipe = Signal<[Trend], NoError>.pipe()
     var trendDataObserver: Signal<[Trend], NoError>.Observer?
@@ -40,14 +41,19 @@ class LipstickDetailModalViewController: UIViewController {
         setLipstick(lipstick!)
         collectionView.delegate = self
         collectionView.dataSource = self
+        reloadFavButton()
         fetchData()
+        
     }
     
-    func createArray() -> [Trend] {
-        let t1 = Trend("abc", "", .blue, .black, "")
-        let t2 = Trend("abc", "", .blue, .black, "")
-        let t3 = Trend("abc", "", .blue, .black, "")
-        return [t1, t2, t3]
+    func reloadFavButton() {
+        if isLipstickFav() {
+            let image = UIImage(named: "heart_red")
+            favButton.setImage(image, for: UIControl.State.normal)
+        } else {
+            let image = UIImage(named: "heart_white")
+            favButton.setImage(image, for: UIControl.State.normal)
+        }
     }
     
     func fetchData() {
@@ -57,6 +63,7 @@ class LipstickDetailModalViewController: UIViewController {
             })
         }
     }
+    
     
     func reloadTable() {
         if trends == nil || trends.count == 0 {
@@ -77,6 +84,11 @@ class LipstickDetailModalViewController: UIViewController {
         } else {
             self.collectionView.viewWithTag(1)?.removeFromSuperview()
         }
+    }
+    
+    @IBAction func toggleFavButton(_ sender: Any) {
+        toggleFavLipstick()
+        reloadFavButton()
     }
 }
 
@@ -112,6 +124,37 @@ extension LipstickDetailModalViewController {
             self.reloadTable()
         })
         trendDataPipe.output.observe(trendDataObserver!)
+    }
+}
+
+extension LipstickDetailModalViewController {
+    func toggleFavLipstick() {
+        if lipstick != nil {
+            var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                print("remove")
+                favLipstick.remove(at: i)
+                
+            } else {
+                print("add")
+                favLipstick.append(lipstick!)
+            }
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)
+        }
+        
+        
+    }
+    func isLipstickFav() -> Bool {
+        if lipstick != nil {
+            let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                return true
+                
+            }
+        }
+        return false
     }
 }
 
