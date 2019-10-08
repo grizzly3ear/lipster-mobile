@@ -65,9 +65,7 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.black
             if let backgroundview = textfield.subviews.first {
-                
                 backgroundview.backgroundColor = UIColor.white
-                
                 backgroundview.layer.cornerRadius = 10;
                 backgroundview.clipsToBounds = true;
             }
@@ -75,6 +73,7 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        tableView.contentInset.top = 15
         
         self.searchLipsticks = self.createSearchLipstickArray()
         self.searchStoreLipstick = self.createStoreLipstickArray()
