@@ -186,7 +186,7 @@ extension TrendDetailViewController {
         if trend != nil {
             let favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
             
-            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+            if let _ = favTrends.firstIndex(where: { $0 == trend! }) {
                 return true
                 
             }

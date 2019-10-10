@@ -14,7 +14,7 @@ import Result
 import Hero
 import MXSegmentedControl
 
-class NewLipstickDetailViewcontroller: UIViewController {
+class LipstickDetailViewcontroller: UIViewController {
 
     @IBOutlet weak var segmentedControl3: MXSegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -117,7 +117,7 @@ class NewLipstickDetailViewcontroller: UIViewController {
 }
 
 // MARK: fetch data
-extension NewLipstickDetailViewcontroller {
+extension LipstickDetailViewcontroller {
     func fetchData() {
         fetchLipstickSameDetail()
         fetchLipstickReview()
@@ -137,7 +137,7 @@ extension NewLipstickDetailViewcontroller {
 }
 
 // Init UI
-extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
+extension LipstickDetailViewcontroller: UIScrollViewDelegate {
     func initialUI() {
         if let lipstick = self.lipstick{
             self.lipstickBrand.text = lipstick.lipstickBrand
@@ -195,7 +195,7 @@ extension NewLipstickDetailViewcontroller: UIScrollViewDelegate {
 }
 
 // collectionView cell
-extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollectionViewDataSource{
+extension LipstickDetailViewcontroller : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
@@ -223,7 +223,7 @@ extension NewLipstickDetailViewcontroller : UICollectionViewDelegate, UICollecti
     
 }
 
-extension NewLipstickDetailViewcontroller{
+extension LipstickDetailViewcontroller{
     func initReactiveData() {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.reviews = userReviews
@@ -241,7 +241,7 @@ extension NewLipstickDetailViewcontroller{
     
 }
 
-extension NewLipstickDetailViewcontroller {
+extension LipstickDetailViewcontroller {
     func initHero() {
         self.hero.isEnabled = true
         self.scrollLipstickImages.hero.id = imageHeroId
@@ -271,7 +271,7 @@ extension NewLipstickDetailViewcontroller {
     }
 }
 
-extension NewLipstickDetailViewcontroller {
+extension LipstickDetailViewcontroller {
     func addLipstickToHistory() {
         if lipstick != nil {
             
@@ -309,7 +309,7 @@ extension NewLipstickDetailViewcontroller {
         if lipstick != nil {
             let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
             
-            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+            if let _ = favLipstick.firstIndex(where: { $0 == lipstick! }) {
                 return true
                 
             }

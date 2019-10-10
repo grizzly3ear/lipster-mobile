@@ -147,7 +147,7 @@ extension NearByViewController: MKMapViewDelegate {
         let region = MKCoordinateRegion(center: locValue, span: span)
         mapView.setRegion(region, animated: true)
         
-        for (index, store) in stores.enumerated() {
+        for (_, store) in stores.enumerated() {
             let coor = CLLocation(latitude: store.latitude, longitude: store.longitude).coordinate
             let storeAnnotation = MKPointAnnotation()
             
@@ -184,7 +184,7 @@ extension NearByViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
         
         if newState == MKAnnotationView.DragState.ending {
-            if let coordinate = view.annotation?.coordinate {
+            if let _ = view.annotation?.coordinate {
 
                 view.dragState = MKAnnotationView.DragState.none
                 

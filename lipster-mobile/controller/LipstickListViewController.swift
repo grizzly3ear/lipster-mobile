@@ -33,8 +33,6 @@ class LipstickListViewController: UITableViewController  {
         lipListTableView.dataSource = self
         navigationController?.isNavigationBarHidden = false
         initHero()
-//        addNavBarImage()
-//        searchBarLip()
         if self.lipHexColor != nil {
             fetchData()
         }
@@ -43,7 +41,7 @@ class LipstickListViewController: UITableViewController  {
     }
     
     func reloadData() {
-        if lipstickList == nil || lipstickList.count == 0 {
+        if lipstickList.count == 0 {
             
             let label = UILabel()
             label.frame.size.height = 42
@@ -63,7 +61,7 @@ class LipstickListViewController: UITableViewController  {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? NewLipstickDetailViewcontroller {
+        if let destination = segue.destination as? LipstickDetailViewcontroller {
             let index = sender as! IndexPath
             destination.lipstick = lipstickList[index.row]
         }

@@ -9,7 +9,7 @@
 import UIKit
 import Hero
 
-class Login2ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var formContainer: UIImageView!
     @IBOutlet weak var leftLine: UIImageView!
@@ -55,7 +55,7 @@ class Login2ViewController: UIViewController {
     }
 }
 
-extension Login2ViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     func initHero() {
         self.hero.isEnabled = true
         self.formContainer.hero.id = "formContainer"

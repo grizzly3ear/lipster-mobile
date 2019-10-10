@@ -298,12 +298,7 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let imageWidth = CGFloat(CVPixelBufferGetWidth(imageBuffer))
         let imageHeight = CGFloat(CVPixelBufferGetHeight(imageBuffer))
         
-        switch currentDetector {
-        case .onDeviceFace:
-            detectFacesOnDevice(in: visionImage, width: imageWidth, height: imageHeight)
-        default:
-            break
-        }
+        detectFacesOnDevice(in: visionImage, width: imageWidth, height: imageHeight)
     }
 }
 

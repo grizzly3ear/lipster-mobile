@@ -149,7 +149,7 @@ extension LipstickDetailModalViewController {
         if lipstick != nil {
             let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
             
-            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+            if let _ = favLipstick.firstIndex(where: { $0 == lipstick! }) {
                 return true
                 
             }

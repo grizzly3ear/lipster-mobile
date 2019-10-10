@@ -19,7 +19,7 @@ class PinterestViewController: UIViewController {
         initCollectionViewProtocol()
         setupCollectionView()
         
-        if trends == nil || trends.count == 0 {
+        if trends.count == 0 {
             self.trendListCollectionView.backgroundColor = .clear
             
             let label = UILabel()
@@ -159,7 +159,7 @@ extension PinterestViewController {
         
         if (trend != nil) {
             
-            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+            if let _ = favTrends.firstIndex(where: { $0 == trend! }) {
             } else {
                 print("add")
                 favTrends.append(trend!)

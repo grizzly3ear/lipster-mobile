@@ -29,22 +29,6 @@ class ContainerViewController: UIViewController {
             self.lipstickIngredients.text = lipstick.lipstickIngredients
             lipstickDescription.numberOfLines = 7
             lipstickIngredients.numberOfLines = 7
-            lipstickDescription.hero.modifiers = [
-                .whenPresenting(
-                    .delay(0.6),
-                    .translate(y: 200),
-                    .fade,
-                    .spring(stiffness: 100, damping: 15)
-                )
-            ]
-            lipstickIngredients.hero.modifiers = [
-                .whenPresenting(
-                    .delay(0.6),
-                    .translate(y: 200),
-                    .fade,
-                    .spring(stiffness: 100, damping: 15)
-                )
-            ]
         }
     }
 }

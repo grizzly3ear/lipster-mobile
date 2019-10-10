@@ -129,7 +129,7 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showLipstickDetail" {
-            let destination = segue.destination as? NewLipstickDetailViewcontroller
+            let destination = segue.destination as? LipstickDetailViewcontroller
             let selectedIndex = sender as! Int
             if recommendLipstick[selectedIndex].lipstickImage.count == 0 {
                 recommendLipstick[selectedIndex].lipstickImage.append("")
