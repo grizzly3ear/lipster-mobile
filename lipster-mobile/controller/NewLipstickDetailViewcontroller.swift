@@ -246,60 +246,27 @@ extension NewLipstickDetailViewcontroller {
         self.hero.isEnabled = true
         self.scrollLipstickImages.hero.id = imageHeroId
         
-        self.lipstickBrand.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.1),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
+        let arr = [
+            self.lipstickBrand,
+            self.lipstickColorName,
+            self.segmentedControl3,
+            self.lipstickName,
+            self.tryMeButton,
+            self.reviewButton,
+            self.scrollView
         ]
-        self.lipstickColorName.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.2),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
-        ]
-        self.lipstickName.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.3),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
-        ]
-        self.tryMeButton.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.4),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
-        ]
-        self.reviewButton.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.5),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
-        ]
-        self.segmentedControl3.hero.modifiers = [
-            .whenPresenting(
-                .delay(0.6),
-                .translate(y: 200),
-                .fade,
-                
-                .spring(stiffness: 100, damping: 15)
-            )
-        ]
+        var delay = 0.02
+        arr.forEach { (view) in
+            view?.hero.modifiers = [
+                .whenPresenting(
+                    .delay(delay),
+                    .translate(y: 200),
+                    .fade,
+                    .spring(stiffness: 270, damping: 25)
+                )
+            ]
+            delay += 0.03
+        }
 
     }
 }
