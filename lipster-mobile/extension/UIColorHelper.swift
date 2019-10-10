@@ -87,7 +87,7 @@ extension UIColor {
             green += (hexInt >> 8) & 0xFF
             blue += hexInt & 0xFF
         }
-        return UIColor(red: Int(red)/colors.count, green: Int(green)/colors.count, blue: Int(blue)/colors.count).lighter(by: 17.0)!
+        return UIColor(red: Int(red)/colors.count, green: Int(green)/colors.count, blue: Int(blue)/colors.count)
     }
     
     func lighter(by percentage: CGFloat = 30.0) -> UIColor? {

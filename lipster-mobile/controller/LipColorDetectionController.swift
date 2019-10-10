@@ -96,11 +96,37 @@ extension LipColorDetectionController: UIImagePickerControllerDelegate, UINaviga
         
         clearResults()
         if let pickedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
-            imageView.image = pickedImage
-            imageView.contentMode = .scaleAspectFit
+//            imageView.image = pickedImage
+//            imageView.contentMode = .scaleAspectFit
+            updateImageView(with: pickedImage)
             detectFaces(image: pickedImage)
         }
         dismiss(animated: true)
+    }
+    
+    private func updateImageView(with image: UIImage) {
+        let orientation = UIApplication.shared.statusBarOrientation
+        var scaledImageWidth: CGFloat = 0.0
+        var scaledImageHeight: CGFloat = 0.0
+        switch orientation {
+        case .portrait, .portraitUpsideDown, .unknown:
+            scaledImageWidth = imageView.bounds.size.width
+            scaledImageHeight = image.size.height * scaledImageWidth / image.size.width
+        case .landscapeLeft, .landscapeRight:
+            scaledImageWidth = image.size.width * scaledImageHeight / image.size.height
+            scaledImageHeight = imageView.bounds.size.height
+        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            // Scale image while maintaining aspect ratio so it displays better in the UIImageView.
+            var scaledImage = image.scaledImage(
+                with: CGSize(width: scaledImageWidth, height: scaledImageHeight)
+            )
+            scaledImage = scaledImage ?? image
+            guard let finalImage = scaledImage else { return }
+            DispatchQueue.main.async {
+                self.imageView.image = finalImage
+            }
+        }
     }
 }
 // MARK: Set up gesture on imagePreview
@@ -176,7 +202,7 @@ extension LipColorDetectionController {
     
     func moveDetectColorPreview(at point: CGPoint) {
         var displayPoint = point
-        displayPoint.x = point.x + 45
+        displayPoint.y = point.y - 45
         draggableSelectColorView.center = displayPoint
     }
 }
@@ -236,8 +262,6 @@ extension LipColorDetectionController {
                 let transform = self.transformMatrix()
                 print(face.frame)
                 self.addContours(forFace: face, transform: transform) { points in
-//                    let color = self.imageView.getPixelColor(point: points.first)
-//                    print(points)
                     var colors = [UIColor]()
                     for point in points {
                         let color = self.imageView.getPixelColor(point: point)
