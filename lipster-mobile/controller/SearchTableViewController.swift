@@ -9,7 +9,7 @@
 import UIKit
 import Hero
 
-class SearchTableViewController: UITableViewController , UISearchResultsUpdating, UISearchBarDelegate {
+class SearchTableViewController: UITableViewController , UISearchResultsUpdating, UISearchBarDelegate , UISearchControllerDelegate{
     
     var searchController : UISearchController!
     @IBOutlet weak var searchTableView: UITableView!
@@ -39,7 +39,7 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         
         return [store1 , store2 , store3]
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +59,21 @@ class SearchTableViewController: UITableViewController , UISearchResultsUpdating
         searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.hidesBackButton = true
         
+        let searchBackground = searchController.searchBar
+        searchBackground.placeholder = "Brand, Color, ..."
+        
+        if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.white
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        
         searchTableView.delegate = self
         searchTableView.dataSource = self
+        tableView.contentInset.top = 15
         
         self.searchLipsticks = self.createSearchLipstickArray()
         self.searchStoreLipstick = self.createStoreLipstickArray()
