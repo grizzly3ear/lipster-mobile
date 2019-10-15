@@ -96,9 +96,9 @@ extension LipColorDetectionController: UIImagePickerControllerDelegate, UINaviga
         
         clearResults()
         if let pickedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
-//            imageView.image = pickedImage
-//            imageView.contentMode = .scaleAspectFit
-            updateImageView(with: pickedImage)
+            imageView.image = pickedImage
+            imageView.contentMode = .scaleAspectFit
+//            updateImageView(with: pickedImage)
             detectFaces(image: pickedImage)
         }
         dismiss(animated: true)
