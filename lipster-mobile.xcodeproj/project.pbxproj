@@ -10,7 +10,7 @@
 		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
 		2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */; };
 		2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB002FE2340C9110091F3BD /* StoreRepository.swift */; };
-		2CB7A4E923558EA600253DCC /* Search2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4E823558EA600253DCC /* Search2ViewController.swift */; };
+		2CB7A4E923558EA600253DCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4E823558EA600253DCC /* SearchViewController.swift */; };
 		2CB7A4EB2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */; };
 		2CB7A4ED2355B6A900253DCC /* UILabelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
@@ -101,7 +101,7 @@
 		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
 		2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailModalViewController.swift; sourceTree = "<group>"; };
 		2CB002FE2340C9110091F3BD /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
-		2CB7A4E823558EA600253DCC /* Search2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search2ViewController.swift; sourceTree = "<group>"; };
+		2CB7A4E823558EA600253DCC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelper.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -316,8 +316,8 @@
 				D83DD82B23054E57000098C1 /* TrendGroupViewController.swift */,
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
+				2CB7A4E823558EA600253DCC /* SearchViewController.swift */,
 				D89F35F82355C17400F0AF43 /* StoreViewController.swift */,
-				2CB7A4E823558EA600253DCC /* Search2ViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -553,7 +553,7 @@
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
 				2CB7A4EB2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift in Sources */,
-				2CB7A4E923558EA600253DCC /* Search2ViewController.swift in Sources */,
+				2CB7A4E923558EA600253DCC /* SearchViewController.swift in Sources */,
 				3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */,
 				D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */,
 				30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */,
