@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1054,26 +1054,29 @@ Review</string>
                                     <constraint firstAttribute="width" constant="21" id="guJ-oM-uiQ"/>
                                 </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rj6-Td-uR0">
-                                <rect key="frame" x="8" y="223" width="359" height="128"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rj6-Td-uR0">
+                                <rect key="frame" x="35" y="223" width="311" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="5" id="Ag9-dl-yXf">
-                                    <size key="itemSize" width="59" height="27"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="5" id="Ag9-dl-yXf" customClass="UICollectionViewLeftAlignedLayout">
+                                    <size key="itemSize" width="182" height="27"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchHistoryCollectionViewCell" id="np1-XM-TSx" customClass="SearchHistoryCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="59" height="27"/>
+                                        <rect key="frame" x="64.5" y="0.0" width="182" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="27"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="182" height="27"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-F5-bVb">
-                                                    <rect key="frame" x="8" y="0.0" width="42" height="27"/>
+                                                    <rect key="frame" x="8" y="0.0" width="165" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="VAl-ER-4ee"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1086,7 +1089,7 @@ Review</string>
                                             <constraint firstItem="sUV-F5-bVb" firstAttribute="top" secondItem="np1-XM-TSx" secondAttribute="top" id="BCw-PX-kPV"/>
                                             <constraint firstItem="sUV-F5-bVb" firstAttribute="leading" secondItem="np1-XM-TSx" secondAttribute="leading" constant="8" id="W8V-aq-L6t"/>
                                         </constraints>
-                                        <size key="customSize" width="59" height="27"/>
+                                        <size key="customSize" width="182" height="27"/>
                                         <connections>
                                             <outlet property="title" destination="sUV-F5-bVb" id="XV1-00-lrs"/>
                                         </connections>
@@ -2654,21 +2657,20 @@ Review</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="edit" width="512" height="512"/>
-        <image name="facebook-1" width="96" height="96"/>
-        <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="frame" width="400" height="400"/>
+        <image name="backButton" width="128" height="128"/>
+        <image name="edit" width="256" height="256"/>
+        <image name="facebook-1" width="128" height="128"/>
+        <image name="favoritePopup" width="512" height="512"/>
+        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="history" width="384" height="384"/>
-        <image name="line" width="384" height="384"/>
+        <image name="history" width="512" height="512"/>
+        <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="lip_logo_whiteFont" width="500" height="500"/>
-        <image name="lipstick (2)" width="326.2301025390625" height="326.2301025390625"/>
         <image name="location" width="480" height="480"/>
-        <image name="log-out" width="384" height="384"/>
+        <image name="log-out" width="512" height="512"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="485" height="336"/>
+        <image name="login_bgBlur" width="970" height="672"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="mail-1" width="96" height="96"/>
@@ -2687,10 +2689,10 @@ Review</string>
         <image name="telephone-auricular-with-cable (1)" width="384" height="384"/>
         <image name="search" width="512" height="512"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="340" height="339"/>
-        <image name="user2" width="332" height="332"/>
-        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="whiteLine" width="48" height="48"/>
+        <image name="user1" width="680" height="678"/>
+        <image name="user2" width="664" height="664"/>
+        <image name="username" width="128" height="128"/>
+        <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
