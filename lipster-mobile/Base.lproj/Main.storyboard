@@ -79,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="2038.8305847076463"/>
+            <point key="canvasLocation" x="857" y="1898"/>
         </scene>
         <!--NEARBY-->
         <scene sceneID="b5c-No-tHW">
@@ -90,23 +90,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-Kk-Cyg">
-                                <rect key="frame" x="0.0" y="32" width="375" height="586"/>
+                                <rect key="frame" x="0.0" y="-13" width="375" height="586"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNE-HE-rwl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="NEARBY" id="rQ9-S4-Dbp"/>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-fy-1G5">
-                                <rect key="frame" x="0.0" y="393" width="375" height="213"/>
+                                <rect key="frame" x="0.0" y="333" width="375" height="213"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OID-iN-I2K">
@@ -219,7 +207,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJG-1G-x2N">
-                                <rect key="frame" x="319" y="80" width="40" height="40"/>
+                                <rect key="frame" x="319" y="30" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
@@ -1474,7 +1462,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RM-oi-4lh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850" y="2795"/>
+            <point key="canvasLocation" x="-1356" y="2766"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Os6-5v-Zbh">
@@ -2032,7 +2020,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="686"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="637"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
@@ -2175,11 +2163,19 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
-                                                <rect key="frame" x="86" y="358" width="202" height="36"/>
+                                                <rect key="frame" x="126" y="358" width="202" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button" image="try-this-shade"/>
                                                 <connections>
                                                     <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ng-KE-FaO">
+                                                <rect key="frame" x="71" y="358" width="35" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="map_button"/>
+                                                <connections>
+                                                    <action selector="clickedMapButton:" destination="udf-5l-NvU" eventType="touchUpInside" id="szH-BS-2Ef"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2257,6 +2253,7 @@ Review</string>
                         <outlet property="tryMeButton" destination="r1A-fK-jfp" id="NLb-2s-Pd3"/>
                         <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="sbi-OJ-sqx"/>
                         <segue destination="C66-Qw-59I" kind="show" identifier="showTryMe" id="eIL-OE-7Jl"/>
+                        <segue destination="jAg-pR-acB" kind="show" identifier="showMap" id="QdS-sl-bB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SL-zn-LFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2616,6 +2613,7 @@ Review</string>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="mail-1" width="96" height="96"/>
         <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="map_button" width="142" height="142"/>
         <image name="nopic" width="1417" height="1417"/>
         <image name="notiTrend1" width="262" height="213"/>
         <image name="open-close" width="96" height="96"/>
@@ -2634,7 +2632,7 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
-        <segue reference="wGH-AF-6ic"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="JIg-n3-5oa"/>
         <segue reference="pD8-zW-E8l"/>

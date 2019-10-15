@@ -83,7 +83,9 @@ class LipstickDetailViewcontroller: UIViewController {
         reviewButton.setTitle("See review\(reviews.count > 1 ? "s" : "") (\(reviews.count))", for: .normal)
         reviewButton.isEnabled = true
     }
-    
+    @IBAction func clickedMapButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showMap", sender: self)
+    }
     @IBAction func clickedSeeReviews(_ sender: Any) {
         self.performSegue(withIdentifier: "showReview", sender: self)
     }
