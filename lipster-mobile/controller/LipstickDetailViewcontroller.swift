@@ -70,6 +70,10 @@ class LipstickDetailViewcontroller: UIViewController {
         addLipstickToHistory()
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
+    
     @IBAction func favButtonClicked(_ sender: UIButton) {
         self.toggleFavLipstick()
         initialUI()

@@ -53,6 +53,10 @@ class PinterestViewController: UIViewController {
             destination.imageHeroId = "trend\(indexPath.item)"
         }
     }
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        hero.dismissViewController()
+    }
 }
 
 extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
