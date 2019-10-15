@@ -10,7 +10,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
-    @IBOutlet weak var searchButton: UIBarButtonItem!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -80,7 +79,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource , UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -166,9 +165,11 @@ extension HomeViewController {
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
             
             self.recommendLipstick = lipsticks
-            self.recommendCollectionView.reloadData()
-            self.recommendCollectionView.setNeedsLayout()
-            self.recommendCollectionView.layoutIfNeeded()
+            self.recommendCollectionView.performBatchUpdates({
+                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+            }, completion: { (_) in
+                
+            })
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)
@@ -179,9 +180,12 @@ extension HomeViewController {
             TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, trendGroups)
             
             self.trendGroups = trendGroups
-            self.trendsCollectionView.reloadData()
-            self.trendsCollectionView.setNeedsLayout()
-            self.trendsCollectionView.layoutIfNeeded()
+            
+            self.trendsCollectionView.performBatchUpdates({
+                self.trendsCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+            }, completion: { (_) in
+                
+            })
         })
         trendDataPipe.output.observe(trendDataObserver!)
     }
