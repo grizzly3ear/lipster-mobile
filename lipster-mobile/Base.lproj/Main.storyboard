@@ -1102,23 +1102,19 @@ Review</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="telephone-auricular-with-cable (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Q8m-RH-3HY">
-                                <rect key="frame" x="45" y="397" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="open" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-Q3-ef5">
                                 <rect key="frame" x="26" y="208" width="66" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGG-hU-FxS">
-                                <rect key="frame" x="80" y="399" width="261" height="21"/>
+                                <rect key="frame" x="35" y="474" width="306" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-lj-MXF">
-                                <rect key="frame" x="80" y="319" width="261" height="62"/>
+                                <rect key="frame" x="28" y="367" width="261" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1132,7 +1128,25 @@ Review</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map_storeDetail" translatesAutoresizingMaskIntoConstraints="NO" id="Dvi-an-Ecd">
-                                <rect key="frame" x="40" y="338" width="28" height="28"/>
+                                <rect key="frame" x="28" y="334" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-1P-XOf">
+                                <rect key="frame" x="64" y="338" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWt-qV-akJ">
+                                <rect key="frame" x="64" y="444" width="52" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="telephone-auricular-with-cable (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Q8m-RH-3HY">
+                                <rect key="frame" x="33" y="442" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -2563,7 +2577,7 @@ Review</string>
         <image name="mail-1" width="96" height="96"/>
         <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="map_button" width="142" height="142"/>
-        <image name="map_storeDetail" width="480" height="480"/>
+        <image name="map_storeDetail" width="384" height="384"/>
         <image name="nopic" width="1417" height="1417"/>
         <image name="notiTrend1" width="262" height="213"/>
         <image name="open" width="512" height="512"/>
@@ -2573,7 +2587,7 @@ Review</string>
         <image name="review_line" width="780" height="8"/>
         <image name="send" width="48" height="48"/>
         <image name="signUp_bg" width="427" height="471"/>
-        <image name="telephone-auricular-with-cable (1)" width="48" height="48"/>
+        <image name="telephone-auricular-with-cable (1)" width="384" height="384"/>
         <image name="try-this-shade" width="263" height="53"/>
         <image name="user1" width="340" height="339"/>
         <image name="user2" width="332" height="332"/>
