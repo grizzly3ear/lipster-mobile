@@ -1,5 +1,8 @@
 import UIKit
 import Hero
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class SearchViewController: UIViewController {
 
@@ -20,12 +23,14 @@ class SearchViewController: UIViewController {
     var searchLipsticks = [Lipstick]()
     var searchStoreLipstick = [Store]()
     var searchFilterDictionary: Dictionary<Int, [String: Any]> = Dictionary()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchHistoryCollectionView.delegate = self
         searchHistoryCollectionView.dataSource = self
+        
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
@@ -40,8 +45,8 @@ class SearchViewController: UIViewController {
         
         defaultSearchResultTableViewMarginTop = searchResultMarginTop.constant
         
-        self.searchHistory = createArray()
-        self.searchLipsticks = createSearchLipstickArray()
+        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
+        self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
         self.searchStoreLipstick = createStoreLipstickArray()
         
         hideTableView()
@@ -56,13 +61,6 @@ class SearchViewController: UIViewController {
         return [h1, h2, h3, h1, h2, h2, h1, h3]
     }
     
-    func createSearchLipstickArray() -> [Lipstick] {
-        let searhLipstick1 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "MAC", "name1",  "cool red", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
-        let searhLipstick2 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "YSL", "EE name2",  "pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
-        let searhLipstick3 : Lipstick = Lipstick( 33,  ["Sephora_black_logo"], "ETUDE", "name 3",  "hot hot pinky", "Lorem ipsum dolor sit amet, consecetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ",  UIColor(), 6798)
-        
-        return [searhLipstick1 , searhLipstick2 , searhLipstick3]
-    }
     func createStoreLipstickArray() -> [Store] {
         let store1 : Store = Store(id: 1, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
         let store2 : Store = Store(id: 2, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
@@ -115,6 +113,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let size = (text as NSString).size(withAttributes: [:])
         return CGSize(width: size.width + 32, height: 27)
     }
+
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -201,6 +200,10 @@ extension SearchViewController: UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
+        if let text = textField.text, text.trim() != "" {
+            addSearchHistory(text)
+        }
+        print("resign")
         return true
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -252,5 +255,20 @@ extension SearchViewController: UITextFieldDelegate {
             
             self?.showTableView()
         }
+    }
+    
+    func addSearchHistory(_ keyword: String) {
+        
+        if let i = searchHistory.firstIndex(where: { $0 == keyword }) {
+            print("remove")
+            searchHistory.remove(at: i)
+        }
+        while searchHistory.count > 9 {
+            searchHistory.removeFirst()
+        }
+        searchHistory.append(keyword)
+
+        searchHistoryCollectionView.reloadData()
+        defaults.set(searchHistory, forKey: DefaultConstant.searchHistory)
     }
 }

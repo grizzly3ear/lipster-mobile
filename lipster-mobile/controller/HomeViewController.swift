@@ -21,6 +21,9 @@ class HomeViewController: UIViewController {
     let trendDataPipe = Signal<[TrendGroup], NoError>.pipe()
     var trendDataObserver: Signal<[TrendGroup], NoError>.Observer?
     
+    let storeDataPipe = Signal<[Store], NoError>.pipe()
+    var storeDataObserver: Signal<[Store], NoError>.Observer?
+    
     let padding: CGFloat = 8.0
     
     var logoImageView: UIImageView!
@@ -70,6 +73,9 @@ extension HomeViewController {
             TrendRepository.fetchAllTrendData { (response) in
                 self.trendDataPipe.input.send(value: response)
             }
+//            StoreRepository.fetchAllStore { (response) in
+//                self.storeDataPipe.input.send(value: response)
+//            }
         }
     }
 }
@@ -157,6 +163,8 @@ extension HomeViewController: UICollectionViewDataSource , UICollectionViewDeleg
 extension HomeViewController {
     func initReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
+            
             self.recommendLipstick = lipsticks
             self.recommendCollectionView.reloadData()
             self.recommendCollectionView.setNeedsLayout()
@@ -168,13 +176,21 @@ extension HomeViewController {
     
     func initReactiveTrendData() {
         trendDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
-            self.trendGroups = trendGroups
+            TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, trendGroups)
             
+            self.trendGroups = trendGroups
             self.trendsCollectionView.reloadData()
             self.trendsCollectionView.setNeedsLayout()
             self.trendsCollectionView.layoutIfNeeded()
         })
         trendDataPipe.output.observe(trendDataObserver!)
+    }
+    
+    func initReactiveStoreData() {
+        storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
+            
+        })
+        storeDataPipe.output.observe(storeDataObserver!)
     }
 }
 
