@@ -10,6 +10,9 @@
 		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
 		2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */; };
 		2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB002FE2340C9110091F3BD /* StoreRepository.swift */; };
+		2CB7A4E923558EA600253DCC /* Search2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4E823558EA600253DCC /* Search2ViewController.swift */; };
+		2CB7A4EB2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */; };
+		2CB7A4ED2355B6A900253DCC /* UILabelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
 		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
@@ -77,7 +80,6 @@
 		D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */; };
 		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
 		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
-		D8F4BD742338C76B00274B79 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F4BD732338C76B00274B79 /* SearchTableViewController.swift */; };
 		D8F4BD762338DAB500274B79 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F4BD752338DAB500274B79 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,9 @@
 		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
 		2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailModalViewController.swift; sourceTree = "<group>"; };
 		2CB002FE2340C9110091F3BD /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
+		2CB7A4E823558EA600253DCC /* Search2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search2ViewController.swift; sourceTree = "<group>"; };
+		2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelper.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
@@ -168,7 +173,6 @@
 		D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
-		D8F4BD732338C76B00274B79 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D8F4BD752338DAB500274B79 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.debug.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +214,7 @@
 				30C78E972299B91D0032A965 /* UIUtilityHelper.swift */,
 				2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */,
 				3071C13322573BFE0056EE74 /* UIViewHelper.swift */,
+				2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -305,7 +310,6 @@
 				3071185622FC188300E25AF4 /* PinterestViewController.swift */,
 				D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */,
 				D8573504232EA6FB00164E2E /* ReviewViewController.swift */,
-				D8F4BD732338C76B00274B79 /* SearchTableViewController.swift */,
 				D83DD822230079EA000098C1 /* SignUpViewController.swift */,
 				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
@@ -313,6 +317,7 @@
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
 				D89F35F82355C17400F0AF43 /* StoreViewController.swift */,
+				2CB7A4E823558EA600253DCC /* Search2ViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				3073907C227C2766003B9013 /* TriangleView.swift */,
 				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
 				D8799C8D22FD51E800441E6F /* YourReviewsTableViewCell.swift */,
+				2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -525,7 +531,6 @@
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				D8573505232EA6FB00164E2E /* ReviewViewController.swift in Sources */,
-				D8F4BD742338C76B00274B79 /* SearchTableViewController.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
 				D89F35F92355C17400F0AF43 /* StoreViewController.swift in Sources */,
 				304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */,
@@ -540,12 +545,15 @@
 				2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */,
 				3071185922FC1BAC00E25AF4 /* TrendCollectionViewCell.swift in Sources */,
 				D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */,
+				2CB7A4ED2355B6A900253DCC /* UILabelHelper.swift in Sources */,
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
 				30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
+				2CB7A4EB2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift in Sources */,
+				2CB7A4E923558EA600253DCC /* Search2ViewController.swift in Sources */,
 				3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */,
 				D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */,
 				30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */,

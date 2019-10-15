@@ -39,6 +39,10 @@ class LipColorDetectionController: UIViewController {
     
     func popAlert() {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+        
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
         }))
