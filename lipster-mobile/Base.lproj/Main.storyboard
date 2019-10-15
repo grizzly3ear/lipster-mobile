@@ -2028,14 +2028,14 @@ Review</string>
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mV-k3-eiG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="856"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="920"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-eK-Jgg">
                                                 <rect key="frame" x="97" y="8" width="181" height="180"/>
@@ -2069,13 +2069,13 @@ Review</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-yW-lf1">
-                                                <rect key="frame" x="0.0" y="492" width="375" height="420"/>
+                                                <rect key="frame" x="0.0" y="492" width="375" height="194"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMB-Jw-T9p">
-                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="432"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="750" height="200"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="750" id="LQr-OB-dYl"/>
-                                                            <constraint firstAttribute="height" constant="432" id="ZL8-Kn-AdC"/>
+                                                            <constraint firstAttribute="height" constant="200" id="ZL8-Kn-AdC"/>
                                                         </constraints>
                                                         <connections>
                                                             <segue destination="kTt-8X-GYq" kind="embed" identifier="showContainer" id="XXB-7V-DOK"/>
@@ -2086,7 +2086,7 @@ Review</string>
                                                     <constraint firstItem="aMB-Jw-T9p" firstAttribute="leading" secondItem="iOI-yW-lf1" secondAttribute="leading" id="0Ew-D8-t41"/>
                                                     <constraint firstItem="aMB-Jw-T9p" firstAttribute="top" secondItem="iOI-yW-lf1" secondAttribute="top" id="B4G-0d-gFM"/>
                                                     <constraint firstAttribute="trailing" secondItem="aMB-Jw-T9p" secondAttribute="trailing" constant="-375" id="Uvf-1u-Emy"/>
-                                                    <constraint firstAttribute="bottom" secondItem="aMB-Jw-T9p" secondAttribute="bottom" constant="-12" id="z5m-lB-liJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aMB-Jw-T9p" secondAttribute="bottom" constant="-6" id="z5m-lB-liJ"/>
                                                 </constraints>
                                             </scrollView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yhv-km-JxF" customClass="MXSegmentedControl" customModule="MXSegmentedControl">
@@ -2175,7 +2175,7 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
-                                                <rect key="frame" x="86" y="353" width="202" height="36"/>
+                                                <rect key="frame" x="86" y="358" width="202" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button" image="try-this-shade"/>
                                                 <connections>
@@ -2186,7 +2186,7 @@ Review</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="bottom" secondItem="Uqo-7f-rOw" secondAttribute="bottom" id="30T-8D-0Wj"/>
-                                            <constraint firstItem="iOI-yW-lf1" firstAttribute="bottom" secondItem="jAb-2q-rZ1" secondAttribute="bottomMargin" id="5CN-lh-19U"/>
+                                            <constraint firstItem="iOI-yW-lf1" firstAttribute="bottom" secondItem="jAb-2q-rZ1" secondAttribute="bottomMargin" constant="8" id="5CN-lh-19U"/>
                                             <constraint firstItem="ltl-ql-sD7" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="273" id="AV3-sF-gEU"/>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="bottom" secondItem="Hln-nP-OFo" secondAttribute="bottom" id="AVQ-4C-IsW"/>
                                             <constraint firstAttribute="trailing" secondItem="iOI-yW-lf1" secondAttribute="trailing" id="C5L-Dz-tuC"/>
@@ -2199,13 +2199,13 @@ Review</string>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="centerX" secondItem="LNL-eK-Jgg" secondAttribute="centerX" id="NBi-CY-ZY5"/>
                                             <constraint firstItem="hUg-Xc-sfC" firstAttribute="centerX" secondItem="Uqo-7f-rOw" secondAttribute="centerX" id="Rzn-KK-ioO"/>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="leading" secondItem="hUg-Xc-sfC" secondAttribute="leading" id="Tpd-tX-l2U"/>
-                                            <constraint firstAttribute="height" constant="920" id="UXX-hE-baX"/>
+                                            <constraint firstAttribute="height" constant="686" id="UXX-hE-baX"/>
                                             <constraint firstAttribute="trailing" secondItem="Yhv-km-JxF" secondAttribute="trailing" constant="-1" id="UiG-0R-fG5"/>
                                             <constraint firstItem="X0G-MV-q6e" firstAttribute="top" secondItem="LNL-eK-Jgg" secondAttribute="bottom" id="Vzu-Wa-Y0c"/>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="leading" secondItem="Uqo-7f-rOw" secondAttribute="leading" id="ZIE-Ej-ZhE"/>
                                             <constraint firstItem="Uqo-7f-rOw" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="10" id="ap2-bJ-oWf"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="X0G-MV-q6e" secondAttribute="centerX" id="bTY-59-oEP"/>
-                                            <constraint firstAttribute="bottom" secondItem="Yhv-km-JxF" secondAttribute="bottom" constant="429" id="ePO-f4-Udc"/>
+                                            <constraint firstAttribute="bottom" secondItem="Yhv-km-JxF" secondAttribute="bottom" constant="195" id="ePO-f4-Udc"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="hUg-Xc-sfC" secondAttribute="centerX" id="ezh-Vf-F1n"/>
                                             <constraint firstItem="Hln-nP-OFo" firstAttribute="leading" secondItem="LNL-eK-Jgg" secondAttribute="trailing" constant="20" id="g7C-5y-Qoh"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="leading" secondItem="jAb-2q-rZ1" secondAttribute="leading" id="hBy-iQ-NAV"/>
@@ -2241,7 +2241,7 @@ Review</string>
                         <viewLayoutGuide key="safeArea" id="YMT-mL-4eD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Brand Name" id="MEO-e2-Xae"/>
-                    <size key="freeformSize" width="375" height="920"/>
+                    <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
                         <outlet property="lipstickBrand" destination="8hm-Ti-ecJ" id="Pif-Gf-2gk"/>
@@ -2409,11 +2409,11 @@ Review</string>
             <objects>
                 <viewController id="kTt-8X-GYq" customClass="ContainerViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yh3-eT-v16">
-                        <rect key="frame" x="0.0" y="0.0" width="750" height="432"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWG-b9-RUo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="432"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqB-mO-myG">
