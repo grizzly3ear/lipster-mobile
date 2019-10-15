@@ -37,19 +37,19 @@ class HomeViewController: UIViewController {
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         initHero()
         
-        addLeftBarIcon(named:"logo-3")
+        addLeftBarIcon(named:"logo_font")
         
     }
 
     func addLeftBarIcon(named:String) {
         
-        let logoImage = UIImage.init(named: "logo-3")
+        let logoImage = UIImage.init(named: "logo_font")
         let logoImageView = UIImageView.init(image: logoImage)
-        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: 130, height: 40)
+        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: 130, height: 50)
         logoImageView.contentMode = .scaleAspectFit
         let imageItem = UIBarButtonItem.init(customView: logoImageView)
         let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 130)
-        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 40)
+        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 50)
         heightConstraint.isActive = true
         widthConstraint.isActive = true
         navigationItem.leftBarButtonItem =  imageItem
@@ -181,7 +181,7 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
-        searchButton.customView?.hero.id = "searchbar"
+      //  searchButton.customView?.hero.id = "searchbar"
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .slide(direction: .left),
             dismissing: .slide(direction: .right)
