@@ -17,6 +17,7 @@ pod 'ESTabBarController-swift'
 pod 'MXSegmentedControl'
 pod 'ExpandableLabel'
 pod 'SPStorkController'
+pod 'UICollectionViewLeftAlignedLayout'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
