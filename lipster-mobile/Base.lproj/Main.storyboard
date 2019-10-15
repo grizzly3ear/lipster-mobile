@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -934,7 +934,7 @@ Review</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrendGroupTableViewCell" rowHeight="240" id="Uuz-2l-rug" customClass="TrendGroup2TableViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrendGroupTableViewCell" rowHeight="240" id="Uuz-2l-rug" customClass="TrendGroup2TableViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uuz-2l-rug" id="UER-CZ-ZZR">
@@ -1344,7 +1344,7 @@ Review</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="85" id="QmM-lu-kQB" customClass="NotificationTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="85" id="QmM-lu-kQB" customClass="NotificationTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QmM-lu-kQB" id="L9E-hM-weO">
@@ -2051,7 +2051,7 @@ Review</string>
                                                 <rect key="frame" x="0.0" y="309" width="376" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="l4o-eg-fZn">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="l4o-eg-fZn">
                                                     <size key="itemSize" width="42" height="42"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2059,7 +2059,7 @@ Review</string>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="selectColorFromDetailCollectionViewCell" id="SGe-Os-Miv" customClass="SelectColorFromDetailCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                                        <rect key="frame" x="0.0" y="-0.5" width="42" height="42"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
@@ -2220,7 +2220,7 @@ Review</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserReviewTableViewCell" rowHeight="96" id="pcu-Eo-2I8" customClass="UserReviewTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserReviewTableViewCell" rowHeight="96" id="pcu-Eo-2I8" customClass="UserReviewTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pcu-Eo-2I8" id="HwS-fO-esM">
@@ -2520,40 +2520,40 @@ Review</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="128" height="128"/>
-        <image name="edit" width="256" height="256"/>
-        <image name="facebook-1" width="128" height="128"/>
-        <image name="favoritePopup" width="512" height="512"/>
-        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="edit" width="512" height="512"/>
+        <image name="facebook-1" width="96" height="96"/>
+        <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="frame" width="400" height="400"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="history" width="512" height="512"/>
-        <image name="line" width="512" height="512"/>
+        <image name="history" width="384" height="384"/>
+        <image name="line" width="384" height="384"/>
         <image name="lipColor" width="214" height="569"/>
-        <image name="lipstick (2)" width="512" height="512"/>
+        <image name="lipstick (2)" width="326.2301025390625" height="326.2301025390625"/>
         <image name="location" width="480" height="480"/>
-        <image name="log-out" width="512" height="512"/>
+        <image name="log-out" width="384" height="384"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="970" height="672"/>
+        <image name="login_bgBlur" width="485" height="336"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="logo-3" width="2835" height="850"/>
-        <image name="mail-1" width="128" height="128"/>
-        <image name="makeup" width="512" height="512"/>
+        <image name="mail-1" width="96" height="96"/>
+        <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="nopic" width="1417" height="1417"/>
-        <image name="notiTrend1" width="524" height="426"/>
-        <image name="open-close" width="128" height="128"/>
-        <image name="password" width="128" height="128"/>
-        <image name="review bg" width="1482" height="158"/>
-        <image name="review-1" width="512" height="512"/>
-        <image name="review_line" width="1560" height="16"/>
-        <image name="send" width="64" height="64"/>
-        <image name="signUp_bg" width="854" height="942"/>
-        <image name="telephone-auricular-with-cable (1)" width="64" height="64"/>
+        <image name="notiTrend1" width="262" height="213"/>
+        <image name="open-close" width="96" height="96"/>
+        <image name="password" width="96" height="96"/>
+        <image name="review bg" width="741" height="79"/>
+        <image name="review-1" width="384" height="384"/>
+        <image name="review_line" width="780" height="8"/>
+        <image name="send" width="48" height="48"/>
+        <image name="signUp_bg" width="427" height="471"/>
+        <image name="telephone-auricular-with-cable (1)" width="48" height="48"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="680" height="678"/>
-        <image name="user2" width="664" height="664"/>
-        <image name="username" width="128" height="128"/>
-        <image name="whiteLine" width="64" height="64"/>
+        <image name="user1" width="340" height="339"/>
+        <image name="user2" width="332" height="332"/>
+        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
