@@ -902,16 +902,10 @@ Review</string>
                     </view>
                     <navigationItem key="navigationItem" id="iEC-Ag-3N8">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="Vwm-h1-v8Y"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="ckf-LY-4Cc">
-                            <connections>
-                                <segue destination="W1T-hc-MA8" kind="show" id="ewc-s6-Y95"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftButtonBarItem" destination="Vwm-h1-v8Y" id="voD-eo-Ao7"/>
                         <outlet property="recommendCollectionView" destination="G5J-Ep-gXf" id="nN6-qN-UJc"/>
-                        <outlet property="searchButton" destination="ckf-LY-4Cc" id="Ram-ZQ-a65"/>
                         <outlet property="trendsCollectionView" destination="YCt-TH-wPW" id="geF-Nq-qP9"/>
                         <segue destination="Th2-S5-z7n" kind="show" identifier="showTrendList" id="JIg-n3-5oa"/>
                         <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
@@ -1093,7 +1087,7 @@ Review</string>
             <objects>
                 <tableViewController storyboardIdentifier="SearchTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="W1T-hc-MA8" customClass="SearchTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" id="4Rt-26-pWT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="0.0"/>
@@ -1134,7 +1128,6 @@ Review</string>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="searchTableView" destination="4Rt-26-pWT" id="EUq-Ie-ycF"/>
-                        <segue destination="qET-1N-1ep" kind="show" id="JWb-V6-Jt9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebV-Xc-6vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2643,7 +2636,7 @@ Review</string>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="wGH-AF-6ic"/>
         <segue reference="Q11-LN-cwa"/>
-        <segue reference="o8m-Id-iYa"/>
+        <segue reference="JIg-n3-5oa"/>
         <segue reference="pD8-zW-E8l"/>
     </inferredMetricsTieBreakers>
 </document>

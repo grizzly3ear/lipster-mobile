@@ -181,7 +181,7 @@ extension HomeViewController {
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
-        searchButton.customView?.hero.id = "searchbar"
+      //  searchButton.customView?.hero.id = "searchbar"
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .slide(direction: .left),
             dismissing: .slide(direction: .right)
