@@ -2667,27 +2667,28 @@ Review</string>
         <image name="line" width="512" height="512"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="lip_logo_whiteFont" width="500" height="500"/>
+        <image name="lipstick (2)" width="512" height="512"/>
         <image name="location" width="480" height="480"/>
         <image name="log-out" width="512" height="512"/>
         <image name="login_bg" width="375" height="667"/>
         <image name="login_bgBlur" width="970" height="672"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
-        <image name="mail-1" width="96" height="96"/>
-        <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="mail-1" width="128" height="128"/>
+        <image name="makeup" width="512" height="512"/>
         <image name="map_button" width="142" height="142"/>
-        <image name="map_storeDetail" width="384" height="384"/>
+        <image name="map_storeDetail" width="512" height="512"/>
         <image name="nopic" width="1417" height="1417"/>
-        <image name="notiTrend1" width="262" height="213"/>
+        <image name="notiTrend1" width="524" height="426"/>
         <image name="open" width="512" height="512"/>
-        <image name="password" width="96" height="96"/>
-        <image name="review bg" width="741" height="79"/>
-        <image name="review-1" width="384" height="384"/>
-        <image name="review_line" width="780" height="8"/>
-        <image name="send" width="48" height="48"/>
-        <image name="signUp_bg" width="427" height="471"/>
-        <image name="telephone-auricular-with-cable (1)" width="384" height="384"/>
+        <image name="password" width="128" height="128"/>
+        <image name="review bg" width="1482" height="158"/>
+        <image name="review-1" width="512" height="512"/>
+        <image name="review_line" width="1560" height="16"/>
         <image name="search" width="512" height="512"/>
+        <image name="send" width="64" height="64"/>
+        <image name="signUp_bg" width="854" height="942"/>
+        <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
         <image name="try-this-shade" width="263" height="53"/>
         <image name="user1" width="680" height="678"/>
         <image name="user2" width="664" height="664"/>
@@ -2698,8 +2699,6 @@ Review</string>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
-        <segue reference="JIg-n3-5oa"/>
-        <segue reference="pD8-zW-E8l"/>
         <segue reference="uiQ-35-l4p"/>
         <segue reference="PDE-4n-fpa"/>
     </inferredMetricsTieBreakers>
