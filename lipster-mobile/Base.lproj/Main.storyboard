@@ -394,7 +394,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8M-WM-ExO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="3463"/>
+            <point key="canvasLocation" x="-650" y="3573"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Jf4-kQ-WMX">
@@ -1037,7 +1037,7 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWE-EW-yxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850" y="3522"/>
+            <point key="canvasLocation" x="-1583" y="2785"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="hko-Vg-gMS">
@@ -1174,7 +1174,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2C-nW-4G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="3520.3898050974517"/>
+            <point key="canvasLocation" x="-650" y="2785"/>
         </scene>
         <!--Store Name-->
         <scene sceneID="YwC-3f-noJ">
@@ -1354,7 +1354,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="479" width="22" height="46"/>
+                                        <rect key="frame" x="23" y="479" width="22.000000000000057" height="46.000000000000114"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>
@@ -1525,7 +1525,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RM-oi-4lh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1356" y="2766"/>
+            <point key="canvasLocation" x="-2503" y="2785"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Os6-5v-Zbh">
@@ -1995,7 +1995,7 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6t-c6-qQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-788" y="3463"/>
+            <point key="canvasLocation" x="-1583" y="3574"/>
         </scene>
         <!--Your Reviews Table View Controller-->
         <scene sceneID="jSy-S4-zDt">
