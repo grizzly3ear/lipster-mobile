@@ -1,11 +1,3 @@
-//
-//  StoreViewController.swift
-//  lipster-mobile
-//
-//  Created by Mainatvara on 14/10/2562 BE.
-//  Copyright © 2562 Bank. All rights reserved.
-//
-
 import UIKit
 
 class StoreViewController: UIViewController {
@@ -18,11 +10,17 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var storePhoneNumber: UILabel!
     @IBOutlet weak var titleNavigation: UINavigationItem!
     
-    var store: Store?
+    var storeDetail: Store?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.titleNavigation.title = store?.name
+        storeName.text = storeDetail!.name
+        storeImageView.sd_setImage(with: URL(string: (storeDetail?.image)!), placeholderImage: UIImage(named: "nopic")!)
+   
+        storeHours.text = storeDetail!.hours
+        storeAddress.text = storeDetail!.address
+        storePhoneNumber.text = storeDetail?.phoneNumber
+       // navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+       // self.titleNavigation.title = store?.name
     }
     
     

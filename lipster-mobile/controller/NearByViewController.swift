@@ -20,7 +20,8 @@ class NearByViewController: UIViewController   {
     var pinView : MKAnnotationView!
     
     var index = 1
-    var stores = [Store]()
+    var stores:[Store] = [Store]()
+    var storeDetail = [Store]()
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var myCoorButton: UIButton!
@@ -79,7 +80,10 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         
         return stores.count
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showStoreDetail", sender: indexPath)
+
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NearByCollectionViewCell", for: indexPath) as! NearByCollectionViewCell
 
@@ -94,6 +98,17 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         print(store.name)
         cell.setStore(store: store )
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showStoreDetail" {
+            if let destination = segue.destination as? StoreViewController {
+                let indexPath = sender as! IndexPath
+                destination.storeDetail = stores[indexPath.item]
+            }
+           
+        }
+        
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
