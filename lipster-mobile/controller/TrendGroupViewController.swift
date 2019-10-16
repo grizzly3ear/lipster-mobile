@@ -11,6 +11,8 @@ import Hero
 
 class TrendGroupViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
+    var trendGroups = [TrendGroup]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -35,8 +37,6 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
         self.performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    var trendGroups = [TrendGroup]()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (trendGroups[collectionView.tag].trends?.count)!
@@ -66,6 +66,9 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
             let destination = segue.destination as? PinterestViewController
             destination?.trends = trendGroups[item].trends!
         }
+    }
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
     }
     
 }

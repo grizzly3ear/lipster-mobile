@@ -31,6 +31,9 @@ class TrendDetailViewController: UIViewController {
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
     @IBAction func toggleFavoriteTrend(_ sender: Any?) {
         toggleTrendFav()
         initUI()

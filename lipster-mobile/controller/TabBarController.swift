@@ -20,14 +20,14 @@ class TabBarController: ESTabBarController {
         var uiviewControllers = [UIViewController]()
         let pageArray = [
             "Home",
-            "NearBy",
+            "Search",
             "LipColorDetection",
             "Notification",
             "Profile"
         ]
         let photoArray = [
             "home",
-            "nearby",
+            "search",
             "camera",
             "noti",
             "profile"
