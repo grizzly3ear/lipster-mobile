@@ -38,17 +38,15 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchHistoryCollectionView.delegate = self
-        searchHistoryCollectionView.dataSource = self
-        
         recommendCollectionView.delegate = self
+        
+        searchHistoryCollectionView.dataSource = self
         recommendCollectionView.dataSource = self
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
         
-        let footer = UIView(frame: .zero)
-        footer.backgroundColor = .lightGray
-        searchResultTableView.tableFooterView = footer
+        searchHistoryCollectionView.layoutIfNeeded()
         
         searchTextField.delegate = self
         searchTextField.returnKeyType = .search
@@ -59,7 +57,7 @@ class SearchViewController: UIViewController {
         
         defaultSearchResultTableViewMarginTop = searchResultMarginTop.constant
         
-        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
+        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as! [String]
         self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
         self.searchStoreLipstick = createStoreLipstickArray()
         
@@ -70,11 +68,6 @@ class SearchViewController: UIViewController {
         )
         
         searchHistoryCollectionView.reloadData()
-        
-        searchHistoryCollectionView.layoutIfNeeded()
-        searchHistoryCollectionView.layoutSubviews()
-        
-        
         initReactiveLipstickData()
         hideTableView()
     }
@@ -90,16 +83,7 @@ class SearchViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let text = searchTextField.text, text.trim() == "" {
-            searchImageViewMarginTopConstraint.constant = defaultSearchImageViewMarginTop
-            searchTextFieldMarginTopConstraint.constant = defaultSearchTextFieldMarginTop
-            searchHistoryCollectionView.isHidden = false
-            searchTextField.text = ""
-            
-            view.layoutIfNeeded()
-        }
-        
-        
+        showCollectionView()
     }
 
     @IBAction func clearSearch(_ sender: UIButton) {

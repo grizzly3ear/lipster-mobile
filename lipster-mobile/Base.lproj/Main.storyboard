@@ -1024,11 +1024,10 @@ Review</string>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rj6-Td-uR0" customClass="DynamicHeightCollectionView" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="27" y="254" width="319" height="70"/>
+                                <rect key="frame" x="27" y="254" width="319" height="39"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="9ej-Cl-Yh0"/>
-                                    <constraint firstAttribute="height" constant="70" id="STo-O9-eW5"/>
+                                    <constraint firstAttribute="height" constant="39" id="STo-O9-eW5"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="5" id="Ag9-dl-yXf" customClass="UICollectionViewLeftAlignedLayout">
                                     <size key="itemSize" width="182" height="27"/>
@@ -2905,6 +2904,8 @@ Review</string>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="GT3-8q-qFt"/>
+        <segue reference="7xa-ab-yxx"/>
+        <segue reference="doR-AN-Qfk"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="53E-t6-YAN"/>
