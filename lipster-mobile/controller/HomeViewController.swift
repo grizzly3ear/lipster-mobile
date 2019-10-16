@@ -8,11 +8,13 @@ import Hero
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
+    @IBOutlet weak var trendGroupCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
+    var trends = [Trend]()
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
@@ -28,15 +30,27 @@ class HomeViewController: UIViewController {
     var logoImageView: UIImageView!
     
     
+    func createTrendArray() -> [Trend] {
+        let trend1: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend2: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend3: Trend = Trend("Hot Orenge ","user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend4: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        
+        
+        return [trend1,trend2,trend3,trend4]
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.trends = self.createTrendArray()
         initReactiveLipstickData()
         initReactiveTrendData()
         fetchData()
 
-        trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
+        trendGroupCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
+        trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
+       
         initHero()
         
         addLeftBarIcon(named:"logo_font")
@@ -84,23 +98,38 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView {
-            case trendsCollectionView:
+            case trendGroupCollectionView:
                 return trendGroups.count >= 5 ? 5 : trendGroups.count
             case recommendCollectionView:
                 return recommendLipstick.count >= 20 ? 20 : recommendLipstick.count
+            print("count recommend = \(recommendLipstick.count)")
+            case trendsCollectionView:
+                return trends.count >= 10 ? 10 :  trends.count
+            print("count trend = \(trends.count)")
             default: return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == trendsCollectionView {
+        
+        if collectionView == trendGroupCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendGroupCollectionViewcell" , for: indexPath) as! TrendHomeCollectionViewCell
 
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
          
             return cell
-        } else {
+        } else if  collectionView == trendsCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell" , for: indexPath) as! TrendsCollectionViewCell
+            let trend = trends[indexPath.item]
+            
+            cell.hero.modifiers = [.fade, .scale(0.5)]
+            cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
+            cell.trendTitle.text = trend.title
+            cell.TrendDescription.text = trend.detail
+            
+            return cell
+        }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             let lipstick = recommendLipstick[indexPath.item]
             var firstLipstickImage = ""
@@ -114,7 +143,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.recNameLabel.text = lipstick.lipstickName
             
             cell.recImageView.hero.id = "lipstick\(indexPath.item)"
-            
+            print("count trend = \(trends.count)")
             return cell
         }
     }
@@ -123,6 +152,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch collectionView {
         case recommendCollectionView:
             performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+            break
+        case trendGroupCollectionView:
+            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
             break
         case trendsCollectionView:
             performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
@@ -181,8 +213,8 @@ extension HomeViewController {
             
             self.trendGroups = trendGroups
             
-            self.trendsCollectionView.performBatchUpdates({
-                self.trendsCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+            self.trendGroupCollectionView.performBatchUpdates({
+                self.trendGroupCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
             }, completion: { (_) in
                 
             })
