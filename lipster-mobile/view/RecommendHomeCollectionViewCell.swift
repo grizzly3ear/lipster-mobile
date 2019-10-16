@@ -14,8 +14,10 @@ class RecommendHomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recBrandLabel: UILabel!
     @IBOutlet weak var recNameLabel: UILabel!
     
+    public static let cellId: String = "RecommendHomeCollectionViewCell"
+    
     override func awakeFromNib() {
         recImageView.layer.cornerRadius = 20
-        recImageView.clipsToBounds = true
+//        recImageView.clipsToBounds = true
     }
 }

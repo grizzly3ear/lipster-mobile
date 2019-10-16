@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C5627A5233B1F2F00248FAA /* UIVIewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */; };
+		2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7644BA235741B3000ADAE9 /* DynamicHeightCollectionView.swift */; };
 		2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */; };
 		2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB002FE2340C9110091F3BD /* StoreRepository.swift */; };
 		2CB7A4E923558EA600253DCC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4E823558EA600253DCC /* SearchViewController.swift */; };
@@ -77,7 +78,7 @@
 		D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E48D96226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift */; };
 		D8EA969B226986A80060B78A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA969A226986A80060B78A /* HomeViewController.swift */; };
 		D8EA96A32269C5120060B78A /* TrendHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */; };
-		D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */; };
+		D8EA96A72269E6300060B78A /* RecommendHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A62269E6300060B78A /* RecommendHomeCollectionViewCell.swift */; };
 		D8EA96A9226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */; };
 		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
 		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
@@ -100,6 +101,7 @@
 /* Begin PBXFileReference section */
 		1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.release.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.release.xcconfig"; sourceTree = "<group>"; };
 		2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerHelper.swift; sourceTree = "<group>"; };
+		2C7644BA235741B3000ADAE9 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		2C8AADB0233E4EF60036FCB0 /* LipstickDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailModalViewController.swift; sourceTree = "<group>"; };
 		2CB002FE2340C9110091F3BD /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		2CB7A4E823558EA600253DCC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +173,7 @@
 		D8E48D96226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorFromDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA969A226986A80060B78A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendHomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecHomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8EA96A62269E6300060B78A /* RecommendHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyViewHomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
@@ -337,7 +339,7 @@
 				D81CCE5C2285ED2C0028C19A /* ProfileTableViewCell.swift */,
 				D8EA96A8226AE2AC0060B78A /* RecentlyViewHomeCollectionViewCell.swift */,
 				D86BF81722FC6EB5003E1647 /* RecentlyViewListTableViewCell.swift */,
-				D8EA96A62269E6300060B78A /* RecHomeCollectionViewCell.swift */,
+				D8EA96A62269E6300060B78A /* RecommendHomeCollectionViewCell.swift */,
 				D8F4BD752338DAB500274B79 /* SearchTableViewCell.swift */,
 				D8E48D96226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift */,
 				30F76BCC23054F9C0009E998 /* Tabbar */,
@@ -351,6 +353,7 @@
 				D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */,
 				D8799C8D22FD51E800441E6F /* YourReviewsTableViewCell.swift */,
 				2CB7A4EA2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift */,
+				2C7644BA235741B3000ADAE9 /* DynamicHeightCollectionView.swift */,
 				D80510502357749300A6227A /* TrendsCollectionViewCell.swift */,
 			);
 			path = view;
@@ -509,6 +512,7 @@
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
+				2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */,
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
 				2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,
@@ -543,7 +547,7 @@
 				30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */,
 				D83DD82A23054962000098C1 /* TrendGroup2CollectionViewCell.swift in Sources */,
 				30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */,
-				D8EA96A72269E6300060B78A /* RecHomeCollectionViewCell.swift in Sources */,
+				D8EA96A72269E6300060B78A /* RecommendHomeCollectionViewCell.swift in Sources */,
 				D81CCE572285D8BB0028C19A /* NotificationViewController.swift in Sources */,
 				D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */,
 				2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */,
