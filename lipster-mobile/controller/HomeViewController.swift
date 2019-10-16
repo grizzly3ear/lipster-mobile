@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     let storeDataPipe = Signal<[Store], NoError>.pipe()
     var storeDataObserver: Signal<[Store], NoError>.Observer?
     
-    let padding: CGFloat = 8.0
+    let padding: CGFloat = 25.0
     
     var logoImageView: UIImageView!
     
@@ -51,6 +51,7 @@ class HomeViewController: UIViewController {
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
        
+        
         initHero()
         
         addLeftBarIcon(named:"logo_font")
