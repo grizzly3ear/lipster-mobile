@@ -1317,36 +1317,32 @@ Review</string>
                                             <rect key="frame" x="0.0" y="0.0" width="186" height="235"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRs-RD-Buq">
+                                                    <rect key="frame" x="16" y="207" width="33" height="16"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6r-tW-stB">
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="138"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7gQ-vy-AnB">
-                                                    <rect key="frame" x="0.0" y="109" width="186" height="126"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zat-MF-AAI">
-                                                            <rect key="frame" x="8" y="31" width="43.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRs-RD-Buq">
-                                                            <rect key="frame" x="8" y="67" width="33" height="16"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="hRs-RD-Buq" secondAttribute="bottom" constant="14" id="Q27-G1-Ili"/>
-                                                        <constraint firstItem="Zat-MF-AAI" firstAttribute="leading" secondItem="7gQ-vy-AnB" secondAttribute="leadingMargin" constant="42" id="gmN-pg-W2i"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hRs-RD-Buq" secondAttribute="trailing" constant="20" symbolic="YES" id="sGF-9W-wcB"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Zat-MF-AAI" secondAttribute="trailing" constant="20" symbolic="YES" id="yfO-H4-PFM"/>
-                                                    </constraints>
-                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zat-MF-AAI">
+                                                    <rect key="frame" x="16" y="184.5" width="43.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="hRs-RD-Buq" firstAttribute="top" secondItem="Zat-MF-AAI" secondAttribute="bottom" constant="2" id="3TB-TX-Yx5"/>
+                                            <constraint firstItem="Zat-MF-AAI" firstAttribute="leading" secondItem="v2A-NJ-TZP" secondAttribute="leadingMargin" constant="8" id="4sC-rs-qhe"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Zat-MF-AAI" secondAttribute="trailing" constant="20" symbolic="YES" id="E2s-V3-4hi"/>
+                                            <constraint firstItem="Zat-MF-AAI" firstAttribute="leading" secondItem="hRs-RD-Buq" secondAttribute="leading" id="Et5-Ah-KmB"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="hRs-RD-Buq" secondAttribute="bottom" constant="4" id="LIq-63-TwZ"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hRs-RD-Buq" secondAttribute="trailing" constant="20" symbolic="YES" id="xNO-8A-mcX"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="recBrandLabel" destination="Zat-MF-AAI" id="gaJ-nc-waS"/>
                                             <outlet property="recImageView" destination="Q6r-tW-stB" id="zKC-Aq-P5M"/>
