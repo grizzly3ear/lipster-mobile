@@ -89,8 +89,8 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         cell.storeLogoImage.layer.cornerRadius = 8.0
         cell.storeLogoImage.contentMode = .scaleAspectFill
         cell.storeLogoImage.clipsToBounds = true
-        cell.layer.cornerRadius = 8
-        cell.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2.0, scale: true)
+        cell.layer.cornerRadius = 15
+        //cell.dropShadow(color: .black, opacity: 0.2, offSet: CGSize(width: 1, height: 1), radius: 1.0, scale: true)
         
         let store = stores[indexPath.row]
         print(indexPath.row)

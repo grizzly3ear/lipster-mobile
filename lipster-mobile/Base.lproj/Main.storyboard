@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -94,63 +94,51 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-fy-1G5">
-                                <rect key="frame" x="0.0" y="369" width="375" height="167"/>
+                                <rect key="frame" x="0.0" y="427" width="375" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OID-iN-I2K">
-                                    <size key="itemSize" width="323" height="171"/>
+                                    <size key="itemSize" width="323" height="109"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NearByCollectionViewCell" id="fO3-9k-QTY" customClass="NearByCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-2" width="323" height="171"/>
+                                        <rect key="frame" x="0.0" y="10" width="323" height="109"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="323" height="171"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="323" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t5O-aR-tBS">
-                                                    <rect key="frame" x="11" y="11" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="IEA-ep-HSC"/>
-                                                        <constraint firstAttribute="height" constant="60" id="wmE-NS-M4C"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LG-DB-3dA">
-                                                    <rect key="frame" x="86" y="11" width="217" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="217" id="AUm-Zn-YyD"/>
-                                                        <constraint firstAttribute="height" constant="60" id="EV2-LS-1Kj"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LG-DB-3dA">
+                                                    <rect key="frame" x="108" y="11" width="195" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-Og-lvo">
-                                                    <rect key="frame" x="16" y="79" width="291" height="79"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="open-close" translatesAutoresizingMaskIntoConstraints="NO" id="o02-mv-Boq">
+                                                    <rect key="frame" x="110" y="75" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="open-close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-w8-pnP">
+                                                    <rect key="frame" x="136" y="75" width="167" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5O-aR-tBS">
+                                                    <rect key="frame" x="11" y="12" width="85" height="85"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="t5O-aR-tBS" firstAttribute="top" secondItem="fO3-9k-QTY" secondAttribute="top" constant="11" id="08i-bW-BM3"/>
-                                            <constraint firstItem="hTY-Og-lvo" firstAttribute="centerX" secondItem="fO3-9k-QTY" secondAttribute="centerX" id="1Ps-T6-SeR"/>
-                                            <constraint firstItem="hTY-Og-lvo" firstAttribute="leading" secondItem="fO3-9k-QTY" secondAttribute="leadingMargin" constant="8" id="4Qq-v4-lKB"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="hTY-Og-lvo" secondAttribute="bottom" constant="5" id="9LZ-3K-dkp"/>
-                                            <constraint firstItem="3LG-DB-3dA" firstAttribute="leading" secondItem="t5O-aR-tBS" secondAttribute="trailing" constant="15" id="F9P-kQ-3c2"/>
-                                            <constraint firstItem="t5O-aR-tBS" firstAttribute="leading" secondItem="fO3-9k-QTY" secondAttribute="leading" constant="11" id="TZx-11-H6C"/>
-                                            <constraint firstItem="hTY-Og-lvo" firstAttribute="top" secondItem="t5O-aR-tBS" secondAttribute="bottom" constant="8" symbolic="YES" id="dkc-V0-BdK"/>
-                                            <constraint firstItem="3LG-DB-3dA" firstAttribute="top" secondItem="fO3-9k-QTY" secondAttribute="top" constant="11" id="kPu-Pl-e5B"/>
-                                        </constraints>
                                         <connections>
-                                            <outlet property="storeAddress" destination="hTY-Og-lvo" id="2Yd-zi-U3U"/>
                                             <outlet property="storeLogoImage" destination="t5O-aR-tBS" id="ct5-Y3-kD3"/>
                                             <outlet property="storeName" destination="3LG-DB-3dA" id="WTS-3w-XRP"/>
+                                            <outlet property="storePeriod" destination="Gxt-w8-pnP" id="vRW-lB-A5z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1379,7 +1367,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22.000000000000057" height="46.000000000000114"/>
+                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>
@@ -2697,45 +2685,46 @@ Review</string>
         </scene>
     </scenes>
     <resources>
-        <image name="backButton" width="128" height="128"/>
+        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
         <image name="baseline_chevron_left_black_48pt" width="48" height="48"/>
         <image name="baseline_chevron_left_white_48pt" width="48" height="48"/>
-        <image name="edit" width="256" height="256"/>
-        <image name="facebook-1" width="128" height="128"/>
-        <image name="favoritePopup" width="512" height="512"/>
-        <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="edit" width="512" height="512"/>
+        <image name="facebook-1" width="96" height="96"/>
+        <image name="favoritePopup" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="frame" width="400" height="400"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="history" width="512" height="512"/>
-        <image name="line" width="512" height="512"/>
+        <image name="history" width="384" height="384"/>
+        <image name="line" width="384" height="384"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="lip_logo_whiteFont" width="500" height="500"/>
-        <image name="lipstick (2)" width="512" height="512"/>
+        <image name="lipstick (2)" width="326.2301025390625" height="326.2301025390625"/>
         <image name="location" width="480" height="480"/>
-        <image name="log-out" width="512" height="512"/>
+        <image name="log-out" width="384" height="384"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="970" height="672"/>
+        <image name="login_bgBlur" width="485" height="336"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
-        <image name="mail-1" width="128" height="128"/>
-        <image name="makeup" width="512" height="512"/>
+        <image name="mail-1" width="96" height="96"/>
+        <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="map_button" width="142" height="142"/>
-        <image name="map_storeDetail" width="512" height="512"/>
+        <image name="map_storeDetail" width="384" height="384"/>
         <image name="nopic" width="1417" height="1417"/>
-        <image name="notiTrend1" width="524" height="426"/>
+        <image name="notiTrend1" width="262" height="213"/>
         <image name="open" width="512" height="512"/>
-        <image name="password" width="128" height="128"/>
-        <image name="review bg" width="1482" height="158"/>
-        <image name="review-1" width="512" height="512"/>
-        <image name="review_line" width="1560" height="16"/>
-        <image name="search" width="512" height="512"/>
-        <image name="send" width="64" height="64"/>
-        <image name="signUp_bg" width="854" height="942"/>
-        <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
+        <image name="open-close" width="384" height="384"/>
+        <image name="password" width="96" height="96"/>
+        <image name="review bg" width="741" height="79"/>
+        <image name="review-1" width="384" height="384"/>
+        <image name="review_line" width="780" height="8"/>
+        <image name="search" width="384" height="384"/>
+        <image name="send" width="48" height="48"/>
+        <image name="signUp_bg" width="427" height="471"/>
+        <image name="telephone-auricular-with-cable (1)" width="384" height="384"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="680" height="678"/>
-        <image name="user2" width="664" height="664"/>
-        <image name="username" width="128" height="128"/>
-        <image name="whiteLine" width="64" height="64"/>
+        <image name="user1" width="340" height="339"/>
+        <image name="user2" width="332" height="332"/>
+        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
