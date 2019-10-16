@@ -77,7 +77,6 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
         return safeIndex
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return stores.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -163,6 +162,7 @@ extension NearByViewController: MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
         
         for (_, store) in stores.enumerated() {
+
             let coor = CLLocation(latitude: store.latitude, longitude: store.longitude).coordinate
             let storeAnnotation = MKPointAnnotation()
             
@@ -170,6 +170,8 @@ extension NearByViewController: MKMapViewDelegate {
             storeAnnotation.title = "\(store.name)"
             
             mapView.addAnnotation(storeAnnotation)
+            print("latitude = \(store.latitude)")
+            print("longitude = \(store.longitude)")
         }
         
     }
@@ -222,8 +224,15 @@ extension NearByViewController: MKMapViewDelegate {
 extension NearByViewController {
     func initReactiveStoreData() {
         storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
-            self.stores = stores
-            print(stores)
+            
+            
+            self.stores = stores.filter {
+                $0.latitude <= 90 &&
+                $0.latitude >= -90 &&
+                $0.longitude <= 180 &&
+                $0.longitude >= -180
+            }
+            
             self.mapCollectionView.reloadData()
             self.mapCollectionView.setNeedsLayout()
             self.mapCollectionView.layoutIfNeeded()
