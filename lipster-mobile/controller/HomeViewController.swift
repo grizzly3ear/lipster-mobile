@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var trendGroupCollectionView: UICollectionView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
+    @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -31,8 +32,8 @@ class HomeViewController: UIViewController {
     
     
     func createTrendArray() -> [Trend] {
-        let trend1: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
-        let trend2: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend1: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend2: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
         let trend3: Trend = Trend("Hot Orenge ","user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
         let trend4: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
         
@@ -41,7 +42,9 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        collectionViewLayout.minimumLineSpacing = 10
+        
         self.trends = self.createTrendArray()
         initReactiveLipstickData()
         initReactiveTrendData()
@@ -95,7 +98,22 @@ extension HomeViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+    private func indexOfMajorCell() -> Int {
+        let itemWidth = collectionViewLayout.itemSize.width
+        let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
+        let index = Int(round(proportionalOffset))
+        let safeIndex = max(0, min(trends.count - 1, index))
+        return safeIndex
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        targetContentOffset.pointee = scrollView.contentOffset
+        let indexOfMajorCell = self.indexOfMajorCell()
+        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        
+        
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView {
