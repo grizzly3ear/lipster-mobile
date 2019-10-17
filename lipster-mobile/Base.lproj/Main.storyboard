@@ -1133,13 +1133,12 @@ Review</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4S-pN-vbO">
                                         <rect key="frame" x="8" y="26" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="baseline_chevron_left_white_48pt"/>
+                                        <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                         <connections>
                                             <action selector="goBack:" destination="Th2-S5-z7n" eventType="touchUpInside" id="xPn-9E-DPN"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
