@@ -42,9 +42,6 @@ class HomeViewController: UIViewController {
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         
         trendsCollectionView.tag = 1
-       
-        panGesture = scrollView.panGestureRecognizer
-        panGesture.addTarget(self, action: #selector(self.onDrag))
         
         initHero()
     }
@@ -80,6 +77,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         if scrollView.tag == 1 {
@@ -231,11 +229,6 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-    
-    @objc func onDrag(_ sender: UIPanGestureRecognizer) {
-        print("drag")
-    }
-    
     
     func initHero() {
         self.hero.isEnabled = true
