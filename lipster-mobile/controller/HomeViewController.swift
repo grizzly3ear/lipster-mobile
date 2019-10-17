@@ -67,6 +67,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     private func indexOfMajorCell() -> Int {
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
@@ -80,9 +81,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
         collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        
-        
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView {
@@ -109,14 +109,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell" , for: indexPath) as! TrendsCollectionViewCell
             let trend = trends[indexPath.item]
         
-            
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
             cell.trendTitle.text = trend.title
             cell.TrendDescription.text = trend.detail
             
             return cell
-        }else {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCollectionViewCell" , for: indexPath) as! RecommendHomeCollectionViewCell
             let lipstick = recommendLipstick[indexPath.item]
             var firstLipstickImage = ""
@@ -130,7 +129,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.recNameLabel.text = lipstick.lipstickName
             
             cell.recImageView.hero.id = "lipstick\(indexPath.item)"
-            print("count trend = \(trends.count)")
             return cell
         }
     }
