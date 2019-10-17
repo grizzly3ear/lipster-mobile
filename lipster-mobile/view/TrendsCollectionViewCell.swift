@@ -14,5 +14,10 @@ class TrendsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trendTitle: UILabel!
     @IBOutlet weak var TrendDescription: UILabel!
     
-  
+    
+    override func awakeFromNib() {
+        trendImage.layer.cornerRadius = 20
+        trendImage.clipsToBounds = true
+    }
+   
 }

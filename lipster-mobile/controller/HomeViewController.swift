@@ -40,10 +40,9 @@ class HomeViewController: UIViewController {
         
         return [trend1,trend2,trend3,trend4]
     }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionViewLayout.minimumLineSpacing = 10
         
         self.trends = self.createTrendArray()
         initReactiveLipstickData()
@@ -121,7 +120,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 return trendGroups.count >= 5 ? 5 : trendGroups.count
             case recommendCollectionView:
                 return recommendLipstick.count >= 20 ? 20 : recommendLipstick.count
-            print("count recommend = \(recommendLipstick.count)")
             case trendsCollectionView:
                 return trends.count >= 10 ? 10 :  trends.count
             print("count trend = \(trends.count)")
@@ -136,11 +134,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendHomeImageView.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
-         
+            
             return cell
         } else if  collectionView == trendsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell" , for: indexPath) as! TrendsCollectionViewCell
             let trend = trends[indexPath.item]
+        
+            
+//            cell.trendImage.layer.masksToBounds = true
+//            cell.trendImage.layer.cornerRadius = 0
             
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
