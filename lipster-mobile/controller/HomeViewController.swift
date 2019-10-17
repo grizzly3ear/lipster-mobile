@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
     @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var blackBackground: UIImageView!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -27,24 +28,10 @@ class HomeViewController: UIViewController {
     var storeDataObserver: Signal<[Store], NoError>.Observer?
     
     let padding: CGFloat = 25.0
-    
-    var logoImageView: UIImageView!
-    
-    
-    func createTrendArray() -> [Trend] {
-        let trend1: Trend = Trend("Hot Orenge ", "Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
-        let trend2: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
-        let trend3: Trend = Trend("Hot Orenge ","user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
-        let trend4: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
-        
-        
-        return [trend1,trend2,trend3,trend4]
-    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.trends = self.createTrendArray()
         initReactiveLipstickData()
         initReactiveTrendData()
         fetchData()
@@ -53,25 +40,8 @@ class HomeViewController: UIViewController {
         recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
        
-        
         initHero()
         
-        addLeftBarIcon(named:"logo_font")
-        
-    }
-
-    func addLeftBarIcon(named:String) {
-        
-        let logoImage = UIImage.init(named: "logo_font")
-        let logoImageView = UIImageView.init(image: logoImage)
-        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: 130, height: 50)
-        logoImageView.contentMode = .scaleAspectFit
-        let imageItem = UIBarButtonItem.init(customView: logoImageView)
-        let widthConstraint = logoImageView.widthAnchor.constraint(equalToConstant: 130)
-        let heightConstraint = logoImageView.heightAnchor.constraint(equalToConstant: 50)
-        heightConstraint.isActive = true
-        widthConstraint.isActive = true
-        navigationItem.leftBarButtonItem =  imageItem
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -96,7 +66,7 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     private func indexOfMajorCell() -> Int {
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
@@ -122,7 +92,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 return recommendLipstick.count >= 20 ? 20 : recommendLipstick.count
             case trendsCollectionView:
                 return trends.count >= 10 ? 10 :  trends.count
-            print("count trend = \(trends.count)")
             default: return 0
         }
     }
@@ -231,6 +200,17 @@ extension HomeViewController {
             
             self.trendGroups = trendGroups
             
+            self.trendGroups.forEach { (trendGroup) in
+                if let trend = trendGroup.trends?.randomElement() {
+                    self.trends.append(trend)
+                }
+            }
+            
+            self.trendsCollectionView.performBatchUpdates({
+                self.trendsCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+                
+            }
             self.trendGroupCollectionView.performBatchUpdates({
                 self.trendGroupCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
             }, completion: { (_) in
@@ -246,16 +226,25 @@ extension HomeViewController {
         })
         storeDataPipe.output.observe(storeDataObserver!)
     }
+    
 }
 
 extension HomeViewController {
     func initHero() {
         self.hero.isEnabled = true
-      //  searchButton.customView?.hero.id = "searchbar"
+
         self.navigationController?.hero.navigationAnimationType = .selectBy(
             presenting: .slide(direction: .left),
             dismissing: .slide(direction: .right)
         )
         
+        self.blackBackground.hero.modifiers = [
+            .whenPresenting(
+                .translate(y: -300),
+                .spring(stiffness: 270, damping: 25),
+                .delay(0.2),
+                .fade
+            ),
+        ]
     }
 }
