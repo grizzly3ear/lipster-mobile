@@ -891,11 +891,12 @@ Review</string>
                         <outlet property="trendsCollectionView" destination="Bs4-8R-zbL" id="XJg-EE-l2n"/>
                         <segue destination="Th2-S5-z7n" kind="show" identifier="showTrendList" id="JIg-n3-5oa"/>
                         <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
+                        <segue destination="htF-Bx-EM2" kind="show" identifier="showTrendGroup" id="PRX-in-YUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="832.0839580209896"/>
+            <point key="canvasLocation" x="145" y="793"/>
         </scene>
         <!--Trend Group View Controller-->
         <scene sceneID="05t-CG-D7a">
@@ -2043,7 +2044,7 @@ Review</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-oL-ZBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="833"/>
+            <point key="canvasLocation" x="-1234" y="689"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="wdB-I7-qPR">
