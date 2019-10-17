@@ -8,11 +8,21 @@ class PinterestViewController: UIViewController {
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
     var trends = [Trend]()
+    var trendGroup = [TrendGroup]()
     let padding: CGFloat = 15.0
+    
+//    func createTrendGroupArray() -> [TrendGroup] {
+//        let trendGroup1: TrendGroup = TrendGroup( "10 Top Hit Lipstick Colors ", trends, "user1")
+//        let trendGroup2: TrendGroup = TrendGroup( "3 Top Hit Lipstick Colors ", [Trend](), "user1")
+//        let trendGroup3: TrendGroup = TrendGroup( "4 Top Hit Lipstick Colors ", [Trend], "user1")
+//
+//        return [trendGroup1 , trendGroup2 , trendGroup3]
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initHero()
+      //  self.trendGroup = self.createTrendGroupArray()
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         initGesture()
         titleNavigationItem.title = "Trends"
