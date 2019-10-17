@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     
     
     func createTrendArray() -> [Trend] {
-        let trend1: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
+        let trend1: Trend = Trend("Hot Orenge ", "Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
         let trend2: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjfadojoffekwjehnjdnfaejfnjrfnlfflerjf")
         let trend3: Trend = Trend("Hot Orenge ","user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
         let trend4: Trend = Trend("Hot Orenge ", "user1",  UIColor.red,  UIColor.black, "adojoffekwjehnjdnfaejfnjrfnlfflerjf")
@@ -140,9 +140,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell" , for: indexPath) as! TrendsCollectionViewCell
             let trend = trends[indexPath.item]
         
-            
-//            cell.trendImage.layer.masksToBounds = true
-//            cell.trendImage.layer.cornerRadius = 0
             
             cell.hero.modifiers = [.fade, .scale(0.5)]
             cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))

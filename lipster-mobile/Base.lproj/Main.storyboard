@@ -664,8 +664,8 @@ Review</string>
                                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user2" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="60" y="118" width="237" height="177"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
+                                                                    <rect key="frame" x="20" y="138" width="293" height="157"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -2735,6 +2735,7 @@ Review</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" width="841" height="442"/>
         <image name="OR214" width="450" height="450"/>
         <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
         <image name="baseline_chevron_left_black_48pt" width="48" height="48"/>
