@@ -57,14 +57,14 @@ class ReviewViewController: UIViewController {
             print("Add Review Text Field is empty")
         }
         
-        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
-        
-        reviewTableView.beginUpdates()
-        reviewTableView.insertRows(at: [indexPath], with: .automatic)
-        reviewTableView.endUpdates()
-        
-        typeReview.text = ""
-        view.endEditing(true)
+//        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
+//        
+//        reviewTableView.beginUpdates()
+//        reviewTableView.insertRows(at: [indexPath], with: .automatic)
+//        reviewTableView.endUpdates()
+//        
+//        typeReview.text = ""
+//        view.endEditing(true)
     }
 
 }
