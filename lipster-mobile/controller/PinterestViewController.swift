@@ -7,22 +7,17 @@ class PinterestViewController: UIViewController {
     @IBOutlet var titleNavigationItem: UINavigationItem!
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
-    var trends = [Trend]()
-    var trendGroup = [TrendGroup]()
-    let padding: CGFloat = 15.0
+    @IBOutlet var trendGroupLabel : UILabel!
+    @IBOutlet var trendGroupImage : UIImageView!
     
-//    func createTrendGroupArray() -> [TrendGroup] {
-//        let trendGroup1: TrendGroup = TrendGroup( "10 Top Hit Lipstick Colors ", trends, "user1")
-//        let trendGroup2: TrendGroup = TrendGroup( "3 Top Hit Lipstick Colors ", [Trend](), "user1")
-//        let trendGroup3: TrendGroup = TrendGroup( "4 Top Hit Lipstick Colors ", [Trend], "user1")
-//
-//        return [trendGroup1 , trendGroup2 , trendGroup3]
-//    }
+    var trends = [Trend]()
+    var trendGroup: TrendGroup!
+    let padding: CGFloat = 15.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initHero()
-      //  self.trendGroup = self.createTrendGroupArray()
+        
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         initGesture()
         titleNavigationItem.title = "Trends"
@@ -47,6 +42,8 @@ class PinterestViewController: UIViewController {
         } else {
             self.trendListCollectionView.viewWithTag(1)?.removeFromSuperview()
         }
+        trendGroupLabel.text = trendGroup.name
+        trendGroupImage.sd_setImage(with: URL(string: trendGroup.image!), placeholderImage: UIImage(named: "nopic")!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
