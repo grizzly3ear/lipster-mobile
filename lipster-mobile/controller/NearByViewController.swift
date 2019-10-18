@@ -23,7 +23,6 @@ class NearByViewController: UIViewController   {
     var stores:[Store] = [Store]()
     var storeDetail = [Store]()
     
-    var lipstick: Lipstick?
     var lipstickStore = [Lipstick]()
     
     @IBOutlet weak var mapView: MKMapView!
@@ -125,9 +124,9 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
             if let destination = segue.destination as? StoreViewController {
                 let indexPath = sender as! IndexPath
                 destination.storeDetail = stores[indexPath.item]
-                destination.lipstickStore = lipstick
+                destination.lipstickStore = lipstickOfStore
             
-                print("lipstick : \(lipstick)")
+                
             }
            
         }
