@@ -60,7 +60,7 @@ class SearchViewController: UIViewController {
         
         defaultSearchResultTableViewMarginTop = searchResultMarginTop.constant
         
-        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as! [String]
+        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
         self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
         self.searchStoreLipstick = createStoreLipstickArray()
         
