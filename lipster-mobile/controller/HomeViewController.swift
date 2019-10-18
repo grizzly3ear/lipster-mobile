@@ -144,7 +144,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
             break
         case trendsCollectionView:
-            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
+            performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
             break
         default:
             break
@@ -173,6 +173,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 destination.trendGroups = trendGroups
             }
         }
+        else if segueIdentifier == "showTrendDetail" {
+            if let destination = segue.destination as? TrendDetailViewController {
+                let item = sender as! Int
+                destination.trend = trends[item]
+            }
+        }
+        
     }
 
 }

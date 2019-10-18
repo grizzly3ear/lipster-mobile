@@ -160,6 +160,7 @@
                         <viewLayoutGuide key="safeArea" id="ulr-b0-hOM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="NEARBY" id="S16-BO-1aY"/>
+                    <navigationItem key="navigationItem" id="Y7C-0I-VgO"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -672,7 +673,7 @@ Review</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="20" y="138" width="293.00000000000023" height="157"/>
+                                                                    <rect key="frame" x="20" y="138" width="293" height="157"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="157" id="GU2-4q-MCR"/>
                                                                         <constraint firstAttribute="width" constant="293" id="vsP-EN-JyU"/>
@@ -721,12 +722,12 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hAg-nd-Fcb">
-                                                <rect key="frame" x="-2" y="438" width="379" height="175"/>
+                                                <rect key="frame" x="-2" y="438" width="379" height="454"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="175" id="d9u-QR-F6q"/>
+                                                    <constraint firstAttribute="height" constant="454" id="d9u-QR-F6q"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="10" id="2oO-1n-tTf">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="2oO-1n-tTf">
                                                     <size key="itemSize" width="184" height="153"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -734,7 +735,7 @@ Review</string>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendGroupCollectionViewcell" id="BxP-WT-168" customClass="TrendHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="11" width="184" height="153"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="153"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <rect key="frame" x="0.0" y="0.0" width="184" height="153"/>
@@ -859,6 +860,7 @@ Review</string>
                         <segue destination="Th2-S5-z7n" kind="show" identifier="showTrendList" id="JIg-n3-5oa"/>
                         <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
                         <segue destination="htF-Bx-EM2" kind="show" identifier="showTrendGroup" id="PRX-in-YUc"/>
+                        <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendDetail" id="h83-JA-OBc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1505,7 +1507,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22.000000000000057" height="46.000000000000114"/>
+                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>
@@ -2080,6 +2082,7 @@ Review</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wwc-cZ-jFs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fY9-fx-LO3"/>
                     <connections>
                         <outlet property="cameraView" destination="T29-iN-sqp" id="eNS-pJ-mWA"/>
                         <outlet property="collapseDetailView" destination="5ON-NX-0HJ" id="PfO-tU-4BH"/>
@@ -2875,6 +2878,8 @@ Review</string>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="uiQ-35-l4p"/>
+        <segue reference="h83-JA-OBc"/>
+        <segue reference="JIg-n3-5oa"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
