@@ -174,6 +174,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             if let destination = segue.destination as? PinterestViewController {
                 let item = sender as! Int
                 destination.trends = trendGroups[item].trends!
+                destination.trendGroupLabel.text = trendGroups[item].name
+                destination.trendGroupImage.sd_setImage(with: URL(string: trendGroups[item].image!), placeholderImage: UIImage(named: "nopic"))
             }
         }
         else if segueIdentifier == "showTrendGroup" {

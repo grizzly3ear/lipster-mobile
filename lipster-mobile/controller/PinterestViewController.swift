@@ -42,8 +42,7 @@ class PinterestViewController: UIViewController {
         } else {
             self.trendListCollectionView.viewWithTag(1)?.removeFromSuperview()
         }
-        trendGroupLabel.text = trendGroup.name
-        trendGroupImage.sd_setImage(with: URL(string: trendGroup.image!), placeholderImage: UIImage(named: "nopic")!)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
