@@ -5,13 +5,13 @@ import SDWebImage
 
 class TrendRepository {
     
-    public static func fetchAllTrendData(completion: @escaping ([TrendGroup]) -> Void) {
+    public static func fetchAllTrendData(completion: @escaping ([TrendGroup], Int) -> Void) {
         let request = HttpRequest()
-        request.get("api/trend/collection", ["part": "trend"], nil) { (response, _) -> (Void) in
+        request.get("api/trend/collection", ["part": "trend"], nil) { (response, status) -> (Void) in
             if response == nil {
-                completion([TrendGroup]())
+                completion([TrendGroup](), 0)
             }
-            completion(TrendGroup.makeArrayModelFromJSON(response: response))
+            completion(TrendGroup.makeArrayModelFromJSON(response: response), 200)
         } 
     }
     

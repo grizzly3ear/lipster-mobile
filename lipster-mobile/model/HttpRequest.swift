@@ -13,44 +13,44 @@ class HttpRequest {
     public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
         
         Alamofire.request("\(domain)/\(route)", method: .get, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
-            
-            guard response.result.isSuccess, let value = response.result.value else {
-                completion(nil, response.response!.statusCode)
-                return
+            self.checkResponse(response: response) { (json, status) -> (Void) in
+                completion(json, status)
             }
-            
-            let json = JSON(value)
-            
-            completion(json["data"], response.response!.statusCode)
         }
     }
     
     public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
         
         Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
-            guard response.result.isSuccess, let value = response.result.value else {
-                completion(nil, response.response!.statusCode)
-                return
+            self.checkResponse(response: response) { (json, status) -> (Void) in
+                completion(json, status)
             }
-            
-            let json = JSON(value)
-            
-            completion(json["data"], response.response!.statusCode)
         }
     }
     
     public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
         
         Alamofire.request("\(domain)/\(route)", method: .put, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
-            
-            guard response.result.isSuccess, let value = response.result.value else {
-                completion(nil, response.response!.statusCode)
-                return
+            self.checkResponse(response: response) { (json, status) -> (Void) in
+                completion(json, status)
             }
-            
-            let json = JSON(value)
-            
-            completion(json["data"], response.response!.statusCode)
         }
     }
+    
+    func checkResponse(response: DataResponse<Any>, completion: @escaping (JSON?, Int) -> (Void)) {
+        guard response.result.isSuccess, let value = response.result.value else {
+            let error = response.result.error
+            if let err = error as? URLError, err.code == .cannotConnectToHost || err.code == .notConnectedToInternet {
+
+                completion(nil, 0)
+                return
+            }
+            completion(nil, response.response!.statusCode)
+            return
+        }
+        
+        let json = JSON(value)
+        completion(json["data"], response.response!.statusCode)
+    }
+
 }

@@ -14,11 +14,6 @@ extension UIViewController {
         var frame = self.tabBarController?.tabBar.frame
         frame?.origin.y = self.view.frame.size.height + (self.tabBarController?.tabBar.frame.size.height)!
         
-//        UIView.animate(withDuration: duration, animations: {
-//            self.tabBarController?.tabBar.frame = frame!
-//        })
-        
-        
         UIView.animate(
             withDuration: duration,
             delay: 0,
