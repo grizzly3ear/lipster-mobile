@@ -96,6 +96,7 @@ public class UIUtilityHelper {
         circleView.backgroundColor = color
         view.addSubview(circleView)
     }
+    
 }
 
 private enum Constants {

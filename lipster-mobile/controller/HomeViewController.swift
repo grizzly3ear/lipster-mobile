@@ -9,10 +9,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var trendsCollectionView: UICollectionView!
     @IBOutlet weak var trendGroupCollectionView: UICollectionView!
-    @IBOutlet weak var recommendCollectionView: UICollectionView!
     @IBOutlet weak var leftButtonBarItem: UIBarButtonItem!
     @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var blackBackground: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
@@ -37,11 +37,12 @@ class HomeViewController: UIViewController {
         fetchData()
 
         trendGroupCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
-        recommendCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         trendsCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
-       
-        initHero()
         
+        trendsCollectionView.tag = 1
+        
+        initHero()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
@@ -56,8 +57,18 @@ extension HomeViewController {
             LipstickRepository.fetchAllLipstickData { (response) in
                 self.lipstickDataPipe.input.send(value: response)
             }
-            TrendRepository.fetchAllTrendData { (response) in
-                self.trendDataPipe.input.send(value: response)
+            TrendRepository.fetchAllTrendData { (response, status)  in
+                if status == 0 {
+                    let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to internet.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                    let defaultTrendGroups = TrendGroup.getTrendGroupArrayFromUserDefault(forKey: DefaultConstant.trendData)
+                    self.trendDataPipe.input.send(value: defaultTrendGroups)
+                } else {
+                    TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, response)
+                    self.trendDataPipe.input.send(value: response)
+                }
+                
             }
 //            StoreRepository.fetchAllStore { (response) in
 //                self.storeDataPipe.input.send(value: response)
@@ -75,12 +86,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
-        targetContentOffset.pointee = scrollView.contentOffset
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        if scrollView.tag == 1 {
+            targetContentOffset.pointee = scrollView.contentOffset
+            let indexOfMajorCell = self.indexOfMajorCell()
+            let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+            collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -88,8 +103,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch collectionView {
             case trendGroupCollectionView:
                 return trendGroups.count >= 5 ? 5 : trendGroups.count
-            case recommendCollectionView:
-                return recommendLipstick.count >= 20 ? 20 : recommendLipstick.count
             case trendsCollectionView:
                 return trends.count >= 10 ? 10 :  trends.count
             default: return 0
@@ -135,14 +148,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
-        case recommendCollectionView:
-            performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
-            break
         case trendGroupCollectionView:
             performSegue(withIdentifier: "showTrendGroup", sender: indexPath.item)
             break
         case trendsCollectionView:
-            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
+            performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
             break
         default:
             break
@@ -171,6 +181,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
                 destination.trendGroups = trendGroups
             }
         }
+        else if segueIdentifier == "showTrendDetail" {
+            if let destination = segue.destination as? TrendDetailViewController {
+                let item = sender as! Int
+                destination.trend = trends[item]
+            }
+        }
+        
     }
 
 }
@@ -179,14 +196,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension HomeViewController {
     func initReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
-            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
-            
-            self.recommendLipstick = lipsticks
-            self.recommendCollectionView.performBatchUpdates({
-                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
-            }, completion: { (_) in
-                
-            })
+//            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
+//
+//            self.recommendLipstick = lipsticks
+//            self.recommendCollectionView.performBatchUpdates({
+//                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+//            }, completion: { (_) in
+//
+//            })
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)
@@ -194,6 +211,8 @@ extension HomeViewController {
     
     func initReactiveTrendData() {
         trendDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
+            
+            
             TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, trendGroups)
             
             self.trendGroups = trendGroups
@@ -228,6 +247,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
+    
     func initHero() {
         self.hero.isEnabled = true
 
