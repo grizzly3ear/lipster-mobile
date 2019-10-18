@@ -86,7 +86,16 @@ class SearchViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        showCollectionView()
+        if let text = searchTextField.text, text.trim() == "" {
+            searchImageViewMarginTopConstraint.constant = defaultSearchImageViewMarginTop
+            searchTextFieldMarginTopConstraint.constant = defaultSearchTextFieldMarginTop
+            searchHistoryCollectionView.isHidden = false
+            searchTextField.text = ""
+            
+            view.layoutIfNeeded()
+        }
+        
+        
     }
 
     @IBAction func clearSearch(_ sender: UIButton) {
