@@ -38,18 +38,17 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchHistoryCollectionView.delegate = self
-        recommendCollectionView.delegate = self
-        
         searchHistoryCollectionView.dataSource = self
+        
+        recommendCollectionView.delegate = self
         recommendCollectionView.dataSource = self
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
+        
         let footer = UIView(frame: .zero)
         footer.backgroundColor = .lightGray
         searchResultTableView.tableFooterView = footer
-        
-        searchHistoryCollectionView.layoutIfNeeded()
         
         searchTextField.delegate = self
         searchTextField.returnKeyType = .search
@@ -71,6 +70,11 @@ class SearchViewController: UIViewController {
         )
         
         searchHistoryCollectionView.reloadData()
+        
+        searchHistoryCollectionView.layoutIfNeeded()
+        searchHistoryCollectionView.layoutSubviews()
+        
+        
         initReactiveLipstickData()
         hideTableView()
     }

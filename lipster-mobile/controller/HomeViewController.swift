@@ -14,8 +14,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var blackBackground: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var panGesture: UIPanGestureRecognizer!
-    
     var trendGroups = [TrendGroup]()
     var recommendLipstick = [Lipstick]()
     var trends = [Trend]()
@@ -59,8 +57,18 @@ extension HomeViewController {
             LipstickRepository.fetchAllLipstickData { (response) in
                 self.lipstickDataPipe.input.send(value: response)
             }
-            TrendRepository.fetchAllTrendData { (response) in
-                self.trendDataPipe.input.send(value: response)
+            TrendRepository.fetchAllTrendData { (response, status)  in
+                if status == 0 {
+                    let alert = UIAlertController(title: "No Internet Connection", message: "Make sure your device is connected to internet.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                    let defaultTrendGroups = TrendGroup.getTrendGroupArrayFromUserDefault(forKey: DefaultConstant.trendData)
+                    self.trendDataPipe.input.send(value: defaultTrendGroups)
+                } else {
+                    TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, response)
+                    self.trendDataPipe.input.send(value: response)
+                }
+                
             }
 //            StoreRepository.fetchAllStore { (response) in
 //                self.storeDataPipe.input.send(value: response)
@@ -203,6 +211,8 @@ extension HomeViewController {
     
     func initReactiveTrendData() {
         trendDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
+            
+            
             TrendGroup.setTrendGroupArrayToUserDefault(forKey: DefaultConstant.trendData, trendGroups)
             
             self.trendGroups = trendGroups
