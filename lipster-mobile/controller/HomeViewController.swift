@@ -177,7 +177,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         }
         else if segueIdentifier == "showTrendGroup" {
-            if let destination = segue.destination as? TrendGroupViewController {
+            if let destination = segue.destination as? NewTrendGroupViewController {
                 destination.trendGroups = trendGroups
             }
         }
