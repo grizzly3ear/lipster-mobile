@@ -53,7 +53,10 @@ class NearByViewController: UIViewController   {
         myCoorButton.layer.cornerRadius = 5.0
         myCoorButton.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2, scale: true)
     }
-    
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
+  
     @IBAction func findMyCoor(_ sender: Any) {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
