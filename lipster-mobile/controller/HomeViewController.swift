@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
         trendsCollectionView.tag = 1
         
         initHero()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
