@@ -35,6 +35,9 @@ class NearByViewController: UIViewController   {
     @IBOutlet weak var specificLipstickOfStore: UILabel!
     var lipstickOfStore: Lipstick?
     
+    @IBOutlet weak var topView : UIView!
+    
+    
     let padding: CGFloat = 20.0
     
     let storeDataPipe = Signal<[Store], NoError>.pipe()
@@ -42,9 +45,12 @@ class NearByViewController: UIViewController   {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         specificLipstickOfStore.text = lipstickOfStore?.lipstickBrand
         specificLipstickNameOfStore.text = lipstickOfStore?.lipstickName
+        
+        topView.backgroundColor = UIColor.white
+        topView.backgroundColor = UIColor(white: 1, alpha: 0.7)
         
         collectionViewLayout.minimumLineSpacing = 10
         mapCollectionView.delegate = self
