@@ -11,12 +11,13 @@ import UIKit
 class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     var trendGroups = [TrendGroup]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return trendGroups.count
     }
@@ -33,7 +34,9 @@ class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , 
         
         
         cell.hero.modifiers = [.fade, .scale(0.2)]
-        let trend = trendGroups[collectionView.tag].trends![indexPath.item]
+        print(collectionView.tag)
+        print(indexPath.item)
+
         cell.setTrendGroup(trendGroup: trendGroups[indexPath.item])
         
         return cell

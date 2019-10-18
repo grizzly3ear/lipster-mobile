@@ -149,7 +149,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case trendGroupCollectionView:
-            performSegue(withIdentifier: "showTrendGroup", sender: indexPath.item)
+            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
             break
         case trendsCollectionView:
             performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
