@@ -27,7 +27,7 @@ class StoreViewController: UIViewController {
         self.titleNavigation.title = storeDetail?.name
     }
     
-    
-    
-    
+    @IBAction func goBack(_ sender: UIButton) {
+        hero.dismissViewController()
+    }
 }

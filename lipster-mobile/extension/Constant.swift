@@ -17,4 +17,6 @@ class DefaultConstant {
     
     public static let lipstickData: String = "lipstickData"
     public static let trendData: String = "trendData"
+    
+    public static let colorHistory: String = "colorHistory"
 }

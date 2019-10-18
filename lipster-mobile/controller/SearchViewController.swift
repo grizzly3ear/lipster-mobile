@@ -8,8 +8,13 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var historyLabel: UILabel!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var recommendLabel: UILabel!
+    
     @IBOutlet weak var searchHistoryCollectionView: UICollectionView!
     @IBOutlet weak var searchResultTableView: UITableView!
+    @IBOutlet weak var recommendCollectionView: UICollectionView!
     
     @IBOutlet weak var searchTextFieldMarginTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var searchImageViewMarginTopConstraint: NSLayoutConstraint!
@@ -23,18 +28,26 @@ class SearchViewController: UIViewController {
     var searchLipsticks = [Lipstick]()
     var searchStoreLipstick = [Store]()
     var searchFilterDictionary: Dictionary<Int, [String: Any]> = Dictionary()
+    var recommendLipstick = [Lipstick]()
     let defaults = UserDefaults.standard
+    
+    let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchHistoryCollectionView.delegate = self
-        searchHistoryCollectionView.dataSource = self
+        recommendCollectionView.delegate = self
         
+        searchHistoryCollectionView.dataSource = self
+        recommendCollectionView.dataSource = self
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
         searchResultTableView.tableFooterView = UIView(frame: .zero)
+        
+        searchHistoryCollectionView.layoutIfNeeded()
         
         searchTextField.delegate = self
         searchTextField.returnKeyType = .search
@@ -45,20 +58,19 @@ class SearchViewController: UIViewController {
         
         defaultSearchResultTableViewMarginTop = searchResultMarginTop.constant
         
-        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
+        self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as! [String]
         self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
         self.searchStoreLipstick = createStoreLipstickArray()
         
+        getLipstickDataFromHex(
+            UIColor.averageColor(
+                colors: UIColor.getColorFromUserDefaults(forKey: DefaultConstant.colorHistory, defaultColors: [UIColor.red.toHex!])
+            ).toHex!
+        )
+        
+        searchHistoryCollectionView.reloadData()
+        initReactiveLipstickData()
         hideTableView()
-    }
-    
-    func createArray() -> [String] {
-        
-        let h1 = "Blue"
-        let h2 = "red"
-        let h3 = "Apple Watch S4"
-        
-        return [h1, h2, h3, h1, h2, h2, h1, h3]
     }
     
     func createStoreLipstickArray() -> [Store] {
@@ -72,47 +84,100 @@ class SearchViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        searchImageViewMarginTopConstraint.constant = defaultSearchImageViewMarginTop
-        searchTextFieldMarginTopConstraint.constant = defaultSearchTextFieldMarginTop
-        searchHistoryCollectionView.isHidden = false
-        searchTextField.text = ""
-        
-        view.layoutIfNeeded()
+        showCollectionView()
     }
 
+    @IBAction func clearSearch(_ sender: UIButton) {
+        defaults.removeObject(forKey: DefaultConstant.searchHistory)
+        self.searchHistory = []
+        searchHistoryCollectionView.performBatchUpdates({
+            searchHistoryCollectionView.reloadSections(IndexSet(integer: 0))
+        }) { (_) in
+            self.searchHistoryCollectionView.layoutIfNeeded()
+        }
+    }
+    
+    func getLipstickDataFromHex(_ hex: String) {
+        LipstickRepository.fetchSimilarLipstickHexColor(hex) { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        let indexPath = sender as! IndexPath
+        if identifier == "showLipstickDetail" {
+            let destination = segue.destination as! LipstickDetailViewcontroller
+            destination.lipstick = (searchFilterDictionary[indexPath.row]?.values.first as! Lipstick)
+        }
+        if identifier == "showStoreDetail" {
+            let destination = segue.destination as! StoreViewController
+            destination.storeDetail = (searchFilterDictionary[indexPath.row]?.values.first as! Store)
+        }
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchHistory.count
+        
+        if collectionView == searchHistoryCollectionView {
+            return searchHistory.count
+        }
+        return recommendLipstick.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchHistoryCollectionViewCell.cellId, for: indexPath) as! SearchHistoryCollectionViewCell
         
-        let text = searchHistory[indexPath.item]
-        cell.title.text = text
+        if collectionView == searchHistoryCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchHistoryCollectionViewCell.cellId, for: indexPath) as! SearchHistoryCollectionViewCell
+            
+            let text = searchHistory[indexPath.item]
+            cell.title.text = text
+            
+            cell.contentView.borderWidth = 1.5
+            cell.contentView.borderColor = .black
+            cell.contentView.layer.cornerRadius = 10.0
+            cell.contentView.layer.masksToBounds = true
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendHomeCollectionViewCell.cellId, for: indexPath) as! RecommendHomeCollectionViewCell
+            
+            let lipstick = recommendLipstick[indexPath.item]
+            
+            cell.recBrandLabel.text = lipstick.lipstickBrand
+            cell.recImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
+            cell.recNameLabel.text = lipstick.lipstickColorName
+            
+            return cell
+        }
         
-        cell.contentView.borderWidth = 1.5
-        cell.contentView.borderColor = .black
-        cell.contentView.layer.cornerRadius = 10.0
-        cell.contentView.layer.masksToBounds = true
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.searchTextField.text = searchHistory[indexPath.item]
-        hideCollectionView()
-        self.searchTextField.becomeFirstResponder()
+        if collectionView == searchHistoryCollectionView {
+            self.searchTextField.text = searchHistory[indexPath.item]
+            filter(searchHistory[indexPath.item])
+            hideCollectionView()
+            searchResultTableView.reloadData()
+            self.searchTextField.becomeFirstResponder()
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = searchHistory[indexPath.item]
-        let size = (text as NSString).size(withAttributes: [:])
-        return CGSize(width: size.width + 32, height: 27)
+        if collectionView == searchHistoryCollectionView {
+            let text = searchHistory[indexPath.item]
+            let size = (text as NSString).size(withAttributes: [:])
+            return CGSize(width: size.width + 32, height: 27)
+        } else {
+            return CGSize(width: 186, height: 198)
+        }
+        
     }
+    
+    
 
 }
 
@@ -127,6 +192,21 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.searchLabel.text = searchFilterDictionary[indexPath.item]?.keys.first
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let obj = searchFilterDictionary[indexPath.item]?.values.first
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch obj {
+        case is Lipstick:
+            self.performSegue(withIdentifier: "showLipstickDetail", sender: indexPath)
+            break
+        case is Store:
+            self.performSegue(withIdentifier: "showStoreDetail", sender: indexPath)
+        default:
+            break
+        }
+        
     }
     
     func hideTableView() {
@@ -152,58 +232,61 @@ extension SearchViewController: UITextFieldDelegate {
                 text.removeLast()
             }
             text += string
-            var index = 0
             
-            for lipstick in searchLipsticks {
-                
-                if lipstick.lipstickBrand.lowercased().contains(text) {
-                    searchFilterDictionary[index] = [
-                        lipstick.lipstickBrand: lipstick
-                    ]
-                    index += 1
-                }
-                if lipstick.lipstickName.lowercased().contains(text) {
-                    searchFilterDictionary[index] = [
-                        lipstick.lipstickName: lipstick
-                    ]
-                    index += 1
-                }
-                if lipstick.lipstickColorName.lowercased().contains(text) {
-                    searchFilterDictionary[index] = [
-                        lipstick.lipstickColorName: lipstick
-                    ]
-                    index += 1
-                }
-            }
-            for store in searchStoreLipstick {
-                if store.name.lowercased().contains(text) {
-                    searchFilterDictionary[index] = [
-                        store.name: store
-                    ]
-                    index += 1
-                }
-            }
+            filter(text)
         }
-        
         searchResultTableView.reloadData()
         
         return true
     }
+    
+    func filter(_ text: String) {
+        var index = 0
+        
+        for lipstick in searchLipsticks {
+            
+            if lipstick.lipstickBrand.lowercased().contains(text) {
+                searchFilterDictionary[index] = [
+                    lipstick.lipstickBrand: lipstick
+                ]
+                index += 1
+            }
+            if lipstick.lipstickName.lowercased().contains(text) {
+                searchFilterDictionary[index] = [
+                    lipstick.lipstickName: lipstick
+                ]
+                index += 1
+            }
+            if lipstick.lipstickColorName.lowercased().contains(text) {
+                searchFilterDictionary[index] = [
+                    lipstick.lipstickColorName: lipstick
+                ]
+                index += 1
+            }
+        }
+        for store in searchStoreLipstick {
+            if store.name.lowercased().contains(text) {
+                searchFilterDictionary[index] = [
+                    store.name: store
+                ]
+                index += 1
+            }
+        }
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        filter(textField.text!)
         hideCollectionView()
     }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField.text?.trim() == "" {
             showCollectionView()
         }
-        print("end")
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
         if let text = textField.text, text.trim() != "" {
             addSearchHistory(text)
         }
-        print("resign")
         return true
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -225,7 +308,16 @@ extension SearchViewController: UITextFieldDelegate {
             animations: { [weak self] in
                 self?.view.layoutIfNeeded()
                 self?.searchHistoryCollectionView.isHidden = false
+                self?.historyLabel.isHidden = false
+                self?.clearButton.isHidden = false
+                self?.recommendLabel.isHidden = false
+                self?.recommendCollectionView.isHidden = false
+                
                 self?.searchHistoryCollectionView.alpha = 1
+                self?.historyLabel.alpha = 1
+                self?.clearButton.alpha = 1
+                self?.recommendLabel.alpha = 1
+                self?.recommendCollectionView.alpha = 1
                 
                 self?.hideTableView()
             }
@@ -247,11 +339,23 @@ extension SearchViewController: UITextFieldDelegate {
                 
                 self?.view.layoutIfNeeded()
                 self?.searchHistoryCollectionView.alpha = 0
-                
+                self?.historyLabel.alpha = 0
+                self?.clearButton.alpha = 0
+                self?.recommendLabel.alpha = 0
+                self?.recommendCollectionView.alpha = 0
             }
         ) { [weak self] (_) in
             self?.searchHistoryCollectionView.isHidden = true
+            self?.historyLabel.isHidden = true
+            self?.clearButton.isHidden = true
+            self?.recommendLabel.isHidden = true
+            self?.recommendCollectionView.isHidden = true
+            
             self?.searchHistoryCollectionView.alpha = 1
+            self?.historyLabel.alpha = 1
+            self?.clearButton.alpha = 1
+            self?.recommendLabel.alpha = 1
+            self?.recommendCollectionView.alpha = 1
             
             self?.showTableView()
         }
@@ -268,7 +372,26 @@ extension SearchViewController: UITextFieldDelegate {
         }
         searchHistory.append(keyword)
 
+        searchHistoryCollectionView.layoutSubviews()
+        searchHistoryCollectionView.layoutIfNeeded()
         searchHistoryCollectionView.reloadData()
         defaults.set(searchHistory, forKey: DefaultConstant.searchHistory)
+    }
+}
+
+extension SearchViewController {
+    func initReactiveLipstickData() {
+        lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
+            
+            self.recommendLipstick = lipsticks
+            self.recommendCollectionView.performBatchUpdates({
+                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+            }, completion: { (_) in
+                
+            })
+            
+        })
+        lipstickDataPipe.output.observe(lipstickDataObserver!)
     }
 }

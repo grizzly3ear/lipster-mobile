@@ -109,4 +109,24 @@ extension UIColor {
             return nil
         }
     }
+    
+    func addToUserDefaults(forKey: String) {
+        let defaults = UserDefaults.standard
+        var colorHistory = defaults.array(forKey: forKey) as? [String] ?? [String]()
+        
+        colorHistory.append(self.toHex!)
+        
+        defaults.set(colorHistory, forKey: forKey)
+    }
+    
+    static func getColorFromUserDefaults(forKey: String, defaultColors: [String]) -> [UIColor] {
+        let defaults = UserDefaults.standard
+        let colorHistory = defaults.array(forKey: forKey) as? [String] ?? defaultColors
+        
+        var colors: [UIColor] = [UIColor]()
+        colorHistory.forEach { (hex) in
+            colors.append(UIColor(hexString: hex))
+        }
+        return colors
+    }
 }
