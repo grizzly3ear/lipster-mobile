@@ -672,7 +672,7 @@ Review</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="20" y="138" width="293" height="157"/>
+                                                                    <rect key="frame" x="20" y="138" width="293.00000000000023" height="157"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="157" id="GU2-4q-MCR"/>
                                                                         <constraint firstAttribute="width" constant="293" id="vsP-EN-JyU"/>
@@ -1111,7 +1111,7 @@ Review</string>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="VAl-ER-4ee"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1136,8 +1136,14 @@ Review</string>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="282" id="sbZ-Jg-F6A"/>
                                     <constraint firstAttribute="height" constant="38" id="vHE-yG-cJx"/>
                                 </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YiQ-v8-7bS">
                                 <rect key="frame" x="0.0" y="601" width="375" height="99"/>
@@ -1154,10 +1160,11 @@ Review</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
+                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1499,7 +1506,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
+                                        <rect key="frame" x="23" y="471" width="22.000000000000057" height="46.000000000000114"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>

@@ -45,7 +45,9 @@ class SearchViewController: UIViewController {
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
-        searchResultTableView.tableFooterView = UIView(frame: .zero)
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .lightGray
+        searchResultTableView.tableFooterView = footer
         
         searchHistoryCollectionView.layoutIfNeeded()
         
