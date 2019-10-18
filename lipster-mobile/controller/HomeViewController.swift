@@ -139,7 +139,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
             break
         case trendGroupCollectionView:
-            performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
+            performSegue(withIdentifier: "showTrendGroup", sender: indexPath.item)
             break
         case trendsCollectionView:
             performSegue(withIdentifier: "showTrendList", sender: indexPath.item)
@@ -167,7 +167,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         }
         else if segueIdentifier == "showTrendGroup" {
-            if let destination = segue.destination as? TrendGroupViewController {
+            if let destination = segue.destination as? NewTrendGroupViewController {
                 destination.trendGroups = trendGroups
             }
         }
