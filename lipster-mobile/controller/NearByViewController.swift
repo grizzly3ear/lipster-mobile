@@ -30,6 +30,11 @@ class NearByViewController: UIViewController   {
     
     @IBOutlet weak var mapCollectionView: UICollectionView!
     @IBOutlet private weak var collectionViewLayout: UICollectionViewFlowLayout!
+    
+    @IBOutlet weak var specificLipstickNameOfStore: UILabel!
+    @IBOutlet weak var specificLipstickOfStore: UILabel!
+    var lipstickOfStore: Lipstick?
+    
     let padding: CGFloat = 20.0
     
     let storeDataPipe = Signal<[Store], NoError>.pipe()
@@ -37,6 +42,10 @@ class NearByViewController: UIViewController   {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        specificLipstickOfStore.text = lipstickOfStore?.lipstickBrand
+        specificLipstickNameOfStore.text = lipstickOfStore?.lipstickName
+        
         collectionViewLayout.minimumLineSpacing = 10
         mapCollectionView.delegate = self
         initReactiveStoreData()
@@ -89,10 +98,10 @@ extension NearByViewController : UICollectionViewDelegate , UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NearByCollectionViewCell", for: indexPath) as! NearByCollectionViewCell
 
-        cell.storeLogoImage.layer.cornerRadius = 8.0
+        //cell.storeLogoImage.layer.cornerRadius = 8.0
         cell.storeLogoImage.contentMode = .scaleAspectFill
         cell.storeLogoImage.clipsToBounds = true
-        cell.layer.cornerRadius = 15
+       // cell.layer.cornerRadius = 15
         //cell.dropShadow(color: .black, opacity: 0.2, offSet: CGSize(width: 1, height: 1), radius: 1.0, scale: true)
         
         let store = stores[indexPath.row]

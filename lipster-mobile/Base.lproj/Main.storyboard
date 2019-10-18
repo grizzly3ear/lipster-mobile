@@ -144,25 +144,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="323" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LG-DB-3dA">
-                                                    <rect key="frame" x="108" y="11" width="195" height="60"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w68-Kg-TpC">
+                                                    <rect key="frame" x="109" y="0.0" width="214" height="109"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LG-DB-3dA">
+                                                            <rect key="frame" x="19" y="8" width="182" height="60"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.83921568629999999" green="0.1019607843" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="open-close" translatesAutoresizingMaskIntoConstraints="NO" id="o02-mv-Boq">
-                                                    <rect key="frame" x="110" y="75" width="20" height="20"/>
+                                                    <rect key="frame" x="130" y="75" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="open-close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-w8-pnP">
-                                                    <rect key="frame" x="136" y="75" width="167" height="21"/>
+                                                    <rect key="frame" x="156" y="75" width="147" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5O-aR-tBS">
-                                                    <rect key="frame" x="11" y="12" width="85" height="85"/>
+                                                    <rect key="frame" x="12" y="12" width="85" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -197,6 +205,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdT-Cl-zDf">
+                                <rect key="frame" x="63" y="141" width="251" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ulr-b0-hOM"/>
@@ -211,6 +226,8 @@
                         <outlet property="mapCollectionView" destination="Pr4-fy-1G5" id="nWu-Qj-G6Q"/>
                         <outlet property="mapView" destination="c3D-Kk-Cyg" id="wNT-qP-yZt"/>
                         <outlet property="myCoorButton" destination="aJG-1G-x2N" id="Ijt-2i-ZEy"/>
+                        <outlet property="specificLipstickNameOfStore" destination="IdT-Cl-zDf" id="APq-HC-XkR"/>
+                        <outlet property="specificLipstickOfStore" destination="hZ6-j8-eo9" id="pUS-Ma-pa2"/>
                         <segue destination="qET-1N-1ep" kind="show" identifier="showStoreDetail" id="Rqr-p9-s19"/>
                     </connections>
                 </viewController>
@@ -2941,7 +2958,7 @@ Review</string>
         <image name="notiTrend1" width="524" height="426"/>
         <image name="nopic" width="1417" height="1417"/>
         <image name="open" width="512" height="512"/>
-        <image name="open-close" width="384" height="384"/>
+        <image name="open-close" width="192" height="192"/>
         <image name="password" width="96" height="96"/>
         <image name="review bg" width="741" height="79"/>
         <image name="review-1" width="384" height="384"/>
