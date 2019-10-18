@@ -5,18 +5,27 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var storeName: UILabel!
     @IBOutlet weak var storeImageView: UIImageView!
     @IBOutlet weak var storeHours: UILabel!
-    @IBOutlet weak var storeDayOpen: UILabel!
     @IBOutlet weak var storeAddress: UILabel!
     @IBOutlet weak var storePhoneNumber: UILabel!
     @IBOutlet weak var titleNavigation: UINavigationItem!
     @IBOutlet weak var blackView: UIView!
-    
     var storeDetail: Store?
     
+    @IBOutlet weak var lipstickImage: UIImageView!
+    @IBOutlet weak var lipstickBrand: UILabel!
+    @IBOutlet weak var lipstickName: UILabel!
+    @IBOutlet weak var lipstickPrice: UILabel!
+    
+    var lipstickStore: Lipstick!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        
+        lipstickBrand.text = lipstickStore?.lipstickBrand
+        lipstickName.text = lipstickStore?.lipstickName
+      //  lipstickImage.sd_setImage(with: URL(string: (lipstick?.lipstickImage)!), placeholderImage: UIImage(named: "nopic")!)
         
         storeName.text = storeDetail!.name
         storeImageView.sd_setImage(with: URL(string: (storeDetail?.image)!), placeholderImage: UIImage(named: "nopic")!)
@@ -31,4 +40,5 @@ class StoreViewController: UIViewController {
     @IBAction func goBack(_ sender: UIButton) {
         hero.dismissViewController()
     }
+    
 }
