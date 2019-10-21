@@ -873,15 +873,12 @@ Review</string>
                         <outlet property="scrollView" destination="wbM-Hq-1o2" id="w30-gP-4fY"/>
                         <outlet property="trendGroupCollectionView" destination="hAg-nd-Fcb" id="7mZ-Ja-bzO"/>
                         <outlet property="trendsCollectionView" destination="Bs4-8R-zbL" id="XJg-EE-l2n"/>
-                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
-                        <segue destination="MP0-Jk-aHL" kind="show" identifier="showTrendGroup" id="qyJ-4W-VBh"/>
-                        <segue destination="Zdi-WH-zBq" kind="show" identifier="showTrendList" id="40V-0t-UaZ"/>
+                        <segue destination="htF-Bx-EM2" kind="show" identifier="showTrendGroup" id="PRX-in-YUc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="133"/>
-            <point key="canvasLocation" x="-836" y="735"/>
+            <point key="canvasLocation" x="-4303" y="1024"/>
         </scene>
         <!--New Trend Group View Controller-->
         <scene sceneID="rzr-cc-aNG">
@@ -970,7 +967,7 @@ Review</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D98-fh-JOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IJv-iU-eYg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="627"/>
+            <point key="canvasLocation" x="-1818" y="1860"/>
         </scene>
         <!--Trend Group View Controller-->
         <scene sceneID="05t-CG-D7a">
@@ -1736,7 +1733,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9h-NQ-45O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="780"/>
+            <point key="canvasLocation" x="1921" y="177"/>
         </scene>
         <!--NOTIFICATION-->
         <scene sceneID="b0S-wl-U9s">
@@ -2257,12 +2254,12 @@ Review</string>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="Hxb-pv-PE7" kind="relationship" relationship="rootViewController" id="ym0-2q-SeF"/>
+                        <segue destination="sQk-8s-wCy" kind="relationship" relationship="rootViewController" id="77G-hV-koN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-oL-ZBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1686" y="630"/>
+            <point key="canvasLocation" x="-1818" y="28"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="wdB-I7-qPR">
@@ -3005,7 +3002,7 @@ Review</string>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="53E-t6-YAN"/>
-        <segue reference="40V-0t-UaZ"/>
+       
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
