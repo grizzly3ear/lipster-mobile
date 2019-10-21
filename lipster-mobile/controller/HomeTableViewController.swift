@@ -36,7 +36,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         let trendGroup = trendGroups![indexPath.item]
-        cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
+       // cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
         cell.trendGroupTitle.text = trendGroup.name
         //  cell.trendGroupHomeDescription.text = tre
         return cell
