@@ -20,6 +20,7 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        blurViewEffect.layer.masksToBounds = true
         cellView.layer.cornerRadius = 20
         trendGroupImage.layer.cornerRadius = 20
         trendGroupImage.clipsToBounds = true
@@ -57,12 +58,6 @@ class HomeTableViewCell: UITableViewCell {
 
        
     }
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
+  
 
 }
