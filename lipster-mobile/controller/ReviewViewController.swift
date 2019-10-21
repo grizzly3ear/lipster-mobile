@@ -53,8 +53,12 @@ class ReviewViewController: UIViewController {
     
     func insertNewReview() {
         
-        if typeReview.text!.isEmpty {
+        if typeReview.text!.trim().isEmpty {
             print("Add Review Text Field is empty")
+        } else {
+            LipstickRepository.addReview(lipstick: lipstick, comment: typeReview.text!) {_,_ in 
+                
+            }
         }
         
 //        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
@@ -66,7 +70,10 @@ class ReviewViewController: UIViewController {
 //        typeReview.text = ""
 //        view.endEditing(true)
     }
-
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
+    
 }
 
 extension ReviewViewController: UITableViewDelegate , UITableViewDataSource, ExpandableLabelDelegate {

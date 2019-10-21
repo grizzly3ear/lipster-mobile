@@ -24,6 +24,24 @@ class LipstickRepository {
         }
     }
     
+    public static func addReview(lipstick: Lipstick, comment: String, completion: @escaping (Bool, Int) -> Void) {
+        let request = HttpRequest()
+        request.post(
+            "api/lipstick/color/\(lipstick.lipstickId)/reviews",
+            [
+                "comment": comment,
+                "rating": 5,
+            ],
+            nil,
+            requiredAuth: true
+        ) { (response, status) -> (Void) in
+            if response == nil {
+                completion(false, status)
+            }
+            completion(true, status)
+        }
+    }
+    
     public static func fetchAllLipstickData(completion: @escaping ([Lipstick]) -> Void ) {
         let request = HttpRequest()
         request.get("api/brand", ["part": "detail,color"], nil) { (response, _) -> (Void) in
