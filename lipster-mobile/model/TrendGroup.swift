@@ -68,4 +68,12 @@ class TrendGroup: NSObject, NSCoding {
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: arr)
         UserDefaults.standard.set(encodedData, forKey: forKey)
     }
+    
+    static func mockArrayData(size: Int) ->[TrendGroup]{
+        var trendGroups = [TrendGroup]()
+        for i in 0..<size {
+            trendGroups.append(TrendGroup("trendGroup\(i)", Trend.mockArrayData(size: 3), ""))
+        }
+        return trendGroups
+    }
 }
