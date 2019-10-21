@@ -25,8 +25,19 @@ class HomeTableViewCell: UITableViewCell {
         trendGroupImage.clipsToBounds = true
         roundCorners(cornerRadiusButtom: 20.0)
         blurBackground()
+        dropShadow()
+//        cellView.dropShadow(color: .red, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 3, scale: true)
     }
- 
+    func dropShadow(){
+        let shadowSize : CGFloat = 10.0
+       
+        self.cellView.layer.masksToBounds = false
+        self.cellView.layer.shadowColor = UIColor.black.cgColor
+        self.cellView.layer.shadowOpacity = 0.4
+        
+    
+    }
+                    
     func roundCorners(cornerRadiusButtom : Double) {
     
         self.blurViewEffect.layer.cornerRadius = CGFloat(cornerRadiusButtom)
