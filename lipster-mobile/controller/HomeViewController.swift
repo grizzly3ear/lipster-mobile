@@ -171,11 +171,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             destination?.lipstick = recommendLipstick[selectedIndex]
         }
         else if segueIdentifier == "showTrendList" {
-            if let destination = segue.destination as? PinterestViewController {
+            if let destination = segue.destination as? PinterestCollectionViewController {
                 let item = sender as! Int
-                destination.trends = trendGroups[item].trends!
-                destination.trendGroupLabel.text = trendGroups[item].name
-                destination.trendGroupImage.sd_setImage(with: URL(string: trendGroups[item].image!), placeholderImage: UIImage(named: "nopic"))
+                destination.trendGroup = trendGroups[item]
+//                destination.trends = trendGroups[item].trends!
+//                destination.trendGroupLabel.text = trendGroups[item].name
+//                destination.trendGroupImage.sd_setImage(with: URL(string: trendGroups[item].image!), placeholderImage: UIImage(named: "nopic"))
             }
         }
         else if segueIdentifier == "showTrendGroup" {

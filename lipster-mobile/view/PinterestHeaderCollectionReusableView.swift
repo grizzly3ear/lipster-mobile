@@ -1,0 +1,24 @@
+//
+//  PinterestHeaderCollectionReusableView.swift
+//  lipster-mobile
+//
+//  Created by Bank on 21/10/2562 BE.
+//  Copyright © 2562 Bank. All rights reserved.
+//
+
+import UIKit
+
+class PinterestHeaderCollectionReusableView: UICollectionReusableView {
+        
+    static let cellId: String = "PinterestHeaderCollectionReusableView"
+    
+    @IBOutlet weak var trendGroupLabel: UILabel!
+    @IBOutlet weak var trendGroupImage: UIImageView!
+    
+    var trendGroup: TrendGroup? {
+        didSet {
+            trendGroupImage.sd_setImage(with: URL(string: trendGroup!.image!), placeholderImage: UIImage(named: "nopic")!)
+            trendGroupLabel.text = trendGroup?.name
+        }
+    }
+}

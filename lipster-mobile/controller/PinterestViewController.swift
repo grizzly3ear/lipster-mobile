@@ -4,11 +4,11 @@ import Hero
 
 class PinterestViewController: UIViewController {
     
-    @IBOutlet var titleNavigationItem: UINavigationItem!
+    @IBOutlet weak var titleNavigationItem: UINavigationItem!
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
-    @IBOutlet var trendGroupLabel : UILabel!
-    @IBOutlet var trendGroupImage : UIImageView!
+    @IBOutlet weak var trendGroupLabel : UILabel!
+    @IBOutlet weak var trendGroupImage : UIImageView!
     
     var trends = [Trend]()
     var trendGroup: TrendGroup!

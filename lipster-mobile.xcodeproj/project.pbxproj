@@ -16,6 +16,8 @@
 		2CB7A4ED2355B6A900253DCC /* UILabelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */; };
 		2CCBA1B72330C1DC00F2978F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B62330C1DC00F2978F /* Constant.swift */; };
 		2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */; };
+		300F1C05235D496600E658F9 /* PinterestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */; };
+		300F1C07235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
 		3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032BDD322F92755009E325A /* LipstickRepository.swift */; };
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
@@ -111,6 +113,8 @@
 		2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelHelper.swift; sourceTree = "<group>"; };
 		2CCBA1B62330C1DC00F2978F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2CCBA1B82330DDB900F2978F /* CGPointHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointHelper.swift; sourceTree = "<group>"; };
+		300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCollectionViewController.swift; sourceTree = "<group>"; };
+		300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
 		3032BDD322F92755009E325A /* LipstickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRepository.swift; sourceTree = "<group>"; };
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 				2CB7A4E823558EA600253DCC /* SearchViewController.swift */,
 				D89F35F82355C17400F0AF43 /* StoreViewController.swift */,
 				D80540322359B6FB00351C9B /* NewTrendGroupViewController.swift */,
+				300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				2C7644BA235741B3000ADAE9 /* DynamicHeightCollectionView.swift */,
 				D80510502357749300A6227A /* TrendsCollectionViewCell.swift */,
 				D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */,
+				300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				D83DD82C23054E57000098C1 /* TrendGroupViewController.swift in Sources */,
 				3071185722FC188300E25AF4 /* PinterestViewController.swift in Sources */,
+				300F1C07235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift in Sources */,
 				D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
@@ -566,6 +573,7 @@
 				30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
 				D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */,
+				300F1C05235D496600E658F9 /* PinterestCollectionViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,
 				2CB7A4EB2355ACC000253DCC /* SearchHistoryCollectionViewCell.swift in Sources */,
