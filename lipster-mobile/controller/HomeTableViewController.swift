@@ -15,6 +15,10 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     var trends: [Trend]?
     var trendGroups : [TrendGroup]?
+    
+    @IBAction func seemoreButtonPress(_ sender: Any) {
+        performSegue(withIdentifier: "showTrendGroup", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
      //   trendHeaderCollectionView.dataSource = self as! UICollectionViewDataSource
@@ -37,12 +41,16 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         let trendGroup = trendGroups![indexPath.item]
-       // cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
+        //cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
         cell.trendGroupTitle.text = trendGroup.name
         //  cell.trendGroupHomeDescription.text = trendGroup.Detail
         return cell
     }
- 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+    }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
@@ -56,7 +64,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+        performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -71,18 +79,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         cell.TrendDescription.text = trend.detail
         return cell
     }
-    @IBAction func goBack(_ sender: Any) {
-        hero.dismissViewController()
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdentifier = segue.identifier
-        if segueIdentifier == "showPinterest" {
-            let item = sender as! Int
-            print(item)
-            let destination = segue.destination as? PinterestViewController
-            destination?.trends = trendGroups![item].trends!
-        }
-    }
+
     
     private func indexOfMajorCell() -> Int {
         let itemWidth = collectionViewLayout.itemSize.width
@@ -91,13 +88,42 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         let safeIndex = max(0, min(trends!.count - 1, index))
         return safeIndex
     }
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
-        targetContentOffset.pointee = scrollView.contentOffset
-        let indexOfMajorCell = self.indexOfMajorCell()
-        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-                
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if scrollView.tag == 1 {
+            targetContentOffset.pointee = scrollView.contentOffset
+            let indexOfMajorCell = self.indexOfMajorCell()
+            let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+            collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+        
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        
+        if segueIdentifier == "showPinterest" {
+            if let destination = segue.destination as? PinterestViewController {
+                let item = sender as! Int
+                destination.trends = trendGroups![item].trends!
+            }
+        }
+        else if segueIdentifier == "showTrendGroup" {
+            if let destination = segue.destination as? NewTrendGroupViewController {
+                destination.trendGroups = trendGroups!
+            }
+        }
+        else if segueIdentifier == "showTrendDetail" {
+            if let destination = segue.destination as? TrendDetailViewController {
+                let item = sender as! Int
+                destination.trend = trends![item]
+            }
+        }
+    }
+        
 }
+    
+
+
 
