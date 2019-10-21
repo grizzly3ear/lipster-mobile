@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="128" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="94c-Ar-euE" id="Xfd-mn-bGa">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="94.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BoD-Qj-KHK">
@@ -667,13 +669,13 @@ Review</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULw-Zb-G7y">
-                                                                    <rect key="frame" x="20" y="0.0" width="313" height="60"/>
+                                                                    <rect key="frame" x="20" y="0.0" width="313" height="80"/>
                                                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
                                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-JP-MN1">
-                                                                    <rect key="frame" x="20" y="56" width="293" height="54"/>
+                                                                    <rect key="frame" x="20" y="76" width="293" height="54"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="54" id="8WP-ur-xAW"/>
                                                                     </constraints>
@@ -682,7 +684,7 @@ Review</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="20" y="138" width="293.00000000000023" height="157"/>
+                                                                    <rect key="frame" x="20" y="158" width="293" height="157"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="157" id="GU2-4q-MCR"/>
                                                                         <constraint firstAttribute="width" constant="293" id="vsP-EN-JyU"/>
@@ -878,6 +880,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="36" y="133"/>
             <point key="canvasLocation" x="-836" y="735"/>
         </scene>
         <!--New Trend Group View Controller-->
@@ -986,7 +989,7 @@ Review</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uuz-2l-rug" id="UER-CZ-ZZR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="209.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L00-gI-Dio">
@@ -1208,7 +1211,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="H79-N1-ZJt">
-                                <rect key="frame" x="27" y="155" width="21" height="21"/>
+                                <rect key="frame" x="27" y="175" width="21" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Iue-1O-tbr"/>
                                     <constraint firstAttribute="width" constant="21" id="guJ-oM-uiQ"/>
@@ -1260,7 +1263,7 @@ Review</string>
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jc3-ld-9Nj">
-                                <rect key="frame" x="56" y="146" width="290" height="38"/>
+                                <rect key="frame" x="56" y="166" width="290" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="4hk-Io-EIc"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="282" id="sbZ-Jg-F6A"/>
@@ -1276,7 +1279,7 @@ Review</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YiQ-v8-7bS">
-                                <rect key="frame" x="0.0" y="581" width="375" height="169"/>
+                                <rect key="frame" x="0.0" y="601" width="375" height="149"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="HnG-sr-PhX"/>
@@ -1313,7 +1316,7 @@ Review</string>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYS-p2-sM6">
-                                <rect key="frame" x="27" y="186" width="319" height="1"/>
+                                <rect key="frame" x="27" y="206" width="319" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="319" id="2WE-Pp-nap"/>
@@ -1635,7 +1638,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22.000000000000057" height="46.000000000000114"/>
+                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>
@@ -1763,7 +1766,7 @@ Review</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QmM-lu-kQB" id="L9E-hM-weO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notiTrend1" translatesAutoresizingMaskIntoConstraints="NO" id="vml-zP-dqc">
@@ -1819,7 +1822,7 @@ Review</string>
             <objects>
                 <viewController id="CzO-UI-R6t" customClass="LoginViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="38h-cG-r3w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="dpV-03-MvE">
@@ -1955,7 +1958,7 @@ Review</string>
             <objects>
                 <viewController id="nCK-fr-RZZ" customClass="SignUpViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZsK-ED-vDN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="UgJ-LQ-znO">
@@ -2268,7 +2271,7 @@ Review</string>
                     <tabBarItem key="tabBarItem" title="PROFILE" id="VXs-Cf-gor"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k8K-6R-qW6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2296,7 +2299,7 @@ Review</string>
                                 <rect key="frame" x="0.0" y="28" width="375" height="235"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8kH-06-fre" id="Cm6-Hc-4NZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="234.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08N-LY-B2S">
@@ -2369,7 +2372,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="730"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
@@ -2656,7 +2659,7 @@ Review</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pcu-Eo-2I8" id="HwS-fO-esM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user1" translatesAutoresizingMaskIntoConstraints="NO" id="HNs-LW-r6R">
@@ -2667,13 +2670,13 @@ Review</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8M-OC-V78">
-                                                    <rect key="frame" x="100" y="8" width="82" height="19.5"/>
+                                                    <rect key="frame" x="100" y="8" width="82" height="19"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfL-XL-bO1" customClass="ExpandableLabel" customModule="ExpandableLabel">
-                                                    <rect key="frame" x="100" y="27.5" width="260" height="49"/>
+                                                    <rect key="frame" x="100" y="27" width="260" height="49"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="260" id="02J-bu-Rdq"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="V9g-US-RtA"/>
@@ -2683,7 +2686,7 @@ Review</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3c-f5-ilr">
-                                                    <rect key="frame" x="100" y="76" width="32.5" height="18"/>
+                                                    <rect key="frame" x="100" y="75.5" width="32.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2954,7 +2957,7 @@ Review</string>
     <resources>
         <image name="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" width="841" height="442"/>
         <image name="OR214" width="450" height="450"/>
-        <image name="backButton" width="128" height="128"/>
+        <image name="backButton" width="102.40000152587891" height="102.40000152587891"/>
         <image name="baseline_chevron_left_black_48pt" width="48" height="48"/>
         <image name="baseline_chevron_left_white_48pt" width="48" height="48"/>
         <image name="baseline_delete_outline_black_18pt" width="18" height="18"/>
@@ -2964,38 +2967,38 @@ Review</string>
         <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
         <image name="gradient" width="1921" height="940"/>
         <image name="heart_white" width="40" height="40"/>
-        <image name="history" width="512" height="512"/>
+        <image name="history" width="384" height="384"/>
         <image name="home_background" width="300" height="418"/>
-        <image name="line" width="512" height="512"/>
+        <image name="line" width="384" height="384"/>
         <image name="lipColor" width="214" height="569"/>
         <image name="lip_logo_whiteFont" width="500" height="500"/>
-        <image name="lipstick (2)" width="512" height="512"/>
+        <image name="lipstick (2)" width="326.2301025390625" height="326.2301025390625"/>
         <image name="location" width="480" height="480"/>
-        <image name="log-out" width="512" height="512"/>
+        <image name="log-out" width="384" height="384"/>
         <image name="login_bg" width="375" height="667"/>
-        <image name="login_bgBlur" width="970" height="672"/>
+        <image name="login_bgBlur" width="485" height="336"/>
         <image name="login_button" width="283" height="283"/>
         <image name="login_textfieldLine" width="283" height="28"/>
-        <image name="mail-1" width="128" height="128"/>
-        <image name="makeup" width="512" height="512"/>
+        <image name="mail-1" width="96" height="96"/>
+        <image name="makeup" width="409.60000610351562" height="409.60000610351562"/>
         <image name="map_button" width="142" height="142"/>
-        <image name="map_storeDetail" width="512" height="512"/>
-        <image name="notiTrend1" width="524" height="426"/>
+        <image name="map_storeDetail" width="384" height="384"/>
+        <image name="notiTrend1" width="262" height="213"/>
         <image name="open" width="512" height="512"/>
-        <image name="open-close" width="512" height="512"/>
-        <image name="password" width="128" height="128"/>
-        <image name="review bg" width="1482" height="158"/>
-        <image name="review-1" width="512" height="512"/>
-        <image name="review_line" width="1560" height="16"/>
-        <image name="search" width="512" height="512"/>
-        <image name="send" width="64" height="64"/>
-        <image name="signUp_bg" width="854" height="942"/>
-        <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
+        <image name="open-close" width="384" height="384"/>
+        <image name="password" width="96" height="96"/>
+        <image name="review bg" width="741" height="79"/>
+        <image name="review-1" width="384" height="384"/>
+        <image name="review_line" width="780" height="8"/>
+        <image name="search" width="384" height="384"/>
+        <image name="send" width="48" height="48"/>
+        <image name="signUp_bg" width="427" height="471"/>
+        <image name="telephone-auricular-with-cable (1)" width="384" height="384"/>
         <image name="try-this-shade" width="263" height="53"/>
-        <image name="user1" width="680" height="678"/>
-        <image name="user2" width="664" height="664"/>
-        <image name="username" width="128" height="128"/>
-        <image name="whiteLine" width="64" height="64"/>
+        <image name="user1" width="340" height="339"/>
+        <image name="user2" width="332" height="332"/>
+        <image name="username" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="whiteLine" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
