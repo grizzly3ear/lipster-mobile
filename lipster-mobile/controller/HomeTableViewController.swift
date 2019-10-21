@@ -11,6 +11,7 @@ import UIKit
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
+    @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
     var trends: [Trend]?
     var trendGroups : [TrendGroup]?
@@ -81,6 +82,21 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             let destination = segue.destination as? PinterestViewController
             destination?.trends = trendGroups![item].trends!
         }
+    }
+    
+    private func indexOfMajorCell() -> Int {
+        let itemWidth = collectionViewLayout.itemSize.width
+        let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
+        let index = Int(round(proportionalOffset))
+        let safeIndex = max(0, min(trends!.count - 1, index))
+        return safeIndex
+    }
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
+        targetContentOffset.pointee = scrollView.contentOffset
+        let indexOfMajorCell = self.indexOfMajorCell()
+        let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+        collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                
     }
 
 }

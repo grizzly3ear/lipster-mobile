@@ -90,7 +90,7 @@ class Trend: NSObject, NSCoding {
     static func mockArrayData(size: Int) -> [Trend] {
         var trends = [Trend]()
         for i in 0..<size {
-            trends.append(Trend("Trend\(i)", "", .red, .orange, "Trend desc"))
+            trends.append(Trend("Trend\(i)", "", .red, .orange, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"))
         }
         return trends
     }
