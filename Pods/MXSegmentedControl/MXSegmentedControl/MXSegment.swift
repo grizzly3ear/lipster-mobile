@@ -23,6 +23,7 @@
 import UIKit
 
 /// A segment button embed in MXSegmentedControl
+@objcMembers
 public class MXSegment: UIButton {
     
     /// The Image position in segment related to title.
@@ -47,10 +48,8 @@ public class MXSegment: UIButton {
     /// The segment width
     public var width: CGFloat {
         get {
-            if _width == UIView.noIntrinsicMetric {
-                return intrinsicContentSize.width
-            }
-            return _width
+            guard _width == UIView.noIntrinsicMetric else { return _width }
+            return intrinsicContentSize.width
         }
         set { _width = newValue }
     }
@@ -77,8 +76,8 @@ public class MXSegment: UIButton {
         return self
     }
     
-    @discardableResult public func set(title color: UIColor?, for state: UIControl.State = .normal) -> MXSegment {
-        super.setTitleColor(color, for: state)
+    @discardableResult public func set(titleColor: UIColor?, for state: UIControl.State = .normal) -> MXSegment {
+        super.setTitleColor(titleColor, for: state)
         return self
     }
     
@@ -257,7 +256,6 @@ extension MXSegment {
         let titleSize = titleLabel.intrinsicContentSize
         
         // Compute Title Label Frame
-        
         var width = contentRect.width
         width -= titleEdgeInsets.left
         width -= titleEdgeInsets.right
@@ -394,7 +392,6 @@ extension MXSegment {
         
         imageView.frame = CGRect(x: x, y: y, width: width, height: height)
         //
-        
     }
     
 }

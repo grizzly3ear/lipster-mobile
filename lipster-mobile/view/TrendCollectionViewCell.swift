@@ -12,6 +12,8 @@ class TrendCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
     @IBOutlet weak var likeImageViewWidthConstraint: NSLayoutConstraint!
     
+    static let cellId = "TrendCollectionViewCell"
+    
     lazy var likeAnimator = LikeAnimator(
         container: contentView,
         layoutConstraint: likeImageViewWidthConstraint,

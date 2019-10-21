@@ -12,8 +12,6 @@ class TrendDetailViewController: UIViewController {
     @IBOutlet weak var trendImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    @IBOutlet weak var titleNavigationItem: UINavigationItem!
-    
     var trend: Trend!
     var frame = CGRect(x:0, y:0, width:0 , height:0)
     var imageHeroId = String()
@@ -50,7 +48,7 @@ class TrendDetailViewController: UIViewController {
 extension TrendDetailViewController {
     
     func initUI() {
-        self.titleNavigationItem.title = trend.title
+
         self.trendNameLabel.text = trend.title
         setUserInterface(trend ?? Trend())
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -61,6 +59,9 @@ extension TrendDetailViewController {
             let image = UIImage(named: "heart_white")!
             favoriteButton.setImage(image, for: .normal)
         }
+        
+        view.insetsLayoutMarginsFromSafeArea = false
+        
     }
     
     func setUserInterface(_ trend: Trend) {
@@ -164,6 +165,10 @@ extension TrendDetailViewController {
                 .spring(stiffness: 100, damping: 15)
             )
         ]
+        self.navigationController?.hero.navigationAnimationType = .selectBy(
+            presenting: .zoom,
+            dismissing: .zoomOut
+        )
     }
 }
 

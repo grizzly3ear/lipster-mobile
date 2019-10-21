@@ -63,8 +63,9 @@ class LipstickDetailViewcontroller: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.titleNavigationItem.title = lipstick?.lipstickBrand
      
-        segmentedControl3.append(title: "Description").set(title: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1) , for: .selected)
-        segmentedControl3.append(title: "Ingredient").set(title: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), for: .selected)
+        segmentedControl3.append(title: "Description").set(titleColor: UIColor(hexString: "#2B7DBF"), for: .selected)
+        
+        segmentedControl3.append(title: "Ingredient").set(titleColor: UIColor(hexString: "#CE0755"), for: .selected)
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
         addLipstickToHistory()

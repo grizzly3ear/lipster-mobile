@@ -22,6 +22,7 @@
 
 import UIKit
 
+@objcMembers
 public class MXIndicator: UIView {
     
     /// The indicator line position
@@ -45,7 +46,7 @@ public class MXIndicator: UIView {
     public let boxView = UIView()
     
     /// The line height value.
-    public var lineHeight: CGFloat = 2
+    public var lineHeight: CGFloat = 1
     
     /// :nodoc:
     required public init?(coder aDecoder: NSCoder) {

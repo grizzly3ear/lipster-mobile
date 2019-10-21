@@ -65,6 +65,7 @@ class TrendGroupViewController: UIViewController , UITableViewDataSource , UITab
             print(item)
             let destination = segue.destination as? PinterestViewController
             destination?.trends = trendGroups[item].trends!
+            destination?.trendGroup = trendGroups[item]
         }
     }
     @IBAction func goBack(_ sender: Any) {

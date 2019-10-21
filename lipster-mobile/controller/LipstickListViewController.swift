@@ -31,8 +31,9 @@ class LipstickListViewController: UITableViewController  {
         initReactiveLipstickList()
         lipListTableView.delegate = self
         lipListTableView.dataSource = self
-        navigationController?.isNavigationBarHidden = false
+        
         initHero()
+        tableView.contentInsetAdjustmentBehavior = .never
         if self.lipHexColor != nil {
             fetchData()
         }
@@ -65,6 +66,9 @@ class LipstickListViewController: UITableViewController  {
             let index = sender as! IndexPath
             destination.lipstick = lipstickList[index.row]
         }
+    }
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
     }
 }
 

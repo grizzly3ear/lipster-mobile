@@ -4,15 +4,20 @@ import Hero
 
 class PinterestViewController: UIViewController {
     
-    @IBOutlet var titleNavigationItem: UINavigationItem!
+    @IBOutlet weak var titleNavigationItem: UINavigationItem!
     @IBOutlet weak var trendListCollectionView: UICollectionView!
     
+    @IBOutlet weak var trendGroupLabel : UILabel!
+    @IBOutlet weak var trendGroupImage : UIImageView!
+    
     var trends = [Trend]()
+    var trendGroup: TrendGroup!
     let padding: CGFloat = 15.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initHero()
+        
         trendListCollectionView.contentInset = UIEdgeInsets(top: padding, left: 0.0, bottom: padding, right: 0.0)
         initGesture()
         titleNavigationItem.title = "Trends"
@@ -37,6 +42,7 @@ class PinterestViewController: UIViewController {
         } else {
             self.trendListCollectionView.viewWithTag(1)?.removeFromSuperview()
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,7 +85,7 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
         
         cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
-        cell.image.contentMode = .scaleAspectFill
+        cell.image.contentMode = .scaleAspectFit
         cell.image.clipsToBounds = true
         cell.image.hero.id = "trend\(indexPath.item)"
         
