@@ -1,2 +1,2 @@
 ${PODS_ROOT}/Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVFaceDetectorResources.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseMLVisionFaceModel/GoogleMVFaceDetectorResources.bundle

@@ -31,7 +31,9 @@ import UIKit
 /// You register the target-action methods for a segmented control using the value​Changed constant as shown below.
 ///
 ///     segmentedControl.addTarget(self, action: "action:", forControlEvents: .ValueChanged)
-@IBDesignable open class MXSegmentedControl: UIControl {
+@IBDesignable
+@objcMembers
+open class MXSegmentedControl: UIControl {
     
     // MARK: Customizing Appearance
     
@@ -143,7 +145,7 @@ import UIKit
     /// Initializes and returns a newly allocated segmented control object with the specified titles.
     ///
     /// - Parameter titles: The segments titles.
-    convenience init(withTitles titles: [String]) {
+    public convenience init(withTitles titles: [String]) {
         self.init(frame: CGRect.zero)
         for title in titles {
             append(title: title)
@@ -183,9 +185,8 @@ import UIKit
     }
     
     deinit {
-        if let scrollView = scrollView {
-            scrollView.removeObserver(self, forKeyPath: keyPath, context: &context)
-        }
+        guard let scrollView = scrollView else { return }
+        scrollView.removeObserver(self, forKeyPath: keyPath, context: &context)
     }
     
     // MARK: Layout
@@ -194,8 +195,7 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
        
-        var frame = self.bounds //container.inset(by: margin)//CGRect.insetBy(self.bounds)
-        //UIEdgeInsetsInsetRect(bounds, contentEdgeInsets)
+        var frame = self.bounds.inset(by: contentEdgeInsets)
         _scrollView.frame = frame
         
         let size = contentView.intrinsicContentSize
@@ -291,7 +291,6 @@ import UIKit
 }
 
 // MARK: - Interface Builder Inspectable and Appearence
-
 extension MXSegmentedControl {
     
     @IBInspectable public dynamic var cornerRadius: CGFloat {
@@ -386,7 +385,7 @@ extension MXSegmentedControl {
         return contentView.segments.count
     }
     
-    private func newSegment() -> MXSegment {
+    public func newSegment() -> MXSegment {
         
         let segment = MXSegment()
         
@@ -482,7 +481,7 @@ extension MXSegmentedControl {
     
     class ContentView: UIView {
         
-        internal(set) var segments = [MXSegment]()
+        var segments = [MXSegment]()
         
         var separators = Separators()
         
