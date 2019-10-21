@@ -36,7 +36,7 @@ class LikeAnimator {
             self?.layoutConstraint.constant = 0
             
             UIView.animate(
-                withDuration: 0.2,
+                withDuration: 0.3,
                 animations: {
                     self?.container.layoutIfNeeded()
                     completion()

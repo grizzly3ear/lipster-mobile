@@ -18,6 +18,7 @@ class PinterestHeaderCollectionReusableView: UICollectionReusableView {
     var trendGroup: TrendGroup? {
         didSet {
             trendGroupImage.sd_setImage(with: URL(string: trendGroup!.image!), placeholderImage: UIImage(named: "nopic")!)
+            trendGroupImage.contentMode = .scaleAspectFill
             trendGroupLabel.text = trendGroup?.name
         }
     }

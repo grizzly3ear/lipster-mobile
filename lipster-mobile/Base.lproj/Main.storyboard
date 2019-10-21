@@ -9,17 +9,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LIPSTICK LIST-->
+        <!--Lipstick List View Controller-->
         <scene sceneID="IUN-Am-QK3">
             <objects>
-                <tableViewController storyboardIdentifier="LipstickListViewController" id="2my-jU-SWf" customClass="LipstickListViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wwH-Np-wde">
+                <tableViewController storyboardIdentifier="LipstickListViewController" automaticallyAdjustsScrollViewInsets="NO" id="2my-jU-SWf" customClass="LipstickListViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="43" sectionFooterHeight="28" id="wwH-Np-wde">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="9mk-Gh-29e">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0I-Ep-kE3">
+                                    <rect key="frame" x="8" y="26" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="baseline_chevron_left_white_48pt"/>
+                                    <connections>
+                                        <action selector="goBack:" destination="2my-jU-SWf" eventType="touchUpInside" id="QbM-XW-CGi"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" tag="200" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LipstickListTableViewCell" rowHeight="95" id="94c-Ar-euE" customClass="LipstickListTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="95"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="94c-Ar-euE" id="Xfd-mn-bGa">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="95"/>
@@ -33,26 +48,27 @@
                                             <rect key="frame" x="101" y="12" width="183" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8I-Jm-kFN">
                                             <rect key="frame" x="101" y="37" width="171" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1W-0y-6Mu">
                                             <rect key="frame" x="101" y="58" width="171" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="lipBrandLabel" destination="Zm3-Ba-VT7" id="8Jd-Ph-Fdx"/>
                                     <outlet property="lipColorNameLabel" destination="b1W-0y-6Mu" id="wwV-3G-OT8"/>
@@ -66,10 +82,8 @@
                             <outlet property="delegate" destination="2my-jU-SWf" id="Ag8-BE-NFk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="LIPSTICK LIST" id="CLJ-sW-SFp">
-                        <barButtonItem key="backBarButtonItem" title="BACK" id="r7x-bj-U5k"/>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="lipListTableView" destination="wwH-Np-wde" id="fsS-G9-IsC"/>
                         <outlet property="tableView" destination="wwH-Np-wde" id="Vbf-RH-PyH"/>
@@ -78,7 +92,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUV-e4-hve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26" y="3492"/>
+            <point key="canvasLocation" x="-26.399999999999999" y="3491.6041979010497"/>
         </scene>
         <!--NEARBY-->
         <scene sceneID="b5c-No-tHW">
@@ -668,7 +682,7 @@ Review</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="20" y="138" width="293" height="157"/>
+                                                                    <rect key="frame" x="20" y="138" width="293.00000000000023" height="157"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="157" id="GU2-4q-MCR"/>
                                                                         <constraint firstAttribute="width" constant="293" id="vsP-EN-JyU"/>
@@ -1070,50 +1084,59 @@ Review</string>
         <scene sceneID="fpq-XC-soL">
             <objects>
                 <collectionViewController id="Zdi-WH-zBq" customClass="PinterestCollectionViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2WT-Fy-HYJ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="2WT-Fy-HYJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A44-3X-q7z">
-                            <size key="itemSize" width="122" height="115"/>
-                            <size key="headerReferenceSize" width="50" height="301"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="1" id="A44-3X-q7z">
+                            <size key="itemSize" width="167" height="167"/>
+                            <size key="headerReferenceSize" width="375" height="250"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrendCollectionViewCell" id="zOi-2w-Srz" customClass="TrendCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="301" width="167" height="167"/>
+                                <rect key="frame" x="0.0" y="250" width="167" height="167"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zp2-kM-n6z">
                                     <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
+                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoritePopup" translatesAutoresizingMaskIntoConstraints="NO" id="Qk4-pb-fb0">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoritePopup" translatesAutoresizingMaskIntoConstraints="NO" id="8B0-Gc-hGP">
                                             <rect key="frame" x="83.5" y="83.5" width="0.0" height="0.0"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="Qk4-pb-fb0" secondAttribute="height" id="XPq-bB-RgY"/>
-                                                <constraint firstAttribute="width" id="wSN-Rh-BW4"/>
+                                                <constraint firstAttribute="width" secondItem="8B0-Gc-hGP" secondAttribute="height" id="g7c-VL-DGm"/>
+                                                <constraint firstAttribute="width" id="i7v-ag-wpt"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Qk4-pb-fb0" firstAttribute="centerY" secondItem="Zp2-kM-n6z" secondAttribute="centerY" id="6Ty-gp-iXw"/>
-                                        <constraint firstItem="Qk4-pb-fb0" firstAttribute="centerX" secondItem="Zp2-kM-n6z" secondAttribute="centerX" id="YxY-cV-Dvy"/>
+                                        <constraint firstAttribute="trailing" secondItem="lks-Fq-yB5" secondAttribute="trailing" constant="3" id="04t-R7-vV5"/>
+                                        <constraint firstItem="lks-Fq-yB5" firstAttribute="top" secondItem="Zp2-kM-n6z" secondAttribute="top" constant="5" id="6I5-aR-3r7"/>
+                                        <constraint firstItem="lks-Fq-yB5" firstAttribute="leading" secondItem="Zp2-kM-n6z" secondAttribute="leading" constant="3" id="6vw-V6-wun"/>
+                                        <constraint firstAttribute="bottom" secondItem="lks-Fq-yB5" secondAttribute="bottom" id="Fj8-vQ-oUg"/>
+                                        <constraint firstItem="8B0-Gc-hGP" firstAttribute="centerX" secondItem="lks-Fq-yB5" secondAttribute="centerX" id="NoG-hD-iSN"/>
+                                        <constraint firstItem="8B0-Gc-hGP" firstAttribute="centerY" secondItem="Zp2-kM-n6z" secondAttribute="centerY" id="eRG-7D-nph"/>
+                                        <constraint firstItem="8B0-Gc-hGP" firstAttribute="width" secondItem="8B0-Gc-hGP" secondAttribute="height" id="kCY-S8-gx4"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="customSize" width="167" height="167"/>
                                 <connections>
                                     <outlet property="image" destination="lks-Fq-yB5" id="k6a-LQ-knG"/>
-                                    <outlet property="likeImageViewWidthConstraint" destination="wSN-Rh-BW4" id="pxj-9T-XEb"/>
+                                    <outlet property="likeImageViewWidthConstraint" destination="i7v-ag-wpt" id="kZY-PQ-w8u"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PinterestHeaderCollectionReusableView" id="o2C-Ic-pII" customClass="PinterestHeaderCollectionReusableView" customModule="lipster_mobile" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7F-I8-xGl">
@@ -1124,18 +1147,21 @@ Review</string>
                                     <rect key="frame" x="0.0" y="-120" width="375" height="421"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlS-Ak-o62">
-                                    <rect key="frame" x="8" y="8" width="48" height="48"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="baseline_chevron_left_white_48pt"/>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCQ-tE-i1U">
-                                    <rect key="frame" x="64" y="49" width="59" height="35"/>
+                                    <rect key="frame" x="64" y="49" width="277" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="35"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlS-Ak-o62">
+                                    <rect key="frame" x="8" y="18" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="baseline_chevron_left_white_48pt"/>
+                                    <connections>
+                                        <action selector="goBack:" destination="Zdi-WH-zBq" eventType="touchUpInside" id="BHF-fB-jbF"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <connections>
                                 <outlet property="trendGroupImage" destination="p7F-I8-xGl" id="iVL-Xf-rHe"/>
@@ -1147,11 +1173,16 @@ Review</string>
                             <outlet property="delegate" destination="Zdi-WH-zBq" id="gJ0-El-hkg"/>
                         </connections>
                     </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="hrg-yA-aUy"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendDetail" id="U2k-ik-SvE"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Df8-I7-njb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="630"/>
+            <point key="canvasLocation" x="785" y="627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="djX-fk-M5r">
@@ -1518,7 +1549,7 @@ Review</string>
             </objects>
             <point key="canvasLocation" x="1919" y="2405"/>
         </scene>
-        <!--Title-->
+        <!--Trend Detail View Controller-->
         <scene sceneID="fXy-On-nzZ">
             <objects>
                 <viewController storyboardIdentifier="TrendDetailViewController" wantsFullScreenLayout="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yRT-0L-hOz" customClass="TrendDetailViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -1604,7 +1635,7 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
+                                        <rect key="frame" x="23" y="471" width="22.000000000000057" height="46.000000000000114"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="46" id="byx-8D-LFE"/>
@@ -1686,14 +1717,12 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRP-33-jTt"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="CWk-db-tVi"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="favoriteButton" destination="D64-75-2kR" id="Eu3-nJ-N4h"/>
-                        <outlet property="titleNavigationItem" destination="CWk-db-tVi" id="H0p-oB-h1K"/>
                         <outlet property="trendDescription" destination="UHm-TZ-XE3" id="0db-5S-e1D"/>
                         <outlet property="trendImageView" destination="kEW-ET-9HO" id="YRo-Pn-gdM"/>
                         <outlet property="trendLipColorView" destination="gZC-ew-wGe" id="xKP-FO-Dkh"/>
@@ -2193,11 +2222,10 @@ Review</string>
         <!--CAMERA-->
         <scene sceneID="5PU-kw-6gr">
             <objects>
-                <navigationController storyboardIdentifier="LipColorDetectionViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LdA-hd-DGY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LipColorDetectionViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="LdA-hd-DGY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="CAMERA" id="FFP-fH-9DI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vrl-Nj-Qsi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2971,10 +2999,10 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
-        <segue reference="wGH-AF-6ic"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="40V-0t-UaZ"/>
-        <segue reference="PDE-4n-fpa"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>

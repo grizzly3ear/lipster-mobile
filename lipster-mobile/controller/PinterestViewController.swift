@@ -85,7 +85,7 @@ extension PinterestViewController: UICollectionViewDelegate, UICollectionViewDat
         
         cell.image.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic")!)
         cell.image.layer.cornerRadius = 8.0
-        cell.image.contentMode = .scaleAspectFill
+        cell.image.contentMode = .scaleAspectFit
         cell.image.clipsToBounds = true
         cell.image.hero.id = "trend\(indexPath.item)"
         
