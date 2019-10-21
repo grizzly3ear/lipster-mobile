@@ -19,5 +19,12 @@ class TrendsCollectionViewCell: UICollectionViewCell {
         trendImage.layer.cornerRadius = 20
         trendImage.clipsToBounds = true
     }
+    func setTrend(trend : Trend) {
+        trendImage.sd_setImage(with: URL(string: trend.image), placeholderImage: UIImage(named: "nopic"))
+        trendTitle.text = trend.title
+        TrendDescription.text = trend.detail
+        
+        
+    }
    
 }

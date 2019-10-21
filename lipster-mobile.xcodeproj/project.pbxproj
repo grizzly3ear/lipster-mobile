@@ -62,7 +62,6 @@
 		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
 		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
 		D82E311E235DA2390085F8A2 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E311D235DA2390085F8A2 /* HomeCollectionViewController.swift */; };
-		D82E3120235DA3850085F8A2 /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E311F235DA3850085F8A2 /* HomeHeaderCollectionReusableView.swift */; };
 		D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* LoginViewController.swift */; };
 		D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD822230079EA000098C1 /* SignUpViewController.swift */; };
 		D83DD82823054946000098C1 /* TrendGroup2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */; };
@@ -165,7 +164,6 @@
 		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
 		D82E311D235DA2390085F8A2 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		D82E311F235DA3850085F8A2 /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D83DD822230079EA000098C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D83DD82723054946000098C1 /* TrendGroup2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroup2TableViewCell.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 				2C7644BA235741B3000ADAE9 /* DynamicHeightCollectionView.swift */,
 				D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */,
 				D8EA96A22269C5120060B78A /* TrendHomeCollectionViewCell.swift */,
-				D82E311F235DA3850085F8A2 /* HomeHeaderCollectionReusableView.swift */,
 				D84CB266235DE9D900D300FC /* HomeTableViewCell.swift */,
 				D80510502357749300A6227A /* TrendsCollectionViewCell.swift */,
 				300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */,
@@ -541,7 +538,6 @@
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */,
-				D82E3120235DA3850085F8A2 /* HomeHeaderCollectionReusableView.swift in Sources */,
 				D8E48D93226DD7C600A192EB /* TrendGroupTableViewCell.swift in Sources */,
 				2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */,
 				30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */,

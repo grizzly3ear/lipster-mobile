@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     
@@ -16,8 +16,8 @@ class HomeTableViewController: UITableViewController {
     var trendGroups : [TrendGroup]?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+     //   trendHeaderCollectionView.dataSource = self as! UICollectionViewDataSource
+       
         trends = Trend.mockArrayData(size: 5)
         trendGroups = TrendGroup.mockArrayData(size: 5)
         
@@ -38,7 +38,7 @@ class HomeTableViewController: UITableViewController {
         let trendGroup = trendGroups![indexPath.item]
        // cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
         cell.trendGroupTitle.text = trendGroup.name
-        //  cell.trendGroupHomeDescription.text = tre
+        //  cell.trendGroupHomeDescription.text = trendGroup.Detail
         return cell
     }
  
@@ -46,15 +46,42 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return trends!.count
     }
-    */
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell", for: indexPath) as! TrendsCollectionViewCell
+        
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
+        
+        let trend = trends![indexPath.item]
+        cell.trendImage.sd_setImage(with: URL(string: trends![indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
+        cell.trendTitle.text = trend.title
+        cell.TrendDescription.text = trend.detail
+        return cell
+    }
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showPinterest" {
+            let item = sender as! Int
+            print(item)
+            let destination = segue.destination as? PinterestViewController
+            destination?.trends = trendGroups![item].trends!
+        }
+    }
 
 }
+
