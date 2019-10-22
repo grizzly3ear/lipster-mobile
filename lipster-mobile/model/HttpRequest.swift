@@ -7,7 +7,8 @@ class HttpRequest {
     var domain = "http://18.136.104.217"
 //    var domain = "http://localhost:8000"
     var defaultHeaders = [
-        "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")"
+        "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")",
+        "Accept": "application/json"
     ]
     
     public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, requiredAuth: Bool = false, completion: @escaping (JSON?, Int) -> (Void)) {
