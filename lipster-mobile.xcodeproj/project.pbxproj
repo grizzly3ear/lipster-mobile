@@ -67,6 +67,7 @@
 		D8799C8C22FD4ED300441E6F /* YourReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */; };
 		D8799C8E22FD51E800441E6F /* YourReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8799C8D22FD51E800441E6F /* YourReviewsTableViewCell.swift */; };
 		D89F35F92355C17400F0AF43 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89F35F82355C17400F0AF43 /* StoreViewController.swift */; };
+		D8B85A58235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B85A57235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift */; };
 		D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BA31BA224B898F00CD24A4 /* TabBarController.swift */; };
 		D8D45F8A2242789400405AE7 /* Lipstick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F892242789400405AE7 /* Lipstick.swift */; };
 		D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */; };
@@ -156,6 +157,7 @@
 		D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourReviewsTableViewController.swift; sourceTree = "<group>"; };
 		D8799C8D22FD51E800441E6F /* YourReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		D89F35F82355C17400F0AF43 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		D8B85A57235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRelatedTrendCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8BA31BA224B898F00CD24A4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D8D45F892242789400405AE7 /* Lipstick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lipstick.swift; sourceTree = "<group>"; };
 		D8D45F8B224278B900405AE7 /* LipstickListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickListTableViewCell.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				D80510502357749300A6227A /* TrendsCollectionViewCell.swift */,
 				300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */,
 				D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */,
+				D8B85A57235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				D8F4BD762338DAB500274B79 /* SearchTableViewCell.swift in Sources */,
 				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,
 				D826C444232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift in Sources */,
+				D8B85A58235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift in Sources */,
 				D80540352359B73000351C9B /* NewTrendGroupCollectionViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */,
 				D82B447B2306608F00876302 /* Store.swift in Sources */,
