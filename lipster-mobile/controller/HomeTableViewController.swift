@@ -7,59 +7,68 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
+import Hero
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
-    var trends: [Trend]?
-    var trendGroups : [TrendGroup]?
+    var trends = [Trend]()
+    var trendGroups = [TrendGroup]()
+    
+    let trendDataPipe = Signal<[TrendGroup], NoError>.pipe()
+    var trnedDataObserver: Signal<[TrendGroup], NoError>.Observer?
+    
+    let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
+        initReactive()
+        
+        TrendRepository.fetchAllTrendData { (trendGroups, _) in
+            self.trendDataPipe.input.send(value: trendGroups)
+        }
+        LipstickRepository.fetchAllLipstickData { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+    }
+ 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trendGroups.count
+    }
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "showTrendGroup", sender: self)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-     //   trendHeaderCollectionView.dataSource = self as! UICollectionViewDataSource
-       
-        trends = Trend.mockArrayData(size: 5)
-        trendGroups = TrendGroup.mockArrayData(size: 5)
-        
-        trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
-        showTabBar()
-    }
-
-    // MARK: - Table view data source
-
- 
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trendGroups!.count
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-        let trendGroup = trendGroups![indexPath.item]
-        //cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups![indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
-        cell.trendGroupTitle.text = trendGroup.name
-        //  cell.trendGroupHomeDescription.text = trendGroup.Detail
+        
+        let trendGroup = trendGroups[indexPath.item]
+        cell.trendGroup = trendGroup
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
         performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 300
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trends!.count
+        return trends.count
     }
     
     
@@ -74,8 +83,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         
-        let trend = trends![indexPath.item]
-        cell.trendImage.sd_setImage(with: URL(string: trends![indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
+        let trend = trends[indexPath.item]
+        cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
         cell.trendTitle.text = trend.title
         cell.TrendDescription.text = trend.detail
         return cell
@@ -86,7 +95,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
         let index = Int(round(proportionalOffset))
-        let safeIndex = max(0, min(trends!.count - 1, index))
+        let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
     
@@ -107,23 +116,56 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         if segueIdentifier == "showPinterest" {
             if let destination = segue.destination as? PinterestCollectionViewController {
                 let item = sender as! Int
-                destination.trendGroup = trendGroups![item]
+                destination.trendGroup = trendGroups[item]
                 
             }
         }
         else if segueIdentifier == "showTrendGroup" {
             if let destination = segue.destination as? NewTrendGroupViewController {
-                destination.trendGroups = trendGroups!
+                destination.trendGroups = trendGroups
             }
         }
         else if segueIdentifier == "showTrendDetail" {
             if let destination = segue.destination as? TrendDetailViewController {
                 let item = sender as! Int
-                destination.trend = trends![item]
+                destination.trend = trends[item]
             }
         }
     }
+}
+
+extension HomeTableViewController {
+    func initReactive() {
+        self.lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
+        })
         
+        self.lipstickDataPipe.output.observe(lipstickDataObserver!)
+        
+        self.trnedDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
+            self.trendGroups = trendGroups
+            
+            self.trendGroups.forEach { (trendGroup) in
+                if let trend = trendGroup.trends?.randomElement() {
+                    self.trends.append(trend)
+                }
+            }
+            
+            self.tableView.performBatchUpdates({
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }) { (_) in
+                
+            }
+            
+            self.trendHeaderCollectionView.performBatchUpdates({
+                self.trendHeaderCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+                
+            }
+        })
+        
+        self.trendDataPipe.output.observe(self.trnedDataObserver!)
+    }
 }
     
 

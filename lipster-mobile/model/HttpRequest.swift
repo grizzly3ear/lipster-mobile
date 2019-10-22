@@ -40,7 +40,7 @@ class HttpRequest {
     func checkResponse(response: DataResponse<Any>, completion: @escaping (JSON?, Int) -> (Void)) {
         guard response.result.isSuccess, let value = response.result.value else {
             let error = response.result.error
-            if let err = error as? URLError, err.code == .cannotConnectToHost || err.code == .notConnectedToInternet {
+            if let err = error as? URLError, err.code == .cannotConnectToHost || err.code == .notConnectedToInternet || err.code == .timedOut {
 
                 completion(nil, 0)
                 return

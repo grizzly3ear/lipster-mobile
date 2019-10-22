@@ -12,10 +12,19 @@ class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var trendGroupTitle: UILabel!
-    @IBOutlet weak var trendGroupDescription: UILabel!
+//    @IBOutlet weak var trendGroupDescription: UILabel!
     @IBOutlet weak var trendGroupImage: UIImageView!
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var blurViewEffect: UIVisualEffectView!
+    
+    var trendGroup: TrendGroup? {
+        didSet {
+            trendGroupTitle.text = trendGroup?.name
+            trendGroupImage.sd_setImage(with: URL(string: trendGroup!.image!), placeholderImage: UIImage(named: "nopic"))
+            trendGroupImage.contentMode = .scaleAspectFill
+//            trendGroupDescription.text = trendGroup?.trendDescription
+        }
+    }
     
     
     override func awakeFromNib() {
@@ -27,8 +36,8 @@ class HomeTableViewCell: UITableViewCell {
         roundCorners(cornerRadiusButtom: 20.0)
         blurBackground()
         dropShadow()
-//        cellView.dropShadow(color: .red, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 3, scale: true)
     }
+    
     func dropShadow(){
         let shadowSize : CGFloat = 10.0
        
@@ -43,19 +52,11 @@ class HomeTableViewCell: UITableViewCell {
     
         self.blurViewEffect.layer.cornerRadius = CGFloat(cornerRadiusButtom)
         self.clipsToBounds = true
-//        self.trendGroupImage.layer.maskedCorners = [.layerMaxXMinYCorner , .layerMinXMinYCorner]
         self.blurViewEffect.layer.maskedCorners = [ .layerMinXMaxYCorner , .layerMaxXMaxYCorner]
         
     }
     func blurBackground(){
         blurViewEffect.alpha = 1
-
-//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = blurViewEffect.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurViewEffect.addSubview(blurEffectView)
-
        
     }
   
