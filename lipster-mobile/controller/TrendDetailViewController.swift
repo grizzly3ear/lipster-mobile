@@ -9,6 +9,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
     @IBOutlet weak var trendDescription: UILabel!
+    @IBOutlet weak var trendDateUpdated: UILabel!
     
     @IBOutlet weak var trendImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
