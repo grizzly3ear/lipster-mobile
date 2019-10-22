@@ -50,8 +50,8 @@ class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , 
         if segueIdentifier == "showPinterest" {
             let item = sender as! Int
             print(item)
-            let destination = segue.destination as? PinterestViewController
-            destination?.trends = trendGroups[item].trends!
+            let destination = segue.destination as? PinterestCollectionViewController
+            destination?.trendGroup = trendGroups[item]
         }
     }
 

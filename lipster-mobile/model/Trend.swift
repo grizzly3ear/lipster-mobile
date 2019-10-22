@@ -86,4 +86,12 @@ class Trend: NSObject, NSCoding {
     public static func ==(lhs: Trend, rhs: Trend) -> Bool {
         return lhs.title == rhs.title && lhs.detail == rhs.detail && lhs.image == rhs.image && lhs.detail == rhs.detail
     }
+    
+    static func mockArrayData(size: Int) -> [Trend] {
+        var trends = [Trend]()
+        for i in 0..<size {
+            trends.append(Trend("Trend\(i)", "", .red, .orange, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"))
+        }
+        return trends
+    }
 }

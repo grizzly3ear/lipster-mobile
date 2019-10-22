@@ -13,30 +13,35 @@ class TrendGroup: NSObject, NSCoding {
     var name: String?
     var trends: [Trend]?
     var image: String?
+    var trendDescription: String?
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(image, forKey: "image")
         aCoder.encode(trends, forKey: "trends")
+        aCoder.encode(trendDescription, forKey: "trendDescription")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObject(forKey: "name") as! String
         let image = aDecoder.decodeObject(forKey: "image") as! String
         let trends = aDecoder.decodeObject(forKey: "trends") as! [Trend]
-        self.init(name, trends, image)
+        let trendDescription = aDecoder.decodeObject(forKey: "trendDescription") as! String
+        self.init(name, trends, image, trendDescription)
     }
     
-    init(_ name: String, _ trends: [Trend], _ image: String) {
+    init(_ name: String, _ trends: [Trend], _ image: String, _ trendDescription: String = "") {
         self.name = name
         self.trends = trends
         self.image = image
+        self.trendDescription = trendDescription
     }
     
     override init() {
         self.name = String()
         self.trends = [Trend]()
         self.image = String()
+        self.trendDescription = String()
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [TrendGroup] {
@@ -50,8 +55,9 @@ class TrendGroup: NSObject, NSCoding {
             let name = trendCollection["name"].stringValue
             let image = trendCollection["image"].stringValue
             let trends = Trend.makeArrayModelFromJSON(response: trendCollection["trends"])
+            let trendDescription = trendCollection["description"].stringValue
             
-            trendCollections.append(TrendGroup(name, trends, image))
+            trendCollections.append(TrendGroup(name, trends, image, trendDescription))
         }
         
         return trendCollections
@@ -67,5 +73,13 @@ class TrendGroup: NSObject, NSCoding {
     public static func setTrendGroupArrayToUserDefault(forKey: String, _ arr: [TrendGroup]) {
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: arr)
         UserDefaults.standard.set(encodedData, forKey: forKey)
+    }
+    
+    static func mockArrayData(size: Int) ->[TrendGroup]{
+        var trendGroups = [TrendGroup]()
+        for i in 0..<size {
+            trendGroups.append(TrendGroup("trendGroup\(i)", Trend.mockArrayData(size: 3), ""))
+        }
+        return trendGroups
     }
 }

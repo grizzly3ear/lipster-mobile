@@ -83,6 +83,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="QDj-Xo-Em6"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="lipListTableView" destination="wwH-Np-wde" id="fsS-G9-IsC"/>
@@ -622,263 +623,182 @@ Review</string>
             </objects>
             <point key="canvasLocation" x="-836" y="3492"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="DEA-kR-wGF">
+        <!--Home Table View Controller-->
+        <scene sceneID="fgu-FM-PgU">
             <objects>
-                <viewController id="Hxb-pv-PE7" customClass="HomeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Qq-Ul-KRJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                <tableViewController id="htU-JZ-NZg" customClass="HomeTableViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3xJ-NH-eEH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbM-Hq-1o2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDq-uS-5Dm">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_background" translatesAutoresizingMaskIntoConstraints="NO" id="CUP-u8-bzB">
-                                                <rect key="frame" x="0.0" y="-77" width="375" height="439"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="439" id="d2B-U6-qkc"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabledForSubviews" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
-                                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bs4-8R-zbL">
-                                                <rect key="frame" x="0.0" y="66" width="375" height="329"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="329" id="CFc-nW-Qvu"/>
-                                                </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JHL-Gd-Fxb">
-                                                    <size key="itemSize" width="333" height="295"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendsCollectionViewCell" id="tO7-OX-2O8" customClass="TrendsCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="17" width="333" height="295"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="295"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULw-Zb-G7y">
-                                                                    <rect key="frame" x="20" y="0.0" width="313" height="60"/>
-                                                                    <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
-                                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKY-JP-MN1">
-                                                                    <rect key="frame" x="20" y="56" width="293" height="54"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="54" id="8WP-ur-xAW"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-sv-i1h">
-                                                                    <rect key="frame" x="20" y="138" width="293.00000000000023" height="157"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="157" id="GU2-4q-MCR"/>
-                                                                        <constraint firstAttribute="width" constant="293" id="vsP-EN-JyU"/>
-                                                                    </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </view>
-                                                        <constraints>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="leading" secondItem="tO7-OX-2O8" secondAttribute="leadingMargin" constant="12" id="Af6-qS-FK2"/>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="centerX" secondItem="tO7-OX-2O8" secondAttribute="centerX" id="Bkw-wB-h0e"/>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="leading" secondItem="iTM-sv-i1h" secondAttribute="leading" id="E43-OE-Ah8"/>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="top" secondItem="tO7-OX-2O8" secondAttribute="topMargin" constant="48" id="JR0-7s-Rva"/>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="centerX" secondItem="iTM-sv-i1h" secondAttribute="centerX" id="Jtd-B9-oVp"/>
-                                                            <constraint firstAttribute="trailing" secondItem="ULw-Zb-G7y" secondAttribute="trailing" id="Wfh-HN-V3b"/>
-                                                            <constraint firstItem="iTM-sv-i1h" firstAttribute="top" secondItem="ULw-Zb-G7y" secondAttribute="bottom" constant="78" id="c4t-P5-gY9"/>
-                                                            <constraint firstItem="ULw-Zb-G7y" firstAttribute="top" secondItem="tO7-OX-2O8" secondAttribute="top" id="nqm-Bg-1u4"/>
-                                                            <constraint firstItem="iTM-sv-i1h" firstAttribute="top" secondItem="ZKY-JP-MN1" secondAttribute="bottom" constant="28" id="pB5-kJ-ljV"/>
-                                                            <constraint firstItem="ZKY-JP-MN1" firstAttribute="leading" secondItem="ULw-Zb-G7y" secondAttribute="leading" id="zFl-Zc-Il2"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="4" height="4"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="TrendDescription" destination="ZKY-JP-MN1" id="9S9-ut-0E4"/>
-                                                            <outlet property="trendImage" destination="iTM-sv-i1h" id="RrG-2V-fjN"/>
-                                                            <outlet property="trendTitle" destination="ULw-Zb-G7y" id="MjO-Y4-Hj5"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="Hxb-pv-PE7" id="vLs-b4-GCv"/>
-                                                    <outlet property="delegate" destination="Hxb-pv-PE7" id="bef-PZ-K8s"/>
-                                                </connections>
-                                            </collectionView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hAg-nd-Fcb" customClass="DynamicHeightCollectionView" customModule="lipster_mobile" customModuleProvider="target">
-                                                <rect key="frame" x="-2" y="438" width="379" height="164"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="164" id="ypS-XK-ld5"/>
-                                                </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="10" id="2oO-1n-tTf">
-                                                    <size key="itemSize" width="184" height="153"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendGroupCollectionViewcell" id="BxP-WT-168" customClass="TrendHomeCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="5.5" width="184" height="153"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="153"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-9R-EGW">
-                                                                    <rect key="frame" x="30" y="30" width="40" height="36"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </view>
-                                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OR214" translatesAutoresizingMaskIntoConstraints="NO" id="BNu-Tq-3oE">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="150"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                            <size key="value" width="4" height="4"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                            <real key="value" value="9"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                            <real key="value" value="3"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </view>
-                                                        <size key="customSize" width="184" height="153"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="trendHomeImageView" destination="BNu-Tq-3oE" id="zdQ-fr-4Vf"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="Hxb-pv-PE7" id="OCR-q2-GQJ"/>
-                                                    <outlet property="delegate" destination="Hxb-pv-PE7" id="0Ym-M7-nvU"/>
-                                                </connections>
-                                            </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="976-sM-97f">
-                                                <rect key="frame" x="280" y="409" width="57" height="30"/>
-                                                <state key="normal" title="Show all">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="seemoreButtonPress:" destination="Hxb-pv-PE7" eventType="touchUpInside" id="Mjd-sx-u6R"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nT-mf-Ij2">
-                                                <rect key="frame" x="0.0" y="-248" width="375" height="326"/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY TRENDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnK-8u-LSV">
-                                                <rect key="frame" x="16" y="409" width="181" height="27"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="181" id="kLk-f2-fLV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="top" secondItem="AnK-8u-LSV" secondAttribute="bottom" constant="2" id="1Rg-NP-dVm"/>
-                                            <constraint firstItem="8nT-mf-Ij2" firstAttribute="leading" secondItem="CUP-u8-bzB" secondAttribute="leading" id="3rA-5T-qIR"/>
-                                            <constraint firstItem="976-sM-97f" firstAttribute="top" secondItem="Bs4-8R-zbL" secondAttribute="bottom" constant="14" id="9A0-ud-blK"/>
-                                            <constraint firstItem="Bs4-8R-zbL" firstAttribute="top" secondItem="kDq-uS-5Dm" secondAttribute="top" constant="66" id="9a5-kv-fhl"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="bottom" secondItem="kDq-uS-5Dm" secondAttribute="bottomMargin" constant="-290" id="HWZ-RB-z4v"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="leading" secondItem="kDq-uS-5Dm" secondAttribute="leading" constant="-2" id="K0k-BM-yQv"/>
-                                            <constraint firstItem="976-sM-97f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kDq-uS-5Dm" secondAttribute="leading" constant="20" symbolic="YES" id="Lhr-8g-8DD"/>
-                                            <constraint firstItem="8nT-mf-Ij2" firstAttribute="leading" secondItem="Bs4-8R-zbL" secondAttribute="leading" id="TeI-eH-fnD"/>
-                                            <constraint firstAttribute="bottom" secondItem="8nT-mf-Ij2" secondAttribute="bottom" constant="822" id="X9g-0i-6Jt"/>
-                                            <constraint firstItem="976-sM-97f" firstAttribute="leading" secondItem="AnK-8u-LSV" secondAttribute="trailing" constant="83" id="bL1-7h-ett"/>
-                                            <constraint firstAttribute="trailing" secondItem="976-sM-97f" secondAttribute="trailing" constant="38" id="csf-iw-f3X"/>
-                                            <constraint firstAttribute="height" constant="900" id="d0P-19-sgi"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="centerX" secondItem="Bs4-8R-zbL" secondAttribute="centerX" id="jeu-Q0-3ac"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="centerX" secondItem="8nT-mf-Ij2" secondAttribute="centerX" id="mTs-yi-COs"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="centerX" secondItem="kDq-uS-5Dm" secondAttribute="centerX" id="pR5-wM-7Oy"/>
-                                            <constraint firstItem="976-sM-97f" firstAttribute="top" secondItem="CUP-u8-bzB" secondAttribute="bottom" constant="47" id="sHL-bX-sCa"/>
-                                            <constraint firstItem="AnK-8u-LSV" firstAttribute="top" secondItem="976-sM-97f" secondAttribute="top" id="sJD-JM-Fnr"/>
-                                            <constraint firstItem="8nT-mf-Ij2" firstAttribute="leading" secondItem="kDq-uS-5Dm" secondAttribute="leading" id="t48-ZX-1VZ"/>
-                                            <constraint firstItem="hAg-nd-Fcb" firstAttribute="centerX" secondItem="CUP-u8-bzB" secondAttribute="centerX" id="tz1-zg-Yjj"/>
-                                            <constraint firstItem="8nT-mf-Ij2" firstAttribute="top" secondItem="kDq-uS-5Dm" secondAttribute="top" constant="-248" id="xvl-Qh-dY6"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="kDq-uS-5Dm" secondAttribute="trailing" id="5Yj-gv-b4D"/>
-                                    <constraint firstAttribute="bottom" secondItem="kDq-uS-5Dm" secondAttribute="bottom" id="6wI-t7-PLs"/>
-                                    <constraint firstItem="kDq-uS-5Dm" firstAttribute="leading" secondItem="wbM-Hq-1o2" secondAttribute="leading" id="DLr-Rj-jLH"/>
-                                    <constraint firstItem="kDq-uS-5Dm" firstAttribute="top" secondItem="wbM-Hq-1o2" secondAttribute="top" id="zIu-bz-Zoh"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="wbM-Hq-1o2" firstAttribute="leading" secondItem="0Qq-Ul-KRJ" secondAttribute="leading" id="5Lv-HJ-Wau"/>
-                            <constraint firstItem="wbM-Hq-1o2" firstAttribute="top" secondItem="0Qq-Ul-KRJ" secondAttribute="top" id="GSz-9I-Od3"/>
-                            <constraint firstItem="JOG-pq-sK5" firstAttribute="trailing" secondItem="wbM-Hq-1o2" secondAttribute="trailing" id="U4Y-bN-cgy"/>
-                            <constraint firstItem="JOG-pq-sK5" firstAttribute="bottom" secondItem="wbM-Hq-1o2" secondAttribute="bottom" id="fjE-hQ-vxa"/>
-                            <constraint firstItem="kDq-uS-5Dm" firstAttribute="width" secondItem="0Qq-Ul-KRJ" secondAttribute="width" id="oo1-5d-rvg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JOG-pq-sK5"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="iEC-Ag-3N8">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Vwm-h1-v8Y"/>
-                    </navigationItem>
-                    <size key="freeformSize" width="375" height="900"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="MNU-eS-o8o">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home_background" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-Kp-K8h">
+                                    <rect key="frame" x="0.0" y="-156" width="375" height="513"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9D8-ya-ZAC">
+                                    <rect key="frame" x="0.0" y="33" width="375" height="474"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ngp-HZ-FQO">
+                                        <size key="itemSize" width="355" height="442"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendsCollectionViewCell" id="iFf-b6-jgO" customClass="TrendsCollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="16" width="355" height="442"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="442"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="lyg-1r-0Sn">
+                                                        <rect key="frame" x="22" y="172" width="313" height="250"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trend Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P43-3R-diY">
+                                                        <rect key="frame" x="29" y="73" width="274" height="84"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trend Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="814-z8-ce0">
+                                                        <rect key="frame" x="29" y="30" width="274" height="38"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </view>
+                                            <size key="customSize" width="355" height="442"/>
+                                            <connections>
+                                                <outlet property="TrendDescription" destination="P43-3R-diY" id="baH-H3-2UL"/>
+                                                <outlet property="trendImage" destination="lyg-1r-0Sn" id="2gE-lo-OtO"/>
+                                                <outlet property="trendTitle" destination="814-z8-ce0" id="TuM-wp-GQO"/>
+                                            </connections>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="htU-JZ-NZg" id="vYT-tj-Ewb"/>
+                                        <outlet property="delegate" destination="htU-JZ-NZg" id="ny8-ir-sNk"/>
+                                    </connections>
+                                </collectionView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TODAY TRENDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJF-R9-ISy">
+                                    <rect key="frame" x="8" y="520" width="157" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyv-a0-8LL">
+                                    <rect key="frame" x="286" y="515" width="57" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Show all">
+                                        <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="seemoreButtonPress:" destination="htU-JZ-NZg" eventType="touchUpInside" id="IPM-LI-qdK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" rowHeight="300" id="xkx-lW-HK0" customClass="HomeTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="577" width="375" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xkx-lW-HK0" id="lNj-Og-ub1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0MQ-8F-IzC">
+                                            <rect key="frame" x="34" y="11" width="306" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" translatesAutoresizingMaskIntoConstraints="NO" id="N1Y-ab-rpG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="306" height="275"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s26-pI-pLG">
+                                                    <rect key="frame" x="0.0" y="209" width="306" height="77"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="WSP-nb-toq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="306" height="77"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TrendGroup name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBe-C0-tES">
+                                                                <rect key="frame" x="13" y="28" width="280" height="21"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <blurEffect style="extraLight"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="2" height="-2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </visualEffectView>
+                                            </subviews>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="blurView" destination="WSP-nb-toq" id="yBx-i7-SFT"/>
+                                    <outlet property="blurViewEffect" destination="s26-pI-pLG" id="oBK-ph-OHO"/>
+                                    <outlet property="cellView" destination="0MQ-8F-IzC" id="HgX-YR-ML4"/>
+                                    <outlet property="trendGroupImage" destination="N1Y-ab-rpG" id="6zd-6c-Ngh"/>
+                                    <outlet property="trendGroupTitle" destination="SBe-C0-tES" id="JeL-B6-owp"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="htU-JZ-NZg" id="PW5-Lg-Lfm"/>
+                            <outlet property="delegate" destination="htU-JZ-NZg" id="Dj4-1k-MwQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rfm-pP-PkM"/>
                     <connections>
-                        <outlet property="blackBackground" destination="CUP-u8-bzB" id="GnQ-T3-e3b"/>
-                        <outlet property="collectionViewLayout" destination="JHL-Gd-Fxb" id="z9a-bJ-22L"/>
-                        <outlet property="leftButtonBarItem" destination="Vwm-h1-v8Y" id="voD-eo-Ao7"/>
-                        <outlet property="scrollView" destination="wbM-Hq-1o2" id="w30-gP-4fY"/>
-                        <outlet property="trendGroupCollectionView" destination="hAg-nd-Fcb" id="7mZ-Ja-bzO"/>
-                        <outlet property="trendsCollectionView" destination="Bs4-8R-zbL" id="XJg-EE-l2n"/>
-                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="wGH-AF-6ic"/>
-                        <segue destination="MP0-Jk-aHL" kind="show" identifier="showTrendGroup" id="qyJ-4W-VBh"/>
-                        <segue destination="Zdi-WH-zBq" kind="show" identifier="showTrendList" id="40V-0t-UaZ"/>
+                        <outlet property="collectionViewLayout" destination="ngp-HZ-FQO" id="pyt-7q-IFj"/>
+                        <outlet property="trendHeaderCollectionView" destination="9D8-ya-ZAC" id="XmK-R8-E5e"/>
+                        <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendDetail" id="gj5-Ab-Cu1"/>
+                        <segue destination="MP0-Jk-aHL" kind="show" identifier="showTrendGroup" id="mJR-fu-dSs"/>
+                        <segue destination="Zdi-WH-zBq" kind="show" identifier="showPinterest" id="fkk-Yh-5P5"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wrd-tO-hBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gs2-8x-kPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="735"/>
+            <point key="canvasLocation" x="-671.20000000000005" y="626.53673163418296"/>
         </scene>
         <!--New Trend Group View Controller-->
         <scene sceneID="rzr-cc-aNG">
@@ -894,7 +814,6 @@ Review</string>
                                 <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                 <connections>
                                     <action selector="goBack:" destination="IJv-iU-eYg" eventType="touchUpInside" id="NZS-fQ-PoH"/>
-                                    <action selector="goBack:" destination="htF-Bx-EM2" eventType="touchUpInside" id="VEM-TJ-RJP"/>
                                     <action selector="goBack:" destination="MP0-Jk-aHL" eventType="touchUpInside" id="cgD-dr-EQn"/>
                                 </connections>
                             </button>
@@ -967,118 +886,7 @@ Review</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D98-fh-JOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IJv-iU-eYg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="627"/>
-        </scene>
-        <!--Trend Group View Controller-->
-        <scene sceneID="05t-CG-D7a">
-            <objects>
-                <viewController id="htF-Bx-EM2" customClass="TrendGroupViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vXY-Oo-juV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dyw-Nw-UVC">
-                                <rect key="frame" x="0.0" y="68" width="375" height="570"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrendGroupTableViewCell" rowHeight="210" id="Uuz-2l-rug" customClass="TrendGroup2TableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="210"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uuz-2l-rug" id="UER-CZ-ZZR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L00-gI-Dio">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8p-gj-e4H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trend Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-OQ-6Al">
-                                                            <rect key="frame" x="18" y="15" width="323" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H3m-z9-aFw">
-                                                            <rect key="frame" x="42" y="53" width="274" height="136"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="nw4-w8-UKc">
-                                                                <size key="itemSize" width="65" height="144"/>
-                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            </collectionViewFlowLayout>
-                                                            <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrendGroupCollectionViewCell" id="yqj-d6-cWU" customClass="TrendGroup2CollectionViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="144"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="144"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcl-Up-cnW">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="65" height="144"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                            </imageView>
-                                                                        </subviews>
-                                                                    </view>
-                                                                    <connections>
-                                                                        <outlet property="trendImage" destination="Bcl-Up-cnW" id="ILe-nl-Qmf"/>
-                                                                    </connections>
-                                                                </collectionViewCell>
-                                                            </cells>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                    <real key="value" value="13"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <outlet property="dataSource" destination="htF-Bx-EM2" id="pdt-zb-5PZ"/>
-                                                                <outlet property="delegate" destination="htF-Bx-EM2" id="G92-sg-NUh"/>
-                                                            </connections>
-                                                        </collectionView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="trendCollectionView" destination="H3m-z9-aFw" id="JkV-Wj-EeT"/>
-                                            <outlet property="trendGroupImage" destination="L00-gI-Dio" id="6ue-yZ-8XQ"/>
-                                            <outlet property="trendName" destination="dhW-OQ-6Al" id="0rB-xe-GZp"/>
-                                            <outlet property="trendView" destination="G8p-gj-e4H" id="bGk-e2-mtP"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="htF-Bx-EM2" id="pUN-QH-ung"/>
-                                    <outlet property="delegate" destination="htF-Bx-EM2" id="KVE-Hv-uJF"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agR-Pp-bku">
-                                <rect key="frame" x="16" y="21" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="baseline_chevron_left_black_48pt"/>
-                                <connections>
-                                    <action selector="goBack:" destination="htF-Bx-EM2" eventType="touchUpInside" id="ckX-LS-vPv"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ejs-1v-FE6"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kDW-wE-LmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5284" y="840"/>
+            <point key="canvasLocation" x="-1818" y="1860"/>
         </scene>
         <!--Pinterest Collection View Controller-->
         <scene sceneID="fpq-XC-soL">
@@ -1717,6 +1525,7 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRP-33-jTt"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Yeg-6s-PFU"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -1733,7 +1542,7 @@ Review</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9h-NQ-45O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="780"/>
+            <point key="canvasLocation" x="2281" y="48"/>
         </scene>
         <!--NOTIFICATION-->
         <scene sceneID="b0S-wl-U9s">
@@ -2243,7 +2052,7 @@ Review</string>
         <!--HOME-->
         <scene sceneID="60s-v5-ccA">
             <objects>
-                <navigationController storyboardIdentifier="HomeViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="DBc-ud-dgg" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeTableViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="DBc-ud-dgg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="HOME" id="Tdj-dx-EV6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hzs-7l-UgE">
@@ -2254,12 +2063,12 @@ Review</string>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="Hxb-pv-PE7" kind="relationship" relationship="rootViewController" id="ym0-2q-SeF"/>
+                        <segue destination="htU-JZ-NZg" kind="relationship" relationship="rootViewController" id="l45-yF-tIY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10Y-oL-ZBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1686" y="630"/>
+            <point key="canvasLocation" x="-1687" y="627"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="wdB-I7-qPR">
@@ -2953,7 +2762,6 @@ Review</string>
     </scenes>
     <resources>
         <image name="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" width="841" height="442"/>
-        <image name="OR214" width="450" height="450"/>
         <image name="backButton" width="128" height="128"/>
         <image name="baseline_chevron_left_black_48pt" width="48" height="48"/>
         <image name="baseline_chevron_left_white_48pt" width="48" height="48"/>
@@ -3001,8 +2809,9 @@ Review</string>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
+        <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
-        <segue reference="40V-0t-UaZ"/>
+        <segue reference="fkk-Yh-5P5"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
