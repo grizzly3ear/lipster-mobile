@@ -70,7 +70,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         return CGSize(width: 166.0, height: 250.0)
     }
       
-    @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
+    @IBAction func onShowAllLipstickButtonPress(_ sender: Any?) {
         let colorSelect = trendLipColorView.backgroundColor!
 
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
@@ -85,9 +85,15 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
         let color = sender as? UIColor
         if let destination = segue.destination as? LipstickListViewController {
             destination.lipHexColor = color?.toHex()
+        } else if segueIdentifier == "showLipstickDetail" {
+            if let destination = segue.destination as? LipstickDetailViewcontroller{
+                let item = sender as! Int
+                destination.lipstick = lipsticks![item]
+            }
         }
     }
 }
