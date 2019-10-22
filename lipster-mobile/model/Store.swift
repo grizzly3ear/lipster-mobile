@@ -20,9 +20,10 @@ class Store {
     var latitude : Double
     var longitude : Double
     var phoneNumber : String
+    var branch : String
     
     
-    init(id: Int, storeLogoImage: String , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double , storePhoneNumber : String) {
+    init(id: Int, storeLogoImage: String , storeName : String , storeHours : String , storeAddress : String , storeLatitude : Double , storeLongitude : Double , storePhoneNumber : String , storeBranch : String = "") {
         self.id = id
         self.image = storeLogoImage
         self.name = storeName
@@ -31,6 +32,7 @@ class Store {
         self.latitude = storeLatitude
         self.longitude = storeLongitude
         self.phoneNumber = storePhoneNumber
+        self.branch = storeBranch
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [Store] {
@@ -53,7 +55,9 @@ class Store {
                 let addressDetail = storeAddress["address_detail"].stringValue
                 let period = storeAddress["period"].stringValue
                 let tel = storeAddress["tel"].stringValue
-                stores.append(Store(id: id, storeLogoImage: image, storeName: name, storeHours: period, storeAddress: addressDetail, storeLatitude: latitude, storeLongitude: longtitude, storePhoneNumber: tel))
+                
+                let branch = storeAddress["name"].stringValue
+                stores.append(Store(id: id, storeLogoImage: image, storeName: name, storeHours: period, storeAddress: addressDetail, storeLatitude: latitude, storeLongitude: longtitude, storePhoneNumber: tel , storeBranch: branch))
             }
         }
         return stores

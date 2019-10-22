@@ -7,6 +7,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var storeHours: UILabel!
     @IBOutlet weak var storeAddress: UILabel!
     @IBOutlet weak var storePhoneNumber: UILabel!
+    
     @IBOutlet weak var titleNavigation: UINavigationItem!
     @IBOutlet weak var blackView: UIView!
     var storeDetail: Store?
@@ -14,6 +15,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
+    @IBOutlet weak var lipstickColor: UILabel!
     @IBOutlet weak var lipstickPrice: UILabel!
     
     var lipstickStore: Lipstick!
@@ -25,7 +27,8 @@ class StoreViewController: UIViewController {
         
         lipstickBrand.text = lipstickStore?.lipstickBrand
         lipstickName.text = lipstickStore?.lipstickName
-      //  lipstickImage.sd_setImage(with: URL(string: (lipstick?.lipstickImage)!), placeholderImage: UIImage(named: "nopic")!)
+        lipstickImage.sd_setImage(with: URL(string: (lipstickStore!.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
+
         
         storeName.text = storeDetail!.name
         storeImageView.sd_setImage(with: URL(string: (storeDetail?.image)!), placeholderImage: UIImage(named: "nopic")!)
