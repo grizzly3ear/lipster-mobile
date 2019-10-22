@@ -16,10 +16,13 @@ class LipstickListViewController: UITableViewController  {
 
     @IBOutlet var lipListTableView: UITableView!
     
+    @IBOutlet weak var customTitle: UILabel!
+    
     var lipHexColor: String?
     var searchController : UISearchController!
     var resultController = UITableViewController()
     var lipstickList = [Lipstick]()
+    var customTitleString: String?
     
     let lipstickListPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickListObserver: Signal<[Lipstick], NoError>.Observer?
@@ -27,15 +30,16 @@ class LipstickListViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initReactiveLipstickList()
-        lipListTableView.delegate = self
-        lipListTableView.dataSource = self
-        
         initHero()
+        initReactiveLipstickList()
+        
         tableView.contentInsetAdjustmentBehavior = .never
         if self.lipHexColor != nil {
+            print("fetchData")
             fetchData()
+        }
+        if let title = customTitleString {
+            customTitle.text = title
         }
         reloadData()
         
@@ -94,10 +98,9 @@ extension LipstickListViewController {
         cell.hero.isEnabled = true
         cell.hero.modifiers = [
             .whenPresenting(
-                .delay(Double(indexPath.row) * 0.1),
+                .translate(y: CGFloat(500 + (Double(indexPath.item) * 30))),
                 .fade,
-                .translate(y: CGFloat(500 + (indexPath.item * 50))),
-                .spring(stiffness: 100, damping: 17)
+                .spring(stiffness: 100, damping: 15)
             )
         ]
         
@@ -112,65 +115,11 @@ extension LipstickListViewController {
     }
 }
 
-// logo and NavBar
-extension LipstickListViewController{
-    
-    func addNavBarImage(){
-        let navController = navigationController!
-        let image = UIImage(named: "logo-3")
-        let imageView = UIImageView(image : image)
-        
-        let bannerWidth = navController.navigationBar.frame.size.width
-        let bannerHeight = navController.navigationBar.frame.size.height
-        
-        let bannerX = (bannerWidth / 2 ) - (image!.size.width / 2 )
-        let bannerY = (bannerHeight / 2 ) - (image!.size.height / 2 )
-        
-        imageView.frame = CGRect( x : bannerX, y: bannerY , width: bannerWidth , height : bannerHeight)
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView  = imageView
-    }
-
-}
-extension LipstickListViewController : UISearchControllerDelegate , UISearchBarDelegate{
-    
-    func searchBarLip() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
-        
-        if #available(iOS 11.0, *) {
-            let search = UISearchController(searchResultsController: nil)
-            search.delegate = self
-            let searchBackground = search.searchBar
-            searchBackground.placeholder = "Brand, Color, ..."
-            
-            if let textfield = searchBackground.value(forKey: "searchField") as? UITextField {
-                textfield.textColor = UIColor.black
-                if let backgroundview = textfield.subviews.first {
-                    
-                    backgroundview.backgroundColor = UIColor.white
-                    
-                    backgroundview.layer.cornerRadius = 10;
-                    backgroundview.clipsToBounds = true;
-                }
-            }
-            
-            if let navigationbar = self.navigationController?.navigationBar {
-                navigationbar.barTintColor = UIColor.black
-            }
-            navigationItem.searchController = search
-            navigationItem.hidesSearchBarWhenScrolling = false
-        }
-    }
-}
-
 // MARK: Reactive init
 extension LipstickListViewController {
     func initReactiveLipstickList() {
         lipstickListObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             self.lipstickList = lipsticks
-            print(lipsticks.count)
             self.lipListTableView.reloadData()
             self.lipListTableView.layoutIfNeeded()
             self.reloadData()

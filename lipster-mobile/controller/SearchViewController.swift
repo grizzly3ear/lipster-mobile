@@ -70,6 +70,10 @@ class SearchViewController: UIViewController {
         searchHistoryCollectionView.reloadData()
         initReactiveLipstickData()
         hideTableView()
+        
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .lightGray
+        searchResultTableView.tableFooterView = footer
     }
     
     func createStoreLipstickArray() -> [Store] {
@@ -109,11 +113,11 @@ class SearchViewController: UIViewController {
             let lipsticks = sender as! [Lipstick]
             let destination = segue.destination as! LipstickListViewController
             destination.lipstickList = lipsticks
+            destination.customTitleString = "Search Result For: "
         }
         if identifier == "showStoreDetail" {
             let store = (sender as! [Store]).first!
             let destination = segue.destination as! StoreViewController
-            print(store.address)
             destination.storeDetail = store
         }
     }
@@ -161,6 +165,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if collectionView == searchHistoryCollectionView {
             self.searchTextField.text = searchHistory[indexPath.item]
             filter(searchHistory[indexPath.item])
+            print(searchHistory[indexPath.item])
             hideCollectionView()
             searchResultTableView.reloadData()
             self.searchTextField.becomeFirstResponder()
@@ -233,7 +238,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        searchFilterDictionary.removeAll()
+        
         if var text = textField.text {
             if string == "" {
                 text.removeLast()
@@ -248,6 +253,7 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func filter(_ text: String) {
+        self.searchFilterDictionary.removeAll()
         for lipstick in searchLipsticks {
             insertData(key: lipstick.lipstickBrand, keyword: text, obj: lipstick)
             insertData(key: lipstick.lipstickName, keyword: text, obj: lipstick)
@@ -260,14 +266,16 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func insertData(key: String, keyword: String, obj: Any, repeatable: Bool = false) {
-        if repeatable && key.lowercased().contains(keyword.lowercased()) {
+        if !repeatable && key.lowercased().contains(keyword.lowercased()) {
+            print("unrepeatable")
             if var existData = searchFilterDictionary[key] {
                 existData.append(obj)
                 searchFilterDictionary[key] = existData
             } else {
                 searchFilterDictionary[key] = [obj]
             }
-        } else {
+        } else if key.lowercased().contains(keyword.lowercased()) {
+            print("repeatable")
             if let store = obj as? Store {
                 searchFilterDictionary["\(store.name) - \(store.address)"] = [obj]
             } else {
