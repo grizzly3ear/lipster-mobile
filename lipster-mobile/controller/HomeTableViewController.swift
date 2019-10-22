@@ -27,6 +27,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         trendGroups = TrendGroup.mockArrayData(size: 5)
         
         trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
+        showTabBar()
     }
 
     // MARK: - Table view data source
@@ -104,9 +105,10 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         let segueIdentifier = segue.identifier
         
         if segueIdentifier == "showPinterest" {
-            if let destination = segue.destination as? PinterestViewController {
+            if let destination = segue.destination as? PinterestCollectionViewController {
                 let item = sender as! Int
-                destination.trends = trendGroups![item].trends!
+                destination.trendGroup = trendGroups![item]
+                
             }
         }
         else if segueIdentifier == "showTrendGroup" {

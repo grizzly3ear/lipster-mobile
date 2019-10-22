@@ -73,8 +73,9 @@ class ProfileViewController: UIViewController {
             destination.lipstickList = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipsticksHistory).reversed()
         }
         if segue.identifier == "showFavoriteTrend"{
-            let destination = segue.destination as! PinterestViewController
-            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
+            let destination = segue.destination as! PinterestCollectionViewController
+//            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
+            destination.trendGroup = TrendGroup("Favorite Trends", Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed(), "")
         }
     }
     

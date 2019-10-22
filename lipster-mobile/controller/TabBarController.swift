@@ -19,7 +19,7 @@ class TabBarController: ESTabBarController {
         
         var uiviewControllers = [UIViewController]()
         let pageArray = [
-            "Home",
+            "HomeTable",
             "Search",
             "LipColorDetection",
             "Notification",
