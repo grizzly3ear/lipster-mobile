@@ -5588,7 +5588,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 4F52BC7575BDD85A603E1E383A38F566 /* Products */;
@@ -7210,6 +7209,22 @@
 			};
 			name = Release;
 		};
+		1009F60372520D67EC5E1D6C71BDCB9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C18DB58596B48EC6116E92C3F9A35D8 /* FirebaseMLVisionFaceModel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMLVisionFaceModel";
+				INFOPLIST_FILE = "Target Support Files/FirebaseMLVisionFaceModel/ResourceBundle-GoogleMVFaceDetectorResources-FirebaseMLVisionFaceModel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = GoogleMVFaceDetectorResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		117B01B56BEABAFE4865A98B52D24363 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C97DFF063FB07F639112B68452B398F /* Result.xcconfig */;
@@ -7333,23 +7348,6 @@
 			};
 			name = Release;
 		};
-		1B9CC4948BF61D373F0689DF518D3494 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C18DB58596B48EC6116E92C3F9A35D8 /* FirebaseMLVisionFaceModel.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMLVisionFaceModel";
-				IBSC_MODULE = FirebaseMLVisionFaceModel;
-				INFOPLIST_FILE = "Target Support Files/FirebaseMLVisionFaceModel/ResourceBundle-GoogleMVFaceDetectorResources-FirebaseMLVisionFaceModel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = GoogleMVFaceDetectorResources;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		203BF4A19C9A042FA192D8CC86F15B0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E845D31212A37E7C3F865399E7A975E /* FirebaseAnalytics.xcconfig */;
@@ -7364,6 +7362,22 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		21E96FD01828F447A02190A0C49A70C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C18DB58596B48EC6116E92C3F9A35D8 /* FirebaseMLVisionFaceModel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMLVisionFaceModel";
+				INFOPLIST_FILE = "Target Support Files/FirebaseMLVisionFaceModel/ResourceBundle-GoogleMVFaceDetectorResources-FirebaseMLVisionFaceModel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = GoogleMVFaceDetectorResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -8895,23 +8909,6 @@
 			};
 			name = Debug;
 		};
-		CF39FA68D65DF3AF2705EC860A7F9A82 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C18DB58596B48EC6116E92C3F9A35D8 /* FirebaseMLVisionFaceModel.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FirebaseMLVisionFaceModel";
-				IBSC_MODULE = FirebaseMLVisionFaceModel;
-				INFOPLIST_FILE = "Target Support Files/FirebaseMLVisionFaceModel/ResourceBundle-GoogleMVFaceDetectorResources-FirebaseMLVisionFaceModel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = GoogleMVFaceDetectorResources;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		CFEDD276450EBBF0540F30C3243B02FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C92788181C4DB5842ADFE1D244F6032 /* ESTabBarController-swift.xcconfig */;
@@ -9459,8 +9456,8 @@
 		089745B2E627E50822E3EE67A0ED2275 /* Build configuration list for PBXNativeTarget "FirebaseMLVisionFaceModel-GoogleMVFaceDetectorResources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CF39FA68D65DF3AF2705EC860A7F9A82 /* Debug */,
-				1B9CC4948BF61D373F0689DF518D3494 /* Release */,
+				1009F60372520D67EC5E1D6C71BDCB9E /* Debug */,
+				21E96FD01828F447A02190A0C49A70C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
