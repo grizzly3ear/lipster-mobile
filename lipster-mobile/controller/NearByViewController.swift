@@ -39,6 +39,7 @@ class NearByViewController: UIViewController   {
     
     @IBOutlet weak var topView : UIView!
     
+    @IBOutlet weak var countStore: UILabel!
     
     let padding: CGFloat = 20.0
     
@@ -69,6 +70,8 @@ class NearByViewController: UIViewController   {
         }
         myCoorButton.layer.cornerRadius = 5.0
         myCoorButton.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: 1, height: 1), radius: 2, scale: true)
+        
+        countStore.text = "\(stores.count) store"
     }
     @IBAction func goBack(_ sender: Any) {
         hero.dismissViewController()
@@ -254,6 +257,8 @@ extension NearByViewController {
                 $0.longitude <= 180 &&
                 $0.longitude >= -180
             }
+            
+            self.countStore.text = "\(stores.count) store\(stores.count > 1 ? "s" : "")"
             
             self.mapCollectionView.reloadData()
             self.mapCollectionView.setNeedsLayout()
