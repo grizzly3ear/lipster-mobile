@@ -37,6 +37,7 @@ class LipstickRepository {
         ) { (response, status) -> (Void) in
             if response == nil {
                 completion(false, status)
+                return
             }
             completion(true, status)
         }

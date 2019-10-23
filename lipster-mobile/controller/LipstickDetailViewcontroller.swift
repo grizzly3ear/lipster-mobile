@@ -49,6 +49,13 @@ class LipstickDetailViewcontroller: UIViewController {
     var colors: [Lipstick] = [Lipstick]()
     var imageHeroId = String()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        }
+        return .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -27,6 +27,12 @@ class LipstickListViewController: UITableViewController  {
     let lipstickListPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickListObserver: Signal<[Lipstick], NoError>.Observer?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        }
+        return .default
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +41,16 @@ class LipstickListViewController: UITableViewController  {
         
         tableView.contentInsetAdjustmentBehavior = .never
         if self.lipHexColor != nil {
-            print("fetchData")
             fetchData()
         }
         if let title = customTitleString {
             customTitle.text = title
         }
-        reloadData()
         
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .white
+        tableView.tableFooterView = footer
+        reloadData()
     }
     
     func reloadData() {
@@ -96,6 +104,11 @@ extension LipstickListViewController {
         let lipstick = lipstickList[indexPath.item]
         cell.setLipstick(lipstick: lipstick)
         cell.hero.isEnabled = true
+        
+        let selectedBackgroundView = UIView(frame: .zero)
+        selectedBackgroundView.backgroundColor = .lightGray
+        
+        cell.selectedBackgroundView = selectedBackgroundView
         cell.hero.modifiers = [
             .whenPresenting(
                 .translate(y: CGFloat(500 + (Double(indexPath.item) * 30))),
@@ -113,6 +126,24 @@ extension LipstickListViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let lipstick = lipstickList[indexPath.item]
+        let state = Lipstick.isLipstickFav(lipstick)
+        let title = state ? "REMOVE" : "ADD"
+        let imageName = state ? "favoritePopup" : "favoritePopup"
+        let action = UIContextualAction(style: .normal, title: title) { (action, view, completion) in
+            Lipstick.toggleFavLipstick(lipstick)
+            completion(true)
+        }
+        let image = UIImage(named: imageName)
+        let resizeImage = image?.sd_resizedImage(with: CGSize(width: 36, height: 36), scaleMode: .aspectFill)
+        action.image = resizeImage
+        action.backgroundColor = state ? .black : .systemRed
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        return configuration
+    }
 }
 
 // MARK: Reactive init
@@ -129,9 +160,12 @@ extension LipstickListViewController {
 }
 
 extension LipstickListViewController {
+    
+}
+
+extension LipstickListViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.lipListTableView.hero.modifiers = [.cascade]
-        print("hero")
     }
 }
