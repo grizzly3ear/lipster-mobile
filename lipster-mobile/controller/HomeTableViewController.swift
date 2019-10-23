@@ -15,8 +15,10 @@ import FAPaginationLayout
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
+    
     
     var trends = [Trend]()
     var trendGroups = [TrendGroup]()
@@ -27,23 +29,53 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
+    let refresher: UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .white
+        refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+        return refreshControl
+    }()
+    
+   
+    @objc func requestData(sender : UIRefreshControl){
+        print("requestData")
+        var headerState = false
+        var contentState = false
+        
+        trendHeaderCollectionView.performBatchUpdates({
+            trendHeaderCollectionView.reloadSections(IndexSet(integer: 0))
+        }) { (_) in
+            
+        }
+        tableView.performBatchUpdates({
+            tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+        }) { (_) in
+            
+        }
+        
+        //refresher.endRefreshing()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-        //collectionViewLayout.minimumLineSpacing = 2.0
-        trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
-
-        trendHeaderCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-        trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
-        initReactive()
+            tableView.refreshControl = refresher
         
-        TrendRepository.fetchAllTrendData { (trendGroups, _) in
-            self.trendDataPipe.input.send(value: trendGroups)
-        }
-        LipstickRepository.fetchAllLipstickData { (lipsticks) in
-            self.lipstickDataPipe.input.send(value: lipsticks)
-        }
+      //  self.topView.addSubview(HeaderView(frame: self.topView.bounds))
+        
+            //collectionViewLayout.minimumLineSpacing = 2.0
+            trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+
+            trendHeaderCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
+            initReactive()
+            
+            TrendRepository.fetchAllTrendData { (trendGroups, _) in
+                self.trendDataPipe.input.send(value: trendGroups)
+            }
+            LipstickRepository.fetchAllLipstickData { (lipsticks) in
+                self.lipstickDataPipe.input.send(value: lipsticks)
+            }
     }
  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -219,7 +251,5 @@ extension HomeTableViewController {
         self.trendDataPipe.output.observe(self.trnedDataObserver!)
     }
 }
-    
-
 
 
