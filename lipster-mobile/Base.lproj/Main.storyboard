@@ -2002,14 +2002,6 @@ Review</string>
                                     <action selector="goBack:" destination="CzO-UI-R6t" eventType="touchUpInside" id="ULP-ze-9uw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQS-lk-7If">
-                                <rect key="frame" x="208" y="523" width="55" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="googleAccount"/>
-                                <connections>
-                                    <action selector="onPressfacebookButton:" destination="CzO-UI-R6t" eventType="touchUpInside" id="2h5-8o-HWd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ajw-jD-xZo"/>
@@ -2552,7 +2544,7 @@ Review</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-eK-Jgg">
                                                 <rect key="frame" x="97" y="43" width="181" height="180"/>
@@ -2586,7 +2578,7 @@ Review</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-yW-lf1">
-                                                <rect key="frame" x="0.0" y="492" width="375" height="194"/>
+                                                <rect key="frame" x="0.0" y="492" width="375" height="258"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMB-Jw-T9p">
                                                         <rect key="frame" x="0.0" y="0.0" width="750" height="259"/>
@@ -3223,6 +3215,7 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NoJ-hS-Tb5"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="Rqr-p9-s19"/>
