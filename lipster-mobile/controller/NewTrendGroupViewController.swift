@@ -10,12 +10,14 @@ import UIKit
 
 class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var trendGroupsCollectionView: UICollectionView!
     var trendGroups = [TrendGroup]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        trendGroupsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
