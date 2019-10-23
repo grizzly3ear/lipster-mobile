@@ -18,7 +18,6 @@ class LipstickListTableViewCell: UITableViewCell {
     
     
     func setLipstick(lipstick: Lipstick) {
-        print(lipstick.lipstickImage)
         lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
         lipBrandLabel.text = lipstick.lipstickBrand
         lipNameLabel.text = lipstick.lipstickName

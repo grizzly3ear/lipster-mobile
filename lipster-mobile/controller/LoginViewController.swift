@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var rightLine: UIImageView!
     @IBOutlet weak var lineLabel: UILabel!
     
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -34,19 +33,23 @@ class LoginViewController: UIViewController {
         usernameTextField.enablesReturnKeyAutomatically = true
         passwordTextField.delegate = self
         usernameTextField.delegate = self
-        
     }
     
     @IBAction func signUpButtonAction(_ sender: Any) {
         self.performSegue(withIdentifier: "showSignUp", sender: self)
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
+    
+    
     @IBAction func loginButtonAction(_ sender: Any) {
         UserRepository.authenticate(
             email: usernameTextField.text ?? "",
             password: passwordTextField.text ?? "") { status, messages in
                 if status == 200 {
-                    self.performSegue(withIdentifier: "showHomePage", sender: self)
+                    self.hero.dismissViewController()
                 } else {
                     self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
                 }
@@ -64,6 +67,8 @@ extension LoginViewController: UITextFieldDelegate {
         self.lineLabel.hero.id = "lineLabel"
         self.facebookButton.hero.id = "facebookButton"
         self.loginButton.hero.id = "primaryActionButton"
+        
+        
     }
     
     func popCenterAlert(title: String, description: String, actionTitle: String, completion: (() -> Void)? = nil ) {
@@ -71,6 +76,7 @@ extension LoginViewController: UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
         self.present(alert, animated: true, completion: completion)
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
