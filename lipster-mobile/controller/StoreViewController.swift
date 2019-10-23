@@ -12,6 +12,7 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var blackView: UIView!
     
     var storeDetail: Store?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

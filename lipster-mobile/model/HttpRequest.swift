@@ -7,32 +7,51 @@ class HttpRequest {
     var domain = "http://18.136.104.217"
 //    var domain = "http://localhost:8000"
     var defaultHeaders = [
-        "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")"
+        "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token") ?? "")",
+        "Accept": "application/json"
     ]
     
-    public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
+    public func get(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, requiredAuth: Bool = false, completion: @escaping (JSON?, Int) -> (Void)) {
+        
+        if requiredAuth && !checkAuth() {
+            completion(nil, 401)
+            return
+        }
         
         Alamofire.request("\(domain)/\(route)", method: .get, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
             self.checkResponse(response: response) { (json, status) -> (Void) in
                 completion(json, status)
+                return
             }
         }
     }
     
-    public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
+    public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, requiredAuth: Bool = false, completion: @escaping (JSON?, Int) -> (Void)) {
+        
+        if requiredAuth && !checkAuth() {
+            completion(nil, 401)
+            return
+        }
         
         Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
             self.checkResponse(response: response) { (json, status) -> (Void) in
                 completion(json, status)
+                return
             }
         }
     }
     
-    public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, completion: @escaping (JSON?, Int) -> (Void)) {
+    public func put(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, requiredAuth: Bool = false, completion: @escaping (JSON?, Int) -> (Void)) {
+        
+        if requiredAuth && !checkAuth() {
+            completion(nil, 401)
+            return
+        }
         
         Alamofire.request("\(domain)/\(route)", method: .put, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
             self.checkResponse(response: response) { (json, status) -> (Void) in
                 completion(json, status)
+                return
             }
         }
     }
@@ -51,6 +70,14 @@ class HttpRequest {
         
         let json = JSON(value)
         completion(json["data"], response.response!.statusCode)
+    }
+    
+    func checkAuth() -> Bool {
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        if token.trim() == "" {
+            return false
+        }
+        return true
     }
 
 }

@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     var searchHistory = [String]()
     var searchLipsticks = [Lipstick]()
     var searchStoreLipstick = [Store]()
-    var searchFilterDictionary: Dictionary<Int, [String: Any]> = Dictionary()
+    var searchFilterDictionary: Dictionary<String, [Any]> = Dictionary()
     var recommendLipstick = [Lipstick]()
     let defaults = UserDefaults.standard
     
@@ -38,17 +38,15 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchHistoryCollectionView.delegate = self
-        searchHistoryCollectionView.dataSource = self
-        
         recommendCollectionView.delegate = self
+        
+        searchHistoryCollectionView.dataSource = self
         recommendCollectionView.dataSource = self
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
         
-        let footer = UIView(frame: .zero)
-        footer.backgroundColor = .lightGray
-        searchResultTableView.tableFooterView = footer
+        searchHistoryCollectionView.layoutIfNeeded()
         
         searchTextField.delegate = self
         searchTextField.returnKeyType = .search
@@ -70,13 +68,12 @@ class SearchViewController: UIViewController {
         )
         
         searchHistoryCollectionView.reloadData()
-        
-        searchHistoryCollectionView.layoutIfNeeded()
-        searchHistoryCollectionView.layoutSubviews()
-        
-        
         initReactiveLipstickData()
         hideTableView()
+        
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .lightGray
+        searchResultTableView.tableFooterView = footer
     }
     
     func createStoreLipstickArray() -> [Store] {
@@ -90,16 +87,7 @@ class SearchViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let text = searchTextField.text, text.trim() == "" {
-            searchImageViewMarginTopConstraint.constant = defaultSearchImageViewMarginTop
-            searchTextFieldMarginTopConstraint.constant = defaultSearchTextFieldMarginTop
-            searchHistoryCollectionView.isHidden = false
-            searchTextField.text = ""
-            
-            view.layoutIfNeeded()
-        }
-        
-        
+        showCollectionView()
     }
 
     @IBAction func clearSearch(_ sender: UIButton) {
@@ -120,14 +108,17 @@ class SearchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
-        let indexPath = sender as! IndexPath
-        if identifier == "showLipstickDetail" {
-            let destination = segue.destination as! LipstickDetailViewcontroller
-            destination.lipstick = (searchFilterDictionary[indexPath.row]?.values.first as! Lipstick)
+        
+        if identifier == "showLipstickList" {
+            let lipsticks = sender as! [Lipstick]
+            let destination = segue.destination as! LipstickListViewController
+            destination.lipstickList = lipsticks
+            destination.customTitleString = "Search Result For: "
         }
         if identifier == "showStoreDetail" {
+            let store = (sender as! [Store]).first!
             let destination = segue.destination as! StoreViewController
-            destination.storeDetail = (searchFilterDictionary[indexPath.row]?.values.first as! Store)
+            destination.storeDetail = store
         }
     }
 }
@@ -174,6 +165,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if collectionView == searchHistoryCollectionView {
             self.searchTextField.text = searchHistory[indexPath.item]
             filter(searchHistory[indexPath.item])
+            print(searchHistory[indexPath.item])
             hideCollectionView()
             searchResultTableView.reloadData()
             self.searchTextField.becomeFirstResponder()
@@ -191,9 +183,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
     }
-    
-    
-
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -202,22 +191,30 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.cellId) as! SearchTableViewCell
+        let index = Array(searchFilterDictionary.keys)[indexPath.row]
         
-        cell.searchLabel.text = searchFilterDictionary[indexPath.item]?.keys.first
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.cellId) as! SearchTableViewCell
+        cell.searchLabel.text = index
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let obj = searchFilterDictionary[indexPath.item]?.values.first
+        
+        let index = Array(searchFilterDictionary.keys)[indexPath.row]
+        
+        let arrObj = searchFilterDictionary[index]
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        switch obj {
+        
+        addSearchHistory(index)
+        
+        switch arrObj?.first {
         case is Lipstick:
-            self.performSegue(withIdentifier: "showLipstickDetail", sender: indexPath)
+            self.performSegue(withIdentifier: "showLipstickList", sender: arrObj)
             break
         case is Store:
-            self.performSegue(withIdentifier: "showStoreDetail", sender: indexPath)
+            self.performSegue(withIdentifier: "showStoreDetail", sender: arrObj)
         default:
             break
         }
@@ -241,7 +238,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        searchFilterDictionary.removeAll()
+        
         if var text = textField.text {
             if string == "" {
                 text.removeLast()
@@ -256,38 +253,38 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func filter(_ text: String) {
-        var index = 0
-        
+        self.searchFilterDictionary.removeAll()
         for lipstick in searchLipsticks {
-            
-            if lipstick.lipstickBrand.lowercased().contains(text) {
-                searchFilterDictionary[index] = [
-                    lipstick.lipstickBrand: lipstick
-                ]
-                index += 1
-            }
-            if lipstick.lipstickName.lowercased().contains(text) {
-                searchFilterDictionary[index] = [
-                    lipstick.lipstickName: lipstick
-                ]
-                index += 1
-            }
-            if lipstick.lipstickColorName.lowercased().contains(text) {
-                searchFilterDictionary[index] = [
-                    lipstick.lipstickColorName: lipstick
-                ]
-                index += 1
-            }
+            insertData(key: lipstick.lipstickBrand, keyword: text, obj: lipstick)
+            insertData(key: lipstick.lipstickName, keyword: text, obj: lipstick)
+            insertData(key: lipstick.lipstickColorName, keyword: text, obj: lipstick)
         }
         for store in searchStoreLipstick {
-            if store.name.lowercased().contains(text) {
-                searchFilterDictionary[index] = [
-                    store.name: store
-                ]
-                index += 1
-            }
+            insertData(key: store.name, keyword: text, obj: store, repeatable: true)
+            insertData(key: store.address, keyword: text, obj: store, repeatable: true)
         }
     }
+    
+    func insertData(key: String, keyword: String, obj: Any, repeatable: Bool = false) {
+        if !repeatable && key.lowercased().contains(keyword.lowercased()) {
+            print("unrepeatable")
+            if var existData = searchFilterDictionary[key] {
+                existData.append(obj)
+                searchFilterDictionary[key] = existData
+            } else {
+                searchFilterDictionary[key] = [obj]
+            }
+        } else if key.lowercased().contains(keyword.lowercased()) {
+            print("repeatable")
+            if let store = obj as? Store {
+                searchFilterDictionary["\(store.name) - \(store.address)"] = [obj]
+            } else {
+                searchFilterDictionary[key] = [obj]
+            }
+            
+        }
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         filter(textField.text!)
         hideCollectionView()
@@ -382,7 +379,7 @@ extension SearchViewController: UITextFieldDelegate {
             print("remove")
             searchHistory.remove(at: i)
         }
-        while searchHistory.count > 9 {
+        while searchHistory.count > 4 {
             searchHistory.removeFirst()
         }
         searchHistory.append(keyword)

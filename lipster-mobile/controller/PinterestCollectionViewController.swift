@@ -18,6 +18,8 @@ class PinterestCollectionViewController: UICollectionViewController {
     
     fileprivate let padding: CGFloat = 7.0
     fileprivate let showTrendDetail: String = "showTrendDetail"
+    var headerView: PinterestHeaderCollectionReusableView?
+    var defaultHeaderHeight: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,12 +75,14 @@ class PinterestCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PinterestHeaderCollectionReusableView.cellId, for: indexPath) as! PinterestHeaderCollectionReusableView
+        headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PinterestHeaderCollectionReusableView.cellId, for: indexPath) as? PinterestHeaderCollectionReusableView
         
-        header.trendGroup = trendGroup
+        headerView?.trendGroup = trendGroup
+        defaultHeaderHeight = headerView?.frame.height
         
-        return header
+        return headerView!
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         
@@ -91,10 +95,31 @@ class PinterestCollectionViewController: UICollectionViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print("scrollview")
-//
 //        print(scrollView.contentOffset.y)
-//
+        
+        let contentOffsetY = scrollView.contentOffset.y
+        let height = defaultHeaderHeight! - contentOffsetY
+        print(height)
+        
+        if contentOffsetY > 0 {
+            return
+        }
+        headerView?.frame = CGRect(
+            x: 0,
+            y: contentOffsetY,
+            width: (headerView?.frame.width)!,
+            height: height
+        )
+        headerView?.trendGroupImage.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: (headerView?.frame.width)!,
+            height: height
+        )
+    }
+    
+    override func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
     }
 
 }
@@ -109,8 +134,6 @@ extension PinterestCollectionViewController: CHTCollectionViewDelegateWaterfallL
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, heightForHeaderInSection section: Int) -> CGFloat {
         return 250.0
     }
-    
-    
     
 }
 

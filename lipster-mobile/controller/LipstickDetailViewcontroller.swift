@@ -234,6 +234,7 @@ extension LipstickDetailViewcontroller{
     func initReactiveData() {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.reviews = userReviews
+            self.numberOfReviewLabel()
         })
         reviewDataPipe.output.observe(reviewDataObserver!)
 
