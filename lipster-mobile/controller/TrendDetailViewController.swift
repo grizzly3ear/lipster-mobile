@@ -2,28 +2,76 @@ import UIKit
 import FlexiblePageControl
 import Hero
 
-class TrendDetailViewController: UIViewController {
+class TrendDetailViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
+  
 
     @IBOutlet weak var trendLipColorView: UIView!
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
     @IBOutlet weak var trendDescription: UILabel!
+    @IBOutlet weak var trendDateUpdated: UILabel!
     
     @IBOutlet weak var trendImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    @IBOutlet weak var lipstickRelatedCollectionView: UICollectionView!
+    
+    @IBOutlet weak var lipstickRelatedCollectionViewFlowLayout: UICollectionViewFlowLayout!
+    
+    var lipstickRelated = [Lipstick]()
     var trend: Trend!
     var frame = CGRect(x:0, y:0, width:0 , height:0)
     var imageHeroId = String()
-    
+    var lipsticks : [Lipstick]?
+    let padding: CGFloat = 15.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         initHero()
         initGesture()
+        lipstickRelatedCollectionView.delegate = self
+        lipstickRelatedCollectionView.dataSource = self
+        lipsticks =  Lipstick.mockArrayData(size: 5)
+        lipstickRelatedCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: 0.0)
+        
+        print("count lipstickRelated=======\(lipsticks!.count)")
+        
+       
     }
     
-    @IBAction func onShowLipstickButtonPress(_ sender: Any?) {
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return lipsticks!.count
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "lipstickRelatedTrendCollectionViewCell", for: indexPath) as! LipstickRelatedTrendCollectionViewCell
+        cell.contentView.layer.cornerRadius = 10.0
+        cell.lipstickRelated_LipstickImage.layer.cornerRadius = 10.0
+        cell.contentView.layer.masksToBounds = true
+//        cell.layer.cornerRadius = 10
+//        cell.clipsToBounds = true
+        
+        cell.hero.modifiers = [.fade, .scale(0.2)]
+        
+        let lipstickRelatedTrends = lipsticks![indexPath.item]
+        cell.lipstickRalated_lipstickName.text = lipsticks![indexPath.item].lipstickName
+        cell.lipstickRelated_lipstickBrand.text = lipsticks![indexPath.item].lipstickBrand
+        cell.lipstickRelated_LipstickImage.sd_setImage(with: URL(string: lipsticks![indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
+     //   cell.lipstickRelated_lipstickColorName.text = lipsticks![indexPath.item].lipstickColorName
+     return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          collectionView.deselectItem(at: indexPath, animated: true)
+          performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+          
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+       
+        return CGSize(width: 166.0, height: 250.0)
+    }
+      
+    @IBAction func onShowAllLipstickButtonPress(_ sender: Any?) {
         let colorSelect = trendLipColorView.backgroundColor!
 
         self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
@@ -38,9 +86,15 @@ class TrendDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
         let color = sender as? UIColor
         if let destination = segue.destination as? LipstickListViewController {
             destination.lipHexColor = color?.toHex()
+        } else if segueIdentifier == "showLipstickDetail" {
+            if let destination = segue.destination as? LipstickDetailViewcontroller{
+                let item = sender as! Int
+                destination.lipstick = lipsticks![item]
+            }
         }
     }
 }
