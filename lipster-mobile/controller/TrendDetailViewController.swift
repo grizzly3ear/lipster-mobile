@@ -33,11 +33,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         lipstickRelatedCollectionView.delegate = self
         lipstickRelatedCollectionView.dataSource = self
         lipsticks =  Lipstick.mockArrayData(size: 5)
-        lipstickRelatedCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: 0.0)
-        
-        print("count lipstickRelated=======\(lipsticks!.count)")
-        
-       
+        lipstickRelatedCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: 0.0)       
     }
     
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

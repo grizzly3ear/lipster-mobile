@@ -1102,14 +1102,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1417,8 +1417,8 @@ Review</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lipColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="23" y="471" width="22" height="46"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trensLipstickColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
+                                        <rect key="frame" x="16" y="411" width="45" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="QRu-aE-RDR"/>
                                             <constraint firstAttribute="height" constant="49" id="byx-8D-LFE"/>
@@ -1450,7 +1450,7 @@ Review</string>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nlf-LP-74w">
                                         <rect key="frame" x="0.0" y="570" width="375" height="268"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="268" id="DJH-lp-N89"/>
                                         </constraints>
@@ -1560,7 +1560,7 @@ Review</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ems-2x-eL4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ems-2x-eL4">
                                         <rect key="frame" x="23" y="356" width="160" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="4vZ-Vx-IYT"/>
@@ -1584,8 +1584,8 @@ Review</string>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="top" secondItem="kEW-ET-9HO" secondAttribute="bottom" constant="15" id="ABc-mX-gT1"/>
                                     <constraint firstAttribute="trailing" secondItem="Liu-cL-6cB" secondAttribute="trailing" constant="16" id="BDX-RY-c1L"/>
                                     <constraint firstItem="nlf-LP-74w" firstAttribute="top" secondItem="5M5-IF-7u9" secondAttribute="bottom" constant="4" id="BKP-fQ-rPZ"/>
-                                    <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="aw3-Cy-nqn" secondAttribute="bottom" constant="10" id="DDa-F3-hR3"/>
-                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="top" id="DLu-5d-Ogc"/>
+                                    <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="aw3-Cy-nqn" secondAttribute="bottom" constant="15" id="DDa-F3-hR3"/>
+                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="top" constant="-3" id="DLu-5d-Ogc"/>
                                     <constraint firstItem="UHm-TZ-XE3" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="10" id="EeB-Oj-2dt"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="centerY" secondItem="D64-75-2kR" secondAttribute="centerY" constant="-10.5" id="FO3-RE-Ybo"/>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="leading" secondItem="5ed-Ff-9GO" secondAttribute="trailing" constant="21" id="FhV-mO-1b0"/>
@@ -1604,12 +1604,12 @@ Review</string>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="leading" secondItem="OBS-5f-9pm" secondAttribute="leading" constant="24" id="cU5-jM-YMs"/>
                                     <constraint firstItem="5M5-IF-7u9" firstAttribute="leading" secondItem="8Ah-Jy-46f" secondAttribute="trailing" constant="73.5" id="f91-rD-cNr"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="leading" secondItem="aw3-Cy-nqn" secondAttribute="leading" id="hQ5-I3-Tgm"/>
-                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="28" id="hup-ZY-Dc6"/>
+                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="23" id="hup-ZY-Dc6"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="top" secondItem="D64-75-2kR" secondAttribute="bottom" constant="11" id="jHY-t7-fMj"/>
                                     <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="bottom" constant="18" id="jLM-ij-PSe"/>
                                     <constraint firstItem="8Ah-Jy-46f" firstAttribute="top" secondItem="vp0-g6-vIs" secondAttribute="bottom" constant="25" id="jma-US-iAu"/>
                                     <constraint firstItem="gZC-ew-wGe" firstAttribute="centerX" secondItem="aw3-Cy-nqn" secondAttribute="centerX" id="kNr-MU-J6q"/>
-                                    <constraint firstItem="Liu-cL-6cB" firstAttribute="top" secondItem="Ems-2x-eL4" secondAttribute="bottom" constant="7" id="mNO-dA-wm5"/>
+                                    <constraint firstItem="Liu-cL-6cB" firstAttribute="top" secondItem="Ems-2x-eL4" secondAttribute="bottom" constant="10" id="mNO-dA-wm5"/>
                                     <constraint firstItem="UHm-TZ-XE3" firstAttribute="leading" secondItem="gZC-ew-wGe" secondAttribute="trailing" constant="14.5" id="oXl-5A-5bW"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="centerX" secondItem="kEW-ET-9HO" secondAttribute="centerX" id="odL-Ji-wYX"/>
                                     <constraint firstItem="nlf-LP-74w" firstAttribute="leading" secondItem="OBS-5f-9pm" secondAttribute="leading" id="uAn-pS-1xh"/>
@@ -1621,12 +1621,14 @@ Review</string>
                         <constraints>
                             <constraint firstItem="OBS-5f-9pm" firstAttribute="leading" secondItem="HRP-33-jTt" secondAttribute="leading" id="8hv-s3-vi2"/>
                             <constraint firstItem="OBS-5f-9pm" firstAttribute="centerX" secondItem="1iS-6q-wfz" secondAttribute="centerX" id="EoZ-Sg-gaJ"/>
-                            <constraint firstItem="OBS-5f-9pm" firstAttribute="top" secondItem="HRP-33-jTt" secondAttribute="top" id="LKD-d7-AJi"/>
+                            <constraint firstItem="OBS-5f-9pm" firstAttribute="top" secondItem="1iS-6q-wfz" secondAttribute="top" id="LKD-d7-AJi"/>
                             <constraint firstItem="OBS-5f-9pm" firstAttribute="bottom" secondItem="HRP-33-jTt" secondAttribute="bottom" id="MXK-Gb-W8B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HRP-33-jTt"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Yeg-6s-PFU"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <size key="freeformSize" width="375" height="840"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -2922,11 +2924,10 @@ Review</string>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="GT3-8q-qFt"/>
-        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="fkk-Yh-5P5"/>
-        <segue reference="UAR-uk-wvN"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
