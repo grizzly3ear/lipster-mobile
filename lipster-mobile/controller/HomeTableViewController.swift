@@ -30,7 +30,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
         //collectionViewLayout.minimumLineSpacing = 2.0
         trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
 
@@ -80,33 +80,36 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     }
 
     func updateCellsLayout()  {
-           
-           let centerX = trendHeaderCollectionView.contentOffset.x + (trendHeaderCollectionView.frame.size.width)/2
-           for cell in trendHeaderCollectionView.visibleCells {
 
-               var offsetX = centerX - cell.center.x
-               if offsetX < 0 {
-                   offsetX *= -1
-               }
-               cell.transform = CGAffineTransform.identity
-               let offsetPercentage = offsetX / (view.bounds.width )
-               let scaleX = 1-offsetPercentage
-               cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
-           }
-       }
+        let centerX = trendHeaderCollectionView.contentOffset.x + (trendHeaderCollectionView.frame.size.width)/2
+        for cell in trendHeaderCollectionView.visibleCells {
+
+        var offsetX = centerX - cell.center.x
+
+        if offsetX < 0 {
+            offsetX *= -1
+        }
+        cell.transform = CGAffineTransform.identity
+        let offsetPercentage = offsetX / (view.bounds.width * 2.7 )
+
+        let scaleX = 1-offsetPercentage
+            cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-         var cellSize: CGSize = collectionView.bounds.size
-//
-//        cellSize.width -= collectionView.contentInset.left * 2
-//        cellSize.width -= collectionView.contentInset.right * 2
-       // cellSize.height = cellSize.width
-        
+
+        var cellSize: CGSize = collectionView.bounds.size
+        print(cellSize.width)
+    
+            cellSize.width -= collectionView.contentInset.left * 2
+            cellSize.width -= collectionView.contentInset.right * 2
+     cellSize.height = cellSize.width
+
         return cellSize
     }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-//        return 1
-//    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1
+    }
 //
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
 //        return 1
