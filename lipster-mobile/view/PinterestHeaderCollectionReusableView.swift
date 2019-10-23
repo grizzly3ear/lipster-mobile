@@ -14,12 +14,14 @@ class PinterestHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var trendGroupLabel: UILabel!
     @IBOutlet weak var trendGroupImage: UIImageView!
+    @IBOutlet weak var trendGroupDescription: UILabel!
     
     var trendGroup: TrendGroup? {
         didSet {
             trendGroupImage.sd_setImage(with: URL(string: trendGroup!.image!), placeholderImage: UIImage(named: "nopic")!)
             trendGroupImage.contentMode = .scaleAspectFill
             trendGroupLabel.text = trendGroup?.name
+            trendGroupDescription.text = trendGroup?.trendDescription
         }
     }
 }
