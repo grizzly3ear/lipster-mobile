@@ -77,7 +77,7 @@ class LipstickDetailViewcontroller: UIViewController {
     }
     
     @IBAction func favButtonClicked(_ sender: UIButton) {
-        self.toggleFavLipstick()
+        Lipstick.toggleFavLipstick(lipstick)
         initialUI()
     }
     
@@ -168,7 +168,7 @@ extension LipstickDetailViewcontroller: UIScrollViewDelegate {
             
             addLipstickToHistory()
         }
-        if isLipstickFav() {
+        if Lipstick.isLipstickFav(lipstick) {
             let image = UIImage(named: "heart_red")
             favoriteButton.setImage(image, for: UIControl.State.normal)
         } else {
@@ -309,34 +309,6 @@ extension LipstickDetailViewcontroller {
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipsticksHistory, lipstickHistory)
         }
 
-    }
-    func toggleFavLipstick() {
-        if lipstick != nil {
-            var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
-            
-            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
-                print("remove")
-                favLipstick.remove(at: i)
-                
-            } else {
-                print("add")
-                favLipstick.append(lipstick!)
-            }
-            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)
-        }
-        
-        
-    }
-    func isLipstickFav() -> Bool {
-        if lipstick != nil {
-            let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
-            
-            if let _ = favLipstick.firstIndex(where: { $0 == lipstick! }) {
-                return true
-                
-            }
-        }
-        return false
     }
 }
 

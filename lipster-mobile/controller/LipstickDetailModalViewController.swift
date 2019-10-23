@@ -47,7 +47,7 @@ class LipstickDetailModalViewController: UIViewController {
     }
     
     func reloadFavButton() {
-        if isLipstickFav() {
+        if Lipstick.isLipstickFav(lipstick) {
             let image = UIImage(named: "heart_red")
             favButton.setImage(image, for: UIControl.State.normal)
         } else {
@@ -87,7 +87,7 @@ class LipstickDetailModalViewController: UIViewController {
     }
     
     @IBAction func toggleFavButton(_ sender: Any) {
-        toggleFavLipstick()
+        Lipstick.toggleFavLipstick(lipstick)
         reloadFavButton()
     }
 }
@@ -124,37 +124,6 @@ extension LipstickDetailModalViewController {
             self.reloadTable()
         })
         trendDataPipe.output.observe(trendDataObserver!)
-    }
-}
-
-extension LipstickDetailModalViewController {
-    func toggleFavLipstick() {
-        if lipstick != nil {
-            var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
-            
-            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
-                print("remove")
-                favLipstick.remove(at: i)
-                
-            } else {
-                print("add")
-                favLipstick.append(lipstick!)
-            }
-            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)
-        }
-        
-        
-    }
-    func isLipstickFav() -> Bool {
-        if lipstick != nil {
-            let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
-            
-            if let _ = favLipstick.firstIndex(where: { $0 == lipstick! }) {
-                return true
-                
-            }
-        }
-        return false
     }
 }
 

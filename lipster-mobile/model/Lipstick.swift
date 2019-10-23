@@ -191,4 +191,31 @@ class Lipstick: NSObject, NSCoding {
         return lhs.lipstickId == rhs.lipstickId && lhs.lipstickDetailId == rhs.lipstickDetailId && lhs.lipstickColorName == rhs.lipstickColorName
     }
     
+    static func isLipstickFav(_ lipstick: Lipstick?) -> Bool {
+        if lipstick != nil {
+            let favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let _ = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func toggleFavLipstick(_ lipstick: Lipstick?) {
+        if lipstick != nil {
+            var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
+            
+            if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
+                print("remove")
+                favLipstick.remove(at: i)
+                
+            } else {
+                print("add")
+                favLipstick.append(lipstick!)
+            }
+            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)
+        }
+    }
+    
 }
