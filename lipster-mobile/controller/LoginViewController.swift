@@ -8,6 +8,8 @@
 
 import UIKit
 import Hero
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
 
@@ -19,6 +21,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -33,6 +36,53 @@ class LoginViewController: UIViewController {
         usernameTextField.enablesReturnKeyAutomatically = true
         passwordTextField.delegate = self
         usernameTextField.delegate = self
+        
+        if (AccessToken.current != nil) {
+            // MARK: There are user login now
+            print("hey user")
+            fetchUserData()
+        }
+    }
+    
+    @IBAction func onPressfacebookButton(_ sender: Any) {
+        let login: LoginManager = LoginManager()
+        let permissions: [String] = [
+            "email",
+            "public_profile"
+        ]
+        login.logIn(permissions: permissions, from: self) { (result, error) in
+            if let err = error {
+                print(err)
+            } else if let isCancel = result?.isCancelled, isCancel {
+                print("Cancel login")
+            } else {
+                print("login")
+                
+                self.fetchUserData()
+            }
+        }
+    }
+    
+    func fetchUserData() {
+        Profile.loadCurrentProfile { (fbProfile, error) in
+            if let profile = fbProfile {
+
+                GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, graphResult, error) in
+                    if let err = error {
+                        print("Failed to fetch data")
+                        return
+                    }
+                    if let dictionaryResult = graphResult as? Dictionary<String, AnyObject> {
+                        User.firstname = profile.firstName
+                        User.lastname = profile.lastName
+                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
+                        User.email = "\(dictionaryResult["email"])"
+                        
+                    }
+                    
+                }
+            }
+        }
     }
     
     @IBAction func signUpButtonAction(_ sender: Any) {
@@ -65,7 +115,6 @@ extension LoginViewController: UITextFieldDelegate {
         self.leftLine.hero.id = "leftLine"
         self.rightLine.hero.id = "rightLine"
         self.lineLabel.hero.id = "lineLabel"
-        self.facebookButton.hero.id = "facebookButton"
         self.loginButton.hero.id = "primaryActionButton"
         
         
