@@ -15,7 +15,6 @@ import FAPaginationLayout
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
-    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
