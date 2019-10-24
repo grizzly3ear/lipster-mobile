@@ -45,7 +45,7 @@
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D80510512357749300A6227A /* TrendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80510502357749300A6227A /* TrendsCollectionViewCell.swift */; };
 		D80540332359B6FB00351C9B /* TrendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540322359B6FB00351C9B /* TrendGroupViewController.swift */; };
-		D80540352359B73000351C9B /* NewTrendGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */; };
+		D80540352359B73000351C9B /* TrendGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540342359B73000351C9B /* TrendGroupCollectionViewCell.swift */; };
 		D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80F336A2330E44F0057B782 /* ContainerViewController.swift */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
 		D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81C6B5E227245BE009D05FD /* Assets.xcassets */; };
@@ -138,7 +138,7 @@
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80510502357749300A6227A /* TrendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D80540322359B6FB00351C9B /* TrendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroupViewController.swift; sourceTree = "<group>"; };
-		D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendGroupCollectionViewCell.swift; sourceTree = "<group>"; };
+		D80540342359B73000351C9B /* TrendGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		D80F336A2330E44F0057B782 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
 		D81C6B5E227245BE009D05FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				D84CB266235DE9D900D300FC /* HomeTableViewCell.swift */,
 				D80510502357749300A6227A /* TrendsCollectionViewCell.swift */,
 				300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */,
-				D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */,
+				D80540342359B73000351C9B /* TrendGroupCollectionViewCell.swift */,
 				D8B85A57235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift */,
 			);
 			path = view;
@@ -536,7 +536,7 @@
 				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,
 				D826C444232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift in Sources */,
 				D8B85A58235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift in Sources */,
-				D80540352359B73000351C9B /* NewTrendGroupCollectionViewCell.swift in Sources */,
+				D80540352359B73000351C9B /* TrendGroupCollectionViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */,
 				D82B447B2306608F00876302 /* Store.swift in Sources */,
 				30A889DA227196C600D00FCC /* Notification.swift in Sources */,

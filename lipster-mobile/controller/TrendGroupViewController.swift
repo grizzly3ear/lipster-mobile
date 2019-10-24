@@ -29,7 +29,7 @@ class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UIC
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewTrendGroupCollectionViewCell", for: indexPath) as! NewTrendGroupCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewTrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
         
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTrendGroupCollectionViewCell: UICollectionViewCell {
+class TrendGroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trendGroupBackgroundImage: UIImageView!
     @IBOutlet weak var trendGroupName: UILabel!
    
