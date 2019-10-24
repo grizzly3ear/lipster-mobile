@@ -23,6 +23,7 @@
 		304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */; };
 		304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */; };
 		305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305477CE229A57CC009E4090 /* UITextFieldHelper.swift */; };
+		3055E2B6236167F500257DA9 /* refreshAnimate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3055E2B5236167F500257DA9 /* refreshAnimate.gif */; };
 		305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C5CA122F93C34003725C8 /* UserRepository.swift */; };
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071185922FC1BAC00E25AF4 /* TrendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071185822FC1BAC00E25AF4 /* TrendCollectionViewCell.swift */; };
@@ -53,7 +54,6 @@
 		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
 		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
-		D826485923607DE500BE0E47 /* refreshAnimate.gif in Resources */ = {isa = PBXBuildFile; fileRef = D826485823607DE500BE0E47 /* refreshAnimate.gif */; };
 		D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D826485F2360A48B00BE0E47 /* RefreshView.xib */; };
 		D82648642360A62600BE0E47 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82648632360A62600BE0E47 /* RefreshViewController.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
@@ -114,6 +114,7 @@
 		304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewHelper.swift; sourceTree = "<group>"; };
 		305477CE229A57CC009E4090 /* UITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
+		3055E2B5236167F500257DA9 /* refreshAnimate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = refreshAnimate.gif; sourceTree = "<group>"; };
 		305C5CA122F93C34003725C8 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071185822FC1BAC00E25AF4 /* TrendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -199,6 +200,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		3055E2B4236167DA00257DA9 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				3055E2B5236167F500257DA9 /* refreshAnimate.gif */,
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
 		30A532C52255AAE000205429 /* extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +248,7 @@
 		30B36E83221A6DDC001FD8EF /* lipster-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				3055E2B4236167DA00257DA9 /* gif */,
 				D826485E2360A45D00BE0E47 /* xib */,
 				3032BDD222F9271F009E325A /* Repository */,
 				304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */,
@@ -292,6 +302,15 @@
 				1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D826485E2360A45D00BE0E47 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				D826485F2360A48B00BE0E47 /* RefreshView.xib */,
+				D82648632360A62600BE0E47 /* RefreshViewController.swift */,
+			);
+			path = xib;
 			sourceTree = "<group>";
 		};
 		D863452B2242152D00AC0EA6 /* controller */ = {
@@ -415,6 +434,7 @@
 			files = (
 				D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */,
 				30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */,
+				3055E2B6236167F500257DA9 /* refreshAnimate.gif in Resources */,
 				304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */,
 				D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */,
 				30B36E8A221A6DDC001FD8EF /* Main.storyboard in Resources */,
