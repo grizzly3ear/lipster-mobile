@@ -37,8 +37,28 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         }
         return .default
     }
+    
+    
+    
+    var refresher : UIRefreshControl!
+    
+    @objc func requestData(){
+        
+        
+        
+        tableView.reloadData()
+        refresher.endRefreshing()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refresher = UIRefreshControl()
+        refresher.tintColor = .white
+        refresher.backgroundColor = .black
+        refresher.addTarget(self, action: #selector(HomeTableViewController.requestData), for: .valueChanged)
+        tableView.addSubview(refresher)
+        
+        
         
         
             //collectionViewLayout.minimumLineSpacing = 2.0
@@ -81,7 +101,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
 //        } else {
 //            print("cannot use gif")
 //        }
-        
         
         return cell
     }

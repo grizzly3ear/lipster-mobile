@@ -55,12 +55,12 @@
 		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
 		D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D826485F2360A48B00BE0E47 /* RefreshView.xib */; };
-		D82648642360A62600BE0E47 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82648632360A62600BE0E47 /* RefreshViewController.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D826C444232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */; };
 		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
 		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
+		D8311A2623617A4500820882 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8311A2523617A4500820882 /* RefreshView.swift */; };
 		D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* LoginViewController.swift */; };
 		D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD822230079EA000098C1 /* SignUpViewController.swift */; };
 		D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */; };
@@ -148,12 +148,12 @@
 		D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageView.swift; sourceTree = "<group>"; };
 		D826485F2360A48B00BE0E47 /* RefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
-		D82648632360A62600BE0E47 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewcontroller.swift; sourceTree = "<group>"; };
 		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8311A2523617A4500820882 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D83DD822230079EA000098C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				D826485F2360A48B00BE0E47 /* RefreshView.xib */,
-				D82648632360A62600BE0E47 /* RefreshViewController.swift */,
+				D8311A2523617A4500820882 /* RefreshView.swift */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -517,10 +517,10 @@
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				300F1C07235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift in Sources */,
 				D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */,
-				D82648642360A62600BE0E47 /* RefreshViewController.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D84CB267235DE9D900D300FC /* HomeTableViewCell.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
+				D8311A2623617A4500820882 /* RefreshView.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */,
 				2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */,
