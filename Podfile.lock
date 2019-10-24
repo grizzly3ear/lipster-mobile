@@ -134,7 +134,6 @@ PODS:
   - SPStorkController (1.7.9)
   - SwiftEntryKit (1.2.0):
     - QuickLayout (= 3.0.0)
-  - SwiftyGif (5.2.0)
   - SwiftyJSON (5.0.0)
   - UICollectionViewLeftAlignedLayout (1.0.2)
 
@@ -156,7 +155,6 @@ DEPENDENCIES:
   - SDWebImage (~> 5.0)
   - SPStorkController
   - SwiftEntryKit
-  - SwiftyGif
   - SwiftyJSON
   - UICollectionViewLeftAlignedLayout
 
@@ -196,7 +194,6 @@ SPEC REPOS:
     - SDWebImage
     - SPStorkController
     - SwiftEntryKit
-    - SwiftyGif
     - SwiftyJSON
     - UICollectionViewLeftAlignedLayout
 
@@ -235,10 +232,9 @@ SPEC CHECKSUMS:
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   SPStorkController: 36bd84206267232747b19d48852659bd71ede28f
   SwiftEntryKit: 8303faf480f405b57df16b6fc2b251647cf40349
-  SwiftyGif: b85c6b33a9411859d9e1db998b6a8214aea942df
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: f4a6364b2787e09f87cc14d0b364a5e75220d93d
+PODFILE CHECKSUM: 90cf52bc9734463aedca003c11f429ff9bbbb324
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5

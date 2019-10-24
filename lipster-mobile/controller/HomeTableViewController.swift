@@ -12,7 +12,6 @@ import ReactiveSwift
 import Result
 import Hero
 import FAPaginationLayout
-import SwiftyGif
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
@@ -30,45 +29,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
-    lazy var refresher: UIRefreshControl = {
-//        guard let gif = try? UIImage(gifName: "refreshAnimate.gif") else {
-//
-//            let refreshControl = UIRefreshControl()
-//
-//            refreshControl.tintColor = .lightGray
-//            refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
-//            return refreshControl
-//        }
-        
-     //   let refreshGif = UIImageView(gifImage: gif)
-        let refreshControl = UIRefreshControl()
-        refreshControl.backgroundColor = .black
-        refreshControl.tintColor = .white
-        refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
-       // refreshControl.addSubview(refresher)
-        return refreshControl
-    }()
     
-   
-    @objc func requestData(sender : UIRefreshControl){
-        print("requestData")
-        
-        var headerState = false
-        var contentState = false
-        
-        trendHeaderCollectionView.performBatchUpdates({
-            trendHeaderCollectionView.reloadSections(IndexSet(integer: 0))
-        }) { (_) in
-            
-        }
-        tableView.performBatchUpdates({
-            tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-        }) { (_) in
-            
-        }
-        
-        //refresher.endRefreshing()
-    }
+  
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *){
             return .lightContent
@@ -77,9 +39,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-            tableView.refreshControl = refresher
         
-      //  self.topView.addSubview(HeaderView(frame: self.topView.bounds))
         
             //collectionViewLayout.minimumLineSpacing = 2.0
         trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast

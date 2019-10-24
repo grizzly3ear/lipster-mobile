@@ -19,7 +19,6 @@ pod 'ExpandableLabel'
 pod 'SPStorkController'
 pod 'UICollectionViewLeftAlignedLayout'
 pod 'FAPaginationLayout'
-pod 'SwiftyGif'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'
