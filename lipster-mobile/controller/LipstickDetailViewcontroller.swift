@@ -52,7 +52,7 @@ class LipstickDetailViewcontroller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         numberOfReviewLabel()
         initHero()
         initReactiveData()
@@ -85,7 +85,7 @@ class LipstickDetailViewcontroller: UIViewController {
     }
     
     func numberOfReviewLabel(){
-        reviewButton.setTitle("See review\(reviews.count > 1 ? "s" : "") (\(reviews.count))", for: .normal)
+        reviewButton.setTitle("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") ", for: .normal)
         reviewButton.isEnabled = true
     }
     @IBAction func clickedMapButton(_ sender: Any) {
