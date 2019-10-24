@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 import Hero
 import FAPaginationLayout
+import SwiftyGif
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
@@ -29,17 +30,29 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
-    let refresher: UIRefreshControl = {
+    lazy var refresher: UIRefreshControl = {
+//        guard let gif = try? UIImage(gifName: "refreshAnimate.gif") else {
+//
+//            let refreshControl = UIRefreshControl()
+//
+//            refreshControl.tintColor = .lightGray
+//            refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+//            return refreshControl
+//        }
         
+     //   let refreshGif = UIImageView(gifImage: gif)
         let refreshControl = UIRefreshControl()
+        refreshControl.backgroundColor = .black
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+       // refreshControl.addSubview(refresher)
         return refreshControl
     }()
     
    
     @objc func requestData(sender : UIRefreshControl){
         print("requestData")
+        
         var headerState = false
         var contentState = false
         
@@ -56,7 +69,12 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         
         //refresher.endRefreshing()
     }
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *){
+            return .lightContent
+        }
+        return .default
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
             tableView.refreshControl = refresher
@@ -64,18 +82,22 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
       //  self.topView.addSubview(HeaderView(frame: self.topView.bounds))
         
             //collectionViewLayout.minimumLineSpacing = 2.0
-            trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+        trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
 
-            trendHeaderCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-            trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
-            initReactive()
-            
-            TrendRepository.fetchAllTrendData { (trendGroups, _) in
-                self.trendDataPipe.input.send(value: trendGroups)
-            }
-            LipstickRepository.fetchAllLipstickData { (lipsticks) in
-                self.lipstickDataPipe.input.send(value: lipsticks)
-            }
+        trendHeaderCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
+        initReactive()
+        
+        TrendRepository.fetchAllTrendData { (trendGroups, _) in
+            self.trendDataPipe.input.send(value: trendGroups)
+        }
+        LipstickRepository.fetchAllLipstickData { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+        
+        
+        
+        
     }
  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,6 +113,15 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         
         let trendGroup = trendGroups[indexPath.item]
         cell.trendGroup = trendGroup
+        
+//        if let gif = try? UIImage(gifName: "refreshAnimate.gif") {
+//            cell.imageView?.setGifImage(gif)
+//            cell.imageView?.startAnimatingGif()
+//            print("can use gif")
+//        } else {
+//            print("cannot use gif")
+//        }
+        
         
         return cell
     }

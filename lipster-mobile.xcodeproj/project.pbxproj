@@ -53,6 +53,9 @@
 		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
 		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
+		D826485923607DE500BE0E47 /* refreshAnimate.gif in Resources */ = {isa = PBXBuildFile; fileRef = D826485823607DE500BE0E47 /* refreshAnimate.gif */; };
+		D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D826485F2360A48B00BE0E47 /* RefreshView.xib */; };
+		D82648642360A62600BE0E47 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82648632360A62600BE0E47 /* RefreshViewController.swift */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D826C444232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */; };
@@ -143,6 +146,8 @@
 		D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageView.swift; sourceTree = "<group>"; };
+		D826485F2360A48B00BE0E47 /* RefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
+		D82648632360A62600BE0E47 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewcontroller.swift; sourceTree = "<group>"; };
@@ -234,6 +239,7 @@
 		30B36E83221A6DDC001FD8EF /* lipster-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				D826485E2360A45D00BE0E47 /* xib */,
 				3032BDD222F9271F009E325A /* Repository */,
 				304CFB6A2284243C00AB8B0A /* GoogleService-Info.plist */,
 				30A532C52255AAE000205429 /* extension */,
@@ -407,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */,
 				30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */,
 				304CFB6B2284243C00AB8B0A /* GoogleService-Info.plist in Resources */,
 				D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */,
@@ -490,6 +497,7 @@
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,
 				300F1C07235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift in Sources */,
 				D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */,
+				D82648642360A62600BE0E47 /* RefreshViewController.swift in Sources */,
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D84CB267235DE9D900D300FC /* HomeTableViewCell.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
