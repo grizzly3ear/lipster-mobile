@@ -28,7 +28,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
-    
+    var isNeedToRefresh: Bool = false
     
   
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -38,17 +38,15 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         return .default
     }
     
-    
-    
     var refresher : UIRefreshControl!
     
     @objc func requestData(){
-        
-        
-        
-        tableView.reloadData()
-        refresher.endRefreshing()
+        print("request")
+        self.isNeedToRefresh = true
+        fetchData()
+//        refresher.endRefreshing()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,27 +55,29 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         refresher.backgroundColor = .black
         refresher.addTarget(self, action: #selector(HomeTableViewController.requestData), for: .valueChanged)
         tableView.addSubview(refresher)
-        
-        
-        
-        
-            //collectionViewLayout.minimumLineSpacing = 2.0
+
         trendHeaderCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
 
         trendHeaderCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         trendHeaderCollectionView.contentInsetAdjustmentBehavior = .never
         initReactive()
         
+        fetchData()
+
+    }
+    
+    func fetchData() {
         TrendRepository.fetchAllTrendData { (trendGroups, _) in
             self.trendDataPipe.input.send(value: trendGroups)
         }
         LipstickRepository.fetchAllLipstickData { (lipsticks) in
             self.lipstickDataPipe.input.send(value: lipsticks)
+            if self.isNeedToRefresh {
+                print("finish")
+                self.isNeedToRefresh = false
+                self.refresher.endRefreshing()
+            }
         }
-        
-        
-        
-        
     }
  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,10 +112,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-    
-    
-    
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateCellsLayout()
@@ -152,11 +149,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 1
     }
-//
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-//        return 1
-//    }
-
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateCellsLayout()
     }
@@ -254,7 +247,7 @@ extension HomeTableViewController {
             self.trendHeaderCollectionView.performBatchUpdates({
                 self.trendHeaderCollectionView.reloadSections(IndexSet(integer: 0))
             }) { (_) in
-                
+
             }
         })
         
