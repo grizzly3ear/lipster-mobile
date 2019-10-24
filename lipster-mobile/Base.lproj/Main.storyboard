@@ -2002,6 +2002,14 @@ Review</string>
                                     <action selector="goBack:" destination="CzO-UI-R6t" eventType="touchUpInside" id="ULP-ze-9uw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQS-lk-7If">
+                                <rect key="frame" x="208" y="523" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="googleAccount"/>
+                                <connections>
+                                    <action selector="onPressfacebookButton:" destination="CzO-UI-R6t" eventType="touchUpInside" id="2h5-8o-HWd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ajw-jD-xZo"/>
@@ -2088,9 +2096,9 @@ Review</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94q-GO-gRC">
                                 <rect key="frame" x="34" y="323" width="155" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="titleEdgeInsets" minX="-83" minY="115" maxX="35" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="18" minY="0.0" maxX="30" maxY="52"/>
-                                <state key="normal" title="Male" image="man">
+                                <inset key="titleEdgeInsets" minX="-92" minY="115" maxX="35" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="13" minY="7" maxX="23" maxY="50"/>
+                                <state key="normal" title="Male" image="male3">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -2101,8 +2109,8 @@ Review</string>
                                 <rect key="frame" x="187" y="323" width="156" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="titleEdgeInsets" minX="-92" minY="115" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="7" minY="-13" maxX="5" maxY="38"/>
-                                <state key="normal" title="Female" image="woman">
+                                <inset key="imageEdgeInsets" minX="13" minY="7" maxX="5" maxY="30"/>
+                                <state key="normal" title="Female" image="female3">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -3173,7 +3181,9 @@ Review</string>
         <image name="facebook-1" width="128" height="128"/>
         <image name="favoritePopup" width="512" height="512"/>
         <image name="fbLogin" width="814" height="160"/>
+        <image name="female3" width="500" height="500"/>
         <image name="frame" width="133.33332824707031" height="133.33332824707031"/>
+        <image name="googleAccount" width="2400" height="2404"/>
         <image name="gradient" width="1921" height="940"/>
         <image name="heart_white" width="40" height="40"/>
         <image name="history" width="512" height="512"/>
@@ -3189,7 +3199,7 @@ Review</string>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="mail-1" width="128" height="128"/>
         <image name="makeup" width="512" height="512"/>
-        <image name="man" width="922" height="980"/>
+        <image name="male3" width="500" height="500"/>
         <image name="map_button" width="142" height="142"/>
         <image name="makeup_light" width="512" height="512"/>
         <image name="map_storeDetail" width="512" height="512"/>
@@ -3213,7 +3223,6 @@ Review</string>
         <image name="user2" width="664" height="664"/>
         <image name="username" width="128" height="128"/>
         <image name="whiteLine" width="64" height="64"/>
-        <image name="woman" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7xa-ab-yxx"/>
