@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var trendGroupsCollectionView: UICollectionView!
     var trendGroups = [TrendGroup]()
