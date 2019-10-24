@@ -989,7 +989,7 @@ Review</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
+                                            <rect key="frame" x="3" y="5" width="161" height="162"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
                                             </constraints>
@@ -2016,6 +2016,7 @@ Review</string>
                         <outlet property="rightLine" destination="jzn-qP-ZhO" id="U5y-wo-aUs"/>
                         <outlet property="signUpButton" destination="Mng-Xd-zVZ" id="soH-8B-3sL"/>
                         <outlet property="usernameTextField" destination="0va-ll-1Rz" id="ZjT-g5-LOm"/>
+                        <segue destination="112-Ya-0ix" kind="show" identifier="selectGenderPage" id="Q5z-jc-aaM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJd-Zy-dde" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2027,7 +2028,7 @@ Review</string>
             <objects>
                 <viewController storyboardIdentifier="GenderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="112-Ya-0ix" customClass="GenderViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Srb-oM-B0o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="d4Z-Rx-PdL">
@@ -2112,6 +2113,7 @@ Review</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gOD-ui-OXw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yXh-QR-5Kg"/>
                     <connections>
                         <outlet property="genderLabel" destination="Sl8-tz-RT0" id="dpD-5r-G7q"/>
                     </connections>

@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
                         User.lastname = profile.lastName
                         User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
                         User.email = "\(dictionaryResult["email"])"
-                        
+                        self.performSegue(withIdentifier: "selectGenderPage", sender: self)
                     }
                     
                 }
