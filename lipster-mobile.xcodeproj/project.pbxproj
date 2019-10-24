@@ -44,7 +44,7 @@
 		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D80510512357749300A6227A /* TrendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80510502357749300A6227A /* TrendsCollectionViewCell.swift */; };
-		D80540332359B6FB00351C9B /* NewTrendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540322359B6FB00351C9B /* NewTrendGroupViewController.swift */; };
+		D80540332359B6FB00351C9B /* TrendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540322359B6FB00351C9B /* TrendGroupViewController.swift */; };
 		D80540352359B73000351C9B /* NewTrendGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */; };
 		D80F336B2330E44F0057B782 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80F336A2330E44F0057B782 /* ContainerViewController.swift */; };
 		D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */; };
@@ -137,7 +137,7 @@
 		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80510502357749300A6227A /* TrendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsCollectionViewCell.swift; sourceTree = "<group>"; };
-		D80540322359B6FB00351C9B /* NewTrendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendGroupViewController.swift; sourceTree = "<group>"; };
+		D80540322359B6FB00351C9B /* TrendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendGroupViewController.swift; sourceTree = "<group>"; };
 		D80540342359B73000351C9B /* NewTrendGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendGroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		D80F336A2330E44F0057B782 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailViewController.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 				D8799C8B22FD4ED300441E6F /* YourReviewsTableViewController.swift */,
 				2CB7A4E823558EA600253DCC /* SearchViewController.swift */,
 				D89F35F82355C17400F0AF43 /* StoreViewController.swift */,
-				D80540322359B6FB00351C9B /* NewTrendGroupViewController.swift */,
+				D80540322359B6FB00351C9B /* TrendGroupViewController.swift */,
 				300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */,
 				D84CB264235DE98E00D300FC /* HomeTableViewController.swift */,
 			);
@@ -546,7 +546,7 @@
 				D8573505232EA6FB00164E2E /* ReviewViewController.swift in Sources */,
 				D80510512357749300A6227A /* TrendsCollectionViewCell.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
-				D80540332359B6FB00351C9B /* NewTrendGroupViewController.swift in Sources */,
+				D80540332359B6FB00351C9B /* TrendGroupViewController.swift in Sources */,
 				D89F35F92355C17400F0AF43 /* StoreViewController.swift in Sources */,
 				304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */,
 				305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */,

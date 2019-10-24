@@ -236,7 +236,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             }
         }
         else if segueIdentifier == "showTrendGroup" {
-            if let destination = segue.destination as? NewTrendGroupViewController {
+            if let destination = segue.destination as? TrendGroupViewController {
                 destination.trendGroups = trendGroups
             }
         }
