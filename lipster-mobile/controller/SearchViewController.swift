@@ -34,9 +34,15 @@ class SearchViewController: UIViewController {
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
+    let storeDataPipe = Signal<[Store], NoError>.pipe()
+    var storeDataObserver: Signal<[Store], NoError>.Observer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initReactiveStoreData()
+        initReactiveLipstickData()
+        
         searchHistoryCollectionView.delegate = self
         recommendCollectionView.delegate = self
         
@@ -59,29 +65,29 @@ class SearchViewController: UIViewController {
         
         self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
         self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
-        self.searchStoreLipstick = createStoreLipstickArray()
-        
-        getLipstickDataFromHex(
-            UIColor.averageColor(
-                colors: UIColor.getColorFromUserDefaults(forKey: DefaultConstant.colorHistory, defaultColors: [UIColor.red.toHex!])
-            ).toHex!
-        )
         
         searchHistoryCollectionView.reloadData()
-        initReactiveLipstickData()
+        
         hideTableView()
         
         let footer = UIView(frame: .zero)
         footer.backgroundColor = .lightGray
         searchResultTableView.tableFooterView = footer
+        
+        fetchData()
     }
     
-    func createStoreLipstickArray() -> [Store] {
-        let store1 : Store = Store(id: 1, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
-        let store2 : Store = Store(id: 2, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
-        let store3 : Store = Store(id: 3, storeLogoImage: "UIImage(named: nopic)!", storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00")
-        
-        return [store1 , store2 , store3]
+    func fetchData() {
+        LipstickRepository.fetchSimilarLipstickHexColor(
+            UIColor.averageColor(
+                colors: UIColor.getColorFromUserDefaults(forKey: DefaultConstant.colorHistory, defaultColors: [UIColor.red.toHex!])
+            ).toHex!
+        ) { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+        StoreRepository.fetchAllStore { (stores) in
+            self.storeDataPipe.input.send(value: stores)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -100,12 +106,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func getLipstickDataFromHex(_ hex: String) {
-        LipstickRepository.fetchSimilarLipstickHexColor(hex) { (lipsticks) in
-            self.lipstickDataPipe.input.send(value: lipsticks)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         
@@ -118,7 +118,7 @@ class SearchViewController: UIViewController {
         if identifier == "showStoreDetail" {
             let store = (sender as! [Store]).first!
             let destination = segue.destination as! StoreViewController
-            destination.storeDetail = store
+            destination.store = store
         }
     }
 }
@@ -394,7 +394,6 @@ extension SearchViewController: UITextFieldDelegate {
 extension SearchViewController {
     func initReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
-            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
             
             self.recommendLipstick = lipsticks
             self.recommendCollectionView.performBatchUpdates({
@@ -405,5 +404,14 @@ extension SearchViewController {
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)
+    }
+    
+    func initReactiveStoreData() {
+        storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
+            
+            self.searchStoreLipstick = stores
+            
+        })
+        storeDataPipe.output.observe(storeDataObserver!)
     }
 }
