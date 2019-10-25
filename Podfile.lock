@@ -152,8 +152,8 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout/Swift
   - ESTabBarController-swift
   - ExpandableLabel
-  - FBSDKLoginKit
   - FAPaginationLayout
+  - FBSDKLoginKit
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/MLVision
@@ -175,9 +175,9 @@ SPEC REPOS:
     - CHTCollectionViewWaterfallLayout
     - ESTabBarController-swift
     - ExpandableLabel
+    - FAPaginationLayout
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FAPaginationLayout
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -215,9 +215,9 @@ SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
   ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
   ExpandableLabel: c2fab6d27860c572d67134b30522a5917746171d
+  FAPaginationLayout: 5f9d95fbd94dff12f863c196640bd797abe68907
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
   FBSDKLoginKit: 1b0cf04df0370b37404213157b060d6666ede814
-  FAPaginationLayout: 5f9d95fbd94dff12f863c196640bd797abe68907
   Firebase: 5e6b7b12bf9adb90986688edc06b156c37e109cd
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
   FirebaseCore: 064c2dd92a8ca5974bbdcb080df9921e46bd34cd
@@ -250,6 +250,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: 90cf52bc9734463aedca003c11f429ff9bbbb324
+PODFILE CHECKSUM: 5979a7e316a5fbc67aa6e616e0e1385e863363e4
 
 COCOAPODS: 1.8.4
