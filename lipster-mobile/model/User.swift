@@ -13,6 +13,7 @@ fileprivate let firstnameType = "firstname"
 fileprivate let lastnameType = "lastname"
 fileprivate let emailType = "email"
 fileprivate let imageType = "profileImage"
+fileprivate let idType = "id"
 
 class User {
     
@@ -20,7 +21,7 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: firstnameType)
-                print("firstname set: \(val)")
+                
             }
         }
         get {
@@ -33,7 +34,7 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: lastnameType)
-                print("lastname set: \(val)")
+                
             }
         }
         get {
@@ -46,7 +47,7 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: emailType)
-                print("email set: \(val)")
+                
             }
         }
         get {
@@ -59,13 +60,25 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: imageType)
-                print("image set: \(val)")
+                
             }
         }
         get {
             return UserDefaults.standard.string(forKey: imageType) ?? ""
         }
         
+    }
+    
+    static var id: String? {
+        set {
+            if let val = newValue {
+                UserDefaults.standard.set(val, forKey: idType)
+                
+            }
+        }
+        get {
+            return UserDefaults.standard.string(forKey: idType) ?? ""
+        }
     }
     
 }

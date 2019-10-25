@@ -1,10 +1,12 @@
 import UIKit
 import FlexiblePageControl
 import Hero
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class TrendDetailViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
   
-
     @IBOutlet weak var trendLipColorView: UIView!
     @IBOutlet weak var trendSkinColorView: UIView!
     @IBOutlet weak var trendNameLabel: UILabel!
@@ -22,8 +24,11 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     var trend: Trend!
     var frame = CGRect(x:0, y:0, width:0 , height:0)
     var imageHeroId = String()
-    var lipsticks : [Lipstick]?
+    var lipsticks: [Lipstick] = [Lipstick]()
     let padding: CGFloat = 15.0
+    
+    let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +37,19 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         initGesture()
         lipstickRelatedCollectionView.delegate = self
         lipstickRelatedCollectionView.dataSource = self
-        lipsticks =  Lipstick.mockArrayData(size: 5)
-        lipstickRelatedCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: 0.0)       
+        lipstickRelatedCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: 0.0)
+        initReactive()
+        fetchData()
     }
     
-   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return lipsticks!.count
+    func fetchData() {
+        LipstickRepository.fetchSimilarLipstickHexColor((trendLipColorView.backgroundColor?.toHex)!) { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return lipsticks.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,16 +57,14 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         cell.contentView.layer.cornerRadius = 10.0
         cell.lipstickRelated_LipstickImage.layer.cornerRadius = 10.0
         cell.contentView.layer.masksToBounds = true
-//        cell.layer.cornerRadius = 10
-//        cell.clipsToBounds = true
-        
+
         cell.hero.modifiers = [.fade, .scale(0.2)]
         
-        let lipstickRelatedTrends = lipsticks![indexPath.item]
-        cell.lipstickRalated_lipstickName.text = lipsticks![indexPath.item].lipstickName
-        cell.lipstickRelated_lipstickBrand.text = lipsticks![indexPath.item].lipstickBrand
-        cell.lipstickRelated_LipstickImage.sd_setImage(with: URL(string: lipsticks![indexPath.item].lipstickImage.first!), placeholderImage: UIImage(named: "nopic"))
-     //   cell.lipstickRelated_lipstickColorName.text = lipsticks![indexPath.item].lipstickColorName
+        let lipstick = lipsticks[indexPath.item]
+        cell.lipstickRalated_lipstickName.text = lipstick.lipstickName
+        cell.lipstickRelated_lipstickBrand.text = lipstick.lipstickBrand
+        cell.lipstickRelated_LipstickImage.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
+
      return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -65,12 +75,6 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
         return CGSize(width: 166.0, height: 250.0)
-    }
-      
-    @IBAction func onShowAllLipstickButtonPress(_ sender: Any?) {
-        let colorSelect = trendLipColorView.backgroundColor!
-
-        self.performSegue(withIdentifier: "showLipstickListFromColor", sender: colorSelect)
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -89,7 +93,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         } else if segueIdentifier == "showLipstickDetail" {
             if let destination = segue.destination as? LipstickDetailViewcontroller{
                 let item = sender as! Int
-                destination.lipstick = lipsticks![item]
+                destination.lipstick = lipsticks[item]
             }
         }
     }
@@ -221,3 +225,22 @@ extension TrendDetailViewController {
         )
     }
 }
+
+extension TrendDetailViewController {
+    func initReactive() {
+        self.lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            self.lipsticks = lipsticks
+            
+            self.lipstickRelatedCollectionView.performBatchUpdates({
+                self.lipstickRelatedCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+                
+            }
+        })
+        
+        self.lipstickDataPipe.output.observe(lipstickDataObserver!)
+        
+    }
+}
+
+

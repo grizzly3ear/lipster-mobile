@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
             if let profile = fbProfile {
 
                 GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, graphResult, error) in
-                    if let err = error {
+                    if let _ = error {
                         print("Failed to fetch data")
                         return
                     }
@@ -76,8 +76,17 @@ class LoginViewController: UIViewController {
                         User.firstname = profile.firstName
                         User.lastname = profile.lastName
                         User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
-                        User.email = "\(dictionaryResult["email"])"
-                        self.performSegue(withIdentifier: "selectGenderPage", sender: self)
+                        User.email = "\(String(describing: dictionaryResult["email"]))"
+                        UserRepository.authenticate(email: User.email!, password: User.id!) { (status, messages) in
+                            if status == 401 {
+                                self.performSegue(withIdentifier: "selectGenderPage", sender: self)
+                            } else if status == 200 {
+                                self.hero.dismissViewController()
+                            } else {
+                                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
+                            }
+                        }
+                        
                     }
                     
                 }

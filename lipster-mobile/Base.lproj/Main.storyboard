@@ -989,7 +989,7 @@ Review</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
+                                            <rect key="frame" x="3" y="5" width="161" height="162"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
                                             </constraints>
@@ -1178,14 +1178,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1544,7 +1544,7 @@ Review</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trend description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHm-TZ-XE3">
-                                        <rect key="frame" x="75.5" y="398" width="269.5" height="128"/>
+                                        <rect key="frame" x="75.5" y="398" width="269.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="269.5" id="GMy-3v-lmM"/>
                                         </constraints>
@@ -1596,7 +1596,7 @@ Review</string>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nlf-LP-74w">
-                                        <rect key="frame" x="0.0" y="570" width="375" height="268"/>
+                                        <rect key="frame" x="0.0" y="572" width="375" height="268"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="268" id="DJH-lp-N89"/>
@@ -1671,24 +1671,11 @@ Review</string>
                                         </connections>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Related Lipsticks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ah-Jy-46f">
-                                        <rect key="frame" x="23" y="540" width="184" height="22"/>
+                                        <rect key="frame" x="23" y="540" width="161.5" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5M5-IF-7u9">
-                                        <rect key="frame" x="280.5" y="536" width="57" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="57" id="poQ-gy-u2S"/>
-                                            <constraint firstAttribute="height" constant="30" id="rvt-66-4Ro"/>
-                                        </constraints>
-                                        <state key="normal" title="Show all">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onShowAllLipstickButtonPress:" destination="yRT-0L-hOz" eventType="touchUpInside" id="H5t-IV-70Q"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vp0-g6-vIs">
                                         <rect key="frame" x="19" y="475" width="34" height="40"/>
                                         <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1725,31 +1712,25 @@ Review</string>
                                     <constraint firstItem="IZQ-4U-4Mf" firstAttribute="top" secondItem="OBS-5f-9pm" secondAttribute="topMargin" id="0z8-kR-YfJ"/>
                                     <constraint firstItem="UHm-TZ-XE3" firstAttribute="leading" secondItem="vp0-g6-vIs" secondAttribute="trailing" constant="22.5" id="2GG-sD-ANK"/>
                                     <constraint firstItem="gZC-ew-wGe" firstAttribute="trailing" secondItem="aw3-Cy-nqn" secondAttribute="trailing" id="3sA-8g-QBu"/>
-                                    <constraint firstItem="5M5-IF-7u9" firstAttribute="centerY" secondItem="8Ah-Jy-46f" secondAttribute="centerY" id="5nf-j2-ZQp"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="centerX" secondItem="OBS-5f-9pm" secondAttribute="centerX" id="6jb-LE-L92"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="leading" secondItem="OBS-5f-9pm" secondAttribute="leading" constant="16" id="9sR-pc-rb9"/>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="top" secondItem="kEW-ET-9HO" secondAttribute="bottom" constant="15" id="ABc-mX-gT1"/>
                                     <constraint firstAttribute="trailing" secondItem="Liu-cL-6cB" secondAttribute="trailing" constant="16" id="BDX-RY-c1L"/>
-                                    <constraint firstItem="nlf-LP-74w" firstAttribute="top" secondItem="5M5-IF-7u9" secondAttribute="bottom" constant="4" id="BKP-fQ-rPZ"/>
                                     <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="aw3-Cy-nqn" secondAttribute="bottom" constant="15" id="DDa-F3-hR3"/>
                                     <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="top" constant="-3" id="DLu-5d-Ogc"/>
                                     <constraint firstItem="UHm-TZ-XE3" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="10" id="EeB-Oj-2dt"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="centerY" secondItem="D64-75-2kR" secondAttribute="centerY" constant="-10.5" id="FO3-RE-Ybo"/>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="leading" secondItem="5ed-Ff-9GO" secondAttribute="trailing" constant="21" id="FhV-mO-1b0"/>
-                                    <constraint firstAttribute="trailing" secondItem="5M5-IF-7u9" secondAttribute="trailing" constant="37.5" id="HuH-tQ-p22"/>
-                                    <constraint firstItem="nlf-LP-74w" firstAttribute="top" secondItem="5M5-IF-7u9" secondAttribute="bottom" constant="4" id="IS0-Ag-TpJ"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="top" secondItem="kEW-ET-9HO" secondAttribute="bottom" constant="11" id="Jm6-p4-tHY"/>
                                     <constraint firstItem="nlf-LP-74w" firstAttribute="leading" secondItem="kEW-ET-9HO" secondAttribute="leading" id="MuK-5b-cm8"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="centerX" secondItem="nlf-LP-74w" secondAttribute="centerX" id="Oow-at-p0K"/>
                                     <constraint firstItem="kEW-ET-9HO" firstAttribute="top" secondItem="OBS-5f-9pm" secondAttribute="top" constant="-24" id="T1f-JM-elV"/>
                                     <constraint firstItem="aw3-Cy-nqn" firstAttribute="leading" secondItem="8Ah-Jy-46f" secondAttribute="leading" constant="-7" id="TNJ-7W-QXW"/>
                                     <constraint firstAttribute="trailing" secondItem="D64-75-2kR" secondAttribute="trailing" constant="35" id="Tkx-4K-LeO"/>
-                                    <constraint firstItem="5M5-IF-7u9" firstAttribute="top" secondItem="UHm-TZ-XE3" secondAttribute="bottom" constant="10" id="WX6-m1-atz"/>
                                     <constraint firstAttribute="bottom" secondItem="nlf-LP-74w" secondAttribute="bottom" constant="5" id="XWt-x9-WAb"/>
                                     <constraint firstItem="nlf-LP-74w" firstAttribute="top" secondItem="8Ah-Jy-46f" secondAttribute="bottom" constant="8" id="Xpu-8i-sOy"/>
                                     <constraint firstItem="Ems-2x-eL4" firstAttribute="leading" secondItem="8Ah-Jy-46f" secondAttribute="leading" id="Y0Z-yR-a5r"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="leading" secondItem="OBS-5f-9pm" secondAttribute="leading" constant="24" id="cU5-jM-YMs"/>
-                                    <constraint firstItem="5M5-IF-7u9" firstAttribute="leading" secondItem="8Ah-Jy-46f" secondAttribute="trailing" constant="73.5" id="f91-rD-cNr"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="leading" secondItem="aw3-Cy-nqn" secondAttribute="leading" id="hQ5-I3-Tgm"/>
                                     <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="23" id="hup-ZY-Dc6"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="top" secondItem="D64-75-2kR" secondAttribute="bottom" constant="11" id="jHY-t7-fMj"/>
@@ -3224,14 +3205,11 @@ Review</string>
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7xa-ab-yxx"/>
-        <segue reference="JV6-s6-JqZ"/>
+        <segue reference="GT3-8q-qFt"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
-        <segue reference="fkk-Yh-5P5"/>
-        <segue reference="TWS-gk-k14"/>
         <segue reference="hsW-FO-orY"/>
-        <segue reference="UAR-uk-wvN"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
