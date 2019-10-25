@@ -18,6 +18,7 @@ pod 'MXSegmentedControl'
 pod 'ExpandableLabel'
 pod 'SPStorkController'
 pod 'UICollectionViewLeftAlignedLayout'
+pod 'FAPaginationLayout'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

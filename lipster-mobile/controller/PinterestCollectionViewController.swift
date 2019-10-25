@@ -42,7 +42,7 @@ class PinterestCollectionViewController: UICollectionViewController {
     @IBAction func goBack(_ sender: UIButton) {
         hero.dismissViewController()
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let trends = trendGroup?.trends {

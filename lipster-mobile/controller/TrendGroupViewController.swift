@@ -8,14 +8,16 @@
 
 import UIKit
 
-class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var trendGroupsCollectionView: UICollectionView!
     var trendGroups = [TrendGroup]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        trendGroupsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,7 +29,7 @@ class NewTrendGroupViewController: UIViewController ,UICollectionViewDelegate , 
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewTrendGroupCollectionViewCell", for: indexPath) as! NewTrendGroupCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewTrendGroupCollectionViewCell", for: indexPath) as! TrendGroupCollectionViewCell
         
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
