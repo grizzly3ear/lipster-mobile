@@ -27,7 +27,7 @@ class HttpRequest {
     }
     
     public func post(_ route: String, _ params: [String: Any]?, _ headers: [String: String]?, requiredAuth: Bool = false, completion: @escaping (JSON?, Int) -> (Void)) {
-        
+
         if requiredAuth && !checkAuth() {
             completion(nil, 401)
             return
@@ -69,10 +69,15 @@ class HttpRequest {
         }
         
         let json = JSON(value)
-        completion(json["data"], response.response!.statusCode)
+        if json["data"].exists() {
+            completion(json["data"], response.response!.statusCode)
+        } else {
+            completion(json, response.response!.statusCode)
+        }
     }
     
     func checkAuth() -> Bool {
+        
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         if token.trim() == "" {
             return false

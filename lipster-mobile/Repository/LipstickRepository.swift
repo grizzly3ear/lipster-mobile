@@ -70,6 +70,7 @@ class LipstickRepository {
             completion(Lipstick.makeArrayModelFromColorJSON(response: resposne))
         }
     }
+
     
     
     

@@ -124,6 +124,7 @@
 		3071C13322573BFE0056EE74 /* UIViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
 		3073907C227C2766003B9013 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewHelper.swift; sourceTree = "<group>"; };
+		30965806236306A6009270A5 /* lipster-mobileRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "lipster-mobileRelease.entitlements"; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
 		30A889D9227196C600D00FCC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		30A889DD2271A7CC00D00FCC /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 		30B36E83221A6DDC001FD8EF /* lipster-mobile */ = {
 			isa = PBXGroup;
 			children = (
+				30965806236306A6009270A5 /* lipster-mobileRelease.entitlements */,
 				3055E2B4236167DA00257DA9 /* gif */,
 				D826485E2360A45D00BE0E47 /* xib */,
 				3032BDD222F9271F009E325A /* Repository */,
@@ -735,14 +737,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5WL8C79TUD;
+				DEVELOPMENT_TEAM = 54Q6X55CDV;
 				INFOPLIST_FILE = "lipster-mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anyong.lipster-mobile";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sit.lipster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -756,16 +758,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "lipster-mobile/lipster-mobileRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5WL8C79TUD;
+				DEVELOPMENT_TEAM = 54Q6X55CDV;
 				INFOPLIST_FILE = "lipster-mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anyong.lipster-mobile";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sit.lipster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
