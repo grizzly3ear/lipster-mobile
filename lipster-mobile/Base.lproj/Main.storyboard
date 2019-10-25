@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CzO-UI-R6t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -109,7 +109,7 @@
             <objects>
                 <viewController storyboardIdentifier="NearByViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jAg-pR-acB" customClass="NearByViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teo-6v-MWq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-Kk-Cyg">
@@ -1178,14 +1178,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1348,7 +1348,7 @@ Review</string>
             <objects>
                 <viewController storyboardIdentifier="StoreViewController" id="qET-1N-1ep" customClass="StoreViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3x-Nj-7UI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPG-3s-G8V">
@@ -1415,13 +1415,13 @@ Review</string>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGG-hU-FxS">
-                                <rect key="frame" x="61" y="599" width="22" height="20.5"/>
+                                <rect key="frame" x="61" y="619" width="22" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-lj-MXF">
-                                <rect key="frame" x="28" y="437" width="313" height="109.5"/>
+                                <rect key="frame" x="28" y="437" width="313" height="129.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="313" id="Xnj-a6-jLV"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="iP3-Ya-iea"/>
@@ -1440,13 +1440,13 @@ Review</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWt-qV-akJ">
-                                <rect key="frame" x="61" y="563.5" width="52" height="21"/>
+                                <rect key="frame" x="61" y="583.5" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telephone-auricular-with-cable (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Q8m-RH-3HY">
-                                <rect key="frame" x="28" y="561.5" width="25" height="25"/>
+                                <rect key="frame" x="28" y="581.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="ZD0-89-E7A"/>
                                     <constraint firstAttribute="width" constant="25" id="odk-aM-FOX"/>
@@ -2294,7 +2294,7 @@ Review</string>
             <objects>
                 <viewController id="C66-Qw-59I" customClass="TryMeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HNg-6I-cGb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKO-Br-WFk">
@@ -2545,14 +2545,14 @@ Review</string>
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mV-k3-eiG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="686"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-eK-Jgg">
                                                 <rect key="frame" x="97" y="43" width="181" height="180"/>
@@ -2586,7 +2586,7 @@ Review</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-yW-lf1">
-                                                <rect key="frame" x="0.0" y="492" width="375" height="258"/>
+                                                <rect key="frame" x="0.0" y="492" width="375" height="194"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMB-Jw-T9p">
                                                         <rect key="frame" x="0.0" y="0.0" width="750" height="259"/>
@@ -2682,7 +2682,7 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-0G-sOE">
-                                                <rect key="frame" x="7" y="-1" width="45" height="96"/>
+                                                <rect key="frame" x="7" y="-1" width="45" height="48"/>
                                                 <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                                 <connections>
                                                     <action selector="goBack:" destination="udf-5l-NvU" eventType="touchUpInside" id="HZw-W9-NmH"/>
@@ -2841,7 +2841,7 @@ Review</string>
             <objects>
                 <viewController id="6rW-uu-4Cf" customClass="ReviewViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z9W-dC-B8O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxO-bX-M6a">
@@ -3199,9 +3199,6 @@ Review</string>
         <image name="login_textfieldLine" width="283" height="28"/>
         <image name="mail-1" width="128" height="128"/>
         <image name="makeup" width="512" height="512"/>
-        <image name="male3" width="500" height="500"/>
-        <image name="map_button" width="142" height="142"/>
-        <image name="map_storeDetail" width="512" height="512"/>
         <image name="makeup_light" width="512" height="512"/>
         <image name="male3" width="500" height="500"/>
         <image name="map_white" width="128" height="128"/>
@@ -3225,12 +3222,9 @@ Review</string>
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NoJ-hS-Tb5"/>
         <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
-        <segue reference="Rqr-p9-s19"/>
-        <segue reference="hsW-FO-orY"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="fkk-Yh-5P5"/>
         <segue reference="TWS-gk-k14"/>
