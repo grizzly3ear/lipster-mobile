@@ -1178,14 +1178,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2562,24 +2562,6 @@ Review</string>
                                                     <outlet property="delegate" destination="udf-5l-NvU" id="Zvc-eV-NXa"/>
                                                 </connections>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
-                                                <rect key="frame" x="126" y="403" width="202" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="202" id="CM4-MJ-SGx"/>
-                                                </constraints>
-                                                <state key="normal" title="Button" image="try-this-shade"/>
-                                                <connections>
-                                                    <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ng-KE-FaO">
-                                                <rect key="frame" x="71" y="403" width="35" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button" image="map_button"/>
-                                                <connections>
-                                                    <action selector="clickedMapButton:" destination="udf-5l-NvU" eventType="touchUpInside" id="szH-BS-2Ef"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-0G-sOE">
                                                 <rect key="frame" x="7" y="-1" width="45" height="48"/>
                                                 <state key="normal" image="baseline_chevron_left_black_48pt"/>
@@ -2604,6 +2586,48 @@ Review</string>
                                                 <rect key="frame" x="45" y="324" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-fK-jfp">
+                                                <rect key="frame" x="205" y="408" width="120" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="CM4-MJ-SGx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="22" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="TRY ME">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clickedTryMe:" destination="udf-5l-NvU" eventType="touchUpInside" id="oCZ-oV-pUO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ng-KE-FaO">
+                                                <rect key="frame" x="51" y="408" width="120" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="27" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="MAP">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.98631821065989844" green="0.98631821065989844" blue="0.98631821065989844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clickedMapButton:" destination="udf-5l-NvU" eventType="touchUpInside" id="szH-BS-2Ef"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map_white" translatesAutoresizingMaskIntoConstraints="NO" id="2On-tY-11O">
+                                                <rect key="frame" x="80" y="415" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="makeup_light" translatesAutoresizingMaskIntoConstraints="NO" id="DSn-GA-qeR">
+                                                <rect key="frame" x="217" y="415" width="23" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2613,7 +2637,7 @@ Review</string>
                                             <constraint firstItem="LNL-eK-Jgg" firstAttribute="bottom" secondItem="Hln-nP-OFo" secondAttribute="bottom" id="AVQ-4C-IsW"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="qqD-DK-hvx" secondAttribute="centerX" id="AdR-TP-l1e"/>
                                             <constraint firstAttribute="trailing" secondItem="iOI-yW-lf1" secondAttribute="trailing" id="C5L-Dz-tuC"/>
-                                            <constraint firstAttribute="trailing" secondItem="r1A-fK-jfp" secondAttribute="trailing" constant="47" id="CGY-Mk-Y8G"/>
+                                            <constraint firstAttribute="trailing" secondItem="r1A-fK-jfp" secondAttribute="trailing" constant="50" id="CGY-Mk-Y8G"/>
                                             <constraint firstItem="8hm-Ti-ecJ" firstAttribute="leading" secondItem="jAb-2q-rZ1" secondAttribute="leading" constant="45" id="CZE-Wr-Imj"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="Uqo-7f-rOw" secondAttribute="centerX" id="Ce9-fJ-IFc"/>
                                             <constraint firstItem="LIA-RK-nHR" firstAttribute="top" secondItem="8hm-Ti-ecJ" secondAttribute="bottom" constant="3" id="Cih-zB-0w4"/>
@@ -2633,8 +2657,8 @@ Review</string>
                                             <constraint firstItem="qqD-DK-hvx" firstAttribute="top" secondItem="jAb-2q-rZ1" secondAttribute="top" constant="354" id="U8B-Jj-vxv"/>
                                             <constraint firstAttribute="height" constant="686" id="UXX-hE-baX"/>
                                             <constraint firstItem="X0G-MV-q6e" firstAttribute="top" secondItem="LNL-eK-Jgg" secondAttribute="bottom" id="Vzu-Wa-Y0c"/>
-                                            <constraint firstItem="r1A-fK-jfp" firstAttribute="top" secondItem="qqD-DK-hvx" secondAttribute="bottom" constant="8" id="WzQ-W6-xHw"/>
-                                            <constraint firstItem="Yhv-km-JxF" firstAttribute="top" secondItem="r1A-fK-jfp" secondAttribute="bottom" constant="12" id="Y5m-Lh-am0"/>
+                                            <constraint firstItem="r1A-fK-jfp" firstAttribute="top" secondItem="qqD-DK-hvx" secondAttribute="bottom" constant="13" id="WzQ-W6-xHw"/>
+                                            <constraint firstItem="Yhv-km-JxF" firstAttribute="top" secondItem="r1A-fK-jfp" secondAttribute="bottom" constant="8" id="Y5m-Lh-am0"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="centerX" secondItem="X0G-MV-q6e" secondAttribute="centerX" id="bTY-59-oEP"/>
                                             <constraint firstItem="Yhv-km-JxF" firstAttribute="centerX" secondItem="qqD-DK-hvx" secondAttribute="centerX" id="bit-wM-IG0"/>
                                             <constraint firstItem="iOI-yW-lf1" firstAttribute="leading" secondItem="qqD-DK-hvx" secondAttribute="leading" id="cm6-uL-cQC"/>
@@ -2678,12 +2702,13 @@ Review</string>
                         <outlet property="lipstickImagesPageControl" destination="X0G-MV-q6e" id="Opw-JE-fNs"/>
                         <outlet property="lipstickName" destination="ltl-ql-sD7" id="pMD-oy-mNJ"/>
                         <outlet property="lipstickSelectColorCollectionView" destination="qqD-DK-hvx" id="tu6-Pj-ybP"/>
+                        <outlet property="mapButton" destination="0Ng-KE-FaO" id="WSf-a6-UmQ"/>
                         <outlet property="reviewButton" destination="Hg3-8F-QDi" id="BUe-EM-FvJ"/>
                         <outlet property="scrollLipstickImages" destination="Uqo-7f-rOw" id="Ebj-DK-4oC"/>
                         <outlet property="scrollView" destination="iOI-yW-lf1" id="uV9-gM-bKM"/>
                         <outlet property="segmentedControl3" destination="Yhv-km-JxF" id="yJO-Xy-dLU"/>
                         <outlet property="titleNavigationItem" destination="MEO-e2-Xae" id="gYW-zR-g1i"/>
-                        <outlet property="tryMeButton" destination="r1A-fK-jfp" id="NLb-2s-Pd3"/>
+                        <outlet property="tryMeButton" destination="r1A-fK-jfp" id="l7o-uT-HHS"/>
                         <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="sbi-OJ-sqx"/>
                         <segue destination="C66-Qw-59I" kind="show" identifier="showTryMe" id="eIL-OE-7Jl"/>
                         <segue destination="jAg-pR-acB" kind="show" identifier="showMap" id="QdS-sl-bB7"/>
@@ -3061,6 +3086,9 @@ Review</string>
         <image name="mail-1" width="128" height="128"/>
         <image name="makeup" width="512" height="512"/>
         <image name="map_button" width="142" height="142"/>
+        <image name="makeup_light" width="512" height="512"/>
+        <image name="map_storeDetail" width="512" height="512"/>
+        <image name="map_white" width="128" height="128"/>
         <image name="notiTrend1" width="524" height="426"/>
         <image name="open" width="512" height="512"/>
         <image name="open-close" width="256" height="256"/>
@@ -3076,7 +3104,6 @@ Review</string>
         <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
         <image name="trendGroupSkin" width="512" height="512"/>
         <image name="trensLipstickColor" width="512" height="512"/>
-        <image name="try-this-shade" width="263" height="53"/>
         <image name="user1" width="680" height="678"/>
         <image name="user2" width="664" height="664"/>
         <image name="username" width="128" height="128"/>
@@ -3085,12 +3112,14 @@ Review</string>
     <inferredMetricsTieBreakers>
         <segue reference="lPZ-6r-fBu"/>
         <segue reference="NoJ-hS-Tb5"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="Rqr-p9-s19"/>
         <segue reference="fkk-Yh-5P5"/>
+        <segue reference="hsW-FO-orY"/>
         <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>

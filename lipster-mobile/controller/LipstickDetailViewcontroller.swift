@@ -23,6 +23,7 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
     @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
     
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
@@ -52,7 +53,9 @@ class LipstickDetailViewcontroller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        tryMeButtonStyle()
+        mapButtonStyle()
         numberOfReviewLabel()
         initHero()
         initReactiveData()
@@ -83,7 +86,15 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
-    
+    func tryMeButtonStyle(){
+        tryMeButton.backgroundColor = .black
+        tryMeButton.layer.cornerRadius = 5.0
+    }
+    func mapButtonStyle(){
+        mapButton.backgroundColor = .black
+        mapButton.tintColor = .white 
+        mapButton.layer.cornerRadius = 5.0
+    }
     func numberOfReviewLabel(){
         reviewButton.setTitle("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") ", for: .normal)
         reviewButton.isEnabled = true
