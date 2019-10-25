@@ -24,6 +24,9 @@ class EditProfileViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
          self.performSegue(withIdentifier: "showRecentlyView", sender: self)
     }
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
