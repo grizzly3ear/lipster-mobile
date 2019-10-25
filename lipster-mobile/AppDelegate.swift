@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FBLoginButton.self
-        application.registerForRemoteNotifications()
+        UIApplication.shared.registerForRemoteNotifications()
         return true
     }
     
