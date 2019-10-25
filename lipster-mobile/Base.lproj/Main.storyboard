@@ -1178,14 +1178,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1337,11 +1337,12 @@ Review</string>
                         <outlet property="searchTextFieldMarginTopConstraint" destination="7RS-6P-yTg" id="0dM-mj-BtA"/>
                         <segue destination="qET-1N-1ep" kind="show" identifier="showStoreDetail" id="53E-t6-YAN"/>
                         <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="UAR-uk-wvN"/>
+                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="JV6-s6-JqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2C-nW-4G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="2441.3793103448279"/>
+            <point key="canvasLocation" x="-1105" y="2443"/>
         </scene>
         <!--Store Name-->
         <scene sceneID="YwC-3f-noJ">
@@ -2813,6 +2814,7 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMT-mL-4eD"/>
                     </view>
+                    <navigationItem key="navigationItem" id="64K-F6-rXZ"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
@@ -3223,10 +3225,13 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7xa-ab-yxx"/>
+        <segue reference="JV6-s6-JqZ"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="fkk-Yh-5P5"/>
         <segue reference="TWS-gk-k14"/>
+        <segue reference="hsW-FO-orY"/>
+        <segue reference="UAR-uk-wvN"/>
     </inferredMetricsTieBreakers>
 </document>

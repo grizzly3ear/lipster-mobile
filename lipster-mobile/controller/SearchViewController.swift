@@ -127,6 +127,12 @@ class SearchViewController: UIViewController {
             let destination = segue.destination as! StoreViewController
             destination.store = store
         }
+        if identifier == "showLipstickDetail" {
+            if let destination = segue.destination as? LipstickDetailViewcontroller {
+                let item = sender as! Int
+                destination.lipstick = recommendLipstick[item]
+            }
+        }
     }
 }
 
@@ -177,6 +183,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             searchResultTableView.reloadData()
             self.searchTextField.becomeFirstResponder()
         }
+        collectionView.deselectItem(at: indexPath, animated: true)
+        performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
         
     }
     
