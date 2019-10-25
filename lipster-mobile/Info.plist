@@ -68,6 +68,11 @@
 	<string>This application requires location services to work</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Lipster want to access to your Photo Library</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

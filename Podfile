@@ -25,5 +25,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Analytics'
 pod 'Firebase/MLVision'
 pod 'Firebase/MLVisionFaceModel'
+pod 'Firebase/Messaging'
 
 end
