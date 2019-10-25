@@ -1286,7 +1286,7 @@ Review</string>
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-TQ-2L3">
-                                <rect key="frame" x="288" y="91" width="36" height="36"/>
+                                <rect key="frame" x="306" y="105" width="18" height="22"/>
                                 <state key="normal" image="baseline_delete_outline_black_18pt"/>
                                 <connections>
                                     <action selector="clearSearch:" destination="gBB-ln-FRs" eventType="touchUpInside" id="AuM-ZU-Uga"/>
@@ -2421,7 +2421,7 @@ Review</string>
             </objects>
             <point key="canvasLocation" x="940" y="4951"/>
         </scene>
-        <!--Brand Name-->
+        <!--Lipstick Detail Viewcontroller-->
         <scene sceneID="xbj-su-sm3">
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -2693,7 +2693,6 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMT-mL-4eD"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Brand Name" id="MEO-e2-Xae"/>
                     <size key="freeformSize" width="375" height="750"/>
                     <connections>
                         <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
@@ -2703,11 +2702,10 @@ Review</string>
                         <outlet property="lipstickName" destination="ltl-ql-sD7" id="pMD-oy-mNJ"/>
                         <outlet property="lipstickSelectColorCollectionView" destination="qqD-DK-hvx" id="tu6-Pj-ybP"/>
                         <outlet property="mapButton" destination="0Ng-KE-FaO" id="WSf-a6-UmQ"/>
-                        <outlet property="reviewButton" destination="Hg3-8F-QDi" id="BUe-EM-FvJ"/>
+                        <outlet property="reviewButton" destination="Hg3-8F-QDi" id="gjy-Jf-D4c"/>
                         <outlet property="scrollLipstickImages" destination="Uqo-7f-rOw" id="Ebj-DK-4oC"/>
                         <outlet property="scrollView" destination="iOI-yW-lf1" id="uV9-gM-bKM"/>
                         <outlet property="segmentedControl3" destination="Yhv-km-JxF" id="yJO-Xy-dLU"/>
-                        <outlet property="titleNavigationItem" destination="MEO-e2-Xae" id="gYW-zR-g1i"/>
                         <outlet property="tryMeButton" destination="r1A-fK-jfp" id="l7o-uT-HHS"/>
                         <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="sbi-OJ-sqx"/>
                         <segue destination="C66-Qw-59I" kind="show" identifier="showTryMe" id="eIL-OE-7Jl"/>

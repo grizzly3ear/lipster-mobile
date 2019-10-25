@@ -32,8 +32,6 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
-    
-    @IBOutlet weak var titleNavigationItem: UINavigationItem!
   
     let padding: CGFloat = 20.0
     
@@ -64,14 +62,14 @@ class LipstickDetailViewcontroller: UIViewController {
         lipstickSelectColorCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.titleNavigationItem.title = lipstick?.lipstickBrand
-     
+
         segmentedControl3.append(title: "Description").set(titleColor: UIColor(hexString: "#2B7DBF"), for: .selected)
         
         segmentedControl3.append(title: "Ingredient").set(titleColor: UIColor(hexString: "#CE0755"), for: .selected)
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
         addLipstickToHistory()
+
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -96,6 +94,7 @@ class LipstickDetailViewcontroller: UIViewController {
         mapButton.layer.cornerRadius = 5.0
     }
     func numberOfReviewLabel(){
+       
         reviewButton.setTitle("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") ", for: .normal)
         reviewButton.isEnabled = true
     }
