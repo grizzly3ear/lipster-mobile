@@ -2527,11 +2527,11 @@ Review</string>
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mV-k3-eiG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="655"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="-20" width="375" height="675"/>
@@ -2797,7 +2797,7 @@ Review</string>
                                     <constraint firstAttribute="trailing" secondItem="jAb-2q-rZ1" secondAttribute="trailing" id="A2V-t2-Nwf"/>
                                     <constraint firstItem="jAb-2q-rZ1" firstAttribute="centerX" secondItem="fL4-sY-UKe" secondAttribute="centerX" id="Hu0-Ep-aL9"/>
                                     <constraint firstItem="jAb-2q-rZ1" firstAttribute="top" secondItem="fL4-sY-UKe" secondAttribute="top" constant="-20" id="grS-Ku-Dl3"/>
-                                    <constraint firstAttribute="bottom" secondItem="jAb-2q-rZ1" secondAttribute="bottom" constant="96" id="ygP-l3-U2Q"/>
+                                    <constraint firstAttribute="bottom" secondItem="jAb-2q-rZ1" secondAttribute="bottom" id="ygP-l3-U2Q"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2805,13 +2805,13 @@ Review</string>
                         <constraints>
                             <constraint firstItem="fL4-sY-UKe" firstAttribute="leading" secondItem="YMT-mL-4eD" secondAttribute="leading" id="ZhK-nH-Iuz"/>
                             <constraint firstItem="YMT-mL-4eD" firstAttribute="trailing" secondItem="fL4-sY-UKe" secondAttribute="trailing" id="ele-qB-hso"/>
-                            <constraint firstAttribute="bottom" secondItem="fL4-sY-UKe" secondAttribute="bottom" constant="-1" id="gqS-T9-TQL"/>
+                            <constraint firstAttribute="bottom" secondItem="fL4-sY-UKe" secondAttribute="bottom" constant="-5" id="gqS-T9-TQL"/>
                             <constraint firstItem="fL4-sY-UKe" firstAttribute="top" secondItem="2mV-k3-eiG" secondAttribute="top" id="hpN-Ml-rvh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMT-mL-4eD"/>
                     </view>
                     <navigationItem key="navigationItem" id="64K-F6-rXZ"/>
-                    <size key="freeformSize" width="375" height="750"/>
+                    <size key="freeformSize" width="375" height="650"/>
                     <connections>
                         <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
                         <outlet property="lipstickBrand" destination="8hm-Ti-ecJ" id="Pif-Gf-2gk"/>
