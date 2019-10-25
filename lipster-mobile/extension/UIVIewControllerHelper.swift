@@ -26,9 +26,17 @@ extension UIViewController {
         )
     }
     
-    func showTabBar(_ duration: Double = 0.3) {
-        var frame = self.tabBarController?.tabBar.frame
-        frame?.origin.y = self.view.frame.size.height + 15
+    func showTabBar(_ duration: Double = 0.3, height: CGFloat = -1) {
+        var frame: CGRect?
+        
+        if height == -1 {
+            frame = self.tabBarController?.tabBar.frame
+            frame?.origin.y = self.view.frame.size.height + 15
+        } else {
+            frame = self.tabBarController?.tabBar.frame
+            frame?.origin.y = height + 15
+        }
+        
         
         UIView.animate(
             withDuration: duration,

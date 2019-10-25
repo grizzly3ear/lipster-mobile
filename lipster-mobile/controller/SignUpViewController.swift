@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "backToLogin", sender: self)
+        hero.dismissViewController()
     }
 }
 

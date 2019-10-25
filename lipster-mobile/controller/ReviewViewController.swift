@@ -23,6 +23,8 @@ class ReviewViewController: UIViewController {
     var lipstick: Lipstick!
     var userReviews  = [UserReview]()
     var labelState: [Bool]!
+    
+    var pageState: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,9 @@ class ReviewViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        showTabBar()
+        if pageState {
+            showTabBar(0.3, height: 605)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -56,21 +60,23 @@ class ReviewViewController: UIViewController {
         if typeReview.text!.trim().isEmpty {
             print("Add Review Text Field is empty")
         } else {
-            LipstickRepository.addReview(lipstick: lipstick, comment: typeReview.text!) {_,_ in 
+            LipstickRepository.addReview(lipstick: lipstick, comment: typeReview.text!) {result, status in
+                print(result)
+                print(status)
+                
+                if !result && status == 401 {
+                    self.pageState = false
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
                 
             }
         }
-        
-//        let indexPath = IndexPath(row: userReviews.count - 1, section: 0)
-//        
-//        reviewTableView.beginUpdates()
-//        reviewTableView.insertRows(at: [indexPath], with: .automatic)
-//        reviewTableView.endUpdates()
-//        
-//        typeReview.text = ""
-//        view.endEditing(true)
+
     }
     @IBAction func goBack(_ sender: Any) {
+        self.pageState = true
         hero.dismissViewController()
     }
     

@@ -37,6 +37,13 @@ class SearchViewController: UIViewController {
     let storeDataPipe = Signal<[Store], NoError>.pipe()
     var storeDataObserver: Signal<[Store], NoError>.Observer?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        }
+        return .default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

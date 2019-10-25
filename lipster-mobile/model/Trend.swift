@@ -94,4 +94,30 @@ class Trend: NSObject, NSCoding {
         }
         return trends
     }
+    
+    static func toggleTrendFav(_ trend: Trend?) {
+        if trend != nil {
+            var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
+                print("remove")
+                favTrends.remove(at: i)
+                
+            } else {
+                print("add")
+                favTrends.append(trend!)
+            }
+            Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
+        }
+    }
+    static func isTrendFav(_ trend: Trend?) -> Bool {
+        if trend != nil {
+            let favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
+            
+            if let _ = favTrends.firstIndex(where: { $0 == trend! }) {
+                return true
+            }
+        }
+        return false
+    }
 }

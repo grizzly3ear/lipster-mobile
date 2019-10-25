@@ -19,6 +19,7 @@ pod 'ExpandableLabel'
 pod 'SPStorkController'
 pod 'UICollectionViewLeftAlignedLayout'
 pod 'FAPaginationLayout'
+pod 'FBSDKLoginKit'
 
 pod 'Firebase/Core'
 pod 'Firebase/Analytics'

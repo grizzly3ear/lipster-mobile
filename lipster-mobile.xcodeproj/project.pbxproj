@@ -41,6 +41,8 @@
 		30B966F0224E06DE00258CA6 /* LipColorDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */; };
 		30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78E972299B91D0032A965 /* UIUtilityHelper.swift */; };
 		30CAE25822FBDA38004513C1 /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAE25722FBDA38004513C1 /* TrendRepository.swift */; };
+		30CF95442360DB0100CE11D6 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF95432360DB0100CE11D6 /* GenderViewController.swift */; };
+		30CF95462360DD6B00CE11D6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF95452360DD6B00CE11D6 /* User.swift */; };
 		30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */; };
 		699EA1405C6A1EE0FCF54AB9 /* Pods_lipster_mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */; };
 		D80510512357749300A6227A /* TrendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80510502357749300A6227A /* TrendsCollectionViewCell.swift */; };
@@ -134,6 +136,8 @@
 		30B966EF224E06DE00258CA6 /* LipColorDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LipColorDetectionController.swift; path = "lipster-mobile/Controller/LipColorDetectionController.swift"; sourceTree = SOURCE_ROOT; };
 		30C78E972299B91D0032A965 /* UIUtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilityHelper.swift; sourceTree = "<group>"; };
 		30CAE25722FBDA38004513C1 /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
+		30CF95432360DB0100CE11D6 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		30CF95452360DD6B00CE11D6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30F76BCD23054FAD0009E998 /* BounceTabbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceTabbarItem.swift; sourceTree = "<group>"; };
 		77242E26FBCCCC2B2F27A3A2 /* Pods_lipster_mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lipster_mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80510502357749300A6227A /* TrendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				D8E48D88226CC2C300A192EB /* Trend.swift */,
 				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
 				D82675AC2253BE15001D8CB5 /* UserReview.swift */,
+				30CF95452360DD6B00CE11D6 /* User.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				D80540322359B6FB00351C9B /* TrendGroupViewController.swift */,
 				300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */,
 				D84CB264235DE98E00D300FC /* HomeTableViewController.swift */,
+				30CF95432360DB0100CE11D6 /* GenderViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -529,8 +535,10 @@
 				30C78E982299B91D0032A965 /* UIUtilityHelper.swift in Sources */,
 				D8799C8E22FD51E800441E6F /* YourReviewsTableViewCell.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
+				30CF95442360DB0100CE11D6 /* GenderViewController.swift in Sources */,
 				D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */,
 				2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */,
+				30CF95462360DD6B00CE11D6 /* User.swift in Sources */,
 				D8BA31BB224B898F00CD24A4 /* TabBarController.swift in Sources */,
 				D8F4BD762338DAB500274B79 /* SearchTableViewCell.swift in Sources */,
 				302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */,
@@ -654,6 +662,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-Objc";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -709,6 +718,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-Objc";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

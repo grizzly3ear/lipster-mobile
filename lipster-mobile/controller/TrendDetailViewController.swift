@@ -77,7 +77,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         hero.dismissViewController()
     }
     @IBAction func toggleFavoriteTrend(_ sender: Any?) {
-        toggleTrendFav()
+        Trend.toggleTrendFav(trend)
         initUI()
     }
     
@@ -102,7 +102,7 @@ extension TrendDetailViewController {
         self.trendNameLabel.text = trend.title
         setUserInterface(trend ?? Trend())
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        if isTrendFav() {
+        if Trend.isTrendFav(trend) {
             let image = UIImage(named: "heart_red")!
             favoriteButton.setImage(image, for: .normal)
         } else {
@@ -219,36 +219,5 @@ extension TrendDetailViewController {
             presenting: .zoom,
             dismissing: .zoomOut
         )
-    }
-}
-
-extension TrendDetailViewController {
-    func toggleTrendFav() {
-        if trend != nil {
-            var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
-            
-            if let i = favTrends.firstIndex(where: { $0 == trend! }) {
-                print("remove")
-                favTrends.remove(at: i)
-                
-            } else {
-                print("add")
-                favTrends.append(trend!)
-            }
-            Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
-        }
-        
-        
-    }
-    func isTrendFav() -> Bool {
-        if trend != nil {
-            let favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
-            
-            if let _ = favTrends.firstIndex(where: { $0 == trend! }) {
-                return true
-                
-            }
-        }
-        return false
     }
 }

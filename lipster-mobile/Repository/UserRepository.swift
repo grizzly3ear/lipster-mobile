@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-import SDWebImage
 
 class UserRepository {
     
@@ -19,6 +18,35 @@ class UserRepository {
                 completion(401, ["Login Failed", "Sorry, your email or password are wrong. Please try again."])
             }
             
+        }
+    }
+    
+    public static func register(email: String, password: String, firstname: String, lastname: String, gender: String, completion: @escaping (Bool, [String]) -> Void) {
+        let request = HttpRequest()
+        request.post(
+            "api/register",
+            [
+                "email": email,
+                "password": password,
+                "firstname": firstname,
+                "lastname": lastname,
+                "gender": gender
+            ],
+            nil
+        ) {response, httpStatusCode in
+            if httpStatusCode == 200 {
+                // MARK:Pass
+                authenticate(email: email, password: password) { (status, messages) in
+                    completion(true, messages)
+                    return
+                }
+            } else if httpStatusCode == 400 {
+                // MARK:Bad Data
+            } else if httpStatusCode == 0 {
+                // MARK:Internet Connection Error
+            } else {
+                // MARK:Server Error
+            }
         }
     }
 }
