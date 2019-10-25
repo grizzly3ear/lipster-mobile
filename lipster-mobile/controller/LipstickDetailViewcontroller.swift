@@ -23,6 +23,7 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var scrollLipstickImages: UIScrollView!
     @IBOutlet weak var lipstickImagesPageControl: UIPageControl!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
     
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
@@ -31,8 +32,6 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
-    
-    @IBOutlet weak var titleNavigationItem: UINavigationItem!
   
     let padding: CGFloat = 20.0
     
@@ -53,6 +52,8 @@ class LipstickDetailViewcontroller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tryMeButtonStyle()
+        mapButtonStyle()
         numberOfReviewLabel()
         initHero()
         initReactiveData()
@@ -61,14 +62,14 @@ class LipstickDetailViewcontroller: UIViewController {
         lipstickSelectColorCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.titleNavigationItem.title = lipstick?.lipstickBrand
-     
+
         segmentedControl3.append(title: "Description").set(titleColor: UIColor(hexString: "#2B7DBF"), for: .selected)
         
         segmentedControl3.append(title: "Ingredient").set(titleColor: UIColor(hexString: "#CE0755"), for: .selected)
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
         addLipstickToHistory()
+
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -83,9 +84,18 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
-    
+    func tryMeButtonStyle(){
+        tryMeButton.backgroundColor = .black
+        tryMeButton.layer.cornerRadius = 5.0
+    }
+    func mapButtonStyle(){
+        mapButton.backgroundColor = .black
+        mapButton.tintColor = .white 
+        mapButton.layer.cornerRadius = 5.0
+    }
     func numberOfReviewLabel(){
-        reviewButton.setTitle("See review\(reviews.count > 1 ? "s" : "") (\(reviews.count))", for: .normal)
+       
+        reviewButton.setTitle("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") ", for: .normal)
         reviewButton.isEnabled = true
     }
     @IBAction func clickedMapButton(_ sender: Any) {
