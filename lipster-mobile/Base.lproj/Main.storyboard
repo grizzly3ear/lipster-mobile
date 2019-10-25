@@ -1414,8 +1414,14 @@ Review</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGG-hU-FxS">
+                                <rect key="frame" x="61" y="599" width="22" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-lj-MXF">
-                                <rect key="frame" x="28" y="403" width="313" height="143.5"/>
+                                <rect key="frame" x="28" y="437" width="313" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="313" id="Xnj-a6-jLV"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="iP3-Ya-iea"/>
@@ -1447,18 +1453,12 @@ Review</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-6T-4AQ">
-                                <rect key="frame" x="150" y="366.5" width="54.5" height="26"/>
+                                <rect key="frame" x="28" y="403" width="54.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="209" id="rGU-mb-9ia"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGG-hU-FxS">
-                                <rect key="frame" x="61" y="599" width="22" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1467,18 +1467,18 @@ Review</string>
                             <constraint firstItem="fGG-hU-FxS" firstAttribute="leading" secondItem="K0b-yv-eOC" secondAttribute="leading" constant="61" id="1go-Ry-WQz"/>
                             <constraint firstItem="hBu-KK-Bd9" firstAttribute="leading" secondItem="K0b-yv-eOC" secondAttribute="leading" constant="28" id="5iD-ek-cxw"/>
                             <constraint firstItem="Bpp-JE-BZm" firstAttribute="centerX" secondItem="m3x-Nj-7UI" secondAttribute="centerX" id="7B5-DP-sQk"/>
-                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="baseline" secondItem="hBu-KK-Bd9" secondAttribute="baseline" id="E3f-pJ-OGa"/>
+                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="baseline" secondItem="hBu-KK-Bd9" secondAttribute="baseline" constant="36.5" id="E3f-pJ-OGa"/>
                             <constraint firstItem="dPG-3s-G8V" firstAttribute="top" secondItem="m3x-Nj-7UI" secondAttribute="top" id="Ikq-aQ-HVp"/>
-                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="leading" secondItem="hBu-KK-Bd9" secondAttribute="trailing" constant="10" id="Lvq-c8-QGY"/>
+                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="leading" secondItem="hBu-KK-Bd9" secondAttribute="trailing" constant="-112" id="Lvq-c8-QGY"/>
                             <constraint firstItem="K0b-yv-eOC" firstAttribute="bottom" secondItem="fGG-hU-FxS" secondAttribute="bottom" constant="27.5" id="NO8-NW-KJq"/>
                             <constraint firstItem="dPG-3s-G8V" firstAttribute="trailing" secondItem="Bpp-JE-BZm" secondAttribute="trailing" id="PWD-jH-8eH"/>
                             <constraint firstItem="IWt-qV-akJ" firstAttribute="centerX" secondItem="hBu-KK-Bd9" secondAttribute="centerX" constant="3" id="Unm-A8-y5x"/>
                             <constraint firstItem="dPG-3s-G8V" firstAttribute="bottom" secondItem="Bpp-JE-BZm" secondAttribute="bottom" id="Vqi-uU-A3W"/>
                             <constraint firstItem="Q8m-RH-3HY" firstAttribute="centerY" secondItem="IWt-qV-akJ" secondAttribute="centerY" id="WFR-DG-dq8"/>
                             <constraint firstItem="Q8m-RH-3HY" firstAttribute="leading" secondItem="xFA-lj-MXF" secondAttribute="leading" id="XT9-Lw-rkk"/>
-                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="centerY" secondItem="hBu-KK-Bd9" secondAttribute="centerY" id="Yab-Zo-zrF"/>
+                            <constraint firstItem="qO4-6T-4AQ" firstAttribute="centerY" secondItem="hBu-KK-Bd9" secondAttribute="centerY" constant="36.5" id="Yab-Zo-zrF"/>
                             <constraint firstItem="Bpp-JE-BZm" firstAttribute="top" secondItem="m3x-Nj-7UI" secondAttribute="top" id="gJS-xS-83v"/>
-                            <constraint firstItem="xFA-lj-MXF" firstAttribute="top" secondItem="hBu-KK-Bd9" secondAttribute="bottom" constant="10" id="gSI-EF-uch"/>
+                            <constraint firstItem="xFA-lj-MXF" firstAttribute="top" secondItem="hBu-KK-Bd9" secondAttribute="bottom" constant="44" id="gSI-EF-uch"/>
                             <constraint firstItem="dPG-3s-G8V" firstAttribute="leading" secondItem="K0b-yv-eOC" secondAttribute="leading" id="lX1-yC-mhu"/>
                             <constraint firstItem="dPG-3s-G8V" firstAttribute="leading" secondItem="Bpp-JE-BZm" secondAttribute="leading" id="oHM-bh-6Jh"/>
                             <constraint firstItem="hBu-KK-Bd9" firstAttribute="top" secondItem="dPG-3s-G8V" secondAttribute="bottom" constant="13" id="sWW-2l-Ihd"/>
@@ -1503,6 +1503,8 @@ Review</string>
                         <outlet property="storeImageView" destination="dPG-3s-G8V" id="QzG-cA-fpJ"/>
                         <outlet property="storeName" destination="hBu-KK-Bd9" id="wUw-C7-GKM"/>
                         <outlet property="storePhoneNumber" destination="fGG-hU-FxS" id="axb-yK-4I6"/>
+                        <outlet property="storeStatus" destination="Qhc-Q3-ef5" id="o4y-0A-zvn"/>
+                        <outlet property="storeStatusImageView" destination="Qhc-Q3-ef5" id="MVK-On-qAZ"/>
                         <outlet property="titleNavigation" destination="fwJ-p3-pm3" id="K7E-6Y-M4V"/>
                         <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="NoJ-hS-Tb5"/>
                     </connections>

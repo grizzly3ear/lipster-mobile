@@ -40,6 +40,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initReactiveStoreData()
+        initReactiveLipstickData()
+        
         searchHistoryCollectionView.delegate = self
         recommendCollectionView.delegate = self
         
@@ -62,29 +65,29 @@ class SearchViewController: UIViewController {
         
         self.searchHistory = defaults.array(forKey: DefaultConstant.searchHistory) as? [String] ?? [String]()
         self.searchLipsticks = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipstickData)
-        self.searchStoreLipstick = createStoreLipstickArray()
-        
-        getLipstickDataFromHex(
-            UIColor.averageColor(
-                colors: UIColor.getColorFromUserDefaults(forKey: DefaultConstant.colorHistory, defaultColors: [UIColor.red.toHex!])
-            ).toHex!
-        )
         
         searchHistoryCollectionView.reloadData()
-        initReactiveLipstickData()
+        
         hideTableView()
         
         let footer = UIView(frame: .zero)
         footer.backgroundColor = .lightGray
         searchResultTableView.tableFooterView = footer
+        
+        fetchData()
     }
     
-    func createStoreLipstickArray() -> [Store] {
-        let store1 : Store = Store(id: 1, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora CentralPlaza Ladprao", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "1693 CentralPlaza Ladprao, Level 2, Unit 217 Phahonyothin Rd, Chatuchak Sub-district , Chatuchak District, Bangkok", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00", storeBranch: "RAMA II")
-        let store2 : Store = Store(id: 2, storeLogoImage: "UIImage(named: Sephora_black_logo)!", storeName: "Sephora ", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "7/222 Central Plaza Pinklao, Unit 106, Level 1 Boromratchonni Road, Arun-Amarin, Bangkoknoi, Bangkok 10700", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00", storeBranch: "RAMA III")
-        let store3 : Store = Store(id: 3, storeLogoImage: "UIImage(named: nopic)!", storeName: "Etude House Central Plaza Rama 2", storeHours: "Mon - Sun  10AM-10PM", storeAddress: "L1, Central Plaza Rama 2, 128 Rama II Rd, Khwaeng Samae Dam, Samae Dum, Krung Thep Maha Nakhon 10150", storeLatitude: 50.0, storeLongitude: 50.0, storePhoneNumber: "00", storeBranch: "")
-        
-        return [store1 , store2 , store3]
+    func fetchData() {
+        LipstickRepository.fetchSimilarLipstickHexColor(
+            UIColor.averageColor(
+                colors: UIColor.getColorFromUserDefaults(forKey: DefaultConstant.colorHistory, defaultColors: [UIColor.red.toHex!])
+            ).toHex!
+        ) { (lipsticks) in
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
+        StoreRepository.fetchAllStore { (stores) in
+            self.storeDataPipe.input.send(value: stores)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -100,12 +103,6 @@ class SearchViewController: UIViewController {
             searchHistoryCollectionView.reloadSections(IndexSet(integer: 0))
         }) { (_) in
             self.searchHistoryCollectionView.layoutIfNeeded()
-        }
-    }
-    
-    func getLipstickDataFromHex(_ hex: String) {
-        LipstickRepository.fetchSimilarLipstickHexColor(hex) { (lipsticks) in
-            self.lipstickDataPipe.input.send(value: lipsticks)
         }
     }
     
@@ -413,11 +410,6 @@ extension SearchViewController {
         storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
             
             self.searchStoreLipstick = stores
-            self.recommendCollectionView.performBatchUpdates({
-                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
-            }, completion: { (_) in
-                
-            })
             
         })
         storeDataPipe.output.observe(storeDataObserver!)
