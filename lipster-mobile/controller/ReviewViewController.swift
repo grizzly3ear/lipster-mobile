@@ -61,13 +61,11 @@ class ReviewViewController: UIViewController {
             print("Add Review Text Field is empty")
         } else {
             LipstickRepository.addReview(lipstick: lipstick, comment: typeReview.text!) {result, status in
-                print(result)
-                print(status)
-                
+
                 if !result && status == 401 {
                     self.pageState = false
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                    
+                    vc.redirect = "ReviewViewController"
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 
@@ -91,10 +89,8 @@ extension ReviewViewController: UITableViewDelegate , UITableViewDataSource, Exp
     func didExpandLabel(_ label: ExpandableLabel) {
         let point = label.convert(CGPoint.zero, to: reviewTableView)
         if let indexPath = reviewTableView.indexPathForRow(at: point) as IndexPath? {
-            print(indexPath.row)
             labelState[indexPath.row] = false
         }
-        print(point)
         reviewTableView.endUpdates()
         reviewTableView.reloadData()
     }

@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    var redirect: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class LoginViewController: UIViewController {
         
         if (AccessToken.current != nil) {
             // MARK: There are user login now
-            print("hey user")
             fetchUserData()
         }
     }
@@ -73,10 +73,10 @@ class LoginViewController: UIViewController {
                         return
                     }
                     if let dictionaryResult = graphResult as? Dictionary<String, AnyObject> {
-                        User.firstname = profile.firstName
-                        User.lastname = profile.lastName
+                        User.firstname = profile.firstName!
+                        User.lastname = profile.lastName!
                         User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
-                        User.email = "\(String(describing: dictionaryResult["email"]))"
+                        User.email = "\(dictionaryResult["email"]!)"
                         UserRepository.authenticate(email: User.email!, password: User.id!) { (status, messages) in
                             if status == 401 {
                                 self.performSegue(withIdentifier: "selectGenderPage", sender: self)
@@ -91,6 +91,14 @@ class LoginViewController: UIViewController {
                     
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == "selectGenderPage" {
+            let destination = segue.destination as! GenderViewController
+            destination.redirect = self.redirect
         }
     }
     

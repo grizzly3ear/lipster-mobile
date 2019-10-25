@@ -47,7 +47,6 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: emailType)
-                
             }
         }
         get {
@@ -60,7 +59,6 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: imageType)
-                
             }
         }
         get {
@@ -73,7 +71,6 @@ class User {
         set {
             if let val = newValue {
                 UserDefaults.standard.set(val, forKey: idType)
-                
             }
         }
         get {

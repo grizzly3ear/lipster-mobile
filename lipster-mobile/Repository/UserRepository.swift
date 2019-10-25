@@ -9,6 +9,7 @@ class UserRepository {
         request.post("api/login", ["email": email, "password": password], nil) { (response, httpStatusCode) -> (Void) in
             if httpStatusCode == 200 {
                 let localStorage = UserDefaults.standard
+                print(response!)
                 let token = response!["token"].stringValue
                 localStorage.set(token, forKey: "token")
                 completion(200, ["success", "Welcome"])
@@ -41,11 +42,11 @@ class UserRepository {
                     return
                 }
             } else if httpStatusCode == 400 {
-                // MARK:Bad Data
+                completion(false, ["Server Error", "Sorry, an unexpected error occured. Please try again later. Error code: 1"])
             } else if httpStatusCode == 0 {
-                // MARK:Internet Connection Error
+                completion(false, ["No Internet Connection", "Make sure your device is connected to the internet"])
             } else {
-                // MARK:Server Error
+                completion(false, ["Server Error", "Sorry, an unexpected error occured. Please try again later. Error code: 1"])
             }
         }
     }

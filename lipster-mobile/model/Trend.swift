@@ -52,7 +52,6 @@ class Trend: NSObject, NSCoding {
     
     public static func getTrendArrayFromUserDefault(forKey: String) -> [Trend] {
         if let encodedFavTrends = UserDefaults.standard.data(forKey: forKey) {
-            print(encodedFavTrends)
             return NSKeyedUnarchiver.unarchiveObject(with: encodedFavTrends) as! [Trend]
         }
         return [Trend]()
@@ -100,11 +99,9 @@ class Trend: NSObject, NSCoding {
             var favTrends: [Trend] = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends)
             
             if let i = favTrends.firstIndex(where: { $0 == trend! }) {
-                print("remove")
                 favTrends.remove(at: i)
                 
             } else {
-                print("add")
                 favTrends.append(trend!)
             }
             Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
