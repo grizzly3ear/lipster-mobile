@@ -9,41 +9,47 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var storePhoneNumber: UILabel!
     
     @IBOutlet weak var storeBranch: UILabel!
-    var storeDetail: Store?
     
     @IBOutlet weak var titleNavigation: UINavigationItem!
     @IBOutlet weak var blackView: UIView!
     
+    @IBOutlet weak var lipstickContainer: UIView!
     @IBOutlet weak var lipstickImage: UIImageView!
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
-    @IBOutlet weak var lipstickColor: UILabel!
     @IBOutlet weak var lipstickPrice: UILabel!
     
-    var lipstickStore: Lipstick!
-    var lipstick = [Lipstick]()
+    var lipstick: Lipstick?
+    var store: Store?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
-        lipstickBrand.text = lipstickStore?.lipstickBrand
-        lipstickName.text = lipstickStore?.lipstickName
-        lipstickImage.sd_setImage(with: URL(string: (lipstickStore!.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
-      //  lipstickPrice.text = lipstickStore.price
-     //   lipstickColor.text = lipstickStore?.lipstickColorName
+        if let lipstick = self.lipstick {
+            lipstickBrand.text = lipstick.lipstickBrand
+            lipstickName.text = lipstick.lipstickName
+            lipstickImage.sd_setImage(with: URL(string: (lipstick.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
+        } else {
+            lipstickBrand.removeFromSuperview()
+            lipstickName.removeFromSuperview()
+            lipstickImage.removeFromSuperview()
+            lipstickName.removeFromSuperview()
+            lipstickContainer.removeFromSuperview()
+        }
+        
+        lipstickPrice.text = "\(store!.price)"
 
+        storeName.text = store!.name
+        storeImageView.sd_setImage(with: URL(string: (store?.image)!), placeholderImage: UIImage(named: "nopic")!)
+        storeHours.text = store!.hours
+        storeAddress.text = store!.address
+        storePhoneNumber.text = store?.phoneNumber
+        storeBranch.text  = store?.branch
         
-        storeName.text = storeDetail!.name
-        storeImageView.sd_setImage(with: URL(string: (storeDetail?.image)!), placeholderImage: UIImage(named: "nopic")!)
-        storeHours.text = storeDetail!.hours
-        storeAddress.text = storeDetail!.address
-        storePhoneNumber.text = storeDetail?.phoneNumber
-        storeBranch.text  = storeDetail?.branch
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.titleNavigation.title = storeDetail?.name
+        storeAddress.sizeToFit()
+        storeName.sizeToFit()
     }
     
     @IBAction func goBack(_ sender: UIButton) {

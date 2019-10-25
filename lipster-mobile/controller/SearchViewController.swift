@@ -34,6 +34,9 @@ class SearchViewController: UIViewController {
     let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
     var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
     
+    let storeDataPipe = Signal<[Store], NoError>.pipe()
+    var storeDataObserver: Signal<[Store], NoError>.Observer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -118,7 +121,7 @@ class SearchViewController: UIViewController {
         if identifier == "showStoreDetail" {
             let store = (sender as! [Store]).first!
             let destination = segue.destination as! StoreViewController
-            destination.storeDetail = store
+            destination.store = store
         }
     }
 }
@@ -394,7 +397,6 @@ extension SearchViewController: UITextFieldDelegate {
 extension SearchViewController {
     func initReactiveLipstickData() {
         lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
-            Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
             
             self.recommendLipstick = lipsticks
             self.recommendCollectionView.performBatchUpdates({
@@ -405,5 +407,19 @@ extension SearchViewController {
             
         })
         lipstickDataPipe.output.observe(lipstickDataObserver!)
+    }
+    
+    func initReactiveStoreData() {
+        storeDataObserver = Signal<[Store], NoError>.Observer(value: { (stores) in
+            
+            self.searchStoreLipstick = stores
+            self.recommendCollectionView.performBatchUpdates({
+                self.recommendCollectionView.reloadSections(NSIndexSet(index: 0) as IndexSet)
+            }, completion: { (_) in
+                
+            })
+            
+        })
+        storeDataPipe.output.observe(storeDataObserver!)
     }
 }

@@ -120,7 +120,7 @@ class LipstickDetailViewcontroller: UIViewController {
             }
         } else if segueIdentifier == "showMap" {
             if let destination = segue.destination as? NearByViewController {
-                destination.lipstickOfStore = lipstick
+                destination.lipstick = lipstick
             }
         }
     }
