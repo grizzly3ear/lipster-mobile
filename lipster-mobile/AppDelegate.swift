@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
         
-        Messaging.messaging().delegate = self
+     //   Messaging.messaging().delegate = self
         
         
         
@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("****************************")
         print("token \(deviceToken)")
-        Messaging.messaging().apnsToken = deviceToken
+      //  Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -105,23 +105,23 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 }
 
-extension AppDelegate: MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        
-        print("token: \(fcmToken)")
-        InstanceID.instanceID().instanceID { (result, error) in
-          if let error = error {
-            print("Error fetching remote instance ID: \(error)")
-          } else if let result = result {
-            print("Remote instance ID token: \(result.token)")
-//            self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
-          }
-        }
-    }
+//extension AppDelegate: MessagingDelegate {
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+//
+//        print("token: \(fcmToken)")
+//        InstanceID.instanceID().instanceID { (result, error) in
+//          if let error = error {
+//            print("Error fetching remote instance ID: \(error)")
+//          } else if let result = result {
+//            print("Remote instance ID token: \(result.token)")
+////            self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+//          }
+//        }
+//    }
     
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print(messaging)
-        print(remoteMessage)
-    }
-}
+//    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+//        print(messaging)
+//        print(remoteMessage)
+//    }
+//}
 
