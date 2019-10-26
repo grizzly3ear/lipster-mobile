@@ -234,9 +234,11 @@ extension LipstickDetailViewcontroller : UICollectionViewDelegate, UICollectionV
         cell?.selectColorView.backgroundColor = colors[indexPath.item].lipstickColor
         
         if colors[indexPath.item].lipstickId == lipstick?.lipstickId {
-            cell?.triangleView.isHidden = false
+          //  cell?.triangleView.isHidden = false
+            cell?.selectThisColorImage.isHidden = false
         } else {
-            cell?.triangleView.isHidden = true
+           // cell?.triangleView.isHidden = true
+            cell?.selectThisColorImage.isHidden = true
         }
         
         return cell!
