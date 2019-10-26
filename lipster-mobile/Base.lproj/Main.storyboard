@@ -1565,10 +1565,10 @@ Review</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trensLipstickColor" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-Cy-nqn">
-                                        <rect key="frame" x="16" y="411" width="45" height="49"/>
+                                        <rect key="frame" x="16" y="412" width="45" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="QRu-aE-RDR"/>
-                                            <constraint firstAttribute="height" constant="49" id="byx-8D-LFE"/>
+                                            <constraint firstAttribute="height" constant="48" id="byx-8D-LFE"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Liu-cL-6cB">
@@ -1703,8 +1703,8 @@ Review</string>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trendGroupSkin" translatesAutoresizingMaskIntoConstraints="NO" id="WU4-EB-pP9">
-                                        <rect key="frame" x="17" y="471" width="41" height="49"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="skinColor_ver2" translatesAutoresizingMaskIntoConstraints="NO" id="WU4-EB-pP9">
+                                        <rect key="frame" x="12" y="459" width="49" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -1717,7 +1717,7 @@ Review</string>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="top" secondItem="kEW-ET-9HO" secondAttribute="bottom" constant="15" id="ABc-mX-gT1"/>
                                     <constraint firstAttribute="trailing" secondItem="Liu-cL-6cB" secondAttribute="trailing" constant="16" id="BDX-RY-c1L"/>
                                     <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="aw3-Cy-nqn" secondAttribute="bottom" constant="15" id="DDa-F3-hR3"/>
-                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="top" constant="-3" id="DLu-5d-Ogc"/>
+                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="top" constant="-2" id="DLu-5d-Ogc"/>
                                     <constraint firstItem="UHm-TZ-XE3" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="10" id="EeB-Oj-2dt"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="centerY" secondItem="D64-75-2kR" secondAttribute="centerY" constant="-10.5" id="FO3-RE-Ybo"/>
                                     <constraint firstItem="D64-75-2kR" firstAttribute="leading" secondItem="5ed-Ff-9GO" secondAttribute="trailing" constant="21" id="FhV-mO-1b0"/>
@@ -1732,7 +1732,7 @@ Review</string>
                                     <constraint firstItem="Ems-2x-eL4" firstAttribute="leading" secondItem="8Ah-Jy-46f" secondAttribute="leading" id="Y0Z-yR-a5r"/>
                                     <constraint firstItem="5ed-Ff-9GO" firstAttribute="leading" secondItem="OBS-5f-9pm" secondAttribute="leading" constant="24" id="cU5-jM-YMs"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="leading" secondItem="aw3-Cy-nqn" secondAttribute="leading" id="hQ5-I3-Tgm"/>
-                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="23" id="hup-ZY-Dc6"/>
+                                    <constraint firstItem="aw3-Cy-nqn" firstAttribute="top" secondItem="Liu-cL-6cB" secondAttribute="bottom" constant="24" id="hup-ZY-Dc6"/>
                                     <constraint firstItem="Liu-cL-6cB" firstAttribute="top" secondItem="D64-75-2kR" secondAttribute="bottom" constant="11" id="jHY-t7-fMj"/>
                                     <constraint firstItem="vp0-g6-vIs" firstAttribute="top" secondItem="gZC-ew-wGe" secondAttribute="bottom" constant="18" id="jLM-ij-PSe"/>
                                     <constraint firstItem="8Ah-Jy-46f" firstAttribute="top" secondItem="vp0-g6-vIs" secondAttribute="bottom" constant="25" id="jma-US-iAu"/>
@@ -3213,6 +3213,8 @@ Review</string>
         <image name="send" width="64" height="64"/>
         <image name="signUp_bg" width="854" height="942"/>
         <image name="trendGroupSkin" width="512" height="512"/>
+        <image name="skinColor_ver2" width="512" height="512"/>
+        <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
         <image name="trensLipstickColor" width="512" height="512"/>
         <image name="user1" width="680" height="678"/>
         <image name="user2" width="664" height="664"/>
@@ -3221,10 +3223,11 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NoJ-hS-Tb5"/>
+        <segue reference="GT3-8q-qFt"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="hsW-FO-orY"/>
-        <segue reference="1bJ-i5-nVn"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>
