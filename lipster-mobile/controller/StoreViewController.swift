@@ -28,7 +28,7 @@ class StoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        storeName.tintColor = UIColor(red: 212.00, green: 32.00, blue: 82.00, alpha: 1.00)
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
         if let lipstick = self.lipstick {
@@ -69,15 +69,15 @@ class StoreViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH.mm"
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 25200)
         
-        if let startDateObj = dateFormatter.date(from: startString), let endDateObj = dateFormatter.date(from: endString) {
-
-            if startDateObj <= today && today < endDateObj {
-                storeStatus.image = UIImage(named: "open")!
-                
-            } else {
-                storeStatus.image = UIImage(named: "close")!
-            }
-        }
+//        if let startDateObj = dateFormatter.date(from: startString), let endDateObj = dateFormatter.date(from: endString) {
+//
+//            if startDateObj <= today && today < endDateObj {
+//                storeStatus.image = UIImage(named: "open")!
+//
+//            } else {
+//                storeStatus.image = UIImage(named: "close")!
+//            }
+//        }
         
         storeHours.text = "\(startTime!) - \(endTime!)"
         storeAddress.sizeToFit()
