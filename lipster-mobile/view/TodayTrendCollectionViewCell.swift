@@ -9,7 +9,7 @@
 import UIKit
 
 class TodayTrendCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cellView: UIView!
+        @IBOutlet weak var cellView: UIView!
         @IBOutlet weak var trendGroupTitle: UILabel!
         @IBOutlet weak var trendGroupImage: UIImageView!
         @IBOutlet weak var blurView: UIView!

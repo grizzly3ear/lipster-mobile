@@ -15,13 +15,15 @@ import FAPaginationLayout
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
 
+    @IBOutlet weak var todayTrendCollectionView: UICollectionView!
+    @IBOutlet weak var recommendForYouCollectionView: UICollectionView!
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
     
     var trends = [Trend]()
     var trendGroups = [TrendGroup]()
-    
+    var recommendLipstick = [Lipstick]()
     let trendDataPipe = Signal<[TrendGroup], NoError>.pipe()
     var trnedDataObserver: Signal<[TrendGroup], NoError>.Observer?
     
@@ -48,6 +50,9 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(trendGroups.count)
+        print(recommendLipstick.count)
         
         refresher = UIRefreshControl()
         refresher.tintColor = .white
@@ -79,33 +84,27 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         }
     }
  
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trendGroups.count
-    }
+  
     
     @IBAction func seemoreButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "showTrendGroup", sender: self)
     }
     
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+        
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-        
-        let trendGroup = trendGroups[indexPath.item]
-        cell.trendGroup = trendGroup
-        
-//        if let gif = try? UIImage(gifName: "refreshAnimate.gif") {
-//            cell.imageView?.setGifImage(gif)
-//            cell.imageView?.startAnimatingGif()
-//            print("can use gif")
-//        } else {
-//            print("cannot use gif")
-//        }
-        
+//
+//        let trendGroup = trendGroups[indexPath.item]
+//        cell.trendGroup = trendGroup
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+        //performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -153,27 +152,57 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         updateCellsLayout()
     }
 
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trends.count
+        switch collectionView {
+            case trendHeaderCollectionView:
+                return trends.count >= 5 ? 5 : trends.count
+            case recommendForYouCollectionView:
+                return recommendLipstick.count >= 5 ? 5 : recommendLipstick.count
+            default: return 0
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
-        
+        switch collectionView {
+        case trendHeaderCollectionView : performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
+            break
+        case recommendForYouCollectionView : performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+        break
+        default:
+            break
+        }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell", for: indexPath) as! TrendsCollectionViewCell
         
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
+        if collectionView == trendHeaderCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell", for: indexPath) as! TrendsCollectionViewCell
         
-        let trend = trends[indexPath.item]
-        cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
-        cell.trendTitle.text = trend.title
-        cell.TrendDescription.text = trend.detail
-        return cell
+            cell.layer.cornerRadius = 10
+            cell.clipsToBounds = true
+        
+            let trend = trends[indexPath.item]
+            cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
+            cell.trendTitle.text = trend.title
+            cell.TrendDescription.text = trend.detail
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendForYouCollectionViewCell", for: indexPath) as! RecommendForYouCollectionViewCell
+            let lipstick =  recommendLipstick[indexPath.item]
+            
+            
+            cell.recommendForYouName.text = lipstick.lipstickName
+            cell.recommendForYouBrand.text = lipstick.lipstickBrand
+            cell.recommendForYouImage.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named : "nopic"))
+                        
+            return cell
+        }
+        
     }
 
     

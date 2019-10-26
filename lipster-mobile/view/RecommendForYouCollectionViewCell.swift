@@ -9,10 +9,12 @@
 import UIKit
 
 class RecommendForYouCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var recommendForYouImage: UIImageView!
-    @IBOutlet weak var recommendForYouBrand: UILabel!
-    @IBOutlet weak var recommendForYouName: UILabel!
-    override func awakeFromNib() {
-        recommendForYouImage.layer.cornerRadius = 20
+        @IBOutlet weak var recommendForYouImage: UIImageView!
+        @IBOutlet weak var recommendForYouBrand: UILabel!
+        @IBOutlet weak var recommendForYouName: UILabel!
+    
+        public static let cellId: String = "recommendForYouCollectionViewCell"
+        override func awakeFromNib() {
+            recommendForYouImage.layer.cornerRadius = 20
+        }
     }
-}
