@@ -42,6 +42,9 @@ class YourReviewsTableViewController: UITableViewController {
         self.yourLipsticks = self.createLipstickArray()
    
     }
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
+    }
 }
 
 extension YourReviewsTableViewController {
