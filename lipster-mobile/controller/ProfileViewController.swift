@@ -75,7 +75,8 @@ class ProfileViewController: UIViewController {
         if segue.identifier == "showFavoriteTrend"{
             let destination = segue.destination as! PinterestCollectionViewController
 //            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
-            destination.trendGroup = TrendGroup("Favorite Trends", Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed(), "")
+            let trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed() as [Trend]
+            destination.trendGroup = TrendGroup("Favorite Trends", trends, trends.first?.image ?? "")
         }
     }
     
