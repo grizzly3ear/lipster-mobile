@@ -14,5 +14,6 @@ class SelectColorFromDetailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var triangleView: TriangleView!
     
-  
+    @IBOutlet weak var selectThisColorImage: UIImageView!
+    
 }
