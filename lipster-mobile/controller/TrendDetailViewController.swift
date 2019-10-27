@@ -43,7 +43,9 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     }
     
     func fetchData() {
-        LipstickRepository.fetchSimilarLipstickHexColor((trendLipColorView.backgroundColor?.toHex)!) { (lipsticks) in
+        LipstickRepository.fetchSimilarLipstickHexColor(
+            (trendLipColorView.backgroundColor?.toHex)!
+        ) { (lipsticks) in
             self.lipstickDataPipe.input.send(value: lipsticks)
         }
     }
@@ -113,6 +115,8 @@ extension TrendDetailViewController {
             let image = UIImage(named: "heart_white")!
             favoriteButton.setImage(image, for: .normal)
         }
+        
+        trendDateUpdated.text = trend.createdAt.timeAgoDisplay()
         
         view.insetsLayoutMarginsFromSafeArea = false
         
