@@ -73,21 +73,27 @@ extension UIColor {
         )
     }
     
-    public static func averageColor(colors: [UIColor]) -> UIColor {
+    public static func averageColor(colors: [UIColor], biasColor: UIColor? = nil, biasAmount: Int = 0) -> UIColor {
         if colors.count == 0 {
             return .black
+        }
+        var tmpColors = colors
+        if let additionColor = biasColor {
+            for _ in 0..<biasAmount {
+                tmpColors.append(additionColor)
+            }
         }
         var red: UInt32 = 0
         var green: UInt32 = 0
         var blue: UInt32 = 0
-        for color in colors {
+        for color in tmpColors {
             let hex = color.toHex
             let hexInt = intFromHexString(hexStr: hex!)
             red += (hexInt >> 16) & 0xFF
             green += (hexInt >> 8) & 0xFF
             blue += hexInt & 0xFF
         }
-        return UIColor(red: Int(red)/colors.count, green: Int(green)/colors.count, blue: Int(blue)/colors.count)
+        return UIColor(red: Int(red)/tmpColors.count, green: Int(green)/tmpColors.count, blue: Int(blue)/tmpColors.count)
     }
     
     func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
