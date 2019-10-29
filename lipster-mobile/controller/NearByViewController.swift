@@ -80,9 +80,12 @@ class NearByViewController: UIViewController   {
             
             mapView.addAnnotation(storeAnnotation)
             if index == 0 {
-                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                let region = MKCoordinateRegion(center: coor, span: span).center
-                mapView.setCenter(region, animated: true)
+                let region = MKCoordinateRegion(
+                    center: coor,
+                    latitudinalMeters: CLLocationDistance(exactly: 1000)!,
+                    longitudinalMeters: CLLocationDistance(exactly: 1000)!
+                )
+                mapView.setRegion(region, animated: true)
             }
         }
     }
