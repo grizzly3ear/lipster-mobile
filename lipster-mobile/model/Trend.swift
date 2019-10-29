@@ -83,8 +83,10 @@ class Trend: NSObject, NSCoding {
             
 //            2019-10-22T04:58:41.000000Z
             let createdAtString = trend["created_at"].stringValue
+
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.S'Z'"
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+            dateFormatter.calendar = Calendar(identifier: .gregorian)
             let createdAt = dateFormatter.date(from: createdAtString) ?? Date()
             
             trends.append(Trend(title, image, lipstickColor, skinColor, description, createdAt))
