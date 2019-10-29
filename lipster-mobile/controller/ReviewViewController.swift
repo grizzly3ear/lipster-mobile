@@ -8,6 +8,7 @@
 
 import UIKit
 import ExpandableLabel
+import SwiftEntryKit
 
 class ReviewViewController: UIViewController {
 
@@ -31,6 +32,14 @@ class ReviewViewController: UIViewController {
         initialUI()
         labelState = Array(repeating: true, count: userReviews.count)
         reviewTableView.rowHeight = UITableView.automaticDimension
+        User.isAuth { (isAuth) in
+            if isAuth {
+                
+            } else {
+            
+                
+            }
+        }
         hideTabBar()
     }
     

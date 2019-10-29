@@ -65,4 +65,15 @@ class UserRepository {
             
         }
     }
+    
+    public static func isLogin(completion: @escaping (Bool) -> Void) {
+        let request = HttpRequest()
+        request.get("api/user", nil, nil, requiredAuth: true) { (_, httpStatusCode) -> (Void) in
+            if httpStatusCode == 401 {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
 }
