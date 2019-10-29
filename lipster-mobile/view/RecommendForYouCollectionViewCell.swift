@@ -15,6 +15,6 @@ class RecommendForYouCollectionViewCell: UICollectionViewCell {
     
         public static let cellId: String = "recommendForYouCollectionViewCell"
         override func awakeFromNib() {
-            recommendForYouImage.layer.cornerRadius = 20
+            recommendForYouImage.layer.cornerRadius = 10
         }
     }

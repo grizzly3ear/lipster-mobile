@@ -79,8 +79,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         
         fetchData()
         
-        recommendForYouCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-        todayTrendCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        recommendForYouCollectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 30)
+        todayTrendCollectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 30)
 
     }
     
@@ -119,9 +119,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         //performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 0
-    }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -193,7 +190,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             break
         case recommendForYouCollectionView : performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
             break
-        case todayTrendCollectionView : performSegue(withIdentifier: "showLipstickGroup", sender: indexPath.item)
+        case todayTrendCollectionView : performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
             break
         default:
             break
@@ -280,6 +277,13 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
                 destination.trend = trends[item]
             }
         }
+        else if segueIdentifier == "showLipstickDetail" {
+            if let destination = segue.destination as? LipstickDetailViewcontroller {
+                let item = sender as! Int
+                destination.lipstick = recommendLipstick[item]
+            }
+        }
+
     }
 }
 

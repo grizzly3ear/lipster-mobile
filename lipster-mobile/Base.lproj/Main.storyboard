@@ -712,7 +712,7 @@ Review</string>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
                         <color key="sectionIndexBackgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="MNU-eS-o8o">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="485"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="465"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home_background" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-Kp-K8h">
@@ -783,18 +783,18 @@ Review</string>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="b4n-Wz-N8l">
-                            <rect key="frame" x="0.0" y="485" width="375" height="535"/>
+                            <rect key="frame" x="0.0" y="465" width="375" height="535"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TODAY TRENDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJF-R9-ISy">
-                                    <rect key="frame" x="32" y="0.0" width="157" height="21"/>
+                                    <rect key="frame" x="28" y="5" width="157" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyv-a0-8LL">
-                                    <rect key="frame" x="290" y="-3" width="57" height="30"/>
+                                    <rect key="frame" x="290" y="2" width="57" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Show all">
                                         <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -804,14 +804,14 @@ Review</string>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RECOMMEND FOR YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMR-qw-swm">
-                                    <rect key="frame" x="33" y="251" width="229" height="24"/>
+                                    <rect key="frame" x="28" y="256" width="229" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iOw-WM-qSH">
-                                    <rect key="frame" x="0.0" y="29" width="375" height="204"/>
+                                    <rect key="frame" x="0.0" y="34" width="375" height="204"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8oa-Vs-d3Z">
@@ -868,7 +868,7 @@ Review</string>
                                     </connections>
                                 </collectionView>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d62-lD-wPP">
-                                    <rect key="frame" x="0.0" y="284" width="375" height="238"/>
+                                    <rect key="frame" x="0.0" y="289" width="375" height="238"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iiF-Em-wWK">
@@ -936,6 +936,7 @@ Review</string>
                         <segue destination="yRT-0L-hOz" kind="show" identifier="showTrendDetail" id="gj5-Ab-Cu1"/>
                         <segue destination="MP0-Jk-aHL" kind="show" identifier="showTrendGroup" id="mJR-fu-dSs"/>
                         <segue destination="Zdi-WH-zBq" kind="show" identifier="showPinterest" id="fkk-Yh-5P5"/>
+                        <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="qQH-7o-63L"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gs2-8x-kPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3369,6 +3370,7 @@ Review</string>
     <inferredMetricsTieBreakers>
         <segue reference="NoJ-hS-Tb5"/>
         <segue reference="JV6-s6-JqZ"/>
+        <segue reference="qQH-7o-63L"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>

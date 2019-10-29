@@ -27,11 +27,12 @@ class TodayTrendCollectionViewCell: UICollectionViewCell {
         
         override func awakeFromNib() {
             super.awakeFromNib()
+            
             blurViewEffect.layer.masksToBounds = true
-            cellView.layer.cornerRadius = 20
-            trendGroupImage.layer.cornerRadius = 20
+            cellView.layer.cornerRadius = 10
+            trendGroupImage.layer.cornerRadius = 10
             trendGroupImage.clipsToBounds = true
-            roundCorners(cornerRadiusButtom: 20.0)
+            roundCorners(cornerRadiusButtom: 10.0)
             blurBackground()
             dropShadow()
         }
