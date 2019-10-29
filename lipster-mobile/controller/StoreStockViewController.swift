@@ -12,6 +12,8 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
    
 
     @IBOutlet weak var storeStockTableView: UITableView!
+    var lipstickDictionary = Dictionary<String, Dictionary<String, [Lipstick]>>()
+    var lipstickExpandState: [Bool]!
     
     var lipsticks = [Lipstick]()
     func createLipstickArray() -> [Lipstick] {
@@ -22,13 +24,31 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lipsticks = self.createLipstickArray()
+        storeStockTableView.tableFooterView = UIView()
+        self.lipsticks = Lipstick.mockArrayData(size: 20)
+        
+        formatData()
+        self.lipstickExpandState = Array(repeating: false, count: lipstickDictionary.count)
+        
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let lipstickBrandView = BrandLipstickView(frame: CGRect(x: 0, y: 0, width: storeStockTableView.frame.size.width, height: 40))
+        let brand = Array(lipstickDictionary.keys)[section]
+        lipstickBrandView.brandTitle = brand
+        lipstickBrandView.index = section
+        lipstickBrandView.onClickFunction = toggleExpandState
+            
+        
+        
         return lipstickBrandView
+    }
+    
+    func toggleExpandState(index: Int) -> Void {
+        print(index)
+        lipstickExpandState[index].toggle()
+        storeStockTableView.reloadSections([index], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -36,18 +56,49 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return lipstickDictionary.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lipsticks.count
-       }
+        let brand = Array(lipstickDictionary.keys)[section]
+        if lipstickExpandState[section] {
+            return lipstickDictionary[brand]!.count
+        } else {
+            return 0
+        }
+        
+    }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeStockTableViewCell") as! StoreStockTableViewCell
-        let lipstick = lipsticks[indexPath.item]
-        cell.stockLipstickBrand?.text = lipstick.lipstickBrand
+        
+        let brand = Array(lipstickDictionary.keys)[indexPath.section]
+        let name = Array(lipstickDictionary[brand]!.keys)[indexPath.row]
+        cell.stockLipstickBrand?.text = name
         return cell
-       }
+    }
+    
+    func formatData() {
+        self.lipsticks.forEach { (lipstick) in
+            if let _ = lipstickDictionary[lipstick.lipstickBrand] {
+                // Already have this brand
+                if let _ = lipstickDictionary[lipstick.lipstickBrand]![lipstick.lipstickName] {
+                    // Have this name
+                    lipstickDictionary[lipstick.lipstickBrand]![lipstick.lipstickName]?.append(lipstick)
+//                    dictionaryName.append(lipstick)
+                } else {
+                    // Does not have this name yet
+                    lipstickDictionary[lipstick.lipstickBrand]![lipstick.lipstickName] = [lipstick]
+//                    dictionaryBrand[lipstick.lipstickName] = [lipstick]
+                }
+            } else {
+                // not have this brand yet
+                lipstickDictionary[lipstick.lipstickBrand] = [
+                    lipstick.lipstickName: [lipstick]
+                ]
+            }
+        }
+        print(lipstickDictionary)
+    }
        
 }
