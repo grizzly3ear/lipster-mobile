@@ -36,7 +36,7 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let lipstickBrandView = BrandLipstickView(frame: CGRect(x: 0, y: 0, width: storeStockTableView.frame.size.width, height: 40))
         let brand = Array(lipstickDictionary.keys)[section]
-        lipstickBrandView.brandTitle = brand
+        lipstickBrandView.brandTitle = "     \(brand)"
         lipstickBrandView.index = section
         lipstickBrandView.onClickFunction = toggleExpandState
             

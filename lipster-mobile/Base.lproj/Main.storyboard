@@ -3190,7 +3190,7 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-lY-Abm">
-                                <rect key="frame" x="20" y="90" width="334" height="577"/>
+                                <rect key="frame" x="20" y="114" width="334" height="553"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storeStockTableViewCell" id="Vro-JW-KK6" customClass="StoreStockTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
@@ -3201,9 +3201,9 @@ Review</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="brand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JD-w1-B3N">
-                                                    <rect key="frame" x="15" y="11" width="304" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="297" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3220,7 +3220,7 @@ Review</string>
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ueW-Iq-R2z">
-                                <rect key="frame" x="54" y="28" width="290" height="38"/>
+                                <rect key="frame" x="54" y="38" width="290" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -3232,19 +3232,26 @@ Review</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWp-Ky-vNc">
-                                <rect key="frame" x="28" y="65" width="319" height="1"/>
+                                <rect key="frame" x="28" y="75" width="319" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="r3f-7H-GEb">
-                                <rect key="frame" x="28" y="37" width="21" height="21"/>
+                                <rect key="frame" x="28" y="47" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuw-Lb-nmF">
+                                <rect key="frame" x="28" y="95" width="77" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="bottom" secondItem="YMA-xm-dWZ" secondAttribute="bottom" id="ACL-OA-GVi"/>
-                            <constraint firstItem="Vca-lY-Abm" firstAttribute="top" secondItem="YMA-xm-dWZ" secondAttribute="top" constant="90" id="NqW-bJ-YTZ"/>
+                            <constraint firstItem="Vca-lY-Abm" firstAttribute="top" secondItem="YMA-xm-dWZ" secondAttribute="top" constant="114" id="NqW-bJ-YTZ"/>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="leading" secondItem="YMA-xm-dWZ" secondAttribute="leading" constant="20" id="X49-nz-m8j"/>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="trailing" secondItem="YMA-xm-dWZ" secondAttribute="trailing" constant="-21" id="XkK-N5-pgC"/>
                         </constraints>
