@@ -998,7 +998,7 @@ Review</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
+                                            <rect key="frame" x="3" y="5" width="161" height="162"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
                                             </constraints>
@@ -2453,9 +2453,24 @@ Review</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="aR1-bo-2Hv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-zH-URr">
+                                    <rect key="frame" x="8" y="26" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="baseline_chevron_left_black_48pt"/>
+                                    <connections>
+                                        <action selector="goBack:" destination="Kfz-3P-mEd" eventType="touchUpInside" id="cnm-TJ-EML"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourReviewsTableViewCell" rowHeight="235" id="8kH-06-fre" customClass="YourReviewsTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="235"/>
+                                <rect key="frame" x="0.0" y="186" width="375" height="235"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8kH-06-fre" id="Cm6-Hc-4NZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
@@ -2520,7 +2535,7 @@ Review</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="4951"/>
+            <point key="canvasLocation" x="940" y="4950.6746626686663"/>
         </scene>
         <!--Lipstick Detail Viewcontroller-->
         <scene sceneID="xbj-su-sm3">
@@ -3213,9 +3228,7 @@ Review</string>
         <image name="search" width="512" height="512"/>
         <image name="send" width="64" height="64"/>
         <image name="signUp_bg" width="854" height="942"/>
-        <image name="trendGroupSkin" width="512" height="512"/>
         <image name="skinColor_ver2" width="512" height="512"/>
-        <image name="telephone-auricular-with-cable (1)" width="512" height="512"/>
         <image name="trensLipstickColor" width="512" height="512"/>
         <image name="user1" width="680" height="678"/>
         <image name="user2" width="664" height="664"/>
@@ -3223,12 +3236,11 @@ Review</string>
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NoJ-hS-Tb5"/>
-        <segue reference="GT3-8q-qFt"/>
+        <segue reference="7xa-ab-yxx"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>
         <segue reference="hsW-FO-orY"/>
-        <segue reference="TWS-gk-k14"/>
+        <segue reference="1bJ-i5-nVn"/>
     </inferredMetricsTieBreakers>
 </document>
