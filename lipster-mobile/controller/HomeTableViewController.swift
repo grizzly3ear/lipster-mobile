@@ -13,13 +13,14 @@ import Result
 import Hero
 import FAPaginationLayout
 
-class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource{
+class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var todayTrendCollectionView: UICollectionView!
     @IBOutlet weak var recommendForYouCollectionView: UICollectionView!
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
+    @IBOutlet weak var recommendCollectionViewFlowLayout: UICollectionViewFlowLayout!
     
     var trends = [Trend]()
     var trendGroups = [TrendGroup]()
@@ -51,6 +52,9 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        recommendForYouCollectionView.dataSource = self
+        trendHeaderCollectionView.dataSource = self
+        
         print(trendGroups.count)
         print(recommendLipstick.count)
         
@@ -67,6 +71,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         initReactive()
         
         fetchData()
+        
+        recommendForYouCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
 
     }
     
@@ -134,15 +140,19 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        if collectionView == trendHeaderCollectionView {
         var cellSize: CGSize = collectionView.bounds.size
         print(cellSize.width)
     
             cellSize.width -= collectionView.contentInset.left * 2
             cellSize.width -= collectionView.contentInset.right * 2
-     cellSize.height = cellSize.width
+           // cellSize.height = cellSize.width
 
         return cellSize
+        }
+        else {
+            return CGSize(width: 150, height: 230)
+        }
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 1
@@ -173,7 +183,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         case trendHeaderCollectionView : performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
             break
         case recommendForYouCollectionView : performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
-        break
+            break
         default:
             break
         }
@@ -202,8 +212,10 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
                         
             return cell
         }
-        
     }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        return CGSize(width: 150, height: 230)
+//    }
 
     
     private func indexOfMajorCell() -> Int {
@@ -213,16 +225,16 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
-    
+
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
+
         if scrollView.tag == 1 {
             targetContentOffset.pointee = scrollView.contentOffset
             let indexOfMajorCell = self.indexOfMajorCell()
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -253,6 +265,12 @@ extension HomeTableViewController {
     func initReactive() {
         self.lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.lipstickData, lipsticks)
+            self.recommendLipstick = lipsticks
+            self.recommendForYouCollectionView.performBatchUpdates({
+                self.recommendForYouCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+                
+            }
         })
         
         self.lipstickDataPipe.output.observe(lipstickDataObserver!)
