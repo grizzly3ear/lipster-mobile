@@ -24,6 +24,7 @@
 		305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305477CE229A57CC009E4090 /* UITextFieldHelper.swift */; };
 		3055E2B6236167F500257DA9 /* refreshAnimate.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3055E2B5236167F500257DA9 /* refreshAnimate.gif */; };
 		305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C5CA122F93C34003725C8 /* UserRepository.swift */; };
+		305E4F6E2365D6D70048A156 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305E4F6D2365D6D70048A156 /* DateHelper.swift */; };
 		30694E40226B4BE20091C698 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30694E3F226B4BE20091C698 /* StringHelper.swift */; };
 		3071185922FC1BAC00E25AF4 /* TrendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071185822FC1BAC00E25AF4 /* TrendCollectionViewCell.swift */; };
 		3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C13122573B560056EE74 /* UIColorHelper.swift */; };
@@ -117,6 +118,7 @@
 		305477CE229A57CC009E4090 /* UITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
 		3055E2B5236167F500257DA9 /* refreshAnimate.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = refreshAnimate.gif; sourceTree = "<group>"; };
 		305C5CA122F93C34003725C8 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		305E4F6D2365D6D70048A156 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		30694E3F226B4BE20091C698 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		3071185822FC1BAC00E25AF4 /* TrendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCollectionViewCell.swift; sourceTree = "<group>"; };
 		3071C13122573B560056EE74 /* UIColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				2C5627A4233B1F2F00248FAA /* UIVIewControllerHelper.swift */,
 				3071C13322573BFE0056EE74 /* UIViewHelper.swift */,
 				2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */,
+				305E4F6D2365D6D70048A156 /* DateHelper.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */,
 				3071C13222573B560056EE74 /* UIColorHelper.swift in Sources */,
 				2CCBA1B92330DDB900F2978F /* CGPointHelper.swift in Sources */,
+				305E4F6E2365D6D70048A156 /* DateHelper.swift in Sources */,
 				D8D45F8C224278B900405AE7 /* LipstickListTableViewCell.swift in Sources */,
 				D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */,
 				30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */,

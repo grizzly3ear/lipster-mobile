@@ -16,6 +16,7 @@ class Trend: NSObject, NSCoding {
     var lipstickColor: UIColor
     var skinColor: UIColor
     var detail: String
+    var createdAt: Date
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(title, forKey: "title")
@@ -23,6 +24,7 @@ class Trend: NSObject, NSCoding {
         aCoder.encode(lipstickColor, forKey: "lipstickColor")
         aCoder.encode(skinColor, forKey: "skinColor")
         aCoder.encode(detail, forKey: "detail")
+        aCoder.encode(createdAt, forKey: "createdAt")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -31,15 +33,17 @@ class Trend: NSObject, NSCoding {
         let lipstickColor = aDecoder.decodeObject(forKey: "lipstickColor") as! UIColor
         let skinColor = aDecoder.decodeObject(forKey: "skinColor") as! UIColor
         let detail = aDecoder.decodeObject(forKey: "detail") as! String
-        self.init(title, image, lipstickColor, skinColor, detail)
+        let createdAt = aDecoder.decodeObject(forKey: "createdAt") as! Date
+        self.init(title, image, lipstickColor, skinColor, detail, createdAt)
     }
     
-    init(_ title: String, _ trendImage: String, _ trendLipstickColor: UIColor, _ trendSkinColor: UIColor, _ trendDescription: String) {
+    init(_ title: String, _ trendImage: String, _ trendLipstickColor: UIColor, _ trendSkinColor: UIColor, _ trendDescription: String, _ createdAt: Date = Date()) {
         self.title = title
         self.image = trendImage
         self.lipstickColor = trendLipstickColor
         self.skinColor = trendSkinColor
-        self.detail = trendDescription   
+        self.detail = trendDescription
+        self.createdAt = createdAt
     }
     
     override init() {
@@ -48,6 +52,7 @@ class Trend: NSObject, NSCoding {
         lipstickColor = .black
         skinColor = .black
         detail = String()
+        createdAt = Date()
     }
     
     public static func getTrendArrayFromUserDefault(forKey: String) -> [Trend] {
@@ -76,7 +81,15 @@ class Trend: NSObject, NSCoding {
             let skinColor = UIColor(hexString: trend["skin_color"].stringValue)
             let description = trend["description"].stringValue
             
-            trends.append(Trend(title, image, lipstickColor, skinColor, description))
+//            2019-10-22T04:58:41.000000Z
+            let createdAtString = trend["created_at"].stringValue
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+            dateFormatter.calendar = Calendar(identifier: .gregorian)
+            let createdAt = dateFormatter.date(from: createdAtString) ?? Date()
+            
+            trends.append(Trend(title, image, lipstickColor, skinColor, description, createdAt))
         }
         return trends
         
