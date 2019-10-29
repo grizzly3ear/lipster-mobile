@@ -44,7 +44,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     var refresher : UIRefreshControl!
     
     @objc func requestData(){
-        print("request")
         self.isNeedToRefresh = true
         fetchData()
 //        refresher.endRefreshing()
@@ -60,10 +59,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         trendHeaderCollectionView.dataSource = self
 
         todayTrendCollectionView.delegate = self
-        todayTrendCollectionView.dataSource = self 
-        
-        print(trendGroups.count)
-        print(recommendLipstick.count)
+        todayTrendCollectionView.dataSource = self
         
         refresher = UIRefreshControl()
         refresher.tintColor = .white
@@ -91,7 +87,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         LipstickRepository.fetchAllLipstickData { (lipsticks) in
             self.lipstickDataPipe.input.send(value: lipsticks)
             if self.isNeedToRefresh {
-                print("finish")
                 self.isNeedToRefresh = false
                 self.refresher.endRefreshing()
             }
@@ -144,14 +139,13 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == trendHeaderCollectionView {
-        var cellSize: CGSize = collectionView.bounds.size
-        print(cellSize.width)
-    
+            var cellSize: CGSize = collectionView.bounds.size
+        
             cellSize.width -= collectionView.contentInset.left * 2
             cellSize.width -= collectionView.contentInset.right * 2
-           // cellSize.height = cellSize.width
 
-        return cellSize
+            return cellSize
+            
         } else if collectionView == recommendForYouCollectionView {
             return CGSize(width: 150, height: 230)
         } else {
@@ -166,10 +160,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         updateCellsLayout()
     }
 
-    
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
             case trendHeaderCollectionView:
@@ -232,15 +222,30 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             return cell
         }
     }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        return CGSize(width: 150, height: 230)
-//    }
 
-    
-    private func indexOfMajorCell() -> Int {
+    private func indexOfMajorCell(velocity: CGPoint) -> Int {
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
-        let index = Int(round(proportionalOffset))
+        print(proportionalOffset)
+        let index: Int!
+        if velocity.x > 0 {
+            index = Int(
+                round(
+                    proportionalOffset +
+                        (velocity.x > 1.0 ?
+                            1.0 :
+                            velocity.x)
+                )
+            )
+        } else {
+            index = Int(
+                round(
+                    proportionalOffset
+                )
+            )
+        }
+        
+        print(index)
         let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
@@ -249,7 +254,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
 
         if scrollView.tag == 1 {
             targetContentOffset.pointee = scrollView.contentOffset
-            let indexOfMajorCell = self.indexOfMajorCell()
+            print(velocity)
+            let indexOfMajorCell = self.indexOfMajorCell(velocity: velocity)
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
