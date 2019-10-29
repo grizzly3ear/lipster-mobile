@@ -3190,18 +3190,18 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-lY-Abm">
-                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                                <rect key="frame" x="20" y="90" width="334" height="577"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storeStockTableViewCell" id="Vro-JW-KK6" customClass="StoreStockTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="334" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vro-JW-KK6" id="HOo-Ze-k5u">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JD-w1-B3N">
-                                                    <rect key="frame" x="15" y="11" width="329" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="brand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JD-w1-B3N">
+                                                    <rect key="frame" x="15" y="11" width="304" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3224,8 +3224,8 @@ Review</string>
                         <constraints>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="bottom" secondItem="YMA-xm-dWZ" secondAttribute="bottom" id="ACL-OA-GVi"/>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="top" secondItem="YMA-xm-dWZ" secondAttribute="top" constant="90" id="NqW-bJ-YTZ"/>
-                            <constraint firstItem="Vca-lY-Abm" firstAttribute="leading" secondItem="YMA-xm-dWZ" secondAttribute="leading" id="X49-nz-m8j"/>
-                            <constraint firstItem="Vca-lY-Abm" firstAttribute="trailing" secondItem="YMA-xm-dWZ" secondAttribute="trailing" id="XkK-N5-pgC"/>
+                            <constraint firstItem="Vca-lY-Abm" firstAttribute="leading" secondItem="YMA-xm-dWZ" secondAttribute="leading" constant="20" id="X49-nz-m8j"/>
+                            <constraint firstItem="Vca-lY-Abm" firstAttribute="trailing" secondItem="YMA-xm-dWZ" secondAttribute="trailing" constant="-21" id="XkK-N5-pgC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMA-xm-dWZ"/>
                     </view>

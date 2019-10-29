@@ -33,6 +33,8 @@ class BrandLipstickView: UIView {
         button.backgroundColor = .black
         button.titleLabel?.textColor = .black
         button.addTarget(self, action: #selector(onClickBrandLipstick), for: .touchUpInside)
+        button.layer.cornerRadius = 10.0
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         return button
         
     }()
