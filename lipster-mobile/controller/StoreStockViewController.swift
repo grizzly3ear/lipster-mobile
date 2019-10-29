@@ -12,9 +12,17 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
    
 
     @IBOutlet weak var storeStockTableView: UITableView!
+    
+    var lipsticks = [Lipstick]()
+    func createLipstickArray() -> [Lipstick] {
+        let lipstick1 : Lipstick = Lipstick(759, [""], "ETUDE","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
+        let lipstick2 : Lipstick = Lipstick(759, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
+        
+        return [lipstick1 , lipstick2 ]
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.lipsticks = self.createLipstickArray()
         // Do any additional setup after loading the view.
     }
     
@@ -32,13 +40,13 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return 5
+        return lipsticks.count
        }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storeStockTableViewCell") as! StoreStockTableViewCell
-        
-        cell.stockLipstickBrand?.text = "LANCOME"
+        let lipstick = lipsticks[indexPath.item]
+        cell.stockLipstickBrand?.text = lipstick.lipstickBrand
         return cell
        }
        
