@@ -15,6 +15,7 @@ import FAPaginationLayout
 
 class HomeTableViewController: UITableViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
 
+
     @IBOutlet weak var todayTrendCollectionView: UICollectionView!
     @IBOutlet weak var recommendForYouCollectionView: UICollectionView!
     @IBOutlet weak var trendHeaderCollectionView: UICollectionView!
@@ -53,7 +54,13 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         super.viewDidLoad()
         
         recommendForYouCollectionView.dataSource = self
+        recommendForYouCollectionView.delegate = self
+        
         trendHeaderCollectionView.dataSource = self
+        trendHeaderCollectionView.dataSource = self
+
+        todayTrendCollectionView.delegate = self
+        todayTrendCollectionView.dataSource = self 
         
         print(trendGroups.count)
         print(recommendLipstick.count)
@@ -73,6 +80,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         fetchData()
         
         recommendForYouCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        todayTrendCollectionView.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
 
     }
     
@@ -98,14 +106,12 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 0
         
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-//
-//        let trendGroup = trendGroups[indexPath.item]
-//        cell.trendGroup = trendGroup
+
         return cell
     }
     
@@ -114,7 +120,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 0
     }
 
     override func viewWillLayoutSubviews() {
@@ -149,9 +155,10 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
            // cellSize.height = cellSize.width
 
         return cellSize
-        }
-        else {
+        } else if collectionView == recommendForYouCollectionView {
             return CGSize(width: 150, height: 230)
+        } else {
+            return CGSize(width: 261, height: 189)
         }
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -169,9 +176,11 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
             case trendHeaderCollectionView:
-                return trends.count >= 5 ? 5 : trends.count
+                return trends.count >= 8 ? 8 : trends.count
             case recommendForYouCollectionView:
                 return recommendLipstick.count >= 5 ? 5 : recommendLipstick.count
+            case todayTrendCollectionView:
+                return trendGroups.count >= 5 ? 5 : trendGroups.count
             default: return 0
         }
     }
@@ -183,6 +192,8 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
         case trendHeaderCollectionView : performSegue(withIdentifier: "showTrendDetail", sender: indexPath.item)
             break
         case recommendForYouCollectionView : performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+            break
+        case todayTrendCollectionView : performSegue(withIdentifier: "showLipstickGroup", sender: indexPath.item)
             break
         default:
             break
@@ -201,7 +212,18 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             cell.trendTitle.text = trend.title
             cell.TrendDescription.text = trend.detail
             return cell
-        } else {
+        } else if collectionView == todayTrendCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todayTrendCollectionViewCell", for: indexPath) as! TodayTrendCollectionViewCell
+            
+            cell.layer.cornerRadius = 10
+            cell.clipsToBounds = true
+            
+            let trendGroup = trendGroups[indexPath.item]
+            cell.trendGroupImage.sd_setImage(with: URL(string: trendGroups[indexPath.item].image!), placeholderImage: UIImage(named: "nopic"))
+            cell.trendGroupTitle.text = trendGroup.name
+
+            return cell
+        }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendForYouCollectionViewCell", for: indexPath) as! RecommendForYouCollectionViewCell
             let lipstick =  recommendLipstick[indexPath.item]
             
@@ -278,6 +300,7 @@ extension HomeTableViewController {
         self.trnedDataObserver = Signal<[TrendGroup], NoError>.Observer(value: { (trendGroups) in
             self.trendGroups = trendGroups
             
+            
             self.trendGroups.forEach { (trendGroup) in
                 if let trend = trendGroup.trends?.randomElement() {
                     self.trends.append(trend)
@@ -292,6 +315,12 @@ extension HomeTableViewController {
             
             self.trendHeaderCollectionView.performBatchUpdates({
                 self.trendHeaderCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+
+            }
+            
+            self.todayTrendCollectionView.performBatchUpdates({
+                self.todayTrendCollectionView.reloadSections(IndexSet(integer: 0))
             }) { (_) in
 
             }
