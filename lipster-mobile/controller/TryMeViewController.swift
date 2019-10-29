@@ -25,7 +25,6 @@ class TryMeViewController: UIViewController  {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet private weak var cameraView: UIView!
-    @IBOutlet weak var collapseDetailView: UIView!
     
     private lazy var previewOverlayView: UIImageView = {
         precondition(isViewLoaded)
@@ -56,9 +55,9 @@ class TryMeViewController: UIViewController  {
         setUpCaptureSessionInput()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collapseDetailView.layer.cornerRadius = 20
+//        collapseDetailView.layer.cornerRadius = 20
         self.hero.isEnabled = true
-        collapseDetailView.hero.id = "pullableView"
+//        collapseDetailView.hero.id = "pullableView"
         
         hideTabBar()
     }
@@ -92,17 +91,17 @@ class TryMeViewController: UIViewController  {
         cameraView.bringSubviewToFront(collectionView)
     }
     
-    @IBAction func onPressDetail(_ sender: Any) {
-        let modal = storyboard?.instantiateViewController(withIdentifier: "LipstickDetailModalViewController") as! LipstickDetailModalViewController
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        transitionDelegate.storkDelegate = self
-        modal.transitioningDelegate = transitionDelegate
-        modal.modalPresentationStyle = .custom
-        transitionDelegate.translateForDismiss = 100
-        modal.lipstick = lipstick
-        
-        self.present(modal, animated: true, completion: nil)
-    }
+//    @IBAction func onPressDetail(_ sender: Any) {
+//        let modal = storyboard?.instantiateViewController(withIdentifier: "LipstickDetailModalViewController") as! LipstickDetailModalViewController
+//        let transitionDelegate = SPStorkTransitioningDelegate()
+//        transitionDelegate.storkDelegate = self
+//        modal.transitioningDelegate = transitionDelegate
+//        modal.modalPresentationStyle = .custom
+//        transitionDelegate.translateForDismiss = 100
+//        modal.lipstick = lipstick
+//
+//        self.present(modal, animated: true, completion: nil)
+//    }
     
 }
 
