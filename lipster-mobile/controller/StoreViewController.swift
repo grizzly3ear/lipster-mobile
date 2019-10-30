@@ -18,13 +18,8 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickPrice: UILabel!
-    
     @IBOutlet weak var stockButton: UIButton!
-    
-    @IBOutlet weak var storeStatus: UIImageView!
-    
-    @IBOutlet weak var storeStatusImageView: UIImageView!
-    
+  
     var lipstick: Lipstick?
     var store: Store?
     
@@ -32,7 +27,7 @@ class StoreViewController: UIViewController {
         super.viewDidLoad()
         
         stockButton.backgroundColor = .black
-        stockButton.layer.cornerRadius = 5 
+        stockButton.layer.cornerRadius = 5
 //        storeName.tintColor = UIColor(red: 212.00, green: 32.00, blue: 82.00, alpha: 1.00)
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         

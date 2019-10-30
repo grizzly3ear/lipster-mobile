@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="LipstickListViewController" automaticallyAdjustsScrollViewInsets="NO" id="2my-jU-SWf" customClass="LipstickListViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="43" sectionFooterHeight="28" id="wwH-Np-wde">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="9mk-Gh-29e">
@@ -3279,6 +3279,7 @@ Review</string>
                     <navigationItem key="navigationItem" id="rHn-Ki-zm6"/>
                     <connections>
                         <outlet property="storeStockTableView" destination="Vca-lY-Abm" id="6cK-0o-0sn"/>
+                        <segue destination="2my-jU-SWf" kind="show" identifier="showLipstickList" id="rx7-Ii-073"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x2Q-84-6GF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3482,6 +3483,6 @@ Review</string>
         <segue reference="UAR-uk-wvN"/>
         <segue reference="Rqr-p9-s19"/>
         <segue reference="hsW-FO-orY"/>
-        <segue reference="TWS-gk-k14"/>
+        <segue reference="rx7-Ii-073"/>
     </inferredMetricsTieBreakers>
 </document>

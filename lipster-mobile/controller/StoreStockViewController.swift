@@ -57,6 +57,9 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
         storeStockTableView.reloadSections([index], with: .automatic)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showLipstickList", sender: indexPath.item)
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
