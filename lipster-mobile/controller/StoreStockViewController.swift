@@ -10,18 +10,22 @@ import UIKit
 
 class StoreStockViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
    
-
+    
     @IBOutlet weak var storeStockTableView: UITableView!
     var lipstickDictionary = Dictionary<String, Dictionary<String, [Lipstick]>>()
     var lipstickExpandState: [Bool]!
     
     var lipsticks = [Lipstick]()
+    
+    
     func createLipstickArray() -> [Lipstick] {
         let lipstick1 : Lipstick = Lipstick(759, [""], "ETUDE","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
         let lipstick2 : Lipstick = Lipstick(759, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
         
         return [lipstick1 , lipstick2 ]
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         storeStockTableView.tableFooterView = UIView()
@@ -39,9 +43,10 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
         lipstickBrandView.brandTitle = "     \(brand)"
         lipstickBrandView.index = section
         lipstickBrandView.onClickFunction = toggleExpandState
-            
         
-        
+        print(lipstickExpandState[section])
+            print("tableView")
+        lipstickBrandView.state = lipstickExpandState[section]
         return lipstickBrandView
     }
     
