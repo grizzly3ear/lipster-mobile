@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H5m-9L-eet">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="buQ-p9-YmV">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -109,7 +109,7 @@
             <objects>
                 <viewController storyboardIdentifier="NearByViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jAg-pR-acB" customClass="NearByViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="teo-6v-MWq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-Kk-Cyg">
@@ -1490,7 +1490,7 @@ Review</string>
             <objects>
                 <viewController storyboardIdentifier="StoreViewController" id="qET-1N-1ep" customClass="StoreViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3x-Nj-7UI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPG-3s-G8V">
@@ -1560,13 +1560,13 @@ Review</string>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGG-hU-FxS">
-                                <rect key="frame" x="71" y="584" width="22" height="20.5"/>
+                                <rect key="frame" x="71" y="564" width="22" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-lj-MXF">
-                                <rect key="frame" x="71" y="427" width="280" height="139.5"/>
+                                <rect key="frame" x="71" y="427" width="280" height="119.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Xnj-a6-jLV"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="iP3-Ya-iea"/>
@@ -1585,14 +1585,14 @@ Review</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call-answer (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Q8m-RH-3HY">
-                                <rect key="frame" x="28" y="581.5" width="25" height="25"/>
+                                <rect key="frame" x="28" y="561.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="ZD0-89-E7A"/>
                                     <constraint firstAttribute="width" constant="25" id="odk-aM-FOX"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-6T-4AQ">
-                                <rect key="frame" x="27" y="393" width="308" height="26"/>
+                                <rect key="frame" x="27" y="393" width="265" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1602,6 +1602,14 @@ Review</string>
                                 <rect key="frame" x="26" y="460" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jB1-Fw-PVe">
+                                <rect key="frame" x="316" y="376" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="lipstickButton"/>
+                                <connections>
+                                    <action selector="stockButtonAction:" destination="qET-1N-1ep" eventType="touchUpInside" id="irv-yI-kGX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1632,6 +1640,7 @@ Review</string>
                         <outlet property="lipstickImage" destination="Ptv-uD-PjE" id="UFk-DX-45s"/>
                         <outlet property="lipstickName" destination="aR2-av-ZJm" id="E3n-Di-TvR"/>
                         <outlet property="lipstickPrice" destination="3Fz-06-7Z6" id="kwb-zq-XPz"/>
+                        <outlet property="stockButton" destination="jB1-Fw-PVe" id="VpO-OD-yAA"/>
                         <outlet property="storeAddress" destination="xFA-lj-MXF" id="aOD-DL-3O8"/>
                         <outlet property="storeBranch" destination="qO4-6T-4AQ" id="LQD-i9-CA1"/>
                         <outlet property="storeHours" destination="JmC-k9-axB" id="OyN-ja-ubR"/>
@@ -1640,6 +1649,7 @@ Review</string>
                         <outlet property="storePhoneNumber" destination="fGG-hU-FxS" id="axb-yK-4I6"/>
                         <outlet property="titleNavigation" destination="fwJ-p3-pm3" id="K7E-6Y-M4V"/>
                         <segue destination="udf-5l-NvU" kind="show" identifier="showLipstickDetail" id="NoJ-hS-Tb5"/>
+                        <segue destination="H5m-9L-eet" kind="show" identifier="showStoreStock" id="2so-Zm-b3P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1o-6B-e7q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2409,7 +2419,7 @@ Review</string>
             <objects>
                 <viewController id="C66-Qw-59I" customClass="TryMeViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HNg-6I-cGb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKO-Br-WFk">
@@ -2674,11 +2684,11 @@ Review</string>
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mV-k3-eiG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="655"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="-20" width="375" height="675"/>
@@ -2986,7 +2996,7 @@ Review</string>
             <objects>
                 <viewController storyboardIdentifier="ReviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rW-uu-4Cf" customClass="ReviewViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z9W-dC-B8O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxO-bX-M6a">
@@ -3186,11 +3196,11 @@ Review</string>
             <objects>
                 <viewController id="H5m-9L-eet" customClass="StoreStockViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q2B-hD-KXW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-lY-Abm">
-                                <rect key="frame" x="20" y="114" width="334" height="553"/>
+                                <rect key="frame" x="20" y="146" width="334" height="501"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storeStockTableViewCell" id="Vro-JW-KK6" customClass="StoreStockTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
@@ -3219,8 +3229,24 @@ Review</string>
                                     <outlet property="delegate" destination="H5m-9L-eet" id="WKx-A6-953"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuw-Lb-nmF">
+                                <rect key="frame" x="28" y="125" width="77" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5M-uq-uad">
+                                <rect key="frame" x="10" y="22" width="45" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="baseline_chevron_left_black_48pt"/>
+                                <connections>
+                                    <action selector="goBack:" destination="H5m-9L-eet" eventType="touchUpInside" id="Fwd-hD-Ltj"/>
+                                    <action selector="goBack:" destination="jAg-pR-acB" eventType="touchUpInside" id="mWo-J9-qSP"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search..." textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ueW-Iq-R2z">
-                                <rect key="frame" x="54" y="38" width="290" height="38"/>
+                                <rect key="frame" x="54" y="68" width="290" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -3232,31 +3258,25 @@ Review</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWp-Ky-vNc">
-                                <rect key="frame" x="28" y="75" width="319" height="1"/>
+                                <rect key="frame" x="28" y="105" width="319" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="r3f-7H-GEb">
-                                <rect key="frame" x="28" y="47" width="21" height="21"/>
+                                <rect key="frame" x="28" y="77" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In Stock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuw-Lb-nmF">
-                                <rect key="frame" x="28" y="95" width="77" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="bottom" secondItem="YMA-xm-dWZ" secondAttribute="bottom" id="ACL-OA-GVi"/>
-                            <constraint firstItem="Vca-lY-Abm" firstAttribute="top" secondItem="YMA-xm-dWZ" secondAttribute="top" constant="114" id="NqW-bJ-YTZ"/>
+                            <constraint firstItem="Vca-lY-Abm" firstAttribute="top" secondItem="YMA-xm-dWZ" secondAttribute="top" constant="146" id="NqW-bJ-YTZ"/>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="leading" secondItem="YMA-xm-dWZ" secondAttribute="leading" constant="20" id="X49-nz-m8j"/>
                             <constraint firstItem="Vca-lY-Abm" firstAttribute="trailing" secondItem="YMA-xm-dWZ" secondAttribute="trailing" constant="-21" id="XkK-N5-pgC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMA-xm-dWZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rHn-Ki-zm6"/>
                     <connections>
                         <outlet property="storeStockTableView" destination="Vca-lY-Abm" id="6cK-0o-0sn"/>
                     </connections>
@@ -3422,6 +3442,7 @@ Review</string>
         <image name="line" width="512" height="512"/>
         <image name="lip_logo_whiteFont" width="500" height="500"/>
         <image name="lipstick (2)" width="500" height="500"/>
+        <image name="lipstickButton" width="256" height="256"/>
         <image name="location" width="480" height="480"/>
         <image name="location (1)" width="256" height="256"/>
         <image name="log-out" width="512" height="512"/>
@@ -3453,10 +3474,14 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qQH-7o-63L"/>
+        <segue reference="NoJ-hS-Tb5"/>
         <segue reference="Q11-LN-cwa"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="53E-t6-YAN"/>
         <segue reference="fkk-Yh-5P5"/>
         <segue reference="UAR-uk-wvN"/>
+        <segue reference="Rqr-p9-s19"/>
+        <segue reference="hsW-FO-orY"/>
+        <segue reference="TWS-gk-k14"/>
     </inferredMetricsTieBreakers>
 </document>

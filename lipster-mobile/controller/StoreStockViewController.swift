@@ -14,10 +14,11 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     @IBOutlet weak var storeStockTableView: UITableView!
     var lipstickDictionary = Dictionary<String, Dictionary<String, [Lipstick]>>()
     var lipstickExpandState: [Bool]!
-    
     var lipsticks = [Lipstick]()
     
-    
+  @IBAction func goBack(_ sender: Any) {
+       hero.dismissViewController()
+   }
     func createLipstickArray() -> [Lipstick] {
         let lipstick1 : Lipstick = Lipstick(759, [""], "ETUDE","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
         let lipstick2 : Lipstick = Lipstick(759, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
