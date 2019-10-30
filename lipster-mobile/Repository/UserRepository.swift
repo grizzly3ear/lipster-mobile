@@ -9,7 +9,6 @@ class UserRepository {
         request.post("api/login", ["email": email, "password": password], nil) { (response, httpStatusCode) -> (Void) in
             if httpStatusCode == 200 {
                 let localStorage = UserDefaults.standard
-                print(response!)
                 let token = response!["token"].stringValue
                 localStorage.set(token, forKey: "token")
                 completion(200, ["success", "Welcome"])
@@ -35,7 +34,7 @@ class UserRepository {
             ],
             nil
         ) {response, httpStatusCode in
-            if httpStatusCode == 200 {
+            if httpStatusCode == 201 {
                 // MARK:Pass
                 authenticate(email: email, password: password) { (status, messages) in
                     completion(true, messages)

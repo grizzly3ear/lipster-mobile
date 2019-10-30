@@ -10,6 +10,7 @@ import UIKit
 import Hero
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -23,6 +24,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     @IBOutlet weak var facebookButton: UIButton!
+
+    @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
     var redirect: String?
@@ -31,17 +34,30 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         initHero()
         
-        usernameTextField.text = "example@gmail.com"
-        passwordTextField.text = "password"
         passwordTextField.enablesReturnKeyAutomatically = true
         usernameTextField.enablesReturnKeyAutomatically = true
+        
         passwordTextField.delegate = self
         usernameTextField.delegate = self
         
-        if (AccessToken.current != nil) {
-            // MARK: There are user login now
-            fetchUserData()
-        }
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        
+        // MARK: GID Auto signin
+//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        // MARK: There are facebook user login now
+//        if (AccessToken.current != nil) {
+//            
+//            fetchFacebookUserData()
+//        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @IBAction func onPressgoogleButton(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     @IBAction func onPressfacebookButton(_ sender: Any) {
@@ -52,44 +68,13 @@ class LoginViewController: UIViewController {
         ]
         login.logIn(permissions: permissions, from: self) { (result, error) in
             if let err = error {
-                print(err)
+                print("[Facebook] error: \(err)")
             } else if let isCancel = result?.isCancelled, isCancel {
                 print("Cancel login")
             } else {
                 print("login")
                 
-                self.fetchUserData()
-            }
-        }
-    }
-    
-    func fetchUserData() {
-        Profile.loadCurrentProfile { (fbProfile, error) in
-            if let profile = fbProfile {
-
-                GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, graphResult, error) in
-                    if let _ = error {
-                        print("Failed to fetch data")
-                        return
-                    }
-                    if let dictionaryResult = graphResult as? Dictionary<String, AnyObject> {
-                        User.firstname = profile.firstName!
-                        User.lastname = profile.lastName!
-                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
-                        User.email = "\(dictionaryResult["email"]!)"
-                        UserRepository.authenticate(email: User.email!, password: User.id!) { (status, messages) in
-                            if status == 401 {
-                                self.performSegue(withIdentifier: "selectGenderPage", sender: self)
-                            } else if status == 200 {
-                                self.hero.dismissViewController()
-                            } else {
-                                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
-                            }
-                        }
-                        
-                    }
-                    
-                }
+                self.fetchFacebookUserData()
             }
         }
     }
@@ -98,6 +83,7 @@ class LoginViewController: UIViewController {
         let identifier = segue.identifier
         if identifier == "selectGenderPage" {
             let destination = segue.destination as! GenderViewController
+            
             destination.redirect = self.redirect
         }
     }
@@ -110,18 +96,102 @@ class LoginViewController: UIViewController {
         hero.dismissViewController()
     }
     
-    
     @IBAction func loginButtonAction(_ sender: Any) {
         UserRepository.authenticate(
             email: usernameTextField.text ?? "",
-            password: passwordTextField.text ?? "") { status, messages in
-                if status == 200 {
-                    self.hero.dismissViewController()
-                } else {
-                    self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
+            password: passwordTextField.text ?? ""
+        ) { status, messages in
+            if status == 200 {
+                self.hero.dismissViewController()
+            } else {
+                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
+            }
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+}
+
+// MARK: Auth
+extension LoginViewController: GIDSignInDelegate {
+    
+    func fetchFacebookUserData() {
+        Profile.loadCurrentProfile { (fbProfile, error) in
+            if let profile = fbProfile {
+
+                GraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, graphResult, error) in
+                    if let _ = error {
+                        print("Failed to fetch data")
+                        return
+                    }
+                    if let dictionaryResult = graphResult as? Dictionary<String, AnyObject> {
+                        User.id = profile.userID
+                        User.firstname = profile.firstName!
+                        User.lastname = profile.lastName!
+                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
+                        User.email = "\(dictionaryResult["email"]!)"
+                        
+                        self.authenticate()
+                    }
+                    
                 }
+            }
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("GID Error: \(error.localizedDescription)")
+            }
+            return
         }
         
+        let userId = user.userID!
+        let givenName = user.profile.givenName!
+        let familyName = user.profile.familyName!
+        let email = user.profile.email!
+        
+        User.email = email
+        User.firstname = givenName
+        User.lastname = familyName
+        User.id = userId
+        
+        self.authenticate()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        print("user disconnect: \(user.profile.givenName)")
+    }
+    
+    private func authenticate() {
+        UserRepository.authenticate(
+            email: User.email!,
+            password: User.id!
+        ) { (status, messages) in
+            if status == 401 {
+                self.performSegue(withIdentifier: "selectGenderPage", sender: self)
+            } else if status == 200 {
+                self.hero.dismissViewController()
+            } else {
+                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
+            }
+        }
     }
 }
 
@@ -133,8 +203,6 @@ extension LoginViewController: UITextFieldDelegate {
         self.rightLine.hero.id = "rightLine"
         self.lineLabel.hero.id = "lineLabel"
         self.loginButton.hero.id = "primaryActionButton"
-        
-        
     }
     
     func popCenterAlert(title: String, description: String, actionTitle: String, completion: (() -> Void)? = nil ) {

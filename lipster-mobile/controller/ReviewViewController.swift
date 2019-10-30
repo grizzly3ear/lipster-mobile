@@ -8,7 +8,9 @@
 
 import UIKit
 import ExpandableLabel
-import SwiftEntryKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class ReviewViewController: UIViewController {
 
@@ -21,6 +23,9 @@ class ReviewViewController: UIViewController {
 
     @IBOutlet weak var typeReview: UITextField!
     
+    let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
+    var reviewDataObserver: Signal<[UserReview], NoError>.Observer?
+    
     var lipstick: Lipstick!
     var userReviews  = [UserReview]()
     var labelState: [Bool]!
@@ -30,7 +35,7 @@ class ReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialUI()
-        labelState = Array(repeating: true, count: userReviews.count)
+        typeReview.delegate = self
         reviewTableView.rowHeight = UITableView.automaticDimension
         User.isAuth { (isAuth) in
             if isAuth {
@@ -41,6 +46,10 @@ class ReviewViewController: UIViewController {
             }
         }
         hideTabBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        initReactive()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,17 +85,42 @@ class ReviewViewController: UIViewController {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                     vc.redirect = "ReviewViewController"
                     self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.fetchLipstickReview()
+                    self.typeReview.text = ""
+                    self.view.endEditing(true)
                 }
                 
             }
         }
 
     }
+    
     @IBAction func goBack(_ sender: Any) {
         self.pageState = true
         hero.dismissViewController()
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            print(keyboardSize.height)
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= 260
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    func fetchLipstickReview() {
+        LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
+            self.reviewDataPipe.input.send(value: userReviews)
+        }
+    }
 }
 
 extension ReviewViewController: UITableViewDelegate , UITableViewDataSource, ExpandableLabelDelegate {
@@ -144,6 +178,7 @@ extension ReviewViewController: UITableViewDelegate , UITableViewDataSource, Exp
 
 extension ReviewViewController {
     func initialUI() {
+        self.labelState = Array(repeating: true, count: userReviews.count)
         self.lipstickBrand.text = lipstick.lipstickBrand
         self.lipstickImage.sd_setImage(with: URL(string: (lipstick.lipstickImage.first ?? "")), placeholderImage: UIImage(named: "nopic")!)
         self.lipstickColorName.text = lipstick.lipstickColorName
@@ -169,5 +204,30 @@ extension ReviewViewController {
         } else {
             self.reviewTableView.viewWithTag(1)?.removeFromSuperview()
         }
+        
+    }
+}
+
+extension ReviewViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+extension ReviewViewController {
+    func initReactive() {
+        reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
+            self.userReviews = userReviews
+            
+            self.reviewTableView.performBatchUpdates({
+                self.initialUI()
+                self.reviewTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }) { (_) in
+                
+                self.reviewTableView.scrollToRow(at: IndexPath(row: self.userReviews.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        })
+        reviewDataPipe.output.observe(reviewDataObserver!)
     }
 }

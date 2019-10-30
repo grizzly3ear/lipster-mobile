@@ -64,12 +64,9 @@ class LipstickDetailViewcontroller: UIViewController {
         numberOfReviewLabel()
         initHero()
         initReactiveData()
-        fetchData()
         initialUI()
         lipstickSelectColorCollectionView.contentInset = UIEdgeInsets(top: 0.0, left: padding, bottom: 0.0, right: padding)
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
         segmentedControl3.append(title: "Description").set(titleColor: UIColor(hexString: "#2B7DBF"), for: .selected)
         
         segmentedControl3.append(title: "Ingredient").set(titleColor: UIColor(hexString: "#CE0755"), for: .selected)
@@ -77,6 +74,11 @@ class LipstickDetailViewcontroller: UIViewController {
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
         addLipstickToHistory()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData()
     }
     
     @IBAction func goBack(_ sender: Any) {
