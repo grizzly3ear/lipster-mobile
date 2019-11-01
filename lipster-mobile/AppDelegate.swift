@@ -114,7 +114,8 @@ extension AppDelegate: MessagingDelegate {
             print("Error fetching remote instance ID: \(error)")
           } else if let result = result {
             print("Remote instance ID token: \(result.token)")
-//            self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+            UserRepository.setNotificationToken(token: result.token) { _ in
+            }
           }
         }
     }
