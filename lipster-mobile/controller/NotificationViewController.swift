@@ -16,9 +16,10 @@ class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        notificationTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
+        //notificationTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
     
     }
+    
 
 }
 
