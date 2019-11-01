@@ -50,4 +50,19 @@ class UserRepository {
             }
         }
     }
+    
+    public static func setNotificationToken(token: String, completion: ((Bool) -> Void)?) {
+        let request = HttpRequest()
+        request.post("api/user/notification", ["notification_token": token], nil, requiredAuth: true) { (_, httpStatusCode) -> (Void) in
+            if let closure = completion {
+                if httpStatusCode == 200 {
+                    // MARK: Pass
+                    closure(true)
+                } else {
+                    closure(false)
+                }
+            }
+            
+        }
+    }
 }
