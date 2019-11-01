@@ -764,7 +764,7 @@
 				CODE_SIGN_ENTITLEMENTS = "lipster-mobile/lipster-mobileDebug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54Q6X55CDV;
+				DEVELOPMENT_TEAM = R5B33A6G3R;
 				INFOPLIST_FILE = "lipster-mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -788,7 +788,7 @@
 				CODE_SIGN_ENTITLEMENTS = "lipster-mobile/lipster-mobileRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54Q6X55CDV;
+				DEVELOPMENT_TEAM = R5B33A6G3R;
 				INFOPLIST_FILE = "lipster-mobile/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
