@@ -57,10 +57,6 @@ class StoreViewController: UIViewController {
         let startTime = period?.first!
         let endTime = period?.last!
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH.mm"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 25200)
-        
         storeHours.text = "\(startTime!) - \(endTime!)"
         storeAddress.sizeToFit()
         storeName.sizeToFit()
