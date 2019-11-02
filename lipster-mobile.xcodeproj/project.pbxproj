@@ -86,6 +86,9 @@
 		D8EB4F3C22677DC200CF9827 /* LipSelectedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */; };
 		D8EB4F3E22677FCD00CF9827 /* TryMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */; };
 		D8F4BD762338DAB500274B79 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F4BD752338DAB500274B79 /* SearchTableViewCell.swift */; };
+		D8FD085F2366F37200FDB8D0 /* StoreStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD085E2366F37200FDB8D0 /* StoreStockViewController.swift */; };
+		D8FD08612366F3B800FDB8D0 /* StoreStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD08602366F3B800FDB8D0 /* StoreStockTableViewCell.swift */; };
+		D8FD08632366FA3600FDB8D0 /* BrandLipstickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD08622366FA3600FDB8D0 /* BrandLipstickView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -186,6 +189,9 @@
 		D8EB4F3B22677DC100CF9827 /* LipSelectedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipSelectedColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMeViewController.swift; sourceTree = "<group>"; };
 		D8F4BD752338DAB500274B79 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D8FD085E2366F37200FDB8D0 /* StoreStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStockViewController.swift; sourceTree = "<group>"; };
+		D8FD08602366F3B800FDB8D0 /* StoreStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreStockTableViewCell.swift; sourceTree = "<group>"; };
+		D8FD08622366FA3600FDB8D0 /* BrandLipstickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandLipstickView.swift; sourceTree = "<group>"; };
 		E8215BF96E3DAAB7B609186C /* Pods-lipster-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lipster-mobile.debug.xcconfig"; path = "Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,6 +360,7 @@
 				300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */,
 				D84CB264235DE98E00D300FC /* HomeTableViewController.swift */,
 				30CF95432360DB0100CE11D6 /* GenderViewController.swift */,
+				D8FD085E2366F37200FDB8D0 /* StoreStockViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -384,6 +391,8 @@
 				D8B85A57235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift */,
 				D8984CC123634A7E00E039D7 /* TodayTrendCollectionViewCell.swift */,
 				D8E738D8236446000050F0F5 /* RecommendForYouCollectionViewCell.swift */,
+				D8FD08602366F3B800FDB8D0 /* StoreStockTableViewCell.swift */,
+				D8FD08622366FA3600FDB8D0 /* BrandLipstickView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -542,6 +551,7 @@
 				D84CB267235DE9D900D300FC /* HomeTableViewCell.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
 				D8311A2623617A4500820882 /* RefreshView.swift in Sources */,
+				D8FD08612366F3B800FDB8D0 /* StoreStockTableViewCell.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */,
 				2C8AADB1233E4EF60036FCB0 /* LipstickDetailModalViewController.swift in Sources */,
@@ -551,6 +561,7 @@
 				D8984CC223634A7E00E039D7 /* TodayTrendCollectionViewCell.swift in Sources */,
 				D8799C8E22FD51E800441E6F /* YourReviewsTableViewCell.swift in Sources */,
 				D81A79A3226B010400D1F208 /* TrendDetailViewController.swift in Sources */,
+				D8FD08632366FA3600FDB8D0 /* BrandLipstickView.swift in Sources */,
 				30CF95442360DB0100CE11D6 /* GenderViewController.swift in Sources */,
 				D8E48D97226E0DA200A192EB /* SelectColorFromDetailCollectionViewCell.swift in Sources */,
 				2CB002FF2340C9110091F3BD /* StoreRepository.swift in Sources */,
@@ -562,6 +573,7 @@
 				D8B85A58235F56170099DDD8 /* LipstickRelatedTrendCollectionViewCell.swift in Sources */,
 				D80540352359B73000351C9B /* TrendGroupCollectionViewCell.swift in Sources */,
 				D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */,
+				D8FD085F2366F37200FDB8D0 /* StoreStockViewController.swift in Sources */,
 				D82B447B2306608F00876302 /* Store.swift in Sources */,
 				30A889DA227196C600D00FCC /* Notification.swift in Sources */,
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,

@@ -70,6 +70,14 @@ class LipstickRepository {
             completion(Lipstick.makeArrayModelFromColorJSON(response: resposne))
         }
     }
+    
+    public static func fetchLipstickInStore(store: Store, completion: @escaping ([Lipstick]) -> Void) {
+        let request = HttpRequest()
+
+        request.get("api/store/address/\(store.id)/lipstickColors", ["part": "detail,brand"], nil) { (resposne, _) -> (Void) in
+            completion(Lipstick.makeArrayModelFromColorJSON(response: resposne))
+        }
+    }
 
     
     

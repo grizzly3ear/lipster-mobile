@@ -18,12 +18,16 @@ class StoreViewController: UIViewController {
     @IBOutlet weak var lipstickBrand: UILabel!
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickPrice: UILabel!
-    
+    @IBOutlet weak var stockButton: UIButton!
+  
     var lipstick: Lipstick?
     var store: Store?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        stockButton.backgroundColor = .black
+        stockButton.layer.cornerRadius = 5
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
         if let lipstick = self.lipstick {
@@ -60,6 +64,18 @@ class StoreViewController: UIViewController {
     
     @IBAction func goBack(_ sender: UIButton) {
         hero.dismissViewController()
+    }
+    
+    @IBAction func stockButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showStoreStock", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == "showStoreStock" {
+            let destination = segue.destination as! StoreStockViewController
+            destination.store = store
+        }
     }
   
     

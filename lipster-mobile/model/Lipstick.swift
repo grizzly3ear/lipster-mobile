@@ -72,11 +72,17 @@ class Lipstick: NSObject, NSCoding {
         self.lipstickIngredients = String()
     }
     static func mockArrayData(size: Int) -> [Lipstick] {
-           var lipsticks = [Lipstick]()
-           for i in 0..<size {
-            lipsticks.append(Lipstick(08, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detail", .red, 03, ""))
-           }
-           return lipsticks
+        var lipsticks = [Lipstick]()
+        for i in 0..<size {
+            if i%2 == 0 {
+                lipsticks.append(Lipstick(i, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detail", .red, 03, ""))
+            } else {
+                print("%2 != 0")
+                lipsticks.append(Lipstick(i, [""], "LANCOME","Red Velvet", "Roman Holiday - vibrant pink sheen", "detail", .red, 03, ""))
+            }
+            
+        }
+        return lipsticks
     }
     public static func makeArrayModelFromBrandJSON(response: JSON?) -> [Lipstick] {
         var lipsticks = [Lipstick]()
