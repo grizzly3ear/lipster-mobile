@@ -8,9 +8,12 @@
 
 import UIKit
 import Firebase
+
 import UserNotifications
+
 import FBSDKLoginKit
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         FBLoginButton.self
+        
+        GIDSignIn.sharedInstance().clientID = "929204994294-d301m529i288rnjjbt0ulhquoooh05u7.apps.googleusercontent.com"
         
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
@@ -89,7 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handle: Bool = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        let facebookHandle: Bool = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        let googleHandle: Bool = GIDSignIn.sharedInstance().handle(url)
         
         return true
     }
@@ -99,10 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-
 }
 
 extension AppDelegate: MessagingDelegate {
@@ -126,3 +129,6 @@ extension AppDelegate: MessagingDelegate {
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+}

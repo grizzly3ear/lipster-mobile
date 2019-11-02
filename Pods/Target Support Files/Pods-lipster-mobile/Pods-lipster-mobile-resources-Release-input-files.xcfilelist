@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-lipster-mobile/Pods-lipster-mobile-resources.sh
 ${PODS_CONFIGURATION_BUILD_DIR}/FirebaseMLVisionFaceModel/GoogleMVFaceDetectorResources.bundle
+${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle

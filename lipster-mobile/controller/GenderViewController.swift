@@ -32,13 +32,16 @@ class GenderViewController: UIViewController {
     @IBAction func submit(_ sender: UIButton) {
         print(User.email!)
         UserRepository.register(email: User.email!, password: User.id!, firstname: User.firstname!, lastname: User.lastname!, gender: gender) { (result, messages) in
+            print(result)
             if result {
                 // MARK: Pass
-                if let destinationId = self.redirect {
-                    let destination = self.storyboard?.instantiateViewController(withIdentifier: destinationId)
-
-                    self.navigationController?.pushViewController(destination!, animated: true)
-                }
+                self.hero.dismissViewController()
+                self.hero.dismissViewController()
+//                if let destinationId = self.redirect {
+//                    let destination = self.storyboard?.instantiateViewController(withIdentifier: destinationId)
+//
+//                    self.navigationController?.pushViewController(destination!, animated: true)
+//                }
             } else {
                 // MARK: FAILED
             }

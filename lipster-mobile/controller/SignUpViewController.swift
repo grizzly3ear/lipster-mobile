@@ -12,10 +12,6 @@ import Hero
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var formContainer: UIImageView!
-    @IBOutlet weak var leftLine: UIImageView!
-    @IBOutlet weak var rightLine: UIImageView!
-    @IBOutlet weak var lineLabel: UILabel!
-    @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
@@ -34,10 +30,6 @@ extension SignUpViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.formContainer.hero.id = "formContainer"
-        self.leftLine.hero.id = "leftLine"
-        self.rightLine.hero.id = "rightLine"
-        self.lineLabel.hero.id = "lineLabel"
-        self.facebookButton.hero.id = "facebookButton"
         self.submitButton.hero.id = "primaryActionButton"
     }
 }

@@ -78,4 +78,10 @@ class User {
         }
     }
     
+    public static func isAuth(completion: @escaping (Bool) -> Void) {
+        UserRepository.isLogin { result in
+            completion(result)
+        }
+    }
+    
 }
