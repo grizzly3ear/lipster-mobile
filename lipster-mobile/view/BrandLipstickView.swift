@@ -12,7 +12,7 @@ class BrandLipstickView: UIView {
 
     var brandTitle: String? {
         didSet {
-            self.button.setTitle(self.brandTitle, for: .normal)
+            self.button.setTitle("     \(self.brandTitle!)", for: .normal)
         }
     }
     
@@ -43,7 +43,7 @@ class BrandLipstickView: UIView {
         button.titleLabel?.textColor = .black
         button.addTarget(self, action: #selector(onClickBrandLipstick), for: .touchUpInside)
         button.layer.cornerRadius = 10.0
-       // button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+//        button.contentEdgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0)
         button.contentHorizontalAlignment = .left
         
         

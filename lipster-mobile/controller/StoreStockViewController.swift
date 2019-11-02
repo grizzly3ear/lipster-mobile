@@ -7,61 +7,69 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
+import Result
 
 class StoreStockViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
    
-    
     @IBOutlet weak var storeStockTableView: UITableView!
+    @IBOutlet weak var textField: UITextField!
+    
+    let lipstickDataPipe = Signal<[Lipstick], NoError>.pipe()
+    var lipstickDataObserver: Signal<[Lipstick], NoError>.Observer?
+    
     var lipstickDictionary = Dictionary<String, Dictionary<String, [Lipstick]>>()
     var lipstickExpandState: [Bool]!
     var lipsticks = [Lipstick]()
+    var filterLipsticks = [Lipstick]()
+    var store: Store?
     
-  @IBAction func goBack(_ sender: Any) {
-       hero.dismissViewController()
-   }
-    func createLipstickArray() -> [Lipstick] {
-        let lipstick1 : Lipstick = Lipstick(759, [""], "ETUDE","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
-        let lipstick2 : Lipstick = Lipstick(759, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detailnbhlgdjgyuuftdedo7649bnms", .red, 03, "")
-        
-        return [lipstick1 , lipstick2 ]
+    @IBAction func goBack(_ sender: Any) {
+        hero.dismissViewController()
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        storeStockTableView.tableFooterView = UIView()
-        self.lipsticks = Lipstick.mockArrayData(size: 20)
         
-        formatData()
-        self.lipstickExpandState = Array(repeating: false, count: lipstickDictionary.count)
-        
-        // Do any additional setup after loading the view.
+        self.initReactive()
+        storeStockTableView.tableFooterView = UIView(frame: .zero)
+        self.textField.delegate = self
+        self.textField.autocorrectionType = .no
+        self.textField.autocapitalizationType = .none
+        self.fetchData()
+    }
+    
+    func fetchData() {
+        LipstickRepository.fetchLipstickInStore(store: store!) { (lipsticks) in
+            self.lipsticks = lipsticks
+            self.lipstickDataPipe.input.send(value: lipsticks)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let lipstickBrandView = BrandLipstickView(frame: CGRect(x: 0, y: 0, width: storeStockTableView.frame.size.width, height: 40))
         let brand = Array(lipstickDictionary.keys)[section]
-        lipstickBrandView.brandTitle = "     \(brand)"
+        lipstickBrandView.brandTitle = "\(brand)"
         lipstickBrandView.index = section
         lipstickBrandView.onClickFunction = toggleExpandState
-        
-        print(lipstickExpandState[section])
-            print("tableView")
         lipstickBrandView.state = lipstickExpandState[section]
+        
         return lipstickBrandView
     }
     
     func toggleExpandState(index: Int) -> Void {
-        print(index)
         lipstickExpandState[index].toggle()
         storeStockTableView.reloadSections([index], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLipstickList", sender: indexPath.item)
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "showLipstickList", sender: indexPath)
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -88,7 +96,8 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func formatData() {
-        self.lipsticks.forEach { (lipstick) in
+        lipstickDictionary.removeAll()
+        self.filterLipsticks.forEach { (lipstick) in
             if let _ = lipstickDictionary[lipstick.lipstickBrand] {
                 // Already have this brand
                 if let _ = lipstickDictionary[lipstick.lipstickBrand]![lipstick.lipstickName] {
@@ -98,7 +107,7 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
                 } else {
                     // Does not have this name yet
                     lipstickDictionary[lipstick.lipstickBrand]![lipstick.lipstickName] = [lipstick]
-//                    dictionaryBrand[lipstick.lipstickName] = [lipstick]
+
                 }
             } else {
                 // not have this brand yet
@@ -107,7 +116,70 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
                 ]
             }
         }
-        print(lipstickDictionary)
+        print(lipstickDictionary.count)
     }
-       
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == "showLipstickList" {
+            let destination = segue.destination as! LipstickListViewController
+            let indexPath = sender as! IndexPath
+            let brand = Array(lipstickDictionary.keys)[indexPath.section]
+            let detail = Array(lipstickDictionary[brand]!.keys)[indexPath.row]
+            let lipsticks = lipstickDictionary[brand]![detail]
+            destination.lipstickList = lipsticks!
+            destination.customTitleString = "\(brand): \(detail)"
+        }
+    }
+}
+
+// MARK: UITextFieldDelegate
+extension StoreStockViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if var text = textField.text {
+            if string == "" {
+                text.removeLast()
+            }
+            text += string
+            
+            lipstickDataPipe.input.send(value: filter(text))
+        }
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.lipstickDataPipe.input.send(value: self.lipsticks)
+        return true
+    }
+    
+    func filter(_ text: String) -> [Lipstick] {
+        var lipsticks = [Lipstick]()
+        for lipstick in self.lipsticks {
+            if lipstick.lipstickBrand.lowercased().contains(text.lowercased()) {
+                lipsticks.append(lipstick)
+            } else if lipstick.lipstickName.lowercased().contains(text.lowercased()) {
+                lipsticks.append(lipstick)
+            }
+        }
+        return lipsticks
+    }
+}
+
+extension StoreStockViewController {
+    func initReactive() {
+        lipstickDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipsticks) in
+            self.filterLipsticks = lipsticks
+            self.formatData()
+            self.lipstickExpandState = Array(repeating: false, count: self.lipstickDictionary.count)
+            self.storeStockTableView.reloadData()
+        })
+        lipstickDataPipe.output.observe(lipstickDataObserver!)
+    }
 }

@@ -28,7 +28,6 @@ class StoreViewController: UIViewController {
         
         stockButton.backgroundColor = .black
         stockButton.layer.cornerRadius = 5
-//        storeName.tintColor = UIColor(red: 212.00, green: 32.00, blue: 82.00, alpha: 1.00)
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.7)
         
         if let lipstick = self.lipstick {
@@ -58,6 +57,10 @@ class StoreViewController: UIViewController {
         let startTime = period?.first!
         let endTime = period?.last!
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH.mm"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 25200)
+        
         storeHours.text = "\(startTime!) - \(endTime!)"
         storeAddress.sizeToFit()
         storeName.sizeToFit()
@@ -66,11 +69,18 @@ class StoreViewController: UIViewController {
     @IBAction func goBack(_ sender: UIButton) {
         hero.dismissViewController()
     }
+    
     @IBAction func stockButtonAction(_ sender: Any) {
         self.performSegue(withIdentifier: "showStoreStock", sender: self)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == "showStoreStock" {
+            let destination = segue.destination as! StoreStockViewController
+            destination.store = store
+        }
+    }
   
     
 }
