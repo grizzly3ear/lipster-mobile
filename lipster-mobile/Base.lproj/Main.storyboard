@@ -388,7 +388,7 @@ Lipsticks</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="review-1"/>
                                         <connections>
-                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReviewFromIcon" id="zid-xp-aA6"/>
+                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReview" id="zid-xp-aA6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-p2-AUh">
@@ -401,7 +401,7 @@ Review</string>
                                             <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReviewFromLabel" id="Q11-LN-cwa"/>
+                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReview" id="Q11-LN-cwa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2555,23 +2555,30 @@ Review</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="aR1-bo-2Hv">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-zH-URr">
-                                    <rect key="frame" x="8" y="22" width="48" height="48"/>
+                                    <rect key="frame" x="8" y="7" width="48" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                     <connections>
                                         <action selector="goBack:" destination="Kfz-3P-mEd" eventType="touchUpInside" id="cnm-TJ-EML"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-wC-QY2">
+                                    <rect key="frame" x="34" y="67" width="258" height="68"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourReviewsTableViewCell" rowHeight="164" id="8kH-06-fre" customClass="YourReviewsTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="375" height="164"/>
+                                <rect key="frame" x="0.0" y="158" width="375" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8kH-06-fre" id="Cm6-Hc-4NZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
@@ -3437,10 +3444,10 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7xa-ab-yxx"/>
-        <segue reference="Q11-LN-cwa"/>
+        <segue reference="zid-xp-aA6"/>
         <segue reference="gj5-Ab-Cu1"/>
         <segue reference="Rqr-p9-s19"/>
         <segue reference="fkk-Yh-5P5"/>
-        <segue reference="PDE-4n-fpa"/>
+        <segue reference="aDV-9f-do2"/>
     </inferredMetricsTieBreakers>
 </document>
