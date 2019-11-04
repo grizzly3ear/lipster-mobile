@@ -37,7 +37,7 @@ class UserReview {
             let user = review.1["user"].stringValue
             let _ = review.1["skin_color"].stringValue
             let dateReview = review.1["date"].stringValue
-            reviews.append(UserReview(userProfile: UIImage(named: "nopic")!, userReview: comment, userName: user, dateReview: dateReview))
+            reviews.append(UserReview(userProfile: UIImage(named: "username")!, userReview: comment, userName: user, dateReview: dateReview))
         }
         
         return reviews
