@@ -48,7 +48,12 @@ class LipstickDetailViewcontroller: UIViewController {
     var lipstick: Lipstick?
     var colors: [Lipstick] = [Lipstick]()
     var imageHeroId = String()
-    
+    var attrs = [
+           NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15.0),
+           NSAttributedString.Key.foregroundColor : UIColor.black,
+           NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
+
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
             return .darkContent
@@ -103,9 +108,10 @@ class LipstickDetailViewcontroller: UIViewController {
         mapButton.layer.cornerRadius = 5.0
     }
     func numberOfReviewLabel(){
-       
-        reviewButton.setTitle("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") ", for: .normal)
-        reviewButton.isEnabled = true
+       let buttonTitleStr = NSMutableAttributedString(string:("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") "), attributes:attrs)
+      reviewButton.setAttributedTitle(buttonTitleStr, for: .normal)
+      // reviewButton.isEnabled = true
+   
     }
     @IBAction func clickedMapButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showMap", sender: self)
