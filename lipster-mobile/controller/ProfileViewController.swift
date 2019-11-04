@@ -67,16 +67,19 @@ class ProfileViewController: UIViewController {
         if segue.identifier == "showFavoriteLipstick"{
             let destination = segue.destination as! LipstickListViewController
             destination.lipstickList = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks).reversed()
+                destination.customTitleString = "Your Favorite Lipstick"
         }
         if segue.identifier == "showRecentlyView"{
             let destination = segue.destination as! LipstickListViewController
             destination.lipstickList = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.lipsticksHistory).reversed()
+                destination.customTitleString = "Your Recently View"
         }
         if segue.identifier == "showFavoriteTrend"{
             let destination = segue.destination as! PinterestCollectionViewController
 //            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
             let trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed() as [Trend]
             destination.trendGroup = TrendGroup("Favorite Trends", trends, trends.first?.image ?? "")
+            
         }
     }
     

@@ -1245,14 +1245,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1353,7 +1353,7 @@ Review</string>
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-TQ-2L3">
-                                <rect key="frame" x="306" y="105" width="18" height="22"/>
+                                <rect key="frame" x="288" y="91" width="36" height="36"/>
                                 <state key="normal" image="baseline_delete_outline_black_18pt"/>
                                 <connections>
                                     <action selector="clearSearch:" destination="gBB-ln-FRs" eventType="touchUpInside" id="AuM-ZU-Uga"/>
@@ -2657,7 +2657,7 @@ Review</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hln-nP-OFo">
-                                                <rect key="frame" x="298" y="198" width="94" height="40"/>
+                                                <rect key="frame" x="298" y="158" width="134" height="80"/>
                                                 <state key="normal" title="Button" image="heart_white"/>
                                                 <connections>
                                                     <action selector="favButtonClicked:" destination="udf-5l-NvU" eventType="touchUpInside" id="9gn-6G-CvM"/>
@@ -2778,7 +2778,7 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-0G-sOE">
-                                                <rect key="frame" x="8" y="26" width="48" height="48"/>
+                                                <rect key="frame" x="-40" y="26" width="96" height="96"/>
                                                 <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                                 <connections>
                                                     <action selector="goBack:" destination="udf-5l-NvU" eventType="touchUpInside" id="HZw-W9-NmH"/>
