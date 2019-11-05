@@ -76,4 +76,24 @@ class UserRepository {
             }
         }
     }
+    
+    public static func editProfile(firstname: String, lastname: String, gender: String, image: UIImage, completion: @escaping (Bool) -> Void) {
+        let request = HttpRequest()
+        let imageData = image.sd_imageData()
+        let stringBase64 = imageData?.base64EncodedString(options: .lineLength64Characters)
+        request.put(
+            "api/user",
+            [
+//                "email": email,
+//                "password": password,
+                "firstname": firstname,
+                "lastname": lastname,
+                "gender": gender,
+                "image": stringBase64!
+            ],
+            nil
+        ) { (response, httpStatus) -> (Void) in
+            // MARK: Do some logic
+        }
+    }
 }
