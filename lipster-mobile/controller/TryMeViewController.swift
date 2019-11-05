@@ -402,9 +402,6 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate, AVC
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        guard let imageData = photo.fileDataRepresentation() else {
-            return
-        }
         
         annotationOverlayView.alpha = 1
         previewOverlayView.alpha = 1
@@ -418,12 +415,14 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate, AVC
             }
         }
 
-        let image = UIImage(data: imageData)
-        guard let imageToSave = image else { return }
+        let renderer = UIGraphicsImageRenderer(size: cameraView.bounds.size)
         
+        let imageCapture = renderer.image { ctx in
+            self.previewOverlayView.drawHierarchy(in: cameraView.bounds, afterScreenUpdates: false)
+            self.annotationOverlayView.drawHierarchy(in: cameraView.bounds, afterScreenUpdates: false)
+        }
         
-        // MARK: Merge UIImage with UIView here
-        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(imageCapture, nil, nil, nil)
     }
 }
 
