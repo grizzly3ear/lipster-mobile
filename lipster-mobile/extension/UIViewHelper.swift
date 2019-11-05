@@ -101,4 +101,21 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
+    
+    func asImage() -> UIImage? {
+        if #available(iOS 10.0, *) {
+            let renderer = UIGraphicsImageRenderer(bounds: bounds)
+            return renderer.image { rendererContext in
+                layer.render(in: rendererContext.cgContext)
+            }
+        } else {
+            guard let context = UIGraphicsGetCurrentContext() else { return nil }
+            UIGraphicsBeginImageContext(self.frame.size)
+            self.layer.render(in: context)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            guard let cgImage = image?.cgImage else { return nil }
+            return UIImage(cgImage: cgImage)
+        }
+    }
 }

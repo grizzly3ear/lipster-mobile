@@ -21,11 +21,27 @@ class TryMeViewController: UIViewController  {
     private lazy var sessionQueue = DispatchQueue(label: Constant.sessionQueueLabel)
     private lazy var vision = Vision.vision()
     private var lastFrame: CMSampleBuffer?
+    private var stillImageOutput: AVCapturePhotoOutput!
     
+    @IBOutlet weak var goBackButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet private weak var cameraView: UIView!
-    @IBOutlet weak var collapseDetailView: UIView!
+    @IBOutlet weak var lipstickImage: UIImageView!
+    @IBOutlet weak var lipstickBrand: UILabel!
+    @IBOutlet weak var lipstickName: UILabel!
+    @IBOutlet weak var lipstickColorName: UILabel!
+    @IBOutlet weak var collapseDetailView: UIButton!
+    @IBOutlet weak var miniLipstickDetailView: UIView!
+    
+    @IBOutlet weak var favButton: UIButton!
+    
+    @IBOutlet weak var captureBackground: UIView!
+    @IBOutlet weak var captureButton: UIButton!
+    
+    var lipstick: Lipstick!
+    var lipsticks: [Lipstick]!
+    let lipstickColorAlpha: CGFloat = 0.5
+    var isNeedToShowTabbarOnExit = false
     
     private lazy var previewOverlayView: UIImageView = {
         precondition(isViewLoaded)
@@ -42,9 +58,13 @@ class TryMeViewController: UIViewController  {
         return annotationOverlayView
     }()
     
-    var lipstick: Lipstick!
-    var lipsticks: [Lipstick]!
-    let lipstickColorAlpha: CGFloat = 0.5
+    private lazy var captureImageFrameView: UIImageView = {
+        precondition(isViewLoaded)
+        let captureImageFrameView = UIImageView(frame: .zero)
+        captureImageFrameView.contentMode = .scaleAspectFill
+        captureImageFrameView.translatesAutoresizingMaskIntoConstraints = false
+        return captureImageFrameView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,18 +74,27 @@ class TryMeViewController: UIViewController  {
         setUpAnnotationOverlayView()
         setUpCaptureSessionOutput()
         setUpCaptureSessionInput()
+        setUpCaptureButton()
+        setUpLipstickDetail()
+        setUpFavButton()
+//        setUpCaptureImageView()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collapseDetailView.layer.cornerRadius = 20
         self.hero.isEnabled = true
         collapseDetailView.hero.id = "pullableView"
+        miniLipstickDetailView.hero.id = "pullableView"
         
         hideTabBar()
+        
+        collapseDetailView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        collapseDetailView.layer.cornerRadius = 20
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
+        isNeedToShowTabbarOnExit = true
         startSession()
     }
     
@@ -75,8 +104,10 @@ class TryMeViewController: UIViewController  {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        showTabBar()
+        if isNeedToShowTabbarOnExit {
+            self.showTabBar(0.3, height: 603)
+            tabBarController?.tabBar.isHidden = false
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -90,6 +121,8 @@ class TryMeViewController: UIViewController  {
         
         previewLayer.frame = cameraView.frame
         cameraView.bringSubviewToFront(collectionView)
+        cameraView.bringSubviewToFront(collapseDetailView)
+        cameraView.bringSubviewToFront(self.goBackButton)
     }
     
     @IBAction func onPressDetail(_ sender: Any) {
@@ -100,17 +133,36 @@ class TryMeViewController: UIViewController  {
         modal.modalPresentationStyle = .custom
         transitionDelegate.translateForDismiss = 100
         modal.lipstick = lipstick
-        
-        self.present(modal, animated: true, completion: nil)
+        self.isNeedToShowTabbarOnExit = false
+
+        self.present(modal, animated: true) {
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
     
+    @IBAction func goBack(_ sender: Any) {
+        isNeedToShowTabbarOnExit = true
+        hero.dismissViewController()
+    }
+    
+    @IBAction func didTakePhoto(_ sender: Any) {
+        let setting = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        self.stillImageOutput.capturePhoto(with: setting, delegate: self)
+    }
+    
+    @IBAction func toggleFav(_ sender: Any) {
+        Lipstick.toggleFavLipstick(lipstick)
+        setUpFavButton()
+    }
 }
 
 extension TryMeViewController: SPStorkControllerDelegate {
     func didDismissStorkByTap() {
+        
     }
     
     func didDismissStorkBySwipe() {
+        
     }
 }
 
@@ -147,7 +199,43 @@ extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDeleg
     
 }
 
+// MARK: SetUp Methods
 extension TryMeViewController {
+    
+    private func setUpCaptureImageView() {
+        cameraView.addSubview(captureImageFrameView)
+        captureImageFrameView.alpha = 0
+        NSLayoutConstraint.activate([
+            captureImageFrameView.centerXAnchor.constraint(equalTo: cameraView.centerXAnchor),
+            captureImageFrameView.centerYAnchor.constraint(equalTo: cameraView.centerYAnchor),
+            captureImageFrameView.leadingAnchor.constraint(equalTo: cameraView.leadingAnchor),
+            captureImageFrameView.trailingAnchor.constraint(equalTo: cameraView.trailingAnchor),
+        ])
+    }
+    
+    private func setUpFavButton() {
+        let image = Lipstick.isLipstickFav(lipstick) ? "heart_red" : "heart_white"
+        favButton.setImage(UIImage(named: image), for: .normal)
+    }
+    
+    private func setUpCaptureButton() {
+        captureButton.layer.cornerRadius = 0.5 * captureButton.bounds.size.width
+        captureButton.layer.borderColor = UIColor.white.cgColor
+        captureButton.layer.borderWidth = 2.0
+        captureButton.clipsToBounds = true
+        
+        captureBackground.layer.cornerRadius = 0.5 * captureBackground.bounds.size.width
+        captureBackground.clipsToBounds = true
+        
+    }
+    
+    private func setUpLipstickDetail() {
+        lipstickImage.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
+        lipstickBrand.text = lipstick.lipstickBrand
+        lipstickName.text = lipstick.lipstickName
+        lipstickColorName.text = lipstick.lipstickColorName
+    }
+    
     private func setUpCaptureSessionOutput() {
         sessionQueue.async {
             self.captureSession.beginConfiguration()
@@ -160,11 +248,22 @@ extension TryMeViewController {
                 [(kCVPixelBufferPixelFormatTypeKey as String): kCVPixelFormatType_32BGRA]
             let outputQueue = DispatchQueue(label: Constant.videoDataOutputQueueLabel)
             output.setSampleBufferDelegate(self, queue: outputQueue)
+            
             guard self.captureSession.canAddOutput(output) else {
                 print("Failed to add capture session output.")
                 return
             }
             self.captureSession.addOutput(output)
+            
+            self.stillImageOutput = AVCapturePhotoOutput()
+            
+            guard self.captureSession.canAddOutput(self.stillImageOutput) else {
+                print("Failed to add capture session output.")
+                return
+            }
+            
+            self.captureSession.addOutput(self.stillImageOutput)
+            
             self.captureSession.commitConfiguration()
         }
     }
@@ -216,7 +315,7 @@ extension TryMeViewController {
             previewOverlayView.leadingAnchor.constraint(equalTo: cameraView.leadingAnchor),
             previewOverlayView.trailingAnchor.constraint(equalTo: cameraView.trailingAnchor),
             
-            ])
+        ])
     }
     
     private func setUpAnnotationOverlayView() {
@@ -226,7 +325,7 @@ extension TryMeViewController {
             annotationOverlayView.leadingAnchor.constraint(equalTo: cameraView.leadingAnchor),
             annotationOverlayView.trailingAnchor.constraint(equalTo: cameraView.trailingAnchor),
             annotationOverlayView.bottomAnchor.constraint(equalTo: cameraView.bottomAnchor),
-            ])
+        ])
     }
     
     private func updatePreviewOverlayView() {
@@ -274,7 +373,8 @@ extension TryMeViewController {
 
 }
 
-extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+// MARK: AVCapture..Delegate
+extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
     
     func captureOutput(
         _ output: AVCaptureOutput,
@@ -299,6 +399,30 @@ extension TryMeViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let imageHeight = CGFloat(CVPixelBufferGetHeight(imageBuffer))
         
         detectFacesOnDevice(in: visionImage, width: imageWidth, height: imageHeight)
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        annotationOverlayView.alpha = 1
+        previewOverlayView.alpha = 1
+        UIView.animate(withDuration: 0.1, animations: {
+            self.annotationOverlayView.alpha = 0
+            self.previewOverlayView.alpha = 0
+        }) { (_) in
+            UIView.animate(withDuration: 0.1) {
+                self.annotationOverlayView.alpha = 1
+                self.previewOverlayView.alpha = 1
+            }
+        }
+
+        let renderer = UIGraphicsImageRenderer(size: cameraView.bounds.size)
+        
+        let imageCapture = renderer.image { ctx in
+            self.previewOverlayView.drawHierarchy(in: cameraView.bounds, afterScreenUpdates: false)
+            self.annotationOverlayView.drawHierarchy(in: cameraView.bounds, afterScreenUpdates: false)
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(imageCapture, nil, nil, nil)
     }
 }
 
@@ -340,13 +464,13 @@ extension TryMeViewController {
                     width: face.frame.size.width / width,
                     height: face.frame.size.height / height
                 )
-                _ =
-                    self.previewLayer.layerRectConverted(fromMetadataOutputRect: normalizedRect).standardized
+                _ = self.previewLayer.layerRectConverted(fromMetadataOutputRect: normalizedRect).standardized
                 self.addContours(for: face, width: width, height: height)
             }
         }
     }
     
+    // MARK: Contour func
     private func addContours(for face: VisionFace, width: CGFloat, height: CGFloat) {
         
         let view = annotationOverlayView
