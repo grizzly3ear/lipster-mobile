@@ -1915,7 +1915,7 @@ Review</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1l-pV-2Sr">
-                                                    <rect key="frame" x="114" y="54" width="245" height="21"/>
+                                                    <rect key="frame" x="114" y="52" width="245" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="245" id="NGR-SR-2x0"/>
                                                     </constraints>
@@ -1927,8 +1927,8 @@ Review</string>
                                             <constraints>
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="trailing" secondItem="mN7-DZ-6JM" secondAttribute="trailing" id="866-BN-fOo"/>
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="trailing" secondItem="L9E-hM-weO" secondAttribute="trailingMargin" id="8ra-1g-XdM"/>
-                                                <constraint firstItem="X1l-pV-2Sr" firstAttribute="top" secondItem="GTJ-mf-r84" secondAttribute="bottom" constant="5" id="ENt-JM-JL4"/>
-                                                <constraint firstItem="mN7-DZ-6JM" firstAttribute="top" secondItem="X1l-pV-2Sr" secondAttribute="bottom" constant="3" id="IdL-jn-oIg"/>
+                                                <constraint firstItem="X1l-pV-2Sr" firstAttribute="top" secondItem="GTJ-mf-r84" secondAttribute="bottom" constant="3" id="ENt-JM-JL4"/>
+                                                <constraint firstItem="mN7-DZ-6JM" firstAttribute="top" secondItem="X1l-pV-2Sr" secondAttribute="bottom" constant="5" id="IdL-jn-oIg"/>
                                                 <constraint firstItem="X1l-pV-2Sr" firstAttribute="leading" secondItem="mN7-DZ-6JM" secondAttribute="leading" id="UWs-Jk-OiF"/>
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="leading" secondItem="X1l-pV-2Sr" secondAttribute="leading" id="YiL-bW-HjJ"/>
                                                 <constraint firstItem="X1l-pV-2Sr" firstAttribute="centerX" secondItem="mN7-DZ-6JM" secondAttribute="centerX" id="ZsU-aD-UE9"/>
@@ -2603,14 +2603,7 @@ Review</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyk-jE-zXM">
-                                            <rect key="frame" x="90" y="34" width="257" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxB-cr-3Dy">
-                                            <rect key="frame" x="90" y="56" width="257" height="22"/>
+                                            <rect key="frame" x="90" y="56" width="257" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
@@ -2628,6 +2621,13 @@ Review</string>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.91997808218002319" green="0.59198039770126343" blue="0.70985203981399536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxB-cr-3Dy">
+                                            <rect key="frame" x="90" y="35" width="257" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2685,14 +2685,14 @@ Review</string>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-RK-nHR">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-RK-nHR">
                                                 <rect key="frame" x="60" y="290" width="268" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltl-ql-sD7">
-                                                <rect key="frame" x="60" y="313" width="45" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltl-ql-sD7">
+                                                <rect key="frame" x="60" y="313" width="87" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2947,9 +2947,9 @@ Review</string>
                     <connections>
                         <outlet property="favoriteButton" destination="Hln-nP-OFo" id="kzh-Z2-H8U"/>
                         <outlet property="lipstickBrand" destination="8hm-Ti-ecJ" id="Pif-Gf-2gk"/>
-                        <outlet property="lipstickColorName" destination="LIA-RK-nHR" id="zbz-SV-gdd"/>
+                        <outlet property="lipstickColorName" destination="ltl-ql-sD7" id="amx-S7-pD0"/>
                         <outlet property="lipstickImagesPageControl" destination="X0G-MV-q6e" id="Opw-JE-fNs"/>
-                        <outlet property="lipstickName" destination="ltl-ql-sD7" id="pMD-oy-mNJ"/>
+                        <outlet property="lipstickName" destination="LIA-RK-nHR" id="FDN-7c-rRn"/>
                         <outlet property="lipstickSelectColorCollectionView" destination="qqD-DK-hvx" id="tu6-Pj-ybP"/>
                         <outlet property="mapButton" destination="0Ng-KE-FaO" id="WSf-a6-UmQ"/>
                         <outlet property="reviewButton" destination="Hg3-8F-QDi" id="xrG-BT-gDa"/>
@@ -2981,15 +2981,8 @@ Review</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Il-7b-jVr">
-                                <rect key="frame" x="131" y="111" width="215" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK3-A0-f9Y">
-                                <rect key="frame" x="131" y="134" width="215" height="21"/>
+                                <rect key="frame" x="131" y="113" width="215" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3103,6 +3096,13 @@ Review</string>
                                     <action selector="goBack:" destination="6rW-uu-4Cf" eventType="touchUpInside" id="wSJ-62-93Q"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ColorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Il-7b-jVr">
+                                <rect key="frame" x="131" y="134" width="215" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="o5v-ml-0SP"/>
