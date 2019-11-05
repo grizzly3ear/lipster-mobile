@@ -21,7 +21,7 @@ class UserRepository {
         }
     }
     
-    public static func register(email: String, password: String, firstname: String, lastname: String, gender: String, completion: @escaping (Bool, [String]) -> Void) {
+    public static func register(email: String, password: String, firstname: String, lastname: String, gender: String, imageURL: String, completion: @escaping (Bool, [String]) -> Void) {
         let request = HttpRequest()
         request.post(
             "api/register",
@@ -30,7 +30,8 @@ class UserRepository {
                 "password": password,
                 "firstname": firstname,
                 "lastname": lastname,
-                "gender": gender
+                "gender": gender,
+                "image": imageURL
             ],
             nil
         ) {response, httpStatusCode in
@@ -73,6 +74,26 @@ class UserRepository {
             } else {
                 completion(true)
             }
+        }
+    }
+    
+    public static func editProfile(firstname: String, lastname: String, gender: String, image: UIImage, completion: @escaping (Bool) -> Void) {
+        let request = HttpRequest()
+        let imageData = image.sd_imageData()
+        let stringBase64 = imageData?.base64EncodedString(options: .lineLength64Characters)
+        request.put(
+            "api/user",
+            [
+//                "email": email,
+//                "password": password,
+                "firstname": firstname,
+                "lastname": lastname,
+                "gender": gender,
+                "image": stringBase64!
+            ],
+            nil
+        ) { (response, httpStatus) -> (Void) in
+            // MARK: Do some logic
         }
     }
 }

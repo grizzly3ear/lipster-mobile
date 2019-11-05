@@ -115,6 +115,7 @@ class SearchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
+        print(sender)
         
         if identifier == "showLipstickList" {
             let lipsticks = sender as! [Lipstick]
@@ -182,9 +183,11 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             hideCollectionView()
             searchResultTableView.reloadData()
             self.searchTextField.becomeFirstResponder()
+        } else {
+            collectionView.deselectItem(at: indexPath, animated: true)
+            performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
         }
-        collectionView.deselectItem(at: indexPath, animated: true)
-        performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
+        
         
     }
     
@@ -282,7 +285,6 @@ extension SearchViewController: UITextFieldDelegate {
     
     func insertData(key: String, keyword: String, obj: Any, repeatable: Bool = false) {
         if !repeatable && key.lowercased().contains(keyword.lowercased()) {
-            print("unrepeatable")
             if var existData = searchFilterDictionary[key] {
                 existData.append(obj)
                 searchFilterDictionary[key] = existData
@@ -290,7 +292,6 @@ extension SearchViewController: UITextFieldDelegate {
                 searchFilterDictionary[key] = [obj]
             }
         } else if key.lowercased().contains(keyword.lowercased()) {
-            print("repeatable")
             if let store = obj as? Store {
                 searchFilterDictionary["\(store.name) - \(store.address)"] = [obj]
             } else {
