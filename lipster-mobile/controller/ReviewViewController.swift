@@ -101,21 +101,6 @@ class ReviewViewController: UIViewController {
         hero.dismissViewController()
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            print(keyboardSize.height)
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= 260
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
     func fetchLipstickReview() {
         LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
             self.reviewDataPipe.input.send(value: userReviews)

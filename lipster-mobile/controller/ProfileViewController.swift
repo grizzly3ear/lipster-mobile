@@ -10,17 +10,17 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    
-    @IBOutlet weak var profileNavigationBar: UINavigationItem!
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
-
+    @IBOutlet weak var email: UILabel!
+    
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var editProfileButton: UIButton!
     
     @IBOutlet weak var favoriteLipstickView: UIView!
     
     @IBOutlet weak var backgroundImage: UIImageView!
+    
     @IBAction func favoriteLipstickIconButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
     }
@@ -60,9 +60,13 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        iniUserInterface()
         initGesture()
         backgroundImage.layer.cornerRadius = 30.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initUserInterface()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,7 +86,6 @@ class ProfileViewController: UIViewController {
                }
         if segue.identifier == "showFavoriteTrend"{
             let destination = segue.destination as! PinterestCollectionViewController
-//            destination.trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed()
             let trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed() as [Trend]
             destination.trendGroup = TrendGroup("Favorite Trends", trends, trends.first?.image ?? "")
             
@@ -92,12 +95,18 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController {
-    func iniUserInterface() {
+    func initUserInterface() {
         initDropShadow()
-        profileNavigationBar.title = "PROFILE"
-        self.navigationController!.navigationBar.barStyle = .black
         
-        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width/2
+        if User.isInstanceInit() {
+            userProfileImage.sd_setImage(with: URL(string: User.shared.imageURL!), placeholderImage: UIImage(named: "profile-user")!)
+            username.text = User.shared.firstname! + " " + User.shared.lastname!
+            email.text = User.shared.email!
+        } else {
+            // MARK: User not logins
+        }
+        
+        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width / 2
         userProfileImage.clipsToBounds = true
         
         favoriteLipstickView.isUserInteractionEnabled = true

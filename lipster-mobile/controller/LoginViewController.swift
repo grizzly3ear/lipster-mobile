@@ -108,20 +108,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
 }
 
 // MARK: Auth
@@ -137,12 +123,14 @@ extension LoginViewController: GIDSignInDelegate {
                         return
                     }
                     if let dictionaryResult = graphResult as? Dictionary<String, AnyObject> {
-                        User.id = profile.userID
-                        User.firstname = profile.firstName!
-                        User.lastname = profile.lastName!
-                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 480, height: 480))?.absoluteString
-                        User.email = "\(dictionaryResult["email"]!)"
+                        User.shared.id = profile.userID
+                        User.shared.firstname = profile.firstName!
+                        User.shared.lastname = profile.lastName!
+                        User.shared.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 480, height: 480))?.absoluteString
+                        User.shared.email = "\(dictionaryResult["email"]!)"
                         
+                        print(User.shared.id!)
+                        print(User.shared.email!)
                         self.authenticate()
                     }
                     
@@ -166,10 +154,10 @@ extension LoginViewController: GIDSignInDelegate {
         let familyName = user.profile.familyName!
         let email = user.profile.email!
         
-        User.email = email
-        User.firstname = givenName
-        User.lastname = familyName
-        User.id = userId
+        User.shared.email = email
+        User.shared.firstname = givenName
+        User.shared.lastname = familyName
+        User.shared.id = userId
         
         self.authenticate()
     }
@@ -180,9 +168,11 @@ extension LoginViewController: GIDSignInDelegate {
     }
     
     private func authenticate() {
+        print(User.shared.email!)
+        print(User.shared.id!)
         UserRepository.authenticate(
-            email: User.email!,
-            password: User.id!
+            email: User.shared.email!,
+            password: User.shared.id!
         ) { (status, messages) in
             if status == 401 {
                 self.performSegue(withIdentifier: "selectGenderPage", sender: self)

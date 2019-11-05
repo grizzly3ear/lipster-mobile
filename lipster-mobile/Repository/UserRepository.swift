@@ -11,7 +11,13 @@ class UserRepository {
                 let localStorage = UserDefaults.standard
                 let token = response!["token"].stringValue
                 localStorage.set(token, forKey: "token")
-                completion(200, ["success", "Welcome"])
+                getUser { (userModel, result) in
+                    if let user = userModel {
+                        User.setSingletonUser(user: user)
+                    }
+                    completion(200, ["success", "Welcome"])
+                }
+                
             } else if httpStatusCode == 500 {
                 completion(500, ["Server Error", "Sorry, an unexpected error occured. Please try again later. Error code: 1"])
             } else if httpStatusCode == 401 {
@@ -66,34 +72,39 @@ class UserRepository {
         }
     }
     
-    public static func isLogin(completion: @escaping (Bool) -> Void) {
+    public static func getUser(completion: @escaping (User?, Bool) -> Void) {
         let request = HttpRequest()
-        request.get("api/user", nil, nil, requiredAuth: true) { (_, httpStatusCode) -> (Void) in
+        request.get("api/user", nil, nil, requiredAuth: true) { (response, httpStatusCode) -> (Void) in
             if httpStatusCode == 401 {
-                completion(false)
+                completion(nil, false)
             } else {
-                completion(true)
+                completion(User.makeModelFromUserJSON(response: response), true)
             }
         }
     }
     
-    public static func editProfile(firstname: String, lastname: String, gender: String, image: UIImage, completion: @escaping (Bool) -> Void) {
+    public static func editProfile(firstname: String, lastname: String, gender: String, image: UIImage, completion: @escaping (User?) -> Void) {
         let request = HttpRequest()
         let imageData = image.sd_imageData()
         let stringBase64 = imageData?.base64EncodedString(options: .lineLength64Characters)
         request.put(
             "api/user",
             [
-//                "email": email,
-//                "password": password,
                 "firstname": firstname,
                 "lastname": lastname,
                 "gender": gender,
                 "image": stringBase64!
             ],
             nil
-        ) { (response, httpStatus) -> (Void) in
+        ) { (response, httpStatusCode) -> (Void) in
             // MARK: Do some logic
+            print(response)
+            if httpStatusCode == 401 {
+                completion(nil)
+            } else {
+                completion(User.makeModelFromUserJSON(response: response))
+            }
+            
         }
     }
 }

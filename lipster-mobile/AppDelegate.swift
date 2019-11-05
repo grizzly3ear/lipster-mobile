@@ -47,7 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Messaging.messaging().delegate = self
         
-        
+        UserRepository.getUser { (userModel, result) in
+            if result {
+                if let user = userModel {
+                    User.setSingletonUser(user: user)
+                }
+            }
+        }
         
         return true
     }

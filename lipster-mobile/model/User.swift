@@ -8,80 +8,83 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 fileprivate let firstnameType = "firstname"
 fileprivate let lastnameType = "lastname"
 fileprivate let emailType = "email"
 fileprivate let imageType = "profileImage"
 fileprivate let idType = "id"
+fileprivate let genderType = "gender"
 
 class User {
     
-    static var firstname: String? {
-        set {
-            if let val = newValue {
-                UserDefaults.standard.set(val, forKey: firstnameType)
-                
-            }
-        }
-        get {
-            return UserDefaults.standard.string(forKey: firstnameType) ?? ""
-        }
-        
+    static let shared: User = User()
+    static private var sharedUserState: Bool = false
+    
+    public static func isInstanceInit() -> Bool {
+        return sharedUserState
     }
     
-    static var lastname: String? {
-        set {
-            if let val = newValue {
-                UserDefaults.standard.set(val, forKey: lastnameType)
-                
-            }
-        }
-        get {
-            return UserDefaults.standard.string(forKey: lastnameType) ?? ""
-        }
-        
+    private init() {}
+    
+    public static func setSingletonUser(user: User) {
+        shared.email = user.email!
+        shared.firstname = user.firstname!
+        shared.lastname = user.lastname!
+        shared.gender = user.gender!
+        shared.id = user.id!
+        shared.imageURL = user.imageURL!
+        sharedUserState = true
     }
     
-    static var email: String? {
-        set {
-            if let val = newValue {
-                UserDefaults.standard.set(val, forKey: emailType)
-            }
-        }
-        get {
-            return UserDefaults.standard.string(forKey: emailType) ?? ""
-        }
-        
+    public init(firstname: String, lastname: String, email: String, imageURL: String, id: String, gender: String) {
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
+        self.imageURL = imageURL
+        self.id = id
+        self.gender = gender
     }
     
-    static var imageURL: String? {
-        set {
-            if let val = newValue {
-                UserDefaults.standard.set(val, forKey: imageType)
-            }
-        }
-        get {
-            return UserDefaults.standard.string(forKey: imageType) ?? ""
-        }
-        
-    }
+    var firstname: String?
     
-    static var id: String? {
-        set {
-            if let val = newValue {
-                UserDefaults.standard.set(val, forKey: idType)
-            }
-        }
-        get {
-            return UserDefaults.standard.string(forKey: idType) ?? ""
-        }
-    }
+    var lastname: String?
+    
+    var email: String?
+    
+    var imageURL: String?
+    
+    var id: String?
+    
+    var gender: String?
     
     public static func isAuth(completion: @escaping (Bool) -> Void) {
-        UserRepository.isLogin { result in
+        UserRepository.getUser { _, result in
             completion(result)
         }
+    }
+    
+    public static func makeModelFromUserJSON(response: JSON?) -> User? {
+        if response == nil {
+            return nil
+        }
+        
+        let id = response!["id"].stringValue
+        let firstname = response!["firstname"].stringValue
+        let lastname = response!["lastname"].stringValue
+        let imageURL = response!["image"].stringValue
+        let gender = response!["gender"].stringValue
+        let email = response!["email"].stringValue
+        
+        return User(
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            imageURL: imageURL,
+            id: id,
+            gender: gender
+        )
     }
     
 }

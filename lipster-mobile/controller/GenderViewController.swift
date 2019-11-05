@@ -30,8 +30,9 @@ class GenderViewController: UIViewController {
     }
     
     @IBAction func submit(_ sender: UIButton) {
-        print(User.email!)
-        UserRepository.register(email: User.email!, password: User.id!, firstname: User.firstname!, lastname: User.lastname!, gender: gender, imageURL: User.imageURL!) { (result, messages) in
+        print(User.shared.email!)
+        User.shared.gender = gender
+        UserRepository.register(email: User.shared.email!, password: User.shared.id!, firstname: User.shared.firstname!, lastname: User.shared.lastname!, gender: gender, imageURL: User.shared.imageURL!) { (result, messages) in
             if result {
                 // MARK: Pass
                 self.hero.dismissViewController()
