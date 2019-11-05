@@ -140,7 +140,7 @@ extension LoginViewController: GIDSignInDelegate {
                         User.id = profile.userID
                         User.firstname = profile.firstName!
                         User.lastname = profile.lastName!
-                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 100, height: 100))?.absoluteString
+                        User.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 480, height: 480))?.absoluteString
                         User.email = "\(dictionaryResult["email"]!)"
                         
                         self.authenticate()

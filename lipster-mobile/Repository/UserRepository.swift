@@ -21,7 +21,7 @@ class UserRepository {
         }
     }
     
-    public static func register(email: String, password: String, firstname: String, lastname: String, gender: String, completion: @escaping (Bool, [String]) -> Void) {
+    public static func register(email: String, password: String, firstname: String, lastname: String, gender: String, imageURL: String, completion: @escaping (Bool, [String]) -> Void) {
         let request = HttpRequest()
         request.post(
             "api/register",
@@ -30,7 +30,8 @@ class UserRepository {
                 "password": password,
                 "firstname": firstname,
                 "lastname": lastname,
-                "gender": gender
+                "gender": gender,
+                "image": imageURL
             ],
             nil
         ) {response, httpStatusCode in
