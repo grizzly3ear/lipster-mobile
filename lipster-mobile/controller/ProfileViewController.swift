@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var favoriteLipstickView: UIView!
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBAction func favoriteLipstickIconButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
     }
@@ -61,6 +62,7 @@ class ProfileViewController: UIViewController {
         
         iniUserInterface()
         initGesture()
+        backgroundImage.layer.cornerRadius = 30.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
