@@ -17,55 +17,33 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var editProfileButton: UIButton!
     
-    @IBOutlet weak var favoriteLipstickView: UIView!
-    
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    @IBAction func favoriteLipstickIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
-    }
-    
-    @IBAction func favoriteLipsickLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showFavoriteLipstick", sender: self)
-    }
-    
-    @IBAction func editProfileButtonAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "showEditProfile", sender: self)
-    }
-    
-    @IBAction func recentlyViewIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showRecentlyView", sender: self)
-    }
-    
-    @IBAction func recentlyViewLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showRecentlyView", sender: self)
-    }
-    
-    @IBAction func yourReviewIconButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showYourReview", sender: self)
-    }
-    
-    @IBAction func yourReviewLabelButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "showYourReview", sender: self)
-    }
+    @IBOutlet weak var authButton: UIButton!
     
     @IBAction func logoutFromIcon(_ sender: Any) {
-        tabBarController?.selectedIndex = 0
-    }
-    
-    @IBAction func logoutFromLabel(_ sender: Any) {
-        tabBarController?.selectedIndex = 0
+        if User.isInstanceInit() {
+            // MARK: Login
+            User.clearSingletonUser()
+            UserDefaults.standard.removeObject(forKey: "token")
+            initUserInterface()
+        } else {
+            // MARK: Not Login
+            let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initGesture()
+        initUserInterface()
         backgroundImage.layer.cornerRadius = 30.0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        showTabBar()
+        tabBarController?.tabBar.isHidden = false
         initUserInterface()
     }
     
@@ -81,9 +59,9 @@ class ProfileViewController: UIViewController {
                 destination.customTitleString = "Your Recently View"
         }
         if segue.identifier == "showYourReview"{
+            
                
-               
-               }
+        }
         if segue.identifier == "showFavoriteTrend"{
             let destination = segue.destination as! PinterestCollectionViewController
             let trends = Trend.getTrendArrayFromUserDefault(forKey: DefaultConstant.favoriteTrends).reversed() as [Trend]
@@ -101,15 +79,24 @@ extension ProfileViewController {
         if User.isInstanceInit() {
             userProfileImage.sd_setImage(with: URL(string: User.shared.imageURL!), placeholderImage: UIImage(named: "profile-user")!)
             username.text = User.shared.firstname! + " " + User.shared.lastname!
+            username.frame.size.height = 21
             email.text = User.shared.email!
+            editProfileButton.isEnabled = true
+            authButton.setImage(UIImage(named: "log-out"), for: .normal)
+            authButton.setTitle("Logout", for: .normal)
         } else {
             // MARK: User not logins
+            userProfileImage.image = UIImage(named: "profile-user")!
+            username.text = "Please Login to view your profile"
+            username.frame.size.height = 42
+            email.text = ""
+            editProfileButton.isEnabled = false
+            authButton.setImage(UIImage(named: "log-in"), for: .normal)
+            authButton.setTitle("Login", for: .normal)
         }
         
         userProfileImage.layer.cornerRadius = userProfileImage.frame.size.width / 2
         userProfileImage.clipsToBounds = true
-        
-        favoriteLipstickView.isUserInteractionEnabled = true
     }
     
     func initDropShadow(scale: Bool = true) {
@@ -121,21 +108,5 @@ extension ProfileViewController {
         background.layer.shadowRadius = 6
         background.layer.shouldRasterize = true
         background.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
-    }
-}
-
-extension ProfileViewController {
-    func initGesture() {
-        initSingleTapGesture()
-    }
-    
-    func initSingleTapGesture() {
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(clickButton))
-        tapGesture.numberOfTapsRequired = 1
-        favoriteLipstickView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func clickButton() {
-        print(" Click favorite lipstick button")
     }
 }

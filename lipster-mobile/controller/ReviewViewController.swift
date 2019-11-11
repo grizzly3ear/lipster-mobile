@@ -21,7 +21,10 @@ class ReviewViewController: UIViewController {
     
     @IBOutlet weak var reviewTableView: UITableView!
 
+    @IBOutlet weak var actionBackground: UIView!
     @IBOutlet weak var typeReview: UITextField!
+    @IBOutlet weak var insertReviewButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
     let reviewDataPipe = Signal<[UserReview], NoError>.pipe()
     var reviewDataObserver: Signal<[UserReview], NoError>.Observer?
@@ -37,14 +40,6 @@ class ReviewViewController: UIViewController {
         initialUI()
         typeReview.delegate = self
         reviewTableView.rowHeight = UITableView.automaticDimension
-        User.isAuth { (isAuth) in
-            if isAuth {
-                
-            } else {
-            
-                
-            }
-        }
         hideTabBar()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -54,14 +49,16 @@ class ReviewViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        initialUI()
         reviewTableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if pageState {
-            showTabBar(0.3, height: 605)
-        }
+//        if pageState {
+//
+//            showTabBar(0.3, height: 605)
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -105,6 +102,12 @@ class ReviewViewController: UIViewController {
         LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
             self.reviewDataPipe.input.send(value: userReviews)
         }
+    }
+    
+    @IBAction func loginPress(_ sender: Any) {
+        pageState = true
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -189,6 +192,22 @@ extension ReviewViewController {
         } else {
             self.reviewTableView.viewWithTag(1)?.removeFromSuperview()
         }
+        
+        if User.isInstanceInit() {
+            self.typeReview.isHidden = false
+            self.insertReviewButton.isHidden = false
+            self.loginButton.isHidden = true
+        } else {
+            self.typeReview.isHidden = true
+            self.insertReviewButton.isHidden = true
+            self.loginButton.isHidden = false
+            
+            actionBackground.bringSubviewToFront(loginButton)
+            
+            loginButton.layer.cornerRadius = 8.0
+            
+        }
+        
         
     }
 }

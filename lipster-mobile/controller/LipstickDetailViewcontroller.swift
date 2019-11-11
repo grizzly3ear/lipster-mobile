@@ -78,12 +78,13 @@ class LipstickDetailViewcontroller: UIViewController {
         
         segmentedControl3.addTarget(self, action: #selector(changeIndex(segmentedControl:)), for: .valueChanged)
         addLipstickToHistory()
-
+        showTabBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         fetchData()
+        showTabBar()
     }
     
     @IBAction func goBack(_ sender: Any) {

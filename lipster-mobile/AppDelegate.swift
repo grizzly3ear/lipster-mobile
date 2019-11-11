@@ -52,7 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let user = userModel {
                     User.setSingletonUser(user: user)
                 }
+            } else {
+                User.clearSingletonUser()
             }
+            
+            
         }
         
         return true

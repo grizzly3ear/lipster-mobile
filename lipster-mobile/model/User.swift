@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
+import Firebase
+
+import UserNotifications
+
 fileprivate let firstnameType = "firstname"
 fileprivate let lastnameType = "lastname"
 fileprivate let emailType = "email"
@@ -36,6 +40,19 @@ class User {
         shared.id = user.id!
         shared.imageURL = user.imageURL!
         sharedUserState = true
+        Messaging.messaging().unsubscribe(fromTopic: "non_login")
+    }
+    
+    public static func clearSingletonUser() {
+        let user = User()
+        shared.email = user.email
+        shared.firstname = user.firstname
+        shared.lastname = user.lastname
+        shared.gender = user.gender
+        shared.id = user.id
+        shared.imageURL = user.imageURL
+        sharedUserState = false
+        Messaging.messaging().subscribe(toTopic: "non_login")
     }
     
     public init(firstname: String, lastname: String, email: String, imageURL: String, id: String, gender: String) {

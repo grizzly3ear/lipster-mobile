@@ -280,7 +280,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.84071046110000003" green="0.1033892706" blue="0.31262120599999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQM-of-AXh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQM-of-AXh">
                                 <rect key="frame" x="76" y="181" width="220" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -310,139 +310,6 @@
                                     <segue destination="tQ7-pN-4nh" kind="show" identifier="showEditProfile" id="GHj-jw-4Bg"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1j-tk-14M" customClass="ButtonView" customModule="lipster_mobile" customModuleProvider="target">
-                                <rect key="frame" x="45" y="270" width="130" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3p-JS-OUz">
-                                        <rect key="frame" x="43" y="8" width="46" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="lipstick (2)"/>
-                                        <connections>
-                                            <segue destination="2my-jU-SWf" kind="show" identifier="showFavoriteLipstick" id="1bJ-i5-nVn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="umi-Ov-Jvx">
-                                        <rect key="frame" x="34" y="59" width="63" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <state key="normal">
-                                            <string key="title"> Favorite
-Lipsticks</string>
-                                            <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="2my-jU-SWf" kind="show" identifier="showFavoriteLipstick" id="aDV-9f-do2"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCK-1R-g39">
-                                <rect key="frame" x="198" y="384" width="130" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRW-zL-kgF">
-                                        <rect key="frame" x="43" y="13" width="45" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="history"/>
-                                        <connections>
-                                            <segue destination="2my-jU-SWf" kind="show" identifier="showRecentlyView" id="pD8-zW-E8l"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4a4-FT-qE5">
-                                        <rect key="frame" x="35" y="59" width="62" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <state key="normal">
-                                            <string key="title">Recently
-   View</string>
-                                            <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="2my-jU-SWf" kind="show" identifier="showRecentlyView" id="PDE-4n-fpa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfY-5g-pJ5">
-                                <rect key="frame" x="45" y="498" width="130" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-ci-OR5">
-                                        <rect key="frame" x="38" y="13" width="50" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="-4" maxY="0.0"/>
-                                        <state key="normal" image="log-out"/>
-                                        <connections>
-                                            <action selector="logoutFromIcon:" destination="vmn-Gm-6su" eventType="touchUpInside" id="0sR-pm-PVa"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="spH-9q-8eS">
-                                        <rect key="frame" x="33" y="48" width="65" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <state key="normal" title="Logout">
-                                            <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logoutFromLabel:" destination="vmn-Gm-6su" eventType="touchUpInside" id="yWl-TA-csT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Nh-fu-TTi">
-                                <rect key="frame" x="45" y="384" width="130" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iM-R4-eiP">
-                                        <rect key="frame" x="43" y="14" width="45" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="review-1"/>
-                                        <connections>
-                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReview" id="zid-xp-aA6"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-p2-AUh">
-                                        <rect key="frame" x="41" y="59" width="50" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <state key="normal">
-                                            <string key="title">  Your
-Review</string>
-                                            <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReview" id="Q11-LN-cwa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44W-mi-Q1P">
-                                <rect key="frame" x="198" y="270" width="130" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phT-nW-fHi">
-                                        <rect key="frame" x="38" y="8" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="makeup"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JgK-QW-Oa0">
-                                        <rect key="frame" x="37" y="59" width="56" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                        <state key="normal">
-                                            <string key="title">Favorite
- Trends</string>
-                                            <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Kiu-8p-nJi">
                                 <rect key="frame" x="45" y="373" width="283" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -451,17 +318,82 @@ Review</string>
                                 <rect key="frame" x="45" y="491" width="283" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="C3p-JS-OUz">
+                                <rect key="frame" x="45" y="270" width="134" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="14" maxX="24" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="43" minY="11" maxX="41" maxY="48"/>
+                                <state key="normal" title="Favorite Lipsticks" image="lipstick (2)">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2my-jU-SWf" kind="show" identifier="showFavoriteLipstick" id="1bJ-i5-nVn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="phT-nW-fHi">
+                                <rect key="frame" x="198" y="266" width="130" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="14" maxX="24" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="43" minY="11" maxX="41" maxY="48"/>
+                                <state key="normal" title="Favorite Trends" image="makeup">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zdi-WH-zBq" kind="show" identifier="showFavoriteTrend" id="9Qs-hT-DDn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3iM-R4-eiP">
+                                <rect key="frame" x="45" y="384" width="130" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="65" maxX="24" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="43" minY="18" maxX="41" maxY="41"/>
+                                <state key="normal" title="Your Review" image="review-1">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Kfz-3P-mEd" kind="show" identifier="showYourReview" id="zid-xp-aA6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tRW-zL-kgF">
+                                <rect key="frame" x="198" y="384" width="130" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="65" maxX="24" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="43" minY="18" maxX="41" maxY="41"/>
+                                <state key="normal" title="Recently View" image="history">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2my-jU-SWf" kind="show" identifier="showRecentlyView" id="pD8-zW-E8l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-ci-OR5">
+                                <rect key="frame" x="45" y="498" width="130" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-14" minY="65" maxX="24" maxY="5"/>
+                                <inset key="imageEdgeInsets" minX="43" minY="18" maxX="41" maxY="41"/>
+                                <state key="normal" title="Logout" image="log-out">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutFromIcon:" destination="vmn-Gm-6su" eventType="touchUpInside" id="O3c-5O-b1e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HCG-RJ-xbS"/>
                     </view>
                     <navigationItem key="navigationItem" id="J0B-T3-d56"/>
                     <connections>
+                        <outlet property="authButton" destination="Xuz-ci-OR5" id="nl4-hl-Jhf"/>
                         <outlet property="background" destination="oAF-Lx-KDK" id="ig9-68-F6g"/>
                         <outlet property="backgroundImage" destination="J4B-3S-G9E" id="fKU-7v-O7C"/>
                         <outlet property="editProfileButton" destination="Bks-us-JaX" id="XY1-ZA-Jp0"/>
                         <outlet property="email" destination="z5b-q3-fNo" id="zLt-cJ-PRi"/>
-                        <outlet property="favoriteLipstickView" destination="e1j-tk-14M" id="UbP-mO-5gZ"/>
                         <outlet property="userProfileImage" destination="cBz-cd-Ysi" id="hk0-xi-BJp"/>
                         <outlet property="username" destination="dQM-of-AXh" id="QKk-Gh-r3e"/>
                     </connections>
@@ -565,6 +497,7 @@ Review</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="saveAction:" destination="tQ7-pN-4nh" eventType="touchUpInside" id="i0D-01-4RO"/>
                                             <action selector="submit:" destination="tQ7-pN-4nh" eventType="touchUpInside" id="bmn-IO-HaO"/>
                                         </connections>
                                     </button>
@@ -1056,7 +989,7 @@ Review</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="3" y="5" width="161" height="162"/>
+                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
                                             </constraints>
@@ -1245,14 +1178,14 @@ Review</string>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1353,7 +1286,7 @@ Review</string>
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-TQ-2L3">
-                                <rect key="frame" x="306" y="105" width="18" height="22"/>
+                                <rect key="frame" x="288" y="91" width="36" height="36"/>
                                 <state key="normal" image="baseline_delete_outline_black_18pt"/>
                                 <connections>
                                     <action selector="clearSearch:" destination="gBB-ln-FRs" eventType="touchUpInside" id="AuM-ZU-Uga"/>
@@ -2540,6 +2473,7 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wwc-cZ-jFs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Mgz-yo-ulw"/>
                     <connections>
                         <outlet property="cameraView" destination="T29-iN-sqp" id="eNS-pJ-mWA"/>
                         <outlet property="captureBackground" destination="QxA-46-8Ta" id="KAR-1k-mJl"/>
@@ -2715,6 +2649,7 @@ Review</string>
                             <outlet property="delegate" destination="Kfz-3P-mEd" id="oPq-Ld-JdM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="QEa-Nt-XTG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2741,7 +2676,7 @@ Review</string>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hln-nP-OFo">
-                                                <rect key="frame" x="298" y="198" width="94" height="40"/>
+                                                <rect key="frame" x="298" y="158" width="134" height="80"/>
                                                 <state key="normal" title="Button" image="heart_white"/>
                                                 <connections>
                                                     <action selector="favButtonClicked:" destination="udf-5l-NvU" eventType="touchUpInside" id="9gn-6G-CvM"/>
@@ -2862,7 +2797,7 @@ Review</string>
                                                 </connections>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-0G-sOE">
-                                                <rect key="frame" x="8" y="26" width="48" height="48"/>
+                                                <rect key="frame" x="-40" y="26" width="96" height="96"/>
                                                 <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                                 <connections>
                                                     <action selector="goBack:" destination="udf-5l-NvU" eventType="touchUpInside" id="HZw-W9-NmH"/>
@@ -3171,15 +3106,29 @@ Review</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKh-gx-q2D">
+                                <rect key="frame" x="16" y="616" width="343" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Please login to review."/>
+                                <connections>
+                                    <action selector="loginPress:" destination="6rW-uu-4Cf" eventType="touchUpInside" id="5Bd-fH-bQC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="o5v-ml-0SP"/>
                     </view>
+                    <navigationItem key="navigationItem" id="btE-DK-vpp"/>
                     <connections>
+                        <outlet property="actionBackground" destination="3sL-VR-iqg" id="7Yl-3C-xyL"/>
+                        <outlet property="insertReviewButton" destination="mlq-aK-rBD" id="nzA-fH-caw"/>
                         <outlet property="lipstickBrand" destination="LxO-bX-M6a" id="BVg-mh-Zpj"/>
                         <outlet property="lipstickColorName" destination="3Il-7b-jVr" id="TdV-GI-8XP"/>
                         <outlet property="lipstickImage" destination="MZo-Or-s0E" id="RdD-bl-pZg"/>
                         <outlet property="lipstickName" destination="YK3-A0-f9Y" id="dNn-Cc-csu"/>
+                        <outlet property="loginButton" destination="LKh-gx-q2D" id="hvX-fp-cEH"/>
                         <outlet property="reviewTableView" destination="JDZ-Cu-545" id="qXK-Ee-Hao"/>
                         <outlet property="typeReview" destination="ryo-wH-8Fa" id="2OL-p8-nox"/>
                     </connections>
@@ -3324,6 +3273,7 @@ Review</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMA-xm-dWZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qih-ZJ-Azg"/>
                     <connections>
                         <outlet property="storeStockTableView" destination="Vca-lY-Abm" id="6cK-0o-0sn"/>
                         <outlet property="textField" destination="ueW-Iq-R2z" id="RlV-fd-Qgo"/>
@@ -3524,10 +3474,9 @@ Review</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GT3-8q-qFt"/>
-        <segue reference="zid-xp-aA6"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="53E-t6-YAN"/>
-        <segue reference="fkk-Yh-5P5"/>
-        <segue reference="aDV-9f-do2"/>
+        <segue reference="9Qs-hT-DDn"/>
+        <segue reference="1bJ-i5-nVn"/>
     </inferredMetricsTieBreakers>
 </document>

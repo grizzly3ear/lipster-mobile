@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    var isDestinationSelectGender = false
+    
     var redirect: String?
     
     override func viewDidLoad() {
@@ -42,6 +44,8 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
+        hideTabBar()
+        tabBarController?.tabBar.isHidden = true
         
         // MARK: GID Auto signin
 //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
@@ -54,6 +58,14 @@ class LoginViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        if !isDestinationSelectGender {
+//            showTabBar(0.3, height: 605)
+//        }
+        
     }
     
     @IBAction func onPressgoogleButton(_ sender: Any) {
@@ -175,6 +187,7 @@ extension LoginViewController: GIDSignInDelegate {
             password: User.shared.id!
         ) { (status, messages) in
             if status == 401 {
+                self.isDestinationSelectGender = true
                 self.performSegue(withIdentifier: "selectGenderPage", sender: self)
             } else if status == 200 {
                 self.hero.dismissViewController()

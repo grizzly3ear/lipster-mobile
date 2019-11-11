@@ -181,6 +181,40 @@ class Lipstick: NSObject, NSCoding {
         return lipsticks
     }
     
+    public static func makeModelFromColorJSON(response: JSON?) -> Lipstick {
+        
+        if response == nil {
+            return Lipstick()
+        }
+        
+        if let lipstick = response {
+            let id = lipstick["id"].intValue
+            var images = [String]()
+            for image in lipstick["images"] {
+                images.append(image.1["image"].stringValue)
+            }
+            let brandName = lipstick["brand"]["name"].stringValue
+            let name = lipstick["detail"]["name"].stringValue
+            let colorName = lipstick["color_name"].stringValue
+            let description = lipstick["detail"]["description"].stringValue
+            let color = UIColor(hexString: lipstick["rgb"].stringValue)
+            let detailId = lipstick["detail"]["id"].intValue
+            
+            return Lipstick(
+                id,
+                images,
+                brandName,
+                name,
+                colorName,
+                description,
+                color,
+                detailId,
+                ""
+            )
+        }
+        return Lipstick()
+    }
+    
     public static func getLipstickArrayFromUserDefault(forKey: String) -> [Lipstick] {
         if let encodedLipstick = UserDefaults.standard.data(forKey: forKey) {
             return NSKeyedUnarchiver.unarchiveObject(with: encodedLipstick) as! [Lipstick]

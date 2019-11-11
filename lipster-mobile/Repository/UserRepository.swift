@@ -59,7 +59,8 @@ class UserRepository {
     
     public static func setNotificationToken(token: String, completion: ((Bool) -> Void)?) {
         let request = HttpRequest()
-        request.post("api/user/notification", ["notification_token": token], nil, requiredAuth: true) { (_, httpStatusCode) -> (Void) in
+        request.post("api/user/notification", ["notification_token": token], nil, requiredAuth: true) { (response, httpStatusCode) -> (Void) in
+            print(response)
             if let closure = completion {
                 if httpStatusCode == 200 {
                     // MARK: Pass
@@ -98,13 +99,30 @@ class UserRepository {
             nil
         ) { (response, httpStatusCode) -> (Void) in
             // MARK: Do some logic
-            print(response)
             if httpStatusCode == 401 {
                 completion(nil)
             } else {
                 completion(User.makeModelFromUserJSON(response: response))
             }
             
+        }
+    }
+    
+    public static func getMyReview(completion: @escaping ([UserReview], Int) -> Void) {
+        let request = HttpRequest()
+        request.get(
+            "api/user/reviews",
+            [
+                "part": "detail,brand"
+            ],
+            nil,
+            requiredAuth: true
+        ) { (response, httpStatusCode) -> (Void) in
+            if httpStatusCode == 200 {
+                completion(UserReview.makeArrayModelFromUserJSON(response: response), httpStatusCode)
+            } else {
+                completion([UserReview](), httpStatusCode)
+            }
         }
     }
 }

@@ -13,17 +13,16 @@ import SDWebImage
 
 class UserReview {
     
-    var userProfile : UIImage
     var userReview : String
-    var userName : String
+    var user : User
     var dateReview : String
+    var lipstick: Lipstick
     
-    
-    init(userProfile : UIImage , userReview : String , userName : String , dateReview : String) {
-        self.userProfile = userProfile
+    init(userReview : String , user : User , dateReview : String, lipstick: Lipstick = Lipstick()) {
         self.userReview = userReview
-        self.userName = userName
+        self.user = user
         self.dateReview = dateReview
+        self.lipstick = lipstick
     }
     
     public static func makeArrayModelFromJSON(response: JSON?) -> [UserReview] {
@@ -34,12 +33,30 @@ class UserReview {
         for review in response! {
             let _ = review.1["rating"].intValue
             let comment = review.1["comment"].stringValue
-            let user = review.1["user"].stringValue
+            let user = User.makeModelFromUserJSON(response: review.1["user"])
             let _ = review.1["skin_color"].stringValue
             let dateReview = review.1["date"].stringValue
-            reviews.append(UserReview(userProfile: UIImage(named: "profile-user")!, userReview: comment, userName: user, dateReview: dateReview))
+            reviews.append(UserReview(userReview: comment, user: user!, dateReview: dateReview))
         }
         
         return reviews
     }
+    
+    public static func makeArrayModelFromUserJSON(response: JSON?) -> [UserReview] {
+            var reviews = [UserReview]()
+            if response == nil {
+                return reviews
+            }
+        for review in response!["reviews"] {
+            let _ = review.1["rating"].intValue
+            let comment = review.1["comment"].stringValue
+            let user = User.makeModelFromUserJSON(response: response!)
+            let _ = review.1["skin_color"].stringValue
+            let dateReview = review.1["date"].stringValue
+            let lipstick = Lipstick.makeModelFromColorJSON(response: review.1["lipstick_color"])
+                reviews.append(UserReview(userReview: comment, user: user!, dateReview: dateReview, lipstick: lipstick))
+            }
+            
+            return reviews
+        }
 }

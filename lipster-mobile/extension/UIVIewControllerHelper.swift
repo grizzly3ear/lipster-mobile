@@ -11,43 +11,45 @@ import UIKit
 
 extension UIViewController {
     func hideTabBar(_ duration: Double = 0.5) {
-        var frame = self.tabBarController?.tabBar.frame
-        frame?.origin.y = self.view.frame.size.height + (self.tabBarController?.tabBar.frame.size.height)!
-        
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 0,
-            options: .curveLinear,
-            animations: {
-                self.tabBarController?.tabBar.frame = frame!
-            }
-        )
+        tabBarController?.tabBar.isHidden = true
+//        var frame = self.tabBarController?.tabBar.frame
+//        frame?.origin.y = self.view.frame.size.height + (self.tabBarController?.tabBar.frame.size.height)!
+//
+//        UIView.animate(
+//            withDuration: duration,
+//            delay: 0,
+//            usingSpringWithDamping: 1,
+//            initialSpringVelocity: 0,
+//            options: .curveLinear,
+//            animations: {
+//                self.tabBarController?.tabBar.frame = frame!
+//            }
+//        )
     }
     
     func showTabBar(_ duration: Double = 0.3, height: CGFloat = -1) {
-        var frame: CGRect?
-        
-        if height == -1 {
-            frame = self.tabBarController?.tabBar.frame
-            frame?.origin.y = self.view.frame.size.height + 15
-        } else {
-            frame = self.tabBarController?.tabBar.frame
-            frame?.origin.y = height + 15
-        }
-        
-        
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 0,
-            options: .curveLinear,
-            animations: {
-                self.tabBarController?.tabBar.frame = frame!
-            }
-        )
+        tabBarController?.tabBar.isHidden = false
+//        var frame: CGRect?
+//
+//        if height == -1 {
+//            frame = self.tabBarController?.tabBar.frame
+//            frame?.origin.y = self.view.frame.size.height + 15
+//        } else {
+//            frame = self.tabBarController?.tabBar.frame
+//            frame?.origin.y = height + 15
+//        }
+//
+//
+//        UIView.animate(
+//            withDuration: duration,
+//            delay: 0,
+//            usingSpringWithDamping: 1,
+//            initialSpringVelocity: 0,
+//            options: .curveLinear,
+//            animations: {
+//                self.tabBarController?.tabBar.frame = frame!
+//            }
+//        )
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
