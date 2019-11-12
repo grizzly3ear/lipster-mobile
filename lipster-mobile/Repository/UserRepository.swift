@@ -118,11 +118,29 @@ class UserRepository {
             nil,
             requiredAuth: true
         ) { (response, httpStatusCode) -> (Void) in
-            print(response)
+            
             if httpStatusCode == 200 {
                 completion(UserReview.makeArrayModelFromUserJSON(response: response), httpStatusCode)
             } else {
                 completion([UserReview](), httpStatusCode)
+            }
+        }
+    }
+    
+    public static func getMyNotification(completion: @escaping ([Notification], Int) -> Void) {
+        let request = HttpRequest()
+        request.get(
+            "api/notification/user",
+            [
+                "part": "trend_group,store"
+            ],
+            nil,
+            requiredAuth: true
+        ) { (response, httpStatusCode) -> (Void) in
+            if httpStatusCode == 200 {
+                completion(Notification.makeArrayModelFromJSON(response: response), httpStatusCode)
+            } else {
+                completion([Notification](), httpStatusCode)
             }
         }
     }

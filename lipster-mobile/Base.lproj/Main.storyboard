@@ -1806,11 +1806,6 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="IsR-lr-0jz">
-                                    <rect key="frame" x="0.0" y="262" width="375" height="466"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.97781170689999997" green="0.97781170689999997" blue="0.97781170689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="106" id="QmM-lu-kQB" customClass="NotificationTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="106"/>
@@ -3506,7 +3501,7 @@
         <segue reference="GT3-8q-qFt"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>
-        <segue reference="9Qs-hT-DDn"/>
+        <segue reference="XKe-IX-PZ8"/>
         <segue reference="pD8-zW-E8l"/>
     </inferredMetricsTieBreakers>
 </document>

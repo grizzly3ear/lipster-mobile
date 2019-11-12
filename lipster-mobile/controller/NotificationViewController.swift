@@ -12,48 +12,62 @@ class NotificationViewController: UIViewController {
 
     @IBOutlet weak var notificationTableView: UITableView!
     
-    var trendGroups = [TrendGroup]()
-       // var notificationTitle = ["Trend of the year | 2019" , "Trend of the month | August ","Trend of the month 2011"]
-    var yourNotification = [Notification]()
-    func createNotificationArray() -> [Notification] {
-        let noti1: Notification = Notification(title: "5 Cult Favorite Lipstick", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " , dateAndTime : "05 November 2019" , destination : "ferf" , image : "nopic")
-        let noti2: Notification = Notification(title: "Trend of the month November 2019", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " , dateAndTime : "05 November 2019" , destination : "ferf" , image : "nopic")
-        let noti3: Notification = Notification(title: "Trend of the month November 2019", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " , dateAndTime : "06 November 2019" , destination : "ferf" , image : "nopic")
-        let noti4: Notification = Notification(title: "Trend of the month November 2019", description: "dkefhajh;da" , dateAndTime : "11 November 2019" , destination : "ferf" , image : "nopic")
-
-        return [noti1, noti2, noti3, noti4]
-    }
+    var notifications = [Notification]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //notificationTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
-        self.yourNotification =  self.createNotificationArray()
+
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .white
+        notificationTableView.tableFooterView = footer
+        fetchData()
     }
     
-
+    func fetchData() {
+        UserRepository.getMyNotification { (notifications, _) in
+            self.notifications = notifications
+            self.notificationTableView.performBatchUpdates({
+                self.notificationTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }) { (_) in
+                
+            }
+        }
+    }
 }
 
 extension NotificationViewController : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  yourNotification.count
+        return  notifications.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell" , for : indexPath) as! NotificationTableViewCell
-        let notification = yourNotification[indexPath.item]
+        let notification = notifications[indexPath.item]
+        
         cell.notificationTitleLabel.text = notification.title
         cell.notificationDescription.text = notification.body
-        cell.notificationDateTimeLabel.text = notification.date
-        cell.notificationImageView.sd_setImage(with: URL(string: yourNotification[indexPath.item].image), placeholderImage: UIImage(named: "lip-logo-2"))
-        
+        cell.notificationDateTimeLabel.text = notification.createdAt.formatDisplay()
+        cell.notificationImageView.sd_setImage(with: URL(string: notifications[indexPath.item].image), placeholderImage: UIImage(named: "lip-logo-2"))
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 106
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+        
+        let notification = notifications[indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: notification.destination)
+        
+        if let exactVc = vc as? PinterestCollectionViewController {
+            TrendRepository.fetchTrendGroupFromId(notification.modelId) { (trendGroup, _) in
+                exactVc.trendGroup = trendGroup
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.navigationController?.pushViewController(exactVc, animated: true)
+            }
+        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
