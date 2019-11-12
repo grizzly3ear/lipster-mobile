@@ -15,10 +15,10 @@ class UserReview {
     
     var userReview : String
     var user : User
-    var dateReview : String
+    var dateReview : Date
     var lipstick: Lipstick
     
-    init(userReview : String , user : User , dateReview : String, lipstick: Lipstick = Lipstick()) {
+    init(userReview : String , user : User , dateReview : Date, lipstick: Lipstick = Lipstick()) {
         self.userReview = userReview
         self.user = user
         self.dateReview = dateReview
@@ -35,7 +35,13 @@ class UserReview {
             let comment = review.1["comment"].stringValue
             let user = User.makeModelFromUserJSON(response: review.1["user"])
             let _ = review.1["skin_color"].stringValue
-            let dateReview = review.1["date"].stringValue
+            let dateReviewString = review.1["created_at"].stringValue
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+            dateFormatter.calendar = Calendar(identifier: .gregorian)
+            let dateReview = dateFormatter.date(from: dateReviewString) ?? Date()
+            
             reviews.append(UserReview(userReview: comment, user: user!, dateReview: dateReview))
         }
         
@@ -52,7 +58,14 @@ class UserReview {
             let comment = review.1["comment"].stringValue
             let user = User.makeModelFromUserJSON(response: response!)
             let _ = review.1["skin_color"].stringValue
-            let dateReview = review.1["date"].stringValue
+            
+            let dateReviewString = review.1["created_at"].stringValue
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+            dateFormatter.calendar = Calendar(identifier: .gregorian)
+            let dateReview = dateFormatter.date(from: dateReviewString) ?? Date()
+            
             let lipstick = Lipstick.makeModelFromColorJSON(response: review.1["lipstick_color"])
                 reviews.append(UserReview(userReview: comment, user: user!, dateReview: dateReview, lipstick: lipstick))
             }

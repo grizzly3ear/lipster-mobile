@@ -197,7 +197,7 @@ DEPENDENCIES:
   - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AppAuth
     - CHTCollectionViewWaterfallLayout

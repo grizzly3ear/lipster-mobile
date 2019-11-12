@@ -13,7 +13,6 @@ class YourReviewsTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewImageView: UIImageView!
     @IBOutlet weak var reviewBrandLabel: UILabel!
     @IBOutlet weak var reviewColorNameLabel: UILabel!
-    @IBOutlet weak var reviewNameLabel: UILabel!
     
     @IBOutlet weak var reviewFromUserLabel: UILabel!
     @IBOutlet weak var dateReview: UILabel!
@@ -24,14 +23,14 @@ class YourReviewsTableViewCell: UITableViewCell {
     
     func setUserReview(userReviews : UserReview) {
         reviewFromUserLabel.text = userReviews.userReview
-        dateReview.text = userReviews.dateReview
-
+        
+        dateReview.text = userReviews.dateReview.formatDisplay()
     }
+    
     func setLipstick(lipstick : Lipstick) {
         reviewImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
         reviewBrandLabel.text = lipstick.lipstickBrand
         reviewColorNameLabel.text = lipstick.lipstickColorName
-        reviewNameLabel.text = lipstick.lipstickName
       
     }
     

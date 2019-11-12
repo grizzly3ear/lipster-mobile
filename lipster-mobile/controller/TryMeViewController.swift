@@ -89,6 +89,8 @@ class TryMeViewController: UIViewController  {
         collapseDetailView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         collapseDetailView.layer.cornerRadius = 20
         
+        collectionView.backgroundColor = .clear
+        
         
     }
     
@@ -177,11 +179,11 @@ extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDeleg
         cell.colorDisplay.backgroundColor = lipsticks[indexPath.item].lipstickColor
         
         if lipsticks[indexPath.item].lipstickId == lipstick?.lipstickId {
-            cell.triangleView.isHidden = false
+            cell.checkImageView.isHidden = false
         } else {
-            cell.triangleView.isHidden = true
+            cell.checkImageView.isHidden = true
         }
-        cell.bringSubviewToFront(cell.triangleView)
+        cell.bringSubviewToFront(cell.checkImageView)
         
         return cell
     }
@@ -194,7 +196,7 @@ extension TryMeViewController: UICollectionViewDataSource ,UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! LipSelectedColorCollectionViewCell
-        cell.triangleView.isHidden = true
+        cell.checkImageView.isHidden = true
     }
     
 }

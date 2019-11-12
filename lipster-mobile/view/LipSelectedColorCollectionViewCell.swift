@@ -13,6 +13,8 @@ class LipSelectedColorCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var colorDisplay: UIView!
     
-    @IBOutlet weak var triangleView: TriangleView!
+//    @IBOutlet weak var triangleView: TriangleView!
+    
+    @IBOutlet weak var checkImageView: UIImageView!
     
 }

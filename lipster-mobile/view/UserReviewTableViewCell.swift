@@ -21,7 +21,7 @@ class UserReviewTableViewCell: UITableViewCell {
         userImage.sd_setImage(with: URL(string: user.user.imageURL!), placeholderImage: UIImage(named: "profile-user"))
         userNameLabel.text = user.user.firstname! + " " + user.user.lastname!
         userReviewLabel.text = user.userReview
-        reviewDate.text = user.dateReview
+        reviewDate.text = user.dateReview.formatDisplay()
     }
     
     override func prepareForReuse() {

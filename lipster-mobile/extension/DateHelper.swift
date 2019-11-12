@@ -16,17 +16,7 @@ extension Date {
         let hour = 60 * 60
         let day = 60 * 60 * 24
         let week = 60 * 60 * 24 * 7
-        
-//        if secondAgo < minute {
-//            return "\(secondAgo) seconds ago."
-//        } else if secondAgo < hour {
-//            return "\(secondAgo / minute) minutes ago."
-//        } else if secondAgo < day {
-//            return "\(secondAgo / hour) hours ago."
-//        } else if secondAgo < week {
-//            return "\(secondAgo / day) days ago."
-//        }
-        
+
         if secondAgo < minute {
             return "Just now."
         } else if secondAgo < hour / 2 {
@@ -39,6 +29,13 @@ extension Date {
             return "\(secondAgo / day) days ago."
         }
         return "\(secondAgo / week) weeks ago."
+    }
+    
+    func formatDisplay() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter.string(from: self)
     }
 
 }

@@ -118,6 +118,7 @@ class UserRepository {
             nil,
             requiredAuth: true
         ) { (response, httpStatusCode) -> (Void) in
+            print(response)
             if httpStatusCode == 200 {
                 completion(UserReview.makeArrayModelFromUserJSON(response: response), httpStatusCode)
             } else {
