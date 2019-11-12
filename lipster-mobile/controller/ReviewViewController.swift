@@ -35,6 +35,8 @@ class ReviewViewController: UIViewController {
     
     var pageState: Bool = true
 
+    var reviews = [UserReview]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialUI()

@@ -274,7 +274,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundProfile" translatesAutoresizingMaskIntoConstraints="NO" id="J4B-3S-G9E">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
+                                        <rect key="frame" x="-10" y="0.0" width="395" height="263"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -2658,6 +2658,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="QEa-Nt-XTG"/>
+                    <connections>
+                        <segue destination="6rW-uu-4Cf" kind="show" identifier="showReview" id="gML-B1-W4I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zub-Gp-BmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3498,10 +3501,11 @@
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="gML-B1-W4I"/>
         <segue reference="GT3-8q-qFt"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>
-        <segue reference="XKe-IX-PZ8"/>
-        <segue reference="rx7-Ii-073"/>
+        <segue reference="9Qs-hT-DDn"/>
+        <segue reference="pD8-zW-E8l"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,7 +11,6 @@ import UIKit
 class YourReviewsTableViewController: UITableViewController {
 
     var yourReviews: [UserReview] = [UserReview]()
-    var yourLipsticks = [Lipstick]()
 
     @IBOutlet var yourReviewedTableView: UITableView!
     
@@ -62,7 +61,21 @@ extension YourReviewsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //   performSegue(withIdentifier: "showLipstickDetail" , sender: self)
+        print(indexPath.item)
+        print(indexPath.row)
+        performSegue(withIdentifier: "showReview" , sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+        if segueIdentifier == "showReview" {
+            if let destination = segue.destination as? ReviewViewController {
+                let indexPath = sender as! IndexPath
+                destination.lipstick = yourReviews[indexPath.row].lipstick
+                destination.reviews = [yourReviews[indexPath.row]]
+            }
+            
+        }
     }
  
 }
