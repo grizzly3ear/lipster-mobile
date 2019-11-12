@@ -63,6 +63,20 @@ class TrendGroup: NSObject, NSCoding {
         return trendCollections
     }
     
+    public static func makeModelFromJSON(response: JSON?) -> TrendGroup {
+        if response == nil {
+            return TrendGroup()
+        }
+        
+        let trendCollection = response!
+        let name = trendCollection["name"].stringValue
+        let image = trendCollection["image"].stringValue
+        let trends = Trend.makeArrayModelFromJSON(response: trendCollection["trends"])
+        let trendDescription = trendCollection["description"].stringValue
+        
+        return TrendGroup(name, trends, image, trendDescription)
+    }
+    
     public static func getTrendGroupArrayFromUserDefault(forKey: String) -> [TrendGroup] {
         if let encodedFavTrends = UserDefaults.standard.data(forKey: forKey) {
             return NSKeyedUnarchiver.unarchiveObject(with: encodedFavTrends) as! [TrendGroup]

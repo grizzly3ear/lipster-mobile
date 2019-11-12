@@ -29,6 +29,7 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBOutlet weak var lipstickName: UILabel!
     @IBOutlet weak var lipstickColorName: UILabel!
  
+    @IBOutlet weak var reviewImage: UIImageView!
     @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var lipstickSelectColorCollectionView: UICollectionView!
@@ -272,9 +273,11 @@ extension LipstickDetailViewcontroller{
 
         colorDataObserver = Signal<[Lipstick], NoError>.Observer(value: { (lipstickColors) in
             self.colors = lipstickColors
-            self.lipstickSelectColorCollectionView.reloadData()
-            self.lipstickSelectColorCollectionView.setNeedsLayout()
-            self.lipstickSelectColorCollectionView.setNeedsDisplay()
+            self.lipstickSelectColorCollectionView.performBatchUpdates({
+                self.lipstickSelectColorCollectionView.reloadSections(IndexSet(integer: 0))
+            }) { (_) in
+                
+            }
         })
         colorDataPipe.output.observe(colorDataObserver!)
     }
@@ -293,6 +296,7 @@ extension LipstickDetailViewcontroller {
             self.lipstickName,
             self.tryMeButton,
             self.reviewButton,
+            self.reviewImage,
             self.scrollView
         ]
         var delay = 0.02

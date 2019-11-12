@@ -113,6 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
+        let aps = userInfo["aps"] as! NSDictionary
+        print(aps["category"])
+        
     }
     
     
@@ -140,5 +143,54 @@ extension AppDelegate: MessagingDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        completionHandler([.alert, .sound])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let application = UIApplication.shared
+        let userInfo = response.notification.request.content.userInfo
+        
+//        let aps = userInfo["aps"] as! NSDictionary
+        guard let dataId = (userInfo["data"] as? NSString)?.integerValue else {
+            completionHandler()
+            return
+        }
+        
+        guard let rootvc = self.window?.rootViewController as? TabBarController else {
+            completionHandler()
+            return
+        }
+        
+        rootvc.selectedIndex = 0
+        
+        guard let navvc = rootvc.selectedViewController as? UINavigationController else {
+            completionHandler()
+            return
+        }
+        
+        if response.notification.request.content.categoryIdentifier == "trend_group" {
+            
+            let vc = rootvc.storyboard?.instantiateViewController(withIdentifier: "PinterestCollectionViewController") as! PinterestCollectionViewController
+            
+            TrendRepository.fetchTrendGroupFromId(dataId) { (trendGroup, httpStatusCode) in
+                vc.trendGroup = trendGroup
+                navvc.pushViewController(vc, animated: true)
+                completionHandler()
+                return
+            }
+        }
+
+        if application.applicationState == .active {
+            print("user tap app when app are already active")
+        }
+
+        if application.applicationState == .inactive {
+            print("user tap app when app in background")
+        }
+
+
+        completionHandler()
+    }
 }

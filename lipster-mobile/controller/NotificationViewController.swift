@@ -28,8 +28,6 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         //notificationTableView.backgroundView = UIImageView(image: UIImage(named: "backgroundLiplist"))
         self.yourNotification =  self.createNotificationArray()
-
-    
     }
     
 
