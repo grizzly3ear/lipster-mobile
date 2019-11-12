@@ -45,7 +45,7 @@ class LipstickRepository {
     
     public static func fetchAllLipstickData(completion: @escaping ([Lipstick]) -> Void ) {
         let request = HttpRequest()
-        request.get("api/brand", ["part": "detail,color"], nil) { (response, _) -> (Void) in
+        request.get("api/brand", nil, nil) { (response, _) -> (Void) in
             if response == nil {
                 completion([Lipstick]())
             }
@@ -56,7 +56,7 @@ class LipstickRepository {
     
     public static func fetchLipstickWithSameDetail(lipstick: Lipstick, completion: @escaping ([Lipstick]) -> Void ) {
         let request = HttpRequest()
-        request.get("api/lipstick/detail/\(lipstick.lipstickDetailId)", ["part": "color,brand"], nil) { (response, _) -> (Void) in
+        request.get("api/lipstick/detail/\(lipstick.lipstickDetailId)", ["part": "brand"], nil) { (response, _) -> (Void) in
             if response == nil {
                 completion([Lipstick]())
             }
