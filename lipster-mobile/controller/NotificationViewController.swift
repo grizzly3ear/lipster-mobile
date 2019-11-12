@@ -12,7 +12,8 @@ class NotificationViewController: UIViewController {
 
     @IBOutlet weak var notificationTableView: UITableView!
     
-   // var notificationTitle = ["Trend of the year | 2019" , "Trend of the month | August ","Trend of the month 2011"]
+    var trendGroups = [TrendGroup]()
+       // var notificationTitle = ["Trend of the year | 2019" , "Trend of the month | August ","Trend of the month 2011"]
     var yourNotification = [Notification]()
     func createNotificationArray() -> [Notification] {
         let noti1: Notification = Notification(title: "5 Cult Favorite Lipstick", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " , dateAndTime : "05 November 2019" , destination : "ferf" , image : "nopic")
@@ -51,6 +52,22 @@ extension NotificationViewController : UITableViewDelegate , UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 106
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showPinterest", sender: indexPath.item)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = segue.identifier
+    
+        if segueIdentifier == "showPinterest" {
+            if let destination = segue.destination as? PinterestCollectionViewController {
+                let item = sender as! Int
+               // destination.trendGroup = trendGroups[item]
+            
+            }
+        }
     }
 
 }
