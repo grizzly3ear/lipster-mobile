@@ -21,11 +21,10 @@ class TrendGroupCollectionViewCell: UICollectionViewCell {
         trendView.backgroundColor = UIColor(white: 0, alpha: 0.5)
     }
     
-
     func setTrendGroup(trendGroup : TrendGroup) {
         trendGroupBackgroundImage.sd_setImage(with: URL(string: trendGroup.image!), placeholderImage: UIImage(named: "nopic"))
         trendGroupName.text = trendGroup.name
-        
+        trendGroupDescription.text = trendGroup.trendDescription
         
     }
 }
