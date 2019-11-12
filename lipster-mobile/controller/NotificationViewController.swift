@@ -11,15 +11,21 @@ import UIKit
 class NotificationViewController: UIViewController {
 
     @IBOutlet weak var notificationTableView: UITableView!
-    
+    @IBOutlet weak var headerLabel: UILabel!
+
     var notifications = [Notification]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let footer = UIView(frame: .zero)
         footer.backgroundColor = .white
         notificationTableView.tableFooterView = footer
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         fetchData()
     }
     
@@ -27,7 +33,7 @@ class NotificationViewController: UIViewController {
         UserRepository.getMyNotification { (notifications, _) in
             self.notifications = notifications
             self.notificationTableView.performBatchUpdates({
-                self.notificationTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                self.notificationTableView.reloadSections(IndexSet(integer: 0), with: .none)
             }) { (_) in
                 
             }
@@ -36,9 +42,11 @@ class NotificationViewController: UIViewController {
 }
 
 extension NotificationViewController : UITableViewDelegate , UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  notifications.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell" , for : indexPath) as! NotificationTableViewCell
         let notification = notifications[indexPath.item]
