@@ -1796,15 +1796,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-gd-Fds">
-                                            <rect key="frame" x="33" y="28" width="208" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hr-gd-Fds">
+                                            <rect key="frame" x="33" y="35" width="148" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="0hr-gd-Fds" secondAttribute="height" multiplier="7:2" constant="15" id="Vv2-mG-Pbz"/>
+                                                <constraint firstAttribute="height" constant="38" id="ocQ-qp-4Kb"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstItem="0hr-gd-Fds" firstAttribute="top" secondItem="ETA-RN-EfN" secondAttribute="top" constant="35" id="EuA-Vy-S0l"/>
+                                        <constraint firstItem="0hr-gd-Fds" firstAttribute="leading" secondItem="ETA-RN-EfN" secondAttribute="leading" constant="33" id="nWh-Az-RBF"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="106" id="QmM-lu-kQB" customClass="NotificationTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
@@ -1882,12 +1889,13 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="headerLabel" destination="0hr-gd-Fds" id="33q-o9-ikD"/>
                         <outlet property="notificationTableView" destination="8O9-lC-Upt" id="xTi-BP-3Ek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RM-oi-4lh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="4228"/>
+            <point key="canvasLocation" x="-836" y="4227.4362818590707"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l18-15-cyb">
@@ -2577,23 +2585,27 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-zH-URr">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bm-zH-URr">
                                     <rect key="frame" x="8" y="7" width="48" height="48"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="baseline_chevron_left_black_48pt"/>
                                     <connections>
                                         <action selector="goBack:" destination="Kfz-3P-mEd" eventType="touchUpInside" id="cnm-TJ-EML"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-wC-QY2">
-                                    <rect key="frame" x="34" y="67" width="258" height="68"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-wC-QY2">
+                                    <rect key="frame" x="34" y="70" width="144" height="38"/>
                                     <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="5Bm-zH-URr" firstAttribute="top" secondItem="aR1-bo-2Hv" secondAttribute="top" constant="7" id="9jV-di-TUB"/>
+                                <constraint firstItem="4fD-wC-QY2" firstAttribute="top" secondItem="aR1-bo-2Hv" secondAttribute="top" constant="70" id="f4c-D0-mfa"/>
+                                <constraint firstItem="4fD-wC-QY2" firstAttribute="leading" secondItem="aR1-bo-2Hv" secondAttribute="leading" constant="34" id="jXl-Dc-wfn"/>
+                                <constraint firstItem="5Bm-zH-URr" firstAttribute="leading" secondItem="aR1-bo-2Hv" secondAttribute="leadingMargin" id="tJe-g7-sta"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="YourReviewsTableViewCell" rowHeight="137" id="8kH-06-fre" customClass="YourReviewsTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
@@ -3499,7 +3511,7 @@
         <image name="whiteLine" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sbi-OJ-sqx"/>
+        <segue reference="gML-B1-W4I"/>
         <segue reference="GT3-8q-qFt"/>
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>
