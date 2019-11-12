@@ -988,7 +988,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lks-Fq-yB5">
-                                            <rect key="frame" x="3" y="5" width="161" height="162"/>
+                                            <rect key="frame" x="3" y="5" width="161.00000000000023" height="162"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="167" id="JzA-OL-Smq"/>
                                             </constraints>
@@ -1285,7 +1285,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-TQ-2L3">
-                                <rect key="frame" x="306" y="105" width="18" height="22"/>
+                                <rect key="frame" x="288" y="91" width="36" height="36"/>
                                 <state key="normal" image="baseline_delete_outline_black_18pt"/>
                                 <connections>
                                     <action selector="clearSearch:" destination="gBB-ln-FRs" eventType="touchUpInside" id="AuM-ZU-Uga"/>
@@ -1783,7 +1783,7 @@
         <!--Notification View Controller-->
         <scene sceneID="b0S-wl-U9s">
             <objects>
-                <viewController storyboardIdentifier="NotificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Xu-JZ-HJ6" customClass="NotificationViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Xu-JZ-HJ6" customClass="NotificationViewController" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Fj-S9-LLv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1882,16 +1882,18 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="B1L-fo-7zb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="N9K-fz-MFW"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="notificationTableView" destination="8O9-lC-Upt" id="xTi-BP-3Ek"/>
+                        <segue destination="Zdi-WH-zBq" kind="show" identifier="showPinterest" id="XKe-IX-PZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RM-oi-4lh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1687.2" y="4266.1169415292361"/>
+            <point key="canvasLocation" x="2856.8000000000002" y="3528.4857571214397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l18-15-cyb">
@@ -2666,11 +2668,11 @@
             <objects>
                 <viewController id="udf-5l-NvU" customClass="LipstickDetailViewcontroller" customModule="lipster_mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mV-k3-eiG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-sY-UKe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="655"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="635"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-2q-rZ1">
                                         <rect key="frame" x="0.0" y="-20" width="375" height="675"/>
@@ -3425,6 +3427,23 @@
             </objects>
             <point key="canvasLocation" x="4932" y="1859"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q8I-Er-tfA">
+            <objects>
+                <navigationController storyboardIdentifier="NotificationViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gCq-OW-15h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="avC-ae-MtY">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Xu-JZ-HJ6" kind="relationship" relationship="rootViewController" id="Azj-O9-c4N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V9G-Fk-Hr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917.5999999999999" y="3528.4857571214397"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Loreal-Paris-BMAG-Slideshow-10-Lipstick-Trends-for-Winter-2018-2019-Slide9" width="841" height="442"/>
@@ -3481,8 +3500,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="GT3-8q-qFt"/>
         <segue reference="U2k-ik-SvE"/>
-        <segue reference="53E-t6-YAN"/>
-        <segue reference="9Qs-hT-DDn"/>
-        <segue reference="pD8-zW-E8l"/>
+        <segue reference="Rqr-p9-s19"/>
+        <segue reference="XKe-IX-PZ8"/>
+        <segue reference="rx7-Ii-073"/>
     </inferredMetricsTieBreakers>
 </document>
