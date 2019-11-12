@@ -69,17 +69,5 @@ extension NotificationViewController : UITableViewDelegate , UITableViewDataSour
         }
 
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdentifier = segue.identifier
-    
-        if segueIdentifier == "showPinterest" {
-            if let destination = segue.destination as? PinterestCollectionViewController {
-                let item = sender as! Int
-               // destination.trendGroup = trendGroups[item]
-            
-            }
-        }
-    }
 
 }
