@@ -137,6 +137,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == trendHeaderCollectionView {
             var cellSize: CGSize = collectionView.bounds.size
@@ -186,20 +187,26 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             break
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == trendHeaderCollectionView {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trendsCollectionViewCell", for: indexPath) as! TrendsCollectionViewCell
         
             cell.layer.cornerRadius = 10
             cell.clipsToBounds = true
         
             let trend = trends[indexPath.item]
+            
             cell.trendImage.sd_setImage(with: URL(string: trends[indexPath.item].image), placeholderImage: UIImage(named: "nopic"))
             cell.trendTitle.text = trend.title
             cell.TrendDescription.text = trend.detail
+            cell.trendImage.hero.id = "trend_\(indexPath.item)"
+            
             return cell
         } else if collectionView == todayTrendCollectionView {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todayTrendCollectionViewCell", for: indexPath) as! TodayTrendCollectionViewCell
             
             cell.layer.cornerRadius = 10
@@ -211,6 +218,7 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
 
             return cell
         }else {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendForYouCollectionViewCell", for: indexPath) as! RecommendForYouCollectionViewCell
             let lipstick =  recommendLipstick[indexPath.item]
             
@@ -271,19 +279,17 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
                 destination.trendGroup = trendGroups[item]
                 
             }
-        }
-        else if segueIdentifier == "showTrendGroup" {
+        } else if segueIdentifier == "showTrendGroup" {
             if let destination = segue.destination as? TrendGroupViewController {
                 destination.trendGroups = trendGroups
             }
-        }
-        else if segueIdentifier == "showTrendDetail" {
+        } else if segueIdentifier == "showTrendDetail" {
             if let destination = segue.destination as? TrendDetailViewController {
                 let item = sender as! Int
                 destination.trend = trends[item]
+                destination.imageHeroId = "trend_\(item)"
             }
-        }
-        else if segueIdentifier == "showLipstickDetail" {
+        } else if segueIdentifier == "showLipstickDetail" {
             if let destination = segue.destination as? LipstickDetailViewcontroller {
                 let item = sender as! Int
                 destination.lipstick = recommendLipstick[item]
@@ -338,6 +344,7 @@ extension HomeTableViewController {
         
         self.trendDataPipe.output.observe(self.trnedDataObserver!)
     }
+
 }
 
 

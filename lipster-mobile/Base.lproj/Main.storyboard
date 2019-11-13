@@ -1177,14 +1177,14 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="2Fb-Dn-o1U" customClass="SearchTableViewCell" customModule="lipster_mobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Fb-Dn-o1U" id="fAC-dV-6HC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-25-J10">
-                                                    <rect key="frame" x="22" y="11" width="338" height="21.5"/>
+                                                    <rect key="frame" x="22" y="11" width="338" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1822,9 +1822,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notiTrend1" translatesAutoresizingMaskIntoConstraints="NO" id="vml-zP-dqc">
-                                                    <rect key="frame" x="25" y="7" width="70" height="70"/>
+                                                    <rect key="frame" x="10" y="7" width="85" height="85"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="ETR-bD-Fya"/>
+                                                        <constraint firstAttribute="width" constant="85" id="ETR-bD-Fya"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Notification title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTJ-mf-r84">
@@ -1861,8 +1861,8 @@
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="leading" secondItem="X1l-pV-2Sr" secondAttribute="leading" id="YiL-bW-HjJ"/>
                                                 <constraint firstItem="X1l-pV-2Sr" firstAttribute="centerX" secondItem="mN7-DZ-6JM" secondAttribute="centerX" id="ZsU-aD-UE9"/>
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="top" secondItem="L9E-hM-weO" secondAttribute="topMargin" constant="-4" id="aHm-89-vIx"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vml-zP-dqc" secondAttribute="bottom" constant="18" id="ls9-Ji-U6n"/>
-                                                <constraint firstItem="vml-zP-dqc" firstAttribute="leading" secondItem="L9E-hM-weO" secondAttribute="leadingMargin" constant="10" id="tys-t9-OqH"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vml-zP-dqc" secondAttribute="bottom" constant="3" id="ls9-Ji-U6n"/>
+                                                <constraint firstItem="vml-zP-dqc" firstAttribute="leading" secondItem="L9E-hM-weO" secondAttribute="leadingMargin" constant="-5" id="tys-t9-OqH"/>
                                                 <constraint firstItem="vml-zP-dqc" firstAttribute="top" secondItem="GTJ-mf-r84" secondAttribute="top" id="vOd-38-59s"/>
                                                 <constraint firstItem="GTJ-mf-r84" firstAttribute="leading" secondItem="vml-zP-dqc" secondAttribute="trailing" constant="19" id="wwc-Yg-ldJ"/>
                                             </constraints>

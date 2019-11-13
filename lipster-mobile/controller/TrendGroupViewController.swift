@@ -16,7 +16,7 @@ class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initHero()
         trendGroupsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
@@ -36,7 +36,14 @@ class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UIC
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         
-        cell.hero.modifiers = [.fade, .scale(0.2)]
+        cell.hero.modifiers = [
+            .whenPresenting(
+                .translate(x: 200),
+                .fade,
+                .delay(0.1 * Double(indexPath.item)),
+                .spring(stiffness: 270, damping: 25)
+            )
+        ]
 
         cell.setTrendGroup(trendGroup: trendGroups[indexPath.item])
         
@@ -56,4 +63,10 @@ class TrendGroupViewController: UIViewController ,UICollectionViewDelegate , UIC
         }
     }
 
+}
+
+extension TrendGroupViewController {
+    func initHero() {
+        self.hero.isEnabled = true
+    }
 }

@@ -31,9 +31,9 @@ extension Date {
         return "\(secondAgo / week) weeks ago."
     }
     
-    func formatDisplay() -> String {
+    func formatDisplay(format: String = "yyyy-MM-dd") -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = format
         
         return formatter.string(from: self)
     }

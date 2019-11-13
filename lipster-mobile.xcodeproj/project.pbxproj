@@ -19,6 +19,7 @@
 		300F1C05235D496600E658F9 /* PinterestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */; };
 		300F1C07235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */; };
 		302018FB2302D06C00FA5C6E /* LikeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302018FA2302D06C00FA5C6E /* LikeAnimator.swift */; };
+		30299D7D237C8E430040E06E /* NotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30299D7C237C8E430040E06E /* NotificationEvent.swift */; };
 		3032BDD422F92755009E325A /* LipstickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032BDD322F92755009E325A /* LipstickRepository.swift */; };
 		304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */; };
 		305477CF229A57CC009E4090 /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305477CE229A57CC009E4090 /* UITextFieldHelper.swift */; };
@@ -32,7 +33,7 @@
 		3073907D227C2766003B9013 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3073907C227C2766003B9013 /* TriangleView.swift */; };
 		308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */; };
 		30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A532C62255AAF800205429 /* UIImageHelper.swift */; };
-		30A889DA227196C600D00FCC /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889D9227196C600D00FCC /* Notification.swift */; };
+		30A889DA227196C600D00FCC /* UserNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889D9227196C600D00FCC /* UserNotification.swift */; };
 		30A889DE2271A7CC00D00FCC /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A889DD2271A7CC00D00FCC /* HttpRequest.swift */; };
 		30B36E85221A6DDC001FD8EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E84221A6DDC001FD8EF /* AppDelegate.swift */; };
 		30B36E87221A6DDC001FD8EF /* LipstickListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B36E86221A6DDC001FD8EF /* LipstickListViewController.swift */; };
@@ -118,6 +119,7 @@
 		300F1C04235D496600E658F9 /* PinterestCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestCollectionViewController.swift; sourceTree = "<group>"; };
 		300F1C06235D4A8000E658F9 /* PinterestHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		302018FA2302D06C00FA5C6E /* LikeAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimator.swift; sourceTree = "<group>"; };
+		30299D7C237C8E430040E06E /* NotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEvent.swift; sourceTree = "<group>"; };
 		3032BDD322F92755009E325A /* LipstickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickRepository.swift; sourceTree = "<group>"; };
 		304CFB6C228425D700AB8B0A /* UIImageViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewHelper.swift; sourceTree = "<group>"; };
 		305477CE229A57CC009E4090 /* UITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		308883C22276B11100CFE4D8 /* UIScrollViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewHelper.swift; sourceTree = "<group>"; };
 		30965806236306A6009270A5 /* lipster-mobileRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "lipster-mobileRelease.entitlements"; sourceTree = "<group>"; };
 		30A532C62255AAF800205429 /* UIImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
-		30A889D9227196C600D00FCC /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		30A889D9227196C600D00FCC /* UserNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotification.swift; sourceTree = "<group>"; };
 		30A889DD2271A7CC00D00FCC /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		30B36E81221A6DDC001FD8EF /* lipster-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lipster-mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B36E84221A6DDC001FD8EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				3071C13322573BFE0056EE74 /* UIViewHelper.swift */,
 				2CB7A4EC2355B6A900253DCC /* UILabelHelper.swift */,
 				305E4F6D2365D6D70048A156 /* DateHelper.swift */,
+				30299D7C237C8E430040E06E /* NotificationEvent.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -291,7 +294,7 @@
 			children = (
 				30A889DD2271A7CC00D00FCC /* HttpRequest.swift */,
 				D8D45F892242789400405AE7 /* Lipstick.swift */,
-				30A889D9227196C600D00FCC /* Notification.swift */,
+				30A889D9227196C600D00FCC /* UserNotification.swift */,
 				D82B447A2306608F00876302 /* Store.swift */,
 				D8E48D88226CC2C300A192EB /* Trend.swift */,
 				D8E48D8E226DCE9300A192EB /* TrendGroup.swift */,
@@ -575,13 +578,14 @@
 				D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */,
 				D8FD085F2366F37200FDB8D0 /* StoreStockViewController.swift in Sources */,
 				D82B447B2306608F00876302 /* Store.swift in Sources */,
-				30A889DA227196C600D00FCC /* Notification.swift in Sources */,
+				30A889DA227196C600D00FCC /* UserNotification.swift in Sources */,
 				D8E48D89226CC2C300A192EB /* Trend.swift in Sources */,
 				30694E40226B4BE20091C698 /* StringHelper.swift in Sources */,
 				3071C13422573BFE0056EE74 /* UIViewHelper.swift in Sources */,
 				D8573505232EA6FB00164E2E /* ReviewViewController.swift in Sources */,
 				D80510512357749300A6227A /* TrendsCollectionViewCell.swift in Sources */,
 				308883C32276B11100CFE4D8 /* UIScrollViewHelper.swift in Sources */,
+				30299D7D237C8E430040E06E /* NotificationEvent.swift in Sources */,
 				D80540332359B6FB00351C9B /* TrendGroupViewController.swift in Sources */,
 				D89F35F92355C17400F0AF43 /* StoreViewController.swift in Sources */,
 				304CFB6D228425D700AB8B0A /* UIImageViewHelper.swift in Sources */,

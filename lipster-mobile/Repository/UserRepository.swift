@@ -127,7 +127,7 @@ class UserRepository {
         }
     }
     
-    public static func getMyNotification(completion: @escaping ([Notification], Int) -> Void) {
+    public static func getMyNotification(completion: @escaping ([UserNotification], Int) -> Void) {
         let request = HttpRequest()
         request.get(
             "api/notification/user",
@@ -138,9 +138,30 @@ class UserRepository {
             requiredAuth: true
         ) { (response, httpStatusCode) -> (Void) in
             if httpStatusCode == 200 {
-                completion(Notification.makeArrayModelFromJSON(response: response), httpStatusCode)
+                completion(UserNotification.makeArrayModelFromJSON(response: response), httpStatusCode)
             } else {
-                completion([Notification](), httpStatusCode)
+                completion([UserNotification](), httpStatusCode)
+            }
+        }
+    }
+    
+    public static func readNotification(notification: UserNotification, completion: ((UserNotification?) -> Void)?) {
+        let request = HttpRequest()
+        print(notification.id)
+        request.put(
+            "api/notification/\(notification.id)/state",
+            [
+                "state": 1
+            ],
+            nil,
+            requiredAuth: true
+        ) { (response, httpStatusCode) -> (Void) in
+            if let closure = completion {
+                if response == nil {
+                    closure(nil)
+                    return
+                }
+                closure(UserNotification.makeModelFromJSON(response: response))
             }
         }
     }

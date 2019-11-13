@@ -67,13 +67,15 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
         cell.lipstickRelated_lipstickBrand.text = lipstick.lipstickBrand
         cell.lipstickRelated_LipstickImage.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
 
-     return cell
+        return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
           collectionView.deselectItem(at: indexPath, animated: true)
           performSegue(withIdentifier: "showLipstickDetail", sender: indexPath.item)
           
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
         return CGSize(width: 166.0, height: 250.0)
@@ -82,6 +84,7 @@ class TrendDetailViewController: UIViewController , UICollectionViewDelegate , U
     @IBAction func goBack(_ sender: Any) {
         hero.dismissViewController()
     }
+    
     @IBAction func toggleFavoriteTrend(_ sender: Any?) {
         Trend.toggleTrendFav(trend)
         initUI()
@@ -200,6 +203,7 @@ extension TrendDetailViewController {
     func initHero() {
         self.hero.isEnabled = true
         self.trendImageView.hero.id = imageHeroId
+        self.view.hero.id = imageHeroId
         self.favoriteButton.hero.modifiers = [
             .whenPresenting(
                 .delay(0.2),
@@ -210,6 +214,14 @@ extension TrendDetailViewController {
         self.trendNameLabel.hero.modifiers = [
             .whenPresenting(
                 .delay(0.2),
+                .translate(x: 200),
+                .fade,
+                .spring(stiffness: 100, damping: 15)
+            )
+        ]
+        self.trendDateUpdated.hero.modifiers = [
+            .whenPresenting(
+                .delay(0.3),
                 .translate(x: 200),
                 .fade,
                 .spring(stiffness: 100, damping: 15)
@@ -243,7 +255,6 @@ extension TrendDetailViewController {
         })
         
         self.lipstickDataPipe.output.observe(lipstickDataObserver!)
-        
     }
 }
 

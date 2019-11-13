@@ -102,6 +102,7 @@ class ReviewViewController: UIViewController {
     
     func fetchLipstickReview() {
         LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
+            self.initialUI()
             self.reviewDataPipe.input.send(value: userReviews)
         }
     }

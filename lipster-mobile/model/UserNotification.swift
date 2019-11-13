@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Notification {
+class UserNotification {
     
     var id: Int
     var title: String
@@ -19,8 +19,9 @@ class Notification {
     var image: String
     var modelName: String
     var modelId: Int
+    var isRead: Bool
     
-    init(id: Int, title: String, body: String, createdAt: Date, destination: String, image: String, modelName: String, modelId: Int) {
+    init(id: Int, title: String, body: String, createdAt: Date, destination: String, image: String, modelName: String, modelId: Int, read: Int = 0) {
         self.id = id
         self.title = title
         self.body = body
@@ -29,6 +30,7 @@ class Notification {
         self.image = image
         self.modelName = modelName
         self.modelId = modelId
+        self.isRead = read != 0
     }
     
     init(){
@@ -40,10 +42,11 @@ class Notification {
         image = String()
         modelName = String()
         modelId = Int()
+        isRead = false
     }
     
-    public static func makeArrayModelFromJSON(response: JSON?) -> [Notification] {
-        var notifications = [Notification]()
+    public static func makeArrayModelFromJSON(response: JSON?) -> [UserNotification] {
+        var notifications = [UserNotification]()
         
         if response == nil {
             return notifications
@@ -72,10 +75,43 @@ class Notification {
             } else if modelName == "lipstick_color" {
                 
             }
+            let readState = notification.1["read"].intValue
             
-            notifications.append(Notification(id: id, title: title, body: body, createdAt: createdAt, destination: destination, image: image, modelName: modelName, modelId: modelId))
+            notifications.append(UserNotification(id: id, title: title, body: body, createdAt: createdAt, destination: destination, image: image, modelName: modelName, modelId: modelId, read: readState))
         }
 
         return notifications
+    }
+    
+    public static func makeModelFromJSON(response: JSON?) -> UserNotification {
+        if response == nil {
+            return UserNotification()
+        }
+        let notification = response!
+        let id = notification["id"].intValue
+                   
+        let title = notification["title"].stringValue
+        let body = notification["body"].stringValue
+        let createdAtString = notification["created_at"].stringValue
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        let createdAt = dateFormatter.date(from: createdAtString) ?? Date()
+
+        let modelName = notification["name"].stringValue
+        let modelId = notification["notification_id"].intValue
+
+        let image = notification[modelName]["image"].stringValue
+        var destination = String()
+
+        if modelName == "trend_group" {
+           destination = "PinterestCollectionViewController"
+        } else if modelName == "lipstick_color" {
+           
+        }
+        let readState = notification["read"].intValue
+
+        return UserNotification(id: id, title: title, body: body, createdAt: createdAt, destination: destination, image: image, modelName: modelName, modelId: modelId, read: readState)
     }
 }

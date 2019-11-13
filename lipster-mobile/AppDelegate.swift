@@ -84,14 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-//    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
-//        return true
-//    }
-//    
-//    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
-//        return true
-//    }
-    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("***************************")
         print("error: \(error)")
@@ -125,34 +117,49 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
 
         print("token: \(fcmToken)")
+        
         InstanceID.instanceID().instanceID { (result, error) in
-          if let error = error {
-            print("Error fetching remote instance ID: \(error)")
-          } else if let result = result {
-            print("Remote instance ID token: \(result.token)")
-            UserRepository.setNotificationToken(token: result.token) { _ in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                UserRepository.setNotificationToken(token: result.token) { _ in
+                    UserRepository.getMyNotification { (_, _) in }
+                }
+
             }
-          }
         }
     }
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print(messaging)
-        print(remoteMessage)
     }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        let category = notification.request.content.categoryIdentifier
 
-        completionHandler([.alert, .sound])
+        if category == "setBadge" || category == "trend_group" {
+            
+            NotificationCenter.default.post(name: NSNotification.Name(NotificationEvent.updateBadge),
+                                            object: self,
+                                            userInfo: ["badge": notification.request.content.badge])
+            
+            completionHandler([.badge])
+            return
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(NotificationEvent.newNotification),
+                                        object: self)
+        
+        completionHandler([.alert, .sound, .badge])
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let application = UIApplication.shared
-        let userInfo = response.notification.request.content.userInfo
+        let userInfo = response.notification.request.content.userInfo        
         
-//        let aps = userInfo["aps"] as! NSDictionary
         guard let dataId = (userInfo["data"] as? NSString)?.integerValue else {
             completionHandler()
             return
