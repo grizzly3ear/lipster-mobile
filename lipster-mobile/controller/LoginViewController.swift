@@ -14,19 +14,9 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var formContainer: UIImageView!
-    @IBOutlet weak var leftLine: UIImageView!
-    @IBOutlet weak var rightLine: UIImageView!
-    @IBOutlet weak var lineLabel: UILabel!
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-
     @IBOutlet weak var facebookButton: UIButton!
 
     @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
     
     var isDestinationSelectGender = false
     
@@ -35,26 +25,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initHero()
-        
-        passwordTextField.enablesReturnKeyAutomatically = true
-        usernameTextField.enablesReturnKeyAutomatically = true
-        
-        passwordTextField.delegate = self
-        usernameTextField.delegate = self
-        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
         hideTabBar()
         tabBarController?.tabBar.isHidden = true
-        
-        // MARK: GID Auto signin
-//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
-        // MARK: There are facebook user login now
-//        if (AccessToken.current != nil) {
-//            
-//            fetchFacebookUserData()
-//        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -62,9 +36,6 @@ class LoginViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        if !isDestinationSelectGender {
-//            showTabBar(0.3, height: 605)
-//        }
         
     }
     
@@ -99,27 +70,27 @@ class LoginViewController: UIViewController {
             destination.redirect = self.redirect
         }
     }
-    
-    @IBAction func signUpButtonAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "showSignUp", sender: self)
-    }
+//
+//    @IBAction func signUpButtonAction(_ sender: Any) {
+//        self.performSegue(withIdentifier: "showSignUp", sender: self)
+//    }
     
     @IBAction func goBack(_ sender: Any) {
         hero.dismissViewController()
     }
     
-    @IBAction func loginButtonAction(_ sender: Any) {
-        UserRepository.authenticate(
-            email: usernameTextField.text ?? "",
-            password: passwordTextField.text ?? ""
-        ) { status, messages in
-            if status == 200 {
-                self.hero.dismissViewController()
-            } else {
-                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
-            }
-        }
-    }
+//    @IBAction func loginButtonAction(_ sender: Any) {
+//        UserRepository.authenticate(
+//            email: usernameTextField.text ?? "",
+//            password: passwordTextField.text ?? ""
+//        ) { status, messages in
+//            if status == 200 {
+//                self.hero.dismissViewController()
+//            } else {
+//                self.popCenterAlert(title: messages[0], description: messages[1], actionTitle: "Ok")
+//            }
+//        }
+//    }
 }
 
 // MARK: Auth
@@ -201,11 +172,6 @@ extension LoginViewController: GIDSignInDelegate {
 extension LoginViewController: UITextFieldDelegate {
     func initHero() {
         self.hero.isEnabled = true
-        self.formContainer.hero.id = "formContainer"
-        self.leftLine.hero.id = "leftLine"
-        self.rightLine.hero.id = "rightLine"
-        self.lineLabel.hero.id = "lineLabel"
-        self.loginButton.hero.id = "primaryActionButton"
     }
     
     func popCenterAlert(title: String, description: String, actionTitle: String, completion: (() -> Void)? = nil ) {
