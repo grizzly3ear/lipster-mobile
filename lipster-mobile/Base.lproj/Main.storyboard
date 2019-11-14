@@ -601,11 +601,11 @@
                                             <action selector="onFindLipstickListTap:" destination="8fU-aG-tpW" eventType="touchUpInside" id="GeI-I8-x9W"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zez-7R-d68">
-                                        <rect key="frame" x="111" y="25" width="54" height="32"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zez-7R-d68">
+                                        <rect key="frame" x="104" y="29" width="31" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Retake">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="photo" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
@@ -631,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5o-yB-cJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-836" y="3492"/>
+            <point key="canvasLocation" x="-836" y="3491.6041979010497"/>
         </scene>
         <!--Home Table View Controller-->
         <scene sceneID="fgu-FM-PgU">
@@ -3274,6 +3274,7 @@
         <image name="map_white" width="128" height="128"/>
         <image name="notiTrend1" width="524" height="426"/>
         <image name="open-close" width="256" height="256"/>
+        <image name="photo" catalog="system" width="64" height="46"/>
         <image name="pin" width="256" height="256"/>
         <image name="review-1" width="512" height="512"/>
         <image name="review_btn" width="512" height="512"/>
@@ -3290,6 +3291,6 @@
         <segue reference="U2k-ik-SvE"/>
         <segue reference="Rqr-p9-s19"/>
         <segue reference="9Qs-hT-DDn"/>
-        <segue reference="pD8-zW-E8l"/>
+        <segue reference="nXF-J0-F0d"/>
     </inferredMetricsTieBreakers>
 </document>

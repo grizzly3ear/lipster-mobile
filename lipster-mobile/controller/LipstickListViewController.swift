@@ -50,7 +50,6 @@ class LipstickListViewController: UITableViewController  {
         let footer = UIView(frame: .zero)
         footer.backgroundColor = .white
         tableView.tableFooterView = footer
-        reloadData()
     }
     
     func reloadData() {

@@ -100,24 +100,28 @@ class LipstickDetailViewcontroller: UIViewController {
     @IBAction func clickedTryMe(_ sender: Any) {
         self.performSegue(withIdentifier: "showTryMe", sender: self)
     }
+    
     func tryMeButtonStyle(){
         tryMeButton.backgroundColor = .black
         tryMeButton.layer.cornerRadius = 5.0
     }
+    
     func mapButtonStyle(){
         mapButton.backgroundColor = .black
         mapButton.tintColor = .white 
         mapButton.layer.cornerRadius = 5.0
     }
+    
     func numberOfReviewLabel(){
        let buttonTitleStr = NSMutableAttributedString(string:("\(reviews.count)  review\(reviews.count > 1 ? "s" : "") "), attributes:attrs)
       reviewButton.setAttributedTitle(buttonTitleStr, for: .normal)
-      // reviewButton.isEnabled = true
    
     }
+    
     @IBAction func clickedMapButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showMap", sender: self)
     }
+    
     @IBAction func clickedSeeReviews(_ sender: Any) {
         self.performSegue(withIdentifier: "showReview", sender: self)
     }
@@ -129,6 +133,7 @@ class LipstickDetailViewcontroller: UIViewController {
             segmentedControl.indicator.lineView.backgroundColor = segment.titleColor(for: .selected)
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = segue.identifier
         if segueIdentifier == "showReview" {
@@ -256,9 +261,9 @@ extension LipstickDetailViewcontroller : UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         lipstick = colors[indexPath.item]
-        initialUI()
+        fetchLipstickReview()
         collectionView.reloadData()
-       
+        
     }
     
 }
@@ -268,6 +273,7 @@ extension LipstickDetailViewcontroller{
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.reviews = userReviews
             self.numberOfReviewLabel()
+            self.initialUI()
         })
         reviewDataPipe.output.observe(reviewDataObserver!)
 

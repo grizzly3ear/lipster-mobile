@@ -56,6 +56,7 @@ class LipColorDetectionController: UIViewController {
             if let destination = segue.destination as? LipstickListViewController {
                 let hexColor: String = sender as! String
                 destination.lipHexColor = hexColor
+                destination.customTitleString = "Result for this color"
             }
         }
     }
@@ -70,9 +71,9 @@ class LipColorDetectionController: UIViewController {
     
     func popAlert() {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
-            self.openCamera()
-        }))
+//        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
+//            self.openCamera()
+//        }))
         
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
@@ -108,7 +109,7 @@ class LipColorDetectionController: UIViewController {
     }
     
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
-        let hexColor: String = colorDetectPreview.backgroundColor!.toHex!
+        let hexColor: String = colorDetectPreview.backgroundColor!.toHex ?? "#000000"
         
         performSegue(withIdentifier: "showLipstickFromColorList", sender: hexColor)
     }
