@@ -116,7 +116,6 @@ class StoreStockViewController: UIViewController , UITableViewDelegate , UITable
                 ]
             }
         }
-        print(lipstickDictionary.count)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

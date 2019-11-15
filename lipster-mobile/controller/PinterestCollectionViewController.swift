@@ -95,11 +95,9 @@ class PinterestCollectionViewController: UICollectionViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
         
         let contentOffsetY = scrollView.contentOffset.y
         let height = defaultHeaderHeight! - contentOffsetY
-        print(height)
         
         if contentOffsetY > 0 {
             return
@@ -119,7 +117,6 @@ class PinterestCollectionViewController: UICollectionViewController {
     }
     
     override func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
     }
 
 }
@@ -194,11 +191,9 @@ extension PinterestCollectionViewController {
             
             if let _ = favTrends.firstIndex(where: { $0 == trend! }) {
             } else {
-                print("add")
                 favTrends.append(trend!)
             }
 
-            print(favTrends.count)
             Trend.setTrendArrayToUserDefault(forKey: DefaultConstant.favoriteTrends, favTrends)
         }
     }

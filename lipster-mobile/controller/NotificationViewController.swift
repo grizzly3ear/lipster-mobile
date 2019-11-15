@@ -62,7 +62,7 @@ class NotificationViewController: UIViewController {
             label.center.y = self.notificationTableView.frame.size.height / 2
             label.numberOfLines = 2
             label.textColor = .darkGray
-            label.text = "There are no review yet."
+            label.text = "There are no notification yet."
             label.textAlignment = .center
             label.tag = 1
             
@@ -124,19 +124,3 @@ extension NotificationViewController : UITableViewDelegate , UITableViewDataSour
     }
 }
 
-//extension NotificationViewController: UNUserNotificationCenterDelegate {
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        print("get some noti")
-//        completionHandler([])
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//
-//        print("get noti")
-//
-//        completionHandler()
-//    }
-//
-//
-//}

@@ -115,7 +115,6 @@ class SearchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
-        print(sender)
         
         if identifier == "showLipstickList" {
             let lipsticks = sender as! [Lipstick]
@@ -179,7 +178,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if collectionView == searchHistoryCollectionView {
             self.searchTextField.text = searchHistory[indexPath.item]
             filter(searchHistory[indexPath.item])
-            print(searchHistory[indexPath.item])
             hideCollectionView()
             searchResultTableView.reloadData()
             self.searchTextField.becomeFirstResponder()
@@ -392,7 +390,6 @@ extension SearchViewController: UITextFieldDelegate {
     func addSearchHistory(_ keyword: String) {
         
         if let i = searchHistory.firstIndex(where: { $0 == keyword }) {
-            print("remove")
             searchHistory.remove(at: i)
         }
         while searchHistory.count > 4 {

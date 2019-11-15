@@ -34,7 +34,6 @@ class HttpRequest {
         }
         
         Alamofire.request("\(domain)/\(route)", method: .post, parameters: params, headers: defaultHeaders).validate().responseJSON { (response) in
-            print(response)
             self.checkResponse(response: response) { (json, status) -> (Void) in
                 completion(json, status)
                 return

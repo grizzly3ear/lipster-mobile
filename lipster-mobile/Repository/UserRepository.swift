@@ -60,7 +60,6 @@ class UserRepository {
     public static func setNotificationToken(token: String, completion: ((Bool) -> Void)?) {
         let request = HttpRequest()
         request.post("api/user/notification", ["notification_token": token], nil, requiredAuth: true) { (response, httpStatusCode) -> (Void) in
-            print(response)
             if let closure = completion {
                 if httpStatusCode == 200 {
                     // MARK: Pass
@@ -147,7 +146,6 @@ class UserRepository {
     
     public static func readNotification(notification: UserNotification, completion: ((UserNotification?) -> Void)?) {
         let request = HttpRequest()
-        print(notification.id)
         request.put(
             "api/notification/\(notification.id)/state",
             [

@@ -163,7 +163,6 @@ extension ReviewViewController {
         self.lipstickColorName.text = lipstick.lipstickColorName
         self.lipstickName.text = lipstick.lipstickName
         
-        print("userReview: \(userReviews.count)")
         if userReviews.count == 0 {
             let label = UILabel()
             label.frame.size.height = 42

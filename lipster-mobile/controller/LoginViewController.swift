@@ -111,9 +111,7 @@ extension LoginViewController: GIDSignInDelegate {
                         User.shared.lastname = profile.lastName!
                         User.shared.imageURL = profile.imageURL(forMode: .square, size: CGSize(width: 480, height: 480))?.absoluteString
                         User.shared.email = "\(dictionaryResult["email"]!)"
-                        
-                        print(User.shared.id!)
-                        print(User.shared.email!)
+
                         self.authenticate()
                     }
                     
@@ -151,8 +149,6 @@ extension LoginViewController: GIDSignInDelegate {
     }
     
     private func authenticate() {
-        print(User.shared.email!)
-        print(User.shared.id!)
         UserRepository.authenticate(
             email: User.shared.email!,
             password: User.shared.id!
