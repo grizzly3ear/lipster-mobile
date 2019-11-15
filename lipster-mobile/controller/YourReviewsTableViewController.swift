@@ -61,8 +61,6 @@ extension YourReviewsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.item)
-        print(indexPath.row)
         performSegue(withIdentifier: "showReview" , sender: indexPath)
     }
     

@@ -15,7 +15,6 @@ class LipColorDetectionController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     lazy var vision = Vision.vision()
-    
     var imagePicker = UIImagePickerController()
     
     private lazy var annotationOverlayView: UIView = {
@@ -31,8 +30,12 @@ class LipColorDetectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: Set default value
         spinner.isHidden = true
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         
+        // MARK: Set Constraint for debug
         imageView.addSubview(annotationOverlayView)
         NSLayoutConstraint.activate([
           annotationOverlayView.topAnchor.constraint(equalTo: imageView.topAnchor),
@@ -40,9 +43,6 @@ class LipColorDetectionController: UIViewController {
           annotationOverlayView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
           annotationOverlayView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
-
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
         
         initReactiveColorDetection()
         initDetectColorPreview()
@@ -56,23 +56,16 @@ class LipColorDetectionController: UIViewController {
             if let destination = segue.destination as? LipstickListViewController {
                 let hexColor: String = sender as! String
                 destination.lipHexColor = hexColor
+                destination.customTitleString = "Result for this color"
             }
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-    }
-    
     func popAlert() {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
-            self.openCamera()
-        }))
+//        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
+//            self.openVideo()
+//        }))
         
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
@@ -85,6 +78,9 @@ class LipColorDetectionController: UIViewController {
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openVideo() {
     }
     
     func openCamera() {
@@ -108,7 +104,7 @@ class LipColorDetectionController: UIViewController {
     }
     
     @IBAction func onFindLipstickListTap(_ sender: UIButton) {
-        let hexColor: String = colorDetectPreview.backgroundColor!.toHex!
+        let hexColor: String = colorDetectPreview.backgroundColor!.toHex ?? "#000000"
         
         performSegue(withIdentifier: "showLipstickFromColorList", sender: hexColor)
     }
@@ -118,6 +114,7 @@ class LipColorDetectionController: UIViewController {
     }
 }
 
+// MARK: ImagePickerDelegate
 extension LipColorDetectionController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // Local variable inserted by Swift 4.2 migrator.
@@ -134,6 +131,7 @@ extension LipColorDetectionController: UIImagePickerControllerDelegate, UINaviga
     }
 
 }
+
 // MARK: Set up gesture on imagePreview
 extension LipColorDetectionController {
     func setUpGesture() {
@@ -322,14 +320,12 @@ extension LipColorDetectionController {
                         atPoint: transformedPoint,
                         to: annotationOverlayView,
                         color: UIColor.yellow,
-                        radius: Constants.smallDotRadius
+                        radius: Constant.smallDotRadius
                     )
                     print("topUpperLipContour: transformedPoint: \(transformedPoint)")
                     print("topUpperLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-//                dictionaryPoints["transformedPoint"]?.append(transformedPoint)
-//                dictionaryPoints["point"]?.append(pointFrom(point))
             }
         }
         if let bottomUpperLipContour = face.contour(ofType: .upperLipBottom) {
@@ -340,14 +336,12 @@ extension LipColorDetectionController {
                         atPoint: transformedPoint,
                         to: annotationOverlayView,
                         color: UIColor.yellow,
-                        radius: Constants.smallDotRadius
+                        radius: Constant.smallDotRadius
                     )
                     print("bottomUpperLipContour: transformedPoint: \(transformedPoint)")
                     print("bottomUpperLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-//                dictionaryPoints["transformedPoint"]?.append(transformedPoint)
-//                dictionaryPoints["point"]?.append(pointFrom(point))
             }
         }
         if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
@@ -358,14 +352,13 @@ extension LipColorDetectionController {
                         atPoint: transformedPoint,
                         to: annotationOverlayView,
                         color: UIColor.yellow,
-                        radius: Constants.smallDotRadius
+                        radius: Constant.smallDotRadius
                     )
                     print("topLowerLipContour: transformedPoint: \(transformedPoint)")
                     print("topLowerLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-//                dictionaryPoints["transformedPoint"]?.append(transformedPoint)
-//                dictionaryPoints["point"]?.append(pointFrom(point))
+
             }
         }
         if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
@@ -376,14 +369,13 @@ extension LipColorDetectionController {
                         atPoint: transformedPoint,
                         to: annotationOverlayView,
                         color: UIColor.yellow,
-                        radius: Constants.smallDotRadius
+                        radius: Constant.smallDotRadius
                     )
                     print("bottomLowerLipContour: transformedPoint: \(transformedPoint)")
                     print("bottomLowerLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-//                dictionaryPoints["transformedPoint"]?.append(transformedPoint)
-//                dictionaryPoints["point"]?.append(pointFrom(point))
+
             }
         }
         return points
@@ -398,7 +390,7 @@ extension LipColorDetectionController {
                 atPoint: transformedPoint,
                 to: annotationOverlayView,
                 color: UIColor.red,
-                radius: Constants.largeDotRadius
+                radius: Constant.largeDotRadius
             )
             
         }
@@ -409,7 +401,7 @@ extension LipColorDetectionController {
                 atPoint: transformedPoint,
                 to: annotationOverlayView,
                 color: UIColor.red,
-                radius: Constants.largeDotRadius
+                radius: Constant.largeDotRadius
             )
         }
         if let rightMouthLandmark = face.landmark(ofType: .mouthRight) {
@@ -419,7 +411,7 @@ extension LipColorDetectionController {
                 atPoint: transformedPoint,
                 to: annotationOverlayView,
                 color: UIColor.red,
-                radius: Constants.largeDotRadius
+                radius: Constant.largeDotRadius
             )
         }
     }
@@ -468,9 +460,10 @@ extension LipColorDetectionController {
             annotationView.removeFromSuperview()
         }
     }
+
 }
 
-private enum Constants {
+private enum Constant {
     static let smallDotRadius: CGFloat = 5.0
     static let largeDotRadius: CGFloat = 10.0
     static let lineColor = UIColor.yellow.cgColor

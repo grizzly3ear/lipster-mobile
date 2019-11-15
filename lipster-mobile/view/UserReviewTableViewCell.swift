@@ -17,7 +17,6 @@ class UserReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewDate: UILabel!
     
     func setUserReview(user : UserReview) {
-        print(user.user.imageURL!)
         userImage.sd_setImage(with: URL(string: user.user.imageURL!), placeholderImage: UIImage(named: "profile-user"))
         userNameLabel.text = user.user.firstname! + " " + user.user.lastname!
         userReviewLabel.text = user.userReview

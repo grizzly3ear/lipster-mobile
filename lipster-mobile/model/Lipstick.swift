@@ -77,7 +77,6 @@ class Lipstick: NSObject, NSCoding {
             if i%2 == 0 {
                 lipsticks.append(Lipstick(i, [""], "LANCOME","Velvet Matte Lipstick Pencil", "Roman Holiday - vibrant pink sheen", "detail", .red, 03, ""))
             } else {
-                print("%2 != 0")
                 lipsticks.append(Lipstick(i, [""], "LANCOME","Red Velvet", "Roman Holiday - vibrant pink sheen", "detail", .red, 03, ""))
             }
             
@@ -247,11 +246,9 @@ class Lipstick: NSObject, NSCoding {
             var favLipstick: [Lipstick] = Lipstick.getLipstickArrayFromUserDefault(forKey: DefaultConstant.favoriteLipsticks)
             
             if let i = favLipstick.firstIndex(where: { $0 == lipstick! }) {
-                print("remove")
                 favLipstick.remove(at: i)
                 
             } else {
-                print("add")
                 favLipstick.append(lipstick!)
             }
             Lipstick.setLipstickArrayToUserDefault(forKey: DefaultConstant.favoriteLipsticks, favLipstick)

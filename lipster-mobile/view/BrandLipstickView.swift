@@ -61,7 +61,6 @@ class BrandLipstickView: UIView {
     }()
     
     @objc func onClickBrandLipstick(){
-        print("click lipstick brand")
         if state {
             arrowImage.image = UIImage(named: "arrowDown")
         } else {

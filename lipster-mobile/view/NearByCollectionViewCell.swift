@@ -16,11 +16,13 @@ class NearByCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storeBranch: UILabel!
     
     
-func setStore(store: Store) {
+    func setStore(store: Store) {
 
         storeLogoImage.sd_setImage(with: URL(string: store.image), placeholderImage: UIImage(named: "nopic"))
         storeName.text = store.name
-        storePeriod.text = store.hours
+        let period = store.hours.split(separator: ";")
+        
+        storePeriod.text = "\(period[0]) - \(period[1])"
         storeBranch.text = store.branch
         
     }

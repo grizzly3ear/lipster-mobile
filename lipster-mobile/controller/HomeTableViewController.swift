@@ -234,7 +234,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
     private func indexOfMajorCell(velocity: CGPoint) -> Int {
         let itemWidth = collectionViewLayout.itemSize.width
         let proportionalOffset = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
-        print(proportionalOffset)
         let index: Int!
         if velocity.x > 0 {
             index = Int(
@@ -253,7 +252,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
             )
         }
         
-        print(index)
         let safeIndex = max(0, min(trends.count - 1, index))
         return safeIndex
     }
@@ -262,7 +260,6 @@ class HomeTableViewController: UITableViewController , UICollectionViewDelegate 
 
         if scrollView.tag == 1 {
             targetContentOffset.pointee = scrollView.contentOffset
-            print(velocity)
             let indexOfMajorCell = self.indexOfMajorCell(velocity: velocity)
             let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
             collectionViewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)

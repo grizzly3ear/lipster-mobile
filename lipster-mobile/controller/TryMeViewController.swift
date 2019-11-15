@@ -70,14 +70,17 @@ class TryMeViewController: UIViewController  {
         super.viewDidLoad()
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        
         setUpPreviewOverlayView()
         setUpAnnotationOverlayView()
+        
         setUpCaptureSessionOutput()
         setUpCaptureSessionInput()
+        
         setUpCaptureButton()
         setUpLipstickDetail()
         setUpFavButton()
-//        setUpCaptureImageView()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         self.hero.isEnabled = true

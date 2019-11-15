@@ -66,7 +66,6 @@
 		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
 		D8311A2623617A4500820882 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8311A2523617A4500820882 /* RefreshView.swift */; };
 		D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* LoginViewController.swift */; };
-		D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD822230079EA000098C1 /* SignUpViewController.swift */; };
 		D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */; };
 		D84CB265235DE98E00D300FC /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CB264235DE98E00D300FC /* HomeTableViewController.swift */; };
 		D84CB267235DE9D900D300FC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CB266235DE9D900D300FC /* HomeTableViewCell.swift */; };
@@ -170,7 +169,6 @@
 		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8311A2523617A4500820882 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D83DD822230079EA000098C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D84CB264235DE98E00D300FC /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		D84CB266235DE9D900D300FC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 				D81CCE562285D8BB0028C19A /* NotificationViewController.swift */,
 				D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */,
 				D8573504232EA6FB00164E2E /* ReviewViewController.swift */,
-				D83DD822230079EA000098C1 /* SignUpViewController.swift */,
 				D8BA31BA224B898F00CD24A4 /* TabBarController.swift */,
 				D81A79A2226B010400D1F208 /* TrendDetailViewController.swift */,
 				D8EB4F3D22677FCD00CF9827 /* TryMeViewController.swift */,
@@ -604,7 +601,6 @@
 				305C5CA222F93C34003725C8 /* UserRepository.swift in Sources */,
 				30F76BCE23054FAD0009E998 /* BounceTabbarItem.swift in Sources */,
 				D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */,
-				D83DD823230079EA000098C1 /* SignUpViewController.swift in Sources */,
 				300F1C05235D496600E658F9 /* PinterestCollectionViewController.swift in Sources */,
 				30A532C72255AAF800205429 /* UIImageHelper.swift in Sources */,
 				3073907D227C2766003B9013 /* TriangleView.swift in Sources */,

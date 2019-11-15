@@ -47,25 +47,14 @@ class ReviewViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         initReactive()
         
+        let footer = UIView(frame: .zero)
+        footer.backgroundColor = .white
+        reviewTableView.tableFooterView = footer
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        initialUI()
-        reviewTableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        if pageState {
-//
-//            showTabBar(0.3, height: 605)
-//        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
+        self.fetchLipstickReview()
     }
     
     @IBAction func sendButton(_ sender: Any) {
@@ -102,7 +91,6 @@ class ReviewViewController: UIViewController {
     
     func fetchLipstickReview() {
         LipstickRepository.fetchReview(lipstickId: self.lipstick!.lipstickId) { (userReviews) in
-            self.initialUI()
             self.reviewDataPipe.input.send(value: userReviews)
         }
     }
@@ -176,10 +164,6 @@ extension ReviewViewController {
         self.lipstickName.text = lipstick.lipstickName
         
         if userReviews.count == 0 {
-            self.reviewTableView.separatorStyle = .none
-            self.reviewTableView.tableFooterView = UIView(frame: .zero)
-            self.reviewTableView.backgroundColor = .clear
-            
             let label = UILabel()
             label.frame.size.height = 42
             label.frame.size.width = self.reviewTableView.frame.size.width
@@ -227,12 +211,13 @@ extension ReviewViewController {
         reviewDataObserver = Signal<[UserReview], NoError>.Observer(value: { (userReviews) in
             self.userReviews = userReviews
             
+            self.initialUI()
+            self.reviewTableView.viewWithTag(1)?.removeFromSuperview()
             self.reviewTableView.performBatchUpdates({
-                self.initialUI()
-                self.reviewTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                self.reviewTableView.reloadSections(IndexSet(integer: 0), with: .fade)
             }) { (_) in
                 
-                self.reviewTableView.scrollToRow(at: IndexPath(row: self.userReviews.count - 1, section: 0), at: .bottom, animated: true)
+//                self.reviewTableView.scrollToRow(at: IndexPath(row: self.userReviews.count - 1, section: 0), at: .bottom, animated: true)
             }
         })
         reviewDataPipe.output.observe(reviewDataObserver!)
