@@ -22,6 +22,7 @@ class Lipstick: NSObject, NSCoding {
     var lipstickColor : UIColor
     var lipstickDetailId: Int
     var lipstickIngredients: String
+    var lipstickOpacity: CGFloat
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(lipstickId, forKey: "lipstickId")
@@ -33,6 +34,7 @@ class Lipstick: NSObject, NSCoding {
         aCoder.encode(lipstickColor, forKey: "lipstickColor")
         aCoder.encode(lipstickDetailId, forKey: "lipstickDetailId")
         aCoder.encode(lipstickIngredients, forKey: "lipstickIngredients")
+        aCoder.encode(lipstickOpacity, forKey: "lipstickOpacity")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -45,10 +47,11 @@ class Lipstick: NSObject, NSCoding {
         let lipstickColor = aDecoder.decodeObject(forKey: "lipstickColor") as! UIColor
         let lipstickDetailId = aDecoder.decodeInteger(forKey: "lipstickDetailId")
         let lipstickIngredients = aDecoder.decodeObject(forKey: "lipstickIngredients") as! String
-        self.init(lipstickId, lipstickImage, lipstickBrand, lipstickName, lipstickColorName, lisptickDetail, lipstickColor, lipstickDetailId, lipstickIngredients)
+        let lipstickOpacity = aDecoder.decodeObject(forKey: "lipstickOpacity") as! CGFloat
+        self.init(lipstickId, lipstickImage, lipstickBrand, lipstickName, lipstickColorName, lisptickDetail, lipstickColor, lipstickDetailId, lipstickIngredients, lipstickOpacity)
     }
 
-    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int, _ lipstickIngredients: String = "") {
+    init(_ lipstickId: Int, _ lipstickImage: [String], _ lipstickBrand: String, _ lipstickName: String, _ lipstickColorName: String, _ lipShortDetail: String, _ lipstickColor: UIColor, _ lipstickDetailId: Int, _ lipstickIngredients: String = "", _ lipstickOpacity: CGFloat = 0.3) {
         self.lipstickId = lipstickId
         self.lipstickImage = lipstickImage
         self.lipstickBrand = lipstickBrand
@@ -58,6 +61,7 @@ class Lipstick: NSObject, NSCoding {
         self.lipstickColor = lipstickColor
         self.lipstickDetailId = lipstickDetailId
         self.lipstickIngredients = lipstickIngredients
+        self.lipstickOpacity = lipstickOpacity
     }
     
     override init() {
@@ -70,6 +74,7 @@ class Lipstick: NSObject, NSCoding {
         self.lipstickColor = UIColor()
         self.lipstickDetailId = Int()
         self.lipstickIngredients = String()
+        self.lipstickOpacity = CGFloat()
     }
     static func mockArrayData(size: Int) -> [Lipstick] {
         var lipsticks = [Lipstick]()
@@ -106,10 +111,10 @@ class Lipstick: NSObject, NSCoding {
                     let lipstickDescription = lipstickDetail.1["description"].stringValue
                     let lipstickColor = UIColor.init(hexString: lipstickColorJSON.1["rgb"].stringValue)
                     let lipstickDetailId = lipstickDetail.1["id"].intValue
-                    
                     let lipstickIngredients = lipstickColorJSON.1["composition"].stringValue
+                    let lipstickOpacity = lipstickDetail.1["opacity"].floatValue
                     
-                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId, lipstickIngredients ))
+                    lipsticks.append(Lipstick(lipstickId, images, lipstickBrand, lipstickName, lipstickColorName, lipstickDescription, lipstickColor, lipstickDetailId, lipstickIngredients, CGFloat(lipstickOpacity)))
                 }
             }
         }
@@ -139,7 +144,8 @@ class Lipstick: NSObject, NSCoding {
                 response!["description"].stringValue,
                 UIColor(hexString: lipstick["rgb"].stringValue),
                 response!["id"].intValue,
-                ""
+                lipstick["composition"].stringValue,
+                CGFloat(response!["opacity"].floatValue)
             ))
             
         }
@@ -164,6 +170,8 @@ class Lipstick: NSObject, NSCoding {
             let description = lipstick.1["detail"]["description"].stringValue
             let color = UIColor(hexString: lipstick.1["rgb"].stringValue)
             let detailId = lipstick.1["detail"]["id"].intValue
+            let opacity = lipstick.1["detail"]["opacity"].floatValue
+            let composition = lipstick.1["composition"].stringValue
             
             lipsticks.append(Lipstick(
                 id,
@@ -174,7 +182,8 @@ class Lipstick: NSObject, NSCoding {
                 description,
                 color,
                 detailId,
-                ""
+                composition,
+                CGFloat(opacity)
             ))
         }
         return lipsticks
@@ -198,6 +207,8 @@ class Lipstick: NSObject, NSCoding {
             let description = lipstick["detail"]["description"].stringValue
             let color = UIColor(hexString: lipstick["rgb"].stringValue)
             let detailId = lipstick["detail"]["id"].intValue
+            let opacity = lipstick["detail"]["opaciry"].floatValue
+            let composition = lipstick["composition"].stringValue
             
             return Lipstick(
                 id,
@@ -208,7 +219,8 @@ class Lipstick: NSObject, NSCoding {
                 description,
                 color,
                 detailId,
-                ""
+                composition,
+                CGFloat(opacity)
             )
         }
         return Lipstick()
