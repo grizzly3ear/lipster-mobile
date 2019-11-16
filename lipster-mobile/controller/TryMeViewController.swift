@@ -509,7 +509,7 @@ extension TryMeViewController {
         upperShapeLayer.path = upperLipPath.cgPath
         upperShapeLayer.fillColor = lipstick.lipstickColor.cgColor
         let upperShapeView = UIView(frame: rect)
-        upperShapeView.alpha = lipstickColorAlpha
+        upperShapeView.alpha = lipstick.lipstickOpacity
         upperShapeView.layer.addSublayer(upperShapeLayer)
         view.addSubview(upperShapeView)
         
@@ -539,7 +539,7 @@ extension TryMeViewController {
         lowerShapeLayer.path = lowerLipPath.cgPath
         lowerShapeLayer.fillColor = lipstick.lipstickColor.cgColor
         let lowerShapeView = UIView(frame: rect)
-        lowerShapeView.alpha = lipstickColorAlpha
+        lowerShapeView.alpha = lipstick.lipstickOpacity
         lowerShapeView.layer.addSublayer(lowerShapeLayer)
         view.addSubview(lowerShapeView)
     }
