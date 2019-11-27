@@ -58,13 +58,11 @@
 		D81CCE592285DA4D0028C19A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */; };
 		D81CCE5B2285EBB50028C19A /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */; };
 		D81CCE612285FA1D0028C19A /* EditProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */; };
-		D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D826485F2360A48B00BE0E47 /* RefreshView.xib */; };
 		D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AC2253BE15001D8CB5 /* UserReview.swift */; };
 		D82675AF2253BE74001D8CB5 /* UserReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */; };
 		D826C444232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */; };
 		D82B447B2306608F00876302 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447A2306608F00876302 /* Store.swift */; };
 		D82B447F23082E4400876302 /* NearByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */; };
-		D8311A2623617A4500820882 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8311A2523617A4500820882 /* RefreshView.swift */; };
 		D83DD821230069D5000098C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DD820230069D5000098C1 /* LoginViewController.swift */; };
 		D83EFDEB22F9614400DAFC8B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */; };
 		D84CB265235DE98E00D300FC /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CB264235DE98E00D300FC /* HomeTableViewController.swift */; };
@@ -161,13 +159,11 @@
 		D81CCE582285DA4D0028C19A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		D81CCE5A2285EBB50028C19A /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D81CCE602285FA1D0028C19A /* EditProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageView.swift; sourceTree = "<group>"; };
-		D826485F2360A48B00BE0E47 /* RefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
 		D82675AC2253BE15001D8CB5 /* UserReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReview.swift; sourceTree = "<group>"; };
 		D82675AE2253BE74001D8CB5 /* UserReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D826C443232BDD9200BF6B20 /* LipstickDetailViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LipstickDetailViewcontroller.swift; sourceTree = "<group>"; };
 		D82B447A2306608F00876302 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		D82B447E23082E4400876302 /* NearByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByCollectionViewCell.swift; sourceTree = "<group>"; };
-		D8311A2523617A4500820882 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		D83DD820230069D5000098C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D83EFDEA22F9614400DAFC8B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D84CB264235DE98E00D300FC /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
@@ -271,7 +267,6 @@
 				30E6C75823632DC300913CF9 /* lipster-mobileDebug.entitlements */,
 				30965806236306A6009270A5 /* lipster-mobileRelease.entitlements */,
 				3055E2B4236167DA00257DA9 /* gif */,
-				D826485E2360A45D00BE0E47 /* xib */,
 				3032BDD222F9271F009E325A /* Repository */,
 				30A532C52255AAE000205429 /* extension */,
 				30B966EE224E06B400258CA6 /* model */,
@@ -325,15 +320,6 @@
 				1380FF51DF891F687AA58B22 /* Pods-lipster-mobile.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D826485E2360A45D00BE0E47 /* xib */ = {
-			isa = PBXGroup;
-			children = (
-				D826485F2360A48B00BE0E47 /* RefreshView.xib */,
-				D8311A2523617A4500820882 /* RefreshView.swift */,
-			);
-			path = xib;
 			sourceTree = "<group>";
 		};
 		D863452B2242152D00AC0EA6 /* controller */ = {
@@ -460,7 +446,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D82648602360A48B00BE0E47 /* RefreshView.xib in Resources */,
 				30B36E8F221A6DDD001FD8EF /* LaunchScreen.storyboard in Resources */,
 				3055E2B6236167F500257DA9 /* refreshAnimate.gif in Resources */,
 				D81C6B5F227245C0009D05FD /* Assets.xcassets in Resources */,
@@ -550,7 +535,6 @@
 				D81CCE55228592F30028C19A /* NearByViewController.swift in Sources */,
 				D84CB267235DE9D900D300FC /* HomeTableViewCell.swift in Sources */,
 				D8E48D8F226DCE9300A192EB /* TrendGroup.swift in Sources */,
-				D8311A2623617A4500820882 /* RefreshView.swift in Sources */,
 				D8FD08612366F3B800FDB8D0 /* StoreStockTableViewCell.swift in Sources */,
 				D82675AD2253BE15001D8CB5 /* UserReview.swift in Sources */,
 				2C7644BB235741B3000ADAE9 /* DynamicHeightCollectionView.swift in Sources */,

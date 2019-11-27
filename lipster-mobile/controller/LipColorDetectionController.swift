@@ -38,10 +38,10 @@ class LipColorDetectionController: UIViewController {
         // MARK: Set Constraint for debug
         imageView.addSubview(annotationOverlayView)
         NSLayoutConstraint.activate([
-          annotationOverlayView.topAnchor.constraint(equalTo: imageView.topAnchor),
-          annotationOverlayView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-          annotationOverlayView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-          annotationOverlayView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            annotationOverlayView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            annotationOverlayView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            annotationOverlayView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            annotationOverlayView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
         ])
         
         initReactiveColorDetection()
@@ -63,9 +63,6 @@ class LipColorDetectionController: UIViewController {
     
     func popAlert() {
         let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-//        alert.addAction(UIAlertAction(title: "Video", style: .default, handler: { _ in
-//            self.openVideo()
-//        }))
         
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
@@ -79,10 +76,7 @@ class LipColorDetectionController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func openVideo() {
-    }
-    
+
     func openCamera() {
         if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             
@@ -117,7 +111,7 @@ class LipColorDetectionController: UIViewController {
 // MARK: ImagePickerDelegate
 extension LipColorDetectionController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // Local variable inserted by Swift 4.2 migrator.
+        
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         clearResults()
@@ -272,7 +266,7 @@ extension LipColorDetectionController {
                     if colors.count == 0 {
                         self.popCenterAlert(title: "Lip Color Detection", description: "Your lip color is ambigous. Please try again with another image.", actionTitle: "Ok")
                     }
-                    print(avgColor)
+
                 }
                 print("[detectFace] Last step")
             }
@@ -296,7 +290,7 @@ extension LipColorDetectionController {
             scaledImageHeight = imageView.bounds.size.height
         }
         DispatchQueue.global(qos: .userInitiated).async {
-            // Scale image while maintaining aspect ratio so it displays better in the UIImageView.
+            
             var scaledImage = image.scaledImage(
                 with: CGSize(width: scaledImageWidth, height: scaledImageHeight)
             )
@@ -358,7 +352,6 @@ extension LipColorDetectionController {
                     print("topLowerLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-
             }
         }
         if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
@@ -375,45 +368,10 @@ extension LipColorDetectionController {
                     print("bottomLowerLipContour: point: \(pointFrom(point))")
                 }
                 points.append(transformedPoint)
-
             }
         }
+        
         return points
-    }
-    
-    private func addLandmarks(forFace face: VisionFace, transform: CGAffineTransform) {
-      
-        if let bottomMouthLandmark = face.landmark(ofType: .mouthBottom) {
-            let point = pointFrom(bottomMouthLandmark.position)
-            let transformedPoint = point.applying(transform)
-            UIUtilityHelper.addCircle(
-                atPoint: transformedPoint,
-                to: annotationOverlayView,
-                color: UIColor.red,
-                radius: Constant.largeDotRadius
-            )
-            
-        }
-        if let leftMouthLandmark = face.landmark(ofType: .mouthLeft) {
-            let point = pointFrom(leftMouthLandmark.position)
-            let transformedPoint = point.applying(transform)
-            UIUtilityHelper.addCircle(
-                atPoint: transformedPoint,
-                to: annotationOverlayView,
-                color: UIColor.red,
-                radius: Constant.largeDotRadius
-            )
-        }
-        if let rightMouthLandmark = face.landmark(ofType: .mouthRight) {
-            let point = pointFrom(rightMouthLandmark.position)
-            let transformedPoint = point.applying(transform)
-            UIUtilityHelper.addCircle(
-                atPoint: transformedPoint,
-                to: annotationOverlayView,
-                color: UIColor.red,
-                radius: Constant.largeDotRadius
-            )
-        }
     }
     
     private func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {

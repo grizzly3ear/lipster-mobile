@@ -16,7 +16,6 @@ class LipstickListTableViewCell: UITableViewCell {
     @IBOutlet weak var lipNameLabel: UILabel!
     @IBOutlet weak var lipColorNameLabel: UILabel!
     
-    
     func setLipstick(lipstick: Lipstick) {
         lipImageView.sd_setImage(with: URL(string: lipstick.lipstickImage.first ?? ""), placeholderImage: UIImage(named: "nopic"))
         lipBrandLabel.text = lipstick.lipstickBrand

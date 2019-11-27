@@ -27,16 +27,16 @@ extension UIViewController {
 //        )
     }
     
-    func showTabBar(_ duration: Double = 0.3, height: CGFloat = -1) {
+    func showTabBar(_ duration: Double = 0.3, height: CGFloat? = nil) {
         tabBarController?.tabBar.isHidden = false
 //        var frame: CGRect?
 //
-//        if height == -1 {
+//        if let keyboardHeight = height {
 //            frame = self.tabBarController?.tabBar.frame
-//            frame?.origin.y = self.view.frame.size.height + 15
+//            frame?.origin.y = keyboardHeight + 15
 //        } else {
 //            frame = self.tabBarController?.tabBar.frame
-//            frame?.origin.y = height + 15
+//            frame?.origin.y = self.view.frame.size.height + 15
 //        }
 //
 //
@@ -53,7 +53,7 @@ extension UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let _ = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= 260
             }

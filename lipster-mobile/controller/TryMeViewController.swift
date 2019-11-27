@@ -479,17 +479,22 @@ extension TryMeViewController {
     private func addContours(for face: VisionFace, width: CGFloat, height: CGFloat) {
         
         let view = annotationOverlayView
-        let upperLipPath = UIBezierPath()
-        let lowerLipPath = UIBezierPath()
+        let lipPath = UIBezierPath()
         let rect = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        var leftPoint: CGPoint?
+        var rightPoint: CGPoint?
         
         if let topUpperLipContour = face.contour(ofType: .upperLipTop) {
             for (index, point) in topUpperLipContour.points.enumerated() {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
                 if index == 0 {
-                    upperLipPath.move(to: cgPoint)
+                    lipPath.move(to: cgPoint)
+                    leftPoint = cgPoint
                 } else {
-                    upperLipPath.addLine(to: cgPoint)
+                    lipPath.addLine(to: cgPoint)
+                }
+                if index == topUpperLipContour.points.count - 1 {
+                    rightPoint = cgPoint
                 }
             }
         }
@@ -498,50 +503,43 @@ extension TryMeViewController {
             for (index, point) in bottomUpperLipContour.points.reversed().enumerated() {
                 let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
                 if index != 0 && index != bottomUpperLipContour.points.count - 1 {
-                    upperLipPath.addLine(to: cgPoint)
+                    lipPath.addLine(to: cgPoint)
                 }
+            }
+            if let point = leftPoint {
+                lipPath.addLine(to: point)
+            }
+            
+        }
+        
+        if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
+            for point in bottomLowerLipContour.points.reversed() {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
+                lipPath.addLine(to: cgPoint)
+            }
+            if let point = rightPoint {
+                lipPath.addLine(to: point)
             }
         }
         
-        upperLipPath.close()
+        if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
+            for (index, point) in topLowerLipContour.points.enumerated() {
+                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
+                if index != 0 && index != topLowerLipContour.points.count - 1 {
+                    lipPath.addLine(to: cgPoint)
+                }
+            }
+        }
+        lipPath.close()
         
         let upperShapeLayer = CAShapeLayer()
-        upperShapeLayer.path = upperLipPath.cgPath
+        upperShapeLayer.path = lipPath.cgPath
         upperShapeLayer.fillColor = lipstick.lipstickColor.cgColor
         let upperShapeView = UIView(frame: rect)
         upperShapeView.alpha = lipstick.lipstickOpacity
         upperShapeView.layer.addSublayer(upperShapeLayer)
         view.addSubview(upperShapeView)
         
-        if let bottomLowerLipContour = face.contour(ofType: .lowerLipBottom) {
-            for (index, point) in bottomLowerLipContour.points.enumerated() {
-                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                if index == 0 {
-                    lowerLipPath.move(to: cgPoint)
-                } else {
-                    lowerLipPath.addLine(to: cgPoint)
-                }
-            }
-        }
-        
-        if let topLowerLipContour = face.contour(ofType: .lowerLipTop) {
-            for (index, point) in topLowerLipContour.points.reversed().enumerated() {
-                let cgPoint = normalizedPoint(fromVisionPoint: point, width: width, height: height)
-                if index != 0 && index != topLowerLipContour.points.count - 1 {
-                    lowerLipPath.addLine(to: cgPoint)
-                }
-            }
-        }
-
-        lowerLipPath.close()
-        
-        let lowerShapeLayer = CAShapeLayer()
-        lowerShapeLayer.path = lowerLipPath.cgPath
-        lowerShapeLayer.fillColor = lipstick.lipstickColor.cgColor
-        let lowerShapeView = UIView(frame: rect)
-        lowerShapeView.alpha = lipstick.lipstickOpacity
-        lowerShapeView.layer.addSublayer(lowerShapeLayer)
-        view.addSubview(lowerShapeView)
     }
 }
 

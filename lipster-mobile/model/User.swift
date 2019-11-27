@@ -41,6 +41,7 @@ class User {
         shared.imageURL = user.imageURL!
         sharedUserState = true
         Messaging.messaging().unsubscribe(fromTopic: "non_login")
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     public static func clearSingletonUser() {

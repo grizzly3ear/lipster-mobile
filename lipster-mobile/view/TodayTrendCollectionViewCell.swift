@@ -38,13 +38,9 @@ class TodayTrendCollectionViewCell: UICollectionViewCell {
         }
         
         func dropShadow(){
-            let shadowSize : CGFloat = 10.0
-           
             self.cellView.layer.masksToBounds = false
             self.cellView.layer.shadowColor = UIColor.black.cgColor
             self.cellView.layer.shadowOpacity = 0.4
-            
-        
         }
                         
         func roundCorners(cornerRadiusButtom : Double) {

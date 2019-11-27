@@ -163,4 +163,18 @@ class UserRepository {
             }
         }
     }
+    
+    public static func getFavoriteLipstick(completion: @escaping ([Lipstick]) -> Void) {
+        let request = HttpRequest()
+        request.get(
+            "api/lipstick/color/favorite",
+            [
+                "part": "brand,detail"
+            ],
+            nil,
+            requiredAuth: true
+        ) { (response, httpStatusCode) -> (Void) in
+            completion(Lipstick.makeArrayModelFromColorJSON(response: response))
+        }
+    }
 }

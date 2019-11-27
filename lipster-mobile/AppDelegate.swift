@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        FBLoginButton.self
-        
         GIDSignIn.sharedInstance().clientID = "929204994294-d301m529i288rnjjbt0ulhquoooh05u7.apps.googleusercontent.com"
         
         if #available(iOS 10.0, *) {
@@ -50,9 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserRepository.getUser { (userModel, result) in
             if result {
                 if let user = userModel {
+                    print("set")
                     User.setSingletonUser(user: user)
                 }
             } else {
+                print("clear")
                 User.clearSingletonUser()
             }
             
@@ -135,15 +135,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         let category = notification.request.content.categoryIdentifier
+        
+        print(category)
 
         if category == "setBadge" || category == "trend_group" {
             
             NotificationCenter.default.post(name: NSNotification.Name(NotificationEvent.updateBadge),
                                             object: self,
-                                            userInfo: ["badge": notification.request.content.badge])
-            
-            completionHandler([.badge])
-            return
+                                            userInfo: ["badge": notification.request.content.badge!])
+            if category == "setBadge" {
+                completionHandler([.badge])
+                return
+            }
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(NotificationEvent.newNotification),
@@ -154,7 +157,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let application = UIApplication.shared
-        let userInfo = response.notification.request.content.userInfo        
+        let userInfo = response.notification.request.content.userInfo
+        
+        print(userInfo)
         
         guard let dataId = (userInfo["data"] as? NSString)?.integerValue else {
             completionHandler()
@@ -180,6 +185,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             TrendRepository.fetchTrendGroupFromId(dataId) { (trendGroup, httpStatusCode) in
                 vc.trendGroup = trendGroup
                 navvc.pushViewController(vc, animated: true)
+
                 completionHandler()
                 return
             }
